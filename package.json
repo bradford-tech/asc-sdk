@@ -23,6 +23,20 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
+    "fix": "npm run format -- --write && npm run lint -- --fix",
+    "format": "prettier . --log-level warn",
+    "lint": "eslint . --quiet --max-warnings 0",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.1",
+    "eslint-config-flat-gitignore": "^2.3.0",
+    "globals": "^17.5.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.3",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-packagejson": "^3.0.2",
+    "typescript-eslint": "^8.58.2"
   }
 }
