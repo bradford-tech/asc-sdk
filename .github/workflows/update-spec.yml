@@ -1,0 +1,47 @@
+name: Update OpenAPI Spec
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Every Monday at 9:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-spec:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Download latest spec
+        run: |
+          curl -sL -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
+          unzip -o -j /tmp/spec.zip "openapi.oas.json" -d /tmp/spec
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if diff -q spec/openapi.oas.json /tmp/spec/openapi.oas.json > /dev/null 2>&1; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update spec
+        if: steps.diff.outputs.changed == 'true'
+        run: cp /tmp/spec/openapi.oas.json spec/openapi.oas.json
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          commit-message: "Update App Store Connect OpenAPI spec"
+          title: "Update App Store Connect OpenAPI spec"
+          body: |
+            The upstream App Store Connect OpenAPI specification has changed.
+
+            This PR updates `spec/openapi.oas.json` to the latest version.
+          branch: update-openapi-spec
+          delete-branch: true
