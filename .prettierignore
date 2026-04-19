@@ -4,3 +4,4 @@
 # Prettier will also follow rules specified in the ".gitignore" file
 packages/*/dist
 packages/*/spec
+packages/*/CHANGELOG.md
