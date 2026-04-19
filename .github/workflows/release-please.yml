@@ -54,19 +54,15 @@ jobs:
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
           node-version: lts/*
-          registry-url: "https://registry.npmjs.org"
+          registry-url: https://registry.npmjs.org
           cache: npm
           cache-dependency-path: package-lock.json
 
       - run: npm ci
       - run: npm run build --workspaces --if-present
 
-      - run: npm publish --workspace packages/asc-sdk --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --workspace packages/asc-sdk
         if: ${{ needs.release-please.outputs.sdk_released == 'true' }}
 
-      - run: npm publish --workspace packages/asc-auth --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish --workspace packages/asc-auth
         if: ${{ needs.release-please.outputs.auth_released == 'true' }}
