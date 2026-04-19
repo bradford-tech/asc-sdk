@@ -1,0 +1,32 @@
+{
+  "name": "@bradford-tech/asc-auth",
+  "version": "0.0.1",
+  "private": true,
+  "description": "JWT authentication helper for the Apple App Store Connect API",
+  "keywords": [
+    "apple",
+    "app-store-connect",
+    "auth",
+    "jwt",
+    "es256"
+  ],
+  "homepage": "https://github.com/bradford-tech/asc-sdk/tree/main/packages/asc-auth#readme",
+  "bugs": {
+    "url": "https://github.com/bradford-tech/asc-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradford-tech/asc-sdk.git",
+    "directory": "packages/asc-auth"
+  },
+  "license": "MIT",
+  "author": "Bradford Technologies <asc-sdk@bradford.tech>",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "type-check": "tsc --noEmit"
+  }
+}
