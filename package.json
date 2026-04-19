@@ -1,51 +1,28 @@
 {
-  "name": "@bradford-tech/asc-sdk",
-  "version": "0.0.1",
-  "description": "TypeScript SDK for the Apple App Store Connect API",
-  "keywords": [
-    "apple",
-    "app-store-connect",
-    "appstoreconnect",
-    "api",
-    "sdk",
-    "typescript"
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
-  "homepage": "https://github.com/bradford-tech/asc-sdk#readme",
-  "bugs": {
-    "url": "https://github.com/bradford-tech/asc-sdk/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bradford-tech/asc-sdk.git"
-  },
-  "license": "MIT",
-  "author": "Bradford Technologies <asc-sdk@bradford.tech>",
-  "type": "module",
-  "main": "dist/index.js",
   "scripts": {
     "fix": "npm run format -- --write && npm run lint -- --fix",
     "format": "prettier . --log-level warn",
-    "generate": "rimraf ./src/client && openapi-ts",
+    "generate": "npm run generate --workspace @bradford-tech/asc-sdk",
     "postinstall": "patch-package",
     "lint": "eslint . --quiet --max-warnings 0",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "type-check": "tsc --noEmit"
+    "type-check": "npm run type-check --workspaces --if-present"
   },
   "overrides": {
     "@hey-api/shared": "0.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@hey-api/openapi-ts": "^0.96.0",
     "eslint": "^10.2.1",
     "eslint-config-flat-gitignore": "^2.3.0",
     "globals": "^17.5.0",
-    "jiti": "^2.6.1",
     "patch-package": "^8.0.1",
     "prettier": "^3.8.3",
     "prettier-plugin-organize-imports": "^4.3.0",
     "prettier-plugin-packagejson": "^3.0.2",
-    "rimraf": "^6.1.3",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.2"
   }

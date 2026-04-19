@@ -1,0 +1,39 @@
+{
+  "name": "@bradford-tech/asc-sdk",
+  "version": "0.0.1",
+  "private": true,
+  "description": "TypeScript SDK for the Apple App Store Connect API",
+  "keywords": [
+    "apple",
+    "app-store-connect",
+    "appstoreconnect",
+    "api",
+    "sdk",
+    "typescript"
+  ],
+  "homepage": "https://github.com/bradford-tech/asc-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/bradford-tech/asc-sdk/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradford-tech/asc-sdk.git",
+    "directory": "packages/asc-sdk"
+  },
+  "license": "MIT",
+  "author": "Bradford Technologies <asc-sdk@bradford.tech>",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "generate": "rimraf ./src/client && openapi-ts",
+    "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "^0.96.0",
+    "jiti": "^2.6.1",
+    "rimraf": "^6.1.3"
+  }
+}
