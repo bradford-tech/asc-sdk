@@ -6,7 +6,7 @@ import tseslint from "typescript-eslint";
 
 export default defineConfig([
   gitignore(),
-  globalIgnores(["packages/*/dist/", "packages/*/spec/"]),
+  globalIgnores(["packages/*/dist/", "packages/*/spec/", "smoke-test/"]),
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
     plugins: { js },

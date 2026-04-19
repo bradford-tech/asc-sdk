@@ -31,6 +31,8 @@ jobs:
 
       - run: npm run type-check --workspaces --if-present
 
+      - run: npm run build --workspaces --if-present
+
       - run: npm run generate && npm run fix
 
       - name: Check for generated output drift
@@ -40,3 +42,15 @@ jobs:
             git diff --stat packages/asc-sdk/src/client
             exit 1
           fi
+
+      - name: Pack SDK tarball
+        run: cd packages/asc-sdk && npm pack
+
+      - name: Install tarball in smoke test
+        run: cd smoke-test && npm install ../packages/asc-sdk/bradford-tech-asc-sdk-*.tgz
+
+      - name: Smoke test (runtime)
+        run: cd smoke-test && node test.mjs
+
+      - name: Smoke test (types)
+        run: cd smoke-test && npx tsc --noEmit

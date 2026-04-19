@@ -34,9 +34,8 @@ jobs:
       - run: npm ci
         if: ${{ steps.release.outputs.releases_created }}
 
-      # TODO: uncomment when build pipeline is configured
-      # - run: npm run build --workspaces --if-present
-      #   if: ${{ steps.release.outputs.releases_created }}
+      - run: npm run build --workspaces --if-present
+        if: ${{ steps.release.outputs.releases_created }}
 
       - run: npm publish --workspace packages/asc-sdk --access public --provenance
         env:
