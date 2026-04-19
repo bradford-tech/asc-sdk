@@ -1,0 +1,18 @@
+diff --git a/node_modules/@hey-api/shared/dist/index.mjs b/node_modules/@hey-api/shared/dist/index.mjs
+index d85ce43..9c2691c 100644
+--- a/node_modules/@hey-api/shared/dist/index.mjs
++++ b/node_modules/@hey-api/shared/dist/index.mjs
+@@ -2576,7 +2576,12 @@ function collectOperations({ filters, parameters, requestBodies, resourceMetadat
+ 				case "body": return !requestBodies.has(dependency);
+ 				case "parameter": return !parameters.has(dependency);
+ 				case "response": return !responses.has(dependency);
+-				case "schema": return !schemas.has(dependency);
++				case "schema": {
++					if (schemas.has(dependency)) return false;
++					if (filters.schemas.exclude.has(dependency)) return true;
++					schemas.add(dependency);
++					return false;
++				}
+ 				default: return false;
+ 			}
+ 		})) continue;
