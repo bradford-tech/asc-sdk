@@ -2,5 +2,5 @@
 # By default prettier ignores files in version control systems directories:
 # (".git", ".jj", ".sl", ".svn" and ".hg") and node_modules
 # Prettier will also follow rules specified in the ".gitignore" file
-dist
-spec
+packages/*/dist
+packages/*/spec
