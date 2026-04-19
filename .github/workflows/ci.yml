@@ -29,4 +29,14 @@ jobs:
 
       - run: npm run lint
 
-      - run: npm run type-check
+      - run: npm run type-check --workspaces --if-present
+
+      - run: npm run generate && npm run fix
+
+      - name: Check for generated output drift
+        run: |
+          if ! git diff --quiet packages/asc-sdk/src/client; then
+            echo "::error::Generated SDK output is out of sync with spec. Run 'npm run generate && npm run fix' and commit."
+            git diff --stat packages/asc-sdk/src/client
+            exit 1
+          fi

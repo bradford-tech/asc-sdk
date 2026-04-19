@@ -2,7 +2,11 @@
   "release-type": "node",
   "bump-minor-pre-major": true,
   "bump-patch-for-minor-pre-major": true,
+  "separate-pull-requests": true,
+  "include-component-in-tag": true,
   "packages": {
-    ".": {}
-  }
+    "packages/asc-sdk": {},
+    "packages/asc-auth": {}
+  },
+  "plugins": ["node-workspace"]
 }

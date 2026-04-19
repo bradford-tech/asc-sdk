@@ -19,8 +19,9 @@ jobs:
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
 
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
@@ -28,19 +29,21 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           cache: npm
           cache-dependency-path: package-lock.json
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
 
       - run: npm ci
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
 
-      - run: npx tsc
-        if: ${{ steps.release.outputs.release_created }}
+      # TODO: uncomment when build pipeline is configured
+      # - run: npm run build --workspaces --if-present
+      #   if: ${{ steps.release.outputs.releases_created }}
 
-      # TODO: uncomment when real tests are added
-      # - run: npm test
-      #   if: ${{ steps.release.outputs.release_created }}
-
-      - run: npm publish --access public --provenance
+      - run: npm publish --workspace packages/asc-sdk --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs['packages/asc-sdk--release_created'] }}
+
+      - run: npm publish --workspace packages/asc-auth --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        if: ${{ steps.release.outputs['packages/asc-auth--release_created'] }}

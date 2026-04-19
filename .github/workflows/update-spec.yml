@@ -18,7 +18,7 @@ jobs:
       - name: Download latest spec
         run: |
           curl -sfL -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
-          unzip -o -j /tmp/spec.zip "openapi.oas.json" -d spec
+          unzip -o -j /tmp/spec.zip "openapi.oas.json" -d packages/asc-sdk/spec
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
@@ -28,10 +28,10 @@ jobs:
           body: |
             The upstream App Store Connect OpenAPI specification has changed.
 
-            This PR updates `spec/openapi.oas.json` to the latest version.
+            This PR updates `packages/asc-sdk/spec/openapi.oas.json` to the latest version.
           branch: update-openapi-spec
           delete-branch: true
-          add-paths: spec/openapi.oas.json
+          add-paths: packages/asc-sdk/spec/openapi.oas.json
           labels: automated
           assignees: sbs44
           reviewers: sbs44
