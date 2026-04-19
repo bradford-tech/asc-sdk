@@ -6,6 +6,9 @@ export default defineConfig({
     header: (ctx) => ["/* eslint-disable */", ...ctx.defaultValue],
     path: "./src/client",
     clean: false,
+    module: {
+      extension: ".js", // explicit extensions for Node.js ESM compatibility
+    },
     postProcess: [
       { command: "prettier", args: ["{{path}}", "--write"] },
       { command: "eslint", args: ["{{path}}", "--fix"] },

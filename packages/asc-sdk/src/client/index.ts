@@ -1057,7 +1057,7 @@ export {
   winBackOffersPricesGetToManyRelationship,
   winBackOffersUpdateInstance,
   type Options,
-} from "./sdk.gen";
+} from "./sdk.gen.js";
 export type {
   AccessibilityDeclaration,
   AccessibilityDeclarationCreateRequest,
@@ -7542,4 +7542,4 @@ export type {
   WinBackOffersUpdateInstanceResponse,
   WinBackOffersUpdateInstanceResponses,
   XcodeMetrics,
-} from "./types.gen";
+} from "./types.gen.js";

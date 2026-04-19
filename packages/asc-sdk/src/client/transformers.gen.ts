@@ -263,7 +263,7 @@ import type {
   WinBackOffersCreateInstanceResponse,
   WinBackOffersGetInstanceResponse,
   WinBackOffersUpdateInstanceResponse,
-} from "./types.gen";
+} from "./types.gen.js";
 
 const alternativeDistributionDomainSchemaResponseTransformer = (data: any) => {
   if (data.attributes) {
