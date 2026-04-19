@@ -13,6 +13,10 @@ name: release-please
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+      sdk_released: ${{ steps.release.outputs['packages/asc-sdk--release_created'] }}
+      auth_released: ${{ steps.release.outputs['packages/asc-auth--release_created'] }}
     steps:
       - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4
         id: release
@@ -20,8 +24,32 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
+  ci:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-        if: ${{ steps.release.outputs.releases_created }}
+
+      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - run: npm ci
+      - run: npm run format -- --check
+      - run: npm run lint
+      - run: npm run type-check --workspaces --if-present
+      - run: npm run build --workspaces --if-present
+      - run: npm test --workspaces --if-present
+
+  publish:
+    needs: [release-please, ci]
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
 
       - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
         with:
@@ -29,20 +57,16 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           cache: npm
           cache-dependency-path: package-lock.json
-        if: ${{ steps.release.outputs.releases_created }}
 
       - run: npm ci
-        if: ${{ steps.release.outputs.releases_created }}
-
       - run: npm run build --workspaces --if-present
-        if: ${{ steps.release.outputs.releases_created }}
 
       - run: npm publish --workspace packages/asc-sdk --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.release.outputs['packages/asc-sdk--release_created'] }}
+        if: ${{ needs.release-please.outputs.sdk_released == 'true' }}
 
       - run: npm publish --workspace packages/asc-auth --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        if: ${{ steps.release.outputs['packages/asc-auth--release_created'] }}
+        if: ${{ needs.release-please.outputs.auth_released == 'true' }}
