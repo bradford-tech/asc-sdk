@@ -4,6 +4,7 @@
     "packages/*"
   ],
   "scripts": {
+    "build": "npm run build --workspaces --if-present",
     "fix": "npm run format -- --write && npm run lint -- --fix",
     "format": "prettier . --log-level warn",
     "generate": "npm run generate --workspace @bradford-tech/asc-sdk && npm run fix",
