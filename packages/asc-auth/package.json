@@ -21,6 +21,7 @@
   },
   "license": "MIT",
   "author": "Bradford Technologies <asc-sdk@bradford.tech>",
+  "sideEffects": false,
   "type": "module",
   "exports": {
     ".": {
@@ -34,7 +35,19 @@
     "dist"
   ],
   "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist .test-out",
+    "prepack": "npm run build",
+    "test": "tsc -p tsconfig.test.json --outDir .test-out && node --test '.test-out/tests/*.test.js'",
     "type-check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.39",
+    "jose": "^6.2.2",
+    "rimraf": "^6.1.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "publishConfig": {
     "access": "public"

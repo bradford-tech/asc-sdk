@@ -3,6 +3,7 @@
 
 # build output
 dist
+.test-out
 
 # misc
 .DS_Store

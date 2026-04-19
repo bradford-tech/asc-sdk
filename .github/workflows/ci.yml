@@ -33,6 +33,8 @@ jobs:
 
       - run: npm run build --workspaces --if-present
 
+      - run: npm test --workspaces --if-present
+
       - run: npm run generate && npm run fix
 
       - name: Check for generated output drift
