@@ -25,6 +25,11 @@ jobs:
           curl -sfL -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
           unzip -o -j /tmp/spec.zip "openapi.oas.json" -d packages/asc-sdk/spec
 
+      - name: Validate spec
+        id: lint
+        continue-on-error: true
+        run: npx -y @redocly/cli@2.28.1 lint packages/asc-sdk/spec/openapi.oas.json --extends=spec --format=github-actions
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
@@ -34,6 +39,8 @@ jobs:
             The upstream App Store Connect OpenAPI specification has changed.
 
             This PR updates `packages/asc-sdk/spec/openapi.oas.json` to the latest version.
+
+            **Spec validation:** ${{ steps.lint.outcome == 'success' && 'Passed' || 'Failed — review lint output in the [workflow run](https://github.com/bradford-tech/asc-sdk/actions).' }}
           branch: update-openapi-spec
           delete-branch: true
           add-paths: packages/asc-sdk/spec/openapi.oas.json
