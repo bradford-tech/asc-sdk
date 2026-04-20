@@ -1,6 +1,6 @@
 {
   "name": "@bradford-tech/asc-auth",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "JWT authentication helper for the Apple App Store Connect API",
   "keywords": [
     "apple",

@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.0.3](https://github.com/bradford-tech/asc-sdk/compare/asc-auth-v0.0.2...asc-auth-v0.0.3) (2026-04-20)
+
+
+### Bug Fixes
+
+* **auth:** accept Uint8Array directly in encodeBase64url ([9e579ba](https://github.com/bradford-tech/asc-sdk/commit/9e579ba7720b90986e0c7d58902985b27d0f7d0b))
+* **auth:** guard single-flight cleanup against stale callbacks ([b192f2e](https://github.com/bradford-tech/asc-sdk/commit/b192f2ee3e8ee81a3c630b245e370178aab2ab84))
+* **auth:** prevent stale sign from overwriting refresh cache ([68a3c2b](https://github.com/bradford-tech/asc-sdk/commit/68a3c2bfbfd6a8714a4380ec5f31f59c4986f33d))
+
 ## [0.0.2](https://github.com/bradford-tech/asc-sdk/compare/asc-auth-v0.0.1...asc-auth-v0.0.2) (2026-04-19)
 
 ### Features
