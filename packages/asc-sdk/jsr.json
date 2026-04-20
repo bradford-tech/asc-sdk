@@ -1,0 +1,10 @@
+{
+  "name": "@bradford-tech/asc-sdk",
+  "version": "0.0.2",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "publish": {
+    "include": ["src/**/*.ts", "LICENSE", "README.md"]
+  }
+}

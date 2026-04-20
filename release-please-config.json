@@ -5,8 +5,16 @@
   "separate-pull-requests": true,
   "include-component-in-tag": true,
   "packages": {
-    "packages/asc-sdk": {},
-    "packages/asc-auth": {}
+    "packages/asc-sdk": {
+      "extra-files": [
+        { "type": "json", "path": "jsr.json", "jsonpath": "$.version" }
+      ]
+    },
+    "packages/asc-auth": {
+      "extra-files": [
+        { "type": "json", "path": "jsr.json", "jsonpath": "$.version" }
+      ]
+    }
   },
   "plugins": ["node-workspace"]
 }

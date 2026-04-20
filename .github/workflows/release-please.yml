@@ -90,3 +90,13 @@ jobs:
 
       - run: npm publish --workspace packages/asc-auth
         if: ${{ needs.release-please.outputs.auth_released == 'true' }}
+
+      - name: Publish asc-sdk to JSR
+        if: ${{ needs.release-please.outputs.sdk_released == 'true' }}
+        continue-on-error: true
+        run: cd packages/asc-sdk && npx jsr publish --allow-slow-types --allow-dirty
+
+      - name: Publish asc-auth to JSR
+        if: ${{ needs.release-please.outputs.auth_released == 'true' }}
+        continue-on-error: true
+        run: cd packages/asc-auth && npx jsr publish --allow-dirty
