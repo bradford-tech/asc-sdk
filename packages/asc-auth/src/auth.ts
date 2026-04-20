@@ -33,6 +33,10 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
 
   let cached: { token: string; exp: number } | null = null;
   let inflight: Promise<string> | null = null;
+  // Monotonic counter to track which signing operation is current.
+  // signFresh only writes to cache if its generation matches the latest,
+  // preventing a stale first-call result from overwriting a newer refresh.
+  let generation = 0;
 
   async function getOptionsWithCachedKey(): Promise<ASCAuthOptions> {
     if (!cachedKey) {
@@ -41,10 +45,12 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
     return { ...options, privateKey: cachedKey };
   }
 
-  async function signFresh(): Promise<string> {
+  async function signFresh(myGeneration: number): Promise<string> {
     const opts = await getOptionsWithCachedKey();
     const result = await signASCTokenInternal(opts);
-    cached = { token: result.token, exp: result.exp };
+    if (myGeneration === generation) {
+      cached = { token: result.token, exp: result.exp };
+    }
     return result.token;
   }
 
@@ -53,6 +59,14 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
     // Refresh when current time reaches (exp - refreshBuffer).
     // Strict less-than: at exactly the boundary, we sign a new token.
     return Date.now() / 1000 < cached.exp - refreshBuffer;
+  }
+
+  function startSigning(): Promise<string> {
+    const myGeneration = ++generation;
+    inflight = signFresh(myGeneration).finally(() => {
+      if (myGeneration === generation) inflight = null;
+    });
+    return inflight;
   }
 
   async function getToken(): Promise<string> {
@@ -66,12 +80,7 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
       return inflight;
     }
 
-    const promise = signFresh().finally(() => {
-      if (inflight === promise) inflight = null;
-    });
-    inflight = promise;
-
-    return inflight;
+    return startSigning();
   }
 
   // Object.assign preserves the call signature of getToken while adding
@@ -80,15 +89,12 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
   const auth: ASCAuth = Object.assign(getToken, {
     refresh(): Promise<string> {
       cached = null;
-      const promise = signFresh().finally(() => {
-        if (inflight === promise) inflight = null;
-      });
-      inflight = promise;
-      return inflight;
+      return startSigning();
     },
     clearCache(): void {
       cached = null;
       inflight = null;
+      generation++;
     },
   });
 
