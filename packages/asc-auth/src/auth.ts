@@ -74,22 +74,23 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
     return inflight;
   }
 
-  // Build the callable auth object
-  const auth = getToken as ASCAuth;
-
-  auth.refresh = () => {
-    cached = null;
-    const promise = signFresh().finally(() => {
-      if (inflight === promise) inflight = null;
-    });
-    inflight = promise;
-    return inflight;
-  };
-
-  auth.clearCache = () => {
-    cached = null;
-    inflight = null;
-  };
+  // Object.assign preserves the call signature of getToken while adding
+  // refresh/clearCache — TypeScript structurally verifies the result
+  // matches ASCAuth, unlike a bare `as ASCAuth` cast.
+  const auth: ASCAuth = Object.assign(getToken, {
+    refresh(): Promise<string> {
+      cached = null;
+      const promise = signFresh().finally(() => {
+        if (inflight === promise) inflight = null;
+      });
+      inflight = promise;
+      return inflight;
+    },
+    clearCache(): void {
+      cached = null;
+      inflight = null;
+    },
+  });
 
   return auth;
 }
