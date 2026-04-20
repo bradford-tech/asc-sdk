@@ -94,7 +94,7 @@ export interface RequestOptions<
   /**
    * Security mechanism(s) to use for the request.
    */
-  security?: ReadonlyArray<Auth>;
+  security?: readonly Auth[];
   url: Url;
 }
 

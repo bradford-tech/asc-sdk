@@ -10,11 +10,11 @@ export type QuerySerializer = (query: Record<string, unknown>) => string;
 
 export type BodySerializer = (body: unknown) => unknown;
 
-type QuerySerializerOptionsObject = {
+interface QuerySerializerOptionsObject {
   allowReserved?: boolean;
   array?: Partial<SerializerOptions<ArrayStyle>>;
   object?: Partial<SerializerOptions<ObjectStyle>>;
-};
+}
 
 export type QuerySerializerOptions = QuerySerializerOptionsObject & {
   /**

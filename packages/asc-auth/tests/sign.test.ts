@@ -81,7 +81,9 @@ describe("signASCToken", () => {
     });
 
     const payload = decodeJwt(token);
-    assert.equal(payload.exp! - payload.iat!, 1200);
+    assert.ok(payload.exp !== undefined, "exp should be defined");
+    assert.ok(payload.iat !== undefined, "iat should be defined");
+    assert.equal(payload.exp - payload.iat, 1200);
   });
 
   it("respects custom expiration", async () => {
@@ -94,7 +96,9 @@ describe("signASCToken", () => {
     });
 
     const payload = decodeJwt(token);
-    assert.equal(payload.exp! - payload.iat!, 300);
+    assert.ok(payload.exp !== undefined, "exp should be defined");
+    assert.ok(payload.iat !== undefined, "iat should be defined");
+    assert.equal(payload.exp - payload.iat, 300);
   });
 
   // --- Individual key signing ---
@@ -160,7 +164,9 @@ describe("signASCToken", () => {
     });
 
     const payload = decodeJwt(token);
-    assert.equal(payload.exp! - payload.iat!, 15552000);
+    assert.ok(payload.exp !== undefined, "exp should be defined");
+    assert.ok(payload.iat !== undefined, "iat should be defined");
+    assert.equal(payload.exp - payload.iat, 15552000);
   });
 
   // --- PEM parsing edge cases ---

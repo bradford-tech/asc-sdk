@@ -12,8 +12,8 @@ let _publicPem: string | null = null;
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
   let binary = "";
-  for (let i = 0; i < bytes.length; i++) {
-    binary += String.fromCharCode(bytes[i]);
+  for (const byte of bytes) {
+    binary += String.fromCharCode(byte);
   }
   return btoa(binary);
 }
@@ -42,15 +42,18 @@ async function ensureKeyPair(): Promise<void> {
 
 export async function getPrivatePem(): Promise<string> {
   await ensureKeyPair();
-  return _privatePem!;
+  if (!_privatePem) throw new Error("Key pair not initialized");
+  return _privatePem;
 }
 
 export async function getPublicPem(): Promise<string> {
   await ensureKeyPair();
-  return _publicPem!;
+  if (!_publicPem) throw new Error("Key pair not initialized");
+  return _publicPem;
 }
 
 export async function getPrivateKey(): Promise<CryptoKey> {
   await ensureKeyPair();
-  return _keyPair!.privateKey;
+  if (!_keyPair) throw new Error("Key pair not initialized");
+  return _keyPair.privateKey;
 }

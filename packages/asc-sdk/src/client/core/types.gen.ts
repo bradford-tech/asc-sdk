@@ -32,11 +32,10 @@ export type Client<
   getConfig: () => Config;
   request: RequestFn;
   setConfig: (config: Config) => Config;
-} & {
-  [K in HttpMethod]: MethodFn;
-} & ([SseFn] extends [never]
+} & Record<HttpMethod, MethodFn> &
+  ([SseFn] extends [never]
     ? { sse?: never }
-    : { sse: { [K in HttpMethod]: SseFn } });
+    : { sse: Record<HttpMethod, SseFn> });
 
 export interface Config {
   /**

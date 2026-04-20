@@ -56,8 +56,8 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
   }
 
   async function getToken(): Promise<string> {
-    if (isCacheValid()) {
-      return cached!.token;
+    if (cached && isCacheValid()) {
+      return cached.token;
     }
 
     // Single-flight: if a signing operation is already in progress,
