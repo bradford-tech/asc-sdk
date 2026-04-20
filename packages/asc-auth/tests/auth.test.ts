@@ -165,6 +165,30 @@ describe("createASCAuth", () => {
     );
   });
 
+  it("refresh() while inflight doesn't clobber the new promise", async () => {
+    const pem = await getPrivatePem();
+    const auth = createASCAuth({
+      issuerId: "test-issuer",
+      keyId: "test-key",
+      privateKey: pem,
+      expiration: 1200,
+      refreshBuffer: 30,
+    });
+
+    // Start a signing operation but don't await yet
+    const firstCall = auth();
+    // Immediately refresh (starts a second signing operation)
+    const refreshCall = auth.refresh();
+
+    const [token1, token2] = await Promise.all([firstCall, refreshCall]);
+    // Both should resolve successfully (refresh shouldn't be clobbered)
+    assert.ok(token1);
+    assert.ok(token2);
+    // A third call should return the refresh'd cached token, not re-sign
+    const token3 = await auth();
+    assert.equal(token3, token2, "should use the refresh'd cached token");
+  });
+
   it("single-flight clears on error, next call retries", async () => {
     const auth = createASCAuth({
       issuerId: "test-issuer",

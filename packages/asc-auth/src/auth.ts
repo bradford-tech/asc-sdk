@@ -66,9 +66,10 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
       return inflight;
     }
 
-    inflight = signFresh().finally(() => {
-      inflight = null;
+    const promise = signFresh().finally(() => {
+      if (inflight === promise) inflight = null;
     });
+    inflight = promise;
 
     return inflight;
   }
@@ -78,9 +79,10 @@ export function createASCAuth(options: ASCAuthOptions): ASCAuth {
 
   auth.refresh = () => {
     cached = null;
-    inflight = signFresh().finally(() => {
-      inflight = null;
+    const promise = signFresh().finally(() => {
+      if (inflight === promise) inflight = null;
     });
+    inflight = promise;
     return inflight;
   };
 
