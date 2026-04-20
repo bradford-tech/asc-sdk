@@ -16,9 +16,19 @@ concurrency:
 jobs:
   update-spec:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - name: Snapshot previous spec
+        id: snapshot
+        run: |
+          if [ -f packages/asc-sdk/spec/openapi.oas.json ]; then
+            cp packages/asc-sdk/spec/openapi.oas.json /tmp/previous-spec.json
+            echo "has_previous=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_previous=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Download latest spec
         run: |
@@ -30,21 +40,77 @@ jobs:
         continue-on-error: true
         run: npx -y @redocly/cli@2.28.1 lint packages/asc-sdk/spec/openapi.oas.json --extends=spec --format=github-actions
 
+      - name: Generate API changelog
+        id: changelog
+        if: steps.snapshot.outputs.has_previous == 'true'
+        uses: oasdiff/oasdiff-action/changelog@f8cb9308b42121e793f835bd14c0b8090420430c # v0.0.39
+        with:
+          base: /tmp/previous-spec.json
+          revision: packages/asc-sdk/spec/openapi.oas.json
+          format: markdown
+        continue-on-error: true
+
+      - name: Detect breaking changes
+        id: breaking
+        if: steps.snapshot.outputs.has_previous == 'true'
+        uses: oasdiff/oasdiff-action/breaking@f8cb9308b42121e793f835bd14c0b8090420430c # v0.0.39
+        with:
+          base: /tmp/previous-spec.json
+          revision: packages/asc-sdk/spec/openapi.oas.json
+        continue-on-error: true
+
+      - name: Build PR metadata
+        env:
+          CHANGELOG: ${{ steps.changelog.outputs.changelog }}
+          BREAKING: ${{ steps.breaking.outputs.breaking }}
+          LINT_OUTCOME: ${{ steps.lint.outcome }}
+        run: |
+          {
+            echo 'PR_BODY<<EOF_9f3a7b2c'
+            echo 'The upstream App Store Connect OpenAPI specification has changed.'
+            echo ''
+            echo 'This PR updates `packages/asc-sdk/spec/openapi.oas.json` to the latest version.'
+            echo ''
+            if [ "$LINT_OUTCOME" = "success" ]; then
+              echo '**Spec validation:** Passed'
+            else
+              echo '**Spec validation:** Failed — review lint output in the [workflow run](https://github.com/bradford-tech/asc-sdk/actions).'
+            fi
+            if [ -n "$BREAKING" ]; then
+              echo ''
+              echo '## ⚠️ Breaking changes detected'
+              echo ''
+              printf '%s\n' "$BREAKING"
+              echo ''
+              echo 'Consider a major version bump on the next SDK release.'
+            fi
+            if [ -n "$CHANGELOG" ]; then
+              echo ''
+              echo '<details><summary>Full API changelog</summary>'
+              echo ''
+              printf '%s\n' "$CHANGELOG"
+              echo ''
+              echo '</details>'
+            fi
+            echo 'EOF_9f3a7b2c'
+          } >> "$GITHUB_ENV"
+
+          if [ -n "$BREAKING" ]; then
+            printf 'PR_LABELS<<LABELS_EOF\nautomated\nbreaking-change\nLABELS_EOF\n' >> "$GITHUB_ENV"
+          else
+            echo 'PR_LABELS=automated' >> "$GITHUB_ENV"
+          fi
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
           commit-message: "chore(spec): update App Store Connect OpenAPI spec"
           title: "chore(spec): update App Store Connect OpenAPI spec"
-          body: |
-            The upstream App Store Connect OpenAPI specification has changed.
-
-            This PR updates `packages/asc-sdk/spec/openapi.oas.json` to the latest version.
-
-            **Spec validation:** ${{ steps.lint.outcome == 'success' && 'Passed' || 'Failed — review lint output in the [workflow run](https://github.com/bradford-tech/asc-sdk/actions).' }}
+          body: ${{ env.PR_BODY }}
           branch: update-openapi-spec
           delete-branch: true
           add-paths: packages/asc-sdk/spec/openapi.oas.json
-          labels: automated
+          labels: ${{ env.PR_LABELS }}
           assignees: sbs44
           reviewers: sbs44
           sign-commits: true
