@@ -1,6 +1,6 @@
-/** Encode an ArrayBuffer as a base64url string (RFC 4648 Section 5). */
-export function encodeBase64url(buffer: ArrayBuffer): string {
-  const bytes = new Uint8Array(buffer);
+/** Encode an ArrayBuffer or Uint8Array as a base64url string (RFC 4648 Section 5). */
+export function encodeBase64url(input: ArrayBuffer | Uint8Array): string {
+  const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
   let binary = "";
   for (let i = 0; i < bytes.length; i++) {
     binary += String.fromCharCode(bytes[i]);
@@ -13,5 +13,5 @@ export function encodeBase64url(buffer: ArrayBuffer): string {
 
 /** Encode a UTF-8 string as a base64url string. */
 export function encodeBase64urlString(str: string): string {
-  return encodeBase64url(new TextEncoder().encode(str).buffer);
+  return encodeBase64url(new TextEncoder().encode(str));
 }
