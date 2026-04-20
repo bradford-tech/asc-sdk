@@ -39,7 +39,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
-    "generate": "rimraf ./src/client && openapi-ts",
+    "generate": "rimraf ./src/client && openapi-ts && node scripts/annotate-sdk.mjs",
     "prepack": "npm run build",
     "type-check": "tsc --noEmit"
   },

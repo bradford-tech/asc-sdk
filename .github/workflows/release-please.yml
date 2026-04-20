@@ -94,7 +94,7 @@ jobs:
       - name: Publish asc-sdk to JSR
         if: ${{ needs.release-please.outputs.sdk_released == 'true' }}
         continue-on-error: true
-        run: cd packages/asc-sdk && npx jsr publish --allow-slow-types --allow-dirty
+        run: cd packages/asc-sdk && npx jsr publish --allow-dirty
 
       - name: Publish asc-auth to JSR
         if: ${{ needs.release-please.outputs.auth_released == 'true' }}

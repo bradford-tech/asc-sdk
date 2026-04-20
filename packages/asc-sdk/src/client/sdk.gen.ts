@@ -4,6 +4,7 @@ import { client } from "./client.gen.js";
 import type {
   Client,
   Options as Options2,
+  RequestResult,
   TDataShape,
 } from "./client/index.js";
 import {
@@ -3455,11 +3456,16 @@ export type Options<
   meta?: Record<string, unknown>;
 };
 
+/** Create accessibility declarations. `POST /v1/accessibilityDeclarations` */
 export const accessibilityDeclarationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AccessibilityDeclarationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AccessibilityDeclarationsCreateInstanceResponses,
+  AccessibilityDeclarationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AccessibilityDeclarationsCreateInstanceResponses,
     AccessibilityDeclarationsCreateInstanceErrors,
@@ -3474,11 +3480,16 @@ export const accessibilityDeclarationsCreateInstance = <
     },
   });
 
+/** Delete accessibility declarations. `DELETE /v1/accessibilityDeclarations/{id}` */
 export const accessibilityDeclarationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AccessibilityDeclarationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AccessibilityDeclarationsDeleteInstanceResponses,
+  AccessibilityDeclarationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AccessibilityDeclarationsDeleteInstanceResponses,
     AccessibilityDeclarationsDeleteInstanceErrors,
@@ -3489,11 +3500,16 @@ export const accessibilityDeclarationsDeleteInstance = <
     ...options,
   });
 
+/** Read accessibility declarations. `GET /v1/accessibilityDeclarations/{id}` */
 export const accessibilityDeclarationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AccessibilityDeclarationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AccessibilityDeclarationsGetInstanceResponses,
+  AccessibilityDeclarationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AccessibilityDeclarationsGetInstanceResponses,
     AccessibilityDeclarationsGetInstanceErrors,
@@ -3509,11 +3525,16 @@ export const accessibilityDeclarationsGetInstance = <
     ...options,
   });
 
+/** Update accessibility declarations. `PATCH /v1/accessibilityDeclarations/{id}` */
 export const accessibilityDeclarationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AccessibilityDeclarationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AccessibilityDeclarationsUpdateInstanceResponses,
+  AccessibilityDeclarationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AccessibilityDeclarationsUpdateInstanceResponses,
     AccessibilityDeclarationsUpdateInstanceErrors,
@@ -3528,9 +3549,14 @@ export const accessibilityDeclarationsUpdateInstance = <
     },
   });
 
+/** List actors. `GET /v1/actors` */
 export const actorsGetCollection = <ThrowOnError extends boolean = false>(
   options: Options<ActorsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  ActorsGetCollectionResponses,
+  ActorsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ActorsGetCollectionResponses,
     ActorsGetCollectionErrors,
@@ -3547,9 +3573,14 @@ export const actorsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read actors. `GET /v1/actors/{id}` */
 export const actorsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<ActorsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ActorsGetInstanceResponses,
+  ActorsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ActorsGetInstanceResponses,
     ActorsGetInstanceErrors,
@@ -3563,11 +3594,16 @@ export const actorsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update age rating declarations. `PATCH /v1/ageRatingDeclarations/{id}` */
 export const ageRatingDeclarationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AgeRatingDeclarationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AgeRatingDeclarationsUpdateInstanceResponses,
+  AgeRatingDeclarationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AgeRatingDeclarationsUpdateInstanceResponses,
     AgeRatingDeclarationsUpdateInstanceErrors,
@@ -3582,6 +3618,7 @@ export const ageRatingDeclarationsUpdateInstance = <
     },
   });
 
+/** List alternative distribution domains. `GET /v1/alternativeDistributionDomains` */
 export const alternativeDistributionDomainsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
@@ -3589,7 +3626,11 @@ export const alternativeDistributionDomainsGetCollection = <
     AlternativeDistributionDomainsGetCollectionData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionDomainsGetCollectionResponses,
+  AlternativeDistributionDomainsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     AlternativeDistributionDomainsGetCollectionResponses,
     AlternativeDistributionDomainsGetCollectionErrors,
@@ -3607,6 +3648,7 @@ export const alternativeDistributionDomainsGetCollection = <
     ...options,
   });
 
+/** Create alternative distribution domains. `POST /v1/alternativeDistributionDomains` */
 export const alternativeDistributionDomainsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3614,7 +3656,11 @@ export const alternativeDistributionDomainsCreateInstance = <
     AlternativeDistributionDomainsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionDomainsCreateInstanceResponses,
+  AlternativeDistributionDomainsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AlternativeDistributionDomainsCreateInstanceResponses,
     AlternativeDistributionDomainsCreateInstanceErrors,
@@ -3631,6 +3677,7 @@ export const alternativeDistributionDomainsCreateInstance = <
     },
   });
 
+/** Delete alternative distribution domains. `DELETE /v1/alternativeDistributionDomains/{id}` */
 export const alternativeDistributionDomainsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3638,7 +3685,11 @@ export const alternativeDistributionDomainsDeleteInstance = <
     AlternativeDistributionDomainsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionDomainsDeleteInstanceResponses,
+  AlternativeDistributionDomainsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AlternativeDistributionDomainsDeleteInstanceResponses,
     AlternativeDistributionDomainsDeleteInstanceErrors,
@@ -3649,11 +3700,16 @@ export const alternativeDistributionDomainsDeleteInstance = <
     ...options,
   });
 
+/** Read alternative distribution domains. `GET /v1/alternativeDistributionDomains/{id}` */
 export const alternativeDistributionDomainsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AlternativeDistributionDomainsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AlternativeDistributionDomainsGetInstanceResponses,
+  AlternativeDistributionDomainsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionDomainsGetInstanceResponses,
     AlternativeDistributionDomainsGetInstanceErrors,
@@ -3671,11 +3727,16 @@ export const alternativeDistributionDomainsGetInstance = <
     ...options,
   });
 
+/** List alternative distribution keys. `GET /v1/alternativeDistributionKeys` */
 export const alternativeDistributionKeysGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<AlternativeDistributionKeysGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  AlternativeDistributionKeysGetCollectionResponses,
+  AlternativeDistributionKeysGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     AlternativeDistributionKeysGetCollectionResponses,
     AlternativeDistributionKeysGetCollectionErrors,
@@ -3691,11 +3752,16 @@ export const alternativeDistributionKeysGetCollection = <
     ...options,
   });
 
+/** Create alternative distribution keys. `POST /v1/alternativeDistributionKeys` */
 export const alternativeDistributionKeysCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AlternativeDistributionKeysCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AlternativeDistributionKeysCreateInstanceResponses,
+  AlternativeDistributionKeysCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AlternativeDistributionKeysCreateInstanceResponses,
     AlternativeDistributionKeysCreateInstanceErrors,
@@ -3710,11 +3776,16 @@ export const alternativeDistributionKeysCreateInstance = <
     },
   });
 
+/** Delete alternative distribution keys. `DELETE /v1/alternativeDistributionKeys/{id}` */
 export const alternativeDistributionKeysDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AlternativeDistributionKeysDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AlternativeDistributionKeysDeleteInstanceResponses,
+  AlternativeDistributionKeysDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AlternativeDistributionKeysDeleteInstanceResponses,
     AlternativeDistributionKeysDeleteInstanceErrors,
@@ -3725,11 +3796,16 @@ export const alternativeDistributionKeysDeleteInstance = <
     ...options,
   });
 
+/** Read alternative distribution keys. `GET /v1/alternativeDistributionKeys/{id}` */
 export const alternativeDistributionKeysGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AlternativeDistributionKeysGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AlternativeDistributionKeysGetInstanceResponses,
+  AlternativeDistributionKeysGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionKeysGetInstanceResponses,
     AlternativeDistributionKeysGetInstanceErrors,
@@ -3745,6 +3821,7 @@ export const alternativeDistributionKeysGetInstance = <
     ...options,
   });
 
+/** Read alternative distribution package deltas. `GET /v1/alternativeDistributionPackageDeltas/{id}` */
 export const alternativeDistributionPackageDeltasGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3752,7 +3829,11 @@ export const alternativeDistributionPackageDeltasGetInstance = <
     AlternativeDistributionPackageDeltasGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackageDeltasGetInstanceResponses,
+  AlternativeDistributionPackageDeltasGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackageDeltasGetInstanceResponses,
     AlternativeDistributionPackageDeltasGetInstanceErrors,
@@ -3772,6 +3853,7 @@ export const alternativeDistributionPackageDeltasGetInstance = <
     ...options,
   });
 
+/** Read alternative distribution package variants. `GET /v1/alternativeDistributionPackageVariants/{id}` */
 export const alternativeDistributionPackageVariantsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3779,7 +3861,11 @@ export const alternativeDistributionPackageVariantsGetInstance = <
     AlternativeDistributionPackageVariantsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackageVariantsGetInstanceResponses,
+  AlternativeDistributionPackageVariantsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackageVariantsGetInstanceResponses,
     AlternativeDistributionPackageVariantsGetInstanceErrors,
@@ -3799,6 +3885,7 @@ export const alternativeDistributionPackageVariantsGetInstance = <
     ...options,
   });
 
+/** Read alternative distribution package versions. `GET /v1/alternativeDistributionPackageVersions/{id}` */
 export const alternativeDistributionPackageVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3806,7 +3893,11 @@ export const alternativeDistributionPackageVersionsGetInstance = <
     AlternativeDistributionPackageVersionsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackageVersionsGetInstanceResponses,
+  AlternativeDistributionPackageVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackageVersionsGetInstanceResponses,
     AlternativeDistributionPackageVersionsGetInstanceErrors,
@@ -3833,6 +3924,7 @@ export const alternativeDistributionPackageVersionsGetInstance = <
     ...options,
   });
 
+/** Create alternative distribution packages. `POST /v1/alternativeDistributionPackages` */
 export const alternativeDistributionPackagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3840,7 +3932,11 @@ export const alternativeDistributionPackagesCreateInstance = <
     AlternativeDistributionPackagesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackagesCreateInstanceResponses,
+  AlternativeDistributionPackagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AlternativeDistributionPackagesCreateInstanceResponses,
     AlternativeDistributionPackagesCreateInstanceErrors,
@@ -3857,6 +3953,7 @@ export const alternativeDistributionPackagesCreateInstance = <
     },
   });
 
+/** Read alternative distribution packages. `GET /v1/alternativeDistributionPackages/{id}` */
 export const alternativeDistributionPackagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -3864,7 +3961,11 @@ export const alternativeDistributionPackagesGetInstance = <
     AlternativeDistributionPackagesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackagesGetInstanceResponses,
+  AlternativeDistributionPackagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackagesGetInstanceResponses,
     AlternativeDistributionPackagesGetInstanceErrors,
@@ -3888,11 +3989,16 @@ export const alternativeDistributionPackagesGetInstance = <
     ...options,
   });
 
+/** Read analytics report instances. `GET /v1/analyticsReportInstances/{id}` */
 export const analyticsReportInstancesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportInstancesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportInstancesGetInstanceResponses,
+  AnalyticsReportInstancesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportInstancesGetInstanceResponses,
     AnalyticsReportInstancesGetInstanceErrors,
@@ -3909,11 +4015,16 @@ export const analyticsReportInstancesGetInstance = <
     ...options,
   });
 
+/** Create analytics report requests. `POST /v1/analyticsReportRequests` */
 export const analyticsReportRequestsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportRequestsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportRequestsCreateInstanceResponses,
+  AnalyticsReportRequestsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AnalyticsReportRequestsCreateInstanceResponses,
     AnalyticsReportRequestsCreateInstanceErrors,
@@ -3928,11 +4039,16 @@ export const analyticsReportRequestsCreateInstance = <
     },
   });
 
+/** Delete analytics report requests. `DELETE /v1/analyticsReportRequests/{id}` */
 export const analyticsReportRequestsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportRequestsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportRequestsDeleteInstanceResponses,
+  AnalyticsReportRequestsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AnalyticsReportRequestsDeleteInstanceResponses,
     AnalyticsReportRequestsDeleteInstanceErrors,
@@ -3943,11 +4059,16 @@ export const analyticsReportRequestsDeleteInstance = <
     ...options,
   });
 
+/** Read analytics report requests. `GET /v1/analyticsReportRequests/{id}` */
 export const analyticsReportRequestsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportRequestsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportRequestsGetInstanceResponses,
+  AnalyticsReportRequestsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportRequestsGetInstanceResponses,
     AnalyticsReportRequestsGetInstanceErrors,
@@ -3965,11 +4086,16 @@ export const analyticsReportRequestsGetInstance = <
     ...options,
   });
 
+/** Read analytics report segments. `GET /v1/analyticsReportSegments/{id}` */
 export const analyticsReportSegmentsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportSegmentsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportSegmentsGetInstanceResponses,
+  AnalyticsReportSegmentsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportSegmentsGetInstanceResponses,
     AnalyticsReportSegmentsGetInstanceErrors,
@@ -3985,11 +4111,16 @@ export const analyticsReportSegmentsGetInstance = <
     ...options,
   });
 
+/** Read analytics reports. `GET /v1/analyticsReports/{id}` */
 export const analyticsReportsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportsGetInstanceResponses,
+  AnalyticsReportsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportsGetInstanceResponses,
     AnalyticsReportsGetInstanceErrors,
@@ -4003,6 +4134,7 @@ export const analyticsReportsGetInstance = <
     ...options,
   });
 
+/** Create android to ios app mapping details. `POST /v1/androidToIosAppMappingDetails` */
 export const androidToIosAppMappingDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4010,7 +4142,11 @@ export const androidToIosAppMappingDetailsCreateInstance = <
     AndroidToIosAppMappingDetailsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AndroidToIosAppMappingDetailsCreateInstanceResponses,
+  AndroidToIosAppMappingDetailsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AndroidToIosAppMappingDetailsCreateInstanceResponses,
     AndroidToIosAppMappingDetailsCreateInstanceErrors,
@@ -4025,6 +4161,7 @@ export const androidToIosAppMappingDetailsCreateInstance = <
     },
   });
 
+/** Delete android to ios app mapping details. `DELETE /v1/androidToIosAppMappingDetails/{id}` */
 export const androidToIosAppMappingDetailsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4032,7 +4169,11 @@ export const androidToIosAppMappingDetailsDeleteInstance = <
     AndroidToIosAppMappingDetailsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AndroidToIosAppMappingDetailsDeleteInstanceResponses,
+  AndroidToIosAppMappingDetailsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AndroidToIosAppMappingDetailsDeleteInstanceResponses,
     AndroidToIosAppMappingDetailsDeleteInstanceErrors,
@@ -4043,11 +4184,16 @@ export const androidToIosAppMappingDetailsDeleteInstance = <
     ...options,
   });
 
+/** Read android to ios app mapping details. `GET /v1/androidToIosAppMappingDetails/{id}` */
 export const androidToIosAppMappingDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AndroidToIosAppMappingDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AndroidToIosAppMappingDetailsGetInstanceResponses,
+  AndroidToIosAppMappingDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AndroidToIosAppMappingDetailsGetInstanceResponses,
     AndroidToIosAppMappingDetailsGetInstanceErrors,
@@ -4063,6 +4209,7 @@ export const androidToIosAppMappingDetailsGetInstance = <
     ...options,
   });
 
+/** Update android to ios app mapping details. `PATCH /v1/androidToIosAppMappingDetails/{id}` */
 export const androidToIosAppMappingDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4070,7 +4217,11 @@ export const androidToIosAppMappingDetailsUpdateInstance = <
     AndroidToIosAppMappingDetailsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AndroidToIosAppMappingDetailsUpdateInstanceResponses,
+  AndroidToIosAppMappingDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AndroidToIosAppMappingDetailsUpdateInstanceResponses,
     AndroidToIosAppMappingDetailsUpdateInstanceErrors,
@@ -4085,11 +4236,16 @@ export const androidToIosAppMappingDetailsUpdateInstance = <
     },
   });
 
+/** Create app availabilities v2. `POST /v2/appAvailabilities` */
 export const appAvailabilitiesV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppAvailabilitiesV2CreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppAvailabilitiesV2CreateInstanceResponses,
+  AppAvailabilitiesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppAvailabilitiesV2CreateInstanceResponses,
     AppAvailabilitiesV2CreateInstanceErrors,
@@ -4105,11 +4261,16 @@ export const appAvailabilitiesV2CreateInstance = <
     },
   });
 
+/** Read app availabilities v2. `GET /v2/appAvailabilities/{id}` */
 export const appAvailabilitiesV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppAvailabilitiesV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppAvailabilitiesV2GetInstanceResponses,
+  AppAvailabilitiesV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppAvailabilitiesV2GetInstanceResponses,
     AppAvailabilitiesV2GetInstanceErrors,
@@ -4128,11 +4289,16 @@ export const appAvailabilitiesV2GetInstance = <
     ...options,
   });
 
+/** List app categories. `GET /v1/appCategories` */
 export const appCategoriesGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<AppCategoriesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCategoriesGetCollectionResponses,
+  AppCategoriesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     AppCategoriesGetCollectionResponses,
     AppCategoriesGetCollectionErrors,
@@ -4150,9 +4316,14 @@ export const appCategoriesGetCollection = <
     ...options,
   });
 
+/** Read app categories. `GET /v1/appCategories/{id}` */
 export const appCategoriesGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppCategoriesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCategoriesGetInstanceResponses,
+  AppCategoriesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCategoriesGetInstanceResponses,
     AppCategoriesGetInstanceErrors,
@@ -4169,6 +4340,7 @@ export const appCategoriesGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create app clip advanced experience images. `POST /v1/appClipAdvancedExperienceImages` */
 export const appClipAdvancedExperienceImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4176,7 +4348,11 @@ export const appClipAdvancedExperienceImagesCreateInstance = <
     AppClipAdvancedExperienceImagesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipAdvancedExperienceImagesCreateInstanceResponses,
+  AppClipAdvancedExperienceImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipAdvancedExperienceImagesCreateInstanceResponses,
     AppClipAdvancedExperienceImagesCreateInstanceErrors,
@@ -4191,6 +4367,7 @@ export const appClipAdvancedExperienceImagesCreateInstance = <
     },
   });
 
+/** Read app clip advanced experience images. `GET /v1/appClipAdvancedExperienceImages/{id}` */
 export const appClipAdvancedExperienceImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4198,7 +4375,11 @@ export const appClipAdvancedExperienceImagesGetInstance = <
     AppClipAdvancedExperienceImagesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipAdvancedExperienceImagesGetInstanceResponses,
+  AppClipAdvancedExperienceImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipAdvancedExperienceImagesGetInstanceResponses,
     AppClipAdvancedExperienceImagesGetInstanceErrors,
@@ -4216,6 +4397,7 @@ export const appClipAdvancedExperienceImagesGetInstance = <
     ...options,
   });
 
+/** Update app clip advanced experience images. `PATCH /v1/appClipAdvancedExperienceImages/{id}` */
 export const appClipAdvancedExperienceImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4223,7 +4405,11 @@ export const appClipAdvancedExperienceImagesUpdateInstance = <
     AppClipAdvancedExperienceImagesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipAdvancedExperienceImagesUpdateInstanceResponses,
+  AppClipAdvancedExperienceImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipAdvancedExperienceImagesUpdateInstanceResponses,
     AppClipAdvancedExperienceImagesUpdateInstanceErrors,
@@ -4238,11 +4424,16 @@ export const appClipAdvancedExperienceImagesUpdateInstance = <
     },
   });
 
+/** Create app clip advanced experiences. `POST /v1/appClipAdvancedExperiences` */
 export const appClipAdvancedExperiencesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipAdvancedExperiencesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipAdvancedExperiencesCreateInstanceResponses,
+  AppClipAdvancedExperiencesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipAdvancedExperiencesCreateInstanceResponses,
     AppClipAdvancedExperiencesCreateInstanceErrors,
@@ -4257,11 +4448,16 @@ export const appClipAdvancedExperiencesCreateInstance = <
     },
   });
 
+/** Read app clip advanced experiences. `GET /v1/appClipAdvancedExperiences/{id}` */
 export const appClipAdvancedExperiencesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipAdvancedExperiencesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipAdvancedExperiencesGetInstanceResponses,
+  AppClipAdvancedExperiencesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipAdvancedExperiencesGetInstanceResponses,
     AppClipAdvancedExperiencesGetInstanceErrors,
@@ -4278,11 +4474,16 @@ export const appClipAdvancedExperiencesGetInstance = <
     ...options,
   });
 
+/** Update app clip advanced experiences. `PATCH /v1/appClipAdvancedExperiences/{id}` */
 export const appClipAdvancedExperiencesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipAdvancedExperiencesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipAdvancedExperiencesUpdateInstanceResponses,
+  AppClipAdvancedExperiencesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipAdvancedExperiencesUpdateInstanceResponses,
     AppClipAdvancedExperiencesUpdateInstanceErrors,
@@ -4297,6 +4498,7 @@ export const appClipAdvancedExperiencesUpdateInstance = <
     },
   });
 
+/** Create app clip app store review details. `POST /v1/appClipAppStoreReviewDetails` */
 export const appClipAppStoreReviewDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4304,7 +4506,11 @@ export const appClipAppStoreReviewDetailsCreateInstance = <
     AppClipAppStoreReviewDetailsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipAppStoreReviewDetailsCreateInstanceResponses,
+  AppClipAppStoreReviewDetailsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipAppStoreReviewDetailsCreateInstanceResponses,
     AppClipAppStoreReviewDetailsCreateInstanceErrors,
@@ -4319,11 +4525,16 @@ export const appClipAppStoreReviewDetailsCreateInstance = <
     },
   });
 
+/** Read app clip app store review details. `GET /v1/appClipAppStoreReviewDetails/{id}` */
 export const appClipAppStoreReviewDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipAppStoreReviewDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipAppStoreReviewDetailsGetInstanceResponses,
+  AppClipAppStoreReviewDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipAppStoreReviewDetailsGetInstanceResponses,
     AppClipAppStoreReviewDetailsGetInstanceErrors,
@@ -4340,6 +4551,7 @@ export const appClipAppStoreReviewDetailsGetInstance = <
     ...options,
   });
 
+/** Update app clip app store review details. `PATCH /v1/appClipAppStoreReviewDetails/{id}` */
 export const appClipAppStoreReviewDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4347,7 +4559,11 @@ export const appClipAppStoreReviewDetailsUpdateInstance = <
     AppClipAppStoreReviewDetailsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipAppStoreReviewDetailsUpdateInstanceResponses,
+  AppClipAppStoreReviewDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipAppStoreReviewDetailsUpdateInstanceResponses,
     AppClipAppStoreReviewDetailsUpdateInstanceErrors,
@@ -4362,6 +4578,7 @@ export const appClipAppStoreReviewDetailsUpdateInstance = <
     },
   });
 
+/** Create app clip default experience localizations. `POST /v1/appClipDefaultExperienceLocalizations` */
 export const appClipDefaultExperienceLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4369,7 +4586,11 @@ export const appClipDefaultExperienceLocalizationsCreateInstance = <
     AppClipDefaultExperienceLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipDefaultExperienceLocalizationsCreateInstanceResponses,
+  AppClipDefaultExperienceLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipDefaultExperienceLocalizationsCreateInstanceResponses,
     AppClipDefaultExperienceLocalizationsCreateInstanceErrors,
@@ -4384,6 +4605,7 @@ export const appClipDefaultExperienceLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app clip default experience localizations. `DELETE /v1/appClipDefaultExperienceLocalizations/{id}` */
 export const appClipDefaultExperienceLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4391,7 +4613,11 @@ export const appClipDefaultExperienceLocalizationsDeleteInstance = <
     AppClipDefaultExperienceLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipDefaultExperienceLocalizationsDeleteInstanceResponses,
+  AppClipDefaultExperienceLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppClipDefaultExperienceLocalizationsDeleteInstanceResponses,
     AppClipDefaultExperienceLocalizationsDeleteInstanceErrors,
@@ -4402,6 +4628,7 @@ export const appClipDefaultExperienceLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app clip default experience localizations. `GET /v1/appClipDefaultExperienceLocalizations/{id}` */
 export const appClipDefaultExperienceLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4409,7 +4636,11 @@ export const appClipDefaultExperienceLocalizationsGetInstance = <
     AppClipDefaultExperienceLocalizationsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipDefaultExperienceLocalizationsGetInstanceResponses,
+  AppClipDefaultExperienceLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipDefaultExperienceLocalizationsGetInstanceResponses,
     AppClipDefaultExperienceLocalizationsGetInstanceErrors,
@@ -4429,6 +4660,7 @@ export const appClipDefaultExperienceLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update app clip default experience localizations. `PATCH /v1/appClipDefaultExperienceLocalizations/{id}` */
 export const appClipDefaultExperienceLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4436,7 +4668,11 @@ export const appClipDefaultExperienceLocalizationsUpdateInstance = <
     AppClipDefaultExperienceLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipDefaultExperienceLocalizationsUpdateInstanceResponses,
+  AppClipDefaultExperienceLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipDefaultExperienceLocalizationsUpdateInstanceResponses,
     AppClipDefaultExperienceLocalizationsUpdateInstanceErrors,
@@ -4451,11 +4687,16 @@ export const appClipDefaultExperienceLocalizationsUpdateInstance = <
     },
   });
 
+/** Create app clip default experiences. `POST /v1/appClipDefaultExperiences` */
 export const appClipDefaultExperiencesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipDefaultExperiencesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipDefaultExperiencesCreateInstanceResponses,
+  AppClipDefaultExperiencesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipDefaultExperiencesCreateInstanceResponses,
     AppClipDefaultExperiencesCreateInstanceErrors,
@@ -4470,11 +4711,16 @@ export const appClipDefaultExperiencesCreateInstance = <
     },
   });
 
+/** Delete app clip default experiences. `DELETE /v1/appClipDefaultExperiences/{id}` */
 export const appClipDefaultExperiencesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipDefaultExperiencesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipDefaultExperiencesDeleteInstanceResponses,
+  AppClipDefaultExperiencesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppClipDefaultExperiencesDeleteInstanceResponses,
     AppClipDefaultExperiencesDeleteInstanceErrors,
@@ -4485,11 +4731,16 @@ export const appClipDefaultExperiencesDeleteInstance = <
     ...options,
   });
 
+/** Read app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}` */
 export const appClipDefaultExperiencesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipDefaultExperiencesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipDefaultExperiencesGetInstanceResponses,
+  AppClipDefaultExperiencesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipDefaultExperiencesGetInstanceResponses,
     AppClipDefaultExperiencesGetInstanceErrors,
@@ -4511,11 +4762,16 @@ export const appClipDefaultExperiencesGetInstance = <
     ...options,
   });
 
+/** Update app clip default experiences. `PATCH /v1/appClipDefaultExperiences/{id}` */
 export const appClipDefaultExperiencesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipDefaultExperiencesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipDefaultExperiencesUpdateInstanceResponses,
+  AppClipDefaultExperiencesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipDefaultExperiencesUpdateInstanceResponses,
     AppClipDefaultExperiencesUpdateInstanceErrors,
@@ -4530,11 +4786,16 @@ export const appClipDefaultExperiencesUpdateInstance = <
     },
   });
 
+/** Create app clip header images. `POST /v1/appClipHeaderImages` */
 export const appClipHeaderImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipHeaderImagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipHeaderImagesCreateInstanceResponses,
+  AppClipHeaderImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppClipHeaderImagesCreateInstanceResponses,
     AppClipHeaderImagesCreateInstanceErrors,
@@ -4549,11 +4810,16 @@ export const appClipHeaderImagesCreateInstance = <
     },
   });
 
+/** Delete app clip header images. `DELETE /v1/appClipHeaderImages/{id}` */
 export const appClipHeaderImagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipHeaderImagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipHeaderImagesDeleteInstanceResponses,
+  AppClipHeaderImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppClipHeaderImagesDeleteInstanceResponses,
     AppClipHeaderImagesDeleteInstanceErrors,
@@ -4564,11 +4830,16 @@ export const appClipHeaderImagesDeleteInstance = <
     ...options,
   });
 
+/** Read app clip header images. `GET /v1/appClipHeaderImages/{id}` */
 export const appClipHeaderImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipHeaderImagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipHeaderImagesGetInstanceResponses,
+  AppClipHeaderImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipHeaderImagesGetInstanceResponses,
     AppClipHeaderImagesGetInstanceErrors,
@@ -4585,11 +4856,16 @@ export const appClipHeaderImagesGetInstance = <
     ...options,
   });
 
+/** Update app clip header images. `PATCH /v1/appClipHeaderImages/{id}` */
 export const appClipHeaderImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppClipHeaderImagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipHeaderImagesUpdateInstanceResponses,
+  AppClipHeaderImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppClipHeaderImagesUpdateInstanceResponses,
     AppClipHeaderImagesUpdateInstanceErrors,
@@ -4604,9 +4880,14 @@ export const appClipHeaderImagesUpdateInstance = <
     },
   });
 
+/** Read app clips. `GET /v1/appClips/{id}` */
 export const appClipsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppClipsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppClipsGetInstanceResponses,
+  AppClipsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipsGetInstanceResponses,
     AppClipsGetInstanceErrors,
@@ -4624,6 +4905,7 @@ export const appClipsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create app custom product page localizations. `POST /v1/appCustomProductPageLocalizations` */
 export const appCustomProductPageLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4631,7 +4913,11 @@ export const appCustomProductPageLocalizationsCreateInstance = <
     AppCustomProductPageLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsCreateInstanceResponses,
+  AppCustomProductPageLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppCustomProductPageLocalizationsCreateInstanceResponses,
     AppCustomProductPageLocalizationsCreateInstanceErrors,
@@ -4646,6 +4932,7 @@ export const appCustomProductPageLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app custom product page localizations. `DELETE /v1/appCustomProductPageLocalizations/{id}` */
 export const appCustomProductPageLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4653,7 +4940,11 @@ export const appCustomProductPageLocalizationsDeleteInstance = <
     AppCustomProductPageLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsDeleteInstanceResponses,
+  AppCustomProductPageLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppCustomProductPageLocalizationsDeleteInstanceResponses,
     AppCustomProductPageLocalizationsDeleteInstanceErrors,
@@ -4664,6 +4955,7 @@ export const appCustomProductPageLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}` */
 export const appCustomProductPageLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4671,7 +4963,11 @@ export const appCustomProductPageLocalizationsGetInstance = <
     AppCustomProductPageLocalizationsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsGetInstanceResponses,
+  AppCustomProductPageLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCustomProductPageLocalizationsGetInstanceResponses,
     AppCustomProductPageLocalizationsGetInstanceErrors,
@@ -4692,6 +4988,7 @@ export const appCustomProductPageLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update app custom product page localizations. `PATCH /v1/appCustomProductPageLocalizations/{id}` */
 export const appCustomProductPageLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4699,7 +4996,11 @@ export const appCustomProductPageLocalizationsUpdateInstance = <
     AppCustomProductPageLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsUpdateInstanceResponses,
+  AppCustomProductPageLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppCustomProductPageLocalizationsUpdateInstanceResponses,
     AppCustomProductPageLocalizationsUpdateInstanceErrors,
@@ -4714,6 +5015,7 @@ export const appCustomProductPageLocalizationsUpdateInstance = <
     },
   });
 
+/** Create app custom product page versions. `POST /v1/appCustomProductPageVersions` */
 export const appCustomProductPageVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4721,7 +5023,11 @@ export const appCustomProductPageVersionsCreateInstance = <
     AppCustomProductPageVersionsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageVersionsCreateInstanceResponses,
+  AppCustomProductPageVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppCustomProductPageVersionsCreateInstanceResponses,
     AppCustomProductPageVersionsCreateInstanceErrors,
@@ -4736,11 +5042,16 @@ export const appCustomProductPageVersionsCreateInstance = <
     },
   });
 
+/** Read app custom product page versions. `GET /v1/appCustomProductPageVersions/{id}` */
 export const appCustomProductPageVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCustomProductPageVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCustomProductPageVersionsGetInstanceResponses,
+  AppCustomProductPageVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCustomProductPageVersionsGetInstanceResponses,
     AppCustomProductPageVersionsGetInstanceErrors,
@@ -4760,6 +5071,7 @@ export const appCustomProductPageVersionsGetInstance = <
     ...options,
   });
 
+/** Update app custom product page versions. `PATCH /v1/appCustomProductPageVersions/{id}` */
 export const appCustomProductPageVersionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4767,7 +5079,11 @@ export const appCustomProductPageVersionsUpdateInstance = <
     AppCustomProductPageVersionsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageVersionsUpdateInstanceResponses,
+  AppCustomProductPageVersionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppCustomProductPageVersionsUpdateInstanceResponses,
     AppCustomProductPageVersionsUpdateInstanceErrors,
@@ -4782,11 +5098,16 @@ export const appCustomProductPageVersionsUpdateInstance = <
     },
   });
 
+/** Create app custom product pages. `POST /v1/appCustomProductPages` */
 export const appCustomProductPagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCustomProductPagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCustomProductPagesCreateInstanceResponses,
+  AppCustomProductPagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppCustomProductPagesCreateInstanceResponses,
     AppCustomProductPagesCreateInstanceErrors,
@@ -4801,11 +5122,16 @@ export const appCustomProductPagesCreateInstance = <
     },
   });
 
+/** Delete app custom product pages. `DELETE /v1/appCustomProductPages/{id}` */
 export const appCustomProductPagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCustomProductPagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCustomProductPagesDeleteInstanceResponses,
+  AppCustomProductPagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppCustomProductPagesDeleteInstanceResponses,
     AppCustomProductPagesDeleteInstanceErrors,
@@ -4816,11 +5142,16 @@ export const appCustomProductPagesDeleteInstance = <
     ...options,
   });
 
+/** Read app custom product pages. `GET /v1/appCustomProductPages/{id}` */
 export const appCustomProductPagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCustomProductPagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCustomProductPagesGetInstanceResponses,
+  AppCustomProductPagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCustomProductPagesGetInstanceResponses,
     AppCustomProductPagesGetInstanceErrors,
@@ -4838,11 +5169,16 @@ export const appCustomProductPagesGetInstance = <
     ...options,
   });
 
+/** Update app custom product pages. `PATCH /v1/appCustomProductPages/{id}` */
 export const appCustomProductPagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCustomProductPagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCustomProductPagesUpdateInstanceResponses,
+  AppCustomProductPagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppCustomProductPagesUpdateInstanceResponses,
     AppCustomProductPagesUpdateInstanceErrors,
@@ -4857,6 +5193,7 @@ export const appCustomProductPagesUpdateInstance = <
     },
   });
 
+/** Create app encryption declaration documents. `POST /v1/appEncryptionDeclarationDocuments` */
 export const appEncryptionDeclarationDocumentsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4864,7 +5201,11 @@ export const appEncryptionDeclarationDocumentsCreateInstance = <
     AppEncryptionDeclarationDocumentsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationDocumentsCreateInstanceResponses,
+  AppEncryptionDeclarationDocumentsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEncryptionDeclarationDocumentsCreateInstanceResponses,
     AppEncryptionDeclarationDocumentsCreateInstanceErrors,
@@ -4879,6 +5220,7 @@ export const appEncryptionDeclarationDocumentsCreateInstance = <
     },
   });
 
+/** Read app encryption declaration documents. `GET /v1/appEncryptionDeclarationDocuments/{id}` */
 export const appEncryptionDeclarationDocumentsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4886,7 +5228,11 @@ export const appEncryptionDeclarationDocumentsGetInstance = <
     AppEncryptionDeclarationDocumentsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationDocumentsGetInstanceResponses,
+  AppEncryptionDeclarationDocumentsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEncryptionDeclarationDocumentsGetInstanceResponses,
     AppEncryptionDeclarationDocumentsGetInstanceErrors,
@@ -4904,6 +5250,7 @@ export const appEncryptionDeclarationDocumentsGetInstance = <
     ...options,
   });
 
+/** Update app encryption declaration documents. `PATCH /v1/appEncryptionDeclarationDocuments/{id}` */
 export const appEncryptionDeclarationDocumentsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -4911,7 +5258,11 @@ export const appEncryptionDeclarationDocumentsUpdateInstance = <
     AppEncryptionDeclarationDocumentsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationDocumentsUpdateInstanceResponses,
+  AppEncryptionDeclarationDocumentsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppEncryptionDeclarationDocumentsUpdateInstanceResponses,
     AppEncryptionDeclarationDocumentsUpdateInstanceErrors,
@@ -4926,11 +5277,16 @@ export const appEncryptionDeclarationDocumentsUpdateInstance = <
     },
   });
 
+/** List app encryption declarations. `GET /v1/appEncryptionDeclarations` */
 export const appEncryptionDeclarationsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<AppEncryptionDeclarationsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationsGetCollectionResponses,
+  AppEncryptionDeclarationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     AppEncryptionDeclarationsGetCollectionResponses,
     AppEncryptionDeclarationsGetCollectionErrors,
@@ -4956,11 +5312,16 @@ export const appEncryptionDeclarationsGetCollection = <
     ...options,
   });
 
+/** Create app encryption declarations. `POST /v1/appEncryptionDeclarations` */
 export const appEncryptionDeclarationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEncryptionDeclarationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationsCreateInstanceResponses,
+  AppEncryptionDeclarationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEncryptionDeclarationsCreateInstanceResponses,
     AppEncryptionDeclarationsCreateInstanceErrors,
@@ -4977,11 +5338,16 @@ export const appEncryptionDeclarationsCreateInstance = <
     },
   });
 
+/** Read app encryption declarations. `GET /v1/appEncryptionDeclarations/{id}` */
 export const appEncryptionDeclarationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEncryptionDeclarationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEncryptionDeclarationsGetInstanceResponses,
+  AppEncryptionDeclarationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEncryptionDeclarationsGetInstanceResponses,
     AppEncryptionDeclarationsGetInstanceErrors,
@@ -5004,11 +5370,16 @@ export const appEncryptionDeclarationsGetInstance = <
     ...options,
   });
 
+/** Create app event localizations. `POST /v1/appEventLocalizations` */
 export const appEventLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventLocalizationsCreateInstanceResponses,
+  AppEventLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEventLocalizationsCreateInstanceResponses,
     AppEventLocalizationsCreateInstanceErrors,
@@ -5023,11 +5394,16 @@ export const appEventLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app event localizations. `DELETE /v1/appEventLocalizations/{id}` */
 export const appEventLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventLocalizationsDeleteInstanceResponses,
+  AppEventLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppEventLocalizationsDeleteInstanceResponses,
     AppEventLocalizationsDeleteInstanceErrors,
@@ -5038,11 +5414,16 @@ export const appEventLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app event localizations. `GET /v1/appEventLocalizations/{id}` */
 export const appEventLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventLocalizationsGetInstanceResponses,
+  AppEventLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventLocalizationsGetInstanceResponses,
     AppEventLocalizationsGetInstanceErrors,
@@ -5061,11 +5442,16 @@ export const appEventLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update app event localizations. `PATCH /v1/appEventLocalizations/{id}` */
 export const appEventLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventLocalizationsUpdateInstanceResponses,
+  AppEventLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppEventLocalizationsUpdateInstanceResponses,
     AppEventLocalizationsUpdateInstanceErrors,
@@ -5080,11 +5466,16 @@ export const appEventLocalizationsUpdateInstance = <
     },
   });
 
+/** Create app event screenshots. `POST /v1/appEventScreenshots` */
 export const appEventScreenshotsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventScreenshotsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventScreenshotsCreateInstanceResponses,
+  AppEventScreenshotsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEventScreenshotsCreateInstanceResponses,
     AppEventScreenshotsCreateInstanceErrors,
@@ -5099,11 +5490,16 @@ export const appEventScreenshotsCreateInstance = <
     },
   });
 
+/** Delete app event screenshots. `DELETE /v1/appEventScreenshots/{id}` */
 export const appEventScreenshotsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventScreenshotsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventScreenshotsDeleteInstanceResponses,
+  AppEventScreenshotsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppEventScreenshotsDeleteInstanceResponses,
     AppEventScreenshotsDeleteInstanceErrors,
@@ -5114,11 +5510,16 @@ export const appEventScreenshotsDeleteInstance = <
     ...options,
   });
 
+/** Read app event screenshots. `GET /v1/appEventScreenshots/{id}` */
 export const appEventScreenshotsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventScreenshotsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventScreenshotsGetInstanceResponses,
+  AppEventScreenshotsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventScreenshotsGetInstanceResponses,
     AppEventScreenshotsGetInstanceErrors,
@@ -5135,11 +5536,16 @@ export const appEventScreenshotsGetInstance = <
     ...options,
   });
 
+/** Update app event screenshots. `PATCH /v1/appEventScreenshots/{id}` */
 export const appEventScreenshotsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventScreenshotsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventScreenshotsUpdateInstanceResponses,
+  AppEventScreenshotsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppEventScreenshotsUpdateInstanceResponses,
     AppEventScreenshotsUpdateInstanceErrors,
@@ -5154,11 +5560,16 @@ export const appEventScreenshotsUpdateInstance = <
     },
   });
 
+/** Create app event video clips. `POST /v1/appEventVideoClips` */
 export const appEventVideoClipsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventVideoClipsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventVideoClipsCreateInstanceResponses,
+  AppEventVideoClipsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEventVideoClipsCreateInstanceResponses,
     AppEventVideoClipsCreateInstanceErrors,
@@ -5173,11 +5584,16 @@ export const appEventVideoClipsCreateInstance = <
     },
   });
 
+/** Delete app event video clips. `DELETE /v1/appEventVideoClips/{id}` */
 export const appEventVideoClipsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventVideoClipsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventVideoClipsDeleteInstanceResponses,
+  AppEventVideoClipsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppEventVideoClipsDeleteInstanceResponses,
     AppEventVideoClipsDeleteInstanceErrors,
@@ -5188,11 +5604,16 @@ export const appEventVideoClipsDeleteInstance = <
     ...options,
   });
 
+/** Read app event video clips. `GET /v1/appEventVideoClips/{id}` */
 export const appEventVideoClipsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventVideoClipsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventVideoClipsGetInstanceResponses,
+  AppEventVideoClipsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventVideoClipsGetInstanceResponses,
     AppEventVideoClipsGetInstanceErrors,
@@ -5209,11 +5630,16 @@ export const appEventVideoClipsGetInstance = <
     ...options,
   });
 
+/** Update app event video clips. `PATCH /v1/appEventVideoClips/{id}` */
 export const appEventVideoClipsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventVideoClipsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventVideoClipsUpdateInstanceResponses,
+  AppEventVideoClipsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppEventVideoClipsUpdateInstanceResponses,
     AppEventVideoClipsUpdateInstanceErrors,
@@ -5228,9 +5654,14 @@ export const appEventVideoClipsUpdateInstance = <
     },
   });
 
+/** Create app events. `POST /v1/appEvents` */
 export const appEventsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppEventsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventsCreateInstanceResponses,
+  AppEventsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppEventsCreateInstanceResponses,
     AppEventsCreateInstanceErrors,
@@ -5246,9 +5677,14 @@ export const appEventsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete app events. `DELETE /v1/appEvents/{id}` */
 export const appEventsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppEventsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventsDeleteInstanceResponses,
+  AppEventsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppEventsDeleteInstanceResponses,
     AppEventsDeleteInstanceErrors,
@@ -5259,9 +5695,14 @@ export const appEventsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read app events. `GET /v1/appEvents/{id}` */
 export const appEventsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppEventsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventsGetInstanceResponses,
+  AppEventsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventsGetInstanceResponses,
     AppEventsGetInstanceErrors,
@@ -5280,9 +5721,14 @@ export const appEventsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update app events. `PATCH /v1/appEvents/{id}` */
 export const appEventsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppEventsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventsUpdateInstanceResponses,
+  AppEventsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppEventsUpdateInstanceResponses,
     AppEventsUpdateInstanceErrors,
@@ -5298,11 +5744,16 @@ export const appEventsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create app info localizations. `POST /v1/appInfoLocalizations` */
 export const appInfoLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfoLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfoLocalizationsCreateInstanceResponses,
+  AppInfoLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppInfoLocalizationsCreateInstanceResponses,
     AppInfoLocalizationsCreateInstanceErrors,
@@ -5317,11 +5768,16 @@ export const appInfoLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app info localizations. `DELETE /v1/appInfoLocalizations/{id}` */
 export const appInfoLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfoLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfoLocalizationsDeleteInstanceResponses,
+  AppInfoLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppInfoLocalizationsDeleteInstanceResponses,
     AppInfoLocalizationsDeleteInstanceErrors,
@@ -5332,11 +5788,16 @@ export const appInfoLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app info localizations. `GET /v1/appInfoLocalizations/{id}` */
 export const appInfoLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfoLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfoLocalizationsGetInstanceResponses,
+  AppInfoLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfoLocalizationsGetInstanceResponses,
     AppInfoLocalizationsGetInstanceErrors,
@@ -5353,11 +5814,16 @@ export const appInfoLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update app info localizations. `PATCH /v1/appInfoLocalizations/{id}` */
 export const appInfoLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfoLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfoLocalizationsUpdateInstanceResponses,
+  AppInfoLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppInfoLocalizationsUpdateInstanceResponses,
     AppInfoLocalizationsUpdateInstanceErrors,
@@ -5372,9 +5838,14 @@ export const appInfoLocalizationsUpdateInstance = <
     },
   });
 
+/** Read app infos. `GET /v1/appInfos/{id}` */
 export const appInfosGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppInfosGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfosGetInstanceResponses,
+  AppInfosGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosGetInstanceResponses,
     AppInfosGetInstanceErrors,
@@ -5394,9 +5865,14 @@ export const appInfosGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update app infos. `PATCH /v1/appInfos/{id}` */
 export const appInfosUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppInfosUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfosUpdateInstanceResponses,
+  AppInfosUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppInfosUpdateInstanceResponses,
     AppInfosUpdateInstanceErrors,
@@ -5411,11 +5887,16 @@ export const appInfosUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create app preview sets. `POST /v1/appPreviewSets` */
 export const appPreviewSetsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPreviewSetsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewSetsCreateInstanceResponses,
+  AppPreviewSetsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppPreviewSetsCreateInstanceResponses,
     AppPreviewSetsCreateInstanceErrors,
@@ -5430,11 +5911,16 @@ export const appPreviewSetsCreateInstance = <
     },
   });
 
+/** Delete app preview sets. `DELETE /v1/appPreviewSets/{id}` */
 export const appPreviewSetsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPreviewSetsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewSetsDeleteInstanceResponses,
+  AppPreviewSetsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppPreviewSetsDeleteInstanceResponses,
     AppPreviewSetsDeleteInstanceErrors,
@@ -5445,9 +5931,14 @@ export const appPreviewSetsDeleteInstance = <
     ...options,
   });
 
+/** Read app preview sets. `GET /v1/appPreviewSets/{id}` */
 export const appPreviewSetsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppPreviewSetsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewSetsGetInstanceResponses,
+  AppPreviewSetsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPreviewSetsGetInstanceResponses,
     AppPreviewSetsGetInstanceErrors,
@@ -5465,9 +5956,14 @@ export const appPreviewSetsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create app previews. `POST /v1/appPreviews` */
 export const appPreviewsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppPreviewsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewsCreateInstanceResponses,
+  AppPreviewsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppPreviewsCreateInstanceResponses,
     AppPreviewsCreateInstanceErrors,
@@ -5482,9 +5978,14 @@ export const appPreviewsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete app previews. `DELETE /v1/appPreviews/{id}` */
 export const appPreviewsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppPreviewsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewsDeleteInstanceResponses,
+  AppPreviewsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppPreviewsDeleteInstanceResponses,
     AppPreviewsDeleteInstanceErrors,
@@ -5495,9 +5996,14 @@ export const appPreviewsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read app previews. `GET /v1/appPreviews/{id}` */
 export const appPreviewsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppPreviewsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewsGetInstanceResponses,
+  AppPreviewsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPreviewsGetInstanceResponses,
     AppPreviewsGetInstanceErrors,
@@ -5514,9 +6020,14 @@ export const appPreviewsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update app previews. `PATCH /v1/appPreviews/{id}` */
 export const appPreviewsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppPreviewsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewsUpdateInstanceResponses,
+  AppPreviewsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppPreviewsUpdateInstanceResponses,
     AppPreviewsUpdateInstanceErrors,
@@ -5531,11 +6042,16 @@ export const appPreviewsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Read app price points v3. `GET /v3/appPricePoints/{id}` */
 export const appPricePointsV3GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPricePointsV3GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPricePointsV3GetInstanceResponses,
+  AppPricePointsV3GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPricePointsV3GetInstanceResponses,
     AppPricePointsV3GetInstanceErrors,
@@ -5552,11 +6068,16 @@ export const appPricePointsV3GetInstance = <
     ...options,
   });
 
+/** Create app price schedules. `POST /v1/appPriceSchedules` */
 export const appPriceSchedulesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPriceSchedulesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPriceSchedulesCreateInstanceResponses,
+  AppPriceSchedulesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppPriceSchedulesCreateInstanceResponses,
     AppPriceSchedulesCreateInstanceErrors,
@@ -5572,11 +6093,16 @@ export const appPriceSchedulesCreateInstance = <
     },
   });
 
+/** Read app price schedules. `GET /v1/appPriceSchedules/{id}` */
 export const appPriceSchedulesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPriceSchedulesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPriceSchedulesGetInstanceResponses,
+  AppPriceSchedulesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesGetInstanceResponses,
     AppPriceSchedulesGetInstanceErrors,
@@ -5596,11 +6122,16 @@ export const appPriceSchedulesGetInstance = <
     ...options,
   });
 
+/** Create app screenshot sets. `POST /v1/appScreenshotSets` */
 export const appScreenshotSetsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotSetsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotSetsCreateInstanceResponses,
+  AppScreenshotSetsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppScreenshotSetsCreateInstanceResponses,
     AppScreenshotSetsCreateInstanceErrors,
@@ -5615,11 +6146,16 @@ export const appScreenshotSetsCreateInstance = <
     },
   });
 
+/** Delete app screenshot sets. `DELETE /v1/appScreenshotSets/{id}` */
 export const appScreenshotSetsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotSetsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotSetsDeleteInstanceResponses,
+  AppScreenshotSetsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppScreenshotSetsDeleteInstanceResponses,
     AppScreenshotSetsDeleteInstanceErrors,
@@ -5630,11 +6166,16 @@ export const appScreenshotSetsDeleteInstance = <
     ...options,
   });
 
+/** Read app screenshot sets. `GET /v1/appScreenshotSets/{id}` */
 export const appScreenshotSetsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotSetsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotSetsGetInstanceResponses,
+  AppScreenshotSetsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppScreenshotSetsGetInstanceResponses,
     AppScreenshotSetsGetInstanceErrors,
@@ -5652,11 +6193,16 @@ export const appScreenshotSetsGetInstance = <
     ...options,
   });
 
+/** Create app screenshots. `POST /v1/appScreenshots` */
 export const appScreenshotsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotsCreateInstanceResponses,
+  AppScreenshotsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppScreenshotsCreateInstanceResponses,
     AppScreenshotsCreateInstanceErrors,
@@ -5671,11 +6217,16 @@ export const appScreenshotsCreateInstance = <
     },
   });
 
+/** Delete app screenshots. `DELETE /v1/appScreenshots/{id}` */
 export const appScreenshotsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotsDeleteInstanceResponses,
+  AppScreenshotsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppScreenshotsDeleteInstanceResponses,
     AppScreenshotsDeleteInstanceErrors,
@@ -5686,9 +6237,14 @@ export const appScreenshotsDeleteInstance = <
     ...options,
   });
 
+/** Read app screenshots. `GET /v1/appScreenshots/{id}` */
 export const appScreenshotsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppScreenshotsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotsGetInstanceResponses,
+  AppScreenshotsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppScreenshotsGetInstanceResponses,
     AppScreenshotsGetInstanceErrors,
@@ -5705,11 +6261,16 @@ export const appScreenshotsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update app screenshots. `PATCH /v1/appScreenshots/{id}` */
 export const appScreenshotsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppScreenshotsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppScreenshotsUpdateInstanceResponses,
+  AppScreenshotsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppScreenshotsUpdateInstanceResponses,
     AppScreenshotsUpdateInstanceErrors,
@@ -5724,11 +6285,16 @@ export const appScreenshotsUpdateInstance = <
     },
   });
 
+/** Create app store review attachments. `POST /v1/appStoreReviewAttachments` */
 export const appStoreReviewAttachmentsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewAttachmentsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewAttachmentsCreateInstanceResponses,
+  AppStoreReviewAttachmentsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreReviewAttachmentsCreateInstanceResponses,
     AppStoreReviewAttachmentsCreateInstanceErrors,
@@ -5743,11 +6309,16 @@ export const appStoreReviewAttachmentsCreateInstance = <
     },
   });
 
+/** Delete app store review attachments. `DELETE /v1/appStoreReviewAttachments/{id}` */
 export const appStoreReviewAttachmentsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewAttachmentsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewAttachmentsDeleteInstanceResponses,
+  AppStoreReviewAttachmentsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreReviewAttachmentsDeleteInstanceResponses,
     AppStoreReviewAttachmentsDeleteInstanceErrors,
@@ -5758,11 +6329,16 @@ export const appStoreReviewAttachmentsDeleteInstance = <
     ...options,
   });
 
+/** Read app store review attachments. `GET /v1/appStoreReviewAttachments/{id}` */
 export const appStoreReviewAttachmentsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewAttachmentsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewAttachmentsGetInstanceResponses,
+  AppStoreReviewAttachmentsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreReviewAttachmentsGetInstanceResponses,
     AppStoreReviewAttachmentsGetInstanceErrors,
@@ -5779,11 +6355,16 @@ export const appStoreReviewAttachmentsGetInstance = <
     ...options,
   });
 
+/** Update app store review attachments. `PATCH /v1/appStoreReviewAttachments/{id}` */
 export const appStoreReviewAttachmentsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewAttachmentsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewAttachmentsUpdateInstanceResponses,
+  AppStoreReviewAttachmentsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreReviewAttachmentsUpdateInstanceResponses,
     AppStoreReviewAttachmentsUpdateInstanceErrors,
@@ -5798,11 +6379,16 @@ export const appStoreReviewAttachmentsUpdateInstance = <
     },
   });
 
+/** Create app store review details. `POST /v1/appStoreReviewDetails` */
 export const appStoreReviewDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewDetailsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewDetailsCreateInstanceResponses,
+  AppStoreReviewDetailsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreReviewDetailsCreateInstanceResponses,
     AppStoreReviewDetailsCreateInstanceErrors,
@@ -5817,11 +6403,16 @@ export const appStoreReviewDetailsCreateInstance = <
     },
   });
 
+/** Read app store review details. `GET /v1/appStoreReviewDetails/{id}` */
 export const appStoreReviewDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewDetailsGetInstanceResponses,
+  AppStoreReviewDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreReviewDetailsGetInstanceResponses,
     AppStoreReviewDetailsGetInstanceErrors,
@@ -5839,11 +6430,16 @@ export const appStoreReviewDetailsGetInstance = <
     ...options,
   });
 
+/** Update app store review details. `PATCH /v1/appStoreReviewDetails/{id}` */
 export const appStoreReviewDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreReviewDetailsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreReviewDetailsUpdateInstanceResponses,
+  AppStoreReviewDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreReviewDetailsUpdateInstanceResponses,
     AppStoreReviewDetailsUpdateInstanceErrors,
@@ -5858,6 +6454,7 @@ export const appStoreReviewDetailsUpdateInstance = <
     },
   });
 
+/** Create app store version experiment treatment localizations. `POST /v1/appStoreVersionExperimentTreatmentLocalizations` */
 export const appStoreVersionExperimentTreatmentLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5865,7 +6462,11 @@ export const appStoreVersionExperimentTreatmentLocalizationsCreateInstance = <
     AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponses,
+  AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponses,
     AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceErrors,
@@ -5880,6 +6481,7 @@ export const appStoreVersionExperimentTreatmentLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app store version experiment treatment localizations. `DELETE /v1/appStoreVersionExperimentTreatmentLocalizations/{id}` */
 export const appStoreVersionExperimentTreatmentLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5887,7 +6489,11 @@ export const appStoreVersionExperimentTreatmentLocalizationsDeleteInstance = <
     AppStoreVersionExperimentTreatmentLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentLocalizationsDeleteInstanceResponses,
+  AppStoreVersionExperimentTreatmentLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionExperimentTreatmentLocalizationsDeleteInstanceResponses,
     AppStoreVersionExperimentTreatmentLocalizationsDeleteInstanceErrors,
@@ -5898,6 +6504,7 @@ export const appStoreVersionExperimentTreatmentLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}` */
 export const appStoreVersionExperimentTreatmentLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5905,7 +6512,11 @@ export const appStoreVersionExperimentTreatmentLocalizationsGetInstance = <
     AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentLocalizationsGetInstanceResponses,
+  AppStoreVersionExperimentTreatmentLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionExperimentTreatmentLocalizationsGetInstanceResponses,
     AppStoreVersionExperimentTreatmentLocalizationsGetInstanceErrors,
@@ -5926,6 +6537,7 @@ export const appStoreVersionExperimentTreatmentLocalizationsGetInstance = <
     ...options,
   });
 
+/** Create app store version experiment treatments. `POST /v1/appStoreVersionExperimentTreatments` */
 export const appStoreVersionExperimentTreatmentsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5933,7 +6545,11 @@ export const appStoreVersionExperimentTreatmentsCreateInstance = <
     AppStoreVersionExperimentTreatmentsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentsCreateInstanceResponses,
+  AppStoreVersionExperimentTreatmentsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionExperimentTreatmentsCreateInstanceResponses,
     AppStoreVersionExperimentTreatmentsCreateInstanceErrors,
@@ -5950,6 +6566,7 @@ export const appStoreVersionExperimentTreatmentsCreateInstance = <
     },
   });
 
+/** Delete app store version experiment treatments. `DELETE /v1/appStoreVersionExperimentTreatments/{id}` */
 export const appStoreVersionExperimentTreatmentsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5957,7 +6574,11 @@ export const appStoreVersionExperimentTreatmentsDeleteInstance = <
     AppStoreVersionExperimentTreatmentsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentsDeleteInstanceResponses,
+  AppStoreVersionExperimentTreatmentsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionExperimentTreatmentsDeleteInstanceResponses,
     AppStoreVersionExperimentTreatmentsDeleteInstanceErrors,
@@ -5968,6 +6589,7 @@ export const appStoreVersionExperimentTreatmentsDeleteInstance = <
     ...options,
   });
 
+/** Read app store version experiment treatments. `GET /v1/appStoreVersionExperimentTreatments/{id}` */
 export const appStoreVersionExperimentTreatmentsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -5975,7 +6597,11 @@ export const appStoreVersionExperimentTreatmentsGetInstance = <
     AppStoreVersionExperimentTreatmentsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentsGetInstanceResponses,
+  AppStoreVersionExperimentTreatmentsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionExperimentTreatmentsGetInstanceResponses,
     AppStoreVersionExperimentTreatmentsGetInstanceErrors,
@@ -5999,6 +6625,7 @@ export const appStoreVersionExperimentTreatmentsGetInstance = <
     ...options,
   });
 
+/** Update app store version experiment treatments. `PATCH /v1/appStoreVersionExperimentTreatments/{id}` */
 export const appStoreVersionExperimentTreatmentsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6006,7 +6633,11 @@ export const appStoreVersionExperimentTreatmentsUpdateInstance = <
     AppStoreVersionExperimentTreatmentsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentTreatmentsUpdateInstanceResponses,
+  AppStoreVersionExperimentTreatmentsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionExperimentTreatmentsUpdateInstanceResponses,
     AppStoreVersionExperimentTreatmentsUpdateInstanceErrors,
@@ -6023,6 +6654,7 @@ export const appStoreVersionExperimentTreatmentsUpdateInstance = <
     },
   });
 
+/** Create app store version experiments v2. `POST /v2/appStoreVersionExperiments` */
 export const appStoreVersionExperimentsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6030,7 +6662,11 @@ export const appStoreVersionExperimentsV2CreateInstance = <
     AppStoreVersionExperimentsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentsV2CreateInstanceResponses,
+  AppStoreVersionExperimentsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionExperimentsV2CreateInstanceResponses,
     AppStoreVersionExperimentsV2CreateInstanceErrors,
@@ -6047,6 +6683,7 @@ export const appStoreVersionExperimentsV2CreateInstance = <
     },
   });
 
+/** Delete app store version experiments v2. `DELETE /v2/appStoreVersionExperiments/{id}` */
 export const appStoreVersionExperimentsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6054,7 +6691,11 @@ export const appStoreVersionExperimentsV2DeleteInstance = <
     AppStoreVersionExperimentsV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentsV2DeleteInstanceResponses,
+  AppStoreVersionExperimentsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionExperimentsV2DeleteInstanceResponses,
     AppStoreVersionExperimentsV2DeleteInstanceErrors,
@@ -6065,11 +6706,16 @@ export const appStoreVersionExperimentsV2DeleteInstance = <
     ...options,
   });
 
+/** Read app store version experiments v2. `GET /v2/appStoreVersionExperiments/{id}` */
 export const appStoreVersionExperimentsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionExperimentsV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentsV2GetInstanceResponses,
+  AppStoreVersionExperimentsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionExperimentsV2GetInstanceResponses,
     AppStoreVersionExperimentsV2GetInstanceErrors,
@@ -6091,6 +6737,7 @@ export const appStoreVersionExperimentsV2GetInstance = <
     ...options,
   });
 
+/** Update app store version experiments v2. `PATCH /v2/appStoreVersionExperiments/{id}` */
 export const appStoreVersionExperimentsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6098,7 +6745,11 @@ export const appStoreVersionExperimentsV2UpdateInstance = <
     AppStoreVersionExperimentsV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionExperimentsV2UpdateInstanceResponses,
+  AppStoreVersionExperimentsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionExperimentsV2UpdateInstanceResponses,
     AppStoreVersionExperimentsV2UpdateInstanceErrors,
@@ -6115,6 +6766,7 @@ export const appStoreVersionExperimentsV2UpdateInstance = <
     },
   });
 
+/** Create app store version localizations. `POST /v1/appStoreVersionLocalizations` */
 export const appStoreVersionLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6122,7 +6774,11 @@ export const appStoreVersionLocalizationsCreateInstance = <
     AppStoreVersionLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsCreateInstanceResponses,
+  AppStoreVersionLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionLocalizationsCreateInstanceResponses,
     AppStoreVersionLocalizationsCreateInstanceErrors,
@@ -6137,6 +6793,7 @@ export const appStoreVersionLocalizationsCreateInstance = <
     },
   });
 
+/** Delete app store version localizations. `DELETE /v1/appStoreVersionLocalizations/{id}` */
 export const appStoreVersionLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6144,7 +6801,11 @@ export const appStoreVersionLocalizationsDeleteInstance = <
     AppStoreVersionLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsDeleteInstanceResponses,
+  AppStoreVersionLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionLocalizationsDeleteInstanceResponses,
     AppStoreVersionLocalizationsDeleteInstanceErrors,
@@ -6155,11 +6816,16 @@ export const appStoreVersionLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}` */
 export const appStoreVersionLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsGetInstanceResponses,
+  AppStoreVersionLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsGetInstanceResponses,
     AppStoreVersionLocalizationsGetInstanceErrors,
@@ -6178,6 +6844,7 @@ export const appStoreVersionLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update app store version localizations. `PATCH /v1/appStoreVersionLocalizations/{id}` */
 export const appStoreVersionLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6185,7 +6852,11 @@ export const appStoreVersionLocalizationsUpdateInstance = <
     AppStoreVersionLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsUpdateInstanceResponses,
+  AppStoreVersionLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionLocalizationsUpdateInstanceResponses,
     AppStoreVersionLocalizationsUpdateInstanceErrors,
@@ -6200,6 +6871,7 @@ export const appStoreVersionLocalizationsUpdateInstance = <
     },
   });
 
+/** Create app store version phased releases. `POST /v1/appStoreVersionPhasedReleases` */
 export const appStoreVersionPhasedReleasesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6207,7 +6879,11 @@ export const appStoreVersionPhasedReleasesCreateInstance = <
     AppStoreVersionPhasedReleasesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionPhasedReleasesCreateInstanceResponses,
+  AppStoreVersionPhasedReleasesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionPhasedReleasesCreateInstanceResponses,
     AppStoreVersionPhasedReleasesCreateInstanceErrors,
@@ -6224,6 +6900,7 @@ export const appStoreVersionPhasedReleasesCreateInstance = <
     },
   });
 
+/** Delete app store version phased releases. `DELETE /v1/appStoreVersionPhasedReleases/{id}` */
 export const appStoreVersionPhasedReleasesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6231,7 +6908,11 @@ export const appStoreVersionPhasedReleasesDeleteInstance = <
     AppStoreVersionPhasedReleasesDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionPhasedReleasesDeleteInstanceResponses,
+  AppStoreVersionPhasedReleasesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionPhasedReleasesDeleteInstanceResponses,
     AppStoreVersionPhasedReleasesDeleteInstanceErrors,
@@ -6242,6 +6923,7 @@ export const appStoreVersionPhasedReleasesDeleteInstance = <
     ...options,
   });
 
+/** Update app store version phased releases. `PATCH /v1/appStoreVersionPhasedReleases/{id}` */
 export const appStoreVersionPhasedReleasesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6249,7 +6931,11 @@ export const appStoreVersionPhasedReleasesUpdateInstance = <
     AppStoreVersionPhasedReleasesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionPhasedReleasesUpdateInstanceResponses,
+  AppStoreVersionPhasedReleasesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionPhasedReleasesUpdateInstanceResponses,
     AppStoreVersionPhasedReleasesUpdateInstanceErrors,
@@ -6266,11 +6952,16 @@ export const appStoreVersionPhasedReleasesUpdateInstance = <
     },
   });
 
+/** Create app store version promotions. `POST /v1/appStoreVersionPromotions` */
 export const appStoreVersionPromotionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionPromotionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionPromotionsCreateInstanceResponses,
+  AppStoreVersionPromotionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionPromotionsCreateInstanceResponses,
     AppStoreVersionPromotionsCreateInstanceErrors,
@@ -6285,6 +6976,7 @@ export const appStoreVersionPromotionsCreateInstance = <
     },
   });
 
+/** Create app store version release requests. `POST /v1/appStoreVersionReleaseRequests` */
 export const appStoreVersionReleaseRequestsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6292,7 +6984,11 @@ export const appStoreVersionReleaseRequestsCreateInstance = <
     AppStoreVersionReleaseRequestsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionReleaseRequestsCreateInstanceResponses,
+  AppStoreVersionReleaseRequestsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionReleaseRequestsCreateInstanceResponses,
     AppStoreVersionReleaseRequestsCreateInstanceErrors,
@@ -6307,11 +7003,16 @@ export const appStoreVersionReleaseRequestsCreateInstance = <
     },
   });
 
+/** Create app store versions. `POST /v1/appStoreVersions` */
 export const appStoreVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsCreateInstanceResponses,
+  AppStoreVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     AppStoreVersionsCreateInstanceResponses,
     AppStoreVersionsCreateInstanceErrors,
@@ -6327,11 +7028,16 @@ export const appStoreVersionsCreateInstance = <
     },
   });
 
+/** Delete app store versions. `DELETE /v1/appStoreVersions/{id}` */
 export const appStoreVersionsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsDeleteInstanceResponses,
+  AppStoreVersionsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppStoreVersionsDeleteInstanceResponses,
     AppStoreVersionsDeleteInstanceErrors,
@@ -6342,11 +7048,16 @@ export const appStoreVersionsDeleteInstance = <
     ...options,
   });
 
+/** Read app store versions. `GET /v1/appStoreVersions/{id}` */
 export const appStoreVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsGetInstanceResponses,
+  AppStoreVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsGetInstanceResponses,
     AppStoreVersionsGetInstanceErrors,
@@ -6376,11 +7087,16 @@ export const appStoreVersionsGetInstance = <
     ...options,
   });
 
+/** Update app store versions. `PATCH /v1/appStoreVersions/{id}` */
 export const appStoreVersionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsUpdateInstanceResponses,
+  AppStoreVersionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionsUpdateInstanceResponses,
     AppStoreVersionsUpdateInstanceErrors,
@@ -6396,9 +7112,14 @@ export const appStoreVersionsUpdateInstance = <
     },
   });
 
+/** Update app tags. `PATCH /v1/appTags/{id}` */
 export const appTagsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppTagsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppTagsUpdateInstanceResponses,
+  AppTagsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppTagsUpdateInstanceResponses,
     AppTagsUpdateInstanceErrors,
@@ -6413,9 +7134,14 @@ export const appTagsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List apps. `GET /v1/apps` */
 export const appsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<AppsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsGetCollectionResponses,
+  AppsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     AppsGetCollectionResponses,
     AppsGetCollectionErrors,
@@ -6468,9 +7194,14 @@ export const appsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read apps. `GET /v1/apps/{id}` */
 export const appsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsGetInstanceResponses,
+  AppsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsGetInstanceResponses,
     AppsGetInstanceErrors,
@@ -6510,9 +7241,14 @@ export const appsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update apps. `PATCH /v1/apps/{id}` */
 export const appsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsUpdateInstanceResponses,
+  AppsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppsUpdateInstanceResponses,
     AppsUpdateInstanceErrors,
@@ -6527,11 +7263,16 @@ export const appsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create background asset upload files. `POST /v1/backgroundAssetUploadFiles` */
 export const backgroundAssetUploadFilesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetUploadFilesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetUploadFilesCreateInstanceResponses,
+  BackgroundAssetUploadFilesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BackgroundAssetUploadFilesCreateInstanceResponses,
     BackgroundAssetUploadFilesCreateInstanceErrors,
@@ -6548,11 +7289,16 @@ export const backgroundAssetUploadFilesCreateInstance = <
     },
   });
 
+/** Read background asset upload files. `GET /v1/backgroundAssetUploadFiles/{id}` */
 export const backgroundAssetUploadFilesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetUploadFilesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetUploadFilesGetInstanceResponses,
+  BackgroundAssetUploadFilesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetUploadFilesGetInstanceResponses,
     BackgroundAssetUploadFilesGetInstanceErrors,
@@ -6570,11 +7316,16 @@ export const backgroundAssetUploadFilesGetInstance = <
     ...options,
   });
 
+/** Update background asset upload files. `PATCH /v1/backgroundAssetUploadFiles/{id}` */
 export const backgroundAssetUploadFilesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetUploadFilesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetUploadFilesUpdateInstanceResponses,
+  BackgroundAssetUploadFilesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BackgroundAssetUploadFilesUpdateInstanceResponses,
     BackgroundAssetUploadFilesUpdateInstanceErrors,
@@ -6591,6 +7342,7 @@ export const backgroundAssetUploadFilesUpdateInstance = <
     },
   });
 
+/** Read background asset version app store releases. `GET /v1/backgroundAssetVersionAppStoreReleases/{id}` */
 export const backgroundAssetVersionAppStoreReleasesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6598,7 +7350,11 @@ export const backgroundAssetVersionAppStoreReleasesGetInstance = <
     BackgroundAssetVersionAppStoreReleasesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BackgroundAssetVersionAppStoreReleasesGetInstanceResponses,
+  BackgroundAssetVersionAppStoreReleasesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetVersionAppStoreReleasesGetInstanceResponses,
     BackgroundAssetVersionAppStoreReleasesGetInstanceErrors,
@@ -6619,6 +7375,7 @@ export const backgroundAssetVersionAppStoreReleasesGetInstance = <
     ...options,
   });
 
+/** Read background asset version external beta releases. `GET /v1/backgroundAssetVersionExternalBetaReleases/{id}` */
 export const backgroundAssetVersionExternalBetaReleasesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6626,7 +7383,11 @@ export const backgroundAssetVersionExternalBetaReleasesGetInstance = <
     BackgroundAssetVersionExternalBetaReleasesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BackgroundAssetVersionExternalBetaReleasesGetInstanceResponses,
+  BackgroundAssetVersionExternalBetaReleasesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetVersionExternalBetaReleasesGetInstanceResponses,
     BackgroundAssetVersionExternalBetaReleasesGetInstanceErrors,
@@ -6647,6 +7408,7 @@ export const backgroundAssetVersionExternalBetaReleasesGetInstance = <
     ...options,
   });
 
+/** Read background asset version internal beta releases. `GET /v1/backgroundAssetVersionInternalBetaReleases/{id}` */
 export const backgroundAssetVersionInternalBetaReleasesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6654,7 +7416,11 @@ export const backgroundAssetVersionInternalBetaReleasesGetInstance = <
     BackgroundAssetVersionInternalBetaReleasesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BackgroundAssetVersionInternalBetaReleasesGetInstanceResponses,
+  BackgroundAssetVersionInternalBetaReleasesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetVersionInternalBetaReleasesGetInstanceResponses,
     BackgroundAssetVersionInternalBetaReleasesGetInstanceErrors,
@@ -6675,11 +7441,16 @@ export const backgroundAssetVersionInternalBetaReleasesGetInstance = <
     ...options,
   });
 
+/** Create background asset versions. `POST /v1/backgroundAssetVersions` */
 export const backgroundAssetVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetVersionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetVersionsCreateInstanceResponses,
+  BackgroundAssetVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BackgroundAssetVersionsCreateInstanceResponses,
     BackgroundAssetVersionsCreateInstanceErrors,
@@ -6696,11 +7467,16 @@ export const backgroundAssetVersionsCreateInstance = <
     },
   });
 
+/** Read background asset versions. `GET /v1/backgroundAssetVersions/{id}` */
 export const backgroundAssetVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetVersionsGetInstanceResponses,
+  BackgroundAssetVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetVersionsGetInstanceResponses,
     BackgroundAssetVersionsGetInstanceErrors,
@@ -6718,11 +7494,16 @@ export const backgroundAssetVersionsGetInstance = <
     ...options,
   });
 
+/** Create background assets. `POST /v1/backgroundAssets` */
 export const backgroundAssetsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetsCreateInstanceResponses,
+  BackgroundAssetsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BackgroundAssetsCreateInstanceResponses,
     BackgroundAssetsCreateInstanceErrors,
@@ -6738,11 +7519,16 @@ export const backgroundAssetsCreateInstance = <
     },
   });
 
+/** Read background assets. `GET /v1/backgroundAssets/{id}` */
 export const backgroundAssetsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetsGetInstanceResponses,
+  BackgroundAssetsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetsGetInstanceResponses,
     BackgroundAssetsGetInstanceErrors,
@@ -6760,11 +7546,16 @@ export const backgroundAssetsGetInstance = <
     ...options,
   });
 
+/** Update background assets. `PATCH /v1/backgroundAssets/{id}` */
 export const backgroundAssetsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetsUpdateInstanceResponses,
+  BackgroundAssetsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BackgroundAssetsUpdateInstanceResponses,
     BackgroundAssetsUpdateInstanceErrors,
@@ -6780,6 +7571,7 @@ export const backgroundAssetsUpdateInstance = <
     },
   });
 
+/** Create beta app clip invocation localizations. `POST /v1/betaAppClipInvocationLocalizations` */
 export const betaAppClipInvocationLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6787,7 +7579,11 @@ export const betaAppClipInvocationLocalizationsCreateInstance = <
     BetaAppClipInvocationLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppClipInvocationLocalizationsCreateInstanceResponses,
+  BetaAppClipInvocationLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaAppClipInvocationLocalizationsCreateInstanceResponses,
     BetaAppClipInvocationLocalizationsCreateInstanceErrors,
@@ -6802,6 +7598,7 @@ export const betaAppClipInvocationLocalizationsCreateInstance = <
     },
   });
 
+/** Delete beta app clip invocation localizations. `DELETE /v1/betaAppClipInvocationLocalizations/{id}` */
 export const betaAppClipInvocationLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6809,7 +7606,11 @@ export const betaAppClipInvocationLocalizationsDeleteInstance = <
     BetaAppClipInvocationLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppClipInvocationLocalizationsDeleteInstanceResponses,
+  BetaAppClipInvocationLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaAppClipInvocationLocalizationsDeleteInstanceResponses,
     BetaAppClipInvocationLocalizationsDeleteInstanceErrors,
@@ -6820,6 +7621,7 @@ export const betaAppClipInvocationLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Update beta app clip invocation localizations. `PATCH /v1/betaAppClipInvocationLocalizations/{id}` */
 export const betaAppClipInvocationLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -6827,7 +7629,11 @@ export const betaAppClipInvocationLocalizationsUpdateInstance = <
     BetaAppClipInvocationLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppClipInvocationLocalizationsUpdateInstanceResponses,
+  BetaAppClipInvocationLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaAppClipInvocationLocalizationsUpdateInstanceResponses,
     BetaAppClipInvocationLocalizationsUpdateInstanceErrors,
@@ -6842,11 +7648,16 @@ export const betaAppClipInvocationLocalizationsUpdateInstance = <
     },
   });
 
+/** Create beta app clip invocations. `POST /v1/betaAppClipInvocations` */
 export const betaAppClipInvocationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppClipInvocationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppClipInvocationsCreateInstanceResponses,
+  BetaAppClipInvocationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaAppClipInvocationsCreateInstanceResponses,
     BetaAppClipInvocationsCreateInstanceErrors,
@@ -6861,11 +7672,16 @@ export const betaAppClipInvocationsCreateInstance = <
     },
   });
 
+/** Delete beta app clip invocations. `DELETE /v1/betaAppClipInvocations/{id}` */
 export const betaAppClipInvocationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppClipInvocationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppClipInvocationsDeleteInstanceResponses,
+  BetaAppClipInvocationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaAppClipInvocationsDeleteInstanceResponses,
     BetaAppClipInvocationsDeleteInstanceErrors,
@@ -6876,11 +7692,16 @@ export const betaAppClipInvocationsDeleteInstance = <
     ...options,
   });
 
+/** Read beta app clip invocations. `GET /v1/betaAppClipInvocations/{id}` */
 export const betaAppClipInvocationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppClipInvocationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppClipInvocationsGetInstanceResponses,
+  BetaAppClipInvocationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppClipInvocationsGetInstanceResponses,
     BetaAppClipInvocationsGetInstanceErrors,
@@ -6897,11 +7718,16 @@ export const betaAppClipInvocationsGetInstance = <
     ...options,
   });
 
+/** Update beta app clip invocations. `PATCH /v1/betaAppClipInvocations/{id}` */
 export const betaAppClipInvocationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppClipInvocationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppClipInvocationsUpdateInstanceResponses,
+  BetaAppClipInvocationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaAppClipInvocationsUpdateInstanceResponses,
     BetaAppClipInvocationsUpdateInstanceErrors,
@@ -6916,11 +7742,16 @@ export const betaAppClipInvocationsUpdateInstance = <
     },
   });
 
+/** List beta app localizations. `GET /v1/betaAppLocalizations` */
 export const betaAppLocalizationsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<BetaAppLocalizationsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsGetCollectionResponses,
+  BetaAppLocalizationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaAppLocalizationsGetCollectionResponses,
     BetaAppLocalizationsGetCollectionErrors,
@@ -6940,11 +7771,16 @@ export const betaAppLocalizationsGetCollection = <
     ...options,
   });
 
+/** Create beta app localizations. `POST /v1/betaAppLocalizations` */
 export const betaAppLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsCreateInstanceResponses,
+  BetaAppLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaAppLocalizationsCreateInstanceResponses,
     BetaAppLocalizationsCreateInstanceErrors,
@@ -6959,11 +7795,16 @@ export const betaAppLocalizationsCreateInstance = <
     },
   });
 
+/** Delete beta app localizations. `DELETE /v1/betaAppLocalizations/{id}` */
 export const betaAppLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsDeleteInstanceResponses,
+  BetaAppLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaAppLocalizationsDeleteInstanceResponses,
     BetaAppLocalizationsDeleteInstanceErrors,
@@ -6974,11 +7815,16 @@ export const betaAppLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read beta app localizations. `GET /v1/betaAppLocalizations/{id}` */
 export const betaAppLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsGetInstanceResponses,
+  BetaAppLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppLocalizationsGetInstanceResponses,
     BetaAppLocalizationsGetInstanceErrors,
@@ -6996,11 +7842,16 @@ export const betaAppLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update beta app localizations. `PATCH /v1/betaAppLocalizations/{id}` */
 export const betaAppLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsUpdateInstanceResponses,
+  BetaAppLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaAppLocalizationsUpdateInstanceResponses,
     BetaAppLocalizationsUpdateInstanceErrors,
@@ -7015,11 +7866,16 @@ export const betaAppLocalizationsUpdateInstance = <
     },
   });
 
+/** List beta app review details. `GET /v1/betaAppReviewDetails` */
 export const betaAppReviewDetailsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewDetailsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewDetailsGetCollectionResponses,
+  BetaAppReviewDetailsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewDetailsGetCollectionResponses,
     BetaAppReviewDetailsGetCollectionErrors,
@@ -7038,11 +7894,16 @@ export const betaAppReviewDetailsGetCollection = <
     ...options,
   });
 
+/** Read beta app review details. `GET /v1/betaAppReviewDetails/{id}` */
 export const betaAppReviewDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewDetailsGetInstanceResponses,
+  BetaAppReviewDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewDetailsGetInstanceResponses,
     BetaAppReviewDetailsGetInstanceErrors,
@@ -7060,11 +7921,16 @@ export const betaAppReviewDetailsGetInstance = <
     ...options,
   });
 
+/** Update beta app review details. `PATCH /v1/betaAppReviewDetails/{id}` */
 export const betaAppReviewDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewDetailsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewDetailsUpdateInstanceResponses,
+  BetaAppReviewDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaAppReviewDetailsUpdateInstanceResponses,
     BetaAppReviewDetailsUpdateInstanceErrors,
@@ -7079,11 +7945,16 @@ export const betaAppReviewDetailsUpdateInstance = <
     },
   });
 
+/** List beta app review submissions. `GET /v1/betaAppReviewSubmissions` */
 export const betaAppReviewSubmissionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewSubmissionsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewSubmissionsGetCollectionResponses,
+  BetaAppReviewSubmissionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewSubmissionsGetCollectionResponses,
     BetaAppReviewSubmissionsGetCollectionErrors,
@@ -7105,11 +7976,16 @@ export const betaAppReviewSubmissionsGetCollection = <
     ...options,
   });
 
+/** Create beta app review submissions. `POST /v1/betaAppReviewSubmissions` */
 export const betaAppReviewSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewSubmissionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewSubmissionsCreateInstanceResponses,
+  BetaAppReviewSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaAppReviewSubmissionsCreateInstanceResponses,
     BetaAppReviewSubmissionsCreateInstanceErrors,
@@ -7126,11 +8002,16 @@ export const betaAppReviewSubmissionsCreateInstance = <
     },
   });
 
+/** Read beta app review submissions. `GET /v1/betaAppReviewSubmissions/{id}` */
 export const betaAppReviewSubmissionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewSubmissionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewSubmissionsGetInstanceResponses,
+  BetaAppReviewSubmissionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewSubmissionsGetInstanceResponses,
     BetaAppReviewSubmissionsGetInstanceErrors,
@@ -7149,11 +8030,16 @@ export const betaAppReviewSubmissionsGetInstance = <
     ...options,
   });
 
+/** List beta build localizations. `GET /v1/betaBuildLocalizations` */
 export const betaBuildLocalizationsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<BetaBuildLocalizationsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsGetCollectionResponses,
+  BetaBuildLocalizationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaBuildLocalizationsGetCollectionResponses,
     BetaBuildLocalizationsGetCollectionErrors,
@@ -7174,11 +8060,16 @@ export const betaBuildLocalizationsGetCollection = <
     ...options,
   });
 
+/** Create beta build localizations. `POST /v1/betaBuildLocalizations` */
 export const betaBuildLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaBuildLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsCreateInstanceResponses,
+  BetaBuildLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaBuildLocalizationsCreateInstanceResponses,
     BetaBuildLocalizationsCreateInstanceErrors,
@@ -7195,11 +8086,16 @@ export const betaBuildLocalizationsCreateInstance = <
     },
   });
 
+/** Delete beta build localizations. `DELETE /v1/betaBuildLocalizations/{id}` */
 export const betaBuildLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaBuildLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsDeleteInstanceResponses,
+  BetaBuildLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaBuildLocalizationsDeleteInstanceResponses,
     BetaBuildLocalizationsDeleteInstanceErrors,
@@ -7210,11 +8106,16 @@ export const betaBuildLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read beta build localizations. `GET /v1/betaBuildLocalizations/{id}` */
 export const betaBuildLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaBuildLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsGetInstanceResponses,
+  BetaBuildLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaBuildLocalizationsGetInstanceResponses,
     BetaBuildLocalizationsGetInstanceErrors,
@@ -7233,11 +8134,16 @@ export const betaBuildLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update beta build localizations. `PATCH /v1/betaBuildLocalizations/{id}` */
 export const betaBuildLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaBuildLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsUpdateInstanceResponses,
+  BetaBuildLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaBuildLocalizationsUpdateInstanceResponses,
     BetaBuildLocalizationsUpdateInstanceErrors,
@@ -7254,9 +8160,14 @@ export const betaBuildLocalizationsUpdateInstance = <
     },
   });
 
+/** Read beta crash logs. `GET /v1/betaCrashLogs/{id}` */
 export const betaCrashLogsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaCrashLogsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaCrashLogsGetInstanceResponses,
+  BetaCrashLogsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaCrashLogsGetInstanceResponses,
     BetaCrashLogsGetInstanceErrors,
@@ -7270,6 +8181,7 @@ export const betaCrashLogsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Delete beta feedback crash submissions. `DELETE /v1/betaFeedbackCrashSubmissions/{id}` */
 export const betaFeedbackCrashSubmissionsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -7277,7 +8189,11 @@ export const betaFeedbackCrashSubmissionsDeleteInstance = <
     BetaFeedbackCrashSubmissionsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaFeedbackCrashSubmissionsDeleteInstanceResponses,
+  BetaFeedbackCrashSubmissionsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaFeedbackCrashSubmissionsDeleteInstanceResponses,
     BetaFeedbackCrashSubmissionsDeleteInstanceErrors,
@@ -7288,11 +8204,16 @@ export const betaFeedbackCrashSubmissionsDeleteInstance = <
     ...options,
   });
 
+/** Read beta feedback crash submissions. `GET /v1/betaFeedbackCrashSubmissions/{id}` */
 export const betaFeedbackCrashSubmissionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaFeedbackCrashSubmissionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaFeedbackCrashSubmissionsGetInstanceResponses,
+  BetaFeedbackCrashSubmissionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaFeedbackCrashSubmissionsGetInstanceResponses,
     BetaFeedbackCrashSubmissionsGetInstanceErrors,
@@ -7311,6 +8232,7 @@ export const betaFeedbackCrashSubmissionsGetInstance = <
     ...options,
   });
 
+/** Delete beta feedback screenshot submissions. `DELETE /v1/betaFeedbackScreenshotSubmissions/{id}` */
 export const betaFeedbackScreenshotSubmissionsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -7318,7 +8240,11 @@ export const betaFeedbackScreenshotSubmissionsDeleteInstance = <
     BetaFeedbackScreenshotSubmissionsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaFeedbackScreenshotSubmissionsDeleteInstanceResponses,
+  BetaFeedbackScreenshotSubmissionsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaFeedbackScreenshotSubmissionsDeleteInstanceResponses,
     BetaFeedbackScreenshotSubmissionsDeleteInstanceErrors,
@@ -7329,6 +8255,7 @@ export const betaFeedbackScreenshotSubmissionsDeleteInstance = <
     ...options,
   });
 
+/** Read beta feedback screenshot submissions. `GET /v1/betaFeedbackScreenshotSubmissions/{id}` */
 export const betaFeedbackScreenshotSubmissionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -7336,7 +8263,11 @@ export const betaFeedbackScreenshotSubmissionsGetInstance = <
     BetaFeedbackScreenshotSubmissionsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaFeedbackScreenshotSubmissionsGetInstanceResponses,
+  BetaFeedbackScreenshotSubmissionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaFeedbackScreenshotSubmissionsGetInstanceResponses,
     BetaFeedbackScreenshotSubmissionsGetInstanceErrors,
@@ -7357,9 +8288,14 @@ export const betaFeedbackScreenshotSubmissionsGetInstance = <
     ...options,
   });
 
+/** List beta groups. `GET /v1/betaGroups` */
 export const betaGroupsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<BetaGroupsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsGetCollectionResponses,
+  BetaGroupsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaGroupsGetCollectionResponses,
     BetaGroupsGetCollectionErrors,
@@ -7390,9 +8326,14 @@ export const betaGroupsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create beta groups. `POST /v1/betaGroups` */
 export const betaGroupsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaGroupsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsCreateInstanceResponses,
+  BetaGroupsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaGroupsCreateInstanceResponses,
     BetaGroupsCreateInstanceErrors,
@@ -7408,9 +8349,14 @@ export const betaGroupsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete beta groups. `DELETE /v1/betaGroups/{id}` */
 export const betaGroupsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaGroupsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsDeleteInstanceResponses,
+  BetaGroupsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaGroupsDeleteInstanceResponses,
     BetaGroupsDeleteInstanceErrors,
@@ -7421,9 +8367,14 @@ export const betaGroupsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read beta groups. `GET /v1/betaGroups/{id}` */
 export const betaGroupsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaGroupsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsGetInstanceResponses,
+  BetaGroupsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsGetInstanceResponses,
     BetaGroupsGetInstanceErrors,
@@ -7445,9 +8396,14 @@ export const betaGroupsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update beta groups. `PATCH /v1/betaGroups/{id}` */
 export const betaGroupsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaGroupsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsUpdateInstanceResponses,
+  BetaGroupsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaGroupsUpdateInstanceResponses,
     BetaGroupsUpdateInstanceErrors,
@@ -7463,11 +8419,16 @@ export const betaGroupsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List beta license agreements. `GET /v1/betaLicenseAgreements` */
 export const betaLicenseAgreementsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<BetaLicenseAgreementsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaLicenseAgreementsGetCollectionResponses,
+  BetaLicenseAgreementsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaLicenseAgreementsGetCollectionResponses,
     BetaLicenseAgreementsGetCollectionErrors,
@@ -7486,11 +8447,16 @@ export const betaLicenseAgreementsGetCollection = <
     ...options,
   });
 
+/** Read beta license agreements. `GET /v1/betaLicenseAgreements/{id}` */
 export const betaLicenseAgreementsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaLicenseAgreementsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaLicenseAgreementsGetInstanceResponses,
+  BetaLicenseAgreementsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaLicenseAgreementsGetInstanceResponses,
     BetaLicenseAgreementsGetInstanceErrors,
@@ -7508,11 +8474,16 @@ export const betaLicenseAgreementsGetInstance = <
     ...options,
   });
 
+/** Update beta license agreements. `PATCH /v1/betaLicenseAgreements/{id}` */
 export const betaLicenseAgreementsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaLicenseAgreementsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaLicenseAgreementsUpdateInstanceResponses,
+  BetaLicenseAgreementsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaLicenseAgreementsUpdateInstanceResponses,
     BetaLicenseAgreementsUpdateInstanceErrors,
@@ -7527,11 +8498,16 @@ export const betaLicenseAgreementsUpdateInstance = <
     },
   });
 
+/** Create beta recruitment criteria. `POST /v1/betaRecruitmentCriteria` */
 export const betaRecruitmentCriteriaCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaRecruitmentCriteriaCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaRecruitmentCriteriaCreateInstanceResponses,
+  BetaRecruitmentCriteriaCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaRecruitmentCriteriaCreateInstanceResponses,
     BetaRecruitmentCriteriaCreateInstanceErrors,
@@ -7548,11 +8524,16 @@ export const betaRecruitmentCriteriaCreateInstance = <
     },
   });
 
+/** Delete beta recruitment criteria. `DELETE /v1/betaRecruitmentCriteria/{id}` */
 export const betaRecruitmentCriteriaDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaRecruitmentCriteriaDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaRecruitmentCriteriaDeleteInstanceResponses,
+  BetaRecruitmentCriteriaDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaRecruitmentCriteriaDeleteInstanceResponses,
     BetaRecruitmentCriteriaDeleteInstanceErrors,
@@ -7563,11 +8544,16 @@ export const betaRecruitmentCriteriaDeleteInstance = <
     ...options,
   });
 
+/** Update beta recruitment criteria. `PATCH /v1/betaRecruitmentCriteria/{id}` */
 export const betaRecruitmentCriteriaUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaRecruitmentCriteriaUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaRecruitmentCriteriaUpdateInstanceResponses,
+  BetaRecruitmentCriteriaUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BetaRecruitmentCriteriaUpdateInstanceResponses,
     BetaRecruitmentCriteriaUpdateInstanceErrors,
@@ -7584,6 +8570,7 @@ export const betaRecruitmentCriteriaUpdateInstance = <
     },
   });
 
+/** List beta recruitment criterion options. `GET /v1/betaRecruitmentCriterionOptions` */
 export const betaRecruitmentCriterionOptionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
@@ -7591,7 +8578,11 @@ export const betaRecruitmentCriterionOptionsGetCollection = <
     BetaRecruitmentCriterionOptionsGetCollectionData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaRecruitmentCriterionOptionsGetCollectionResponses,
+  BetaRecruitmentCriterionOptionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaRecruitmentCriterionOptionsGetCollectionResponses,
     BetaRecruitmentCriterionOptionsGetCollectionErrors,
@@ -7609,11 +8600,16 @@ export const betaRecruitmentCriterionOptionsGetCollection = <
     ...options,
   });
 
+/** Create beta tester invitations. `POST /v1/betaTesterInvitations` */
 export const betaTesterInvitationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTesterInvitationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTesterInvitationsCreateInstanceResponses,
+  BetaTesterInvitationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaTesterInvitationsCreateInstanceResponses,
     BetaTesterInvitationsCreateInstanceErrors,
@@ -7628,9 +8624,14 @@ export const betaTesterInvitationsCreateInstance = <
     },
   });
 
+/** List beta testers. `GET /v1/betaTesters` */
 export const betaTestersGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<BetaTestersGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersGetCollectionResponses,
+  BetaTestersGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BetaTestersGetCollectionResponses,
     BetaTestersGetCollectionErrors,
@@ -7659,9 +8660,14 @@ export const betaTestersGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create beta testers. `POST /v1/betaTesters` */
 export const betaTestersCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaTestersCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersCreateInstanceResponses,
+  BetaTestersCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaTestersCreateInstanceResponses,
     BetaTestersCreateInstanceErrors,
@@ -7676,9 +8682,14 @@ export const betaTestersCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete beta testers. `DELETE /v1/betaTesters/{id}` */
 export const betaTestersDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaTestersDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersDeleteInstanceResponses,
+  BetaTestersDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaTestersDeleteInstanceResponses,
     BetaTestersDeleteInstanceErrors,
@@ -7689,9 +8700,14 @@ export const betaTestersDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read beta testers. `GET /v1/betaTesters/{id}` */
 export const betaTestersGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BetaTestersGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersGetInstanceResponses,
+  BetaTestersGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersGetInstanceResponses,
     BetaTestersGetInstanceErrors,
@@ -7711,11 +8727,16 @@ export const betaTestersGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** List build beta details. `GET /v1/buildBetaDetails` */
 export const buildBetaDetailsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<BuildBetaDetailsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaDetailsGetCollectionResponses,
+  BuildBetaDetailsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BuildBetaDetailsGetCollectionResponses,
     BuildBetaDetailsGetCollectionErrors,
@@ -7736,11 +8757,16 @@ export const buildBetaDetailsGetCollection = <
     ...options,
   });
 
+/** Read build beta details. `GET /v1/buildBetaDetails/{id}` */
 export const buildBetaDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildBetaDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaDetailsGetInstanceResponses,
+  BuildBetaDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBetaDetailsGetInstanceResponses,
     BuildBetaDetailsGetInstanceErrors,
@@ -7759,11 +8785,16 @@ export const buildBetaDetailsGetInstance = <
     ...options,
   });
 
+/** Update build beta details. `PATCH /v1/buildBetaDetails/{id}` */
 export const buildBetaDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildBetaDetailsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaDetailsUpdateInstanceResponses,
+  BuildBetaDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BuildBetaDetailsUpdateInstanceResponses,
     BuildBetaDetailsUpdateInstanceErrors,
@@ -7779,11 +8810,16 @@ export const buildBetaDetailsUpdateInstance = <
     },
   });
 
+/** Create build beta notifications. `POST /v1/buildBetaNotifications` */
 export const buildBetaNotificationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildBetaNotificationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaNotificationsCreateInstanceResponses,
+  BuildBetaNotificationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BuildBetaNotificationsCreateInstanceResponses,
     BuildBetaNotificationsCreateInstanceErrors,
@@ -7798,11 +8834,16 @@ export const buildBetaNotificationsCreateInstance = <
     },
   });
 
+/** Create build upload files. `POST /v1/buildUploadFiles` */
 export const buildUploadFilesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildUploadFilesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadFilesCreateInstanceResponses,
+  BuildUploadFilesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BuildUploadFilesCreateInstanceResponses,
     BuildUploadFilesCreateInstanceErrors,
@@ -7818,11 +8859,16 @@ export const buildUploadFilesCreateInstance = <
     },
   });
 
+/** Read build upload files. `GET /v1/buildUploadFiles/{id}` */
 export const buildUploadFilesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildUploadFilesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadFilesGetInstanceResponses,
+  BuildUploadFilesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildUploadFilesGetInstanceResponses,
     BuildUploadFilesGetInstanceErrors,
@@ -7837,11 +8883,16 @@ export const buildUploadFilesGetInstance = <
     ...options,
   });
 
+/** Update build upload files. `PATCH /v1/buildUploadFiles/{id}` */
 export const buildUploadFilesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildUploadFilesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadFilesUpdateInstanceResponses,
+  BuildUploadFilesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BuildUploadFilesUpdateInstanceResponses,
     BuildUploadFilesUpdateInstanceErrors,
@@ -7857,11 +8908,16 @@ export const buildUploadFilesUpdateInstance = <
     },
   });
 
+/** Create build uploads. `POST /v1/buildUploads` */
 export const buildUploadsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildUploadsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadsCreateInstanceResponses,
+  BuildUploadsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BuildUploadsCreateInstanceResponses,
     BuildUploadsCreateInstanceErrors,
@@ -7877,11 +8933,16 @@ export const buildUploadsCreateInstance = <
     },
   });
 
+/** Delete build uploads. `DELETE /v1/buildUploads/{id}` */
 export const buildUploadsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildUploadsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadsDeleteInstanceResponses,
+  BuildUploadsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BuildUploadsDeleteInstanceResponses,
     BuildUploadsDeleteInstanceErrors,
@@ -7892,9 +8953,14 @@ export const buildUploadsDeleteInstance = <
     ...options,
   });
 
+/** Read build uploads. `GET /v1/buildUploads/{id}` */
 export const buildUploadsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BuildUploadsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildUploadsGetInstanceResponses,
+  BuildUploadsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildUploadsGetInstanceResponses,
     BuildUploadsGetInstanceErrors,
@@ -7912,9 +8978,14 @@ export const buildUploadsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** List builds. `GET /v1/builds` */
 export const buildsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<BuildsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsGetCollectionResponses,
+  BuildsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BuildsGetCollectionResponses,
     BuildsGetCollectionErrors,
@@ -7957,9 +9028,14 @@ export const buildsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read builds. `GET /v1/builds/{id}` */
 export const buildsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BuildsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsGetInstanceResponses,
+  BuildsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsGetInstanceResponses,
     BuildsGetInstanceErrors,
@@ -7986,9 +9062,14 @@ export const buildsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update builds. `PATCH /v1/builds/{id}` */
 export const buildsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BuildsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsUpdateInstanceResponses,
+  BuildsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BuildsUpdateInstanceResponses,
     BuildsUpdateInstanceErrors,
@@ -8004,11 +9085,16 @@ export const buildsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create bundle id capabilities. `POST /v1/bundleIdCapabilities` */
 export const bundleIdCapabilitiesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdCapabilitiesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdCapabilitiesCreateInstanceResponses,
+  BundleIdCapabilitiesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BundleIdCapabilitiesCreateInstanceResponses,
     BundleIdCapabilitiesCreateInstanceErrors,
@@ -8023,11 +9109,16 @@ export const bundleIdCapabilitiesCreateInstance = <
     },
   });
 
+/** Delete bundle id capabilities. `DELETE /v1/bundleIdCapabilities/{id}` */
 export const bundleIdCapabilitiesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdCapabilitiesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdCapabilitiesDeleteInstanceResponses,
+  BundleIdCapabilitiesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BundleIdCapabilitiesDeleteInstanceResponses,
     BundleIdCapabilitiesDeleteInstanceErrors,
@@ -8038,11 +9129,16 @@ export const bundleIdCapabilitiesDeleteInstance = <
     ...options,
   });
 
+/** Update bundle id capabilities. `PATCH /v1/bundleIdCapabilities/{id}` */
 export const bundleIdCapabilitiesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdCapabilitiesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdCapabilitiesUpdateInstanceResponses,
+  BundleIdCapabilitiesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BundleIdCapabilitiesUpdateInstanceResponses,
     BundleIdCapabilitiesUpdateInstanceErrors,
@@ -8057,9 +9153,14 @@ export const bundleIdCapabilitiesUpdateInstance = <
     },
   });
 
+/** List bundle ids. `GET /v1/bundleIds` */
 export const bundleIdsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<BundleIdsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsGetCollectionResponses,
+  BundleIdsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     BundleIdsGetCollectionResponses,
     BundleIdsGetCollectionErrors,
@@ -8085,9 +9186,14 @@ export const bundleIdsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create bundle ids. `POST /v1/bundleIds` */
 export const bundleIdsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BundleIdsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsCreateInstanceResponses,
+  BundleIdsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BundleIdsCreateInstanceResponses,
     BundleIdsCreateInstanceErrors,
@@ -8102,9 +9208,14 @@ export const bundleIdsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete bundle ids. `DELETE /v1/bundleIds/{id}` */
 export const bundleIdsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<BundleIdsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsDeleteInstanceResponses,
+  BundleIdsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BundleIdsDeleteInstanceResponses,
     BundleIdsDeleteInstanceErrors,
@@ -8115,9 +9226,14 @@ export const bundleIdsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read bundle ids. `GET /v1/bundleIds/{id}` */
 export const bundleIdsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<BundleIdsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsGetInstanceResponses,
+  BundleIdsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsGetInstanceResponses,
     BundleIdsGetInstanceErrors,
@@ -8137,9 +9253,14 @@ export const bundleIdsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update bundle ids. `PATCH /v1/bundleIds/{id}` */
 export const bundleIdsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<BundleIdsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsUpdateInstanceResponses,
+  BundleIdsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BundleIdsUpdateInstanceResponses,
     BundleIdsUpdateInstanceErrors,
@@ -8154,9 +9275,14 @@ export const bundleIdsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List certificates. `GET /v1/certificates` */
 export const certificatesGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<CertificatesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesGetCollectionResponses,
+  CertificatesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     CertificatesGetCollectionResponses,
     CertificatesGetCollectionErrors,
@@ -8180,11 +9306,16 @@ export const certificatesGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create certificates. `POST /v1/certificates` */
 export const certificatesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CertificatesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesCreateInstanceResponses,
+  CertificatesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     CertificatesCreateInstanceResponses,
     CertificatesCreateInstanceErrors,
@@ -8200,11 +9331,16 @@ export const certificatesCreateInstance = <
     },
   });
 
+/** Delete certificates. `DELETE /v1/certificates/{id}` */
 export const certificatesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CertificatesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesDeleteInstanceResponses,
+  CertificatesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     CertificatesDeleteInstanceResponses,
     CertificatesDeleteInstanceErrors,
@@ -8215,9 +9351,14 @@ export const certificatesDeleteInstance = <
     ...options,
   });
 
+/** Read certificates. `GET /v1/certificates/{id}` */
 export const certificatesGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CertificatesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesGetInstanceResponses,
+  CertificatesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CertificatesGetInstanceResponses,
     CertificatesGetInstanceErrors,
@@ -8236,11 +9377,16 @@ export const certificatesGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update certificates. `PATCH /v1/certificates/{id}` */
 export const certificatesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CertificatesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesUpdateInstanceResponses,
+  CertificatesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     CertificatesUpdateInstanceResponses,
     CertificatesUpdateInstanceErrors,
@@ -8256,9 +9402,14 @@ export const certificatesUpdateInstance = <
     },
   });
 
+/** Read ci artifacts. `GET /v1/ciArtifacts/{id}` */
 export const ciArtifactsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiArtifactsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiArtifactsGetInstanceResponses,
+  CiArtifactsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiArtifactsGetInstanceResponses,
     CiArtifactsGetInstanceErrors,
@@ -8272,9 +9423,14 @@ export const ciArtifactsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read ci build actions. `GET /v1/ciBuildActions/{id}` */
 export const ciBuildActionsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiBuildActionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsGetInstanceResponses,
+  CiBuildActionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsGetInstanceResponses,
     CiBuildActionsGetInstanceErrors,
@@ -8293,9 +9449,14 @@ export const ciBuildActionsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create ci build runs. `POST /v1/ciBuildRuns` */
 export const ciBuildRunsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiBuildRunsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsCreateInstanceResponses,
+  CiBuildRunsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     CiBuildRunsCreateInstanceResponses,
     CiBuildRunsCreateInstanceErrors,
@@ -8311,9 +9472,14 @@ export const ciBuildRunsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Read ci build runs. `GET /v1/ciBuildRuns/{id}` */
 export const ciBuildRunsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiBuildRunsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsGetInstanceResponses,
+  CiBuildRunsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildRunsGetInstanceResponses,
     CiBuildRunsGetInstanceErrors,
@@ -8332,9 +9498,14 @@ export const ciBuildRunsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read ci issues. `GET /v1/ciIssues/{id}` */
 export const ciIssuesGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiIssuesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiIssuesGetInstanceResponses,
+  CiIssuesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiIssuesGetInstanceResponses,
     CiIssuesGetInstanceErrors,
@@ -8348,11 +9519,16 @@ export const ciIssuesGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** List ci mac os versions. `GET /v1/ciMacOsVersions` */
 export const ciMacOsVersionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<CiMacOsVersionsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiMacOsVersionsGetCollectionResponses,
+  CiMacOsVersionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     CiMacOsVersionsGetCollectionResponses,
     CiMacOsVersionsGetCollectionErrors,
@@ -8370,11 +9546,16 @@ export const ciMacOsVersionsGetCollection = <
     ...options,
   });
 
+/** Read ci mac os versions. `GET /v1/ciMacOsVersions/{id}` */
 export const ciMacOsVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiMacOsVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiMacOsVersionsGetInstanceResponses,
+  CiMacOsVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiMacOsVersionsGetInstanceResponses,
     CiMacOsVersionsGetInstanceErrors,
@@ -8392,9 +9573,14 @@ export const ciMacOsVersionsGetInstance = <
     ...options,
   });
 
+/** List ci products. `GET /v1/ciProducts` */
 export const ciProductsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<CiProductsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsGetCollectionResponses,
+  CiProductsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     CiProductsGetCollectionResponses,
     CiProductsGetCollectionErrors,
@@ -8416,9 +9602,14 @@ export const ciProductsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Delete ci products. `DELETE /v1/ciProducts/{id}` */
 export const ciProductsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiProductsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsDeleteInstanceResponses,
+  CiProductsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     CiProductsDeleteInstanceResponses,
     CiProductsDeleteInstanceErrors,
@@ -8429,9 +9620,14 @@ export const ciProductsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read ci products. `GET /v1/ciProducts/{id}` */
 export const ciProductsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiProductsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsGetInstanceResponses,
+  CiProductsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsGetInstanceResponses,
     CiProductsGetInstanceErrors,
@@ -8451,9 +9647,14 @@ export const ciProductsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read ci test results. `GET /v1/ciTestResults/{id}` */
 export const ciTestResultsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiTestResultsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiTestResultsGetInstanceResponses,
+  CiTestResultsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiTestResultsGetInstanceResponses,
     CiTestResultsGetInstanceErrors,
@@ -8467,9 +9668,14 @@ export const ciTestResultsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create ci workflows. `POST /v1/ciWorkflows` */
 export const ciWorkflowsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiWorkflowsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsCreateInstanceResponses,
+  CiWorkflowsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     CiWorkflowsCreateInstanceResponses,
     CiWorkflowsCreateInstanceErrors,
@@ -8485,9 +9691,14 @@ export const ciWorkflowsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete ci workflows. `DELETE /v1/ciWorkflows/{id}` */
 export const ciWorkflowsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiWorkflowsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsDeleteInstanceResponses,
+  CiWorkflowsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     CiWorkflowsDeleteInstanceResponses,
     CiWorkflowsDeleteInstanceErrors,
@@ -8498,9 +9709,14 @@ export const ciWorkflowsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read ci workflows. `GET /v1/ciWorkflows/{id}` */
 export const ciWorkflowsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiWorkflowsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsGetInstanceResponses,
+  CiWorkflowsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiWorkflowsGetInstanceResponses,
     CiWorkflowsGetInstanceErrors,
@@ -8519,9 +9735,14 @@ export const ciWorkflowsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update ci workflows. `PATCH /v1/ciWorkflows/{id}` */
 export const ciWorkflowsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<CiWorkflowsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsUpdateInstanceResponses,
+  CiWorkflowsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     CiWorkflowsUpdateInstanceResponses,
     CiWorkflowsUpdateInstanceErrors,
@@ -8537,11 +9758,16 @@ export const ciWorkflowsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List ci xcode versions. `GET /v1/ciXcodeVersions` */
 export const ciXcodeVersionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<CiXcodeVersionsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiXcodeVersionsGetCollectionResponses,
+  CiXcodeVersionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     CiXcodeVersionsGetCollectionResponses,
     CiXcodeVersionsGetCollectionErrors,
@@ -8559,11 +9785,16 @@ export const ciXcodeVersionsGetCollection = <
     ...options,
   });
 
+/** Read ci xcode versions. `GET /v1/ciXcodeVersions/{id}` */
 export const ciXcodeVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiXcodeVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiXcodeVersionsGetInstanceResponses,
+  CiXcodeVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiXcodeVersionsGetInstanceResponses,
     CiXcodeVersionsGetInstanceErrors,
@@ -8581,11 +9812,16 @@ export const ciXcodeVersionsGetInstance = <
     ...options,
   });
 
+/** Create customer review responses. `POST /v1/customerReviewResponses` */
 export const customerReviewResponsesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CustomerReviewResponsesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CustomerReviewResponsesCreateInstanceResponses,
+  CustomerReviewResponsesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     CustomerReviewResponsesCreateInstanceResponses,
     CustomerReviewResponsesCreateInstanceErrors,
@@ -8602,11 +9838,16 @@ export const customerReviewResponsesCreateInstance = <
     },
   });
 
+/** Delete customer review responses. `DELETE /v1/customerReviewResponses/{id}` */
 export const customerReviewResponsesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CustomerReviewResponsesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CustomerReviewResponsesDeleteInstanceResponses,
+  CustomerReviewResponsesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     CustomerReviewResponsesDeleteInstanceResponses,
     CustomerReviewResponsesDeleteInstanceErrors,
@@ -8617,11 +9858,16 @@ export const customerReviewResponsesDeleteInstance = <
     ...options,
   });
 
+/** Read customer review responses. `GET /v1/customerReviewResponses/{id}` */
 export const customerReviewResponsesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CustomerReviewResponsesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CustomerReviewResponsesGetInstanceResponses,
+  CustomerReviewResponsesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CustomerReviewResponsesGetInstanceResponses,
     CustomerReviewResponsesGetInstanceErrors,
@@ -8639,11 +9885,16 @@ export const customerReviewResponsesGetInstance = <
     ...options,
   });
 
+/** Read customer reviews. `GET /v1/customerReviews/{id}` */
 export const customerReviewsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CustomerReviewsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  CustomerReviewsGetInstanceResponses,
+  CustomerReviewsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CustomerReviewsGetInstanceResponses,
     CustomerReviewsGetInstanceErrors,
@@ -8662,9 +9913,14 @@ export const customerReviewsGetInstance = <
     ...options,
   });
 
+/** List devices. `GET /v1/devices` */
 export const devicesGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<DevicesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  DevicesGetCollectionResponses,
+  DevicesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     DevicesGetCollectionResponses,
     DevicesGetCollectionErrors,
@@ -8687,9 +9943,14 @@ export const devicesGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create devices. `POST /v1/devices` */
 export const devicesCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<DevicesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  DevicesCreateInstanceResponses,
+  DevicesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     DevicesCreateInstanceResponses,
     DevicesCreateInstanceErrors,
@@ -8705,9 +9966,14 @@ export const devicesCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Read devices. `GET /v1/devices/{id}` */
 export const devicesGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<DevicesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  DevicesGetInstanceResponses,
+  DevicesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     DevicesGetInstanceResponses,
     DevicesGetInstanceErrors,
@@ -8722,9 +9988,14 @@ export const devicesGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update devices. `PATCH /v1/devices/{id}` */
 export const devicesUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<DevicesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  DevicesUpdateInstanceResponses,
+  DevicesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     DevicesUpdateInstanceResponses,
     DevicesUpdateInstanceErrors,
@@ -8740,11 +10011,16 @@ export const devicesUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create end app availability pre orders. `POST /v1/endAppAvailabilityPreOrders` */
 export const endAppAvailabilityPreOrdersCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<EndAppAvailabilityPreOrdersCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  EndAppAvailabilityPreOrdersCreateInstanceResponses,
+  EndAppAvailabilityPreOrdersCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     EndAppAvailabilityPreOrdersCreateInstanceResponses,
     EndAppAvailabilityPreOrdersCreateInstanceErrors,
@@ -8759,11 +10035,16 @@ export const endAppAvailabilityPreOrdersCreateInstance = <
     },
   });
 
+/** Create end user license agreements. `POST /v1/endUserLicenseAgreements` */
 export const endUserLicenseAgreementsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<EndUserLicenseAgreementsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsCreateInstanceResponses,
+  EndUserLicenseAgreementsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     EndUserLicenseAgreementsCreateInstanceResponses,
     EndUserLicenseAgreementsCreateInstanceErrors,
@@ -8778,11 +10059,16 @@ export const endUserLicenseAgreementsCreateInstance = <
     },
   });
 
+/** Delete end user license agreements. `DELETE /v1/endUserLicenseAgreements/{id}` */
 export const endUserLicenseAgreementsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<EndUserLicenseAgreementsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsDeleteInstanceResponses,
+  EndUserLicenseAgreementsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     EndUserLicenseAgreementsDeleteInstanceResponses,
     EndUserLicenseAgreementsDeleteInstanceErrors,
@@ -8793,11 +10079,16 @@ export const endUserLicenseAgreementsDeleteInstance = <
     ...options,
   });
 
+/** Read end user license agreements. `GET /v1/endUserLicenseAgreements/{id}` */
 export const endUserLicenseAgreementsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<EndUserLicenseAgreementsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsGetInstanceResponses,
+  EndUserLicenseAgreementsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     EndUserLicenseAgreementsGetInstanceResponses,
     EndUserLicenseAgreementsGetInstanceErrors,
@@ -8815,11 +10106,16 @@ export const endUserLicenseAgreementsGetInstance = <
     ...options,
   });
 
+/** Update end user license agreements. `PATCH /v1/endUserLicenseAgreements/{id}` */
 export const endUserLicenseAgreementsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<EndUserLicenseAgreementsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsUpdateInstanceResponses,
+  EndUserLicenseAgreementsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     EndUserLicenseAgreementsUpdateInstanceResponses,
     EndUserLicenseAgreementsUpdateInstanceErrors,
@@ -8834,11 +10130,16 @@ export const endUserLicenseAgreementsUpdateInstance = <
     },
   });
 
+/** List finance reports. `GET /v1/financeReports` */
 export const financeReportsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<FinanceReportsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  FinanceReportsGetCollectionResponses,
+  FinanceReportsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     FinanceReportsGetCollectionResponses,
     FinanceReportsGetCollectionErrors,
@@ -8857,6 +10158,7 @@ export const financeReportsGetCollection = <
     ...options,
   });
 
+/** Create game center achievement images v2. `POST /v2/gameCenterAchievementImages` */
 export const gameCenterAchievementImagesV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8864,7 +10166,11 @@ export const gameCenterAchievementImagesV2CreateInstance = <
     GameCenterAchievementImagesV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementImagesV2CreateInstanceResponses,
+  GameCenterAchievementImagesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterAchievementImagesV2CreateInstanceResponses,
     GameCenterAchievementImagesV2CreateInstanceErrors,
@@ -8879,6 +10185,7 @@ export const gameCenterAchievementImagesV2CreateInstance = <
     },
   });
 
+/** Delete game center achievement images v2. `DELETE /v2/gameCenterAchievementImages/{id}` */
 export const gameCenterAchievementImagesV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8886,7 +10193,11 @@ export const gameCenterAchievementImagesV2DeleteInstance = <
     GameCenterAchievementImagesV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementImagesV2DeleteInstanceResponses,
+  GameCenterAchievementImagesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterAchievementImagesV2DeleteInstanceResponses,
     GameCenterAchievementImagesV2DeleteInstanceErrors,
@@ -8897,11 +10208,16 @@ export const gameCenterAchievementImagesV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center achievement images v2. `GET /v2/gameCenterAchievementImages/{id}` */
 export const gameCenterAchievementImagesV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAchievementImagesV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAchievementImagesV2GetInstanceResponses,
+  GameCenterAchievementImagesV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementImagesV2GetInstanceResponses,
     GameCenterAchievementImagesV2GetInstanceErrors,
@@ -8918,6 +10234,7 @@ export const gameCenterAchievementImagesV2GetInstance = <
     ...options,
   });
 
+/** Update game center achievement images v2. `PATCH /v2/gameCenterAchievementImages/{id}` */
 export const gameCenterAchievementImagesV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8925,7 +10242,11 @@ export const gameCenterAchievementImagesV2UpdateInstance = <
     GameCenterAchievementImagesV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementImagesV2UpdateInstanceResponses,
+  GameCenterAchievementImagesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterAchievementImagesV2UpdateInstanceResponses,
     GameCenterAchievementImagesV2UpdateInstanceErrors,
@@ -8940,6 +10261,7 @@ export const gameCenterAchievementImagesV2UpdateInstance = <
     },
   });
 
+/** Create game center achievement localizations v2. `POST /v2/gameCenterAchievementLocalizations` */
 export const gameCenterAchievementLocalizationsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8947,7 +10269,11 @@ export const gameCenterAchievementLocalizationsV2CreateInstance = <
     GameCenterAchievementLocalizationsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2CreateInstanceResponses,
+  GameCenterAchievementLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterAchievementLocalizationsV2CreateInstanceResponses,
     GameCenterAchievementLocalizationsV2CreateInstanceErrors,
@@ -8962,6 +10288,7 @@ export const gameCenterAchievementLocalizationsV2CreateInstance = <
     },
   });
 
+/** Delete game center achievement localizations v2. `DELETE /v2/gameCenterAchievementLocalizations/{id}` */
 export const gameCenterAchievementLocalizationsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8969,7 +10296,11 @@ export const gameCenterAchievementLocalizationsV2DeleteInstance = <
     GameCenterAchievementLocalizationsV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2DeleteInstanceResponses,
+  GameCenterAchievementLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterAchievementLocalizationsV2DeleteInstanceResponses,
     GameCenterAchievementLocalizationsV2DeleteInstanceErrors,
@@ -8980,6 +10311,7 @@ export const gameCenterAchievementLocalizationsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center achievement localizations v2. `GET /v2/gameCenterAchievementLocalizations/{id}` */
 export const gameCenterAchievementLocalizationsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -8987,7 +10319,11 @@ export const gameCenterAchievementLocalizationsV2GetInstance = <
     GameCenterAchievementLocalizationsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2GetInstanceResponses,
+  GameCenterAchievementLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementLocalizationsV2GetInstanceResponses,
     GameCenterAchievementLocalizationsV2GetInstanceErrors,
@@ -9007,6 +10343,7 @@ export const gameCenterAchievementLocalizationsV2GetInstance = <
     ...options,
   });
 
+/** Update game center achievement localizations v2. `PATCH /v2/gameCenterAchievementLocalizations/{id}` */
 export const gameCenterAchievementLocalizationsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9014,7 +10351,11 @@ export const gameCenterAchievementLocalizationsV2UpdateInstance = <
     GameCenterAchievementLocalizationsV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2UpdateInstanceResponses,
+  GameCenterAchievementLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterAchievementLocalizationsV2UpdateInstanceResponses,
     GameCenterAchievementLocalizationsV2UpdateInstanceErrors,
@@ -9029,6 +10370,7 @@ export const gameCenterAchievementLocalizationsV2UpdateInstance = <
     },
   });
 
+/** Create game center achievement versions v2. `POST /v2/gameCenterAchievementVersions` */
 export const gameCenterAchievementVersionsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9036,7 +10378,11 @@ export const gameCenterAchievementVersionsV2CreateInstance = <
     GameCenterAchievementVersionsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementVersionsV2CreateInstanceResponses,
+  GameCenterAchievementVersionsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterAchievementVersionsV2CreateInstanceResponses,
     GameCenterAchievementVersionsV2CreateInstanceErrors,
@@ -9051,6 +10397,7 @@ export const gameCenterAchievementVersionsV2CreateInstance = <
     },
   });
 
+/** Read game center achievement versions v2. `GET /v2/gameCenterAchievementVersions/{id}` */
 export const gameCenterAchievementVersionsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9058,7 +10405,11 @@ export const gameCenterAchievementVersionsV2GetInstance = <
     GameCenterAchievementVersionsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementVersionsV2GetInstanceResponses,
+  GameCenterAchievementVersionsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementVersionsV2GetInstanceResponses,
     GameCenterAchievementVersionsV2GetInstanceErrors,
@@ -9078,11 +10429,16 @@ export const gameCenterAchievementVersionsV2GetInstance = <
     ...options,
   });
 
+/** Create game center achievements v2. `POST /v2/gameCenterAchievements` */
 export const gameCenterAchievementsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAchievementsV2CreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2CreateInstanceResponses,
+  GameCenterAchievementsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterAchievementsV2CreateInstanceResponses,
     GameCenterAchievementsV2CreateInstanceErrors,
@@ -9097,11 +10453,16 @@ export const gameCenterAchievementsV2CreateInstance = <
     },
   });
 
+/** Delete game center achievements v2. `DELETE /v2/gameCenterAchievements/{id}` */
 export const gameCenterAchievementsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAchievementsV2DeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2DeleteInstanceResponses,
+  GameCenterAchievementsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterAchievementsV2DeleteInstanceResponses,
     GameCenterAchievementsV2DeleteInstanceErrors,
@@ -9112,11 +10473,16 @@ export const gameCenterAchievementsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center achievements v2. `GET /v2/gameCenterAchievements/{id}` */
 export const gameCenterAchievementsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAchievementsV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2GetInstanceResponses,
+  GameCenterAchievementsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementsV2GetInstanceResponses,
     GameCenterAchievementsV2GetInstanceErrors,
@@ -9134,11 +10500,16 @@ export const gameCenterAchievementsV2GetInstance = <
     ...options,
   });
 
+/** Update game center achievements v2. `PATCH /v2/gameCenterAchievements/{id}` */
 export const gameCenterAchievementsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAchievementsV2UpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2UpdateInstanceResponses,
+  GameCenterAchievementsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterAchievementsV2UpdateInstanceResponses,
     GameCenterAchievementsV2UpdateInstanceErrors,
@@ -9153,11 +10524,16 @@ export const gameCenterAchievementsV2UpdateInstance = <
     },
   });
 
+/** Create game center activities. `POST /v1/gameCenterActivities` */
 export const gameCenterActivitiesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivitiesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivitiesCreateInstanceResponses,
+  GameCenterActivitiesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivitiesCreateInstanceResponses,
     GameCenterActivitiesCreateInstanceErrors,
@@ -9172,11 +10548,16 @@ export const gameCenterActivitiesCreateInstance = <
     },
   });
 
+/** Delete game center activities. `DELETE /v1/gameCenterActivities/{id}` */
 export const gameCenterActivitiesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivitiesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivitiesDeleteInstanceResponses,
+  GameCenterActivitiesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterActivitiesDeleteInstanceResponses,
     GameCenterActivitiesDeleteInstanceErrors,
@@ -9187,11 +10568,16 @@ export const gameCenterActivitiesDeleteInstance = <
     ...options,
   });
 
+/** Read game center activities. `GET /v1/gameCenterActivities/{id}` */
 export const gameCenterActivitiesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivitiesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivitiesGetInstanceResponses,
+  GameCenterActivitiesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivitiesGetInstanceResponses,
     GameCenterActivitiesGetInstanceErrors,
@@ -9209,11 +10595,16 @@ export const gameCenterActivitiesGetInstance = <
     ...options,
   });
 
+/** Update game center activities. `PATCH /v1/gameCenterActivities/{id}` */
 export const gameCenterActivitiesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivitiesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivitiesUpdateInstanceResponses,
+  GameCenterActivitiesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterActivitiesUpdateInstanceResponses,
     GameCenterActivitiesUpdateInstanceErrors,
@@ -9228,11 +10619,16 @@ export const gameCenterActivitiesUpdateInstance = <
     },
   });
 
+/** Create game center activity images. `POST /v1/gameCenterActivityImages` */
 export const gameCenterActivityImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityImagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityImagesCreateInstanceResponses,
+  GameCenterActivityImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivityImagesCreateInstanceResponses,
     GameCenterActivityImagesCreateInstanceErrors,
@@ -9247,11 +10643,16 @@ export const gameCenterActivityImagesCreateInstance = <
     },
   });
 
+/** Delete game center activity images. `DELETE /v1/gameCenterActivityImages/{id}` */
 export const gameCenterActivityImagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityImagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityImagesDeleteInstanceResponses,
+  GameCenterActivityImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterActivityImagesDeleteInstanceResponses,
     GameCenterActivityImagesDeleteInstanceErrors,
@@ -9262,11 +10663,16 @@ export const gameCenterActivityImagesDeleteInstance = <
     ...options,
   });
 
+/** Read game center activity images. `GET /v1/gameCenterActivityImages/{id}` */
 export const gameCenterActivityImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityImagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityImagesGetInstanceResponses,
+  GameCenterActivityImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityImagesGetInstanceResponses,
     GameCenterActivityImagesGetInstanceErrors,
@@ -9282,11 +10688,16 @@ export const gameCenterActivityImagesGetInstance = <
     ...options,
   });
 
+/** Update game center activity images. `PATCH /v1/gameCenterActivityImages/{id}` */
 export const gameCenterActivityImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityImagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityImagesUpdateInstanceResponses,
+  GameCenterActivityImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterActivityImagesUpdateInstanceResponses,
     GameCenterActivityImagesUpdateInstanceErrors,
@@ -9301,6 +10712,7 @@ export const gameCenterActivityImagesUpdateInstance = <
     },
   });
 
+/** Create game center activity localizations. `POST /v1/gameCenterActivityLocalizations` */
 export const gameCenterActivityLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9308,7 +10720,11 @@ export const gameCenterActivityLocalizationsCreateInstance = <
     GameCenterActivityLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsCreateInstanceResponses,
+  GameCenterActivityLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivityLocalizationsCreateInstanceResponses,
     GameCenterActivityLocalizationsCreateInstanceErrors,
@@ -9323,6 +10739,7 @@ export const gameCenterActivityLocalizationsCreateInstance = <
     },
   });
 
+/** Delete game center activity localizations. `DELETE /v1/gameCenterActivityLocalizations/{id}` */
 export const gameCenterActivityLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9330,7 +10747,11 @@ export const gameCenterActivityLocalizationsDeleteInstance = <
     GameCenterActivityLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsDeleteInstanceResponses,
+  GameCenterActivityLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterActivityLocalizationsDeleteInstanceResponses,
     GameCenterActivityLocalizationsDeleteInstanceErrors,
@@ -9341,6 +10762,7 @@ export const gameCenterActivityLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read game center activity localizations. `GET /v1/gameCenterActivityLocalizations/{id}` */
 export const gameCenterActivityLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9348,7 +10770,11 @@ export const gameCenterActivityLocalizationsGetInstance = <
     GameCenterActivityLocalizationsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsGetInstanceResponses,
+  GameCenterActivityLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityLocalizationsGetInstanceResponses,
     GameCenterActivityLocalizationsGetInstanceErrors,
@@ -9368,6 +10794,7 @@ export const gameCenterActivityLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update game center activity localizations. `PATCH /v1/gameCenterActivityLocalizations/{id}` */
 export const gameCenterActivityLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9375,7 +10802,11 @@ export const gameCenterActivityLocalizationsUpdateInstance = <
     GameCenterActivityLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsUpdateInstanceResponses,
+  GameCenterActivityLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterActivityLocalizationsUpdateInstanceResponses,
     GameCenterActivityLocalizationsUpdateInstanceErrors,
@@ -9390,11 +10821,16 @@ export const gameCenterActivityLocalizationsUpdateInstance = <
     },
   });
 
+/** Create game center activity versions. `POST /v1/gameCenterActivityVersions` */
 export const gameCenterActivityVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityVersionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsCreateInstanceResponses,
+  GameCenterActivityVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivityVersionsCreateInstanceResponses,
     GameCenterActivityVersionsCreateInstanceErrors,
@@ -9409,11 +10845,16 @@ export const gameCenterActivityVersionsCreateInstance = <
     },
   });
 
+/** Read game center activity versions. `GET /v1/gameCenterActivityVersions/{id}` */
 export const gameCenterActivityVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsGetInstanceResponses,
+  GameCenterActivityVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityVersionsGetInstanceResponses,
     GameCenterActivityVersionsGetInstanceErrors,
@@ -9434,11 +10875,16 @@ export const gameCenterActivityVersionsGetInstance = <
     ...options,
   });
 
+/** Update game center activity versions. `PATCH /v1/gameCenterActivityVersions/{id}` */
 export const gameCenterActivityVersionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterActivityVersionsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsUpdateInstanceResponses,
+  GameCenterActivityVersionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterActivityVersionsUpdateInstanceResponses,
     GameCenterActivityVersionsUpdateInstanceErrors,
@@ -9453,11 +10899,16 @@ export const gameCenterActivityVersionsUpdateInstance = <
     },
   });
 
+/** Create game center app versions. `POST /v1/gameCenterAppVersions` */
 export const gameCenterAppVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAppVersionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAppVersionsCreateInstanceResponses,
+  GameCenterAppVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterAppVersionsCreateInstanceResponses,
     GameCenterAppVersionsCreateInstanceErrors,
@@ -9473,11 +10924,16 @@ export const gameCenterAppVersionsCreateInstance = <
     },
   });
 
+/** Read game center app versions. `GET /v1/gameCenterAppVersions/{id}` */
 export const gameCenterAppVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAppVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAppVersionsGetInstanceResponses,
+  GameCenterAppVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAppVersionsGetInstanceResponses,
     GameCenterAppVersionsGetInstanceErrors,
@@ -9496,11 +10952,16 @@ export const gameCenterAppVersionsGetInstance = <
     ...options,
   });
 
+/** Update game center app versions. `PATCH /v1/gameCenterAppVersions/{id}` */
 export const gameCenterAppVersionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterAppVersionsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterAppVersionsUpdateInstanceResponses,
+  GameCenterAppVersionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterAppVersionsUpdateInstanceResponses,
     GameCenterAppVersionsUpdateInstanceErrors,
@@ -9516,11 +10977,16 @@ export const gameCenterAppVersionsUpdateInstance = <
     },
   });
 
+/** Create game center challenge images. `POST /v1/gameCenterChallengeImages` */
 export const gameCenterChallengeImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeImagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeImagesCreateInstanceResponses,
+  GameCenterChallengeImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterChallengeImagesCreateInstanceResponses,
     GameCenterChallengeImagesCreateInstanceErrors,
@@ -9535,11 +11001,16 @@ export const gameCenterChallengeImagesCreateInstance = <
     },
   });
 
+/** Delete game center challenge images. `DELETE /v1/gameCenterChallengeImages/{id}` */
 export const gameCenterChallengeImagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeImagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeImagesDeleteInstanceResponses,
+  GameCenterChallengeImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterChallengeImagesDeleteInstanceResponses,
     GameCenterChallengeImagesDeleteInstanceErrors,
@@ -9550,11 +11021,16 @@ export const gameCenterChallengeImagesDeleteInstance = <
     ...options,
   });
 
+/** Read game center challenge images. `GET /v1/gameCenterChallengeImages/{id}` */
 export const gameCenterChallengeImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeImagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeImagesGetInstanceResponses,
+  GameCenterChallengeImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeImagesGetInstanceResponses,
     GameCenterChallengeImagesGetInstanceErrors,
@@ -9570,11 +11046,16 @@ export const gameCenterChallengeImagesGetInstance = <
     ...options,
   });
 
+/** Update game center challenge images. `PATCH /v1/gameCenterChallengeImages/{id}` */
 export const gameCenterChallengeImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeImagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeImagesUpdateInstanceResponses,
+  GameCenterChallengeImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterChallengeImagesUpdateInstanceResponses,
     GameCenterChallengeImagesUpdateInstanceErrors,
@@ -9589,6 +11070,7 @@ export const gameCenterChallengeImagesUpdateInstance = <
     },
   });
 
+/** Create game center challenge localizations. `POST /v1/gameCenterChallengeLocalizations` */
 export const gameCenterChallengeLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9596,7 +11078,11 @@ export const gameCenterChallengeLocalizationsCreateInstance = <
     GameCenterChallengeLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsCreateInstanceResponses,
+  GameCenterChallengeLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterChallengeLocalizationsCreateInstanceResponses,
     GameCenterChallengeLocalizationsCreateInstanceErrors,
@@ -9611,6 +11097,7 @@ export const gameCenterChallengeLocalizationsCreateInstance = <
     },
   });
 
+/** Delete game center challenge localizations. `DELETE /v1/gameCenterChallengeLocalizations/{id}` */
 export const gameCenterChallengeLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9618,7 +11105,11 @@ export const gameCenterChallengeLocalizationsDeleteInstance = <
     GameCenterChallengeLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsDeleteInstanceResponses,
+  GameCenterChallengeLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterChallengeLocalizationsDeleteInstanceResponses,
     GameCenterChallengeLocalizationsDeleteInstanceErrors,
@@ -9629,6 +11120,7 @@ export const gameCenterChallengeLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read game center challenge localizations. `GET /v1/gameCenterChallengeLocalizations/{id}` */
 export const gameCenterChallengeLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9636,7 +11128,11 @@ export const gameCenterChallengeLocalizationsGetInstance = <
     GameCenterChallengeLocalizationsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsGetInstanceResponses,
+  GameCenterChallengeLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeLocalizationsGetInstanceResponses,
     GameCenterChallengeLocalizationsGetInstanceErrors,
@@ -9656,6 +11152,7 @@ export const gameCenterChallengeLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update game center challenge localizations. `PATCH /v1/gameCenterChallengeLocalizations/{id}` */
 export const gameCenterChallengeLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9663,7 +11160,11 @@ export const gameCenterChallengeLocalizationsUpdateInstance = <
     GameCenterChallengeLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsUpdateInstanceResponses,
+  GameCenterChallengeLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterChallengeLocalizationsUpdateInstanceResponses,
     GameCenterChallengeLocalizationsUpdateInstanceErrors,
@@ -9678,11 +11179,16 @@ export const gameCenterChallengeLocalizationsUpdateInstance = <
     },
   });
 
+/** Create game center challenge versions. `POST /v1/gameCenterChallengeVersions` */
 export const gameCenterChallengeVersionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeVersionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsCreateInstanceResponses,
+  GameCenterChallengeVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterChallengeVersionsCreateInstanceResponses,
     GameCenterChallengeVersionsCreateInstanceErrors,
@@ -9697,11 +11203,16 @@ export const gameCenterChallengeVersionsCreateInstance = <
     },
   });
 
+/** Read game center challenge versions. `GET /v1/gameCenterChallengeVersions/{id}` */
 export const gameCenterChallengeVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengeVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsGetInstanceResponses,
+  GameCenterChallengeVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeVersionsGetInstanceResponses,
     GameCenterChallengeVersionsGetInstanceErrors,
@@ -9722,11 +11233,16 @@ export const gameCenterChallengeVersionsGetInstance = <
     ...options,
   });
 
+/** Create game center challenges. `POST /v1/gameCenterChallenges` */
 export const gameCenterChallengesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengesCreateInstanceResponses,
+  GameCenterChallengesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterChallengesCreateInstanceResponses,
     GameCenterChallengesCreateInstanceErrors,
@@ -9741,11 +11257,16 @@ export const gameCenterChallengesCreateInstance = <
     },
   });
 
+/** Delete game center challenges. `DELETE /v1/gameCenterChallenges/{id}` */
 export const gameCenterChallengesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengesDeleteInstanceResponses,
+  GameCenterChallengesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterChallengesDeleteInstanceResponses,
     GameCenterChallengesDeleteInstanceErrors,
@@ -9756,11 +11277,16 @@ export const gameCenterChallengesDeleteInstance = <
     ...options,
   });
 
+/** Read game center challenges. `GET /v1/gameCenterChallenges/{id}` */
 export const gameCenterChallengesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengesGetInstanceResponses,
+  GameCenterChallengesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengesGetInstanceResponses,
     GameCenterChallengesGetInstanceErrors,
@@ -9778,11 +11304,16 @@ export const gameCenterChallengesGetInstance = <
     ...options,
   });
 
+/** Update game center challenges. `PATCH /v1/gameCenterChallenges/{id}` */
 export const gameCenterChallengesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterChallengesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterChallengesUpdateInstanceResponses,
+  GameCenterChallengesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterChallengesUpdateInstanceResponses,
     GameCenterChallengesUpdateInstanceErrors,
@@ -9797,11 +11328,16 @@ export const gameCenterChallengesUpdateInstance = <
     },
   });
 
+/** Create game center details. `POST /v1/gameCenterDetails` */
 export const gameCenterDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterDetailsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterDetailsCreateInstanceResponses,
+  GameCenterDetailsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterDetailsCreateInstanceResponses,
     GameCenterDetailsCreateInstanceErrors,
@@ -9817,11 +11353,16 @@ export const gameCenterDetailsCreateInstance = <
     },
   });
 
+/** Read game center details. `GET /v1/gameCenterDetails/{id}` */
 export const gameCenterDetailsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterDetailsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterDetailsGetInstanceResponses,
+  GameCenterDetailsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGetInstanceResponses,
     GameCenterDetailsGetInstanceErrors,
@@ -9857,11 +11398,16 @@ export const gameCenterDetailsGetInstance = <
     ...options,
   });
 
+/** Update game center details. `PATCH /v1/gameCenterDetails/{id}` */
 export const gameCenterDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterDetailsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterDetailsUpdateInstanceResponses,
+  GameCenterDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterDetailsUpdateInstanceResponses,
     GameCenterDetailsUpdateInstanceErrors,
@@ -9877,11 +11423,16 @@ export const gameCenterDetailsUpdateInstance = <
     },
   });
 
+/** List game center groups. `GET /v1/gameCenterGroups` */
 export const gameCenterGroupsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<GameCenterGroupsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterGroupsGetCollectionResponses,
+  GameCenterGroupsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     GameCenterGroupsGetCollectionResponses,
     GameCenterGroupsGetCollectionErrors,
@@ -9905,11 +11456,16 @@ export const gameCenterGroupsGetCollection = <
     ...options,
   });
 
+/** Create game center groups. `POST /v1/gameCenterGroups` */
 export const gameCenterGroupsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterGroupsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterGroupsCreateInstanceResponses,
+  GameCenterGroupsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterGroupsCreateInstanceResponses,
     GameCenterGroupsCreateInstanceErrors,
@@ -9924,11 +11480,16 @@ export const gameCenterGroupsCreateInstance = <
     },
   });
 
+/** Delete game center groups. `DELETE /v1/gameCenterGroups/{id}` */
 export const gameCenterGroupsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterGroupsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterGroupsDeleteInstanceResponses,
+  GameCenterGroupsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterGroupsDeleteInstanceResponses,
     GameCenterGroupsDeleteInstanceErrors,
@@ -9939,11 +11500,16 @@ export const gameCenterGroupsDeleteInstance = <
     ...options,
   });
 
+/** Read game center groups. `GET /v1/gameCenterGroups/{id}` */
 export const gameCenterGroupsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterGroupsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterGroupsGetInstanceResponses,
+  GameCenterGroupsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGetInstanceResponses,
     GameCenterGroupsGetInstanceErrors,
@@ -9966,11 +11532,16 @@ export const gameCenterGroupsGetInstance = <
     ...options,
   });
 
+/** Update game center groups. `PATCH /v1/gameCenterGroups/{id}` */
 export const gameCenterGroupsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterGroupsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterGroupsUpdateInstanceResponses,
+  GameCenterGroupsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterGroupsUpdateInstanceResponses,
     GameCenterGroupsUpdateInstanceErrors,
@@ -9985,6 +11556,7 @@ export const gameCenterGroupsUpdateInstance = <
     },
   });
 
+/** Create game center leaderboard entry submissions. `POST /v1/gameCenterLeaderboardEntrySubmissions` */
 export const gameCenterLeaderboardEntrySubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -9992,7 +11564,11 @@ export const gameCenterLeaderboardEntrySubmissionsCreateInstance = <
     GameCenterLeaderboardEntrySubmissionsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardEntrySubmissionsCreateInstanceResponses,
+  GameCenterLeaderboardEntrySubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardEntrySubmissionsCreateInstanceResponses,
     GameCenterLeaderboardEntrySubmissionsCreateInstanceErrors,
@@ -10009,6 +11585,7 @@ export const gameCenterLeaderboardEntrySubmissionsCreateInstance = <
     },
   });
 
+/** Create game center leaderboard images v2. `POST /v2/gameCenterLeaderboardImages` */
 export const gameCenterLeaderboardImagesV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10016,7 +11593,11 @@ export const gameCenterLeaderboardImagesV2CreateInstance = <
     GameCenterLeaderboardImagesV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardImagesV2CreateInstanceResponses,
+  GameCenterLeaderboardImagesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardImagesV2CreateInstanceResponses,
     GameCenterLeaderboardImagesV2CreateInstanceErrors,
@@ -10031,6 +11612,7 @@ export const gameCenterLeaderboardImagesV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboard images v2. `DELETE /v2/gameCenterLeaderboardImages/{id}` */
 export const gameCenterLeaderboardImagesV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10038,7 +11620,11 @@ export const gameCenterLeaderboardImagesV2DeleteInstance = <
     GameCenterLeaderboardImagesV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardImagesV2DeleteInstanceResponses,
+  GameCenterLeaderboardImagesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardImagesV2DeleteInstanceResponses,
     GameCenterLeaderboardImagesV2DeleteInstanceErrors,
@@ -10049,11 +11635,16 @@ export const gameCenterLeaderboardImagesV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboard images v2. `GET /v2/gameCenterLeaderboardImages/{id}` */
 export const gameCenterLeaderboardImagesV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardImagesV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardImagesV2GetInstanceResponses,
+  GameCenterLeaderboardImagesV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardImagesV2GetInstanceResponses,
     GameCenterLeaderboardImagesV2GetInstanceErrors,
@@ -10070,6 +11661,7 @@ export const gameCenterLeaderboardImagesV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboard images v2. `PATCH /v2/gameCenterLeaderboardImages/{id}` */
 export const gameCenterLeaderboardImagesV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10077,7 +11669,11 @@ export const gameCenterLeaderboardImagesV2UpdateInstance = <
     GameCenterLeaderboardImagesV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardImagesV2UpdateInstanceResponses,
+  GameCenterLeaderboardImagesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardImagesV2UpdateInstanceResponses,
     GameCenterLeaderboardImagesV2UpdateInstanceErrors,
@@ -10092,6 +11688,7 @@ export const gameCenterLeaderboardImagesV2UpdateInstance = <
     },
   });
 
+/** Create game center leaderboard localizations v2. `POST /v2/gameCenterLeaderboardLocalizations` */
 export const gameCenterLeaderboardLocalizationsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10099,7 +11696,11 @@ export const gameCenterLeaderboardLocalizationsV2CreateInstance = <
     GameCenterLeaderboardLocalizationsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2CreateInstanceResponses,
+  GameCenterLeaderboardLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardLocalizationsV2CreateInstanceResponses,
     GameCenterLeaderboardLocalizationsV2CreateInstanceErrors,
@@ -10114,6 +11715,7 @@ export const gameCenterLeaderboardLocalizationsV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboard localizations v2. `DELETE /v2/gameCenterLeaderboardLocalizations/{id}` */
 export const gameCenterLeaderboardLocalizationsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10121,7 +11723,11 @@ export const gameCenterLeaderboardLocalizationsV2DeleteInstance = <
     GameCenterLeaderboardLocalizationsV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2DeleteInstanceResponses,
+  GameCenterLeaderboardLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardLocalizationsV2DeleteInstanceResponses,
     GameCenterLeaderboardLocalizationsV2DeleteInstanceErrors,
@@ -10132,6 +11738,7 @@ export const gameCenterLeaderboardLocalizationsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboard localizations v2. `GET /v2/gameCenterLeaderboardLocalizations/{id}` */
 export const gameCenterLeaderboardLocalizationsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10139,7 +11746,11 @@ export const gameCenterLeaderboardLocalizationsV2GetInstance = <
     GameCenterLeaderboardLocalizationsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2GetInstanceResponses,
+  GameCenterLeaderboardLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardLocalizationsV2GetInstanceResponses,
     GameCenterLeaderboardLocalizationsV2GetInstanceErrors,
@@ -10159,6 +11770,7 @@ export const gameCenterLeaderboardLocalizationsV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboard localizations v2. `PATCH /v2/gameCenterLeaderboardLocalizations/{id}` */
 export const gameCenterLeaderboardLocalizationsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10166,7 +11778,11 @@ export const gameCenterLeaderboardLocalizationsV2UpdateInstance = <
     GameCenterLeaderboardLocalizationsV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2UpdateInstanceResponses,
+  GameCenterLeaderboardLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardLocalizationsV2UpdateInstanceResponses,
     GameCenterLeaderboardLocalizationsV2UpdateInstanceErrors,
@@ -10181,6 +11797,7 @@ export const gameCenterLeaderboardLocalizationsV2UpdateInstance = <
     },
   });
 
+/** Create game center leaderboard set images v2. `POST /v2/gameCenterLeaderboardSetImages` */
 export const gameCenterLeaderboardSetImagesV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10188,7 +11805,11 @@ export const gameCenterLeaderboardSetImagesV2CreateInstance = <
     GameCenterLeaderboardSetImagesV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetImagesV2CreateInstanceResponses,
+  GameCenterLeaderboardSetImagesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardSetImagesV2CreateInstanceResponses,
     GameCenterLeaderboardSetImagesV2CreateInstanceErrors,
@@ -10203,6 +11824,7 @@ export const gameCenterLeaderboardSetImagesV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboard set images v2. `DELETE /v2/gameCenterLeaderboardSetImages/{id}` */
 export const gameCenterLeaderboardSetImagesV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10210,7 +11832,11 @@ export const gameCenterLeaderboardSetImagesV2DeleteInstance = <
     GameCenterLeaderboardSetImagesV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetImagesV2DeleteInstanceResponses,
+  GameCenterLeaderboardSetImagesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardSetImagesV2DeleteInstanceResponses,
     GameCenterLeaderboardSetImagesV2DeleteInstanceErrors,
@@ -10221,6 +11847,7 @@ export const gameCenterLeaderboardSetImagesV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboard set images v2. `GET /v2/gameCenterLeaderboardSetImages/{id}` */
 export const gameCenterLeaderboardSetImagesV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10228,7 +11855,11 @@ export const gameCenterLeaderboardSetImagesV2GetInstance = <
     GameCenterLeaderboardSetImagesV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetImagesV2GetInstanceResponses,
+  GameCenterLeaderboardSetImagesV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetImagesV2GetInstanceResponses,
     GameCenterLeaderboardSetImagesV2GetInstanceErrors,
@@ -10245,6 +11876,7 @@ export const gameCenterLeaderboardSetImagesV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboard set images v2. `PATCH /v2/gameCenterLeaderboardSetImages/{id}` */
 export const gameCenterLeaderboardSetImagesV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10252,7 +11884,11 @@ export const gameCenterLeaderboardSetImagesV2UpdateInstance = <
     GameCenterLeaderboardSetImagesV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetImagesV2UpdateInstanceResponses,
+  GameCenterLeaderboardSetImagesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardSetImagesV2UpdateInstanceResponses,
     GameCenterLeaderboardSetImagesV2UpdateInstanceErrors,
@@ -10267,6 +11903,7 @@ export const gameCenterLeaderboardSetImagesV2UpdateInstance = <
     },
   });
 
+/** Create game center leaderboard set localizations v2. `POST /v2/gameCenterLeaderboardSetLocalizations` */
 export const gameCenterLeaderboardSetLocalizationsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10274,7 +11911,11 @@ export const gameCenterLeaderboardSetLocalizationsV2CreateInstance = <
     GameCenterLeaderboardSetLocalizationsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetLocalizationsV2CreateInstanceResponses,
+  GameCenterLeaderboardSetLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardSetLocalizationsV2CreateInstanceResponses,
     GameCenterLeaderboardSetLocalizationsV2CreateInstanceErrors,
@@ -10289,6 +11930,7 @@ export const gameCenterLeaderboardSetLocalizationsV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboard set localizations v2. `DELETE /v2/gameCenterLeaderboardSetLocalizations/{id}` */
 export const gameCenterLeaderboardSetLocalizationsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10296,7 +11938,11 @@ export const gameCenterLeaderboardSetLocalizationsV2DeleteInstance = <
     GameCenterLeaderboardSetLocalizationsV2DeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetLocalizationsV2DeleteInstanceResponses,
+  GameCenterLeaderboardSetLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardSetLocalizationsV2DeleteInstanceResponses,
     GameCenterLeaderboardSetLocalizationsV2DeleteInstanceErrors,
@@ -10307,6 +11953,7 @@ export const gameCenterLeaderboardSetLocalizationsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboard set localizations v2. `GET /v2/gameCenterLeaderboardSetLocalizations/{id}` */
 export const gameCenterLeaderboardSetLocalizationsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10314,7 +11961,11 @@ export const gameCenterLeaderboardSetLocalizationsV2GetInstance = <
     GameCenterLeaderboardSetLocalizationsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetLocalizationsV2GetInstanceResponses,
+  GameCenterLeaderboardSetLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetLocalizationsV2GetInstanceResponses,
     GameCenterLeaderboardSetLocalizationsV2GetInstanceErrors,
@@ -10334,6 +11985,7 @@ export const gameCenterLeaderboardSetLocalizationsV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboard set localizations v2. `PATCH /v2/gameCenterLeaderboardSetLocalizations/{id}` */
 export const gameCenterLeaderboardSetLocalizationsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10341,7 +11993,11 @@ export const gameCenterLeaderboardSetLocalizationsV2UpdateInstance = <
     GameCenterLeaderboardSetLocalizationsV2UpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetLocalizationsV2UpdateInstanceResponses,
+  GameCenterLeaderboardSetLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardSetLocalizationsV2UpdateInstanceResponses,
     GameCenterLeaderboardSetLocalizationsV2UpdateInstanceErrors,
@@ -10356,6 +12012,7 @@ export const gameCenterLeaderboardSetLocalizationsV2UpdateInstance = <
     },
   });
 
+/** List game center leaderboard set member localizations. `GET /v1/gameCenterLeaderboardSetMemberLocalizations` */
 export const gameCenterLeaderboardSetMemberLocalizationsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
@@ -10363,7 +12020,11 @@ export const gameCenterLeaderboardSetMemberLocalizationsGetCollection = <
     GameCenterLeaderboardSetMemberLocalizationsGetCollectionData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetMemberLocalizationsGetCollectionResponses,
+  GameCenterLeaderboardSetMemberLocalizationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetMemberLocalizationsGetCollectionResponses,
     GameCenterLeaderboardSetMemberLocalizationsGetCollectionErrors,
@@ -10386,6 +12047,7 @@ export const gameCenterLeaderboardSetMemberLocalizationsGetCollection = <
     ...options,
   });
 
+/** Create game center leaderboard set member localizations. `POST /v1/gameCenterLeaderboardSetMemberLocalizations` */
 export const gameCenterLeaderboardSetMemberLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10393,7 +12055,11 @@ export const gameCenterLeaderboardSetMemberLocalizationsCreateInstance = <
     GameCenterLeaderboardSetMemberLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetMemberLocalizationsCreateInstanceResponses,
+  GameCenterLeaderboardSetMemberLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardSetMemberLocalizationsCreateInstanceResponses,
     GameCenterLeaderboardSetMemberLocalizationsCreateInstanceErrors,
@@ -10408,6 +12074,7 @@ export const gameCenterLeaderboardSetMemberLocalizationsCreateInstance = <
     },
   });
 
+/** Delete game center leaderboard set member localizations. `DELETE /v1/gameCenterLeaderboardSetMemberLocalizations/{id}` */
 export const gameCenterLeaderboardSetMemberLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10415,7 +12082,11 @@ export const gameCenterLeaderboardSetMemberLocalizationsDeleteInstance = <
     GameCenterLeaderboardSetMemberLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetMemberLocalizationsDeleteInstanceResponses,
+  GameCenterLeaderboardSetMemberLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardSetMemberLocalizationsDeleteInstanceResponses,
     GameCenterLeaderboardSetMemberLocalizationsDeleteInstanceErrors,
@@ -10426,6 +12097,7 @@ export const gameCenterLeaderboardSetMemberLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Update game center leaderboard set member localizations. `PATCH /v1/gameCenterLeaderboardSetMemberLocalizations/{id}` */
 export const gameCenterLeaderboardSetMemberLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10433,7 +12105,11 @@ export const gameCenterLeaderboardSetMemberLocalizationsUpdateInstance = <
     GameCenterLeaderboardSetMemberLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetMemberLocalizationsUpdateInstanceResponses,
+  GameCenterLeaderboardSetMemberLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardSetMemberLocalizationsUpdateInstanceResponses,
     GameCenterLeaderboardSetMemberLocalizationsUpdateInstanceErrors,
@@ -10448,6 +12124,7 @@ export const gameCenterLeaderboardSetMemberLocalizationsUpdateInstance = <
     },
   });
 
+/** Create game center leaderboard set versions v2. `POST /v2/gameCenterLeaderboardSetVersions` */
 export const gameCenterLeaderboardSetVersionsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10455,7 +12132,11 @@ export const gameCenterLeaderboardSetVersionsV2CreateInstance = <
     GameCenterLeaderboardSetVersionsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetVersionsV2CreateInstanceResponses,
+  GameCenterLeaderboardSetVersionsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardSetVersionsV2CreateInstanceResponses,
     GameCenterLeaderboardSetVersionsV2CreateInstanceErrors,
@@ -10470,6 +12151,7 @@ export const gameCenterLeaderboardSetVersionsV2CreateInstance = <
     },
   });
 
+/** Read game center leaderboard set versions v2. `GET /v2/gameCenterLeaderboardSetVersions/{id}` */
 export const gameCenterLeaderboardSetVersionsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10477,7 +12159,11 @@ export const gameCenterLeaderboardSetVersionsV2GetInstance = <
     GameCenterLeaderboardSetVersionsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetVersionsV2GetInstanceResponses,
+  GameCenterLeaderboardSetVersionsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetVersionsV2GetInstanceResponses,
     GameCenterLeaderboardSetVersionsV2GetInstanceErrors,
@@ -10499,11 +12185,16 @@ export const gameCenterLeaderboardSetVersionsV2GetInstance = <
     ...options,
   });
 
+/** Create game center leaderboard sets v2. `POST /v2/gameCenterLeaderboardSets` */
 export const gameCenterLeaderboardSetsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardSetsV2CreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2CreateInstanceResponses,
+  GameCenterLeaderboardSetsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardSetsV2CreateInstanceResponses,
     GameCenterLeaderboardSetsV2CreateInstanceErrors,
@@ -10518,11 +12209,16 @@ export const gameCenterLeaderboardSetsV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboard sets v2. `DELETE /v2/gameCenterLeaderboardSets/{id}` */
 export const gameCenterLeaderboardSetsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardSetsV2DeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2DeleteInstanceResponses,
+  GameCenterLeaderboardSetsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardSetsV2DeleteInstanceResponses,
     GameCenterLeaderboardSetsV2DeleteInstanceErrors,
@@ -10533,11 +12229,16 @@ export const gameCenterLeaderboardSetsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboard sets v2. `GET /v2/gameCenterLeaderboardSets/{id}` */
 export const gameCenterLeaderboardSetsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardSetsV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2GetInstanceResponses,
+  GameCenterLeaderboardSetsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetsV2GetInstanceResponses,
     GameCenterLeaderboardSetsV2GetInstanceErrors,
@@ -10558,11 +12259,16 @@ export const gameCenterLeaderboardSetsV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboard sets v2. `PATCH /v2/gameCenterLeaderboardSets/{id}` */
 export const gameCenterLeaderboardSetsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardSetsV2UpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2UpdateInstanceResponses,
+  GameCenterLeaderboardSetsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardSetsV2UpdateInstanceResponses,
     GameCenterLeaderboardSetsV2UpdateInstanceErrors,
@@ -10577,6 +12283,7 @@ export const gameCenterLeaderboardSetsV2UpdateInstance = <
     },
   });
 
+/** Create game center leaderboard versions v2. `POST /v2/gameCenterLeaderboardVersions` */
 export const gameCenterLeaderboardVersionsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10584,7 +12291,11 @@ export const gameCenterLeaderboardVersionsV2CreateInstance = <
     GameCenterLeaderboardVersionsV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardVersionsV2CreateInstanceResponses,
+  GameCenterLeaderboardVersionsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardVersionsV2CreateInstanceResponses,
     GameCenterLeaderboardVersionsV2CreateInstanceErrors,
@@ -10599,6 +12310,7 @@ export const gameCenterLeaderboardVersionsV2CreateInstance = <
     },
   });
 
+/** Read game center leaderboard versions v2. `GET /v2/gameCenterLeaderboardVersions/{id}` */
 export const gameCenterLeaderboardVersionsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10606,7 +12318,11 @@ export const gameCenterLeaderboardVersionsV2GetInstance = <
     GameCenterLeaderboardVersionsV2GetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardVersionsV2GetInstanceResponses,
+  GameCenterLeaderboardVersionsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardVersionsV2GetInstanceResponses,
     GameCenterLeaderboardVersionsV2GetInstanceErrors,
@@ -10626,11 +12342,16 @@ export const gameCenterLeaderboardVersionsV2GetInstance = <
     ...options,
   });
 
+/** Create game center leaderboards v2. `POST /v2/gameCenterLeaderboards` */
 export const gameCenterLeaderboardsV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardsV2CreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2CreateInstanceResponses,
+  GameCenterLeaderboardsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterLeaderboardsV2CreateInstanceResponses,
     GameCenterLeaderboardsV2CreateInstanceErrors,
@@ -10647,11 +12368,16 @@ export const gameCenterLeaderboardsV2CreateInstance = <
     },
   });
 
+/** Delete game center leaderboards v2. `DELETE /v2/gameCenterLeaderboards/{id}` */
 export const gameCenterLeaderboardsV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardsV2DeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2DeleteInstanceResponses,
+  GameCenterLeaderboardsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterLeaderboardsV2DeleteInstanceResponses,
     GameCenterLeaderboardsV2DeleteInstanceErrors,
@@ -10662,11 +12388,16 @@ export const gameCenterLeaderboardsV2DeleteInstance = <
     ...options,
   });
 
+/** Read game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}` */
 export const gameCenterLeaderboardsV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardsV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2GetInstanceResponses,
+  GameCenterLeaderboardsV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardsV2GetInstanceResponses,
     GameCenterLeaderboardsV2GetInstanceErrors,
@@ -10685,11 +12416,16 @@ export const gameCenterLeaderboardsV2GetInstance = <
     ...options,
   });
 
+/** Update game center leaderboards v2. `PATCH /v2/gameCenterLeaderboards/{id}` */
 export const gameCenterLeaderboardsV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterLeaderboardsV2UpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2UpdateInstanceResponses,
+  GameCenterLeaderboardsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardsV2UpdateInstanceResponses,
     GameCenterLeaderboardsV2UpdateInstanceErrors,
@@ -10706,11 +12442,16 @@ export const gameCenterLeaderboardsV2UpdateInstance = <
     },
   });
 
+/** List game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues` */
 export const gameCenterMatchmakingQueuesGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<GameCenterMatchmakingQueuesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesGetCollectionResponses,
+  GameCenterMatchmakingQueuesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     GameCenterMatchmakingQueuesGetCollectionResponses,
     GameCenterMatchmakingQueuesGetCollectionErrors,
@@ -10727,11 +12468,16 @@ export const gameCenterMatchmakingQueuesGetCollection = <
     ...options,
   });
 
+/** Create game center matchmaking queues. `POST /v1/gameCenterMatchmakingQueues` */
 export const gameCenterMatchmakingQueuesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingQueuesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesCreateInstanceResponses,
+  GameCenterMatchmakingQueuesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterMatchmakingQueuesCreateInstanceResponses,
     GameCenterMatchmakingQueuesCreateInstanceErrors,
@@ -10746,11 +12492,16 @@ export const gameCenterMatchmakingQueuesCreateInstance = <
     },
   });
 
+/** Delete game center matchmaking queues. `DELETE /v1/gameCenterMatchmakingQueues/{id}` */
 export const gameCenterMatchmakingQueuesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingQueuesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesDeleteInstanceResponses,
+  GameCenterMatchmakingQueuesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterMatchmakingQueuesDeleteInstanceResponses,
     GameCenterMatchmakingQueuesDeleteInstanceErrors,
@@ -10761,11 +12512,16 @@ export const gameCenterMatchmakingQueuesDeleteInstance = <
     ...options,
   });
 
+/** Read game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}` */
 export const gameCenterMatchmakingQueuesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingQueuesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesGetInstanceResponses,
+  GameCenterMatchmakingQueuesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingQueuesGetInstanceResponses,
     GameCenterMatchmakingQueuesGetInstanceErrors,
@@ -10782,11 +12538,16 @@ export const gameCenterMatchmakingQueuesGetInstance = <
     ...options,
   });
 
+/** Update game center matchmaking queues. `PATCH /v1/gameCenterMatchmakingQueues/{id}` */
 export const gameCenterMatchmakingQueuesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingQueuesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesUpdateInstanceResponses,
+  GameCenterMatchmakingQueuesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterMatchmakingQueuesUpdateInstanceResponses,
     GameCenterMatchmakingQueuesUpdateInstanceErrors,
@@ -10801,6 +12562,7 @@ export const gameCenterMatchmakingQueuesUpdateInstance = <
     },
   });
 
+/** Create game center matchmaking rule set tests. `POST /v1/gameCenterMatchmakingRuleSetTests` */
 export const gameCenterMatchmakingRuleSetTestsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10808,7 +12570,11 @@ export const gameCenterMatchmakingRuleSetTestsCreateInstance = <
     GameCenterMatchmakingRuleSetTestsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetTestsCreateInstanceResponses,
+  GameCenterMatchmakingRuleSetTestsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterMatchmakingRuleSetTestsCreateInstanceResponses,
     GameCenterMatchmakingRuleSetTestsCreateInstanceErrors,
@@ -10823,6 +12589,7 @@ export const gameCenterMatchmakingRuleSetTestsCreateInstance = <
     },
   });
 
+/** List game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets` */
 export const gameCenterMatchmakingRuleSetsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
@@ -10830,7 +12597,11 @@ export const gameCenterMatchmakingRuleSetsGetCollection = <
     GameCenterMatchmakingRuleSetsGetCollectionData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsGetCollectionResponses,
+  GameCenterMatchmakingRuleSetsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     GameCenterMatchmakingRuleSetsGetCollectionResponses,
     GameCenterMatchmakingRuleSetsGetCollectionErrors,
@@ -10850,6 +12621,7 @@ export const gameCenterMatchmakingRuleSetsGetCollection = <
     ...options,
   });
 
+/** Create game center matchmaking rule sets. `POST /v1/gameCenterMatchmakingRuleSets` */
 export const gameCenterMatchmakingRuleSetsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10857,7 +12629,11 @@ export const gameCenterMatchmakingRuleSetsCreateInstance = <
     GameCenterMatchmakingRuleSetsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsCreateInstanceResponses,
+  GameCenterMatchmakingRuleSetsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterMatchmakingRuleSetsCreateInstanceResponses,
     GameCenterMatchmakingRuleSetsCreateInstanceErrors,
@@ -10872,6 +12648,7 @@ export const gameCenterMatchmakingRuleSetsCreateInstance = <
     },
   });
 
+/** Delete game center matchmaking rule sets. `DELETE /v1/gameCenterMatchmakingRuleSets/{id}` */
 export const gameCenterMatchmakingRuleSetsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10879,7 +12656,11 @@ export const gameCenterMatchmakingRuleSetsDeleteInstance = <
     GameCenterMatchmakingRuleSetsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsDeleteInstanceResponses,
+  GameCenterMatchmakingRuleSetsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterMatchmakingRuleSetsDeleteInstanceResponses,
     GameCenterMatchmakingRuleSetsDeleteInstanceErrors,
@@ -10890,11 +12671,16 @@ export const gameCenterMatchmakingRuleSetsDeleteInstance = <
     ...options,
   });
 
+/** Read game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}` */
 export const gameCenterMatchmakingRuleSetsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingRuleSetsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsGetInstanceResponses,
+  GameCenterMatchmakingRuleSetsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsGetInstanceResponses,
     GameCenterMatchmakingRuleSetsGetInstanceErrors,
@@ -10914,6 +12700,7 @@ export const gameCenterMatchmakingRuleSetsGetInstance = <
     ...options,
   });
 
+/** Update game center matchmaking rule sets. `PATCH /v1/gameCenterMatchmakingRuleSets/{id}` */
 export const gameCenterMatchmakingRuleSetsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -10921,7 +12708,11 @@ export const gameCenterMatchmakingRuleSetsUpdateInstance = <
     GameCenterMatchmakingRuleSetsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsUpdateInstanceResponses,
+  GameCenterMatchmakingRuleSetsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterMatchmakingRuleSetsUpdateInstanceResponses,
     GameCenterMatchmakingRuleSetsUpdateInstanceErrors,
@@ -10936,11 +12727,16 @@ export const gameCenterMatchmakingRuleSetsUpdateInstance = <
     },
   });
 
+/** Create game center matchmaking rules. `POST /v1/gameCenterMatchmakingRules` */
 export const gameCenterMatchmakingRulesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingRulesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRulesCreateInstanceResponses,
+  GameCenterMatchmakingRulesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterMatchmakingRulesCreateInstanceResponses,
     GameCenterMatchmakingRulesCreateInstanceErrors,
@@ -10955,11 +12751,16 @@ export const gameCenterMatchmakingRulesCreateInstance = <
     },
   });
 
+/** Delete game center matchmaking rules. `DELETE /v1/gameCenterMatchmakingRules/{id}` */
 export const gameCenterMatchmakingRulesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingRulesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRulesDeleteInstanceResponses,
+  GameCenterMatchmakingRulesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterMatchmakingRulesDeleteInstanceResponses,
     GameCenterMatchmakingRulesDeleteInstanceErrors,
@@ -10970,11 +12771,16 @@ export const gameCenterMatchmakingRulesDeleteInstance = <
     ...options,
   });
 
+/** Update game center matchmaking rules. `PATCH /v1/gameCenterMatchmakingRules/{id}` */
 export const gameCenterMatchmakingRulesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingRulesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRulesUpdateInstanceResponses,
+  GameCenterMatchmakingRulesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterMatchmakingRulesUpdateInstanceResponses,
     GameCenterMatchmakingRulesUpdateInstanceErrors,
@@ -10989,11 +12795,16 @@ export const gameCenterMatchmakingRulesUpdateInstance = <
     },
   });
 
+/** Create game center matchmaking teams. `POST /v1/gameCenterMatchmakingTeams` */
 export const gameCenterMatchmakingTeamsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingTeamsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingTeamsCreateInstanceResponses,
+  GameCenterMatchmakingTeamsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterMatchmakingTeamsCreateInstanceResponses,
     GameCenterMatchmakingTeamsCreateInstanceErrors,
@@ -11008,11 +12819,16 @@ export const gameCenterMatchmakingTeamsCreateInstance = <
     },
   });
 
+/** Delete game center matchmaking teams. `DELETE /v1/gameCenterMatchmakingTeams/{id}` */
 export const gameCenterMatchmakingTeamsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingTeamsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingTeamsDeleteInstanceResponses,
+  GameCenterMatchmakingTeamsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterMatchmakingTeamsDeleteInstanceResponses,
     GameCenterMatchmakingTeamsDeleteInstanceErrors,
@@ -11023,11 +12839,16 @@ export const gameCenterMatchmakingTeamsDeleteInstance = <
     ...options,
   });
 
+/** Update game center matchmaking teams. `PATCH /v1/gameCenterMatchmakingTeams/{id}` */
 export const gameCenterMatchmakingTeamsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<GameCenterMatchmakingTeamsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  GameCenterMatchmakingTeamsUpdateInstanceResponses,
+  GameCenterMatchmakingTeamsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterMatchmakingTeamsUpdateInstanceResponses,
     GameCenterMatchmakingTeamsUpdateInstanceErrors,
@@ -11042,6 +12863,7 @@ export const gameCenterMatchmakingTeamsUpdateInstance = <
     },
   });
 
+/** Create game center player achievement submissions. `POST /v1/gameCenterPlayerAchievementSubmissions` */
 export const gameCenterPlayerAchievementSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11049,7 +12871,11 @@ export const gameCenterPlayerAchievementSubmissionsCreateInstance = <
     GameCenterPlayerAchievementSubmissionsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterPlayerAchievementSubmissionsCreateInstanceResponses,
+  GameCenterPlayerAchievementSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterPlayerAchievementSubmissionsCreateInstanceResponses,
     GameCenterPlayerAchievementSubmissionsCreateInstanceErrors,
@@ -11066,6 +12892,7 @@ export const gameCenterPlayerAchievementSubmissionsCreateInstance = <
     },
   });
 
+/** Create in app purchase app store review screenshots. `POST /v1/inAppPurchaseAppStoreReviewScreenshots` */
 export const inAppPurchaseAppStoreReviewScreenshotsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11073,7 +12900,11 @@ export const inAppPurchaseAppStoreReviewScreenshotsCreateInstance = <
     InAppPurchaseAppStoreReviewScreenshotsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseAppStoreReviewScreenshotsCreateInstanceResponses,
+  InAppPurchaseAppStoreReviewScreenshotsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseAppStoreReviewScreenshotsCreateInstanceResponses,
     InAppPurchaseAppStoreReviewScreenshotsCreateInstanceErrors,
@@ -11088,6 +12919,7 @@ export const inAppPurchaseAppStoreReviewScreenshotsCreateInstance = <
     },
   });
 
+/** Delete in app purchase app store review screenshots. `DELETE /v1/inAppPurchaseAppStoreReviewScreenshots/{id}` */
 export const inAppPurchaseAppStoreReviewScreenshotsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11095,7 +12927,11 @@ export const inAppPurchaseAppStoreReviewScreenshotsDeleteInstance = <
     InAppPurchaseAppStoreReviewScreenshotsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseAppStoreReviewScreenshotsDeleteInstanceResponses,
+  InAppPurchaseAppStoreReviewScreenshotsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     InAppPurchaseAppStoreReviewScreenshotsDeleteInstanceResponses,
     InAppPurchaseAppStoreReviewScreenshotsDeleteInstanceErrors,
@@ -11106,6 +12942,7 @@ export const inAppPurchaseAppStoreReviewScreenshotsDeleteInstance = <
     ...options,
   });
 
+/** Read in app purchase app store review screenshots. `GET /v1/inAppPurchaseAppStoreReviewScreenshots/{id}` */
 export const inAppPurchaseAppStoreReviewScreenshotsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11113,7 +12950,11 @@ export const inAppPurchaseAppStoreReviewScreenshotsGetInstance = <
     InAppPurchaseAppStoreReviewScreenshotsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseAppStoreReviewScreenshotsGetInstanceResponses,
+  InAppPurchaseAppStoreReviewScreenshotsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseAppStoreReviewScreenshotsGetInstanceResponses,
     InAppPurchaseAppStoreReviewScreenshotsGetInstanceErrors,
@@ -11132,6 +12973,7 @@ export const inAppPurchaseAppStoreReviewScreenshotsGetInstance = <
     ...options,
   });
 
+/** Update in app purchase app store review screenshots. `PATCH /v1/inAppPurchaseAppStoreReviewScreenshots/{id}` */
 export const inAppPurchaseAppStoreReviewScreenshotsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11139,7 +12981,11 @@ export const inAppPurchaseAppStoreReviewScreenshotsUpdateInstance = <
     InAppPurchaseAppStoreReviewScreenshotsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseAppStoreReviewScreenshotsUpdateInstanceResponses,
+  InAppPurchaseAppStoreReviewScreenshotsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseAppStoreReviewScreenshotsUpdateInstanceResponses,
     InAppPurchaseAppStoreReviewScreenshotsUpdateInstanceErrors,
@@ -11154,11 +13000,16 @@ export const inAppPurchaseAppStoreReviewScreenshotsUpdateInstance = <
     },
   });
 
+/** Create in app purchase availabilities. `POST /v1/inAppPurchaseAvailabilities` */
 export const inAppPurchaseAvailabilitiesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseAvailabilitiesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseAvailabilitiesCreateInstanceResponses,
+  InAppPurchaseAvailabilitiesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseAvailabilitiesCreateInstanceResponses,
     InAppPurchaseAvailabilitiesCreateInstanceErrors,
@@ -11173,11 +13024,16 @@ export const inAppPurchaseAvailabilitiesCreateInstance = <
     },
   });
 
+/** Read in app purchase availabilities. `GET /v1/inAppPurchaseAvailabilities/{id}` */
 export const inAppPurchaseAvailabilitiesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseAvailabilitiesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseAvailabilitiesGetInstanceResponses,
+  InAppPurchaseAvailabilitiesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseAvailabilitiesGetInstanceResponses,
     InAppPurchaseAvailabilitiesGetInstanceErrors,
@@ -11195,11 +13051,16 @@ export const inAppPurchaseAvailabilitiesGetInstance = <
     ...options,
   });
 
+/** Read in app purchase contents. `GET /v1/inAppPurchaseContents/{id}` */
 export const inAppPurchaseContentsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseContentsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseContentsGetInstanceResponses,
+  InAppPurchaseContentsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseContentsGetInstanceResponses,
     InAppPurchaseContentsGetInstanceErrors,
@@ -11217,11 +13078,16 @@ export const inAppPurchaseContentsGetInstance = <
     ...options,
   });
 
+/** Create in app purchase images. `POST /v1/inAppPurchaseImages` */
 export const inAppPurchaseImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseImagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseImagesCreateInstanceResponses,
+  InAppPurchaseImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseImagesCreateInstanceResponses,
     InAppPurchaseImagesCreateInstanceErrors,
@@ -11236,11 +13102,16 @@ export const inAppPurchaseImagesCreateInstance = <
     },
   });
 
+/** Delete in app purchase images. `DELETE /v1/inAppPurchaseImages/{id}` */
 export const inAppPurchaseImagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseImagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseImagesDeleteInstanceResponses,
+  InAppPurchaseImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     InAppPurchaseImagesDeleteInstanceResponses,
     InAppPurchaseImagesDeleteInstanceErrors,
@@ -11251,11 +13122,16 @@ export const inAppPurchaseImagesDeleteInstance = <
     ...options,
   });
 
+/** Read in app purchase images. `GET /v1/inAppPurchaseImages/{id}` */
 export const inAppPurchaseImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseImagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseImagesGetInstanceResponses,
+  InAppPurchaseImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseImagesGetInstanceResponses,
     InAppPurchaseImagesGetInstanceErrors,
@@ -11272,11 +13148,16 @@ export const inAppPurchaseImagesGetInstance = <
     ...options,
   });
 
+/** Update in app purchase images. `PATCH /v1/inAppPurchaseImages/{id}` */
 export const inAppPurchaseImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseImagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseImagesUpdateInstanceResponses,
+  InAppPurchaseImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseImagesUpdateInstanceResponses,
     InAppPurchaseImagesUpdateInstanceErrors,
@@ -11291,11 +13172,16 @@ export const inAppPurchaseImagesUpdateInstance = <
     },
   });
 
+/** Create in app purchase localizations. `POST /v1/inAppPurchaseLocalizations` */
 export const inAppPurchaseLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseLocalizationsCreateInstanceResponses,
+  InAppPurchaseLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseLocalizationsCreateInstanceResponses,
     InAppPurchaseLocalizationsCreateInstanceErrors,
@@ -11310,11 +13196,16 @@ export const inAppPurchaseLocalizationsCreateInstance = <
     },
   });
 
+/** Delete in app purchase localizations. `DELETE /v1/inAppPurchaseLocalizations/{id}` */
 export const inAppPurchaseLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseLocalizationsDeleteInstanceResponses,
+  InAppPurchaseLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     InAppPurchaseLocalizationsDeleteInstanceResponses,
     InAppPurchaseLocalizationsDeleteInstanceErrors,
@@ -11325,11 +13216,16 @@ export const inAppPurchaseLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read in app purchase localizations. `GET /v1/inAppPurchaseLocalizations/{id}` */
 export const inAppPurchaseLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseLocalizationsGetInstanceResponses,
+  InAppPurchaseLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseLocalizationsGetInstanceResponses,
     InAppPurchaseLocalizationsGetInstanceErrors,
@@ -11346,11 +13242,16 @@ export const inAppPurchaseLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update in app purchase localizations. `PATCH /v1/inAppPurchaseLocalizations/{id}` */
 export const inAppPurchaseLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseLocalizationsUpdateInstanceResponses,
+  InAppPurchaseLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseLocalizationsUpdateInstanceResponses,
     InAppPurchaseLocalizationsUpdateInstanceErrors,
@@ -11365,6 +13266,7 @@ export const inAppPurchaseLocalizationsUpdateInstance = <
     },
   });
 
+/** Create in app purchase offer code custom codes. `POST /v1/inAppPurchaseOfferCodeCustomCodes` */
 export const inAppPurchaseOfferCodeCustomCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11372,7 +13274,11 @@ export const inAppPurchaseOfferCodeCustomCodesCreateInstance = <
     InAppPurchaseOfferCodeCustomCodesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeCustomCodesCreateInstanceResponses,
+  InAppPurchaseOfferCodeCustomCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseOfferCodeCustomCodesCreateInstanceResponses,
     InAppPurchaseOfferCodeCustomCodesCreateInstanceErrors,
@@ -11389,6 +13295,7 @@ export const inAppPurchaseOfferCodeCustomCodesCreateInstance = <
     },
   });
 
+/** Read in app purchase offer code custom codes. `GET /v1/inAppPurchaseOfferCodeCustomCodes/{id}` */
 export const inAppPurchaseOfferCodeCustomCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11396,7 +13303,11 @@ export const inAppPurchaseOfferCodeCustomCodesGetInstance = <
     InAppPurchaseOfferCodeCustomCodesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeCustomCodesGetInstanceResponses,
+  InAppPurchaseOfferCodeCustomCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodeCustomCodesGetInstanceResponses,
     InAppPurchaseOfferCodeCustomCodesGetInstanceErrors,
@@ -11417,6 +13328,7 @@ export const inAppPurchaseOfferCodeCustomCodesGetInstance = <
     ...options,
   });
 
+/** Update in app purchase offer code custom codes. `PATCH /v1/inAppPurchaseOfferCodeCustomCodes/{id}` */
 export const inAppPurchaseOfferCodeCustomCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11424,7 +13336,11 @@ export const inAppPurchaseOfferCodeCustomCodesUpdateInstance = <
     InAppPurchaseOfferCodeCustomCodesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeCustomCodesUpdateInstanceResponses,
+  InAppPurchaseOfferCodeCustomCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseOfferCodeCustomCodesUpdateInstanceResponses,
     InAppPurchaseOfferCodeCustomCodesUpdateInstanceErrors,
@@ -11441,6 +13357,7 @@ export const inAppPurchaseOfferCodeCustomCodesUpdateInstance = <
     },
   });
 
+/** Create in app purchase offer code one time use codes. `POST /v1/inAppPurchaseOfferCodeOneTimeUseCodes` */
 export const inAppPurchaseOfferCodeOneTimeUseCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11448,7 +13365,11 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesCreateInstance = <
     InAppPurchaseOfferCodeOneTimeUseCodesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeOneTimeUseCodesCreateInstanceResponses,
+  InAppPurchaseOfferCodeOneTimeUseCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseOfferCodeOneTimeUseCodesCreateInstanceResponses,
     InAppPurchaseOfferCodeOneTimeUseCodesCreateInstanceErrors,
@@ -11465,6 +13386,7 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesCreateInstance = <
     },
   });
 
+/** Read in app purchase offer code one time use codes. `GET /v1/inAppPurchaseOfferCodeOneTimeUseCodes/{id}` */
 export const inAppPurchaseOfferCodeOneTimeUseCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11472,7 +13394,11 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesGetInstance = <
     InAppPurchaseOfferCodeOneTimeUseCodesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeOneTimeUseCodesGetInstanceResponses,
+  InAppPurchaseOfferCodeOneTimeUseCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodeOneTimeUseCodesGetInstanceResponses,
     InAppPurchaseOfferCodeOneTimeUseCodesGetInstanceErrors,
@@ -11493,6 +13419,7 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesGetInstance = <
     ...options,
   });
 
+/** Update in app purchase offer code one time use codes. `PATCH /v1/inAppPurchaseOfferCodeOneTimeUseCodes/{id}` */
 export const inAppPurchaseOfferCodeOneTimeUseCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -11500,7 +13427,11 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesUpdateInstance = <
     InAppPurchaseOfferCodeOneTimeUseCodesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeOneTimeUseCodesUpdateInstanceResponses,
+  InAppPurchaseOfferCodeOneTimeUseCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseOfferCodeOneTimeUseCodesUpdateInstanceResponses,
     InAppPurchaseOfferCodeOneTimeUseCodesUpdateInstanceErrors,
@@ -11517,11 +13448,16 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesUpdateInstance = <
     },
   });
 
+/** Create in app purchase offer codes. `POST /v1/inAppPurchaseOfferCodes` */
 export const inAppPurchaseOfferCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseOfferCodesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesCreateInstanceResponses,
+  InAppPurchaseOfferCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseOfferCodesCreateInstanceResponses,
     InAppPurchaseOfferCodesCreateInstanceErrors,
@@ -11538,11 +13474,16 @@ export const inAppPurchaseOfferCodesCreateInstance = <
     },
   });
 
+/** Read in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}` */
 export const inAppPurchaseOfferCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseOfferCodesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesGetInstanceResponses,
+  InAppPurchaseOfferCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesGetInstanceResponses,
     InAppPurchaseOfferCodesGetInstanceErrors,
@@ -11567,11 +13508,16 @@ export const inAppPurchaseOfferCodesGetInstance = <
     ...options,
   });
 
+/** Update in app purchase offer codes. `PATCH /v1/inAppPurchaseOfferCodes/{id}` */
 export const inAppPurchaseOfferCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseOfferCodesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesUpdateInstanceResponses,
+  InAppPurchaseOfferCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchaseOfferCodesUpdateInstanceResponses,
     InAppPurchaseOfferCodesUpdateInstanceErrors,
@@ -11588,11 +13534,16 @@ export const inAppPurchaseOfferCodesUpdateInstance = <
     },
   });
 
+/** Create in app purchase price schedules. `POST /v1/inAppPurchasePriceSchedules` */
 export const inAppPurchasePriceSchedulesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasePriceSchedulesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesCreateInstanceResponses,
+  InAppPurchasePriceSchedulesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchasePriceSchedulesCreateInstanceResponses,
     InAppPurchasePriceSchedulesCreateInstanceErrors,
@@ -11609,11 +13560,16 @@ export const inAppPurchasePriceSchedulesCreateInstance = <
     },
   });
 
+/** Read in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}` */
 export const inAppPurchasePriceSchedulesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasePriceSchedulesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesGetInstanceResponses,
+  InAppPurchasePriceSchedulesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesGetInstanceResponses,
     InAppPurchasePriceSchedulesGetInstanceErrors,
@@ -11634,11 +13590,16 @@ export const inAppPurchasePriceSchedulesGetInstance = <
     ...options,
   });
 
+/** Create in app purchase submissions. `POST /v1/inAppPurchaseSubmissions` */
 export const inAppPurchaseSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchaseSubmissionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchaseSubmissionsCreateInstanceResponses,
+  InAppPurchaseSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchaseSubmissionsCreateInstanceResponses,
     InAppPurchaseSubmissionsCreateInstanceErrors,
@@ -11653,11 +13614,16 @@ export const inAppPurchaseSubmissionsCreateInstance = <
     },
   });
 
+/** Create in app purchases v2. `POST /v2/inAppPurchases` */
 export const inAppPurchasesV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2CreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2CreateInstanceResponses,
+  InAppPurchasesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     InAppPurchasesV2CreateInstanceResponses,
     InAppPurchasesV2CreateInstanceErrors,
@@ -11672,11 +13638,16 @@ export const inAppPurchasesV2CreateInstance = <
     },
   });
 
+/** Delete in app purchases v2. `DELETE /v2/inAppPurchases/{id}` */
 export const inAppPurchasesV2DeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2DeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2DeleteInstanceResponses,
+  InAppPurchasesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     InAppPurchasesV2DeleteInstanceResponses,
     InAppPurchasesV2DeleteInstanceErrors,
@@ -11687,11 +13658,16 @@ export const inAppPurchasesV2DeleteInstance = <
     ...options,
   });
 
+/** Read in app purchases v2. `GET /v2/inAppPurchases/{id}` */
 export const inAppPurchasesV2GetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2GetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2GetInstanceResponses,
+  InAppPurchasesV2GetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2GetInstanceResponses,
     InAppPurchasesV2GetInstanceErrors,
@@ -11719,11 +13695,16 @@ export const inAppPurchasesV2GetInstance = <
     ...options,
   });
 
+/** Update in app purchases v2. `PATCH /v2/inAppPurchases/{id}` */
 export const inAppPurchasesV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2UpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2UpdateInstanceResponses,
+  InAppPurchasesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     InAppPurchasesV2UpdateInstanceResponses,
     InAppPurchasesV2UpdateInstanceErrors,
@@ -11738,11 +13719,16 @@ export const inAppPurchasesV2UpdateInstance = <
     },
   });
 
+/** Create marketplace search details. `POST /v1/marketplaceSearchDetails` */
 export const marketplaceSearchDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<MarketplaceSearchDetailsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MarketplaceSearchDetailsCreateInstanceResponses,
+  MarketplaceSearchDetailsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     MarketplaceSearchDetailsCreateInstanceResponses,
     MarketplaceSearchDetailsCreateInstanceErrors,
@@ -11757,11 +13743,16 @@ export const marketplaceSearchDetailsCreateInstance = <
     },
   });
 
+/** Delete marketplace search details. `DELETE /v1/marketplaceSearchDetails/{id}` */
 export const marketplaceSearchDetailsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<MarketplaceSearchDetailsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MarketplaceSearchDetailsDeleteInstanceResponses,
+  MarketplaceSearchDetailsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     MarketplaceSearchDetailsDeleteInstanceResponses,
     MarketplaceSearchDetailsDeleteInstanceErrors,
@@ -11772,11 +13763,16 @@ export const marketplaceSearchDetailsDeleteInstance = <
     ...options,
   });
 
+/** Update marketplace search details. `PATCH /v1/marketplaceSearchDetails/{id}` */
 export const marketplaceSearchDetailsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<MarketplaceSearchDetailsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MarketplaceSearchDetailsUpdateInstanceResponses,
+  MarketplaceSearchDetailsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     MarketplaceSearchDetailsUpdateInstanceResponses,
     MarketplaceSearchDetailsUpdateInstanceErrors,
@@ -11791,9 +13787,14 @@ export const marketplaceSearchDetailsUpdateInstance = <
     },
   });
 
+/** List merchant ids. `GET /v1/merchantIds` */
 export const merchantIdsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<MerchantIdsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsGetCollectionResponses,
+  MerchantIdsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     MerchantIdsGetCollectionResponses,
     MerchantIdsGetCollectionErrors,
@@ -11815,9 +13816,14 @@ export const merchantIdsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create merchant ids. `POST /v1/merchantIds` */
 export const merchantIdsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<MerchantIdsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsCreateInstanceResponses,
+  MerchantIdsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     MerchantIdsCreateInstanceResponses,
     MerchantIdsCreateInstanceErrors,
@@ -11833,9 +13839,14 @@ export const merchantIdsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete merchant ids. `DELETE /v1/merchantIds/{id}` */
 export const merchantIdsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<MerchantIdsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsDeleteInstanceResponses,
+  MerchantIdsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     MerchantIdsDeleteInstanceResponses,
     MerchantIdsDeleteInstanceErrors,
@@ -11846,9 +13857,14 @@ export const merchantIdsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read merchant ids. `GET /v1/merchantIds/{id}` */
 export const merchantIdsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<MerchantIdsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsGetInstanceResponses,
+  MerchantIdsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     MerchantIdsGetInstanceResponses,
     MerchantIdsGetInstanceErrors,
@@ -11867,9 +13883,14 @@ export const merchantIdsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update merchant ids. `PATCH /v1/merchantIds/{id}` */
 export const merchantIdsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<MerchantIdsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsUpdateInstanceResponses,
+  MerchantIdsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     MerchantIdsUpdateInstanceResponses,
     MerchantIdsUpdateInstanceErrors,
@@ -11885,9 +13906,14 @@ export const merchantIdsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List nominations. `GET /v1/nominations` */
 export const nominationsGetCollection = <ThrowOnError extends boolean = false>(
   options: Options<NominationsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  NominationsGetCollectionResponses,
+  NominationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     NominationsGetCollectionResponses,
     NominationsGetCollectionErrors,
@@ -11910,9 +13936,14 @@ export const nominationsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create nominations. `POST /v1/nominations` */
 export const nominationsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<NominationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  NominationsCreateInstanceResponses,
+  NominationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     NominationsCreateInstanceResponses,
     NominationsCreateInstanceErrors,
@@ -11928,9 +13959,14 @@ export const nominationsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete nominations. `DELETE /v1/nominations/{id}` */
 export const nominationsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<NominationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  NominationsDeleteInstanceResponses,
+  NominationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     NominationsDeleteInstanceResponses,
     NominationsDeleteInstanceErrors,
@@ -11941,9 +13977,14 @@ export const nominationsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read nominations. `GET /v1/nominations/{id}` */
 export const nominationsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<NominationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  NominationsGetInstanceResponses,
+  NominationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     NominationsGetInstanceResponses,
     NominationsGetInstanceErrors,
@@ -11961,9 +14002,14 @@ export const nominationsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update nominations. `PATCH /v1/nominations/{id}` */
 export const nominationsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<NominationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  NominationsUpdateInstanceResponses,
+  NominationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     NominationsUpdateInstanceResponses,
     NominationsUpdateInstanceErrors,
@@ -11979,9 +14025,14 @@ export const nominationsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List pass type ids. `GET /v1/passTypeIds` */
 export const passTypeIdsGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<PassTypeIdsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsGetCollectionResponses,
+  PassTypeIdsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     PassTypeIdsGetCollectionResponses,
     PassTypeIdsGetCollectionErrors,
@@ -12004,9 +14055,14 @@ export const passTypeIdsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create pass type ids. `POST /v1/passTypeIds` */
 export const passTypeIdsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<PassTypeIdsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsCreateInstanceResponses,
+  PassTypeIdsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     PassTypeIdsCreateInstanceResponses,
     PassTypeIdsCreateInstanceErrors,
@@ -12022,9 +14078,14 @@ export const passTypeIdsCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete pass type ids. `DELETE /v1/passTypeIds/{id}` */
 export const passTypeIdsDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<PassTypeIdsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsDeleteInstanceResponses,
+  PassTypeIdsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     PassTypeIdsDeleteInstanceResponses,
     PassTypeIdsDeleteInstanceErrors,
@@ -12035,9 +14096,14 @@ export const passTypeIdsDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read pass type ids. `GET /v1/passTypeIds/{id}` */
 export const passTypeIdsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<PassTypeIdsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsGetInstanceResponses,
+  PassTypeIdsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PassTypeIdsGetInstanceResponses,
     PassTypeIdsGetInstanceErrors,
@@ -12056,9 +14122,14 @@ export const passTypeIdsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update pass type ids. `PATCH /v1/passTypeIds/{id}` */
 export const passTypeIdsUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<PassTypeIdsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsUpdateInstanceResponses,
+  PassTypeIdsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     PassTypeIdsUpdateInstanceResponses,
     PassTypeIdsUpdateInstanceErrors,
@@ -12074,11 +14145,16 @@ export const passTypeIdsUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** List pre release versions. `GET /v1/preReleaseVersions` */
 export const preReleaseVersionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<PreReleaseVersionsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  PreReleaseVersionsGetCollectionResponses,
+  PreReleaseVersionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     PreReleaseVersionsGetCollectionResponses,
     PreReleaseVersionsGetCollectionErrors,
@@ -12106,11 +14182,16 @@ export const preReleaseVersionsGetCollection = <
     ...options,
   });
 
+/** Read pre release versions. `GET /v1/preReleaseVersions/{id}` */
 export const preReleaseVersionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PreReleaseVersionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PreReleaseVersionsGetInstanceResponses,
+  PreReleaseVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PreReleaseVersionsGetInstanceResponses,
     PreReleaseVersionsGetInstanceErrors,
@@ -12129,9 +14210,14 @@ export const preReleaseVersionsGetInstance = <
     ...options,
   });
 
+/** List profiles. `GET /v1/profiles` */
 export const profilesGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<ProfilesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesGetCollectionResponses,
+  ProfilesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     ProfilesGetCollectionResponses,
     ProfilesGetCollectionErrors,
@@ -12157,9 +14243,14 @@ export const profilesGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create profiles. `POST /v1/profiles` */
 export const profilesCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<ProfilesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesCreateInstanceResponses,
+  ProfilesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     ProfilesCreateInstanceResponses,
     ProfilesCreateInstanceErrors,
@@ -12175,9 +14266,14 @@ export const profilesCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete profiles. `DELETE /v1/profiles/{id}` */
 export const profilesDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<ProfilesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesDeleteInstanceResponses,
+  ProfilesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     ProfilesDeleteInstanceResponses,
     ProfilesDeleteInstanceErrors,
@@ -12188,9 +14284,14 @@ export const profilesDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read profiles. `GET /v1/profiles/{id}` */
 export const profilesGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<ProfilesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesGetInstanceResponses,
+  ProfilesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesGetInstanceResponses,
     ProfilesGetInstanceErrors,
@@ -12211,11 +14312,16 @@ export const profilesGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Create promoted purchases. `POST /v1/promotedPurchases` */
 export const promotedPurchasesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PromotedPurchasesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PromotedPurchasesCreateInstanceResponses,
+  PromotedPurchasesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     PromotedPurchasesCreateInstanceResponses,
     PromotedPurchasesCreateInstanceErrors,
@@ -12230,11 +14336,16 @@ export const promotedPurchasesCreateInstance = <
     },
   });
 
+/** Delete promoted purchases. `DELETE /v1/promotedPurchases/{id}` */
 export const promotedPurchasesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PromotedPurchasesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PromotedPurchasesDeleteInstanceResponses,
+  PromotedPurchasesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     PromotedPurchasesDeleteInstanceResponses,
     PromotedPurchasesDeleteInstanceErrors,
@@ -12245,11 +14356,16 @@ export const promotedPurchasesDeleteInstance = <
     ...options,
   });
 
+/** Read promoted purchases. `GET /v1/promotedPurchases/{id}` */
 export const promotedPurchasesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PromotedPurchasesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PromotedPurchasesGetInstanceResponses,
+  PromotedPurchasesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PromotedPurchasesGetInstanceResponses,
     PromotedPurchasesGetInstanceErrors,
@@ -12266,11 +14382,16 @@ export const promotedPurchasesGetInstance = <
     ...options,
   });
 
+/** Update promoted purchases. `PATCH /v1/promotedPurchases/{id}` */
 export const promotedPurchasesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PromotedPurchasesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  PromotedPurchasesUpdateInstanceResponses,
+  PromotedPurchasesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     PromotedPurchasesUpdateInstanceResponses,
     PromotedPurchasesUpdateInstanceErrors,
@@ -12285,11 +14406,16 @@ export const promotedPurchasesUpdateInstance = <
     },
   });
 
+/** Create review submission items. `POST /v1/reviewSubmissionItems` */
 export const reviewSubmissionItemsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionItemsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionItemsCreateInstanceResponses,
+  ReviewSubmissionItemsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     ReviewSubmissionItemsCreateInstanceResponses,
     ReviewSubmissionItemsCreateInstanceErrors,
@@ -12304,11 +14430,16 @@ export const reviewSubmissionItemsCreateInstance = <
     },
   });
 
+/** Delete review submission items. `DELETE /v1/reviewSubmissionItems/{id}` */
 export const reviewSubmissionItemsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionItemsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionItemsDeleteInstanceResponses,
+  ReviewSubmissionItemsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     ReviewSubmissionItemsDeleteInstanceResponses,
     ReviewSubmissionItemsDeleteInstanceErrors,
@@ -12319,11 +14450,16 @@ export const reviewSubmissionItemsDeleteInstance = <
     ...options,
   });
 
+/** Update review submission items. `PATCH /v1/reviewSubmissionItems/{id}` */
 export const reviewSubmissionItemsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionItemsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionItemsUpdateInstanceResponses,
+  ReviewSubmissionItemsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     ReviewSubmissionItemsUpdateInstanceResponses,
     ReviewSubmissionItemsUpdateInstanceErrors,
@@ -12338,11 +14474,16 @@ export const reviewSubmissionItemsUpdateInstance = <
     },
   });
 
+/** List review submissions. `GET /v1/reviewSubmissions` */
 export const reviewSubmissionsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionsGetCollectionResponses,
+  ReviewSubmissionsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ReviewSubmissionsGetCollectionResponses,
     ReviewSubmissionsGetCollectionErrors,
@@ -12364,11 +14505,16 @@ export const reviewSubmissionsGetCollection = <
     ...options,
   });
 
+/** Create review submissions. `POST /v1/reviewSubmissions` */
 export const reviewSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionsCreateInstanceResponses,
+  ReviewSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     ReviewSubmissionsCreateInstanceResponses,
     ReviewSubmissionsCreateInstanceErrors,
@@ -12384,11 +14530,16 @@ export const reviewSubmissionsCreateInstance = <
     },
   });
 
+/** Read review submissions. `GET /v1/reviewSubmissions/{id}` */
 export const reviewSubmissionsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionsGetInstanceResponses,
+  ReviewSubmissionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ReviewSubmissionsGetInstanceResponses,
     ReviewSubmissionsGetInstanceErrors,
@@ -12407,11 +14558,16 @@ export const reviewSubmissionsGetInstance = <
     ...options,
   });
 
+/** Update review submissions. `PATCH /v1/reviewSubmissions/{id}` */
 export const reviewSubmissionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionsUpdateInstanceResponses,
+  ReviewSubmissionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     ReviewSubmissionsUpdateInstanceResponses,
     ReviewSubmissionsUpdateInstanceErrors,
@@ -12427,11 +14583,16 @@ export const reviewSubmissionsUpdateInstance = <
     },
   });
 
+/** Create routing app coverages. `POST /v1/routingAppCoverages` */
 export const routingAppCoveragesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<RoutingAppCoveragesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  RoutingAppCoveragesCreateInstanceResponses,
+  RoutingAppCoveragesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     RoutingAppCoveragesCreateInstanceResponses,
     RoutingAppCoveragesCreateInstanceErrors,
@@ -12447,11 +14608,16 @@ export const routingAppCoveragesCreateInstance = <
     },
   });
 
+/** Delete routing app coverages. `DELETE /v1/routingAppCoverages/{id}` */
 export const routingAppCoveragesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<RoutingAppCoveragesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  RoutingAppCoveragesDeleteInstanceResponses,
+  RoutingAppCoveragesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     RoutingAppCoveragesDeleteInstanceResponses,
     RoutingAppCoveragesDeleteInstanceErrors,
@@ -12462,11 +14628,16 @@ export const routingAppCoveragesDeleteInstance = <
     ...options,
   });
 
+/** Read routing app coverages. `GET /v1/routingAppCoverages/{id}` */
 export const routingAppCoveragesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<RoutingAppCoveragesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  RoutingAppCoveragesGetInstanceResponses,
+  RoutingAppCoveragesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     RoutingAppCoveragesGetInstanceResponses,
     RoutingAppCoveragesGetInstanceErrors,
@@ -12484,11 +14655,16 @@ export const routingAppCoveragesGetInstance = <
     ...options,
   });
 
+/** Update routing app coverages. `PATCH /v1/routingAppCoverages/{id}` */
 export const routingAppCoveragesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<RoutingAppCoveragesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  RoutingAppCoveragesUpdateInstanceResponses,
+  RoutingAppCoveragesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     RoutingAppCoveragesUpdateInstanceResponses,
     RoutingAppCoveragesUpdateInstanceErrors,
@@ -12504,9 +14680,14 @@ export const routingAppCoveragesUpdateInstance = <
     },
   });
 
+/** List sales reports. `GET /v1/salesReports` */
 export const salesReportsGetCollection = <ThrowOnError extends boolean = false>(
   options: Options<SalesReportsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  SalesReportsGetCollectionResponses,
+  SalesReportsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SalesReportsGetCollectionResponses,
     SalesReportsGetCollectionErrors,
@@ -12527,11 +14708,16 @@ export const salesReportsGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** List sandbox testers v2. `GET /v2/sandboxTesters` */
 export const sandboxTestersV2GetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<SandboxTestersV2GetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  SandboxTestersV2GetCollectionResponses,
+  SandboxTestersV2GetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     SandboxTestersV2GetCollectionResponses,
     SandboxTestersV2GetCollectionErrors,
@@ -12545,11 +14731,16 @@ export const sandboxTestersV2GetCollection = <
     ...options,
   });
 
+/** Update sandbox testers v2. `PATCH /v2/sandboxTesters/{id}` */
 export const sandboxTestersV2UpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SandboxTestersV2UpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SandboxTestersV2UpdateInstanceResponses,
+  SandboxTestersV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SandboxTestersV2UpdateInstanceResponses,
     SandboxTestersV2UpdateInstanceErrors,
@@ -12564,6 +14755,7 @@ export const sandboxTestersV2UpdateInstance = <
     },
   });
 
+/** Create sandbox testers clear purchase history request v2. `POST /v2/sandboxTestersClearPurchaseHistoryRequest` */
 export const sandboxTestersClearPurchaseHistoryRequestV2CreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12571,7 +14763,11 @@ export const sandboxTestersClearPurchaseHistoryRequestV2CreateInstance = <
     SandboxTestersClearPurchaseHistoryRequestV2CreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SandboxTestersClearPurchaseHistoryRequestV2CreateInstanceResponses,
+  SandboxTestersClearPurchaseHistoryRequestV2CreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SandboxTestersClearPurchaseHistoryRequestV2CreateInstanceResponses,
     SandboxTestersClearPurchaseHistoryRequestV2CreateInstanceErrors,
@@ -12586,11 +14782,16 @@ export const sandboxTestersClearPurchaseHistoryRequestV2CreateInstance = <
     },
   });
 
+/** Read scm git references. `GET /v1/scmGitReferences/{id}` */
 export const scmGitReferencesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ScmGitReferencesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmGitReferencesGetInstanceResponses,
+  ScmGitReferencesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmGitReferencesGetInstanceResponses,
     ScmGitReferencesGetInstanceErrors,
@@ -12608,9 +14809,14 @@ export const scmGitReferencesGetInstance = <
     ...options,
   });
 
+/** List scm providers. `GET /v1/scmProviders` */
 export const scmProvidersGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<ScmProvidersGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmProvidersGetCollectionResponses,
+  ScmProvidersGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     ScmProvidersGetCollectionResponses,
     ScmProvidersGetCollectionErrors,
@@ -12624,9 +14830,14 @@ export const scmProvidersGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read scm providers. `GET /v1/scmProviders/{id}` */
 export const scmProvidersGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<ScmProvidersGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmProvidersGetInstanceResponses,
+  ScmProvidersGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmProvidersGetInstanceResponses,
     ScmProvidersGetInstanceErrors,
@@ -12640,11 +14851,16 @@ export const scmProvidersGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read scm pull requests. `GET /v1/scmPullRequests/{id}` */
 export const scmPullRequestsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ScmPullRequestsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmPullRequestsGetInstanceResponses,
+  ScmPullRequestsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmPullRequestsGetInstanceResponses,
     ScmPullRequestsGetInstanceErrors,
@@ -12662,11 +14878,16 @@ export const scmPullRequestsGetInstance = <
     ...options,
   });
 
+/** List scm repositories. `GET /v1/scmRepositories` */
 export const scmRepositoriesGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<ScmRepositoriesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmRepositoriesGetCollectionResponses,
+  ScmRepositoriesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     ScmRepositoriesGetCollectionResponses,
     ScmRepositoriesGetCollectionErrors,
@@ -12685,11 +14906,16 @@ export const scmRepositoriesGetCollection = <
     ...options,
   });
 
+/** Read scm repositories. `GET /v1/scmRepositories/{id}` */
 export const scmRepositoriesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ScmRepositoriesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmRepositoriesGetInstanceResponses,
+  ScmRepositoriesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmRepositoriesGetInstanceResponses,
     ScmRepositoriesGetInstanceErrors,
@@ -12707,6 +14933,7 @@ export const scmRepositoriesGetInstance = <
     ...options,
   });
 
+/** Create subscription app store review screenshots. `POST /v1/subscriptionAppStoreReviewScreenshots` */
 export const subscriptionAppStoreReviewScreenshotsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12714,7 +14941,11 @@ export const subscriptionAppStoreReviewScreenshotsCreateInstance = <
     SubscriptionAppStoreReviewScreenshotsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionAppStoreReviewScreenshotsCreateInstanceResponses,
+  SubscriptionAppStoreReviewScreenshotsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionAppStoreReviewScreenshotsCreateInstanceResponses,
     SubscriptionAppStoreReviewScreenshotsCreateInstanceErrors,
@@ -12729,6 +14960,7 @@ export const subscriptionAppStoreReviewScreenshotsCreateInstance = <
     },
   });
 
+/** Delete subscription app store review screenshots. `DELETE /v1/subscriptionAppStoreReviewScreenshots/{id}` */
 export const subscriptionAppStoreReviewScreenshotsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12736,7 +14968,11 @@ export const subscriptionAppStoreReviewScreenshotsDeleteInstance = <
     SubscriptionAppStoreReviewScreenshotsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionAppStoreReviewScreenshotsDeleteInstanceResponses,
+  SubscriptionAppStoreReviewScreenshotsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionAppStoreReviewScreenshotsDeleteInstanceResponses,
     SubscriptionAppStoreReviewScreenshotsDeleteInstanceErrors,
@@ -12747,6 +14983,7 @@ export const subscriptionAppStoreReviewScreenshotsDeleteInstance = <
     ...options,
   });
 
+/** Read subscription app store review screenshots. `GET /v1/subscriptionAppStoreReviewScreenshots/{id}` */
 export const subscriptionAppStoreReviewScreenshotsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12754,7 +14991,11 @@ export const subscriptionAppStoreReviewScreenshotsGetInstance = <
     SubscriptionAppStoreReviewScreenshotsGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionAppStoreReviewScreenshotsGetInstanceResponses,
+  SubscriptionAppStoreReviewScreenshotsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionAppStoreReviewScreenshotsGetInstanceResponses,
     SubscriptionAppStoreReviewScreenshotsGetInstanceErrors,
@@ -12773,6 +15014,7 @@ export const subscriptionAppStoreReviewScreenshotsGetInstance = <
     ...options,
   });
 
+/** Update subscription app store review screenshots. `PATCH /v1/subscriptionAppStoreReviewScreenshots/{id}` */
 export const subscriptionAppStoreReviewScreenshotsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12780,7 +15022,11 @@ export const subscriptionAppStoreReviewScreenshotsUpdateInstance = <
     SubscriptionAppStoreReviewScreenshotsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses,
+  SubscriptionAppStoreReviewScreenshotsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses,
     SubscriptionAppStoreReviewScreenshotsUpdateInstanceErrors,
@@ -12795,11 +15041,16 @@ export const subscriptionAppStoreReviewScreenshotsUpdateInstance = <
     },
   });
 
+/** Create subscription availabilities. `POST /v1/subscriptionAvailabilities` */
 export const subscriptionAvailabilitiesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionAvailabilitiesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionAvailabilitiesCreateInstanceResponses,
+  SubscriptionAvailabilitiesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionAvailabilitiesCreateInstanceResponses,
     SubscriptionAvailabilitiesCreateInstanceErrors,
@@ -12814,11 +15065,16 @@ export const subscriptionAvailabilitiesCreateInstance = <
     },
   });
 
+/** Read subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}` */
 export const subscriptionAvailabilitiesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionAvailabilitiesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionAvailabilitiesGetInstanceResponses,
+  SubscriptionAvailabilitiesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionAvailabilitiesGetInstanceResponses,
     SubscriptionAvailabilitiesGetInstanceErrors,
@@ -12836,11 +15092,16 @@ export const subscriptionAvailabilitiesGetInstance = <
     ...options,
   });
 
+/** Read subscription grace periods. `GET /v1/subscriptionGracePeriods/{id}` */
 export const subscriptionGracePeriodsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGracePeriodsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGracePeriodsGetInstanceResponses,
+  SubscriptionGracePeriodsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionGracePeriodsGetInstanceResponses,
     SubscriptionGracePeriodsGetInstanceErrors,
@@ -12856,11 +15117,16 @@ export const subscriptionGracePeriodsGetInstance = <
     ...options,
   });
 
+/** Update subscription grace periods. `PATCH /v1/subscriptionGracePeriods/{id}` */
 export const subscriptionGracePeriodsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGracePeriodsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGracePeriodsUpdateInstanceResponses,
+  SubscriptionGracePeriodsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionGracePeriodsUpdateInstanceResponses,
     SubscriptionGracePeriodsUpdateInstanceErrors,
@@ -12875,6 +15141,7 @@ export const subscriptionGracePeriodsUpdateInstance = <
     },
   });
 
+/** Create subscription group localizations. `POST /v1/subscriptionGroupLocalizations` */
 export const subscriptionGroupLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12882,7 +15149,11 @@ export const subscriptionGroupLocalizationsCreateInstance = <
     SubscriptionGroupLocalizationsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupLocalizationsCreateInstanceResponses,
+  SubscriptionGroupLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionGroupLocalizationsCreateInstanceResponses,
     SubscriptionGroupLocalizationsCreateInstanceErrors,
@@ -12897,6 +15168,7 @@ export const subscriptionGroupLocalizationsCreateInstance = <
     },
   });
 
+/** Delete subscription group localizations. `DELETE /v1/subscriptionGroupLocalizations/{id}` */
 export const subscriptionGroupLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12904,7 +15176,11 @@ export const subscriptionGroupLocalizationsDeleteInstance = <
     SubscriptionGroupLocalizationsDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupLocalizationsDeleteInstanceResponses,
+  SubscriptionGroupLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionGroupLocalizationsDeleteInstanceResponses,
     SubscriptionGroupLocalizationsDeleteInstanceErrors,
@@ -12915,11 +15191,16 @@ export const subscriptionGroupLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read subscription group localizations. `GET /v1/subscriptionGroupLocalizations/{id}` */
 export const subscriptionGroupLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGroupLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGroupLocalizationsGetInstanceResponses,
+  SubscriptionGroupLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionGroupLocalizationsGetInstanceResponses,
     SubscriptionGroupLocalizationsGetInstanceErrors,
@@ -12936,6 +15217,7 @@ export const subscriptionGroupLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update subscription group localizations. `PATCH /v1/subscriptionGroupLocalizations/{id}` */
 export const subscriptionGroupLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12943,7 +15225,11 @@ export const subscriptionGroupLocalizationsUpdateInstance = <
     SubscriptionGroupLocalizationsUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupLocalizationsUpdateInstanceResponses,
+  SubscriptionGroupLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionGroupLocalizationsUpdateInstanceResponses,
     SubscriptionGroupLocalizationsUpdateInstanceErrors,
@@ -12958,6 +15244,7 @@ export const subscriptionGroupLocalizationsUpdateInstance = <
     },
   });
 
+/** Create subscription group submissions. `POST /v1/subscriptionGroupSubmissions` */
 export const subscriptionGroupSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -12965,7 +15252,11 @@ export const subscriptionGroupSubmissionsCreateInstance = <
     SubscriptionGroupSubmissionsCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupSubmissionsCreateInstanceResponses,
+  SubscriptionGroupSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionGroupSubmissionsCreateInstanceResponses,
     SubscriptionGroupSubmissionsCreateInstanceErrors,
@@ -12980,11 +15271,16 @@ export const subscriptionGroupSubmissionsCreateInstance = <
     },
   });
 
+/** Create subscription groups. `POST /v1/subscriptionGroups` */
 export const subscriptionGroupsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGroupsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGroupsCreateInstanceResponses,
+  SubscriptionGroupsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionGroupsCreateInstanceResponses,
     SubscriptionGroupsCreateInstanceErrors,
@@ -12999,11 +15295,16 @@ export const subscriptionGroupsCreateInstance = <
     },
   });
 
+/** Delete subscription groups. `DELETE /v1/subscriptionGroups/{id}` */
 export const subscriptionGroupsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGroupsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGroupsDeleteInstanceResponses,
+  SubscriptionGroupsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionGroupsDeleteInstanceResponses,
     SubscriptionGroupsDeleteInstanceErrors,
@@ -13014,11 +15315,16 @@ export const subscriptionGroupsDeleteInstance = <
     ...options,
   });
 
+/** Read subscription groups. `GET /v1/subscriptionGroups/{id}` */
 export const subscriptionGroupsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGroupsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGroupsGetInstanceResponses,
+  SubscriptionGroupsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionGroupsGetInstanceResponses,
     SubscriptionGroupsGetInstanceErrors,
@@ -13037,11 +15343,16 @@ export const subscriptionGroupsGetInstance = <
     ...options,
   });
 
+/** Update subscription groups. `PATCH /v1/subscriptionGroups/{id}` */
 export const subscriptionGroupsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionGroupsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionGroupsUpdateInstanceResponses,
+  SubscriptionGroupsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionGroupsUpdateInstanceResponses,
     SubscriptionGroupsUpdateInstanceErrors,
@@ -13056,11 +15367,16 @@ export const subscriptionGroupsUpdateInstance = <
     },
   });
 
+/** Create subscription images. `POST /v1/subscriptionImages` */
 export const subscriptionImagesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionImagesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionImagesCreateInstanceResponses,
+  SubscriptionImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionImagesCreateInstanceResponses,
     SubscriptionImagesCreateInstanceErrors,
@@ -13075,11 +15391,16 @@ export const subscriptionImagesCreateInstance = <
     },
   });
 
+/** Delete subscription images. `DELETE /v1/subscriptionImages/{id}` */
 export const subscriptionImagesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionImagesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionImagesDeleteInstanceResponses,
+  SubscriptionImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionImagesDeleteInstanceResponses,
     SubscriptionImagesDeleteInstanceErrors,
@@ -13090,11 +15411,16 @@ export const subscriptionImagesDeleteInstance = <
     ...options,
   });
 
+/** Read subscription images. `GET /v1/subscriptionImages/{id}` */
 export const subscriptionImagesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionImagesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionImagesGetInstanceResponses,
+  SubscriptionImagesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionImagesGetInstanceResponses,
     SubscriptionImagesGetInstanceErrors,
@@ -13111,11 +15437,16 @@ export const subscriptionImagesGetInstance = <
     ...options,
   });
 
+/** Update subscription images. `PATCH /v1/subscriptionImages/{id}` */
 export const subscriptionImagesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionImagesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionImagesUpdateInstanceResponses,
+  SubscriptionImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionImagesUpdateInstanceResponses,
     SubscriptionImagesUpdateInstanceErrors,
@@ -13130,6 +15461,7 @@ export const subscriptionImagesUpdateInstance = <
     },
   });
 
+/** Create subscription introductory offers. `POST /v1/subscriptionIntroductoryOffers` */
 export const subscriptionIntroductoryOffersCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13137,7 +15469,11 @@ export const subscriptionIntroductoryOffersCreateInstance = <
     SubscriptionIntroductoryOffersCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionIntroductoryOffersCreateInstanceResponses,
+  SubscriptionIntroductoryOffersCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionIntroductoryOffersCreateInstanceResponses,
     SubscriptionIntroductoryOffersCreateInstanceErrors,
@@ -13154,6 +15490,7 @@ export const subscriptionIntroductoryOffersCreateInstance = <
     },
   });
 
+/** Delete subscription introductory offers. `DELETE /v1/subscriptionIntroductoryOffers/{id}` */
 export const subscriptionIntroductoryOffersDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13161,7 +15498,11 @@ export const subscriptionIntroductoryOffersDeleteInstance = <
     SubscriptionIntroductoryOffersDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionIntroductoryOffersDeleteInstanceResponses,
+  SubscriptionIntroductoryOffersDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionIntroductoryOffersDeleteInstanceResponses,
     SubscriptionIntroductoryOffersDeleteInstanceErrors,
@@ -13172,6 +15513,7 @@ export const subscriptionIntroductoryOffersDeleteInstance = <
     ...options,
   });
 
+/** Update subscription introductory offers. `PATCH /v1/subscriptionIntroductoryOffers/{id}` */
 export const subscriptionIntroductoryOffersUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13179,7 +15521,11 @@ export const subscriptionIntroductoryOffersUpdateInstance = <
     SubscriptionIntroductoryOffersUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionIntroductoryOffersUpdateInstanceResponses,
+  SubscriptionIntroductoryOffersUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionIntroductoryOffersUpdateInstanceResponses,
     SubscriptionIntroductoryOffersUpdateInstanceErrors,
@@ -13196,11 +15542,16 @@ export const subscriptionIntroductoryOffersUpdateInstance = <
     },
   });
 
+/** Create subscription localizations. `POST /v1/subscriptionLocalizations` */
 export const subscriptionLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionLocalizationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionLocalizationsCreateInstanceResponses,
+  SubscriptionLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionLocalizationsCreateInstanceResponses,
     SubscriptionLocalizationsCreateInstanceErrors,
@@ -13215,11 +15566,16 @@ export const subscriptionLocalizationsCreateInstance = <
     },
   });
 
+/** Delete subscription localizations. `DELETE /v1/subscriptionLocalizations/{id}` */
 export const subscriptionLocalizationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionLocalizationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionLocalizationsDeleteInstanceResponses,
+  SubscriptionLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionLocalizationsDeleteInstanceResponses,
     SubscriptionLocalizationsDeleteInstanceErrors,
@@ -13230,11 +15586,16 @@ export const subscriptionLocalizationsDeleteInstance = <
     ...options,
   });
 
+/** Read subscription localizations. `GET /v1/subscriptionLocalizations/{id}` */
 export const subscriptionLocalizationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionLocalizationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionLocalizationsGetInstanceResponses,
+  SubscriptionLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionLocalizationsGetInstanceResponses,
     SubscriptionLocalizationsGetInstanceErrors,
@@ -13251,11 +15612,16 @@ export const subscriptionLocalizationsGetInstance = <
     ...options,
   });
 
+/** Update subscription localizations. `PATCH /v1/subscriptionLocalizations/{id}` */
 export const subscriptionLocalizationsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionLocalizationsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionLocalizationsUpdateInstanceResponses,
+  SubscriptionLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionLocalizationsUpdateInstanceResponses,
     SubscriptionLocalizationsUpdateInstanceErrors,
@@ -13270,6 +15636,7 @@ export const subscriptionLocalizationsUpdateInstance = <
     },
   });
 
+/** Create subscription offer code custom codes. `POST /v1/subscriptionOfferCodeCustomCodes` */
 export const subscriptionOfferCodeCustomCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13277,7 +15644,11 @@ export const subscriptionOfferCodeCustomCodesCreateInstance = <
     SubscriptionOfferCodeCustomCodesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeCustomCodesCreateInstanceResponses,
+  SubscriptionOfferCodeCustomCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionOfferCodeCustomCodesCreateInstanceResponses,
     SubscriptionOfferCodeCustomCodesCreateInstanceErrors,
@@ -13294,6 +15665,7 @@ export const subscriptionOfferCodeCustomCodesCreateInstance = <
     },
   });
 
+/** Read subscription offer code custom codes. `GET /v1/subscriptionOfferCodeCustomCodes/{id}` */
 export const subscriptionOfferCodeCustomCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13301,7 +15673,11 @@ export const subscriptionOfferCodeCustomCodesGetInstance = <
     SubscriptionOfferCodeCustomCodesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeCustomCodesGetInstanceResponses,
+  SubscriptionOfferCodeCustomCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodeCustomCodesGetInstanceResponses,
     SubscriptionOfferCodeCustomCodesGetInstanceErrors,
@@ -13322,6 +15698,7 @@ export const subscriptionOfferCodeCustomCodesGetInstance = <
     ...options,
   });
 
+/** Update subscription offer code custom codes. `PATCH /v1/subscriptionOfferCodeCustomCodes/{id}` */
 export const subscriptionOfferCodeCustomCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13329,7 +15706,11 @@ export const subscriptionOfferCodeCustomCodesUpdateInstance = <
     SubscriptionOfferCodeCustomCodesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeCustomCodesUpdateInstanceResponses,
+  SubscriptionOfferCodeCustomCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionOfferCodeCustomCodesUpdateInstanceResponses,
     SubscriptionOfferCodeCustomCodesUpdateInstanceErrors,
@@ -13346,6 +15727,7 @@ export const subscriptionOfferCodeCustomCodesUpdateInstance = <
     },
   });
 
+/** Create subscription offer code one time use codes. `POST /v1/subscriptionOfferCodeOneTimeUseCodes` */
 export const subscriptionOfferCodeOneTimeUseCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13353,7 +15735,11 @@ export const subscriptionOfferCodeOneTimeUseCodesCreateInstance = <
     SubscriptionOfferCodeOneTimeUseCodesCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeOneTimeUseCodesCreateInstanceResponses,
+  SubscriptionOfferCodeOneTimeUseCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionOfferCodeOneTimeUseCodesCreateInstanceResponses,
     SubscriptionOfferCodeOneTimeUseCodesCreateInstanceErrors,
@@ -13370,6 +15756,7 @@ export const subscriptionOfferCodeOneTimeUseCodesCreateInstance = <
     },
   });
 
+/** Read subscription offer code one time use codes. `GET /v1/subscriptionOfferCodeOneTimeUseCodes/{id}` */
 export const subscriptionOfferCodeOneTimeUseCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13377,7 +15764,11 @@ export const subscriptionOfferCodeOneTimeUseCodesGetInstance = <
     SubscriptionOfferCodeOneTimeUseCodesGetInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeOneTimeUseCodesGetInstanceResponses,
+  SubscriptionOfferCodeOneTimeUseCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodeOneTimeUseCodesGetInstanceResponses,
     SubscriptionOfferCodeOneTimeUseCodesGetInstanceErrors,
@@ -13398,6 +15789,7 @@ export const subscriptionOfferCodeOneTimeUseCodesGetInstance = <
     ...options,
   });
 
+/** Update subscription offer code one time use codes. `PATCH /v1/subscriptionOfferCodeOneTimeUseCodes/{id}` */
 export const subscriptionOfferCodeOneTimeUseCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13405,7 +15797,11 @@ export const subscriptionOfferCodeOneTimeUseCodesUpdateInstance = <
     SubscriptionOfferCodeOneTimeUseCodesUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeOneTimeUseCodesUpdateInstanceResponses,
+  SubscriptionOfferCodeOneTimeUseCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionOfferCodeOneTimeUseCodesUpdateInstanceResponses,
     SubscriptionOfferCodeOneTimeUseCodesUpdateInstanceErrors,
@@ -13422,11 +15818,16 @@ export const subscriptionOfferCodeOneTimeUseCodesUpdateInstance = <
     },
   });
 
+/** Create subscription offer codes. `POST /v1/subscriptionOfferCodes` */
 export const subscriptionOfferCodesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionOfferCodesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesCreateInstanceResponses,
+  SubscriptionOfferCodesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionOfferCodesCreateInstanceResponses,
     SubscriptionOfferCodesCreateInstanceErrors,
@@ -13443,11 +15844,16 @@ export const subscriptionOfferCodesCreateInstance = <
     },
   });
 
+/** Read subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}` */
 export const subscriptionOfferCodesGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionOfferCodesGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesGetInstanceResponses,
+  SubscriptionOfferCodesGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesGetInstanceResponses,
     SubscriptionOfferCodesGetInstanceErrors,
@@ -13472,11 +15878,16 @@ export const subscriptionOfferCodesGetInstance = <
     ...options,
   });
 
+/** Update subscription offer codes. `PATCH /v1/subscriptionOfferCodes/{id}` */
 export const subscriptionOfferCodesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionOfferCodesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesUpdateInstanceResponses,
+  SubscriptionOfferCodesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionOfferCodesUpdateInstanceResponses,
     SubscriptionOfferCodesUpdateInstanceErrors,
@@ -13493,11 +15904,16 @@ export const subscriptionOfferCodesUpdateInstance = <
     },
   });
 
+/** Read subscription price points. `GET /v1/subscriptionPricePoints/{id}` */
 export const subscriptionPricePointsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionPricePointsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionPricePointsGetInstanceResponses,
+  SubscriptionPricePointsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPricePointsGetInstanceResponses,
     SubscriptionPricePointsGetInstanceErrors,
@@ -13514,11 +15930,16 @@ export const subscriptionPricePointsGetInstance = <
     ...options,
   });
 
+/** Create subscription prices. `POST /v1/subscriptionPrices` */
 export const subscriptionPricesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionPricesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionPricesCreateInstanceResponses,
+  SubscriptionPricesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionPricesCreateInstanceResponses,
     SubscriptionPricesCreateInstanceErrors,
@@ -13534,11 +15955,16 @@ export const subscriptionPricesCreateInstance = <
     },
   });
 
+/** Delete subscription prices. `DELETE /v1/subscriptionPrices/{id}` */
 export const subscriptionPricesDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionPricesDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionPricesDeleteInstanceResponses,
+  SubscriptionPricesDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionPricesDeleteInstanceResponses,
     SubscriptionPricesDeleteInstanceErrors,
@@ -13549,6 +15975,7 @@ export const subscriptionPricesDeleteInstance = <
     ...options,
   });
 
+/** Create subscription promotional offers. `POST /v1/subscriptionPromotionalOffers` */
 export const subscriptionPromotionalOffersCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13556,7 +15983,11 @@ export const subscriptionPromotionalOffersCreateInstance = <
     SubscriptionPromotionalOffersCreateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersCreateInstanceResponses,
+  SubscriptionPromotionalOffersCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionPromotionalOffersCreateInstanceResponses,
     SubscriptionPromotionalOffersCreateInstanceErrors,
@@ -13571,6 +16002,7 @@ export const subscriptionPromotionalOffersCreateInstance = <
     },
   });
 
+/** Delete subscription promotional offers. `DELETE /v1/subscriptionPromotionalOffers/{id}` */
 export const subscriptionPromotionalOffersDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13578,7 +16010,11 @@ export const subscriptionPromotionalOffersDeleteInstance = <
     SubscriptionPromotionalOffersDeleteInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersDeleteInstanceResponses,
+  SubscriptionPromotionalOffersDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionPromotionalOffersDeleteInstanceResponses,
     SubscriptionPromotionalOffersDeleteInstanceErrors,
@@ -13589,11 +16025,16 @@ export const subscriptionPromotionalOffersDeleteInstance = <
     ...options,
   });
 
+/** Read subscription promotional offers. `GET /v1/subscriptionPromotionalOffers/{id}` */
 export const subscriptionPromotionalOffersGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionPromotionalOffersGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersGetInstanceResponses,
+  SubscriptionPromotionalOffersGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPromotionalOffersGetInstanceResponses,
     SubscriptionPromotionalOffersGetInstanceErrors,
@@ -13613,6 +16054,7 @@ export const subscriptionPromotionalOffersGetInstance = <
     ...options,
   });
 
+/** Update subscription promotional offers. `PATCH /v1/subscriptionPromotionalOffers/{id}` */
 export const subscriptionPromotionalOffersUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
@@ -13620,7 +16062,11 @@ export const subscriptionPromotionalOffersUpdateInstance = <
     SubscriptionPromotionalOffersUpdateInstanceData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersUpdateInstanceResponses,
+  SubscriptionPromotionalOffersUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionPromotionalOffersUpdateInstanceResponses,
     SubscriptionPromotionalOffersUpdateInstanceErrors,
@@ -13635,11 +16081,16 @@ export const subscriptionPromotionalOffersUpdateInstance = <
     },
   });
 
+/** Create subscription submissions. `POST /v1/subscriptionSubmissions` */
 export const subscriptionSubmissionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionSubmissionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionSubmissionsCreateInstanceResponses,
+  SubscriptionSubmissionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionSubmissionsCreateInstanceResponses,
     SubscriptionSubmissionsCreateInstanceErrors,
@@ -13654,11 +16105,16 @@ export const subscriptionSubmissionsCreateInstance = <
     },
   });
 
+/** Create subscriptions. `POST /v1/subscriptions` */
 export const subscriptionsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsCreateInstanceResponses,
+  SubscriptionsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     SubscriptionsCreateInstanceResponses,
     SubscriptionsCreateInstanceErrors,
@@ -13673,11 +16129,16 @@ export const subscriptionsCreateInstance = <
     },
   });
 
+/** Delete subscriptions. `DELETE /v1/subscriptions/{id}` */
 export const subscriptionsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsDeleteInstanceResponses,
+  SubscriptionsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionsDeleteInstanceResponses,
     SubscriptionsDeleteInstanceErrors,
@@ -13688,9 +16149,14 @@ export const subscriptionsDeleteInstance = <
     ...options,
   });
 
+/** Read subscriptions. `GET /v1/subscriptions/{id}` */
 export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<SubscriptionsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsGetInstanceResponses,
+  SubscriptionsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsGetInstanceResponses,
     SubscriptionsGetInstanceErrors,
@@ -13719,11 +16185,16 @@ export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update subscriptions. `PATCH /v1/subscriptions/{id}` */
 export const subscriptionsUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsUpdateInstanceResponses,
+  SubscriptionsUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     SubscriptionsUpdateInstanceResponses,
     SubscriptionsUpdateInstanceErrors,
@@ -13738,9 +16209,14 @@ export const subscriptionsUpdateInstance = <
     },
   });
 
+/** List territories. `GET /v1/territories` */
 export const territoriesGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<TerritoriesGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  TerritoriesGetCollectionResponses,
+  TerritoriesGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     TerritoriesGetCollectionResponses,
     TerritoriesGetCollectionErrors,
@@ -13754,11 +16230,16 @@ export const territoriesGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update territory availabilities. `PATCH /v1/territoryAvailabilities/{id}` */
 export const territoryAvailabilitiesUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<TerritoryAvailabilitiesUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  TerritoryAvailabilitiesUpdateInstanceResponses,
+  TerritoryAvailabilitiesUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     TerritoryAvailabilitiesUpdateInstanceResponses,
     TerritoryAvailabilitiesUpdateInstanceErrors,
@@ -13775,11 +16256,16 @@ export const territoryAvailabilitiesUpdateInstance = <
     },
   });
 
+/** List user invitations. `GET /v1/userInvitations` */
 export const userInvitationsGetCollection = <
   ThrowOnError extends boolean = false,
 >(
   options?: Options<UserInvitationsGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  UserInvitationsGetCollectionResponses,
+  UserInvitationsGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     UserInvitationsGetCollectionResponses,
     UserInvitationsGetCollectionErrors,
@@ -13802,11 +16288,16 @@ export const userInvitationsGetCollection = <
     ...options,
   });
 
+/** Create user invitations. `POST /v1/userInvitations` */
 export const userInvitationsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UserInvitationsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UserInvitationsCreateInstanceResponses,
+  UserInvitationsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     UserInvitationsCreateInstanceResponses,
     UserInvitationsCreateInstanceErrors,
@@ -13822,11 +16313,16 @@ export const userInvitationsCreateInstance = <
     },
   });
 
+/** Delete user invitations. `DELETE /v1/userInvitations/{id}` */
 export const userInvitationsDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UserInvitationsDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UserInvitationsDeleteInstanceResponses,
+  UserInvitationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     UserInvitationsDeleteInstanceResponses,
     UserInvitationsDeleteInstanceErrors,
@@ -13837,11 +16333,16 @@ export const userInvitationsDeleteInstance = <
     ...options,
   });
 
+/** Read user invitations. `GET /v1/userInvitations/{id}` */
 export const userInvitationsGetInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UserInvitationsGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UserInvitationsGetInstanceResponses,
+  UserInvitationsGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UserInvitationsGetInstanceResponses,
     UserInvitationsGetInstanceErrors,
@@ -13860,9 +16361,14 @@ export const userInvitationsGetInstance = <
     ...options,
   });
 
+/** List users. `GET /v1/users` */
 export const usersGetCollection = <ThrowOnError extends boolean = false>(
   options?: Options<UsersGetCollectionData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersGetCollectionResponses,
+  UsersGetCollectionErrors,
+  ThrowOnError
+> =>
   (options?.client ?? client).get<
     UsersGetCollectionResponses,
     UsersGetCollectionErrors,
@@ -13884,9 +16390,14 @@ export const usersGetCollection = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Delete users. `DELETE /v1/users/{id}` */
 export const usersDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<UsersDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersDeleteInstanceResponses,
+  UsersDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     UsersDeleteInstanceResponses,
     UsersDeleteInstanceErrors,
@@ -13897,9 +16408,14 @@ export const usersDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read users. `GET /v1/users/{id}` */
 export const usersGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<UsersGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersGetInstanceResponses,
+  UsersGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UsersGetInstanceResponses,
     UsersGetInstanceErrors,
@@ -13917,9 +16433,14 @@ export const usersGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update users. `PATCH /v1/users/{id}` */
 export const usersUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<UsersUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersUpdateInstanceResponses,
+  UsersUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     UsersUpdateInstanceResponses,
     UsersUpdateInstanceErrors,
@@ -13934,11 +16455,16 @@ export const usersUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create webhook deliveries. `POST /v1/webhookDeliveries` */
 export const webhookDeliveriesCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WebhookDeliveriesCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhookDeliveriesCreateInstanceResponses,
+  WebhookDeliveriesCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     WebhookDeliveriesCreateInstanceResponses,
     WebhookDeliveriesCreateInstanceErrors,
@@ -13954,11 +16480,16 @@ export const webhookDeliveriesCreateInstance = <
     },
   });
 
+/** Create webhook pings. `POST /v1/webhookPings` */
 export const webhookPingsCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WebhookPingsCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhookPingsCreateInstanceResponses,
+  WebhookPingsCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     WebhookPingsCreateInstanceResponses,
     WebhookPingsCreateInstanceErrors,
@@ -13973,9 +16504,14 @@ export const webhookPingsCreateInstance = <
     },
   });
 
+/** Create webhooks. `POST /v1/webhooks` */
 export const webhooksCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<WebhooksCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksCreateInstanceResponses,
+  WebhooksCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     WebhooksCreateInstanceResponses,
     WebhooksCreateInstanceErrors,
@@ -13990,9 +16526,14 @@ export const webhooksCreateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Delete webhooks. `DELETE /v1/webhooks/{id}` */
 export const webhooksDeleteInstance = <ThrowOnError extends boolean = false>(
   options: Options<WebhooksDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksDeleteInstanceResponses,
+  WebhooksDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     WebhooksDeleteInstanceResponses,
     WebhooksDeleteInstanceErrors,
@@ -14003,9 +16544,14 @@ export const webhooksDeleteInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Read webhooks. `GET /v1/webhooks/{id}` */
 export const webhooksGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<WebhooksGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksGetInstanceResponses,
+  WebhooksGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WebhooksGetInstanceResponses,
     WebhooksGetInstanceErrors,
@@ -14022,9 +16568,14 @@ export const webhooksGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update webhooks. `PATCH /v1/webhooks/{id}` */
 export const webhooksUpdateInstance = <ThrowOnError extends boolean = false>(
   options: Options<WebhooksUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksUpdateInstanceResponses,
+  WebhooksUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     WebhooksUpdateInstanceResponses,
     WebhooksUpdateInstanceErrors,
@@ -14039,11 +16590,16 @@ export const webhooksUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
+/** Create win back offers. `POST /v1/winBackOffers` */
 export const winBackOffersCreateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WinBackOffersCreateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersCreateInstanceResponses,
+  WinBackOffersCreateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     WinBackOffersCreateInstanceResponses,
     WinBackOffersCreateInstanceErrors,
@@ -14059,11 +16615,16 @@ export const winBackOffersCreateInstance = <
     },
   });
 
+/** Delete win back offers. `DELETE /v1/winBackOffers/{id}` */
 export const winBackOffersDeleteInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WinBackOffersDeleteInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersDeleteInstanceResponses,
+  WinBackOffersDeleteInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     WinBackOffersDeleteInstanceResponses,
     WinBackOffersDeleteInstanceErrors,
@@ -14074,9 +16635,14 @@ export const winBackOffersDeleteInstance = <
     ...options,
   });
 
+/** Read win back offers. `GET /v1/winBackOffers/{id}` */
 export const winBackOffersGetInstance = <ThrowOnError extends boolean = false>(
   options: Options<WinBackOffersGetInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersGetInstanceResponses,
+  WinBackOffersGetInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WinBackOffersGetInstanceResponses,
     WinBackOffersGetInstanceErrors,
@@ -14095,11 +16661,16 @@ export const winBackOffersGetInstance = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Update win back offers. `PATCH /v1/winBackOffers/{id}` */
 export const winBackOffersUpdateInstance = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WinBackOffersUpdateInstanceData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersUpdateInstanceResponses,
+  WinBackOffersUpdateInstanceErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     WinBackOffersUpdateInstanceResponses,
     WinBackOffersUpdateInstanceErrors,
@@ -14115,13 +16686,18 @@ export const winBackOffersUpdateInstance = <
     },
   });
 
+/** Get deltas relationship IDs for alternative distribution package versions. `GET /v1/alternativeDistributionPackageVersions/{id}/relationships/deltas` */
 export const alternativeDistributionPackageVersionsDeltasGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AlternativeDistributionPackageVersionsDeltasGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AlternativeDistributionPackageVersionsDeltasGetToManyRelationshipResponses,
+    AlternativeDistributionPackageVersionsDeltasGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AlternativeDistributionPackageVersionsDeltasGetToManyRelationshipResponses,
       AlternativeDistributionPackageVersionsDeltasGetToManyRelationshipErrors,
@@ -14132,6 +16708,7 @@ export const alternativeDistributionPackageVersionsDeltasGetToManyRelationship =
       ...options,
     });
 
+/** List related deltas for alternative distribution package versions. `GET /v1/alternativeDistributionPackageVersions/{id}/deltas` */
 export const alternativeDistributionPackageVersionsDeltasGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14139,7 +16716,11 @@ export const alternativeDistributionPackageVersionsDeltasGetToManyRelated = <
     AlternativeDistributionPackageVersionsDeltasGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackageVersionsDeltasGetToManyRelatedResponses,
+  AlternativeDistributionPackageVersionsDeltasGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackageVersionsDeltasGetToManyRelatedResponses,
     AlternativeDistributionPackageVersionsDeltasGetToManyRelatedErrors,
@@ -14159,13 +16740,18 @@ export const alternativeDistributionPackageVersionsDeltasGetToManyRelated = <
     ...options,
   });
 
+/** Get variants relationship IDs for alternative distribution package versions. `GET /v1/alternativeDistributionPackageVersions/{id}/relationships/variants` */
 export const alternativeDistributionPackageVersionsVariantsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AlternativeDistributionPackageVersionsVariantsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AlternativeDistributionPackageVersionsVariantsGetToManyRelationshipResponses,
+    AlternativeDistributionPackageVersionsVariantsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AlternativeDistributionPackageVersionsVariantsGetToManyRelationshipResponses,
       AlternativeDistributionPackageVersionsVariantsGetToManyRelationshipErrors,
@@ -14176,6 +16762,7 @@ export const alternativeDistributionPackageVersionsVariantsGetToManyRelationship
       ...options,
     });
 
+/** List related variants for alternative distribution package versions. `GET /v1/alternativeDistributionPackageVersions/{id}/variants` */
 export const alternativeDistributionPackageVersionsVariantsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14183,7 +16770,11 @@ export const alternativeDistributionPackageVersionsVariantsGetToManyRelated = <
     AlternativeDistributionPackageVersionsVariantsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackageVersionsVariantsGetToManyRelatedResponses,
+  AlternativeDistributionPackageVersionsVariantsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackageVersionsVariantsGetToManyRelatedResponses,
     AlternativeDistributionPackageVersionsVariantsGetToManyRelatedErrors,
@@ -14203,6 +16794,7 @@ export const alternativeDistributionPackageVersionsVariantsGetToManyRelated = <
     ...options,
   });
 
+/** Get versions relationship IDs for alternative distribution packages. `GET /v1/alternativeDistributionPackages/{id}/relationships/versions` */
 export const alternativeDistributionPackagesVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14210,7 +16802,11 @@ export const alternativeDistributionPackagesVersionsGetToManyRelationship = <
     AlternativeDistributionPackagesVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackagesVersionsGetToManyRelationshipResponses,
+  AlternativeDistributionPackagesVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackagesVersionsGetToManyRelationshipResponses,
     AlternativeDistributionPackagesVersionsGetToManyRelationshipErrors,
@@ -14221,6 +16817,7 @@ export const alternativeDistributionPackagesVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for alternative distribution packages. `GET /v1/alternativeDistributionPackages/{id}/versions` */
 export const alternativeDistributionPackagesVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14228,7 +16825,11 @@ export const alternativeDistributionPackagesVersionsGetToManyRelated = <
     AlternativeDistributionPackagesVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AlternativeDistributionPackagesVersionsGetToManyRelatedResponses,
+  AlternativeDistributionPackagesVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AlternativeDistributionPackagesVersionsGetToManyRelatedResponses,
     AlternativeDistributionPackagesVersionsGetToManyRelatedErrors,
@@ -14259,6 +16860,7 @@ export const alternativeDistributionPackagesVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get segments relationship IDs for analytics report instances. `GET /v1/analyticsReportInstances/{id}/relationships/segments` */
 export const analyticsReportInstancesSegmentsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14266,7 +16868,11 @@ export const analyticsReportInstancesSegmentsGetToManyRelationship = <
     AnalyticsReportInstancesSegmentsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AnalyticsReportInstancesSegmentsGetToManyRelationshipResponses,
+  AnalyticsReportInstancesSegmentsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportInstancesSegmentsGetToManyRelationshipResponses,
     AnalyticsReportInstancesSegmentsGetToManyRelationshipErrors,
@@ -14277,6 +16883,7 @@ export const analyticsReportInstancesSegmentsGetToManyRelationship = <
     ...options,
   });
 
+/** List related segments for analytics report instances. `GET /v1/analyticsReportInstances/{id}/segments` */
 export const analyticsReportInstancesSegmentsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14284,7 +16891,11 @@ export const analyticsReportInstancesSegmentsGetToManyRelated = <
     AnalyticsReportInstancesSegmentsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AnalyticsReportInstancesSegmentsGetToManyRelatedResponses,
+  AnalyticsReportInstancesSegmentsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportInstancesSegmentsGetToManyRelatedResponses,
     AnalyticsReportInstancesSegmentsGetToManyRelatedErrors,
@@ -14300,6 +16911,7 @@ export const analyticsReportInstancesSegmentsGetToManyRelated = <
     ...options,
   });
 
+/** Get reports relationship IDs for analytics report requests. `GET /v1/analyticsReportRequests/{id}/relationships/reports` */
 export const analyticsReportRequestsReportsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14307,7 +16919,11 @@ export const analyticsReportRequestsReportsGetToManyRelationship = <
     AnalyticsReportRequestsReportsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AnalyticsReportRequestsReportsGetToManyRelationshipResponses,
+  AnalyticsReportRequestsReportsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportRequestsReportsGetToManyRelationshipResponses,
     AnalyticsReportRequestsReportsGetToManyRelationshipErrors,
@@ -14318,6 +16934,7 @@ export const analyticsReportRequestsReportsGetToManyRelationship = <
     ...options,
   });
 
+/** List related reports for analytics report requests. `GET /v1/analyticsReportRequests/{id}/reports` */
 export const analyticsReportRequestsReportsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14325,7 +16942,11 @@ export const analyticsReportRequestsReportsGetToManyRelated = <
     AnalyticsReportRequestsReportsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AnalyticsReportRequestsReportsGetToManyRelatedResponses,
+  AnalyticsReportRequestsReportsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportRequestsReportsGetToManyRelatedResponses,
     AnalyticsReportRequestsReportsGetToManyRelatedErrors,
@@ -14343,6 +16964,7 @@ export const analyticsReportRequestsReportsGetToManyRelated = <
     ...options,
   });
 
+/** Get instances relationship IDs for analytics reports. `GET /v1/analyticsReports/{id}/relationships/instances` */
 export const analyticsReportsInstancesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14350,7 +16972,11 @@ export const analyticsReportsInstancesGetToManyRelationship = <
     AnalyticsReportsInstancesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AnalyticsReportsInstancesGetToManyRelationshipResponses,
+  AnalyticsReportsInstancesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportsInstancesGetToManyRelationshipResponses,
     AnalyticsReportsInstancesGetToManyRelationshipErrors,
@@ -14361,11 +16987,16 @@ export const analyticsReportsInstancesGetToManyRelationship = <
     ...options,
   });
 
+/** List related instances for analytics reports. `GET /v1/analyticsReports/{id}/instances` */
 export const analyticsReportsInstancesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AnalyticsReportsInstancesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AnalyticsReportsInstancesGetToManyRelatedResponses,
+  AnalyticsReportsInstancesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AnalyticsReportsInstancesGetToManyRelatedResponses,
     AnalyticsReportsInstancesGetToManyRelatedErrors,
@@ -14385,6 +17016,7 @@ export const analyticsReportsInstancesGetToManyRelated = <
     ...options,
   });
 
+/** Get territory availabilities relationship IDs for app availabilities v2. `GET /v2/appAvailabilities/{id}/relationships/territoryAvailabilities` */
 export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14392,7 +17024,11 @@ export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationship = <
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipResponses,
+  AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipResponses,
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipErrors,
@@ -14403,6 +17039,7 @@ export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationship = <
     ...options,
   });
 
+/** List related territory availabilities for app availabilities v2. `GET /v2/appAvailabilities/{id}/territoryAvailabilities` */
 export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14410,7 +17047,11 @@ export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelated = <
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedResponses,
+  AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedResponses,
     AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedErrors,
@@ -14430,11 +17071,16 @@ export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelated = <
     ...options,
   });
 
+/** Get parent relationship ID for app categories. `GET /v1/appCategories/{id}/relationships/parent` */
 export const appCategoriesParentGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCategoriesParentGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCategoriesParentGetToOneRelationshipResponses,
+  AppCategoriesParentGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCategoriesParentGetToOneRelationshipResponses,
     AppCategoriesParentGetToOneRelationshipErrors,
@@ -14445,11 +17091,16 @@ export const appCategoriesParentGetToOneRelationship = <
     ...options,
   });
 
+/** Read related parent for app categories. `GET /v1/appCategories/{id}/parent` */
 export const appCategoriesParentGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppCategoriesParentGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppCategoriesParentGetToOneRelatedResponses,
+  AppCategoriesParentGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCategoriesParentGetToOneRelatedResponses,
     AppCategoriesParentGetToOneRelatedErrors,
@@ -14463,6 +17114,7 @@ export const appCategoriesParentGetToOneRelated = <
     ...options,
   });
 
+/** Get subcategories relationship IDs for app categories. `GET /v1/appCategories/{id}/relationships/subcategories` */
 export const appCategoriesSubcategoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14470,7 +17122,11 @@ export const appCategoriesSubcategoriesGetToManyRelationship = <
     AppCategoriesSubcategoriesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCategoriesSubcategoriesGetToManyRelationshipResponses,
+  AppCategoriesSubcategoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCategoriesSubcategoriesGetToManyRelationshipResponses,
     AppCategoriesSubcategoriesGetToManyRelationshipErrors,
@@ -14481,6 +17137,7 @@ export const appCategoriesSubcategoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related subcategories for app categories. `GET /v1/appCategories/{id}/subcategories` */
 export const appCategoriesSubcategoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14488,7 +17145,11 @@ export const appCategoriesSubcategoriesGetToManyRelated = <
     AppCategoriesSubcategoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCategoriesSubcategoriesGetToManyRelatedResponses,
+  AppCategoriesSubcategoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCategoriesSubcategoriesGetToManyRelatedResponses,
     AppCategoriesSubcategoriesGetToManyRelatedErrors,
@@ -14502,13 +17163,18 @@ export const appCategoriesSubcategoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get app clip header image relationship ID for app clip default experience localizations. `GET /v1/appClipDefaultExperienceLocalizations/{id}/relationships/appClipHeaderImage` */
 export const appClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationshipResponses,
+    AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationshipResponses,
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelationshipErrors,
@@ -14519,13 +17185,18 @@ export const appClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRela
       ...options,
     });
 
+/** Read related app clip header image for app clip default experience localizations. `GET /v1/appClipDefaultExperienceLocalizations/{id}/appClipHeaderImage` */
 export const appClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelatedResponses,
+    AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelatedResponses,
       AppClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRelatedErrors,
@@ -14545,13 +17216,18 @@ export const appClipDefaultExperienceLocalizationsAppClipHeaderImageGetToOneRela
       ...options,
     });
 
+/** Get app clip app store review detail relationship ID for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/relationships/appClipAppStoreReviewDetail` */
 export const appClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationshipResponses,
+    AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationshipResponses,
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelationshipErrors,
@@ -14562,13 +17238,18 @@ export const appClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatio
       ...options,
     });
 
+/** Read related app clip app store review detail for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/appClipAppStoreReviewDetail` */
 export const appClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatedResponses,
+    AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatedResponses,
       AppClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelatedErrors,
@@ -14586,13 +17267,18 @@ export const appClipDefaultExperiencesAppClipAppStoreReviewDetailGetToOneRelated
       ...options,
     });
 
+/** Get app clip default experience localizations relationship IDs for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/relationships/appClipDefaultExperienceLocalizations` */
 export const appClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationshipResponses,
+    AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationshipResponses,
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelationshipErrors,
@@ -14603,13 +17289,18 @@ export const appClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetTo
       ...options,
     });
 
+/** List related app clip default experience localizations for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/appClipDefaultExperienceLocalizations` */
 export const appClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelatedResponses,
+    AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelatedResponses,
       AppClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetToManyRelatedErrors,
@@ -14631,13 +17322,18 @@ export const appClipDefaultExperiencesAppClipDefaultExperienceLocalizationsGetTo
       ...options,
     });
 
+/** Get release with app store version relationship ID for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/relationships/releaseWithAppStoreVersion` */
 export const appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationshipResponses,
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationshipResponses,
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelationshipErrors,
@@ -14648,13 +17344,18 @@ export const appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelation
       ...options,
     });
 
+/** Update release with app store version relationship for app clip default experiences. `PATCH /v1/appClipDefaultExperiences/{id}/relationships/releaseWithAppStoreVersion` */
 export const appClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationshipResponses,
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationshipResponses,
       AppClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelationshipErrors,
@@ -14669,13 +17370,18 @@ export const appClipDefaultExperiencesReleaseWithAppStoreVersionUpdateToOneRelat
       },
     });
 
+/** Read related release with app store version for app clip default experiences. `GET /v1/appClipDefaultExperiences/{id}/releaseWithAppStoreVersion` */
 export const appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedResponses,
+    AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedResponses,
       AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedErrors,
@@ -14709,6 +17415,7 @@ export const appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelated 
       ...options,
     });
 
+/** Get app clip advanced experiences relationship IDs for app clips. `GET /v1/appClips/{id}/relationships/appClipAdvancedExperiences` */
 export const appClipsAppClipAdvancedExperiencesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14716,7 +17423,11 @@ export const appClipsAppClipAdvancedExperiencesGetToManyRelationship = <
     AppClipsAppClipAdvancedExperiencesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipsAppClipAdvancedExperiencesGetToManyRelationshipResponses,
+  AppClipsAppClipAdvancedExperiencesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipsAppClipAdvancedExperiencesGetToManyRelationshipResponses,
     AppClipsAppClipAdvancedExperiencesGetToManyRelationshipErrors,
@@ -14727,6 +17438,7 @@ export const appClipsAppClipAdvancedExperiencesGetToManyRelationship = <
     ...options,
   });
 
+/** List related app clip advanced experiences for app clips. `GET /v1/appClips/{id}/appClipAdvancedExperiences` */
 export const appClipsAppClipAdvancedExperiencesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14734,7 +17446,11 @@ export const appClipsAppClipAdvancedExperiencesGetToManyRelated = <
     AppClipsAppClipAdvancedExperiencesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipsAppClipAdvancedExperiencesGetToManyRelatedResponses,
+  AppClipsAppClipAdvancedExperiencesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipsAppClipAdvancedExperiencesGetToManyRelatedResponses,
     AppClipsAppClipAdvancedExperiencesGetToManyRelatedErrors,
@@ -14761,6 +17477,7 @@ export const appClipsAppClipAdvancedExperiencesGetToManyRelated = <
     ...options,
   });
 
+/** Get app clip default experiences relationship IDs for app clips. `GET /v1/appClips/{id}/relationships/appClipDefaultExperiences` */
 export const appClipsAppClipDefaultExperiencesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -14768,7 +17485,11 @@ export const appClipsAppClipDefaultExperiencesGetToManyRelationship = <
     AppClipsAppClipDefaultExperiencesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipsAppClipDefaultExperiencesGetToManyRelationshipResponses,
+  AppClipsAppClipDefaultExperiencesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipsAppClipDefaultExperiencesGetToManyRelationshipResponses,
     AppClipsAppClipDefaultExperiencesGetToManyRelationshipErrors,
@@ -14779,6 +17500,7 @@ export const appClipsAppClipDefaultExperiencesGetToManyRelationship = <
     ...options,
   });
 
+/** List related app clip default experiences for app clips. `GET /v1/appClips/{id}/appClipDefaultExperiences` */
 export const appClipsAppClipDefaultExperiencesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14786,7 +17508,11 @@ export const appClipsAppClipDefaultExperiencesGetToManyRelated = <
     AppClipsAppClipDefaultExperiencesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppClipsAppClipDefaultExperiencesGetToManyRelatedResponses,
+  AppClipsAppClipDefaultExperiencesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppClipsAppClipDefaultExperiencesGetToManyRelatedResponses,
     AppClipsAppClipDefaultExperiencesGetToManyRelatedErrors,
@@ -14809,13 +17535,18 @@ export const appClipsAppClipDefaultExperiencesGetToManyRelated = <
     ...options,
   });
 
+/** Get app preview sets relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets` */
 export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
       AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
@@ -14826,6 +17557,7 @@ export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshi
       ...options,
     });
 
+/** List related app preview sets for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets` */
 export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14833,7 +17565,11 @@ export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelated = <
     AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses,
+  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses,
     AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors,
@@ -14863,13 +17599,18 @@ export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelated = <
     ...options,
   });
 
+/** Get app screenshot sets relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets` */
 export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
@@ -14880,13 +17621,18 @@ export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelation
       ...options,
     });
 
+/** List related app screenshot sets for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets` */
 export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
+    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
       AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
@@ -14916,13 +17662,18 @@ export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelated 
       ...options,
     });
 
+/** Remove search keywords relationship for app custom product page localizations. `DELETE /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).delete<
       AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipResponses,
       AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipErrors,
@@ -14937,13 +17688,18 @@ export const appCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelation
       },
     });
 
+/** Get search keywords relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshipResponses,
       AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshipErrors,
@@ -14954,13 +17710,18 @@ export const appCustomProductPageLocalizationsSearchKeywordsGetToManyRelationshi
       ...options,
     });
 
+/** Add search keywords relationship for app custom product page localizations. `POST /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).post<
       AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
       AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
@@ -14975,6 +17736,7 @@ export const appCustomProductPageLocalizationsSearchKeywordsCreateToManyRelation
       },
     });
 
+/** List related search keywords for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -14982,7 +17744,11 @@ export const appCustomProductPageLocalizationsSearchKeywordsGetToManyRelated = <
     AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelatedResponses,
+  AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelatedResponses,
     AppCustomProductPageLocalizationsSearchKeywordsGetToManyRelatedErrors,
@@ -15000,13 +17766,18 @@ export const appCustomProductPageLocalizationsSearchKeywordsGetToManyRelated = <
     ...options,
   });
 
+/** Get app custom product page localizations relationship IDs for app custom product page versions. `GET /v1/appCustomProductPageVersions/{id}/relationships/appCustomProductPageLocalizations` */
 export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationshipResponses,
+    AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationshipResponses,
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelationshipErrors,
@@ -15017,13 +17788,18 @@ export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToM
       ...options,
     });
 
+/** List related app custom product page localizations for app custom product page versions. `GET /v1/appCustomProductPageVersions/{id}/appCustomProductPageLocalizations` */
 export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponses,
+    AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponses,
       AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedErrors,
@@ -15047,13 +17823,18 @@ export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToM
       ...options,
     });
 
+/** Get app custom product page versions relationship IDs for app custom product pages. `GET /v1/appCustomProductPages/{id}/relationships/appCustomProductPageVersions` */
 export const appCustomProductPagesAppCustomProductPageVersionsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelationshipResponses,
+    AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelationshipResponses,
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelationshipErrors,
@@ -15064,13 +17845,18 @@ export const appCustomProductPagesAppCustomProductPageVersionsGetToManyRelations
       ...options,
     });
 
+/** List related app custom product page versions for app custom product pages. `GET /v1/appCustomProductPages/{id}/appCustomProductPageVersions` */
 export const appCustomProductPagesAppCustomProductPageVersionsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedResponses,
+    AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedResponses,
       AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedErrors,
@@ -15092,13 +17878,18 @@ export const appCustomProductPagesAppCustomProductPageVersionsGetToManyRelated =
       ...options,
     });
 
+/** Get app encryption declaration document relationship ID for app encryption declarations. `GET /v1/appEncryptionDeclarations/{id}/relationships/appEncryptionDeclarationDocument` */
 export const appEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationshipResponses,
+    AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationshipResponses,
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelationshipErrors,
@@ -15109,13 +17900,18 @@ export const appEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRe
       ...options,
     });
 
+/** Read related app encryption declaration document for app encryption declarations. `GET /v1/appEncryptionDeclarations/{id}/appEncryptionDeclarationDocument` */
 export const appEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedResponses,
+    AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedResponses,
       AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedErrors,
@@ -15133,6 +17929,7 @@ export const appEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRe
       ...options,
     });
 
+/** Get app event screenshots relationship IDs for app event localizations. `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots` */
 export const appEventLocalizationsAppEventScreenshotsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15140,7 +17937,11 @@ export const appEventLocalizationsAppEventScreenshotsGetToManyRelationship = <
     AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses,
+  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses,
     AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors,
@@ -15151,6 +17952,7 @@ export const appEventLocalizationsAppEventScreenshotsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app event screenshots for app event localizations. `GET /v1/appEventLocalizations/{id}/appEventScreenshots` */
 export const appEventLocalizationsAppEventScreenshotsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15158,7 +17960,11 @@ export const appEventLocalizationsAppEventScreenshotsGetToManyRelated = <
     AppEventLocalizationsAppEventScreenshotsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses,
+  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses,
     AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors,
@@ -15176,6 +17982,7 @@ export const appEventLocalizationsAppEventScreenshotsGetToManyRelated = <
     ...options,
   });
 
+/** Get app event video clips relationship IDs for app event localizations. `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips` */
 export const appEventLocalizationsAppEventVideoClipsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15183,7 +17990,11 @@ export const appEventLocalizationsAppEventVideoClipsGetToManyRelationship = <
     AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses,
+  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses,
     AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors,
@@ -15194,6 +18005,7 @@ export const appEventLocalizationsAppEventVideoClipsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app event video clips for app event localizations. `GET /v1/appEventLocalizations/{id}/appEventVideoClips` */
 export const appEventLocalizationsAppEventVideoClipsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15201,7 +18013,11 @@ export const appEventLocalizationsAppEventVideoClipsGetToManyRelated = <
     AppEventLocalizationsAppEventVideoClipsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses,
+  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses,
     AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors,
@@ -15219,6 +18035,7 @@ export const appEventLocalizationsAppEventVideoClipsGetToManyRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for app events. `GET /v1/appEvents/{id}/relationships/localizations` */
 export const appEventsLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15226,7 +18043,11 @@ export const appEventsLocalizationsGetToManyRelationship = <
     AppEventsLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppEventsLocalizationsGetToManyRelationshipResponses,
+  AppEventsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventsLocalizationsGetToManyRelationshipResponses,
     AppEventsLocalizationsGetToManyRelationshipErrors,
@@ -15237,11 +18058,16 @@ export const appEventsLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related localizations for app events. `GET /v1/appEvents/{id}/localizations` */
 export const appEventsLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppEventsLocalizationsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppEventsLocalizationsGetToManyRelatedResponses,
+  AppEventsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppEventsLocalizationsGetToManyRelatedResponses,
     AppEventsLocalizationsGetToManyRelatedErrors,
@@ -15261,6 +18087,7 @@ export const appEventsLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get age rating declaration relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/ageRatingDeclaration` */
 export const appInfosAgeRatingDeclarationGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15268,7 +18095,11 @@ export const appInfosAgeRatingDeclarationGetToOneRelationship = <
     AppInfosAgeRatingDeclarationGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosAgeRatingDeclarationGetToOneRelationshipResponses,
+  AppInfosAgeRatingDeclarationGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosAgeRatingDeclarationGetToOneRelationshipResponses,
     AppInfosAgeRatingDeclarationGetToOneRelationshipErrors,
@@ -15279,6 +18110,7 @@ export const appInfosAgeRatingDeclarationGetToOneRelationship = <
     ...options,
   });
 
+/** Read related age rating declaration for app infos. `GET /v1/appInfos/{id}/ageRatingDeclaration` */
 export const appInfosAgeRatingDeclarationGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15286,7 +18118,11 @@ export const appInfosAgeRatingDeclarationGetToOneRelated = <
     AppInfosAgeRatingDeclarationGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosAgeRatingDeclarationGetToOneRelatedResponses,
+  AppInfosAgeRatingDeclarationGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosAgeRatingDeclarationGetToOneRelatedResponses,
     AppInfosAgeRatingDeclarationGetToOneRelatedErrors,
@@ -15302,6 +18138,7 @@ export const appInfosAgeRatingDeclarationGetToOneRelated = <
     ...options,
   });
 
+/** Get app info localizations relationship IDs for app infos. `GET /v1/appInfos/{id}/relationships/appInfoLocalizations` */
 export const appInfosAppInfoLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15309,7 +18146,11 @@ export const appInfosAppInfoLocalizationsGetToManyRelationship = <
     AppInfosAppInfoLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosAppInfoLocalizationsGetToManyRelationshipResponses,
+  AppInfosAppInfoLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosAppInfoLocalizationsGetToManyRelationshipResponses,
     AppInfosAppInfoLocalizationsGetToManyRelationshipErrors,
@@ -15320,6 +18161,7 @@ export const appInfosAppInfoLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app info localizations for app infos. `GET /v1/appInfos/{id}/appInfoLocalizations` */
 export const appInfosAppInfoLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15327,7 +18169,11 @@ export const appInfosAppInfoLocalizationsGetToManyRelated = <
     AppInfosAppInfoLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosAppInfoLocalizationsGetToManyRelatedResponses,
+  AppInfosAppInfoLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosAppInfoLocalizationsGetToManyRelatedResponses,
     AppInfosAppInfoLocalizationsGetToManyRelatedErrors,
@@ -15346,6 +18192,7 @@ export const appInfosAppInfoLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get primary category relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/primaryCategory` */
 export const appInfosPrimaryCategoryGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15353,7 +18200,11 @@ export const appInfosPrimaryCategoryGetToOneRelationship = <
     AppInfosPrimaryCategoryGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosPrimaryCategoryGetToOneRelationshipResponses,
+  AppInfosPrimaryCategoryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimaryCategoryGetToOneRelationshipResponses,
     AppInfosPrimaryCategoryGetToOneRelationshipErrors,
@@ -15364,11 +18215,16 @@ export const appInfosPrimaryCategoryGetToOneRelationship = <
     ...options,
   });
 
+/** Read related primary category for app infos. `GET /v1/appInfos/{id}/primaryCategory` */
 export const appInfosPrimaryCategoryGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfosPrimaryCategoryGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfosPrimaryCategoryGetToOneRelatedResponses,
+  AppInfosPrimaryCategoryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimaryCategoryGetToOneRelatedResponses,
     AppInfosPrimaryCategoryGetToOneRelatedErrors,
@@ -15385,6 +18241,7 @@ export const appInfosPrimaryCategoryGetToOneRelated = <
     ...options,
   });
 
+/** Get primary subcategory one relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/primarySubcategoryOne` */
 export const appInfosPrimarySubcategoryOneGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15392,7 +18249,11 @@ export const appInfosPrimarySubcategoryOneGetToOneRelationship = <
     AppInfosPrimarySubcategoryOneGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosPrimarySubcategoryOneGetToOneRelationshipResponses,
+  AppInfosPrimarySubcategoryOneGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimarySubcategoryOneGetToOneRelationshipResponses,
     AppInfosPrimarySubcategoryOneGetToOneRelationshipErrors,
@@ -15403,6 +18264,7 @@ export const appInfosPrimarySubcategoryOneGetToOneRelationship = <
     ...options,
   });
 
+/** Read related primary subcategory one for app infos. `GET /v1/appInfos/{id}/primarySubcategoryOne` */
 export const appInfosPrimarySubcategoryOneGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15410,7 +18272,11 @@ export const appInfosPrimarySubcategoryOneGetToOneRelated = <
     AppInfosPrimarySubcategoryOneGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosPrimarySubcategoryOneGetToOneRelatedResponses,
+  AppInfosPrimarySubcategoryOneGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimarySubcategoryOneGetToOneRelatedResponses,
     AppInfosPrimarySubcategoryOneGetToOneRelatedErrors,
@@ -15427,6 +18293,7 @@ export const appInfosPrimarySubcategoryOneGetToOneRelated = <
     ...options,
   });
 
+/** Get primary subcategory two relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/primarySubcategoryTwo` */
 export const appInfosPrimarySubcategoryTwoGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15434,7 +18301,11 @@ export const appInfosPrimarySubcategoryTwoGetToOneRelationship = <
     AppInfosPrimarySubcategoryTwoGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosPrimarySubcategoryTwoGetToOneRelationshipResponses,
+  AppInfosPrimarySubcategoryTwoGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimarySubcategoryTwoGetToOneRelationshipResponses,
     AppInfosPrimarySubcategoryTwoGetToOneRelationshipErrors,
@@ -15445,6 +18316,7 @@ export const appInfosPrimarySubcategoryTwoGetToOneRelationship = <
     ...options,
   });
 
+/** Read related primary subcategory two for app infos. `GET /v1/appInfos/{id}/primarySubcategoryTwo` */
 export const appInfosPrimarySubcategoryTwoGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15452,7 +18324,11 @@ export const appInfosPrimarySubcategoryTwoGetToOneRelated = <
     AppInfosPrimarySubcategoryTwoGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosPrimarySubcategoryTwoGetToOneRelatedResponses,
+  AppInfosPrimarySubcategoryTwoGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosPrimarySubcategoryTwoGetToOneRelatedResponses,
     AppInfosPrimarySubcategoryTwoGetToOneRelatedErrors,
@@ -15469,6 +18345,7 @@ export const appInfosPrimarySubcategoryTwoGetToOneRelated = <
     ...options,
   });
 
+/** Get secondary category relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/secondaryCategory` */
 export const appInfosSecondaryCategoryGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15476,7 +18353,11 @@ export const appInfosSecondaryCategoryGetToOneRelationship = <
     AppInfosSecondaryCategoryGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosSecondaryCategoryGetToOneRelationshipResponses,
+  AppInfosSecondaryCategoryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondaryCategoryGetToOneRelationshipResponses,
     AppInfosSecondaryCategoryGetToOneRelationshipErrors,
@@ -15487,11 +18368,16 @@ export const appInfosSecondaryCategoryGetToOneRelationship = <
     ...options,
   });
 
+/** Read related secondary category for app infos. `GET /v1/appInfos/{id}/secondaryCategory` */
 export const appInfosSecondaryCategoryGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppInfosSecondaryCategoryGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppInfosSecondaryCategoryGetToOneRelatedResponses,
+  AppInfosSecondaryCategoryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondaryCategoryGetToOneRelatedResponses,
     AppInfosSecondaryCategoryGetToOneRelatedErrors,
@@ -15508,6 +18394,7 @@ export const appInfosSecondaryCategoryGetToOneRelated = <
     ...options,
   });
 
+/** Get secondary subcategory one relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/secondarySubcategoryOne` */
 export const appInfosSecondarySubcategoryOneGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15515,7 +18402,11 @@ export const appInfosSecondarySubcategoryOneGetToOneRelationship = <
     AppInfosSecondarySubcategoryOneGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosSecondarySubcategoryOneGetToOneRelationshipResponses,
+  AppInfosSecondarySubcategoryOneGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondarySubcategoryOneGetToOneRelationshipResponses,
     AppInfosSecondarySubcategoryOneGetToOneRelationshipErrors,
@@ -15526,6 +18417,7 @@ export const appInfosSecondarySubcategoryOneGetToOneRelationship = <
     ...options,
   });
 
+/** Read related secondary subcategory one for app infos. `GET /v1/appInfos/{id}/secondarySubcategoryOne` */
 export const appInfosSecondarySubcategoryOneGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15533,7 +18425,11 @@ export const appInfosSecondarySubcategoryOneGetToOneRelated = <
     AppInfosSecondarySubcategoryOneGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosSecondarySubcategoryOneGetToOneRelatedResponses,
+  AppInfosSecondarySubcategoryOneGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondarySubcategoryOneGetToOneRelatedResponses,
     AppInfosSecondarySubcategoryOneGetToOneRelatedErrors,
@@ -15550,6 +18446,7 @@ export const appInfosSecondarySubcategoryOneGetToOneRelated = <
     ...options,
   });
 
+/** Get secondary subcategory two relationship ID for app infos. `GET /v1/appInfos/{id}/relationships/secondarySubcategoryTwo` */
 export const appInfosSecondarySubcategoryTwoGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15557,7 +18454,11 @@ export const appInfosSecondarySubcategoryTwoGetToOneRelationship = <
     AppInfosSecondarySubcategoryTwoGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosSecondarySubcategoryTwoGetToOneRelationshipResponses,
+  AppInfosSecondarySubcategoryTwoGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondarySubcategoryTwoGetToOneRelationshipResponses,
     AppInfosSecondarySubcategoryTwoGetToOneRelationshipErrors,
@@ -15568,6 +18469,7 @@ export const appInfosSecondarySubcategoryTwoGetToOneRelationship = <
     ...options,
   });
 
+/** Read related secondary subcategory two for app infos. `GET /v1/appInfos/{id}/secondarySubcategoryTwo` */
 export const appInfosSecondarySubcategoryTwoGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15575,7 +18477,11 @@ export const appInfosSecondarySubcategoryTwoGetToOneRelated = <
     AppInfosSecondarySubcategoryTwoGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosSecondarySubcategoryTwoGetToOneRelatedResponses,
+  AppInfosSecondarySubcategoryTwoGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosSecondarySubcategoryTwoGetToOneRelatedResponses,
     AppInfosSecondarySubcategoryTwoGetToOneRelatedErrors,
@@ -15592,6 +18498,7 @@ export const appInfosSecondarySubcategoryTwoGetToOneRelated = <
     ...options,
   });
 
+/** Get territory age ratings relationship IDs for app infos. `GET /v1/appInfos/{id}/relationships/territoryAgeRatings` */
 export const appInfosTerritoryAgeRatingsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15599,7 +18506,11 @@ export const appInfosTerritoryAgeRatingsGetToManyRelationship = <
     AppInfosTerritoryAgeRatingsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosTerritoryAgeRatingsGetToManyRelationshipResponses,
+  AppInfosTerritoryAgeRatingsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosTerritoryAgeRatingsGetToManyRelationshipResponses,
     AppInfosTerritoryAgeRatingsGetToManyRelationshipErrors,
@@ -15610,6 +18521,7 @@ export const appInfosTerritoryAgeRatingsGetToManyRelationship = <
     ...options,
   });
 
+/** List related territory age ratings for app infos. `GET /v1/appInfos/{id}/territoryAgeRatings` */
 export const appInfosTerritoryAgeRatingsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15617,7 +18529,11 @@ export const appInfosTerritoryAgeRatingsGetToManyRelated = <
     AppInfosTerritoryAgeRatingsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppInfosTerritoryAgeRatingsGetToManyRelatedResponses,
+  AppInfosTerritoryAgeRatingsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppInfosTerritoryAgeRatingsGetToManyRelatedResponses,
     AppInfosTerritoryAgeRatingsGetToManyRelatedErrors,
@@ -15635,6 +18551,7 @@ export const appInfosTerritoryAgeRatingsGetToManyRelated = <
     ...options,
   });
 
+/** Get app previews relationship IDs for app preview sets. `GET /v1/appPreviewSets/{id}/relationships/appPreviews` */
 export const appPreviewSetsAppPreviewsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15642,7 +18559,11 @@ export const appPreviewSetsAppPreviewsGetToManyRelationship = <
     AppPreviewSetsAppPreviewsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPreviewSetsAppPreviewsGetToManyRelationshipResponses,
+  AppPreviewSetsAppPreviewsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPreviewSetsAppPreviewsGetToManyRelationshipResponses,
     AppPreviewSetsAppPreviewsGetToManyRelationshipErrors,
@@ -15653,6 +18574,7 @@ export const appPreviewSetsAppPreviewsGetToManyRelationship = <
     ...options,
   });
 
+/** Replace app previews relationships for app preview sets. `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews` */
 export const appPreviewSetsAppPreviewsReplaceToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15660,7 +18582,11 @@ export const appPreviewSetsAppPreviewsReplaceToManyRelationship = <
     AppPreviewSetsAppPreviewsReplaceToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses,
+  AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses,
     AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors,
@@ -15675,11 +18601,16 @@ export const appPreviewSetsAppPreviewsReplaceToManyRelationship = <
     },
   });
 
+/** List related app previews for app preview sets. `GET /v1/appPreviewSets/{id}/appPreviews` */
 export const appPreviewSetsAppPreviewsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppPreviewSetsAppPreviewsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppPreviewSetsAppPreviewsGetToManyRelatedResponses,
+  AppPreviewSetsAppPreviewsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPreviewSetsAppPreviewsGetToManyRelatedResponses,
     AppPreviewSetsAppPreviewsGetToManyRelatedErrors,
@@ -15697,6 +18628,7 @@ export const appPreviewSetsAppPreviewsGetToManyRelated = <
     ...options,
   });
 
+/** Get equalizations relationship IDs for app price points v3. `GET /v3/appPricePoints/{id}/relationships/equalizations` */
 export const appPricePointsV3EqualizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15704,7 +18636,11 @@ export const appPricePointsV3EqualizationsGetToManyRelationship = <
     AppPricePointsV3EqualizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPricePointsV3EqualizationsGetToManyRelationshipResponses,
+  AppPricePointsV3EqualizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPricePointsV3EqualizationsGetToManyRelationshipResponses,
     AppPricePointsV3EqualizationsGetToManyRelationshipErrors,
@@ -15715,6 +18651,7 @@ export const appPricePointsV3EqualizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related equalizations for app price points v3. `GET /v3/appPricePoints/{id}/equalizations` */
 export const appPricePointsV3EqualizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15722,7 +18659,11 @@ export const appPricePointsV3EqualizationsGetToManyRelated = <
     AppPricePointsV3EqualizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPricePointsV3EqualizationsGetToManyRelatedResponses,
+  AppPricePointsV3EqualizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPricePointsV3EqualizationsGetToManyRelatedResponses,
     AppPricePointsV3EqualizationsGetToManyRelatedErrors,
@@ -15742,6 +18683,7 @@ export const appPricePointsV3EqualizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get automatic prices relationship IDs for app price schedules. `GET /v1/appPriceSchedules/{id}/relationships/automaticPrices` */
 export const appPriceSchedulesAutomaticPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15749,7 +18691,11 @@ export const appPriceSchedulesAutomaticPricesGetToManyRelationship = <
     AppPriceSchedulesAutomaticPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesAutomaticPricesGetToManyRelationshipResponses,
+  AppPriceSchedulesAutomaticPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesAutomaticPricesGetToManyRelationshipResponses,
     AppPriceSchedulesAutomaticPricesGetToManyRelationshipErrors,
@@ -15760,6 +18706,7 @@ export const appPriceSchedulesAutomaticPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related automatic prices for app price schedules. `GET /v1/appPriceSchedules/{id}/automaticPrices` */
 export const appPriceSchedulesAutomaticPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15767,7 +18714,11 @@ export const appPriceSchedulesAutomaticPricesGetToManyRelated = <
     AppPriceSchedulesAutomaticPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesAutomaticPricesGetToManyRelatedResponses,
+  AppPriceSchedulesAutomaticPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesAutomaticPricesGetToManyRelatedResponses,
     AppPriceSchedulesAutomaticPricesGetToManyRelatedErrors,
@@ -15791,6 +18742,7 @@ export const appPriceSchedulesAutomaticPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get base territory relationship ID for app price schedules. `GET /v1/appPriceSchedules/{id}/relationships/baseTerritory` */
 export const appPriceSchedulesBaseTerritoryGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15798,7 +18750,11 @@ export const appPriceSchedulesBaseTerritoryGetToOneRelationship = <
     AppPriceSchedulesBaseTerritoryGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesBaseTerritoryGetToOneRelationshipResponses,
+  AppPriceSchedulesBaseTerritoryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesBaseTerritoryGetToOneRelationshipResponses,
     AppPriceSchedulesBaseTerritoryGetToOneRelationshipErrors,
@@ -15809,6 +18765,7 @@ export const appPriceSchedulesBaseTerritoryGetToOneRelationship = <
     ...options,
   });
 
+/** Read related base territory for app price schedules. `GET /v1/appPriceSchedules/{id}/baseTerritory` */
 export const appPriceSchedulesBaseTerritoryGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15816,7 +18773,11 @@ export const appPriceSchedulesBaseTerritoryGetToOneRelated = <
     AppPriceSchedulesBaseTerritoryGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesBaseTerritoryGetToOneRelatedResponses,
+  AppPriceSchedulesBaseTerritoryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesBaseTerritoryGetToOneRelatedResponses,
     AppPriceSchedulesBaseTerritoryGetToOneRelatedErrors,
@@ -15830,6 +18791,7 @@ export const appPriceSchedulesBaseTerritoryGetToOneRelated = <
     ...options,
   });
 
+/** Get manual prices relationship IDs for app price schedules. `GET /v1/appPriceSchedules/{id}/relationships/manualPrices` */
 export const appPriceSchedulesManualPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15837,7 +18799,11 @@ export const appPriceSchedulesManualPricesGetToManyRelationship = <
     AppPriceSchedulesManualPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesManualPricesGetToManyRelationshipResponses,
+  AppPriceSchedulesManualPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesManualPricesGetToManyRelationshipResponses,
     AppPriceSchedulesManualPricesGetToManyRelationshipErrors,
@@ -15848,6 +18814,7 @@ export const appPriceSchedulesManualPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related manual prices for app price schedules. `GET /v1/appPriceSchedules/{id}/manualPrices` */
 export const appPriceSchedulesManualPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15855,7 +18822,11 @@ export const appPriceSchedulesManualPricesGetToManyRelated = <
     AppPriceSchedulesManualPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppPriceSchedulesManualPricesGetToManyRelatedResponses,
+  AppPriceSchedulesManualPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppPriceSchedulesManualPricesGetToManyRelatedResponses,
     AppPriceSchedulesManualPricesGetToManyRelatedErrors,
@@ -15879,6 +18850,7 @@ export const appPriceSchedulesManualPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get app screenshots relationship IDs for app screenshot sets. `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots` */
 export const appScreenshotSetsAppScreenshotsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15886,7 +18858,11 @@ export const appScreenshotSetsAppScreenshotsGetToManyRelationship = <
     AppScreenshotSetsAppScreenshotsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses,
+  AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses,
     AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors,
@@ -15897,6 +18873,7 @@ export const appScreenshotSetsAppScreenshotsGetToManyRelationship = <
     ...options,
   });
 
+/** Replace app screenshots relationships for app screenshot sets. `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots` */
 export const appScreenshotSetsAppScreenshotsReplaceToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -15904,7 +18881,11 @@ export const appScreenshotSetsAppScreenshotsReplaceToManyRelationship = <
     AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses,
+  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses,
     AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors,
@@ -15919,6 +18900,7 @@ export const appScreenshotSetsAppScreenshotsReplaceToManyRelationship = <
     },
   });
 
+/** List related app screenshots for app screenshot sets. `GET /v1/appScreenshotSets/{id}/appScreenshots` */
 export const appScreenshotSetsAppScreenshotsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15926,7 +18908,11 @@ export const appScreenshotSetsAppScreenshotsGetToManyRelated = <
     AppScreenshotSetsAppScreenshotsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses,
+  AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses,
     AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors,
@@ -15944,13 +18930,18 @@ export const appScreenshotSetsAppScreenshotsGetToManyRelated = <
     ...options,
   });
 
+/** Get app store review attachments relationship IDs for app store review details. `GET /v1/appStoreReviewDetails/{id}/relationships/appStoreReviewAttachments` */
 export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipResponses,
+    AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipResponses,
       AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipErrors,
@@ -15961,6 +18952,7 @@ export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationship
       ...options,
     });
 
+/** List related app store review attachments for app store review details. `GET /v1/appStoreReviewDetails/{id}/appStoreReviewAttachments` */
 export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -15968,7 +18960,11 @@ export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated = <
     AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedResponses,
+  AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedResponses,
     AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedErrors,
@@ -15986,13 +18982,18 @@ export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated = <
     ...options,
   });
 
+/** Get app preview sets relationship IDs for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets` */
 export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
@@ -16003,13 +19004,18 @@ export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToM
       ...options,
     });
 
+/** List related app preview sets for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets` */
 export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses,
       AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors,
@@ -16039,13 +19045,18 @@ export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToM
       ...options,
     });
 
+/** Get app screenshot sets relationship IDs for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets` */
 export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
@@ -16056,13 +19067,18 @@ export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGet
       ...options,
     });
 
+/** List related app screenshot sets for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets` */
 export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
       AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
@@ -16092,13 +19108,18 @@ export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGet
       ...options,
     });
 
+/** Get app store version experiment treatment localizations relationship IDs for app store version experiment treatments. `GET /v1/appStoreVersionExperimentTreatments/{id}/relationships/appStoreVersionExperimentTreatmentLocalizations` */
 export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipResponses,
+    AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipResponses,
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipErrors,
@@ -16109,13 +19130,18 @@ export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatme
       ...options,
     });
 
+/** List related app store version experiment treatment localizations for app store version experiment treatments. `GET /v1/appStoreVersionExperimentTreatments/{id}/appStoreVersionExperimentTreatmentLocalizations` */
 export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponses,
+    AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponses,
       AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedErrors,
@@ -16140,13 +19166,18 @@ export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatme
       ...options,
     });
 
+/** Get app store version experiment treatments relationship IDs for app store version experiments v2. `GET /v2/appStoreVersionExperiments/{id}/relationships/appStoreVersionExperimentTreatments` */
 export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationshipResponses,
+    AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationshipResponses,
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelationshipErrors,
@@ -16157,13 +19188,18 @@ export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetT
       ...options,
     });
 
+/** List related app store version experiment treatments for app store version experiments v2. `GET /v2/appStoreVersionExperiments/{id}/appStoreVersionExperimentTreatments` */
 export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedResponses,
+    AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedResponses,
       AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedErrors,
@@ -16188,6 +19224,7 @@ export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetT
       ...options,
     });
 
+/** Get app preview sets relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets` */
 export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16195,7 +19232,11 @@ export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelationship = <
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
+  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
@@ -16206,6 +19247,7 @@ export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app preview sets for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets` */
 export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16213,7 +19255,11 @@ export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelated = <
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses,
+  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses,
     AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors,
@@ -16245,13 +19291,18 @@ export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelated = <
     ...options,
   });
 
+/** Get app screenshot sets relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets` */
 export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
+    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
       AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
@@ -16262,6 +19313,7 @@ export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationship 
       ...options,
     });
 
+/** List related app screenshot sets for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets` */
 export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16269,7 +19321,11 @@ export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelated = <
     AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
+  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
     AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
@@ -16301,13 +19357,18 @@ export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelated = <
     ...options,
   });
 
+/** Remove search keywords relationship for app store version localizations. `DELETE /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords` */
 export const appStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipResponses,
+    AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).delete<
       AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipResponses,
       AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipErrors,
@@ -16322,6 +19383,7 @@ export const appStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationship 
       },
     });
 
+/** Get search keywords relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords` */
 export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16329,7 +19391,11 @@ export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelationship = <
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsSearchKeywordsGetToManyRelationshipResponses,
+  AppStoreVersionLocalizationsSearchKeywordsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelationshipResponses,
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelationshipErrors,
@@ -16340,13 +19406,18 @@ export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelationship = <
     ...options,
   });
 
+/** Add search keywords relationship for app store version localizations. `POST /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords` */
 export const appStoreVersionLocalizationsSearchKeywordsCreateToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
+    AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).post<
       AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
       AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
@@ -16361,6 +19432,7 @@ export const appStoreVersionLocalizationsSearchKeywordsCreateToManyRelationship 
       },
     });
 
+/** List related search keywords for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/searchKeywords` */
 export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16368,7 +19440,11 @@ export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelated = <
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionLocalizationsSearchKeywordsGetToManyRelatedResponses,
+  AppStoreVersionLocalizationsSearchKeywordsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelatedResponses,
     AppStoreVersionLocalizationsSearchKeywordsGetToManyRelatedErrors,
@@ -16386,13 +19462,18 @@ export const appStoreVersionLocalizationsSearchKeywordsGetToManyRelated = <
     ...options,
   });
 
+/** Get alternative distribution package relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/alternativeDistributionPackage` */
 export const appStoreVersionsAlternativeDistributionPackageGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionsAlternativeDistributionPackageGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionsAlternativeDistributionPackageGetToOneRelationshipResponses,
+    AppStoreVersionsAlternativeDistributionPackageGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionsAlternativeDistributionPackageGetToOneRelationshipResponses,
       AppStoreVersionsAlternativeDistributionPackageGetToOneRelationshipErrors,
@@ -16403,6 +19484,7 @@ export const appStoreVersionsAlternativeDistributionPackageGetToOneRelationship 
       ...options,
     });
 
+/** Read related alternative distribution package for app store versions. `GET /v1/appStoreVersions/{id}/alternativeDistributionPackage` */
 export const appStoreVersionsAlternativeDistributionPackageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16410,7 +19492,11 @@ export const appStoreVersionsAlternativeDistributionPackageGetToOneRelated = <
     AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedResponses,
+  AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedResponses,
     AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedErrors,
@@ -16434,6 +19520,7 @@ export const appStoreVersionsAlternativeDistributionPackageGetToOneRelated = <
     ...options,
   });
 
+/** Get app clip default experience relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/appClipDefaultExperience` */
 export const appStoreVersionsAppClipDefaultExperienceGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16441,7 +19528,11 @@ export const appStoreVersionsAppClipDefaultExperienceGetToOneRelationship = <
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppClipDefaultExperienceGetToOneRelationshipResponses,
+  AppStoreVersionsAppClipDefaultExperienceGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelationshipResponses,
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelationshipErrors,
@@ -16452,6 +19543,7 @@ export const appStoreVersionsAppClipDefaultExperienceGetToOneRelationship = <
     ...options,
   });
 
+/** Update app clip default experience relationship for app store versions. `PATCH /v1/appStoreVersions/{id}/relationships/appClipDefaultExperience` */
 export const appStoreVersionsAppClipDefaultExperienceUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16459,7 +19551,11 @@ export const appStoreVersionsAppClipDefaultExperienceUpdateToOneRelationship = <
     AppStoreVersionsAppClipDefaultExperienceUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppClipDefaultExperienceUpdateToOneRelationshipResponses,
+  AppStoreVersionsAppClipDefaultExperienceUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionsAppClipDefaultExperienceUpdateToOneRelationshipResponses,
     AppStoreVersionsAppClipDefaultExperienceUpdateToOneRelationshipErrors,
@@ -16474,6 +19570,7 @@ export const appStoreVersionsAppClipDefaultExperienceUpdateToOneRelationship = <
     },
   });
 
+/** Read related app clip default experience for app store versions. `GET /v1/appStoreVersions/{id}/appClipDefaultExperience` */
 export const appStoreVersionsAppClipDefaultExperienceGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16481,7 +19578,11 @@ export const appStoreVersionsAppClipDefaultExperienceGetToOneRelated = <
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppClipDefaultExperienceGetToOneRelatedResponses,
+  AppStoreVersionsAppClipDefaultExperienceGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelatedResponses,
     AppStoreVersionsAppClipDefaultExperienceGetToOneRelatedErrors,
@@ -16504,6 +19605,7 @@ export const appStoreVersionsAppClipDefaultExperienceGetToOneRelated = <
     ...options,
   });
 
+/** Get app store review detail relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/appStoreReviewDetail` */
 export const appStoreVersionsAppStoreReviewDetailGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16511,7 +19613,11 @@ export const appStoreVersionsAppStoreReviewDetailGetToOneRelationship = <
     AppStoreVersionsAppStoreReviewDetailGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppStoreReviewDetailGetToOneRelationshipResponses,
+  AppStoreVersionsAppStoreReviewDetailGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppStoreReviewDetailGetToOneRelationshipResponses,
     AppStoreVersionsAppStoreReviewDetailGetToOneRelationshipErrors,
@@ -16522,6 +19628,7 @@ export const appStoreVersionsAppStoreReviewDetailGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app store review detail for app store versions. `GET /v1/appStoreVersions/{id}/appStoreReviewDetail` */
 export const appStoreVersionsAppStoreReviewDetailGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16529,7 +19636,11 @@ export const appStoreVersionsAppStoreReviewDetailGetToOneRelated = <
     AppStoreVersionsAppStoreReviewDetailGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppStoreReviewDetailGetToOneRelatedResponses,
+  AppStoreVersionsAppStoreReviewDetailGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppStoreReviewDetailGetToOneRelatedResponses,
     AppStoreVersionsAppStoreReviewDetailGetToOneRelatedErrors,
@@ -16548,13 +19659,18 @@ export const appStoreVersionsAppStoreReviewDetailGetToOneRelated = <
     ...options,
   });
 
+/** Get app store version experiments v2 relationship IDs for app store versions. `GET /v1/appStoreVersions/{id}/relationships/appStoreVersionExperimentsV2` */
 export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationshipResponses,
+    AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationshipResponses,
       AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationshipErrors,
@@ -16565,6 +19681,7 @@ export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelationship =
       ...options,
     });
 
+/** List related app store version experiments v2 for app store versions. `GET /v1/appStoreVersions/{id}/appStoreVersionExperimentsV2` */
 export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16572,7 +19689,11 @@ export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelated = <
     AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedResponses,
+  AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedResponses,
     AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedErrors,
@@ -16597,13 +19718,18 @@ export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get app store version localizations relationship IDs for app store versions. `GET /v1/appStoreVersions/{id}/relationships/appStoreVersionLocalizations` */
 export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelationshipResponses,
+    AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelationshipResponses,
       AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelationshipErrors,
@@ -16614,6 +19740,7 @@ export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelationship =
       ...options,
     });
 
+/** List related app store version localizations for app store versions. `GET /v1/appStoreVersions/{id}/appStoreVersionLocalizations` */
 export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16621,7 +19748,11 @@ export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelated = <
     AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponses,
+  AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponses,
     AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedErrors,
@@ -16643,13 +19774,18 @@ export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get app store version phased release relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/appStoreVersionPhasedRelease` */
 export const appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationshipResponses,
+    AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationshipResponses,
       AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationshipErrors,
@@ -16660,6 +19796,7 @@ export const appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelationship =
       ...options,
     });
 
+/** Read related app store version phased release for app store versions. `GET /v1/appStoreVersions/{id}/appStoreVersionPhasedRelease` */
 export const appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16667,7 +19804,11 @@ export const appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelated = <
     AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedResponses,
+  AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedResponses,
     AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedErrors,
@@ -16685,11 +19826,16 @@ export const appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelated = <
     ...options,
   });
 
+/** Get build relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/build` */
 export const appStoreVersionsBuildGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsBuildGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsBuildGetToOneRelationshipResponses,
+  AppStoreVersionsBuildGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsBuildGetToOneRelationshipResponses,
     AppStoreVersionsBuildGetToOneRelationshipErrors,
@@ -16700,6 +19846,7 @@ export const appStoreVersionsBuildGetToOneRelationship = <
     ...options,
   });
 
+/** Update build relationship for app store versions. `PATCH /v1/appStoreVersions/{id}/relationships/build` */
 export const appStoreVersionsBuildUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16707,7 +19854,11 @@ export const appStoreVersionsBuildUpdateToOneRelationship = <
     AppStoreVersionsBuildUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsBuildUpdateToOneRelationshipResponses,
+  AppStoreVersionsBuildUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppStoreVersionsBuildUpdateToOneRelationshipResponses,
     AppStoreVersionsBuildUpdateToOneRelationshipErrors,
@@ -16722,11 +19873,16 @@ export const appStoreVersionsBuildUpdateToOneRelationship = <
     },
   });
 
+/** Read related build for app store versions. `GET /v1/appStoreVersions/{id}/build` */
 export const appStoreVersionsBuildGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppStoreVersionsBuildGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppStoreVersionsBuildGetToOneRelatedResponses,
+  AppStoreVersionsBuildGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsBuildGetToOneRelatedResponses,
     AppStoreVersionsBuildGetToOneRelatedErrors,
@@ -16742,6 +19898,7 @@ export const appStoreVersionsBuildGetToOneRelated = <
     ...options,
   });
 
+/** Get customer reviews relationship IDs for app store versions. `GET /v1/appStoreVersions/{id}/relationships/customerReviews` */
 export const appStoreVersionsCustomerReviewsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16749,7 +19906,11 @@ export const appStoreVersionsCustomerReviewsGetToManyRelationship = <
     AppStoreVersionsCustomerReviewsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsCustomerReviewsGetToManyRelationshipResponses,
+  AppStoreVersionsCustomerReviewsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsCustomerReviewsGetToManyRelationshipResponses,
     AppStoreVersionsCustomerReviewsGetToManyRelationshipErrors,
@@ -16760,6 +19921,7 @@ export const appStoreVersionsCustomerReviewsGetToManyRelationship = <
     ...options,
   });
 
+/** List related customer reviews for app store versions. `GET /v1/appStoreVersions/{id}/customerReviews` */
 export const appStoreVersionsCustomerReviewsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16767,7 +19929,11 @@ export const appStoreVersionsCustomerReviewsGetToManyRelated = <
     AppStoreVersionsCustomerReviewsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsCustomerReviewsGetToManyRelatedResponses,
+  AppStoreVersionsCustomerReviewsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsCustomerReviewsGetToManyRelatedResponses,
     AppStoreVersionsCustomerReviewsGetToManyRelatedErrors,
@@ -16790,6 +19956,7 @@ export const appStoreVersionsCustomerReviewsGetToManyRelated = <
     ...options,
   });
 
+/** Get game center app version relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/gameCenterAppVersion` */
 export const appStoreVersionsGameCenterAppVersionGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16797,7 +19964,11 @@ export const appStoreVersionsGameCenterAppVersionGetToOneRelationship = <
     AppStoreVersionsGameCenterAppVersionGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsGameCenterAppVersionGetToOneRelationshipResponses,
+  AppStoreVersionsGameCenterAppVersionGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsGameCenterAppVersionGetToOneRelationshipResponses,
     AppStoreVersionsGameCenterAppVersionGetToOneRelationshipErrors,
@@ -16808,6 +19979,7 @@ export const appStoreVersionsGameCenterAppVersionGetToOneRelationship = <
     ...options,
   });
 
+/** Read related game center app version for app store versions. `GET /v1/appStoreVersions/{id}/gameCenterAppVersion` */
 export const appStoreVersionsGameCenterAppVersionGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16815,7 +19987,11 @@ export const appStoreVersionsGameCenterAppVersionGetToOneRelated = <
     AppStoreVersionsGameCenterAppVersionGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsGameCenterAppVersionGetToOneRelatedResponses,
+  AppStoreVersionsGameCenterAppVersionGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsGameCenterAppVersionGetToOneRelatedResponses,
     AppStoreVersionsGameCenterAppVersionGetToOneRelatedErrors,
@@ -16835,6 +20011,7 @@ export const appStoreVersionsGameCenterAppVersionGetToOneRelated = <
     ...options,
   });
 
+/** Get routing app coverage relationship ID for app store versions. `GET /v1/appStoreVersions/{id}/relationships/routingAppCoverage` */
 export const appStoreVersionsRoutingAppCoverageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16842,7 +20019,11 @@ export const appStoreVersionsRoutingAppCoverageGetToOneRelationship = <
     AppStoreVersionsRoutingAppCoverageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsRoutingAppCoverageGetToOneRelationshipResponses,
+  AppStoreVersionsRoutingAppCoverageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsRoutingAppCoverageGetToOneRelationshipResponses,
     AppStoreVersionsRoutingAppCoverageGetToOneRelationshipErrors,
@@ -16853,6 +20034,7 @@ export const appStoreVersionsRoutingAppCoverageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related routing app coverage for app store versions. `GET /v1/appStoreVersions/{id}/routingAppCoverage` */
 export const appStoreVersionsRoutingAppCoverageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16860,7 +20042,11 @@ export const appStoreVersionsRoutingAppCoverageGetToOneRelated = <
     AppStoreVersionsRoutingAppCoverageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppStoreVersionsRoutingAppCoverageGetToOneRelatedResponses,
+  AppStoreVersionsRoutingAppCoverageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppStoreVersionsRoutingAppCoverageGetToOneRelatedResponses,
     AppStoreVersionsRoutingAppCoverageGetToOneRelatedErrors,
@@ -16880,11 +20066,16 @@ export const appStoreVersionsRoutingAppCoverageGetToOneRelated = <
     ...options,
   });
 
+/** Get territories relationship IDs for app tags. `GET /v1/appTags/{id}/relationships/territories` */
 export const appTagsTerritoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppTagsTerritoriesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppTagsTerritoriesGetToManyRelationshipResponses,
+  AppTagsTerritoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppTagsTerritoriesGetToManyRelationshipResponses,
     AppTagsTerritoriesGetToManyRelationshipErrors,
@@ -16895,11 +20086,16 @@ export const appTagsTerritoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related territories for app tags. `GET /v1/appTags/{id}/territories` */
 export const appTagsTerritoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppTagsTerritoriesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppTagsTerritoriesGetToManyRelatedResponses,
+  AppTagsTerritoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppTagsTerritoriesGetToManyRelatedResponses,
     AppTagsTerritoriesGetToManyRelatedErrors,
@@ -16913,6 +20109,7 @@ export const appTagsTerritoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get accessibility declarations relationship IDs for apps. `GET /v1/apps/{id}/relationships/accessibilityDeclarations` */
 export const appsAccessibilityDeclarationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16920,7 +20117,11 @@ export const appsAccessibilityDeclarationsGetToManyRelationship = <
     AppsAccessibilityDeclarationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAccessibilityDeclarationsGetToManyRelationshipResponses,
+  AppsAccessibilityDeclarationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAccessibilityDeclarationsGetToManyRelationshipResponses,
     AppsAccessibilityDeclarationsGetToManyRelationshipErrors,
@@ -16931,6 +20132,7 @@ export const appsAccessibilityDeclarationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related accessibility declarations for apps. `GET /v1/apps/{id}/accessibilityDeclarations` */
 export const appsAccessibilityDeclarationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16938,7 +20140,11 @@ export const appsAccessibilityDeclarationsGetToManyRelated = <
     AppsAccessibilityDeclarationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAccessibilityDeclarationsGetToManyRelatedResponses,
+  AppsAccessibilityDeclarationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAccessibilityDeclarationsGetToManyRelatedResponses,
     AppsAccessibilityDeclarationsGetToManyRelatedErrors,
@@ -16956,6 +20162,7 @@ export const appsAccessibilityDeclarationsGetToManyRelated = <
     ...options,
   });
 
+/** Get alternative distribution key relationship ID for apps. `GET /v1/apps/{id}/relationships/alternativeDistributionKey` */
 export const appsAlternativeDistributionKeyGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -16963,7 +20170,11 @@ export const appsAlternativeDistributionKeyGetToOneRelationship = <
     AppsAlternativeDistributionKeyGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAlternativeDistributionKeyGetToOneRelationshipResponses,
+  AppsAlternativeDistributionKeyGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAlternativeDistributionKeyGetToOneRelationshipResponses,
     AppsAlternativeDistributionKeyGetToOneRelationshipErrors,
@@ -16974,6 +20185,7 @@ export const appsAlternativeDistributionKeyGetToOneRelationship = <
     ...options,
   });
 
+/** Read related alternative distribution key for apps. `GET /v1/apps/{id}/alternativeDistributionKey` */
 export const appsAlternativeDistributionKeyGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -16981,7 +20193,11 @@ export const appsAlternativeDistributionKeyGetToOneRelated = <
     AppsAlternativeDistributionKeyGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAlternativeDistributionKeyGetToOneRelatedResponses,
+  AppsAlternativeDistributionKeyGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAlternativeDistributionKeyGetToOneRelatedResponses,
     AppsAlternativeDistributionKeyGetToOneRelatedErrors,
@@ -16997,6 +20213,7 @@ export const appsAlternativeDistributionKeyGetToOneRelated = <
     ...options,
   });
 
+/** Get analytics report requests relationship IDs for apps. `GET /v1/apps/{id}/relationships/analyticsReportRequests` */
 export const appsAnalyticsReportRequestsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17004,7 +20221,11 @@ export const appsAnalyticsReportRequestsGetToManyRelationship = <
     AppsAnalyticsReportRequestsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAnalyticsReportRequestsGetToManyRelationshipResponses,
+  AppsAnalyticsReportRequestsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAnalyticsReportRequestsGetToManyRelationshipResponses,
     AppsAnalyticsReportRequestsGetToManyRelationshipErrors,
@@ -17015,6 +20236,7 @@ export const appsAnalyticsReportRequestsGetToManyRelationship = <
     ...options,
   });
 
+/** List related analytics report requests for apps. `GET /v1/apps/{id}/analyticsReportRequests` */
 export const appsAnalyticsReportRequestsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17022,7 +20244,11 @@ export const appsAnalyticsReportRequestsGetToManyRelated = <
     AppsAnalyticsReportRequestsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAnalyticsReportRequestsGetToManyRelatedResponses,
+  AppsAnalyticsReportRequestsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAnalyticsReportRequestsGetToManyRelatedResponses,
     AppsAnalyticsReportRequestsGetToManyRelatedErrors,
@@ -17041,6 +20267,7 @@ export const appsAnalyticsReportRequestsGetToManyRelated = <
     ...options,
   });
 
+/** Get android to ios app mapping details relationship IDs for apps. `GET /v1/apps/{id}/relationships/androidToIosAppMappingDetails` */
 export const appsAndroidToIosAppMappingDetailsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17048,7 +20275,11 @@ export const appsAndroidToIosAppMappingDetailsGetToManyRelationship = <
     AppsAndroidToIosAppMappingDetailsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAndroidToIosAppMappingDetailsGetToManyRelationshipResponses,
+  AppsAndroidToIosAppMappingDetailsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAndroidToIosAppMappingDetailsGetToManyRelationshipResponses,
     AppsAndroidToIosAppMappingDetailsGetToManyRelationshipErrors,
@@ -17059,6 +20290,7 @@ export const appsAndroidToIosAppMappingDetailsGetToManyRelationship = <
     ...options,
   });
 
+/** List related android to ios app mapping details for apps. `GET /v1/apps/{id}/androidToIosAppMappingDetails` */
 export const appsAndroidToIosAppMappingDetailsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17066,7 +20298,11 @@ export const appsAndroidToIosAppMappingDetailsGetToManyRelated = <
     AppsAndroidToIosAppMappingDetailsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAndroidToIosAppMappingDetailsGetToManyRelatedResponses,
+  AppsAndroidToIosAppMappingDetailsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAndroidToIosAppMappingDetailsGetToManyRelatedResponses,
     AppsAndroidToIosAppMappingDetailsGetToManyRelatedErrors,
@@ -17082,11 +20318,16 @@ export const appsAndroidToIosAppMappingDetailsGetToManyRelated = <
     ...options,
   });
 
+/** Get app availability v2 relationship ID for apps. `GET /v1/apps/{id}/relationships/appAvailabilityV2` */
 export const appsAppAvailabilityV2GetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppAvailabilityV2GetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppAvailabilityV2GetToOneRelationshipResponses,
+  AppsAppAvailabilityV2GetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppAvailabilityV2GetToOneRelationshipResponses,
     AppsAppAvailabilityV2GetToOneRelationshipErrors,
@@ -17097,11 +20338,16 @@ export const appsAppAvailabilityV2GetToOneRelationship = <
     ...options,
   });
 
+/** Read related app availability v2 for apps. `GET /v1/apps/{id}/appAvailabilityV2` */
 export const appsAppAvailabilityV2GetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppAvailabilityV2GetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppAvailabilityV2GetToOneRelatedResponses,
+  AppsAppAvailabilityV2GetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppAvailabilityV2GetToOneRelatedResponses,
     AppsAppAvailabilityV2GetToOneRelatedErrors,
@@ -17121,11 +20367,16 @@ export const appsAppAvailabilityV2GetToOneRelated = <
     ...options,
   });
 
+/** Get app clips relationship IDs for apps. `GET /v1/apps/{id}/relationships/appClips` */
 export const appsAppClipsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppClipsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppClipsGetToManyRelationshipResponses,
+  AppsAppClipsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppClipsGetToManyRelationshipResponses,
     AppsAppClipsGetToManyRelationshipErrors,
@@ -17136,11 +20387,16 @@ export const appsAppClipsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app clips for apps. `GET /v1/apps/{id}/appClips` */
 export const appsAppClipsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppClipsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppClipsGetToManyRelatedResponses,
+  AppsAppClipsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppClipsGetToManyRelatedResponses,
     AppsAppClipsGetToManyRelatedErrors,
@@ -17160,6 +20416,7 @@ export const appsAppClipsGetToManyRelated = <
     ...options,
   });
 
+/** Get app custom product pages relationship IDs for apps. `GET /v1/apps/{id}/relationships/appCustomProductPages` */
 export const appsAppCustomProductPagesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17167,7 +20424,11 @@ export const appsAppCustomProductPagesGetToManyRelationship = <
     AppsAppCustomProductPagesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAppCustomProductPagesGetToManyRelationshipResponses,
+  AppsAppCustomProductPagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppCustomProductPagesGetToManyRelationshipResponses,
     AppsAppCustomProductPagesGetToManyRelationshipErrors,
@@ -17178,11 +20439,16 @@ export const appsAppCustomProductPagesGetToManyRelationship = <
     ...options,
   });
 
+/** List related app custom product pages for apps. `GET /v1/apps/{id}/appCustomProductPages` */
 export const appsAppCustomProductPagesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppCustomProductPagesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppCustomProductPagesGetToManyRelatedResponses,
+  AppsAppCustomProductPagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppCustomProductPagesGetToManyRelatedResponses,
     AppsAppCustomProductPagesGetToManyRelatedErrors,
@@ -17202,6 +20468,7 @@ export const appsAppCustomProductPagesGetToManyRelated = <
     ...options,
   });
 
+/** Get app encryption declarations relationship IDs for apps. `GET /v1/apps/{id}/relationships/appEncryptionDeclarations` */
 export const appsAppEncryptionDeclarationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17209,7 +20476,11 @@ export const appsAppEncryptionDeclarationsGetToManyRelationship = <
     AppsAppEncryptionDeclarationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAppEncryptionDeclarationsGetToManyRelationshipResponses,
+  AppsAppEncryptionDeclarationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppEncryptionDeclarationsGetToManyRelationshipResponses,
     AppsAppEncryptionDeclarationsGetToManyRelationshipErrors,
@@ -17220,6 +20491,7 @@ export const appsAppEncryptionDeclarationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app encryption declarations for apps. `GET /v1/apps/{id}/appEncryptionDeclarations` */
 export const appsAppEncryptionDeclarationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17227,7 +20499,11 @@ export const appsAppEncryptionDeclarationsGetToManyRelated = <
     AppsAppEncryptionDeclarationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAppEncryptionDeclarationsGetToManyRelatedResponses,
+  AppsAppEncryptionDeclarationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppEncryptionDeclarationsGetToManyRelatedResponses,
     AppsAppEncryptionDeclarationsGetToManyRelatedErrors,
@@ -17253,11 +20529,16 @@ export const appsAppEncryptionDeclarationsGetToManyRelated = <
     ...options,
   });
 
+/** Get app events relationship IDs for apps. `GET /v1/apps/{id}/relationships/appEvents` */
 export const appsAppEventsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppEventsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppEventsGetToManyRelationshipResponses,
+  AppsAppEventsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppEventsGetToManyRelationshipResponses,
     AppsAppEventsGetToManyRelationshipErrors,
@@ -17268,11 +20549,16 @@ export const appsAppEventsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app events for apps. `GET /v1/apps/{id}/appEvents` */
 export const appsAppEventsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppEventsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppEventsGetToManyRelatedResponses,
+  AppsAppEventsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppEventsGetToManyRelatedResponses,
     AppsAppEventsGetToManyRelatedErrors,
@@ -17293,11 +20579,16 @@ export const appsAppEventsGetToManyRelated = <
     ...options,
   });
 
+/** Get app infos relationship IDs for apps. `GET /v1/apps/{id}/relationships/appInfos` */
 export const appsAppInfosGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppInfosGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppInfosGetToManyRelationshipResponses,
+  AppsAppInfosGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppInfosGetToManyRelationshipResponses,
     AppsAppInfosGetToManyRelationshipErrors,
@@ -17308,11 +20599,16 @@ export const appsAppInfosGetToManyRelationship = <
     ...options,
   });
 
+/** List related app infos for apps. `GET /v1/apps/{id}/appInfos` */
 export const appsAppInfosGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppInfosGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppInfosGetToManyRelatedResponses,
+  AppsAppInfosGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppInfosGetToManyRelatedResponses,
     AppsAppInfosGetToManyRelatedErrors,
@@ -17333,11 +20629,16 @@ export const appsAppInfosGetToManyRelated = <
     ...options,
   });
 
+/** Get app price points relationship IDs for apps. `GET /v1/apps/{id}/relationships/appPricePoints` */
 export const appsAppPricePointsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppPricePointsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppPricePointsGetToManyRelationshipResponses,
+  AppsAppPricePointsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppPricePointsGetToManyRelationshipResponses,
     AppsAppPricePointsGetToManyRelationshipErrors,
@@ -17348,11 +20649,16 @@ export const appsAppPricePointsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app price points for apps. `GET /v1/apps/{id}/appPricePoints` */
 export const appsAppPricePointsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppPricePointsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppPricePointsGetToManyRelatedResponses,
+  AppsAppPricePointsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppPricePointsGetToManyRelatedResponses,
     AppsAppPricePointsGetToManyRelatedErrors,
@@ -17372,11 +20678,16 @@ export const appsAppPricePointsGetToManyRelated = <
     ...options,
   });
 
+/** Get app price schedule relationship ID for apps. `GET /v1/apps/{id}/relationships/appPriceSchedule` */
 export const appsAppPriceScheduleGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppPriceScheduleGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppPriceScheduleGetToOneRelationshipResponses,
+  AppsAppPriceScheduleGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppPriceScheduleGetToOneRelationshipResponses,
     AppsAppPriceScheduleGetToOneRelationshipErrors,
@@ -17387,11 +20698,16 @@ export const appsAppPriceScheduleGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app price schedule for apps. `GET /v1/apps/{id}/appPriceSchedule` */
 export const appsAppPriceScheduleGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppPriceScheduleGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppPriceScheduleGetToOneRelatedResponses,
+  AppsAppPriceScheduleGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppPriceScheduleGetToOneRelatedResponses,
     AppsAppPriceScheduleGetToOneRelatedErrors,
@@ -17412,6 +20728,7 @@ export const appsAppPriceScheduleGetToOneRelated = <
     ...options,
   });
 
+/** Get app store version experiments v2 relationship IDs for apps. `GET /v1/apps/{id}/relationships/appStoreVersionExperimentsV2` */
 export const appsAppStoreVersionExperimentsV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17419,7 +20736,11 @@ export const appsAppStoreVersionExperimentsV2GetToManyRelationship = <
     AppsAppStoreVersionExperimentsV2GetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAppStoreVersionExperimentsV2GetToManyRelationshipResponses,
+  AppsAppStoreVersionExperimentsV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppStoreVersionExperimentsV2GetToManyRelationshipResponses,
     AppsAppStoreVersionExperimentsV2GetToManyRelationshipErrors,
@@ -17430,6 +20751,7 @@ export const appsAppStoreVersionExperimentsV2GetToManyRelationship = <
     ...options,
   });
 
+/** List related app store version experiments v2 for apps. `GET /v1/apps/{id}/appStoreVersionExperimentsV2` */
 export const appsAppStoreVersionExperimentsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17437,7 +20759,11 @@ export const appsAppStoreVersionExperimentsV2GetToManyRelated = <
     AppsAppStoreVersionExperimentsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsAppStoreVersionExperimentsV2GetToManyRelatedResponses,
+  AppsAppStoreVersionExperimentsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppStoreVersionExperimentsV2GetToManyRelatedResponses,
     AppsAppStoreVersionExperimentsV2GetToManyRelatedErrors,
@@ -17462,11 +20788,16 @@ export const appsAppStoreVersionExperimentsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get app store versions relationship IDs for apps. `GET /v1/apps/{id}/relationships/appStoreVersions` */
 export const appsAppStoreVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppStoreVersionsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppStoreVersionsGetToManyRelationshipResponses,
+  AppsAppStoreVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppStoreVersionsGetToManyRelationshipResponses,
     AppsAppStoreVersionsGetToManyRelationshipErrors,
@@ -17477,11 +20808,16 @@ export const appsAppStoreVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app store versions for apps. `GET /v1/apps/{id}/appStoreVersions` */
 export const appsAppStoreVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppStoreVersionsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppStoreVersionsGetToManyRelatedResponses,
+  AppsAppStoreVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppStoreVersionsGetToManyRelatedResponses,
     AppsAppStoreVersionsGetToManyRelatedErrors,
@@ -17518,11 +20854,16 @@ export const appsAppStoreVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get app tags relationship IDs for apps. `GET /v1/apps/{id}/relationships/appTags` */
 export const appsAppTagsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppTagsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppTagsGetToManyRelationshipResponses,
+  AppsAppTagsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppTagsGetToManyRelationshipResponses,
     AppsAppTagsGetToManyRelationshipErrors,
@@ -17533,11 +20874,16 @@ export const appsAppTagsGetToManyRelationship = <
     ...options,
   });
 
+/** List related app tags for apps. `GET /v1/apps/{id}/appTags` */
 export const appsAppTagsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsAppTagsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsAppTagsGetToManyRelatedResponses,
+  AppsAppTagsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsAppTagsGetToManyRelatedResponses,
     AppsAppTagsGetToManyRelatedErrors,
@@ -17557,11 +20903,16 @@ export const appsAppTagsGetToManyRelated = <
     ...options,
   });
 
+/** Get background assets relationship IDs for apps. `GET /v1/apps/{id}/relationships/backgroundAssets` */
 export const appsBackgroundAssetsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBackgroundAssetsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBackgroundAssetsGetToManyRelationshipResponses,
+  AppsBackgroundAssetsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBackgroundAssetsGetToManyRelationshipResponses,
     AppsBackgroundAssetsGetToManyRelationshipErrors,
@@ -17572,11 +20923,16 @@ export const appsBackgroundAssetsGetToManyRelationship = <
     ...options,
   });
 
+/** List related background assets for apps. `GET /v1/apps/{id}/backgroundAssets` */
 export const appsBackgroundAssetsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBackgroundAssetsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBackgroundAssetsGetToManyRelatedResponses,
+  AppsBackgroundAssetsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBackgroundAssetsGetToManyRelatedResponses,
     AppsBackgroundAssetsGetToManyRelatedErrors,
@@ -17601,6 +20957,7 @@ export const appsBackgroundAssetsGetToManyRelated = <
     ...options,
   });
 
+/** Get beta app localizations relationship IDs for apps. `GET /v1/apps/{id}/relationships/betaAppLocalizations` */
 export const appsBetaAppLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17608,7 +20965,11 @@ export const appsBetaAppLocalizationsGetToManyRelationship = <
     AppsBetaAppLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaAppLocalizationsGetToManyRelationshipResponses,
+  AppsBetaAppLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaAppLocalizationsGetToManyRelationshipResponses,
     AppsBetaAppLocalizationsGetToManyRelationshipErrors,
@@ -17619,11 +20980,16 @@ export const appsBetaAppLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta app localizations for apps. `GET /v1/apps/{id}/betaAppLocalizations` */
 export const appsBetaAppLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaAppLocalizationsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaAppLocalizationsGetToManyRelatedResponses,
+  AppsBetaAppLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaAppLocalizationsGetToManyRelatedResponses,
     AppsBetaAppLocalizationsGetToManyRelatedErrors,
@@ -17639,6 +21005,7 @@ export const appsBetaAppLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get beta app review detail relationship ID for apps. `GET /v1/apps/{id}/relationships/betaAppReviewDetail` */
 export const appsBetaAppReviewDetailGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17646,7 +21013,11 @@ export const appsBetaAppReviewDetailGetToOneRelationship = <
     AppsBetaAppReviewDetailGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaAppReviewDetailGetToOneRelationshipResponses,
+  AppsBetaAppReviewDetailGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaAppReviewDetailGetToOneRelationshipResponses,
     AppsBetaAppReviewDetailGetToOneRelationshipErrors,
@@ -17657,11 +21028,16 @@ export const appsBetaAppReviewDetailGetToOneRelationship = <
     ...options,
   });
 
+/** Read related beta app review detail for apps. `GET /v1/apps/{id}/betaAppReviewDetail` */
 export const appsBetaAppReviewDetailGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaAppReviewDetailGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaAppReviewDetailGetToOneRelatedResponses,
+  AppsBetaAppReviewDetailGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaAppReviewDetailGetToOneRelatedResponses,
     AppsBetaAppReviewDetailGetToOneRelatedErrors,
@@ -17677,6 +21053,7 @@ export const appsBetaAppReviewDetailGetToOneRelated = <
     ...options,
   });
 
+/** Get beta feedback crash submissions relationship IDs for apps. `GET /v1/apps/{id}/relationships/betaFeedbackCrashSubmissions` */
 export const appsBetaFeedbackCrashSubmissionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17684,7 +21061,11 @@ export const appsBetaFeedbackCrashSubmissionsGetToManyRelationship = <
     AppsBetaFeedbackCrashSubmissionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaFeedbackCrashSubmissionsGetToManyRelationshipResponses,
+  AppsBetaFeedbackCrashSubmissionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaFeedbackCrashSubmissionsGetToManyRelationshipResponses,
     AppsBetaFeedbackCrashSubmissionsGetToManyRelationshipErrors,
@@ -17695,6 +21076,7 @@ export const appsBetaFeedbackCrashSubmissionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta feedback crash submissions for apps. `GET /v1/apps/{id}/betaFeedbackCrashSubmissions` */
 export const appsBetaFeedbackCrashSubmissionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17702,7 +21084,11 @@ export const appsBetaFeedbackCrashSubmissionsGetToManyRelated = <
     AppsBetaFeedbackCrashSubmissionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaFeedbackCrashSubmissionsGetToManyRelatedResponses,
+  AppsBetaFeedbackCrashSubmissionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaFeedbackCrashSubmissionsGetToManyRelatedResponses,
     AppsBetaFeedbackCrashSubmissionsGetToManyRelatedErrors,
@@ -17731,6 +21117,7 @@ export const appsBetaFeedbackCrashSubmissionsGetToManyRelated = <
     ...options,
   });
 
+/** Get beta feedback screenshot submissions relationship IDs for apps. `GET /v1/apps/{id}/relationships/betaFeedbackScreenshotSubmissions` */
 export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17738,7 +21125,11 @@ export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelationship = <
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaFeedbackScreenshotSubmissionsGetToManyRelationshipResponses,
+  AppsBetaFeedbackScreenshotSubmissionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelationshipResponses,
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelationshipErrors,
@@ -17749,6 +21140,7 @@ export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta feedback screenshot submissions for apps. `GET /v1/apps/{id}/betaFeedbackScreenshotSubmissions` */
 export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -17756,7 +21148,11 @@ export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelated = <
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaFeedbackScreenshotSubmissionsGetToManyRelatedResponses,
+  AppsBetaFeedbackScreenshotSubmissionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelatedResponses,
     AppsBetaFeedbackScreenshotSubmissionsGetToManyRelatedErrors,
@@ -17787,11 +21183,16 @@ export const appsBetaFeedbackScreenshotSubmissionsGetToManyRelated = <
     ...options,
   });
 
+/** Get beta groups relationship IDs for apps. `GET /v1/apps/{id}/relationships/betaGroups` */
 export const appsBetaGroupsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaGroupsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaGroupsGetToManyRelationshipResponses,
+  AppsBetaGroupsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaGroupsGetToManyRelationshipResponses,
     AppsBetaGroupsGetToManyRelationshipErrors,
@@ -17802,11 +21203,16 @@ export const appsBetaGroupsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta groups for apps. `GET /v1/apps/{id}/betaGroups` */
 export const appsBetaGroupsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaGroupsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaGroupsGetToManyRelatedResponses,
+  AppsBetaGroupsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaGroupsGetToManyRelatedResponses,
     AppsBetaGroupsGetToManyRelatedErrors,
@@ -17821,6 +21227,7 @@ export const appsBetaGroupsGetToManyRelated = <
     ...options,
   });
 
+/** Get beta license agreement relationship ID for apps. `GET /v1/apps/{id}/relationships/betaLicenseAgreement` */
 export const appsBetaLicenseAgreementGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -17828,7 +21235,11 @@ export const appsBetaLicenseAgreementGetToOneRelationship = <
     AppsBetaLicenseAgreementGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsBetaLicenseAgreementGetToOneRelationshipResponses,
+  AppsBetaLicenseAgreementGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaLicenseAgreementGetToOneRelationshipResponses,
     AppsBetaLicenseAgreementGetToOneRelationshipErrors,
@@ -17839,11 +21250,16 @@ export const appsBetaLicenseAgreementGetToOneRelationship = <
     ...options,
   });
 
+/** Read related beta license agreement for apps. `GET /v1/apps/{id}/betaLicenseAgreement` */
 export const appsBetaLicenseAgreementGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaLicenseAgreementGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaLicenseAgreementGetToOneRelatedResponses,
+  AppsBetaLicenseAgreementGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaLicenseAgreementGetToOneRelatedResponses,
     AppsBetaLicenseAgreementGetToOneRelatedErrors,
@@ -17859,11 +21275,16 @@ export const appsBetaLicenseAgreementGetToOneRelated = <
     ...options,
   });
 
+/** Remove beta testers relationship for apps. `DELETE /v1/apps/{id}/relationships/betaTesters` */
 export const appsBetaTestersDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaTestersDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaTestersDeleteToManyRelationshipResponses,
+  AppsBetaTestersDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     AppsBetaTestersDeleteToManyRelationshipResponses,
     AppsBetaTestersDeleteToManyRelationshipErrors,
@@ -17878,11 +21299,16 @@ export const appsBetaTestersDeleteToManyRelationship = <
     },
   });
 
+/** Get build uploads relationship IDs for apps. `GET /v1/apps/{id}/relationships/buildUploads` */
 export const appsBuildUploadsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBuildUploadsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBuildUploadsGetToManyRelationshipResponses,
+  AppsBuildUploadsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBuildUploadsGetToManyRelationshipResponses,
     AppsBuildUploadsGetToManyRelationshipErrors,
@@ -17893,11 +21319,16 @@ export const appsBuildUploadsGetToManyRelationship = <
     ...options,
   });
 
+/** List related build uploads for apps. `GET /v1/apps/{id}/buildUploads` */
 export const appsBuildUploadsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBuildUploadsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBuildUploadsGetToManyRelatedResponses,
+  AppsBuildUploadsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBuildUploadsGetToManyRelatedResponses,
     AppsBuildUploadsGetToManyRelatedErrors,
@@ -17922,11 +21353,16 @@ export const appsBuildUploadsGetToManyRelated = <
     ...options,
   });
 
+/** Get builds relationship IDs for apps. `GET /v1/apps/{id}/relationships/builds` */
 export const appsBuildsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBuildsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBuildsGetToManyRelationshipResponses,
+  AppsBuildsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBuildsGetToManyRelationshipResponses,
     AppsBuildsGetToManyRelationshipErrors,
@@ -17937,11 +21373,16 @@ export const appsBuildsGetToManyRelationship = <
     ...options,
   });
 
+/** List related builds for apps. `GET /v1/apps/{id}/builds` */
 export const appsBuildsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBuildsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBuildsGetToManyRelatedResponses,
+  AppsBuildsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBuildsGetToManyRelatedResponses,
     AppsBuildsGetToManyRelatedErrors,
@@ -17956,11 +21397,16 @@ export const appsBuildsGetToManyRelated = <
     ...options,
   });
 
+/** Get ci product relationship ID for apps. `GET /v1/apps/{id}/relationships/ciProduct` */
 export const appsCiProductGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsCiProductGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsCiProductGetToOneRelationshipResponses,
+  AppsCiProductGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsCiProductGetToOneRelationshipResponses,
     AppsCiProductGetToOneRelationshipErrors,
@@ -17971,11 +21417,16 @@ export const appsCiProductGetToOneRelationship = <
     ...options,
   });
 
+/** Read related ci product for apps. `GET /v1/apps/{id}/ciProduct` */
 export const appsCiProductGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsCiProductGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsCiProductGetToOneRelatedResponses,
+  AppsCiProductGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsCiProductGetToOneRelatedResponses,
     AppsCiProductGetToOneRelatedErrors,
@@ -17996,6 +21447,7 @@ export const appsCiProductGetToOneRelated = <
     ...options,
   });
 
+/** List related customer review summarizations for apps. `GET /v1/apps/{id}/customerReviewSummarizations` */
 export const appsCustomerReviewSummarizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18003,7 +21455,11 @@ export const appsCustomerReviewSummarizationsGetToManyRelated = <
     AppsCustomerReviewSummarizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsCustomerReviewSummarizationsGetToManyRelatedResponses,
+  AppsCustomerReviewSummarizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsCustomerReviewSummarizationsGetToManyRelatedResponses,
     AppsCustomerReviewSummarizationsGetToManyRelatedErrors,
@@ -18025,11 +21481,16 @@ export const appsCustomerReviewSummarizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get customer reviews relationship IDs for apps. `GET /v1/apps/{id}/relationships/customerReviews` */
 export const appsCustomerReviewsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsCustomerReviewsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsCustomerReviewsGetToManyRelationshipResponses,
+  AppsCustomerReviewsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsCustomerReviewsGetToManyRelationshipResponses,
     AppsCustomerReviewsGetToManyRelationshipErrors,
@@ -18040,11 +21501,16 @@ export const appsCustomerReviewsGetToManyRelationship = <
     ...options,
   });
 
+/** List related customer reviews for apps. `GET /v1/apps/{id}/customerReviews` */
 export const appsCustomerReviewsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsCustomerReviewsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsCustomerReviewsGetToManyRelatedResponses,
+  AppsCustomerReviewsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsCustomerReviewsGetToManyRelatedResponses,
     AppsCustomerReviewsGetToManyRelatedErrors,
@@ -18066,6 +21532,7 @@ export const appsCustomerReviewsGetToManyRelated = <
     ...options,
   });
 
+/** Get end user license agreement relationship ID for apps. `GET /v1/apps/{id}/relationships/endUserLicenseAgreement` */
 export const appsEndUserLicenseAgreementGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18073,7 +21540,11 @@ export const appsEndUserLicenseAgreementGetToOneRelationship = <
     AppsEndUserLicenseAgreementGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsEndUserLicenseAgreementGetToOneRelationshipResponses,
+  AppsEndUserLicenseAgreementGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsEndUserLicenseAgreementGetToOneRelationshipResponses,
     AppsEndUserLicenseAgreementGetToOneRelationshipErrors,
@@ -18084,6 +21555,7 @@ export const appsEndUserLicenseAgreementGetToOneRelationship = <
     ...options,
   });
 
+/** Read related end user license agreement for apps. `GET /v1/apps/{id}/endUserLicenseAgreement` */
 export const appsEndUserLicenseAgreementGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18091,7 +21563,11 @@ export const appsEndUserLicenseAgreementGetToOneRelated = <
     AppsEndUserLicenseAgreementGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsEndUserLicenseAgreementGetToOneRelatedResponses,
+  AppsEndUserLicenseAgreementGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsEndUserLicenseAgreementGetToOneRelatedResponses,
     AppsEndUserLicenseAgreementGetToOneRelatedErrors,
@@ -18107,11 +21583,16 @@ export const appsEndUserLicenseAgreementGetToOneRelated = <
     ...options,
   });
 
+/** Get game center detail relationship ID for apps. `GET /v1/apps/{id}/relationships/gameCenterDetail` */
 export const appsGameCenterDetailGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsGameCenterDetailGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsGameCenterDetailGetToOneRelationshipResponses,
+  AppsGameCenterDetailGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsGameCenterDetailGetToOneRelationshipResponses,
     AppsGameCenterDetailGetToOneRelationshipErrors,
@@ -18122,11 +21603,16 @@ export const appsGameCenterDetailGetToOneRelationship = <
     ...options,
   });
 
+/** Read related game center detail for apps. `GET /v1/apps/{id}/gameCenterDetail` */
 export const appsGameCenterDetailGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsGameCenterDetailGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsGameCenterDetailGetToOneRelatedResponses,
+  AppsGameCenterDetailGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsGameCenterDetailGetToOneRelatedResponses,
     AppsGameCenterDetailGetToOneRelatedErrors,
@@ -18164,11 +21650,16 @@ export const appsGameCenterDetailGetToOneRelated = <
     ...options,
   });
 
+/** Get in app purchases v2 relationship IDs for apps. `GET /v1/apps/{id}/relationships/inAppPurchasesV2` */
 export const appsInAppPurchasesV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsInAppPurchasesV2GetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsInAppPurchasesV2GetToManyRelationshipResponses,
+  AppsInAppPurchasesV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsInAppPurchasesV2GetToManyRelationshipResponses,
     AppsInAppPurchasesV2GetToManyRelationshipErrors,
@@ -18179,11 +21670,16 @@ export const appsInAppPurchasesV2GetToManyRelationship = <
     ...options,
   });
 
+/** List related in app purchases v2 for apps. `GET /v1/apps/{id}/inAppPurchasesV2` */
 export const appsInAppPurchasesV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsInAppPurchasesV2GetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsInAppPurchasesV2GetToManyRelatedResponses,
+  AppsInAppPurchasesV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsInAppPurchasesV2GetToManyRelatedResponses,
     AppsInAppPurchasesV2GetToManyRelatedErrors,
@@ -18215,6 +21711,7 @@ export const appsInAppPurchasesV2GetToManyRelated = <
     ...options,
   });
 
+/** Get marketplace search detail relationship ID for apps. `GET /v1/apps/{id}/relationships/marketplaceSearchDetail` */
 export const appsMarketplaceSearchDetailGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18222,7 +21719,11 @@ export const appsMarketplaceSearchDetailGetToOneRelationship = <
     AppsMarketplaceSearchDetailGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsMarketplaceSearchDetailGetToOneRelationshipResponses,
+  AppsMarketplaceSearchDetailGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsMarketplaceSearchDetailGetToOneRelationshipResponses,
     AppsMarketplaceSearchDetailGetToOneRelationshipErrors,
@@ -18233,6 +21734,7 @@ export const appsMarketplaceSearchDetailGetToOneRelationship = <
     ...options,
   });
 
+/** Read related marketplace search detail for apps. `GET /v1/apps/{id}/marketplaceSearchDetail` */
 export const appsMarketplaceSearchDetailGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18240,7 +21742,11 @@ export const appsMarketplaceSearchDetailGetToOneRelated = <
     AppsMarketplaceSearchDetailGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsMarketplaceSearchDetailGetToOneRelatedResponses,
+  AppsMarketplaceSearchDetailGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsMarketplaceSearchDetailGetToOneRelatedResponses,
     AppsMarketplaceSearchDetailGetToOneRelatedErrors,
@@ -18256,11 +21762,16 @@ export const appsMarketplaceSearchDetailGetToOneRelated = <
     ...options,
   });
 
+/** List related perf power metrics for apps. `GET /v1/apps/{id}/perfPowerMetrics` */
 export const appsPerfPowerMetricsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsPerfPowerMetricsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsPerfPowerMetricsGetToManyRelatedResponses,
+  AppsPerfPowerMetricsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsPerfPowerMetricsGetToManyRelatedResponses,
     AppsPerfPowerMetricsGetToManyRelatedErrors,
@@ -18278,6 +21789,7 @@ export const appsPerfPowerMetricsGetToManyRelated = <
     ...options,
   });
 
+/** Get pre release versions relationship IDs for apps. `GET /v1/apps/{id}/relationships/preReleaseVersions` */
 export const appsPreReleaseVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18285,7 +21797,11 @@ export const appsPreReleaseVersionsGetToManyRelationship = <
     AppsPreReleaseVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsPreReleaseVersionsGetToManyRelationshipResponses,
+  AppsPreReleaseVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsPreReleaseVersionsGetToManyRelationshipResponses,
     AppsPreReleaseVersionsGetToManyRelationshipErrors,
@@ -18296,11 +21812,16 @@ export const appsPreReleaseVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related pre release versions for apps. `GET /v1/apps/{id}/preReleaseVersions` */
 export const appsPreReleaseVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsPreReleaseVersionsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsPreReleaseVersionsGetToManyRelatedResponses,
+  AppsPreReleaseVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsPreReleaseVersionsGetToManyRelatedResponses,
     AppsPreReleaseVersionsGetToManyRelatedErrors,
@@ -18316,6 +21837,7 @@ export const appsPreReleaseVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get promoted purchases relationship IDs for apps. `GET /v1/apps/{id}/relationships/promotedPurchases` */
 export const appsPromotedPurchasesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18323,7 +21845,11 @@ export const appsPromotedPurchasesGetToManyRelationship = <
     AppsPromotedPurchasesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsPromotedPurchasesGetToManyRelationshipResponses,
+  AppsPromotedPurchasesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsPromotedPurchasesGetToManyRelationshipResponses,
     AppsPromotedPurchasesGetToManyRelationshipErrors,
@@ -18334,6 +21860,7 @@ export const appsPromotedPurchasesGetToManyRelationship = <
     ...options,
   });
 
+/** Replace promoted purchases relationships for apps. `PATCH /v1/apps/{id}/relationships/promotedPurchases` */
 export const appsPromotedPurchasesReplaceToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18341,7 +21868,11 @@ export const appsPromotedPurchasesReplaceToManyRelationship = <
     AppsPromotedPurchasesReplaceToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsPromotedPurchasesReplaceToManyRelationshipResponses,
+  AppsPromotedPurchasesReplaceToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     AppsPromotedPurchasesReplaceToManyRelationshipResponses,
     AppsPromotedPurchasesReplaceToManyRelationshipErrors,
@@ -18356,11 +21887,16 @@ export const appsPromotedPurchasesReplaceToManyRelationship = <
     },
   });
 
+/** List related promoted purchases for apps. `GET /v1/apps/{id}/promotedPurchases` */
 export const appsPromotedPurchasesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsPromotedPurchasesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsPromotedPurchasesGetToManyRelatedResponses,
+  AppsPromotedPurchasesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsPromotedPurchasesGetToManyRelatedResponses,
     AppsPromotedPurchasesGetToManyRelatedErrors,
@@ -18379,6 +21915,7 @@ export const appsPromotedPurchasesGetToManyRelated = <
     ...options,
   });
 
+/** Get review submissions relationship IDs for apps. `GET /v1/apps/{id}/relationships/reviewSubmissions` */
 export const appsReviewSubmissionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18386,7 +21923,11 @@ export const appsReviewSubmissionsGetToManyRelationship = <
     AppsReviewSubmissionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsReviewSubmissionsGetToManyRelationshipResponses,
+  AppsReviewSubmissionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsReviewSubmissionsGetToManyRelationshipResponses,
     AppsReviewSubmissionsGetToManyRelationshipErrors,
@@ -18397,11 +21938,16 @@ export const appsReviewSubmissionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related review submissions for apps. `GET /v1/apps/{id}/reviewSubmissions` */
 export const appsReviewSubmissionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsReviewSubmissionsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsReviewSubmissionsGetToManyRelatedResponses,
+  AppsReviewSubmissionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsReviewSubmissionsGetToManyRelatedResponses,
     AppsReviewSubmissionsGetToManyRelatedErrors,
@@ -18426,11 +21972,16 @@ export const appsReviewSubmissionsGetToManyRelated = <
     ...options,
   });
 
+/** Get search keywords relationship IDs for apps. `GET /v1/apps/{id}/relationships/searchKeywords` */
 export const appsSearchKeywordsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsSearchKeywordsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsSearchKeywordsGetToManyRelationshipResponses,
+  AppsSearchKeywordsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSearchKeywordsGetToManyRelationshipResponses,
     AppsSearchKeywordsGetToManyRelationshipErrors,
@@ -18441,11 +21992,16 @@ export const appsSearchKeywordsGetToManyRelationship = <
     ...options,
   });
 
+/** List related search keywords for apps. `GET /v1/apps/{id}/searchKeywords` */
 export const appsSearchKeywordsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsSearchKeywordsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsSearchKeywordsGetToManyRelatedResponses,
+  AppsSearchKeywordsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSearchKeywordsGetToManyRelatedResponses,
     AppsSearchKeywordsGetToManyRelatedErrors,
@@ -18463,6 +22019,7 @@ export const appsSearchKeywordsGetToManyRelated = <
     ...options,
   });
 
+/** Get subscription grace period relationship ID for apps. `GET /v1/apps/{id}/relationships/subscriptionGracePeriod` */
 export const appsSubscriptionGracePeriodGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18470,7 +22027,11 @@ export const appsSubscriptionGracePeriodGetToOneRelationship = <
     AppsSubscriptionGracePeriodGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsSubscriptionGracePeriodGetToOneRelationshipResponses,
+  AppsSubscriptionGracePeriodGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSubscriptionGracePeriodGetToOneRelationshipResponses,
     AppsSubscriptionGracePeriodGetToOneRelationshipErrors,
@@ -18481,6 +22042,7 @@ export const appsSubscriptionGracePeriodGetToOneRelationship = <
     ...options,
   });
 
+/** Read related subscription grace period for apps. `GET /v1/apps/{id}/subscriptionGracePeriod` */
 export const appsSubscriptionGracePeriodGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18488,7 +22050,11 @@ export const appsSubscriptionGracePeriodGetToOneRelated = <
     AppsSubscriptionGracePeriodGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsSubscriptionGracePeriodGetToOneRelatedResponses,
+  AppsSubscriptionGracePeriodGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSubscriptionGracePeriodGetToOneRelatedResponses,
     AppsSubscriptionGracePeriodGetToOneRelatedErrors,
@@ -18504,6 +22070,7 @@ export const appsSubscriptionGracePeriodGetToOneRelated = <
     ...options,
   });
 
+/** Get subscription groups relationship IDs for apps. `GET /v1/apps/{id}/relationships/subscriptionGroups` */
 export const appsSubscriptionGroupsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18511,7 +22078,11 @@ export const appsSubscriptionGroupsGetToManyRelationship = <
     AppsSubscriptionGroupsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  AppsSubscriptionGroupsGetToManyRelationshipResponses,
+  AppsSubscriptionGroupsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSubscriptionGroupsGetToManyRelationshipResponses,
     AppsSubscriptionGroupsGetToManyRelationshipErrors,
@@ -18522,11 +22093,16 @@ export const appsSubscriptionGroupsGetToManyRelationship = <
     ...options,
   });
 
+/** List related subscription groups for apps. `GET /v1/apps/{id}/subscriptionGroups` */
 export const appsSubscriptionGroupsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsSubscriptionGroupsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsSubscriptionGroupsGetToManyRelatedResponses,
+  AppsSubscriptionGroupsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsSubscriptionGroupsGetToManyRelatedResponses,
     AppsSubscriptionGroupsGetToManyRelatedErrors,
@@ -18548,11 +22124,16 @@ export const appsSubscriptionGroupsGetToManyRelated = <
     ...options,
   });
 
+/** Get webhooks relationship IDs for apps. `GET /v1/apps/{id}/relationships/webhooks` */
 export const appsWebhooksGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsWebhooksGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsWebhooksGetToManyRelationshipResponses,
+  AppsWebhooksGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsWebhooksGetToManyRelationshipResponses,
     AppsWebhooksGetToManyRelationshipErrors,
@@ -18563,11 +22144,16 @@ export const appsWebhooksGetToManyRelationship = <
     ...options,
   });
 
+/** List related webhooks for apps. `GET /v1/apps/{id}/webhooks` */
 export const appsWebhooksGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsWebhooksGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsWebhooksGetToManyRelatedResponses,
+  AppsWebhooksGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsWebhooksGetToManyRelatedResponses,
     AppsWebhooksGetToManyRelatedErrors,
@@ -18585,13 +22171,18 @@ export const appsWebhooksGetToManyRelated = <
     ...options,
   });
 
+/** Get background asset upload files relationship IDs for background asset versions. `GET /v1/backgroundAssetVersions/{id}/relationships/backgroundAssetUploadFiles` */
 export const backgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationshipResponses,
+    BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationshipResponses,
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelationshipErrors,
@@ -18602,13 +22193,18 @@ export const backgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelations
       ...options,
     });
 
+/** List related background asset upload files for background asset versions. `GET /v1/backgroundAssetVersions/{id}/backgroundAssetUploadFiles` */
 export const backgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelatedResponses,
+    BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelatedResponses,
       BackgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelatedErrors,
@@ -18626,6 +22222,7 @@ export const backgroundAssetVersionsBackgroundAssetUploadFilesGetToManyRelated =
       ...options,
     });
 
+/** Get versions relationship IDs for background assets. `GET /v1/backgroundAssets/{id}/relationships/versions` */
 export const backgroundAssetsVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18633,7 +22230,11 @@ export const backgroundAssetsVersionsGetToManyRelationship = <
     BackgroundAssetsVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BackgroundAssetsVersionsGetToManyRelationshipResponses,
+  BackgroundAssetsVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetsVersionsGetToManyRelationshipResponses,
     BackgroundAssetsVersionsGetToManyRelationshipErrors,
@@ -18644,11 +22245,16 @@ export const backgroundAssetsVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for background assets. `GET /v1/backgroundAssets/{id}/versions` */
 export const backgroundAssetsVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BackgroundAssetsVersionsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BackgroundAssetsVersionsGetToManyRelatedResponses,
+  BackgroundAssetsVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BackgroundAssetsVersionsGetToManyRelatedResponses,
     BackgroundAssetsVersionsGetToManyRelatedErrors,
@@ -18685,6 +22291,7 @@ export const backgroundAssetsVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get app relationship ID for beta app localizations. `GET /v1/betaAppLocalizations/{id}/relationships/app` */
 export const betaAppLocalizationsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18692,7 +22299,11 @@ export const betaAppLocalizationsAppGetToOneRelationship = <
     BetaAppLocalizationsAppGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppLocalizationsAppGetToOneRelationshipResponses,
+  BetaAppLocalizationsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppLocalizationsAppGetToOneRelationshipResponses,
     BetaAppLocalizationsAppGetToOneRelationshipErrors,
@@ -18703,11 +22314,16 @@ export const betaAppLocalizationsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for beta app localizations. `GET /v1/betaAppLocalizations/{id}/app` */
 export const betaAppLocalizationsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppLocalizationsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppLocalizationsAppGetToOneRelatedResponses,
+  BetaAppLocalizationsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppLocalizationsAppGetToOneRelatedResponses,
     BetaAppLocalizationsAppGetToOneRelatedErrors,
@@ -18721,6 +22337,7 @@ export const betaAppLocalizationsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get app relationship ID for beta app review details. `GET /v1/betaAppReviewDetails/{id}/relationships/app` */
 export const betaAppReviewDetailsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18728,7 +22345,11 @@ export const betaAppReviewDetailsAppGetToOneRelationship = <
     BetaAppReviewDetailsAppGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppReviewDetailsAppGetToOneRelationshipResponses,
+  BetaAppReviewDetailsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewDetailsAppGetToOneRelationshipResponses,
     BetaAppReviewDetailsAppGetToOneRelationshipErrors,
@@ -18739,11 +22360,16 @@ export const betaAppReviewDetailsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for beta app review details. `GET /v1/betaAppReviewDetails/{id}/app` */
 export const betaAppReviewDetailsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaAppReviewDetailsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaAppReviewDetailsAppGetToOneRelatedResponses,
+  BetaAppReviewDetailsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewDetailsAppGetToOneRelatedResponses,
     BetaAppReviewDetailsAppGetToOneRelatedErrors,
@@ -18757,6 +22383,7 @@ export const betaAppReviewDetailsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get build relationship ID for beta app review submissions. `GET /v1/betaAppReviewSubmissions/{id}/relationships/build` */
 export const betaAppReviewSubmissionsBuildGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18764,7 +22391,11 @@ export const betaAppReviewSubmissionsBuildGetToOneRelationship = <
     BetaAppReviewSubmissionsBuildGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppReviewSubmissionsBuildGetToOneRelationshipResponses,
+  BetaAppReviewSubmissionsBuildGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewSubmissionsBuildGetToOneRelationshipResponses,
     BetaAppReviewSubmissionsBuildGetToOneRelationshipErrors,
@@ -18775,6 +22406,7 @@ export const betaAppReviewSubmissionsBuildGetToOneRelationship = <
     ...options,
   });
 
+/** Read related build for beta app review submissions. `GET /v1/betaAppReviewSubmissions/{id}/build` */
 export const betaAppReviewSubmissionsBuildGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18782,7 +22414,11 @@ export const betaAppReviewSubmissionsBuildGetToOneRelated = <
     BetaAppReviewSubmissionsBuildGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaAppReviewSubmissionsBuildGetToOneRelatedResponses,
+  BetaAppReviewSubmissionsBuildGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaAppReviewSubmissionsBuildGetToOneRelatedResponses,
     BetaAppReviewSubmissionsBuildGetToOneRelatedErrors,
@@ -18798,6 +22434,7 @@ export const betaAppReviewSubmissionsBuildGetToOneRelated = <
     ...options,
   });
 
+/** Get build relationship ID for beta build localizations. `GET /v1/betaBuildLocalizations/{id}/relationships/build` */
 export const betaBuildLocalizationsBuildGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18805,7 +22442,11 @@ export const betaBuildLocalizationsBuildGetToOneRelationship = <
     BetaBuildLocalizationsBuildGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsBuildGetToOneRelationshipResponses,
+  BetaBuildLocalizationsBuildGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaBuildLocalizationsBuildGetToOneRelationshipResponses,
     BetaBuildLocalizationsBuildGetToOneRelationshipErrors,
@@ -18816,6 +22457,7 @@ export const betaBuildLocalizationsBuildGetToOneRelationship = <
     ...options,
   });
 
+/** Read related build for beta build localizations. `GET /v1/betaBuildLocalizations/{id}/build` */
 export const betaBuildLocalizationsBuildGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18823,7 +22465,11 @@ export const betaBuildLocalizationsBuildGetToOneRelated = <
     BetaBuildLocalizationsBuildGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaBuildLocalizationsBuildGetToOneRelatedResponses,
+  BetaBuildLocalizationsBuildGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaBuildLocalizationsBuildGetToOneRelatedResponses,
     BetaBuildLocalizationsBuildGetToOneRelatedErrors,
@@ -18839,6 +22485,7 @@ export const betaBuildLocalizationsBuildGetToOneRelated = <
     ...options,
   });
 
+/** Get crash log relationship ID for beta feedback crash submissions. `GET /v1/betaFeedbackCrashSubmissions/{id}/relationships/crashLog` */
 export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18846,7 +22493,11 @@ export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelationship = <
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaFeedbackCrashSubmissionsCrashLogGetToOneRelationshipResponses,
+  BetaFeedbackCrashSubmissionsCrashLogGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelationshipResponses,
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelationshipErrors,
@@ -18857,6 +22508,7 @@ export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelationship = <
     ...options,
   });
 
+/** Read related crash log for beta feedback crash submissions. `GET /v1/betaFeedbackCrashSubmissions/{id}/crashLog` */
 export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18864,7 +22516,11 @@ export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelated = <
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaFeedbackCrashSubmissionsCrashLogGetToOneRelatedResponses,
+  BetaFeedbackCrashSubmissionsCrashLogGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelatedResponses,
     BetaFeedbackCrashSubmissionsCrashLogGetToOneRelatedErrors,
@@ -18878,11 +22534,16 @@ export const betaFeedbackCrashSubmissionsCrashLogGetToOneRelated = <
     ...options,
   });
 
+/** Get app relationship ID for beta groups. `GET /v1/betaGroups/{id}/relationships/app` */
 export const betaGroupsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsAppGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsAppGetToOneRelationshipResponses,
+  BetaGroupsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsAppGetToOneRelationshipResponses,
     BetaGroupsAppGetToOneRelationshipErrors,
@@ -18893,11 +22554,16 @@ export const betaGroupsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for beta groups. `GET /v1/betaGroups/{id}/app` */
 export const betaGroupsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsAppGetToOneRelatedResponses,
+  BetaGroupsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsAppGetToOneRelatedResponses,
     BetaGroupsAppGetToOneRelatedErrors,
@@ -18911,6 +22577,7 @@ export const betaGroupsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get beta recruitment criteria relationship ID for beta groups. `GET /v1/betaGroups/{id}/relationships/betaRecruitmentCriteria` */
 export const betaGroupsBetaRecruitmentCriteriaGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -18918,7 +22585,11 @@ export const betaGroupsBetaRecruitmentCriteriaGetToOneRelationship = <
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaGroupsBetaRecruitmentCriteriaGetToOneRelationshipResponses,
+  BetaGroupsBetaRecruitmentCriteriaGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelationshipResponses,
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelationshipErrors,
@@ -18929,6 +22600,7 @@ export const betaGroupsBetaRecruitmentCriteriaGetToOneRelationship = <
     ...options,
   });
 
+/** Read related beta recruitment criteria for beta groups. `GET /v1/betaGroups/{id}/betaRecruitmentCriteria` */
 export const betaGroupsBetaRecruitmentCriteriaGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -18936,7 +22608,11 @@ export const betaGroupsBetaRecruitmentCriteriaGetToOneRelated = <
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaGroupsBetaRecruitmentCriteriaGetToOneRelatedResponses,
+  BetaGroupsBetaRecruitmentCriteriaGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelatedResponses,
     BetaGroupsBetaRecruitmentCriteriaGetToOneRelatedErrors,
@@ -18954,13 +22630,18 @@ export const betaGroupsBetaRecruitmentCriteriaGetToOneRelated = <
     ...options,
   });
 
+/** Get beta recruitment criterion compatible build check relationship ID for beta groups. `GET /v1/betaGroups/{id}/relationships/betaRecruitmentCriterionCompatibleBuildCheck` */
 export const betaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationshipResponses,
+    BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationshipResponses,
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelationshipErrors,
@@ -18971,13 +22652,18 @@ export const betaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelat
       ...options,
     });
 
+/** Read related beta recruitment criterion compatible build check for beta groups. `GET /v1/betaGroups/{id}/betaRecruitmentCriterionCompatibleBuildCheck` */
 export const betaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelatedResponses,
+    BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelatedResponses,
       BetaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelatedErrors,
@@ -18995,6 +22681,7 @@ export const betaGroupsBetaRecruitmentCriterionCompatibleBuildCheckGetToOneRelat
       ...options,
     });
 
+/** Remove beta testers relationship for beta groups. `DELETE /v1/betaGroups/{id}/relationships/betaTesters` */
 export const betaGroupsBetaTestersDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19002,7 +22689,11 @@ export const betaGroupsBetaTestersDeleteToManyRelationship = <
     BetaGroupsBetaTestersDeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaGroupsBetaTestersDeleteToManyRelationshipResponses,
+  BetaGroupsBetaTestersDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaGroupsBetaTestersDeleteToManyRelationshipResponses,
     BetaGroupsBetaTestersDeleteToManyRelationshipErrors,
@@ -19017,6 +22708,7 @@ export const betaGroupsBetaTestersDeleteToManyRelationship = <
     },
   });
 
+/** Get beta testers relationship IDs for beta groups. `GET /v1/betaGroups/{id}/relationships/betaTesters` */
 export const betaGroupsBetaTestersGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19024,7 +22716,11 @@ export const betaGroupsBetaTestersGetToManyRelationship = <
     BetaGroupsBetaTestersGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaGroupsBetaTestersGetToManyRelationshipResponses,
+  BetaGroupsBetaTestersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBetaTestersGetToManyRelationshipResponses,
     BetaGroupsBetaTestersGetToManyRelationshipErrors,
@@ -19035,6 +22731,7 @@ export const betaGroupsBetaTestersGetToManyRelationship = <
     ...options,
   });
 
+/** Add beta testers relationship for beta groups. `POST /v1/betaGroups/{id}/relationships/betaTesters` */
 export const betaGroupsBetaTestersCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19042,7 +22739,11 @@ export const betaGroupsBetaTestersCreateToManyRelationship = <
     BetaGroupsBetaTestersCreateToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaGroupsBetaTestersCreateToManyRelationshipResponses,
+  BetaGroupsBetaTestersCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaGroupsBetaTestersCreateToManyRelationshipResponses,
     BetaGroupsBetaTestersCreateToManyRelationshipErrors,
@@ -19057,11 +22758,16 @@ export const betaGroupsBetaTestersCreateToManyRelationship = <
     },
   });
 
+/** List related beta testers for beta groups. `GET /v1/betaGroups/{id}/betaTesters` */
 export const betaGroupsBetaTestersGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBetaTestersGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBetaTestersGetToManyRelatedResponses,
+  BetaGroupsBetaTestersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBetaTestersGetToManyRelatedResponses,
     BetaGroupsBetaTestersGetToManyRelatedErrors,
@@ -19075,11 +22781,16 @@ export const betaGroupsBetaTestersGetToManyRelated = <
     ...options,
   });
 
+/** Remove builds relationship for beta groups. `DELETE /v1/betaGroups/{id}/relationships/builds` */
 export const betaGroupsBuildsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBuildsDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBuildsDeleteToManyRelationshipResponses,
+  BetaGroupsBuildsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaGroupsBuildsDeleteToManyRelationshipResponses,
     BetaGroupsBuildsDeleteToManyRelationshipErrors,
@@ -19094,11 +22805,16 @@ export const betaGroupsBuildsDeleteToManyRelationship = <
     },
   });
 
+/** Get builds relationship IDs for beta groups. `GET /v1/betaGroups/{id}/relationships/builds` */
 export const betaGroupsBuildsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBuildsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBuildsGetToManyRelationshipResponses,
+  BetaGroupsBuildsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBuildsGetToManyRelationshipResponses,
     BetaGroupsBuildsGetToManyRelationshipErrors,
@@ -19109,11 +22825,16 @@ export const betaGroupsBuildsGetToManyRelationship = <
     ...options,
   });
 
+/** Add builds relationship for beta groups. `POST /v1/betaGroups/{id}/relationships/builds` */
 export const betaGroupsBuildsCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBuildsCreateToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBuildsCreateToManyRelationshipResponses,
+  BetaGroupsBuildsCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaGroupsBuildsCreateToManyRelationshipResponses,
     BetaGroupsBuildsCreateToManyRelationshipErrors,
@@ -19128,11 +22849,16 @@ export const betaGroupsBuildsCreateToManyRelationship = <
     },
   });
 
+/** List related builds for beta groups. `GET /v1/betaGroups/{id}/builds` */
 export const betaGroupsBuildsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBuildsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBuildsGetToManyRelatedResponses,
+  BetaGroupsBuildsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBuildsGetToManyRelatedResponses,
     BetaGroupsBuildsGetToManyRelatedErrors,
@@ -19147,6 +22873,7 @@ export const betaGroupsBuildsGetToManyRelated = <
     ...options,
   });
 
+/** Get app relationship ID for beta license agreements. `GET /v1/betaLicenseAgreements/{id}/relationships/app` */
 export const betaLicenseAgreementsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19154,7 +22881,11 @@ export const betaLicenseAgreementsAppGetToOneRelationship = <
     BetaLicenseAgreementsAppGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaLicenseAgreementsAppGetToOneRelationshipResponses,
+  BetaLicenseAgreementsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaLicenseAgreementsAppGetToOneRelationshipResponses,
     BetaLicenseAgreementsAppGetToOneRelationshipErrors,
@@ -19165,11 +22896,16 @@ export const betaLicenseAgreementsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for beta license agreements. `GET /v1/betaLicenseAgreements/{id}/app` */
 export const betaLicenseAgreementsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaLicenseAgreementsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaLicenseAgreementsAppGetToOneRelatedResponses,
+  BetaLicenseAgreementsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaLicenseAgreementsAppGetToOneRelatedResponses,
     BetaLicenseAgreementsAppGetToOneRelatedErrors,
@@ -19183,11 +22919,16 @@ export const betaLicenseAgreementsAppGetToOneRelated = <
     ...options,
   });
 
+/** Remove apps relationship for beta testers. `DELETE /v1/betaTesters/{id}/relationships/apps` */
 export const betaTestersAppsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersAppsDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersAppsDeleteToManyRelationshipResponses,
+  BetaTestersAppsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaTestersAppsDeleteToManyRelationshipResponses,
     BetaTestersAppsDeleteToManyRelationshipErrors,
@@ -19202,11 +22943,16 @@ export const betaTestersAppsDeleteToManyRelationship = <
     },
   });
 
+/** Get apps relationship IDs for beta testers. `GET /v1/betaTesters/{id}/relationships/apps` */
 export const betaTestersAppsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersAppsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersAppsGetToManyRelationshipResponses,
+  BetaTestersAppsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersAppsGetToManyRelationshipResponses,
     BetaTestersAppsGetToManyRelationshipErrors,
@@ -19217,11 +22963,16 @@ export const betaTestersAppsGetToManyRelationship = <
     ...options,
   });
 
+/** List related apps for beta testers. `GET /v1/betaTesters/{id}/apps` */
 export const betaTestersAppsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersAppsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersAppsGetToManyRelatedResponses,
+  BetaTestersAppsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersAppsGetToManyRelatedResponses,
     BetaTestersAppsGetToManyRelatedErrors,
@@ -19235,6 +22986,7 @@ export const betaTestersAppsGetToManyRelated = <
     ...options,
   });
 
+/** Remove beta groups relationship for beta testers. `DELETE /v1/betaTesters/{id}/relationships/betaGroups` */
 export const betaTestersBetaGroupsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19242,7 +22994,11 @@ export const betaTestersBetaGroupsDeleteToManyRelationship = <
     BetaTestersBetaGroupsDeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaTestersBetaGroupsDeleteToManyRelationshipResponses,
+  BetaTestersBetaGroupsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaTestersBetaGroupsDeleteToManyRelationshipResponses,
     BetaTestersBetaGroupsDeleteToManyRelationshipErrors,
@@ -19257,6 +23013,7 @@ export const betaTestersBetaGroupsDeleteToManyRelationship = <
     },
   });
 
+/** Get beta groups relationship IDs for beta testers. `GET /v1/betaTesters/{id}/relationships/betaGroups` */
 export const betaTestersBetaGroupsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19264,7 +23021,11 @@ export const betaTestersBetaGroupsGetToManyRelationship = <
     BetaTestersBetaGroupsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaTestersBetaGroupsGetToManyRelationshipResponses,
+  BetaTestersBetaGroupsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersBetaGroupsGetToManyRelationshipResponses,
     BetaTestersBetaGroupsGetToManyRelationshipErrors,
@@ -19275,6 +23036,7 @@ export const betaTestersBetaGroupsGetToManyRelationship = <
     ...options,
   });
 
+/** Add beta groups relationship for beta testers. `POST /v1/betaTesters/{id}/relationships/betaGroups` */
 export const betaTestersBetaGroupsCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19282,7 +23044,11 @@ export const betaTestersBetaGroupsCreateToManyRelationship = <
     BetaTestersBetaGroupsCreateToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BetaTestersBetaGroupsCreateToManyRelationshipResponses,
+  BetaTestersBetaGroupsCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaTestersBetaGroupsCreateToManyRelationshipResponses,
     BetaTestersBetaGroupsCreateToManyRelationshipErrors,
@@ -19297,11 +23063,16 @@ export const betaTestersBetaGroupsCreateToManyRelationship = <
     },
   });
 
+/** List related beta groups for beta testers. `GET /v1/betaTesters/{id}/betaGroups` */
 export const betaTestersBetaGroupsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBetaGroupsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBetaGroupsGetToManyRelatedResponses,
+  BetaTestersBetaGroupsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersBetaGroupsGetToManyRelatedResponses,
     BetaTestersBetaGroupsGetToManyRelatedErrors,
@@ -19317,11 +23088,16 @@ export const betaTestersBetaGroupsGetToManyRelated = <
     ...options,
   });
 
+/** Remove builds relationship for beta testers. `DELETE /v1/betaTesters/{id}/relationships/builds` */
 export const betaTestersBuildsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBuildsDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBuildsDeleteToManyRelationshipResponses,
+  BetaTestersBuildsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BetaTestersBuildsDeleteToManyRelationshipResponses,
     BetaTestersBuildsDeleteToManyRelationshipErrors,
@@ -19336,11 +23112,16 @@ export const betaTestersBuildsDeleteToManyRelationship = <
     },
   });
 
+/** Get builds relationship IDs for beta testers. `GET /v1/betaTesters/{id}/relationships/builds` */
 export const betaTestersBuildsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBuildsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBuildsGetToManyRelationshipResponses,
+  BetaTestersBuildsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersBuildsGetToManyRelationshipResponses,
     BetaTestersBuildsGetToManyRelationshipErrors,
@@ -19351,11 +23132,16 @@ export const betaTestersBuildsGetToManyRelationship = <
     ...options,
   });
 
+/** Add builds relationship for beta testers. `POST /v1/betaTesters/{id}/relationships/builds` */
 export const betaTestersBuildsCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBuildsCreateToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBuildsCreateToManyRelationshipResponses,
+  BetaTestersBuildsCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BetaTestersBuildsCreateToManyRelationshipResponses,
     BetaTestersBuildsCreateToManyRelationshipErrors,
@@ -19370,11 +23156,16 @@ export const betaTestersBuildsCreateToManyRelationship = <
     },
   });
 
+/** List related builds for beta testers. `GET /v1/betaTesters/{id}/builds` */
 export const betaTestersBuildsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBuildsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBuildsGetToManyRelatedResponses,
+  BetaTestersBuildsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersBuildsGetToManyRelatedResponses,
     BetaTestersBuildsGetToManyRelatedErrors,
@@ -19389,11 +23180,16 @@ export const betaTestersBuildsGetToManyRelated = <
     ...options,
   });
 
+/** Get build relationship ID for build beta details. `GET /v1/buildBetaDetails/{id}/relationships/build` */
 export const buildBetaDetailsBuildGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildBetaDetailsBuildGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaDetailsBuildGetToOneRelationshipResponses,
+  BuildBetaDetailsBuildGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBetaDetailsBuildGetToOneRelationshipResponses,
     BuildBetaDetailsBuildGetToOneRelationshipErrors,
@@ -19404,11 +23200,16 @@ export const buildBetaDetailsBuildGetToOneRelationship = <
     ...options,
   });
 
+/** Read related build for build beta details. `GET /v1/buildBetaDetails/{id}/build` */
 export const buildBetaDetailsBuildGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildBetaDetailsBuildGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildBetaDetailsBuildGetToOneRelatedResponses,
+  BuildBetaDetailsBuildGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBetaDetailsBuildGetToOneRelatedResponses,
     BuildBetaDetailsBuildGetToOneRelatedErrors,
@@ -19439,6 +23240,7 @@ export const buildBetaDetailsBuildGetToOneRelated = <
     ...options,
   });
 
+/** Get app clip domain cache status relationship ID for build bundles. `GET /v1/buildBundles/{id}/relationships/appClipDomainCacheStatus` */
 export const buildBundlesAppClipDomainCacheStatusGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19446,7 +23248,11 @@ export const buildBundlesAppClipDomainCacheStatusGetToOneRelationship = <
     BuildBundlesAppClipDomainCacheStatusGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesAppClipDomainCacheStatusGetToOneRelationshipResponses,
+  BuildBundlesAppClipDomainCacheStatusGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesAppClipDomainCacheStatusGetToOneRelationshipResponses,
     BuildBundlesAppClipDomainCacheStatusGetToOneRelationshipErrors,
@@ -19457,6 +23263,7 @@ export const buildBundlesAppClipDomainCacheStatusGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app clip domain cache status for build bundles. `GET /v1/buildBundles/{id}/appClipDomainCacheStatus` */
 export const buildBundlesAppClipDomainCacheStatusGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19464,7 +23271,11 @@ export const buildBundlesAppClipDomainCacheStatusGetToOneRelated = <
     BuildBundlesAppClipDomainCacheStatusGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesAppClipDomainCacheStatusGetToOneRelatedResponses,
+  BuildBundlesAppClipDomainCacheStatusGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesAppClipDomainCacheStatusGetToOneRelatedResponses,
     BuildBundlesAppClipDomainCacheStatusGetToOneRelatedErrors,
@@ -19482,6 +23293,7 @@ export const buildBundlesAppClipDomainCacheStatusGetToOneRelated = <
     ...options,
   });
 
+/** Get app clip domain debug status relationship ID for build bundles. `GET /v1/buildBundles/{id}/relationships/appClipDomainDebugStatus` */
 export const buildBundlesAppClipDomainDebugStatusGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19489,7 +23301,11 @@ export const buildBundlesAppClipDomainDebugStatusGetToOneRelationship = <
     BuildBundlesAppClipDomainDebugStatusGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesAppClipDomainDebugStatusGetToOneRelationshipResponses,
+  BuildBundlesAppClipDomainDebugStatusGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesAppClipDomainDebugStatusGetToOneRelationshipResponses,
     BuildBundlesAppClipDomainDebugStatusGetToOneRelationshipErrors,
@@ -19500,6 +23316,7 @@ export const buildBundlesAppClipDomainDebugStatusGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app clip domain debug status for build bundles. `GET /v1/buildBundles/{id}/appClipDomainDebugStatus` */
 export const buildBundlesAppClipDomainDebugStatusGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19507,7 +23324,11 @@ export const buildBundlesAppClipDomainDebugStatusGetToOneRelated = <
     BuildBundlesAppClipDomainDebugStatusGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesAppClipDomainDebugStatusGetToOneRelatedResponses,
+  BuildBundlesAppClipDomainDebugStatusGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesAppClipDomainDebugStatusGetToOneRelatedResponses,
     BuildBundlesAppClipDomainDebugStatusGetToOneRelatedErrors,
@@ -19525,6 +23346,7 @@ export const buildBundlesAppClipDomainDebugStatusGetToOneRelated = <
     ...options,
   });
 
+/** Get beta app clip invocations relationship IDs for build bundles. `GET /v1/buildBundles/{id}/relationships/betaAppClipInvocations` */
 export const buildBundlesBetaAppClipInvocationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19532,7 +23354,11 @@ export const buildBundlesBetaAppClipInvocationsGetToManyRelationship = <
     BuildBundlesBetaAppClipInvocationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesBetaAppClipInvocationsGetToManyRelationshipResponses,
+  BuildBundlesBetaAppClipInvocationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesBetaAppClipInvocationsGetToManyRelationshipResponses,
     BuildBundlesBetaAppClipInvocationsGetToManyRelationshipErrors,
@@ -19543,6 +23369,7 @@ export const buildBundlesBetaAppClipInvocationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta app clip invocations for build bundles. `GET /v1/buildBundles/{id}/betaAppClipInvocations` */
 export const buildBundlesBetaAppClipInvocationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19550,7 +23377,11 @@ export const buildBundlesBetaAppClipInvocationsGetToManyRelated = <
     BuildBundlesBetaAppClipInvocationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesBetaAppClipInvocationsGetToManyRelatedResponses,
+  BuildBundlesBetaAppClipInvocationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesBetaAppClipInvocationsGetToManyRelatedResponses,
     BuildBundlesBetaAppClipInvocationsGetToManyRelatedErrors,
@@ -19570,6 +23401,7 @@ export const buildBundlesBetaAppClipInvocationsGetToManyRelated = <
     ...options,
   });
 
+/** Get build bundle file sizes relationship IDs for build bundles. `GET /v1/buildBundles/{id}/relationships/buildBundleFileSizes` */
 export const buildBundlesBuildBundleFileSizesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19577,7 +23409,11 @@ export const buildBundlesBuildBundleFileSizesGetToManyRelationship = <
     BuildBundlesBuildBundleFileSizesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesBuildBundleFileSizesGetToManyRelationshipResponses,
+  BuildBundlesBuildBundleFileSizesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesBuildBundleFileSizesGetToManyRelationshipResponses,
     BuildBundlesBuildBundleFileSizesGetToManyRelationshipErrors,
@@ -19588,6 +23424,7 @@ export const buildBundlesBuildBundleFileSizesGetToManyRelationship = <
     ...options,
   });
 
+/** List related build bundle file sizes for build bundles. `GET /v1/buildBundles/{id}/buildBundleFileSizes` */
 export const buildBundlesBuildBundleFileSizesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19595,7 +23432,11 @@ export const buildBundlesBuildBundleFileSizesGetToManyRelated = <
     BuildBundlesBuildBundleFileSizesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildBundlesBuildBundleFileSizesGetToManyRelatedResponses,
+  BuildBundlesBuildBundleFileSizesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildBundlesBuildBundleFileSizesGetToManyRelatedResponses,
     BuildBundlesBuildBundleFileSizesGetToManyRelatedErrors,
@@ -19611,6 +23452,7 @@ export const buildBundlesBuildBundleFileSizesGetToManyRelated = <
     ...options,
   });
 
+/** Get build upload files relationship IDs for build uploads. `GET /v1/buildUploads/{id}/relationships/buildUploadFiles` */
 export const buildUploadsBuildUploadFilesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19618,7 +23460,11 @@ export const buildUploadsBuildUploadFilesGetToManyRelationship = <
     BuildUploadsBuildUploadFilesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildUploadsBuildUploadFilesGetToManyRelationshipResponses,
+  BuildUploadsBuildUploadFilesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildUploadsBuildUploadFilesGetToManyRelationshipResponses,
     BuildUploadsBuildUploadFilesGetToManyRelationshipErrors,
@@ -19629,6 +23475,7 @@ export const buildUploadsBuildUploadFilesGetToManyRelationship = <
     ...options,
   });
 
+/** List related build upload files for build uploads. `GET /v1/buildUploads/{id}/buildUploadFiles` */
 export const buildUploadsBuildUploadFilesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19636,7 +23483,11 @@ export const buildUploadsBuildUploadFilesGetToManyRelated = <
     BuildUploadsBuildUploadFilesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildUploadsBuildUploadFilesGetToManyRelatedResponses,
+  BuildUploadsBuildUploadFilesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildUploadsBuildUploadFilesGetToManyRelatedResponses,
     BuildUploadsBuildUploadFilesGetToManyRelatedErrors,
@@ -19652,11 +23503,16 @@ export const buildUploadsBuildUploadFilesGetToManyRelated = <
     ...options,
   });
 
+/** Get app relationship ID for builds. `GET /v1/builds/{id}/relationships/app` */
 export const buildsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsAppGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsAppGetToOneRelationshipResponses,
+  BuildsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppGetToOneRelationshipResponses,
     BuildsAppGetToOneRelationshipErrors,
@@ -19667,9 +23523,14 @@ export const buildsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for builds. `GET /v1/builds/{id}/app` */
 export const buildsAppGetToOneRelated = <ThrowOnError extends boolean = false>(
   options: Options<BuildsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsAppGetToOneRelatedResponses,
+  BuildsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppGetToOneRelatedResponses,
     BuildsAppGetToOneRelatedErrors,
@@ -19683,6 +23544,7 @@ export const buildsAppGetToOneRelated = <ThrowOnError extends boolean = false>(
     ...options,
   });
 
+/** Get app encryption declaration relationship ID for builds. `GET /v1/builds/{id}/relationships/appEncryptionDeclaration` */
 export const buildsAppEncryptionDeclarationGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19690,7 +23552,11 @@ export const buildsAppEncryptionDeclarationGetToOneRelationship = <
     BuildsAppEncryptionDeclarationGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsAppEncryptionDeclarationGetToOneRelationshipResponses,
+  BuildsAppEncryptionDeclarationGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppEncryptionDeclarationGetToOneRelationshipResponses,
     BuildsAppEncryptionDeclarationGetToOneRelationshipErrors,
@@ -19701,6 +23567,7 @@ export const buildsAppEncryptionDeclarationGetToOneRelationship = <
     ...options,
   });
 
+/** Update app encryption declaration relationship for builds. `PATCH /v1/builds/{id}/relationships/appEncryptionDeclaration` */
 export const buildsAppEncryptionDeclarationUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19708,7 +23575,11 @@ export const buildsAppEncryptionDeclarationUpdateToOneRelationship = <
     BuildsAppEncryptionDeclarationUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsAppEncryptionDeclarationUpdateToOneRelationshipResponses,
+  BuildsAppEncryptionDeclarationUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     BuildsAppEncryptionDeclarationUpdateToOneRelationshipResponses,
     BuildsAppEncryptionDeclarationUpdateToOneRelationshipErrors,
@@ -19723,6 +23594,7 @@ export const buildsAppEncryptionDeclarationUpdateToOneRelationship = <
     },
   });
 
+/** Read related app encryption declaration for builds. `GET /v1/builds/{id}/appEncryptionDeclaration` */
 export const buildsAppEncryptionDeclarationGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19730,7 +23602,11 @@ export const buildsAppEncryptionDeclarationGetToOneRelated = <
     BuildsAppEncryptionDeclarationGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsAppEncryptionDeclarationGetToOneRelatedResponses,
+  BuildsAppEncryptionDeclarationGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppEncryptionDeclarationGetToOneRelatedResponses,
     BuildsAppEncryptionDeclarationGetToOneRelatedErrors,
@@ -19748,11 +23624,16 @@ export const buildsAppEncryptionDeclarationGetToOneRelated = <
     ...options,
   });
 
+/** Get app store version relationship ID for builds. `GET /v1/builds/{id}/relationships/appStoreVersion` */
 export const buildsAppStoreVersionGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsAppStoreVersionGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsAppStoreVersionGetToOneRelationshipResponses,
+  BuildsAppStoreVersionGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppStoreVersionGetToOneRelationshipResponses,
     BuildsAppStoreVersionGetToOneRelationshipErrors,
@@ -19763,11 +23644,16 @@ export const buildsAppStoreVersionGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app store version for builds. `GET /v1/builds/{id}/appStoreVersion` */
 export const buildsAppStoreVersionGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsAppStoreVersionGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsAppStoreVersionGetToOneRelatedResponses,
+  BuildsAppStoreVersionGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsAppStoreVersionGetToOneRelatedResponses,
     BuildsAppStoreVersionGetToOneRelatedErrors,
@@ -19799,6 +23685,7 @@ export const buildsAppStoreVersionGetToOneRelated = <
     ...options,
   });
 
+/** Get beta app review submission relationship ID for builds. `GET /v1/builds/{id}/relationships/betaAppReviewSubmission` */
 export const buildsBetaAppReviewSubmissionGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19806,7 +23693,11 @@ export const buildsBetaAppReviewSubmissionGetToOneRelationship = <
     BuildsBetaAppReviewSubmissionGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsBetaAppReviewSubmissionGetToOneRelationshipResponses,
+  BuildsBetaAppReviewSubmissionGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBetaAppReviewSubmissionGetToOneRelationshipResponses,
     BuildsBetaAppReviewSubmissionGetToOneRelationshipErrors,
@@ -19817,6 +23708,7 @@ export const buildsBetaAppReviewSubmissionGetToOneRelationship = <
     ...options,
   });
 
+/** Read related beta app review submission for builds. `GET /v1/builds/{id}/betaAppReviewSubmission` */
 export const buildsBetaAppReviewSubmissionGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19824,7 +23716,11 @@ export const buildsBetaAppReviewSubmissionGetToOneRelated = <
     BuildsBetaAppReviewSubmissionGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsBetaAppReviewSubmissionGetToOneRelatedResponses,
+  BuildsBetaAppReviewSubmissionGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBetaAppReviewSubmissionGetToOneRelatedResponses,
     BuildsBetaAppReviewSubmissionGetToOneRelatedErrors,
@@ -19842,6 +23738,7 @@ export const buildsBetaAppReviewSubmissionGetToOneRelated = <
     ...options,
   });
 
+/** Get beta build localizations relationship IDs for builds. `GET /v1/builds/{id}/relationships/betaBuildLocalizations` */
 export const buildsBetaBuildLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19849,7 +23746,11 @@ export const buildsBetaBuildLocalizationsGetToManyRelationship = <
     BuildsBetaBuildLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsBetaBuildLocalizationsGetToManyRelationshipResponses,
+  BuildsBetaBuildLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBetaBuildLocalizationsGetToManyRelationshipResponses,
     BuildsBetaBuildLocalizationsGetToManyRelationshipErrors,
@@ -19860,6 +23761,7 @@ export const buildsBetaBuildLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related beta build localizations for builds. `GET /v1/builds/{id}/betaBuildLocalizations` */
 export const buildsBetaBuildLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19867,7 +23769,11 @@ export const buildsBetaBuildLocalizationsGetToManyRelated = <
     BuildsBetaBuildLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsBetaBuildLocalizationsGetToManyRelatedResponses,
+  BuildsBetaBuildLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBetaBuildLocalizationsGetToManyRelatedResponses,
     BuildsBetaBuildLocalizationsGetToManyRelatedErrors,
@@ -19883,11 +23789,16 @@ export const buildsBetaBuildLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Remove beta groups relationship for builds. `DELETE /v1/builds/{id}/relationships/betaGroups` */
 export const buildsBetaGroupsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsBetaGroupsDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsBetaGroupsDeleteToManyRelationshipResponses,
+  BuildsBetaGroupsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BuildsBetaGroupsDeleteToManyRelationshipResponses,
     BuildsBetaGroupsDeleteToManyRelationshipErrors,
@@ -19902,11 +23813,16 @@ export const buildsBetaGroupsDeleteToManyRelationship = <
     },
   });
 
+/** Add beta groups relationship for builds. `POST /v1/builds/{id}/relationships/betaGroups` */
 export const buildsBetaGroupsCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsBetaGroupsCreateToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsBetaGroupsCreateToManyRelationshipResponses,
+  BuildsBetaGroupsCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BuildsBetaGroupsCreateToManyRelationshipResponses,
     BuildsBetaGroupsCreateToManyRelationshipErrors,
@@ -19921,11 +23837,16 @@ export const buildsBetaGroupsCreateToManyRelationship = <
     },
   });
 
+/** Get build beta detail relationship ID for builds. `GET /v1/builds/{id}/relationships/buildBetaDetail` */
 export const buildsBuildBetaDetailGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsBuildBetaDetailGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsBuildBetaDetailGetToOneRelationshipResponses,
+  BuildsBuildBetaDetailGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBuildBetaDetailGetToOneRelationshipResponses,
     BuildsBuildBetaDetailGetToOneRelationshipErrors,
@@ -19936,11 +23857,16 @@ export const buildsBuildBetaDetailGetToOneRelationship = <
     ...options,
   });
 
+/** Read related build beta detail for builds. `GET /v1/builds/{id}/buildBetaDetail` */
 export const buildsBuildBetaDetailGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsBuildBetaDetailGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsBuildBetaDetailGetToOneRelatedResponses,
+  BuildsBuildBetaDetailGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBuildBetaDetailGetToOneRelatedResponses,
     BuildsBuildBetaDetailGetToOneRelatedErrors,
@@ -19960,6 +23886,7 @@ export const buildsBuildBetaDetailGetToOneRelated = <
     ...options,
   });
 
+/** Get diagnostic signatures relationship IDs for builds. `GET /v1/builds/{id}/relationships/diagnosticSignatures` */
 export const buildsDiagnosticSignaturesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -19967,7 +23894,11 @@ export const buildsDiagnosticSignaturesGetToManyRelationship = <
     BuildsDiagnosticSignaturesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsDiagnosticSignaturesGetToManyRelationshipResponses,
+  BuildsDiagnosticSignaturesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsDiagnosticSignaturesGetToManyRelationshipResponses,
     BuildsDiagnosticSignaturesGetToManyRelationshipErrors,
@@ -19978,6 +23909,7 @@ export const buildsDiagnosticSignaturesGetToManyRelationship = <
     ...options,
   });
 
+/** List related diagnostic signatures for builds. `GET /v1/builds/{id}/diagnosticSignatures` */
 export const buildsDiagnosticSignaturesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -19985,7 +23917,11 @@ export const buildsDiagnosticSignaturesGetToManyRelated = <
     BuildsDiagnosticSignaturesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsDiagnosticSignaturesGetToManyRelatedResponses,
+  BuildsDiagnosticSignaturesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsDiagnosticSignaturesGetToManyRelatedResponses,
     BuildsDiagnosticSignaturesGetToManyRelatedErrors,
@@ -20002,11 +23938,16 @@ export const buildsDiagnosticSignaturesGetToManyRelated = <
     ...options,
   });
 
+/** Get icons relationship IDs for builds. `GET /v1/builds/{id}/relationships/icons` */
 export const buildsIconsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsIconsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsIconsGetToManyRelationshipResponses,
+  BuildsIconsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsIconsGetToManyRelationshipResponses,
     BuildsIconsGetToManyRelationshipErrors,
@@ -20017,11 +23958,16 @@ export const buildsIconsGetToManyRelationship = <
     ...options,
   });
 
+/** List related icons for builds. `GET /v1/builds/{id}/icons` */
 export const buildsIconsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsIconsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsIconsGetToManyRelatedResponses,
+  BuildsIconsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsIconsGetToManyRelatedResponses,
     BuildsIconsGetToManyRelatedErrors,
@@ -20035,6 +23981,7 @@ export const buildsIconsGetToManyRelated = <
     ...options,
   });
 
+/** Remove individual testers relationship for builds. `DELETE /v1/builds/{id}/relationships/individualTesters` */
 export const buildsIndividualTestersDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20042,7 +23989,11 @@ export const buildsIndividualTestersDeleteToManyRelationship = <
     BuildsIndividualTestersDeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsIndividualTestersDeleteToManyRelationshipResponses,
+  BuildsIndividualTestersDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     BuildsIndividualTestersDeleteToManyRelationshipResponses,
     BuildsIndividualTestersDeleteToManyRelationshipErrors,
@@ -20057,6 +24008,7 @@ export const buildsIndividualTestersDeleteToManyRelationship = <
     },
   });
 
+/** Get individual testers relationship IDs for builds. `GET /v1/builds/{id}/relationships/individualTesters` */
 export const buildsIndividualTestersGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20064,7 +24016,11 @@ export const buildsIndividualTestersGetToManyRelationship = <
     BuildsIndividualTestersGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsIndividualTestersGetToManyRelationshipResponses,
+  BuildsIndividualTestersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsIndividualTestersGetToManyRelationshipResponses,
     BuildsIndividualTestersGetToManyRelationshipErrors,
@@ -20075,6 +24031,7 @@ export const buildsIndividualTestersGetToManyRelationship = <
     ...options,
   });
 
+/** Add individual testers relationship for builds. `POST /v1/builds/{id}/relationships/individualTesters` */
 export const buildsIndividualTestersCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20082,7 +24039,11 @@ export const buildsIndividualTestersCreateToManyRelationship = <
     BuildsIndividualTestersCreateToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsIndividualTestersCreateToManyRelationshipResponses,
+  BuildsIndividualTestersCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     BuildsIndividualTestersCreateToManyRelationshipResponses,
     BuildsIndividualTestersCreateToManyRelationshipErrors,
@@ -20097,11 +24058,16 @@ export const buildsIndividualTestersCreateToManyRelationship = <
     },
   });
 
+/** List related individual testers for builds. `GET /v1/builds/{id}/individualTesters` */
 export const buildsIndividualTestersGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsIndividualTestersGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsIndividualTestersGetToManyRelatedResponses,
+  BuildsIndividualTestersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsIndividualTestersGetToManyRelatedResponses,
     BuildsIndividualTestersGetToManyRelatedErrors,
@@ -20115,11 +24081,16 @@ export const buildsIndividualTestersGetToManyRelated = <
     ...options,
   });
 
+/** List related perf power metrics for builds. `GET /v1/builds/{id}/perfPowerMetrics` */
 export const buildsPerfPowerMetricsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsPerfPowerMetricsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsPerfPowerMetricsGetToManyRelatedResponses,
+  BuildsPerfPowerMetricsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsPerfPowerMetricsGetToManyRelatedResponses,
     BuildsPerfPowerMetricsGetToManyRelatedErrors,
@@ -20137,6 +24108,7 @@ export const buildsPerfPowerMetricsGetToManyRelated = <
     ...options,
   });
 
+/** Get pre release version relationship ID for builds. `GET /v1/builds/{id}/relationships/preReleaseVersion` */
 export const buildsPreReleaseVersionGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20144,7 +24116,11 @@ export const buildsPreReleaseVersionGetToOneRelationship = <
     BuildsPreReleaseVersionGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BuildsPreReleaseVersionGetToOneRelationshipResponses,
+  BuildsPreReleaseVersionGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsPreReleaseVersionGetToOneRelationshipResponses,
     BuildsPreReleaseVersionGetToOneRelationshipErrors,
@@ -20155,11 +24131,16 @@ export const buildsPreReleaseVersionGetToOneRelationship = <
     ...options,
   });
 
+/** Read related pre release version for builds. `GET /v1/builds/{id}/preReleaseVersion` */
 export const buildsPreReleaseVersionGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsPreReleaseVersionGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsPreReleaseVersionGetToOneRelatedResponses,
+  BuildsPreReleaseVersionGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsPreReleaseVersionGetToOneRelatedResponses,
     BuildsPreReleaseVersionGetToOneRelatedErrors,
@@ -20175,11 +24156,16 @@ export const buildsPreReleaseVersionGetToOneRelated = <
     ...options,
   });
 
+/** Get app relationship ID for bundle ids. `GET /v1/bundleIds/{id}/relationships/app` */
 export const bundleIdsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdsAppGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsAppGetToOneRelationshipResponses,
+  BundleIdsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsAppGetToOneRelationshipResponses,
     BundleIdsAppGetToOneRelationshipErrors,
@@ -20190,11 +24176,16 @@ export const bundleIdsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for bundle ids. `GET /v1/bundleIds/{id}/app` */
 export const bundleIdsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsAppGetToOneRelatedResponses,
+  BundleIdsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsAppGetToOneRelatedResponses,
     BundleIdsAppGetToOneRelatedErrors,
@@ -20208,6 +24199,7 @@ export const bundleIdsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get bundle id capabilities relationship IDs for bundle ids. `GET /v1/bundleIds/{id}/relationships/bundleIdCapabilities` */
 export const bundleIdsBundleIdCapabilitiesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20215,7 +24207,11 @@ export const bundleIdsBundleIdCapabilitiesGetToManyRelationship = <
     BundleIdsBundleIdCapabilitiesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BundleIdsBundleIdCapabilitiesGetToManyRelationshipResponses,
+  BundleIdsBundleIdCapabilitiesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsBundleIdCapabilitiesGetToManyRelationshipResponses,
     BundleIdsBundleIdCapabilitiesGetToManyRelationshipErrors,
@@ -20226,6 +24222,7 @@ export const bundleIdsBundleIdCapabilitiesGetToManyRelationship = <
     ...options,
   });
 
+/** List related bundle id capabilities for bundle ids. `GET /v1/bundleIds/{id}/bundleIdCapabilities` */
 export const bundleIdsBundleIdCapabilitiesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -20233,7 +24230,11 @@ export const bundleIdsBundleIdCapabilitiesGetToManyRelated = <
     BundleIdsBundleIdCapabilitiesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  BundleIdsBundleIdCapabilitiesGetToManyRelatedResponses,
+  BundleIdsBundleIdCapabilitiesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsBundleIdCapabilitiesGetToManyRelatedResponses,
     BundleIdsBundleIdCapabilitiesGetToManyRelatedErrors,
@@ -20249,11 +24250,16 @@ export const bundleIdsBundleIdCapabilitiesGetToManyRelated = <
     ...options,
   });
 
+/** Get profiles relationship IDs for bundle ids. `GET /v1/bundleIds/{id}/relationships/profiles` */
 export const bundleIdsProfilesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdsProfilesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsProfilesGetToManyRelationshipResponses,
+  BundleIdsProfilesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsProfilesGetToManyRelationshipResponses,
     BundleIdsProfilesGetToManyRelationshipErrors,
@@ -20264,11 +24270,16 @@ export const bundleIdsProfilesGetToManyRelationship = <
     ...options,
   });
 
+/** List related profiles for bundle ids. `GET /v1/bundleIds/{id}/profiles` */
 export const bundleIdsProfilesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BundleIdsProfilesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  BundleIdsProfilesGetToManyRelatedResponses,
+  BundleIdsProfilesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BundleIdsProfilesGetToManyRelatedResponses,
     BundleIdsProfilesGetToManyRelatedErrors,
@@ -20283,6 +24294,7 @@ export const bundleIdsProfilesGetToManyRelated = <
     ...options,
   });
 
+/** Get pass type id relationship ID for certificates. `GET /v1/certificates/{id}/relationships/passTypeId` */
 export const certificatesPassTypeIdGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20290,7 +24302,11 @@ export const certificatesPassTypeIdGetToOneRelationship = <
     CertificatesPassTypeIdGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CertificatesPassTypeIdGetToOneRelationshipResponses,
+  CertificatesPassTypeIdGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CertificatesPassTypeIdGetToOneRelationshipResponses,
     CertificatesPassTypeIdGetToOneRelationshipErrors,
@@ -20301,11 +24317,16 @@ export const certificatesPassTypeIdGetToOneRelationship = <
     ...options,
   });
 
+/** Read related pass type id for certificates. `GET /v1/certificates/{id}/passTypeId` */
 export const certificatesPassTypeIdGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CertificatesPassTypeIdGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CertificatesPassTypeIdGetToOneRelatedResponses,
+  CertificatesPassTypeIdGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CertificatesPassTypeIdGetToOneRelatedResponses,
     CertificatesPassTypeIdGetToOneRelatedErrors,
@@ -20325,6 +24346,7 @@ export const certificatesPassTypeIdGetToOneRelated = <
     ...options,
   });
 
+/** Get artifacts relationship IDs for ci build actions. `GET /v1/ciBuildActions/{id}/relationships/artifacts` */
 export const ciBuildActionsArtifactsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20332,7 +24354,11 @@ export const ciBuildActionsArtifactsGetToManyRelationship = <
     CiBuildActionsArtifactsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiBuildActionsArtifactsGetToManyRelationshipResponses,
+  CiBuildActionsArtifactsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsArtifactsGetToManyRelationshipResponses,
     CiBuildActionsArtifactsGetToManyRelationshipErrors,
@@ -20343,11 +24369,16 @@ export const ciBuildActionsArtifactsGetToManyRelationship = <
     ...options,
   });
 
+/** List related artifacts for ci build actions. `GET /v1/ciBuildActions/{id}/artifacts` */
 export const ciBuildActionsArtifactsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildActionsArtifactsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsArtifactsGetToManyRelatedResponses,
+  CiBuildActionsArtifactsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsArtifactsGetToManyRelatedResponses,
     CiBuildActionsArtifactsGetToManyRelatedErrors,
@@ -20361,6 +24392,7 @@ export const ciBuildActionsArtifactsGetToManyRelated = <
     ...options,
   });
 
+/** Get build run relationship ID for ci build actions. `GET /v1/ciBuildActions/{id}/relationships/buildRun` */
 export const ciBuildActionsBuildRunGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20368,7 +24400,11 @@ export const ciBuildActionsBuildRunGetToOneRelationship = <
     CiBuildActionsBuildRunGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiBuildActionsBuildRunGetToOneRelationshipResponses,
+  CiBuildActionsBuildRunGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsBuildRunGetToOneRelationshipResponses,
     CiBuildActionsBuildRunGetToOneRelationshipErrors,
@@ -20379,11 +24415,16 @@ export const ciBuildActionsBuildRunGetToOneRelationship = <
     ...options,
   });
 
+/** Read related build run for ci build actions. `GET /v1/ciBuildActions/{id}/buildRun` */
 export const ciBuildActionsBuildRunGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildActionsBuildRunGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsBuildRunGetToOneRelatedResponses,
+  CiBuildActionsBuildRunGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsBuildRunGetToOneRelatedResponses,
     CiBuildActionsBuildRunGetToOneRelatedErrors,
@@ -20407,11 +24448,16 @@ export const ciBuildActionsBuildRunGetToOneRelated = <
     ...options,
   });
 
+/** Get issues relationship IDs for ci build actions. `GET /v1/ciBuildActions/{id}/relationships/issues` */
 export const ciBuildActionsIssuesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildActionsIssuesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsIssuesGetToManyRelationshipResponses,
+  CiBuildActionsIssuesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsIssuesGetToManyRelationshipResponses,
     CiBuildActionsIssuesGetToManyRelationshipErrors,
@@ -20422,11 +24468,16 @@ export const ciBuildActionsIssuesGetToManyRelationship = <
     ...options,
   });
 
+/** List related issues for ci build actions. `GET /v1/ciBuildActions/{id}/issues` */
 export const ciBuildActionsIssuesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildActionsIssuesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsIssuesGetToManyRelatedResponses,
+  CiBuildActionsIssuesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsIssuesGetToManyRelatedResponses,
     CiBuildActionsIssuesGetToManyRelatedErrors,
@@ -20440,6 +24491,7 @@ export const ciBuildActionsIssuesGetToManyRelated = <
     ...options,
   });
 
+/** Get test results relationship IDs for ci build actions. `GET /v1/ciBuildActions/{id}/relationships/testResults` */
 export const ciBuildActionsTestResultsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20447,7 +24499,11 @@ export const ciBuildActionsTestResultsGetToManyRelationship = <
     CiBuildActionsTestResultsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiBuildActionsTestResultsGetToManyRelationshipResponses,
+  CiBuildActionsTestResultsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsTestResultsGetToManyRelationshipResponses,
     CiBuildActionsTestResultsGetToManyRelationshipErrors,
@@ -20458,11 +24514,16 @@ export const ciBuildActionsTestResultsGetToManyRelationship = <
     ...options,
   });
 
+/** List related test results for ci build actions. `GET /v1/ciBuildActions/{id}/testResults` */
 export const ciBuildActionsTestResultsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildActionsTestResultsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildActionsTestResultsGetToManyRelatedResponses,
+  CiBuildActionsTestResultsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildActionsTestResultsGetToManyRelatedResponses,
     CiBuildActionsTestResultsGetToManyRelatedErrors,
@@ -20476,11 +24537,16 @@ export const ciBuildActionsTestResultsGetToManyRelated = <
     ...options,
   });
 
+/** Get actions relationship IDs for ci build runs. `GET /v1/ciBuildRuns/{id}/relationships/actions` */
 export const ciBuildRunsActionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildRunsActionsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsActionsGetToManyRelationshipResponses,
+  CiBuildRunsActionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildRunsActionsGetToManyRelationshipResponses,
     CiBuildRunsActionsGetToManyRelationshipErrors,
@@ -20491,11 +24557,16 @@ export const ciBuildRunsActionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related actions for ci build runs. `GET /v1/ciBuildRuns/{id}/actions` */
 export const ciBuildRunsActionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildRunsActionsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsActionsGetToManyRelatedResponses,
+  CiBuildRunsActionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildRunsActionsGetToManyRelatedResponses,
     CiBuildRunsActionsGetToManyRelatedErrors,
@@ -20514,11 +24585,16 @@ export const ciBuildRunsActionsGetToManyRelated = <
     ...options,
   });
 
+/** Get builds relationship IDs for ci build runs. `GET /v1/ciBuildRuns/{id}/relationships/builds` */
 export const ciBuildRunsBuildsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildRunsBuildsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsBuildsGetToManyRelationshipResponses,
+  CiBuildRunsBuildsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildRunsBuildsGetToManyRelationshipResponses,
     CiBuildRunsBuildsGetToManyRelationshipErrors,
@@ -20529,11 +24605,16 @@ export const ciBuildRunsBuildsGetToManyRelationship = <
     ...options,
   });
 
+/** List related builds for ci build runs. `GET /v1/ciBuildRuns/{id}/builds` */
 export const ciBuildRunsBuildsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiBuildRunsBuildsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiBuildRunsBuildsGetToManyRelatedResponses,
+  CiBuildRunsBuildsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiBuildRunsBuildsGetToManyRelatedResponses,
     CiBuildRunsBuildsGetToManyRelatedErrors,
@@ -20579,6 +24660,7 @@ export const ciBuildRunsBuildsGetToManyRelated = <
     ...options,
   });
 
+/** Get xcode versions relationship IDs for ci mac os versions. `GET /v1/ciMacOsVersions/{id}/relationships/xcodeVersions` */
 export const ciMacOsVersionsXcodeVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20586,7 +24668,11 @@ export const ciMacOsVersionsXcodeVersionsGetToManyRelationship = <
     CiMacOsVersionsXcodeVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiMacOsVersionsXcodeVersionsGetToManyRelationshipResponses,
+  CiMacOsVersionsXcodeVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiMacOsVersionsXcodeVersionsGetToManyRelationshipResponses,
     CiMacOsVersionsXcodeVersionsGetToManyRelationshipErrors,
@@ -20597,6 +24683,7 @@ export const ciMacOsVersionsXcodeVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related xcode versions for ci mac os versions. `GET /v1/ciMacOsVersions/{id}/xcodeVersions` */
 export const ciMacOsVersionsXcodeVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -20604,7 +24691,11 @@ export const ciMacOsVersionsXcodeVersionsGetToManyRelated = <
     CiMacOsVersionsXcodeVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiMacOsVersionsXcodeVersionsGetToManyRelatedResponses,
+  CiMacOsVersionsXcodeVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiMacOsVersionsXcodeVersionsGetToManyRelatedResponses,
     CiMacOsVersionsXcodeVersionsGetToManyRelatedErrors,
@@ -20622,6 +24713,7 @@ export const ciMacOsVersionsXcodeVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get additional repositories relationship IDs for ci products. `GET /v1/ciProducts/{id}/relationships/additionalRepositories` */
 export const ciProductsAdditionalRepositoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20629,7 +24721,11 @@ export const ciProductsAdditionalRepositoriesGetToManyRelationship = <
     CiProductsAdditionalRepositoriesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiProductsAdditionalRepositoriesGetToManyRelationshipResponses,
+  CiProductsAdditionalRepositoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsAdditionalRepositoriesGetToManyRelationshipResponses,
     CiProductsAdditionalRepositoriesGetToManyRelationshipErrors,
@@ -20640,6 +24736,7 @@ export const ciProductsAdditionalRepositoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related additional repositories for ci products. `GET /v1/ciProducts/{id}/additionalRepositories` */
 export const ciProductsAdditionalRepositoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -20647,7 +24744,11 @@ export const ciProductsAdditionalRepositoriesGetToManyRelated = <
     CiProductsAdditionalRepositoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiProductsAdditionalRepositoriesGetToManyRelatedResponses,
+  CiProductsAdditionalRepositoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsAdditionalRepositoriesGetToManyRelatedResponses,
     CiProductsAdditionalRepositoriesGetToManyRelatedErrors,
@@ -20669,11 +24770,16 @@ export const ciProductsAdditionalRepositoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get app relationship ID for ci products. `GET /v1/ciProducts/{id}/relationships/app` */
 export const ciProductsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsAppGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsAppGetToOneRelationshipResponses,
+  CiProductsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsAppGetToOneRelationshipResponses,
     CiProductsAppGetToOneRelationshipErrors,
@@ -20684,11 +24790,16 @@ export const ciProductsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for ci products. `GET /v1/ciProducts/{id}/app` */
 export const ciProductsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsAppGetToOneRelatedResponses,
+  CiProductsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsAppGetToOneRelatedResponses,
     CiProductsAppGetToOneRelatedErrors,
@@ -20729,11 +24840,16 @@ export const ciProductsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get build runs relationship IDs for ci products. `GET /v1/ciProducts/{id}/relationships/buildRuns` */
 export const ciProductsBuildRunsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsBuildRunsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsBuildRunsGetToManyRelationshipResponses,
+  CiProductsBuildRunsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsBuildRunsGetToManyRelationshipResponses,
     CiProductsBuildRunsGetToManyRelationshipErrors,
@@ -20744,11 +24860,16 @@ export const ciProductsBuildRunsGetToManyRelationship = <
     ...options,
   });
 
+/** List related build runs for ci products. `GET /v1/ciProducts/{id}/buildRuns` */
 export const ciProductsBuildRunsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsBuildRunsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsBuildRunsGetToManyRelatedResponses,
+  CiProductsBuildRunsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsBuildRunsGetToManyRelatedResponses,
     CiProductsBuildRunsGetToManyRelatedErrors,
@@ -20773,6 +24894,7 @@ export const ciProductsBuildRunsGetToManyRelated = <
     ...options,
   });
 
+/** Get primary repositories relationship IDs for ci products. `GET /v1/ciProducts/{id}/relationships/primaryRepositories` */
 export const ciProductsPrimaryRepositoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20780,7 +24902,11 @@ export const ciProductsPrimaryRepositoriesGetToManyRelationship = <
     CiProductsPrimaryRepositoriesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiProductsPrimaryRepositoriesGetToManyRelationshipResponses,
+  CiProductsPrimaryRepositoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsPrimaryRepositoriesGetToManyRelationshipResponses,
     CiProductsPrimaryRepositoriesGetToManyRelationshipErrors,
@@ -20791,6 +24917,7 @@ export const ciProductsPrimaryRepositoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related primary repositories for ci products. `GET /v1/ciProducts/{id}/primaryRepositories` */
 export const ciProductsPrimaryRepositoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -20798,7 +24925,11 @@ export const ciProductsPrimaryRepositoriesGetToManyRelated = <
     CiProductsPrimaryRepositoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiProductsPrimaryRepositoriesGetToManyRelatedResponses,
+  CiProductsPrimaryRepositoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsPrimaryRepositoriesGetToManyRelatedResponses,
     CiProductsPrimaryRepositoriesGetToManyRelatedErrors,
@@ -20820,11 +24951,16 @@ export const ciProductsPrimaryRepositoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get workflows relationship IDs for ci products. `GET /v1/ciProducts/{id}/relationships/workflows` */
 export const ciProductsWorkflowsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsWorkflowsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsWorkflowsGetToManyRelationshipResponses,
+  CiProductsWorkflowsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsWorkflowsGetToManyRelationshipResponses,
     CiProductsWorkflowsGetToManyRelationshipErrors,
@@ -20835,11 +24971,16 @@ export const ciProductsWorkflowsGetToManyRelationship = <
     ...options,
   });
 
+/** List related workflows for ci products. `GET /v1/ciProducts/{id}/workflows` */
 export const ciProductsWorkflowsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiProductsWorkflowsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiProductsWorkflowsGetToManyRelatedResponses,
+  CiProductsWorkflowsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiProductsWorkflowsGetToManyRelatedResponses,
     CiProductsWorkflowsGetToManyRelatedErrors,
@@ -20861,11 +25002,16 @@ export const ciProductsWorkflowsGetToManyRelated = <
     ...options,
   });
 
+/** Get build runs relationship IDs for ci workflows. `GET /v1/ciWorkflows/{id}/relationships/buildRuns` */
 export const ciWorkflowsBuildRunsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiWorkflowsBuildRunsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsBuildRunsGetToManyRelationshipResponses,
+  CiWorkflowsBuildRunsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiWorkflowsBuildRunsGetToManyRelationshipResponses,
     CiWorkflowsBuildRunsGetToManyRelationshipErrors,
@@ -20876,11 +25022,16 @@ export const ciWorkflowsBuildRunsGetToManyRelationship = <
     ...options,
   });
 
+/** List related build runs for ci workflows. `GET /v1/ciWorkflows/{id}/buildRuns` */
 export const ciWorkflowsBuildRunsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiWorkflowsBuildRunsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsBuildRunsGetToManyRelatedResponses,
+  CiWorkflowsBuildRunsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiWorkflowsBuildRunsGetToManyRelatedResponses,
     CiWorkflowsBuildRunsGetToManyRelatedErrors,
@@ -20906,11 +25057,16 @@ export const ciWorkflowsBuildRunsGetToManyRelated = <
     ...options,
   });
 
+/** Get repository relationship ID for ci workflows. `GET /v1/ciWorkflows/{id}/relationships/repository` */
 export const ciWorkflowsRepositoryGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiWorkflowsRepositoryGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsRepositoryGetToOneRelationshipResponses,
+  CiWorkflowsRepositoryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiWorkflowsRepositoryGetToOneRelationshipResponses,
     CiWorkflowsRepositoryGetToOneRelationshipErrors,
@@ -20921,11 +25077,16 @@ export const ciWorkflowsRepositoryGetToOneRelationship = <
     ...options,
   });
 
+/** Read related repository for ci workflows. `GET /v1/ciWorkflows/{id}/repository` */
 export const ciWorkflowsRepositoryGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CiWorkflowsRepositoryGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CiWorkflowsRepositoryGetToOneRelatedResponses,
+  CiWorkflowsRepositoryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiWorkflowsRepositoryGetToOneRelatedResponses,
     CiWorkflowsRepositoryGetToOneRelatedErrors,
@@ -20946,6 +25107,7 @@ export const ciWorkflowsRepositoryGetToOneRelated = <
     ...options,
   });
 
+/** Get mac os versions relationship IDs for ci xcode versions. `GET /v1/ciXcodeVersions/{id}/relationships/macOsVersions` */
 export const ciXcodeVersionsMacOsVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20953,7 +25115,11 @@ export const ciXcodeVersionsMacOsVersionsGetToManyRelationship = <
     CiXcodeVersionsMacOsVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiXcodeVersionsMacOsVersionsGetToManyRelationshipResponses,
+  CiXcodeVersionsMacOsVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiXcodeVersionsMacOsVersionsGetToManyRelationshipResponses,
     CiXcodeVersionsMacOsVersionsGetToManyRelationshipErrors,
@@ -20964,6 +25130,7 @@ export const ciXcodeVersionsMacOsVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related mac os versions for ci xcode versions. `GET /v1/ciXcodeVersions/{id}/macOsVersions` */
 export const ciXcodeVersionsMacOsVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -20971,7 +25138,11 @@ export const ciXcodeVersionsMacOsVersionsGetToManyRelated = <
     CiXcodeVersionsMacOsVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CiXcodeVersionsMacOsVersionsGetToManyRelatedResponses,
+  CiXcodeVersionsMacOsVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CiXcodeVersionsMacOsVersionsGetToManyRelatedResponses,
     CiXcodeVersionsMacOsVersionsGetToManyRelatedErrors,
@@ -20989,6 +25160,7 @@ export const ciXcodeVersionsMacOsVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get response relationship ID for customer reviews. `GET /v1/customerReviews/{id}/relationships/response` */
 export const customerReviewsResponseGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -20996,7 +25168,11 @@ export const customerReviewsResponseGetToOneRelationship = <
     CustomerReviewsResponseGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  CustomerReviewsResponseGetToOneRelationshipResponses,
+  CustomerReviewsResponseGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CustomerReviewsResponseGetToOneRelationshipResponses,
     CustomerReviewsResponseGetToOneRelationshipErrors,
@@ -21007,11 +25183,16 @@ export const customerReviewsResponseGetToOneRelationship = <
     ...options,
   });
 
+/** Read related response for customer reviews. `GET /v1/customerReviews/{id}/response` */
 export const customerReviewsResponseGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<CustomerReviewsResponseGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  CustomerReviewsResponseGetToOneRelatedResponses,
+  CustomerReviewsResponseGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     CustomerReviewsResponseGetToOneRelatedResponses,
     CustomerReviewsResponseGetToOneRelatedErrors,
@@ -21031,11 +25212,16 @@ export const customerReviewsResponseGetToOneRelated = <
     ...options,
   });
 
+/** List related logs for diagnostic signatures. `GET /v1/diagnosticSignatures/{id}/logs` */
 export const diagnosticSignaturesLogsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<DiagnosticSignaturesLogsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  DiagnosticSignaturesLogsGetToManyRelatedResponses,
+  DiagnosticSignaturesLogsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     DiagnosticSignaturesLogsGetToManyRelatedResponses,
     DiagnosticSignaturesLogsGetToManyRelatedErrors,
@@ -21048,6 +25234,7 @@ export const diagnosticSignaturesLogsGetToManyRelated = <
     ...options,
   });
 
+/** Get territories relationship IDs for end user license agreements. `GET /v1/endUserLicenseAgreements/{id}/relationships/territories` */
 export const endUserLicenseAgreementsTerritoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21055,7 +25242,11 @@ export const endUserLicenseAgreementsTerritoriesGetToManyRelationship = <
     EndUserLicenseAgreementsTerritoriesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsTerritoriesGetToManyRelationshipResponses,
+  EndUserLicenseAgreementsTerritoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     EndUserLicenseAgreementsTerritoriesGetToManyRelationshipResponses,
     EndUserLicenseAgreementsTerritoriesGetToManyRelationshipErrors,
@@ -21066,6 +25257,7 @@ export const endUserLicenseAgreementsTerritoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related territories for end user license agreements. `GET /v1/endUserLicenseAgreements/{id}/territories` */
 export const endUserLicenseAgreementsTerritoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21073,7 +25265,11 @@ export const endUserLicenseAgreementsTerritoriesGetToManyRelated = <
     EndUserLicenseAgreementsTerritoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  EndUserLicenseAgreementsTerritoriesGetToManyRelatedResponses,
+  EndUserLicenseAgreementsTerritoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     EndUserLicenseAgreementsTerritoriesGetToManyRelatedResponses,
     EndUserLicenseAgreementsTerritoriesGetToManyRelatedErrors,
@@ -21087,6 +25283,7 @@ export const endUserLicenseAgreementsTerritoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get image relationship ID for game center achievement localizations v2. `GET /v2/gameCenterAchievementLocalizations/{id}/relationships/image` */
 export const gameCenterAchievementLocalizationsV2ImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21094,7 +25291,11 @@ export const gameCenterAchievementLocalizationsV2ImageGetToOneRelationship = <
     GameCenterAchievementLocalizationsV2ImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2ImageGetToOneRelationshipResponses,
+  GameCenterAchievementLocalizationsV2ImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementLocalizationsV2ImageGetToOneRelationshipResponses,
     GameCenterAchievementLocalizationsV2ImageGetToOneRelationshipErrors,
@@ -21105,6 +25306,7 @@ export const gameCenterAchievementLocalizationsV2ImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related image for game center achievement localizations v2. `GET /v2/gameCenterAchievementLocalizations/{id}/image` */
 export const gameCenterAchievementLocalizationsV2ImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21112,7 +25314,11 @@ export const gameCenterAchievementLocalizationsV2ImageGetToOneRelated = <
     GameCenterAchievementLocalizationsV2ImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementLocalizationsV2ImageGetToOneRelatedResponses,
+  GameCenterAchievementLocalizationsV2ImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementLocalizationsV2ImageGetToOneRelatedResponses,
     GameCenterAchievementLocalizationsV2ImageGetToOneRelatedErrors,
@@ -21132,13 +25338,18 @@ export const gameCenterAchievementLocalizationsV2ImageGetToOneRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for game center achievement versions v2. `GET /v2/gameCenterAchievementVersions/{id}/relationships/localizations` */
 export const gameCenterAchievementVersionsV2LocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterAchievementVersionsV2LocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterAchievementVersionsV2LocalizationsGetToManyRelationshipResponses,
+    GameCenterAchievementVersionsV2LocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterAchievementVersionsV2LocalizationsGetToManyRelationshipResponses,
       GameCenterAchievementVersionsV2LocalizationsGetToManyRelationshipErrors,
@@ -21149,6 +25360,7 @@ export const gameCenterAchievementVersionsV2LocalizationsGetToManyRelationship =
       ...options,
     });
 
+/** List related localizations for game center achievement versions v2. `GET /v2/gameCenterAchievementVersions/{id}/localizations` */
 export const gameCenterAchievementVersionsV2LocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21156,7 +25368,11 @@ export const gameCenterAchievementVersionsV2LocalizationsGetToManyRelated = <
     GameCenterAchievementVersionsV2LocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementVersionsV2LocalizationsGetToManyRelatedResponses,
+  GameCenterAchievementVersionsV2LocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementVersionsV2LocalizationsGetToManyRelatedResponses,
     GameCenterAchievementVersionsV2LocalizationsGetToManyRelatedErrors,
@@ -21177,6 +25393,7 @@ export const gameCenterAchievementVersionsV2LocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Update activity relationship for game center achievements v2. `PATCH /v2/gameCenterAchievements/{id}/relationships/activity` */
 export const gameCenterAchievementsV2ActivityUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21184,7 +25401,11 @@ export const gameCenterAchievementsV2ActivityUpdateToOneRelationship = <
     GameCenterAchievementsV2ActivityUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2ActivityUpdateToOneRelationshipResponses,
+  GameCenterAchievementsV2ActivityUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterAchievementsV2ActivityUpdateToOneRelationshipResponses,
     GameCenterAchievementsV2ActivityUpdateToOneRelationshipErrors,
@@ -21199,6 +25420,7 @@ export const gameCenterAchievementsV2ActivityUpdateToOneRelationship = <
     },
   });
 
+/** Get versions relationship IDs for game center achievements v2. `GET /v2/gameCenterAchievements/{id}/relationships/versions` */
 export const gameCenterAchievementsV2VersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21206,7 +25428,11 @@ export const gameCenterAchievementsV2VersionsGetToManyRelationship = <
     GameCenterAchievementsV2VersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2VersionsGetToManyRelationshipResponses,
+  GameCenterAchievementsV2VersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementsV2VersionsGetToManyRelationshipResponses,
     GameCenterAchievementsV2VersionsGetToManyRelationshipErrors,
@@ -21217,6 +25443,7 @@ export const gameCenterAchievementsV2VersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for game center achievements v2. `GET /v2/gameCenterAchievements/{id}/versions` */
 export const gameCenterAchievementsV2VersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21224,7 +25451,11 @@ export const gameCenterAchievementsV2VersionsGetToManyRelated = <
     GameCenterAchievementsV2VersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAchievementsV2VersionsGetToManyRelatedResponses,
+  GameCenterAchievementsV2VersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAchievementsV2VersionsGetToManyRelatedResponses,
     GameCenterAchievementsV2VersionsGetToManyRelatedErrors,
@@ -21245,6 +25476,7 @@ export const gameCenterAchievementsV2VersionsGetToManyRelated = <
     ...options,
   });
 
+/** Remove achievements v2 relationship for game center activities. `DELETE /v1/gameCenterActivities/{id}/relationships/achievementsV2` */
 export const gameCenterActivitiesAchievementsV2DeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21252,7 +25484,11 @@ export const gameCenterActivitiesAchievementsV2DeleteToManyRelationship = <
     GameCenterActivitiesAchievementsV2DeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesAchievementsV2DeleteToManyRelationshipResponses,
+  GameCenterActivitiesAchievementsV2DeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterActivitiesAchievementsV2DeleteToManyRelationshipResponses,
     GameCenterActivitiesAchievementsV2DeleteToManyRelationshipErrors,
@@ -21267,6 +25503,7 @@ export const gameCenterActivitiesAchievementsV2DeleteToManyRelationship = <
     },
   });
 
+/** Add achievements v2 relationship for game center activities. `POST /v1/gameCenterActivities/{id}/relationships/achievementsV2` */
 export const gameCenterActivitiesAchievementsV2CreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21274,7 +25511,11 @@ export const gameCenterActivitiesAchievementsV2CreateToManyRelationship = <
     GameCenterActivitiesAchievementsV2CreateToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesAchievementsV2CreateToManyRelationshipResponses,
+  GameCenterActivitiesAchievementsV2CreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivitiesAchievementsV2CreateToManyRelationshipResponses,
     GameCenterActivitiesAchievementsV2CreateToManyRelationshipErrors,
@@ -21289,6 +25530,7 @@ export const gameCenterActivitiesAchievementsV2CreateToManyRelationship = <
     },
   });
 
+/** Remove leaderboards v2 relationship for game center activities. `DELETE /v1/gameCenterActivities/{id}/relationships/leaderboardsV2` */
 export const gameCenterActivitiesLeaderboardsV2DeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21296,7 +25538,11 @@ export const gameCenterActivitiesLeaderboardsV2DeleteToManyRelationship = <
     GameCenterActivitiesLeaderboardsV2DeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesLeaderboardsV2DeleteToManyRelationshipResponses,
+  GameCenterActivitiesLeaderboardsV2DeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     GameCenterActivitiesLeaderboardsV2DeleteToManyRelationshipResponses,
     GameCenterActivitiesLeaderboardsV2DeleteToManyRelationshipErrors,
@@ -21311,6 +25557,7 @@ export const gameCenterActivitiesLeaderboardsV2DeleteToManyRelationship = <
     },
   });
 
+/** Add leaderboards v2 relationship for game center activities. `POST /v1/gameCenterActivities/{id}/relationships/leaderboardsV2` */
 export const gameCenterActivitiesLeaderboardsV2CreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21318,7 +25565,11 @@ export const gameCenterActivitiesLeaderboardsV2CreateToManyRelationship = <
     GameCenterActivitiesLeaderboardsV2CreateToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesLeaderboardsV2CreateToManyRelationshipResponses,
+  GameCenterActivitiesLeaderboardsV2CreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     GameCenterActivitiesLeaderboardsV2CreateToManyRelationshipResponses,
     GameCenterActivitiesLeaderboardsV2CreateToManyRelationshipErrors,
@@ -21333,6 +25584,7 @@ export const gameCenterActivitiesLeaderboardsV2CreateToManyRelationship = <
     },
   });
 
+/** Get versions relationship IDs for game center activities. `GET /v1/gameCenterActivities/{id}/relationships/versions` */
 export const gameCenterActivitiesVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21340,7 +25592,11 @@ export const gameCenterActivitiesVersionsGetToManyRelationship = <
     GameCenterActivitiesVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesVersionsGetToManyRelationshipResponses,
+  GameCenterActivitiesVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivitiesVersionsGetToManyRelationshipResponses,
     GameCenterActivitiesVersionsGetToManyRelationshipErrors,
@@ -21351,6 +25607,7 @@ export const gameCenterActivitiesVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for game center activities. `GET /v1/gameCenterActivities/{id}/versions` */
 export const gameCenterActivitiesVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21358,7 +25615,11 @@ export const gameCenterActivitiesVersionsGetToManyRelated = <
     GameCenterActivitiesVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivitiesVersionsGetToManyRelatedResponses,
+  GameCenterActivitiesVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivitiesVersionsGetToManyRelatedResponses,
     GameCenterActivitiesVersionsGetToManyRelatedErrors,
@@ -21383,6 +25644,7 @@ export const gameCenterActivitiesVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get image relationship ID for game center activity localizations. `GET /v1/gameCenterActivityLocalizations/{id}/relationships/image` */
 export const gameCenterActivityLocalizationsImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21390,7 +25652,11 @@ export const gameCenterActivityLocalizationsImageGetToOneRelationship = <
     GameCenterActivityLocalizationsImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsImageGetToOneRelationshipResponses,
+  GameCenterActivityLocalizationsImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityLocalizationsImageGetToOneRelationshipResponses,
     GameCenterActivityLocalizationsImageGetToOneRelationshipErrors,
@@ -21401,6 +25667,7 @@ export const gameCenterActivityLocalizationsImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related image for game center activity localizations. `GET /v1/gameCenterActivityLocalizations/{id}/image` */
 export const gameCenterActivityLocalizationsImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21408,7 +25675,11 @@ export const gameCenterActivityLocalizationsImageGetToOneRelated = <
     GameCenterActivityLocalizationsImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityLocalizationsImageGetToOneRelatedResponses,
+  GameCenterActivityLocalizationsImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityLocalizationsImageGetToOneRelatedResponses,
     GameCenterActivityLocalizationsImageGetToOneRelatedErrors,
@@ -21424,6 +25695,7 @@ export const gameCenterActivityLocalizationsImageGetToOneRelated = <
     ...options,
   });
 
+/** Get default image relationship ID for game center activity versions. `GET /v1/gameCenterActivityVersions/{id}/relationships/defaultImage` */
 export const gameCenterActivityVersionsDefaultImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21431,7 +25703,11 @@ export const gameCenterActivityVersionsDefaultImageGetToOneRelationship = <
     GameCenterActivityVersionsDefaultImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsDefaultImageGetToOneRelationshipResponses,
+  GameCenterActivityVersionsDefaultImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityVersionsDefaultImageGetToOneRelationshipResponses,
     GameCenterActivityVersionsDefaultImageGetToOneRelationshipErrors,
@@ -21442,6 +25718,7 @@ export const gameCenterActivityVersionsDefaultImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related default image for game center activity versions. `GET /v1/gameCenterActivityVersions/{id}/defaultImage` */
 export const gameCenterActivityVersionsDefaultImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21449,7 +25726,11 @@ export const gameCenterActivityVersionsDefaultImageGetToOneRelated = <
     GameCenterActivityVersionsDefaultImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsDefaultImageGetToOneRelatedResponses,
+  GameCenterActivityVersionsDefaultImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityVersionsDefaultImageGetToOneRelatedResponses,
     GameCenterActivityVersionsDefaultImageGetToOneRelatedErrors,
@@ -21465,6 +25746,7 @@ export const gameCenterActivityVersionsDefaultImageGetToOneRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for game center activity versions. `GET /v1/gameCenterActivityVersions/{id}/relationships/localizations` */
 export const gameCenterActivityVersionsLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21472,7 +25754,11 @@ export const gameCenterActivityVersionsLocalizationsGetToManyRelationship = <
     GameCenterActivityVersionsLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsLocalizationsGetToManyRelationshipResponses,
+  GameCenterActivityVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityVersionsLocalizationsGetToManyRelationshipResponses,
     GameCenterActivityVersionsLocalizationsGetToManyRelationshipErrors,
@@ -21483,6 +25769,7 @@ export const gameCenterActivityVersionsLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related localizations for game center activity versions. `GET /v1/gameCenterActivityVersions/{id}/localizations` */
 export const gameCenterActivityVersionsLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21490,7 +25777,11 @@ export const gameCenterActivityVersionsLocalizationsGetToManyRelated = <
     GameCenterActivityVersionsLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterActivityVersionsLocalizationsGetToManyRelatedResponses,
+  GameCenterActivityVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterActivityVersionsLocalizationsGetToManyRelatedResponses,
     GameCenterActivityVersionsLocalizationsGetToManyRelatedErrors,
@@ -21511,6 +25802,7 @@ export const gameCenterActivityVersionsLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get app store version relationship ID for game center app versions. `GET /v1/gameCenterAppVersions/{id}/relationships/appStoreVersion` */
 export const gameCenterAppVersionsAppStoreVersionGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21518,7 +25810,11 @@ export const gameCenterAppVersionsAppStoreVersionGetToOneRelationship = <
     GameCenterAppVersionsAppStoreVersionGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAppVersionsAppStoreVersionGetToOneRelationshipResponses,
+  GameCenterAppVersionsAppStoreVersionGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAppVersionsAppStoreVersionGetToOneRelationshipResponses,
     GameCenterAppVersionsAppStoreVersionGetToOneRelationshipErrors,
@@ -21529,6 +25825,7 @@ export const gameCenterAppVersionsAppStoreVersionGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app store version for game center app versions. `GET /v1/gameCenterAppVersions/{id}/appStoreVersion` */
 export const gameCenterAppVersionsAppStoreVersionGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21536,7 +25833,11 @@ export const gameCenterAppVersionsAppStoreVersionGetToOneRelated = <
     GameCenterAppVersionsAppStoreVersionGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAppVersionsAppStoreVersionGetToOneRelatedResponses,
+  GameCenterAppVersionsAppStoreVersionGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAppVersionsAppStoreVersionGetToOneRelatedResponses,
     GameCenterAppVersionsAppStoreVersionGetToOneRelatedErrors,
@@ -21568,13 +25869,18 @@ export const gameCenterAppVersionsAppStoreVersionGetToOneRelated = <
     ...options,
   });
 
+/** Remove compatibility versions relationship for game center app versions. `DELETE /v1/gameCenterAppVersions/{id}/relationships/compatibilityVersions` */
 export const gameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationshipResponses,
+    GameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).delete<
       GameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationshipResponses,
       GameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationshipErrors,
@@ -21589,6 +25895,7 @@ export const gameCenterAppVersionsCompatibilityVersionsDeleteToManyRelationship 
       },
     });
 
+/** Get compatibility versions relationship IDs for game center app versions. `GET /v1/gameCenterAppVersions/{id}/relationships/compatibilityVersions` */
 export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21596,7 +25903,11 @@ export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelationship = <
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAppVersionsCompatibilityVersionsGetToManyRelationshipResponses,
+  GameCenterAppVersionsCompatibilityVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelationshipResponses,
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelationshipErrors,
@@ -21607,13 +25918,18 @@ export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** Add compatibility versions relationship for game center app versions. `POST /v1/gameCenterAppVersions/{id}/relationships/compatibilityVersions` */
 export const gameCenterAppVersionsCompatibilityVersionsCreateToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterAppVersionsCompatibilityVersionsCreateToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterAppVersionsCompatibilityVersionsCreateToManyRelationshipResponses,
+    GameCenterAppVersionsCompatibilityVersionsCreateToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).post<
       GameCenterAppVersionsCompatibilityVersionsCreateToManyRelationshipResponses,
       GameCenterAppVersionsCompatibilityVersionsCreateToManyRelationshipErrors,
@@ -21628,6 +25944,7 @@ export const gameCenterAppVersionsCompatibilityVersionsCreateToManyRelationship 
       },
     });
 
+/** List related compatibility versions for game center app versions. `GET /v1/gameCenterAppVersions/{id}/compatibilityVersions` */
 export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21635,7 +25952,11 @@ export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelated = <
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterAppVersionsCompatibilityVersionsGetToManyRelatedResponses,
+  GameCenterAppVersionsCompatibilityVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelatedResponses,
     GameCenterAppVersionsCompatibilityVersionsGetToManyRelatedErrors,
@@ -21656,6 +25977,7 @@ export const gameCenterAppVersionsCompatibilityVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get image relationship ID for game center challenge localizations. `GET /v1/gameCenterChallengeLocalizations/{id}/relationships/image` */
 export const gameCenterChallengeLocalizationsImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21663,7 +25985,11 @@ export const gameCenterChallengeLocalizationsImageGetToOneRelationship = <
     GameCenterChallengeLocalizationsImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsImageGetToOneRelationshipResponses,
+  GameCenterChallengeLocalizationsImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeLocalizationsImageGetToOneRelationshipResponses,
     GameCenterChallengeLocalizationsImageGetToOneRelationshipErrors,
@@ -21674,6 +26000,7 @@ export const gameCenterChallengeLocalizationsImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related image for game center challenge localizations. `GET /v1/gameCenterChallengeLocalizations/{id}/image` */
 export const gameCenterChallengeLocalizationsImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21681,7 +26008,11 @@ export const gameCenterChallengeLocalizationsImageGetToOneRelated = <
     GameCenterChallengeLocalizationsImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeLocalizationsImageGetToOneRelatedResponses,
+  GameCenterChallengeLocalizationsImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeLocalizationsImageGetToOneRelatedResponses,
     GameCenterChallengeLocalizationsImageGetToOneRelatedErrors,
@@ -21697,6 +26028,7 @@ export const gameCenterChallengeLocalizationsImageGetToOneRelated = <
     ...options,
   });
 
+/** Get default image relationship ID for game center challenge versions. `GET /v1/gameCenterChallengeVersions/{id}/relationships/defaultImage` */
 export const gameCenterChallengeVersionsDefaultImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21704,7 +26036,11 @@ export const gameCenterChallengeVersionsDefaultImageGetToOneRelationship = <
     GameCenterChallengeVersionsDefaultImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsDefaultImageGetToOneRelationshipResponses,
+  GameCenterChallengeVersionsDefaultImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeVersionsDefaultImageGetToOneRelationshipResponses,
     GameCenterChallengeVersionsDefaultImageGetToOneRelationshipErrors,
@@ -21715,6 +26051,7 @@ export const gameCenterChallengeVersionsDefaultImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related default image for game center challenge versions. `GET /v1/gameCenterChallengeVersions/{id}/defaultImage` */
 export const gameCenterChallengeVersionsDefaultImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21722,7 +26059,11 @@ export const gameCenterChallengeVersionsDefaultImageGetToOneRelated = <
     GameCenterChallengeVersionsDefaultImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsDefaultImageGetToOneRelatedResponses,
+  GameCenterChallengeVersionsDefaultImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeVersionsDefaultImageGetToOneRelatedResponses,
     GameCenterChallengeVersionsDefaultImageGetToOneRelatedErrors,
@@ -21738,6 +26079,7 @@ export const gameCenterChallengeVersionsDefaultImageGetToOneRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for game center challenge versions. `GET /v1/gameCenterChallengeVersions/{id}/relationships/localizations` */
 export const gameCenterChallengeVersionsLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21745,7 +26087,11 @@ export const gameCenterChallengeVersionsLocalizationsGetToManyRelationship = <
     GameCenterChallengeVersionsLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsLocalizationsGetToManyRelationshipResponses,
+  GameCenterChallengeVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeVersionsLocalizationsGetToManyRelationshipResponses,
     GameCenterChallengeVersionsLocalizationsGetToManyRelationshipErrors,
@@ -21756,6 +26102,7 @@ export const gameCenterChallengeVersionsLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related localizations for game center challenge versions. `GET /v1/gameCenterChallengeVersions/{id}/localizations` */
 export const gameCenterChallengeVersionsLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21763,7 +26110,11 @@ export const gameCenterChallengeVersionsLocalizationsGetToManyRelated = <
     GameCenterChallengeVersionsLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengeVersionsLocalizationsGetToManyRelatedResponses,
+  GameCenterChallengeVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengeVersionsLocalizationsGetToManyRelatedResponses,
     GameCenterChallengeVersionsLocalizationsGetToManyRelatedErrors,
@@ -21784,6 +26135,7 @@ export const gameCenterChallengeVersionsLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Update leaderboard v2 relationship for game center challenges. `PATCH /v1/gameCenterChallenges/{id}/relationships/leaderboardV2` */
 export const gameCenterChallengesLeaderboardV2UpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21791,7 +26143,11 @@ export const gameCenterChallengesLeaderboardV2UpdateToOneRelationship = <
     GameCenterChallengesLeaderboardV2UpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengesLeaderboardV2UpdateToOneRelationshipResponses,
+  GameCenterChallengesLeaderboardV2UpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterChallengesLeaderboardV2UpdateToOneRelationshipResponses,
     GameCenterChallengesLeaderboardV2UpdateToOneRelationshipErrors,
@@ -21806,6 +26162,7 @@ export const gameCenterChallengesLeaderboardV2UpdateToOneRelationship = <
     },
   });
 
+/** Get versions relationship IDs for game center challenges. `GET /v1/gameCenterChallenges/{id}/relationships/versions` */
 export const gameCenterChallengesVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21813,7 +26170,11 @@ export const gameCenterChallengesVersionsGetToManyRelationship = <
     GameCenterChallengesVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengesVersionsGetToManyRelationshipResponses,
+  GameCenterChallengesVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengesVersionsGetToManyRelationshipResponses,
     GameCenterChallengesVersionsGetToManyRelationshipErrors,
@@ -21824,6 +26185,7 @@ export const gameCenterChallengesVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for game center challenges. `GET /v1/gameCenterChallenges/{id}/versions` */
 export const gameCenterChallengesVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21831,7 +26193,11 @@ export const gameCenterChallengesVersionsGetToManyRelated = <
     GameCenterChallengesVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterChallengesVersionsGetToManyRelatedResponses,
+  GameCenterChallengesVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterChallengesVersionsGetToManyRelatedResponses,
     GameCenterChallengesVersionsGetToManyRelatedErrors,
@@ -21856,13 +26222,18 @@ export const gameCenterChallengesVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Replace challenges minimum platform versions relationships for game center details. `PATCH /v1/gameCenterDetails/{id}/relationships/challengesMinimumPlatformVersions` */
 export const gameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipResponses,
+    GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipResponses,
       GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipErrors,
@@ -21877,6 +26248,7 @@ export const gameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRela
       },
     });
 
+/** Get game center achievements v2 relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterAchievementsV2` */
 export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21884,7 +26256,11 @@ export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelationship = <
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterAchievementsV2GetToManyRelationshipResponses,
+  GameCenterDetailsGameCenterAchievementsV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelationshipResponses,
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelationshipErrors,
@@ -21895,13 +26271,18 @@ export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelationship = <
     ...options,
   });
 
+/** Replace game center achievements v2 relationships for game center details. `PATCH /v1/gameCenterDetails/{id}/relationships/gameCenterAchievementsV2` */
 export const gameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationshipResponses,
+    GameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationshipResponses,
       GameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationshipErrors,
@@ -21916,6 +26297,7 @@ export const gameCenterDetailsGameCenterAchievementsV2ReplaceToManyRelationship 
       },
     });
 
+/** List related game center achievements v2 for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterAchievementsV2` */
 export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21923,7 +26305,11 @@ export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelated = <
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedResponses,
+  GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedResponses,
     GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedErrors,
@@ -21947,6 +26333,7 @@ export const gameCenterDetailsGameCenterAchievementsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get game center activities relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterActivities` */
 export const gameCenterDetailsGameCenterActivitiesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -21954,7 +26341,11 @@ export const gameCenterDetailsGameCenterActivitiesGetToManyRelationship = <
     GameCenterDetailsGameCenterActivitiesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterActivitiesGetToManyRelationshipResponses,
+  GameCenterDetailsGameCenterActivitiesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterActivitiesGetToManyRelationshipResponses,
     GameCenterDetailsGameCenterActivitiesGetToManyRelationshipErrors,
@@ -21965,6 +26356,7 @@ export const gameCenterDetailsGameCenterActivitiesGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center activities for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterActivities` */
 export const gameCenterDetailsGameCenterActivitiesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -21972,7 +26364,11 @@ export const gameCenterDetailsGameCenterActivitiesGetToManyRelated = <
     GameCenterDetailsGameCenterActivitiesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterActivitiesGetToManyRelatedResponses,
+  GameCenterDetailsGameCenterActivitiesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterActivitiesGetToManyRelatedResponses,
     GameCenterDetailsGameCenterActivitiesGetToManyRelatedErrors,
@@ -21994,6 +26390,7 @@ export const gameCenterDetailsGameCenterActivitiesGetToManyRelated = <
     ...options,
   });
 
+/** Get game center app versions relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterAppVersions` */
 export const gameCenterDetailsGameCenterAppVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22001,7 +26398,11 @@ export const gameCenterDetailsGameCenterAppVersionsGetToManyRelationship = <
     GameCenterDetailsGameCenterAppVersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterAppVersionsGetToManyRelationshipResponses,
+  GameCenterDetailsGameCenterAppVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterAppVersionsGetToManyRelationshipResponses,
     GameCenterDetailsGameCenterAppVersionsGetToManyRelationshipErrors,
@@ -22012,6 +26413,7 @@ export const gameCenterDetailsGameCenterAppVersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center app versions for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterAppVersions` */
 export const gameCenterDetailsGameCenterAppVersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22019,7 +26421,11 @@ export const gameCenterDetailsGameCenterAppVersionsGetToManyRelated = <
     GameCenterDetailsGameCenterAppVersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterAppVersionsGetToManyRelatedResponses,
+  GameCenterDetailsGameCenterAppVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterAppVersionsGetToManyRelatedResponses,
     GameCenterDetailsGameCenterAppVersionsGetToManyRelatedErrors,
@@ -22040,6 +26446,7 @@ export const gameCenterDetailsGameCenterAppVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get game center challenges relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterChallenges` */
 export const gameCenterDetailsGameCenterChallengesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22047,7 +26454,11 @@ export const gameCenterDetailsGameCenterChallengesGetToManyRelationship = <
     GameCenterDetailsGameCenterChallengesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterChallengesGetToManyRelationshipResponses,
+  GameCenterDetailsGameCenterChallengesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterChallengesGetToManyRelationshipResponses,
     GameCenterDetailsGameCenterChallengesGetToManyRelationshipErrors,
@@ -22058,6 +26469,7 @@ export const gameCenterDetailsGameCenterChallengesGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center challenges for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterChallenges` */
 export const gameCenterDetailsGameCenterChallengesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22065,7 +26477,11 @@ export const gameCenterDetailsGameCenterChallengesGetToManyRelated = <
     GameCenterDetailsGameCenterChallengesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterChallengesGetToManyRelatedResponses,
+  GameCenterDetailsGameCenterChallengesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterChallengesGetToManyRelatedResponses,
     GameCenterDetailsGameCenterChallengesGetToManyRelatedErrors,
@@ -22089,6 +26505,7 @@ export const gameCenterDetailsGameCenterChallengesGetToManyRelated = <
     ...options,
   });
 
+/** Get game center group relationship ID for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterGroup` */
 export const gameCenterDetailsGameCenterGroupGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22096,7 +26513,11 @@ export const gameCenterDetailsGameCenterGroupGetToOneRelationship = <
     GameCenterDetailsGameCenterGroupGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterGroupGetToOneRelationshipResponses,
+  GameCenterDetailsGameCenterGroupGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterGroupGetToOneRelationshipResponses,
     GameCenterDetailsGameCenterGroupGetToOneRelationshipErrors,
@@ -22107,6 +26528,7 @@ export const gameCenterDetailsGameCenterGroupGetToOneRelationship = <
     ...options,
   });
 
+/** Read related game center group for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterGroup` */
 export const gameCenterDetailsGameCenterGroupGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22114,7 +26536,11 @@ export const gameCenterDetailsGameCenterGroupGetToOneRelated = <
     GameCenterDetailsGameCenterGroupGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterGroupGetToOneRelatedResponses,
+  GameCenterDetailsGameCenterGroupGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterGroupGetToOneRelatedResponses,
     GameCenterDetailsGameCenterGroupGetToOneRelatedErrors,
@@ -22137,13 +26563,18 @@ export const gameCenterDetailsGameCenterGroupGetToOneRelated = <
     ...options,
   });
 
+/** Get game center leaderboard sets v2 relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterLeaderboardSetsV2` */
 export const gameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationshipResponses,
+    GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationshipResponses,
       GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationshipErrors,
@@ -22154,13 +26585,18 @@ export const gameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelationship =
       ...options,
     });
 
+/** Replace game center leaderboard sets v2 relationships for game center details. `PATCH /v1/gameCenterDetails/{id}/relationships/gameCenterLeaderboardSetsV2` */
 export const gameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipResponses,
+    GameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipResponses,
       GameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipErrors,
@@ -22175,6 +26611,7 @@ export const gameCenterDetailsGameCenterLeaderboardSetsV2ReplaceToManyRelationsh
       },
     });
 
+/** List related game center leaderboard sets v2 for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterLeaderboardSetsV2` */
 export const gameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22182,7 +26619,11 @@ export const gameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelated = <
     GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedResponses,
+  GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedResponses,
     GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedErrors,
@@ -22207,6 +26648,7 @@ export const gameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get game center leaderboards v2 relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/gameCenterLeaderboardsV2` */
 export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22214,7 +26656,11 @@ export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationship = <
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationshipResponses,
+  GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationshipResponses,
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationshipErrors,
@@ -22225,13 +26671,18 @@ export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelationship = <
     ...options,
   });
 
+/** Replace game center leaderboards v2 relationships for game center details. `PATCH /v1/gameCenterDetails/{id}/relationships/gameCenterLeaderboardsV2` */
 export const gameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationshipResponses,
+    GameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationshipResponses,
       GameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationshipErrors,
@@ -22246,6 +26697,7 @@ export const gameCenterDetailsGameCenterLeaderboardsV2ReplaceToManyRelationship 
       },
     });
 
+/** List related game center leaderboards v2 for game center details. `GET /v1/gameCenterDetails/{id}/gameCenterLeaderboardsV2` */
 export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22253,7 +26705,11 @@ export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelated = <
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedResponses,
+  GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedResponses,
     GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedErrors,
@@ -22281,6 +26737,7 @@ export const gameCenterDetailsGameCenterLeaderboardsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get game center achievements v2 relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterAchievementsV2` */
 export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22288,7 +26745,11 @@ export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelationship = <
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterAchievementsV2GetToManyRelationshipResponses,
+  GameCenterGroupsGameCenterAchievementsV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelationshipResponses,
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelationshipErrors,
@@ -22299,13 +26760,18 @@ export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelationship = <
     ...options,
   });
 
+/** Replace game center achievements v2 relationships for game center groups. `PATCH /v1/gameCenterGroups/{id}/relationships/gameCenterAchievementsV2` */
 export const gameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationshipResponses,
+    GameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationshipResponses,
       GameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationshipErrors,
@@ -22320,6 +26786,7 @@ export const gameCenterGroupsGameCenterAchievementsV2ReplaceToManyRelationship =
       },
     });
 
+/** List related game center achievements v2 for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterAchievementsV2` */
 export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22327,7 +26794,11 @@ export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelated = <
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedResponses,
+  GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedResponses,
     GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedErrors,
@@ -22351,6 +26822,7 @@ export const gameCenterGroupsGameCenterAchievementsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get game center activities relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterActivities` */
 export const gameCenterGroupsGameCenterActivitiesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22358,7 +26830,11 @@ export const gameCenterGroupsGameCenterActivitiesGetToManyRelationship = <
     GameCenterGroupsGameCenterActivitiesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterActivitiesGetToManyRelationshipResponses,
+  GameCenterGroupsGameCenterActivitiesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterActivitiesGetToManyRelationshipResponses,
     GameCenterGroupsGameCenterActivitiesGetToManyRelationshipErrors,
@@ -22369,6 +26845,7 @@ export const gameCenterGroupsGameCenterActivitiesGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center activities for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterActivities` */
 export const gameCenterGroupsGameCenterActivitiesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22376,7 +26853,11 @@ export const gameCenterGroupsGameCenterActivitiesGetToManyRelated = <
     GameCenterGroupsGameCenterActivitiesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterActivitiesGetToManyRelatedResponses,
+  GameCenterGroupsGameCenterActivitiesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterActivitiesGetToManyRelatedResponses,
     GameCenterGroupsGameCenterActivitiesGetToManyRelatedErrors,
@@ -22398,6 +26879,7 @@ export const gameCenterGroupsGameCenterActivitiesGetToManyRelated = <
     ...options,
   });
 
+/** Get game center challenges relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterChallenges` */
 export const gameCenterGroupsGameCenterChallengesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22405,7 +26887,11 @@ export const gameCenterGroupsGameCenterChallengesGetToManyRelationship = <
     GameCenterGroupsGameCenterChallengesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterChallengesGetToManyRelationshipResponses,
+  GameCenterGroupsGameCenterChallengesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterChallengesGetToManyRelationshipResponses,
     GameCenterGroupsGameCenterChallengesGetToManyRelationshipErrors,
@@ -22416,6 +26902,7 @@ export const gameCenterGroupsGameCenterChallengesGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center challenges for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterChallenges` */
 export const gameCenterGroupsGameCenterChallengesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22423,7 +26910,11 @@ export const gameCenterGroupsGameCenterChallengesGetToManyRelated = <
     GameCenterGroupsGameCenterChallengesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterChallengesGetToManyRelatedResponses,
+  GameCenterGroupsGameCenterChallengesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterChallengesGetToManyRelatedResponses,
     GameCenterGroupsGameCenterChallengesGetToManyRelatedErrors,
@@ -22447,6 +26938,7 @@ export const gameCenterGroupsGameCenterChallengesGetToManyRelated = <
     ...options,
   });
 
+/** Get game center details relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterDetails` */
 export const gameCenterGroupsGameCenterDetailsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22454,7 +26946,11 @@ export const gameCenterGroupsGameCenterDetailsGetToManyRelationship = <
     GameCenterGroupsGameCenterDetailsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterDetailsGetToManyRelationshipResponses,
+  GameCenterGroupsGameCenterDetailsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterDetailsGetToManyRelationshipResponses,
     GameCenterGroupsGameCenterDetailsGetToManyRelationshipErrors,
@@ -22465,6 +26961,7 @@ export const gameCenterGroupsGameCenterDetailsGetToManyRelationship = <
     ...options,
   });
 
+/** List related game center details for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterDetails` */
 export const gameCenterGroupsGameCenterDetailsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22472,7 +26969,11 @@ export const gameCenterGroupsGameCenterDetailsGetToManyRelated = <
     GameCenterGroupsGameCenterDetailsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterDetailsGetToManyRelatedResponses,
+  GameCenterGroupsGameCenterDetailsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterDetailsGetToManyRelatedResponses,
     GameCenterGroupsGameCenterDetailsGetToManyRelatedErrors,
@@ -22512,13 +27013,18 @@ export const gameCenterGroupsGameCenterDetailsGetToManyRelated = <
     ...options,
   });
 
+/** Get game center leaderboard sets v2 relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterLeaderboardSetsV2` */
 export const gameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationshipResponses,
+    GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationshipResponses,
       GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationshipErrors,
@@ -22529,13 +27035,18 @@ export const gameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelationship =
       ...options,
     });
 
+/** Replace game center leaderboard sets v2 relationships for game center groups. `PATCH /v1/gameCenterGroups/{id}/relationships/gameCenterLeaderboardSetsV2` */
 export const gameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipResponses,
+    GameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipResponses,
       GameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshipErrors,
@@ -22550,6 +27061,7 @@ export const gameCenterGroupsGameCenterLeaderboardSetsV2ReplaceToManyRelationshi
       },
     });
 
+/** List related game center leaderboard sets v2 for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterLeaderboardSetsV2` */
 export const gameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22557,7 +27069,11 @@ export const gameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelated = <
     GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedResponses,
+  GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedResponses,
     GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedErrors,
@@ -22582,6 +27098,7 @@ export const gameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get game center leaderboards v2 relationship IDs for game center groups. `GET /v1/gameCenterGroups/{id}/relationships/gameCenterLeaderboardsV2` */
 export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22589,7 +27106,11 @@ export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationship = <
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationshipResponses,
+  GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationshipResponses,
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationshipErrors,
@@ -22600,13 +27121,18 @@ export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelationship = <
     ...options,
   });
 
+/** Replace game center leaderboards v2 relationships for game center groups. `PATCH /v1/gameCenterGroups/{id}/relationships/gameCenterLeaderboardsV2` */
 export const gameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationshipResponses,
+    GameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationshipResponses,
       GameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationshipErrors,
@@ -22621,6 +27147,7 @@ export const gameCenterGroupsGameCenterLeaderboardsV2ReplaceToManyRelationship =
       },
     });
 
+/** List related game center leaderboards v2 for game center groups. `GET /v1/gameCenterGroups/{id}/gameCenterLeaderboardsV2` */
 export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22628,7 +27155,11 @@ export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelated = <
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedResponses,
+  GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedResponses,
     GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedErrors,
@@ -22656,6 +27187,7 @@ export const gameCenterGroupsGameCenterLeaderboardsV2GetToManyRelated = <
     ...options,
   });
 
+/** Get image relationship ID for game center leaderboard localizations v2. `GET /v2/gameCenterLeaderboardLocalizations/{id}/relationships/image` */
 export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22663,7 +27195,11 @@ export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelationship = <
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2ImageGetToOneRelationshipResponses,
+  GameCenterLeaderboardLocalizationsV2ImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelationshipResponses,
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelationshipErrors,
@@ -22674,6 +27210,7 @@ export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelationship = <
     ...options,
   });
 
+/** Read related image for game center leaderboard localizations v2. `GET /v2/gameCenterLeaderboardLocalizations/{id}/image` */
 export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22681,7 +27218,11 @@ export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelated = <
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardLocalizationsV2ImageGetToOneRelatedResponses,
+  GameCenterLeaderboardLocalizationsV2ImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelatedResponses,
     GameCenterLeaderboardLocalizationsV2ImageGetToOneRelatedErrors,
@@ -22701,13 +27242,18 @@ export const gameCenterLeaderboardLocalizationsV2ImageGetToOneRelated = <
     ...options,
   });
 
+/** Get image relationship ID for game center leaderboard set localizations v2. `GET /v2/gameCenterLeaderboardSetLocalizations/{id}/relationships/image` */
 export const gameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationshipResponses,
+    GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationshipResponses,
       GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationshipErrors,
@@ -22718,6 +27264,7 @@ export const gameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelationship =
       ...options,
     });
 
+/** Read related image for game center leaderboard set localizations v2. `GET /v2/gameCenterLeaderboardSetLocalizations/{id}/image` */
 export const gameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22725,7 +27272,11 @@ export const gameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelated = <
     GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelatedResponses,
+  GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelatedResponses,
     GameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelatedErrors,
@@ -22745,13 +27296,18 @@ export const gameCenterLeaderboardSetLocalizationsV2ImageGetToOneRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for game center leaderboard set versions v2. `GET /v2/gameCenterLeaderboardSetVersions/{id}/relationships/localizations` */
 export const gameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshipResponses,
+    GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshipResponses,
       GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshipErrors,
@@ -22762,6 +27318,7 @@ export const gameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelationshi
       ...options,
     });
 
+/** List related localizations for game center leaderboard set versions v2. `GET /v2/gameCenterLeaderboardSetVersions/{id}/localizations` */
 export const gameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22769,7 +27326,11 @@ export const gameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelated = <
     GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelatedResponses,
+  GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelatedResponses,
     GameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelatedErrors,
@@ -22792,13 +27353,18 @@ export const gameCenterLeaderboardSetVersionsV2LocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Remove game center leaderboards relationship for game center leaderboard sets v2. `DELETE /v2/gameCenterLeaderboardSets/{id}/relationships/gameCenterLeaderboards` */
 export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationshipResponses,
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).delete<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationshipResponses,
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelationshipErrors,
@@ -22813,13 +27379,18 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsDeleteToManyRelati
       },
     });
 
+/** Get game center leaderboards relationship IDs for game center leaderboard sets v2. `GET /v2/gameCenterLeaderboardSets/{id}/relationships/gameCenterLeaderboards` */
 export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationshipResponses,
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationshipResponses,
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelationshipErrors,
@@ -22830,13 +27401,18 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelations
       ...options,
     });
 
+/** Replace game center leaderboards relationships for game center leaderboard sets v2. `PATCH /v2/gameCenterLeaderboardSets/{id}/relationships/gameCenterLeaderboards` */
 export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationshipResponses,
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).patch<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationshipResponses,
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelationshipErrors,
@@ -22851,13 +27427,18 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsReplaceToManyRelat
       },
     });
 
+/** Add game center leaderboards relationship for game center leaderboard sets v2. `POST /v2/gameCenterLeaderboardSets/{id}/relationships/gameCenterLeaderboards` */
 export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationshipResponses,
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).post<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationshipResponses,
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelationshipErrors,
@@ -22872,13 +27453,18 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsCreateToManyRelati
       },
     });
 
+/** List related game center leaderboards for game center leaderboard sets v2. `GET /v2/gameCenterLeaderboardSets/{id}/gameCenterLeaderboards` */
 export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedResponses,
+    GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedResponses,
       GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedErrors,
@@ -22908,6 +27494,7 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelated =
       ...options,
     });
 
+/** Get versions relationship IDs for game center leaderboard sets v2. `GET /v2/gameCenterLeaderboardSets/{id}/relationships/versions` */
 export const gameCenterLeaderboardSetsV2VersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -22915,7 +27502,11 @@ export const gameCenterLeaderboardSetsV2VersionsGetToManyRelationship = <
     GameCenterLeaderboardSetsV2VersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2VersionsGetToManyRelationshipResponses,
+  GameCenterLeaderboardSetsV2VersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetsV2VersionsGetToManyRelationshipResponses,
     GameCenterLeaderboardSetsV2VersionsGetToManyRelationshipErrors,
@@ -22926,6 +27517,7 @@ export const gameCenterLeaderboardSetsV2VersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for game center leaderboard sets v2. `GET /v2/gameCenterLeaderboardSets/{id}/versions` */
 export const gameCenterLeaderboardSetsV2VersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22933,7 +27525,11 @@ export const gameCenterLeaderboardSetsV2VersionsGetToManyRelated = <
     GameCenterLeaderboardSetsV2VersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardSetsV2VersionsGetToManyRelatedResponses,
+  GameCenterLeaderboardSetsV2VersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardSetsV2VersionsGetToManyRelatedResponses,
     GameCenterLeaderboardSetsV2VersionsGetToManyRelatedErrors,
@@ -22956,13 +27552,18 @@ export const gameCenterLeaderboardSetsV2VersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for game center leaderboard versions v2. `GET /v2/gameCenterLeaderboardVersions/{id}/relationships/localizations` */
 export const gameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationshipResponses,
+    GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationshipResponses,
       GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationshipErrors,
@@ -22973,6 +27574,7 @@ export const gameCenterLeaderboardVersionsV2LocalizationsGetToManyRelationship =
       ...options,
     });
 
+/** List related localizations for game center leaderboard versions v2. `GET /v2/gameCenterLeaderboardVersions/{id}/localizations` */
 export const gameCenterLeaderboardVersionsV2LocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -22980,7 +27582,11 @@ export const gameCenterLeaderboardVersionsV2LocalizationsGetToManyRelated = <
     GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelatedResponses,
+  GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelatedResponses,
     GameCenterLeaderboardVersionsV2LocalizationsGetToManyRelatedErrors,
@@ -23001,6 +27607,7 @@ export const gameCenterLeaderboardVersionsV2LocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Update activity relationship for game center leaderboards v2. `PATCH /v2/gameCenterLeaderboards/{id}/relationships/activity` */
 export const gameCenterLeaderboardsV2ActivityUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23008,7 +27615,11 @@ export const gameCenterLeaderboardsV2ActivityUpdateToOneRelationship = <
     GameCenterLeaderboardsV2ActivityUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2ActivityUpdateToOneRelationshipResponses,
+  GameCenterLeaderboardsV2ActivityUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardsV2ActivityUpdateToOneRelationshipResponses,
     GameCenterLeaderboardsV2ActivityUpdateToOneRelationshipErrors,
@@ -23023,6 +27634,7 @@ export const gameCenterLeaderboardsV2ActivityUpdateToOneRelationship = <
     },
   });
 
+/** Update challenge relationship for game center leaderboards v2. `PATCH /v2/gameCenterLeaderboards/{id}/relationships/challenge` */
 export const gameCenterLeaderboardsV2ChallengeUpdateToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23030,7 +27642,11 @@ export const gameCenterLeaderboardsV2ChallengeUpdateToOneRelationship = <
     GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponses,
+  GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponses,
     GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipErrors,
@@ -23045,6 +27661,7 @@ export const gameCenterLeaderboardsV2ChallengeUpdateToOneRelationship = <
     },
   });
 
+/** Get versions relationship IDs for game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}/relationships/versions` */
 export const gameCenterLeaderboardsV2VersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23052,7 +27669,11 @@ export const gameCenterLeaderboardsV2VersionsGetToManyRelationship = <
     GameCenterLeaderboardsV2VersionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2VersionsGetToManyRelationshipResponses,
+  GameCenterLeaderboardsV2VersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardsV2VersionsGetToManyRelationshipResponses,
     GameCenterLeaderboardsV2VersionsGetToManyRelationshipErrors,
@@ -23063,6 +27684,7 @@ export const gameCenterLeaderboardsV2VersionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related versions for game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}/versions` */
 export const gameCenterLeaderboardsV2VersionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23070,7 +27692,11 @@ export const gameCenterLeaderboardsV2VersionsGetToManyRelated = <
     GameCenterLeaderboardsV2VersionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterLeaderboardsV2VersionsGetToManyRelatedResponses,
+  GameCenterLeaderboardsV2VersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterLeaderboardsV2VersionsGetToManyRelatedResponses,
     GameCenterLeaderboardsV2VersionsGetToManyRelatedErrors,
@@ -23091,13 +27717,18 @@ export const gameCenterLeaderboardsV2VersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get matchmaking queues relationship IDs for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/relationships/matchmakingQueues` */
 export const gameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationshipResponses,
+    GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationshipResponses,
       GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationshipErrors,
@@ -23108,6 +27739,7 @@ export const gameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelationship
       ...options,
     });
 
+/** List related matchmaking queues for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/matchmakingQueues` */
 export const gameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23115,7 +27747,11 @@ export const gameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelated = <
     GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelatedResponses,
+  GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelatedResponses,
     GameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelatedErrors,
@@ -23133,6 +27769,7 @@ export const gameCenterMatchmakingRuleSetsMatchmakingQueuesGetToManyRelated = <
     ...options,
   });
 
+/** Get rules relationship IDs for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/relationships/rules` */
 export const gameCenterMatchmakingRuleSetsRulesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23140,7 +27777,11 @@ export const gameCenterMatchmakingRuleSetsRulesGetToManyRelationship = <
     GameCenterMatchmakingRuleSetsRulesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsRulesGetToManyRelationshipResponses,
+  GameCenterMatchmakingRuleSetsRulesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsRulesGetToManyRelationshipResponses,
     GameCenterMatchmakingRuleSetsRulesGetToManyRelationshipErrors,
@@ -23151,6 +27792,7 @@ export const gameCenterMatchmakingRuleSetsRulesGetToManyRelationship = <
     ...options,
   });
 
+/** List related rules for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/rules` */
 export const gameCenterMatchmakingRuleSetsRulesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23158,7 +27800,11 @@ export const gameCenterMatchmakingRuleSetsRulesGetToManyRelated = <
     GameCenterMatchmakingRuleSetsRulesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsRulesGetToManyRelatedResponses,
+  GameCenterMatchmakingRuleSetsRulesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsRulesGetToManyRelatedResponses,
     GameCenterMatchmakingRuleSetsRulesGetToManyRelatedErrors,
@@ -23174,6 +27820,7 @@ export const gameCenterMatchmakingRuleSetsRulesGetToManyRelated = <
     ...options,
   });
 
+/** Get teams relationship IDs for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/relationships/teams` */
 export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23181,7 +27828,11 @@ export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelationship = <
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsTeamsGetToManyRelationshipResponses,
+  GameCenterMatchmakingRuleSetsTeamsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelationshipResponses,
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelationshipErrors,
@@ -23192,6 +27843,7 @@ export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelationship = <
     ...options,
   });
 
+/** List related teams for game center matchmaking rule sets. `GET /v1/gameCenterMatchmakingRuleSets/{id}/teams` */
 export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23199,7 +27851,11 @@ export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelated = <
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRuleSetsTeamsGetToManyRelatedResponses,
+  GameCenterMatchmakingRuleSetsTeamsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelatedResponses,
     GameCenterMatchmakingRuleSetsTeamsGetToManyRelatedErrors,
@@ -23215,13 +27871,18 @@ export const gameCenterMatchmakingRuleSetsTeamsGetToManyRelated = <
     ...options,
   });
 
+/** Get available territories relationship IDs for in app purchase availabilities. `GET /v1/inAppPurchaseAvailabilities/{id}/relationships/availableTerritories` */
 export const inAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
+    InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
       InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
@@ -23232,6 +27893,7 @@ export const inAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelationshi
       ...options,
     });
 
+/** List related available territories for in app purchase availabilities. `GET /v1/inAppPurchaseAvailabilities/{id}/availableTerritories` */
 export const inAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23239,7 +27901,11 @@ export const inAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelated = <
     InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
+  InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
     InAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
@@ -23253,6 +27919,7 @@ export const inAppPurchaseAvailabilitiesAvailableTerritoriesGetToManyRelated = <
     ...options,
   });
 
+/** Read related values for in app purchase offer code one time use codes. `GET /v1/inAppPurchaseOfferCodeOneTimeUseCodes/{id}/values` */
 export const inAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23260,7 +27927,11 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
     InAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelatedResponses,
+  InAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelatedResponses,
     InAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelatedErrors,
@@ -23271,6 +27942,7 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
     ...options,
   });
 
+/** Get custom codes relationship IDs for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/relationships/customCodes` */
 export const inAppPurchaseOfferCodesCustomCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23278,7 +27950,11 @@ export const inAppPurchaseOfferCodesCustomCodesGetToManyRelationship = <
     InAppPurchaseOfferCodesCustomCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesCustomCodesGetToManyRelationshipResponses,
+  InAppPurchaseOfferCodesCustomCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesCustomCodesGetToManyRelationshipResponses,
     InAppPurchaseOfferCodesCustomCodesGetToManyRelationshipErrors,
@@ -23289,6 +27965,7 @@ export const inAppPurchaseOfferCodesCustomCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related custom codes for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/customCodes` */
 export const inAppPurchaseOfferCodesCustomCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23296,7 +27973,11 @@ export const inAppPurchaseOfferCodesCustomCodesGetToManyRelated = <
     InAppPurchaseOfferCodesCustomCodesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesCustomCodesGetToManyRelatedResponses,
+  InAppPurchaseOfferCodesCustomCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesCustomCodesGetToManyRelatedResponses,
     InAppPurchaseOfferCodesCustomCodesGetToManyRelatedErrors,
@@ -23318,6 +27999,7 @@ export const inAppPurchaseOfferCodesCustomCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get one time use codes relationship IDs for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/relationships/oneTimeUseCodes` */
 export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23325,7 +28007,11 @@ export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationship = <
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationshipResponses,
+  InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationshipResponses,
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationshipErrors,
@@ -23336,6 +28022,7 @@ export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related one time use codes for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/oneTimeUseCodes` */
 export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23343,7 +28030,11 @@ export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelated = <
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelatedResponses,
+  InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelatedResponses,
     InAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelatedErrors,
@@ -23365,6 +28056,7 @@ export const inAppPurchaseOfferCodesOneTimeUseCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get prices relationship IDs for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/relationships/prices` */
 export const inAppPurchaseOfferCodesPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23372,7 +28064,11 @@ export const inAppPurchaseOfferCodesPricesGetToManyRelationship = <
     InAppPurchaseOfferCodesPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesPricesGetToManyRelationshipResponses,
+  InAppPurchaseOfferCodesPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesPricesGetToManyRelationshipResponses,
     InAppPurchaseOfferCodesPricesGetToManyRelationshipErrors,
@@ -23383,6 +28079,7 @@ export const inAppPurchaseOfferCodesPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related prices for in app purchase offer codes. `GET /v1/inAppPurchaseOfferCodes/{id}/prices` */
 export const inAppPurchaseOfferCodesPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23390,7 +28087,11 @@ export const inAppPurchaseOfferCodesPricesGetToManyRelated = <
     InAppPurchaseOfferCodesPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchaseOfferCodesPricesGetToManyRelatedResponses,
+  InAppPurchaseOfferCodesPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchaseOfferCodesPricesGetToManyRelatedResponses,
     InAppPurchaseOfferCodesPricesGetToManyRelatedErrors,
@@ -23410,6 +28111,7 @@ export const inAppPurchaseOfferCodesPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get equalizations relationship IDs for in app purchase price points. `GET /v1/inAppPurchasePricePoints/{id}/relationships/equalizations` */
 export const inAppPurchasePricePointsEqualizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23417,7 +28119,11 @@ export const inAppPurchasePricePointsEqualizationsGetToManyRelationship = <
     InAppPurchasePricePointsEqualizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePricePointsEqualizationsGetToManyRelationshipResponses,
+  InAppPurchasePricePointsEqualizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePricePointsEqualizationsGetToManyRelationshipResponses,
     InAppPurchasePricePointsEqualizationsGetToManyRelationshipErrors,
@@ -23428,6 +28134,7 @@ export const inAppPurchasePricePointsEqualizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related equalizations for in app purchase price points. `GET /v1/inAppPurchasePricePoints/{id}/equalizations` */
 export const inAppPurchasePricePointsEqualizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23435,7 +28142,11 @@ export const inAppPurchasePricePointsEqualizationsGetToManyRelated = <
     InAppPurchasePricePointsEqualizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePricePointsEqualizationsGetToManyRelatedResponses,
+  InAppPurchasePricePointsEqualizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePricePointsEqualizationsGetToManyRelatedResponses,
     InAppPurchasePricePointsEqualizationsGetToManyRelatedErrors,
@@ -23455,6 +28166,7 @@ export const inAppPurchasePricePointsEqualizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get automatic prices relationship IDs for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/relationships/automaticPrices` */
 export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23462,7 +28174,11 @@ export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationship = <
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationshipResponses,
+  InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationshipResponses,
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationshipErrors,
@@ -23473,6 +28189,7 @@ export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related automatic prices for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/automaticPrices` */
 export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23480,7 +28197,11 @@ export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelated = <
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelatedResponses,
+  InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelatedResponses,
     InAppPurchasePriceSchedulesAutomaticPricesGetToManyRelatedErrors,
@@ -23502,6 +28223,7 @@ export const inAppPurchasePriceSchedulesAutomaticPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get base territory relationship ID for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/relationships/baseTerritory` */
 export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23509,7 +28231,11 @@ export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationship = <
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationshipResponses,
+  InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationshipResponses,
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationshipErrors,
@@ -23520,6 +28246,7 @@ export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelationship = <
     ...options,
   });
 
+/** Read related base territory for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/baseTerritory` */
 export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23527,7 +28254,11 @@ export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelated = <
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelatedResponses,
+  InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelatedResponses,
     InAppPurchasePriceSchedulesBaseTerritoryGetToOneRelatedErrors,
@@ -23541,6 +28272,7 @@ export const inAppPurchasePriceSchedulesBaseTerritoryGetToOneRelated = <
     ...options,
   });
 
+/** Get manual prices relationship IDs for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/relationships/manualPrices` */
 export const inAppPurchasePriceSchedulesManualPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23548,7 +28280,11 @@ export const inAppPurchasePriceSchedulesManualPricesGetToManyRelationship = <
     InAppPurchasePriceSchedulesManualPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesManualPricesGetToManyRelationshipResponses,
+  InAppPurchasePriceSchedulesManualPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesManualPricesGetToManyRelationshipResponses,
     InAppPurchasePriceSchedulesManualPricesGetToManyRelationshipErrors,
@@ -23559,6 +28295,7 @@ export const inAppPurchasePriceSchedulesManualPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related manual prices for in app purchase price schedules. `GET /v1/inAppPurchasePriceSchedules/{id}/manualPrices` */
 export const inAppPurchasePriceSchedulesManualPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23566,7 +28303,11 @@ export const inAppPurchasePriceSchedulesManualPricesGetToManyRelated = <
     InAppPurchasePriceSchedulesManualPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponses,
+  InAppPurchasePriceSchedulesManualPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponses,
     InAppPurchasePriceSchedulesManualPricesGetToManyRelatedErrors,
@@ -23588,6 +28329,7 @@ export const inAppPurchasePriceSchedulesManualPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get app store review screenshot relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/appStoreReviewScreenshot` */
 export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23595,7 +28337,11 @@ export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationship = <
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipResponses,
+  InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipResponses,
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipErrors,
@@ -23606,6 +28352,7 @@ export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app store review screenshot for in app purchases v2. `GET /v2/inAppPurchases/{id}/appStoreReviewScreenshot` */
 export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23613,7 +28360,11 @@ export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelated = <
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedResponses,
+  InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedResponses,
     InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedErrors,
@@ -23633,6 +28384,7 @@ export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelated = <
     ...options,
   });
 
+/** Get content relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/content` */
 export const inAppPurchasesV2ContentGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23640,7 +28392,11 @@ export const inAppPurchasesV2ContentGetToOneRelationship = <
     InAppPurchasesV2ContentGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2ContentGetToOneRelationshipResponses,
+  InAppPurchasesV2ContentGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2ContentGetToOneRelationshipResponses,
     InAppPurchasesV2ContentGetToOneRelationshipErrors,
@@ -23651,11 +28407,16 @@ export const inAppPurchasesV2ContentGetToOneRelationship = <
     ...options,
   });
 
+/** Read related content for in app purchases v2. `GET /v2/inAppPurchases/{id}/content` */
 export const inAppPurchasesV2ContentGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2ContentGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2ContentGetToOneRelatedResponses,
+  InAppPurchasesV2ContentGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2ContentGetToOneRelatedResponses,
     InAppPurchasesV2ContentGetToOneRelatedErrors,
@@ -23675,6 +28436,7 @@ export const inAppPurchasesV2ContentGetToOneRelated = <
     ...options,
   });
 
+/** Get iap price schedule relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/iapPriceSchedule` */
 export const inAppPurchasesV2IapPriceScheduleGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23682,7 +28444,11 @@ export const inAppPurchasesV2IapPriceScheduleGetToOneRelationship = <
     InAppPurchasesV2IapPriceScheduleGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2IapPriceScheduleGetToOneRelationshipResponses,
+  InAppPurchasesV2IapPriceScheduleGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2IapPriceScheduleGetToOneRelationshipResponses,
     InAppPurchasesV2IapPriceScheduleGetToOneRelationshipErrors,
@@ -23693,6 +28459,7 @@ export const inAppPurchasesV2IapPriceScheduleGetToOneRelationship = <
     ...options,
   });
 
+/** Read related iap price schedule for in app purchases v2. `GET /v2/inAppPurchases/{id}/iapPriceSchedule` */
 export const inAppPurchasesV2IapPriceScheduleGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23700,7 +28467,11 @@ export const inAppPurchasesV2IapPriceScheduleGetToOneRelated = <
     InAppPurchasesV2IapPriceScheduleGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2IapPriceScheduleGetToOneRelatedResponses,
+  InAppPurchasesV2IapPriceScheduleGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2IapPriceScheduleGetToOneRelatedResponses,
     InAppPurchasesV2IapPriceScheduleGetToOneRelatedErrors,
@@ -23721,6 +28492,7 @@ export const inAppPurchasesV2IapPriceScheduleGetToOneRelated = <
     ...options,
   });
 
+/** Get images relationship IDs for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/images` */
 export const inAppPurchasesV2ImagesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23728,7 +28500,11 @@ export const inAppPurchasesV2ImagesGetToManyRelationship = <
     InAppPurchasesV2ImagesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2ImagesGetToManyRelationshipResponses,
+  InAppPurchasesV2ImagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2ImagesGetToManyRelationshipResponses,
     InAppPurchasesV2ImagesGetToManyRelationshipErrors,
@@ -23739,11 +28515,16 @@ export const inAppPurchasesV2ImagesGetToManyRelationship = <
     ...options,
   });
 
+/** List related images for in app purchases v2. `GET /v2/inAppPurchases/{id}/images` */
 export const inAppPurchasesV2ImagesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<InAppPurchasesV2ImagesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  InAppPurchasesV2ImagesGetToManyRelatedResponses,
+  InAppPurchasesV2ImagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2ImagesGetToManyRelatedResponses,
     InAppPurchasesV2ImagesGetToManyRelatedErrors,
@@ -23761,6 +28542,7 @@ export const inAppPurchasesV2ImagesGetToManyRelated = <
     ...options,
   });
 
+/** Get in app purchase availability relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/inAppPurchaseAvailability` */
 export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23768,7 +28550,11 @@ export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationship = <
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationshipResponses,
+  InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationshipResponses,
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationshipErrors,
@@ -23779,6 +28565,7 @@ export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelationship = <
     ...options,
   });
 
+/** Read related in app purchase availability for in app purchases v2. `GET /v2/inAppPurchases/{id}/inAppPurchaseAvailability` */
 export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23786,7 +28573,11 @@ export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelated = <
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelatedResponses,
+  InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelatedResponses,
     InAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelatedErrors,
@@ -23804,6 +28595,7 @@ export const inAppPurchasesV2InAppPurchaseAvailabilityGetToOneRelated = <
     ...options,
   });
 
+/** Get in app purchase localizations relationship IDs for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/inAppPurchaseLocalizations` */
 export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23811,7 +28603,11 @@ export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationship = <
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationshipResponses,
+  InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationshipResponses,
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationshipErrors,
@@ -23822,6 +28618,7 @@ export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related in app purchase localizations for in app purchases v2. `GET /v2/inAppPurchases/{id}/inAppPurchaseLocalizations` */
 export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23829,7 +28626,11 @@ export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelated = <
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedResponses,
+  InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedResponses,
     InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedErrors,
@@ -23847,6 +28648,7 @@ export const inAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get offer codes relationship IDs for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/offerCodes` */
 export const inAppPurchasesV2OfferCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23854,7 +28656,11 @@ export const inAppPurchasesV2OfferCodesGetToManyRelationship = <
     InAppPurchasesV2OfferCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2OfferCodesGetToManyRelationshipResponses,
+  InAppPurchasesV2OfferCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2OfferCodesGetToManyRelationshipResponses,
     InAppPurchasesV2OfferCodesGetToManyRelationshipErrors,
@@ -23865,6 +28671,7 @@ export const inAppPurchasesV2OfferCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related offer codes for in app purchases v2. `GET /v2/inAppPurchases/{id}/offerCodes` */
 export const inAppPurchasesV2OfferCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23872,7 +28679,11 @@ export const inAppPurchasesV2OfferCodesGetToManyRelated = <
     InAppPurchasesV2OfferCodesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2OfferCodesGetToManyRelatedResponses,
+  InAppPurchasesV2OfferCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2OfferCodesGetToManyRelatedResponses,
     InAppPurchasesV2OfferCodesGetToManyRelatedErrors,
@@ -23899,6 +28710,7 @@ export const inAppPurchasesV2OfferCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get price points relationship IDs for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/pricePoints` */
 export const inAppPurchasesV2PricePointsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23906,7 +28718,11 @@ export const inAppPurchasesV2PricePointsGetToManyRelationship = <
     InAppPurchasesV2PricePointsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2PricePointsGetToManyRelationshipResponses,
+  InAppPurchasesV2PricePointsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2PricePointsGetToManyRelationshipResponses,
     InAppPurchasesV2PricePointsGetToManyRelationshipErrors,
@@ -23917,6 +28733,7 @@ export const inAppPurchasesV2PricePointsGetToManyRelationship = <
     ...options,
   });
 
+/** List related price points for in app purchases v2. `GET /v2/inAppPurchases/{id}/pricePoints` */
 export const inAppPurchasesV2PricePointsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23924,7 +28741,11 @@ export const inAppPurchasesV2PricePointsGetToManyRelated = <
     InAppPurchasesV2PricePointsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2PricePointsGetToManyRelatedResponses,
+  InAppPurchasesV2PricePointsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2PricePointsGetToManyRelatedResponses,
     InAppPurchasesV2PricePointsGetToManyRelatedErrors,
@@ -23943,6 +28764,7 @@ export const inAppPurchasesV2PricePointsGetToManyRelated = <
     ...options,
   });
 
+/** Get promoted purchase relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/promotedPurchase` */
 export const inAppPurchasesV2PromotedPurchaseGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23950,7 +28772,11 @@ export const inAppPurchasesV2PromotedPurchaseGetToOneRelationship = <
     InAppPurchasesV2PromotedPurchaseGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2PromotedPurchaseGetToOneRelationshipResponses,
+  InAppPurchasesV2PromotedPurchaseGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2PromotedPurchaseGetToOneRelationshipResponses,
     InAppPurchasesV2PromotedPurchaseGetToOneRelationshipErrors,
@@ -23961,6 +28787,7 @@ export const inAppPurchasesV2PromotedPurchaseGetToOneRelationship = <
     ...options,
   });
 
+/** Read related promoted purchase for in app purchases v2. `GET /v2/inAppPurchases/{id}/promotedPurchase` */
 export const inAppPurchasesV2PromotedPurchaseGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -23968,7 +28795,11 @@ export const inAppPurchasesV2PromotedPurchaseGetToOneRelated = <
     InAppPurchasesV2PromotedPurchaseGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponses,
+  InAppPurchasesV2PromotedPurchaseGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponses,
     InAppPurchasesV2PromotedPurchaseGetToOneRelatedErrors,
@@ -23987,6 +28818,7 @@ export const inAppPurchasesV2PromotedPurchaseGetToOneRelated = <
     ...options,
   });
 
+/** Get certificates relationship IDs for merchant ids. `GET /v1/merchantIds/{id}/relationships/certificates` */
 export const merchantIdsCertificatesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -23994,7 +28826,11 @@ export const merchantIdsCertificatesGetToManyRelationship = <
     MerchantIdsCertificatesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  MerchantIdsCertificatesGetToManyRelationshipResponses,
+  MerchantIdsCertificatesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     MerchantIdsCertificatesGetToManyRelationshipResponses,
     MerchantIdsCertificatesGetToManyRelationshipErrors,
@@ -24005,11 +28841,16 @@ export const merchantIdsCertificatesGetToManyRelationship = <
     ...options,
   });
 
+/** List related certificates for merchant ids. `GET /v1/merchantIds/{id}/certificates` */
 export const merchantIdsCertificatesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<MerchantIdsCertificatesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  MerchantIdsCertificatesGetToManyRelatedResponses,
+  MerchantIdsCertificatesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     MerchantIdsCertificatesGetToManyRelatedResponses,
     MerchantIdsCertificatesGetToManyRelatedErrors,
@@ -24034,6 +28875,7 @@ export const merchantIdsCertificatesGetToManyRelated = <
     ...options,
   });
 
+/** Get certificates relationship IDs for pass type ids. `GET /v1/passTypeIds/{id}/relationships/certificates` */
 export const passTypeIdsCertificatesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24041,7 +28883,11 @@ export const passTypeIdsCertificatesGetToManyRelationship = <
     PassTypeIdsCertificatesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  PassTypeIdsCertificatesGetToManyRelationshipResponses,
+  PassTypeIdsCertificatesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PassTypeIdsCertificatesGetToManyRelationshipResponses,
     PassTypeIdsCertificatesGetToManyRelationshipErrors,
@@ -24052,11 +28898,16 @@ export const passTypeIdsCertificatesGetToManyRelationship = <
     ...options,
   });
 
+/** List related certificates for pass type ids. `GET /v1/passTypeIds/{id}/certificates` */
 export const passTypeIdsCertificatesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PassTypeIdsCertificatesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  PassTypeIdsCertificatesGetToManyRelatedResponses,
+  PassTypeIdsCertificatesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PassTypeIdsCertificatesGetToManyRelatedResponses,
     PassTypeIdsCertificatesGetToManyRelatedErrors,
@@ -24081,11 +28932,16 @@ export const passTypeIdsCertificatesGetToManyRelated = <
     ...options,
   });
 
+/** Get app relationship ID for pre release versions. `GET /v1/preReleaseVersions/{id}/relationships/app` */
 export const preReleaseVersionsAppGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PreReleaseVersionsAppGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  PreReleaseVersionsAppGetToOneRelationshipResponses,
+  PreReleaseVersionsAppGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PreReleaseVersionsAppGetToOneRelationshipResponses,
     PreReleaseVersionsAppGetToOneRelationshipErrors,
@@ -24096,11 +28952,16 @@ export const preReleaseVersionsAppGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app for pre release versions. `GET /v1/preReleaseVersions/{id}/app` */
 export const preReleaseVersionsAppGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PreReleaseVersionsAppGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  PreReleaseVersionsAppGetToOneRelatedResponses,
+  PreReleaseVersionsAppGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PreReleaseVersionsAppGetToOneRelatedResponses,
     PreReleaseVersionsAppGetToOneRelatedErrors,
@@ -24114,6 +28975,7 @@ export const preReleaseVersionsAppGetToOneRelated = <
     ...options,
   });
 
+/** Get builds relationship IDs for pre release versions. `GET /v1/preReleaseVersions/{id}/relationships/builds` */
 export const preReleaseVersionsBuildsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24121,7 +28983,11 @@ export const preReleaseVersionsBuildsGetToManyRelationship = <
     PreReleaseVersionsBuildsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  PreReleaseVersionsBuildsGetToManyRelationshipResponses,
+  PreReleaseVersionsBuildsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PreReleaseVersionsBuildsGetToManyRelationshipResponses,
     PreReleaseVersionsBuildsGetToManyRelationshipErrors,
@@ -24132,11 +28998,16 @@ export const preReleaseVersionsBuildsGetToManyRelationship = <
     ...options,
   });
 
+/** List related builds for pre release versions. `GET /v1/preReleaseVersions/{id}/builds` */
 export const preReleaseVersionsBuildsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<PreReleaseVersionsBuildsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  PreReleaseVersionsBuildsGetToManyRelatedResponses,
+  PreReleaseVersionsBuildsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     PreReleaseVersionsBuildsGetToManyRelatedResponses,
     PreReleaseVersionsBuildsGetToManyRelatedErrors,
@@ -24152,11 +29023,16 @@ export const preReleaseVersionsBuildsGetToManyRelated = <
     ...options,
   });
 
+/** Get bundle id relationship ID for profiles. `GET /v1/profiles/{id}/relationships/bundleId` */
 export const profilesBundleIdGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesBundleIdGetToOneRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesBundleIdGetToOneRelationshipResponses,
+  ProfilesBundleIdGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesBundleIdGetToOneRelationshipResponses,
     ProfilesBundleIdGetToOneRelationshipErrors,
@@ -24167,11 +29043,16 @@ export const profilesBundleIdGetToOneRelationship = <
     ...options,
   });
 
+/** Read related bundle id for profiles. `GET /v1/profiles/{id}/bundleId` */
 export const profilesBundleIdGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesBundleIdGetToOneRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesBundleIdGetToOneRelatedResponses,
+  ProfilesBundleIdGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesBundleIdGetToOneRelatedResponses,
     ProfilesBundleIdGetToOneRelatedErrors,
@@ -24185,11 +29066,16 @@ export const profilesBundleIdGetToOneRelated = <
     ...options,
   });
 
+/** Get certificates relationship IDs for profiles. `GET /v1/profiles/{id}/relationships/certificates` */
 export const profilesCertificatesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesCertificatesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesCertificatesGetToManyRelationshipResponses,
+  ProfilesCertificatesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesCertificatesGetToManyRelationshipResponses,
     ProfilesCertificatesGetToManyRelationshipErrors,
@@ -24200,11 +29086,16 @@ export const profilesCertificatesGetToManyRelationship = <
     ...options,
   });
 
+/** List related certificates for profiles. `GET /v1/profiles/{id}/certificates` */
 export const profilesCertificatesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesCertificatesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesCertificatesGetToManyRelatedResponses,
+  ProfilesCertificatesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesCertificatesGetToManyRelatedResponses,
     ProfilesCertificatesGetToManyRelatedErrors,
@@ -24220,11 +29111,16 @@ export const profilesCertificatesGetToManyRelated = <
     ...options,
   });
 
+/** Get devices relationship IDs for profiles. `GET /v1/profiles/{id}/relationships/devices` */
 export const profilesDevicesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesDevicesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesDevicesGetToManyRelationshipResponses,
+  ProfilesDevicesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesDevicesGetToManyRelationshipResponses,
     ProfilesDevicesGetToManyRelationshipErrors,
@@ -24235,11 +29131,16 @@ export const profilesDevicesGetToManyRelationship = <
     ...options,
   });
 
+/** List related devices for profiles. `GET /v1/profiles/{id}/devices` */
 export const profilesDevicesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ProfilesDevicesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  ProfilesDevicesGetToManyRelatedResponses,
+  ProfilesDevicesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ProfilesDevicesGetToManyRelatedResponses,
     ProfilesDevicesGetToManyRelatedErrors,
@@ -24254,6 +29155,7 @@ export const profilesDevicesGetToManyRelated = <
     ...options,
   });
 
+/** Get items relationship IDs for review submissions. `GET /v1/reviewSubmissions/{id}/relationships/items` */
 export const reviewSubmissionsItemsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24261,7 +29163,11 @@ export const reviewSubmissionsItemsGetToManyRelationship = <
     ReviewSubmissionsItemsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ReviewSubmissionsItemsGetToManyRelationshipResponses,
+  ReviewSubmissionsItemsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ReviewSubmissionsItemsGetToManyRelationshipResponses,
     ReviewSubmissionsItemsGetToManyRelationshipErrors,
@@ -24272,11 +29178,16 @@ export const reviewSubmissionsItemsGetToManyRelationship = <
     ...options,
   });
 
+/** List related items for review submissions. `GET /v1/reviewSubmissions/{id}/items` */
 export const reviewSubmissionsItemsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ReviewSubmissionsItemsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  ReviewSubmissionsItemsGetToManyRelatedResponses,
+  ReviewSubmissionsItemsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ReviewSubmissionsItemsGetToManyRelatedResponses,
     ReviewSubmissionsItemsGetToManyRelatedErrors,
@@ -24305,6 +29216,7 @@ export const reviewSubmissionsItemsGetToManyRelated = <
     ...options,
   });
 
+/** Get repositories relationship IDs for scm providers. `GET /v1/scmProviders/{id}/relationships/repositories` */
 export const scmProvidersRepositoriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24312,7 +29224,11 @@ export const scmProvidersRepositoriesGetToManyRelationship = <
     ScmProvidersRepositoriesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ScmProvidersRepositoriesGetToManyRelationshipResponses,
+  ScmProvidersRepositoriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmProvidersRepositoriesGetToManyRelationshipResponses,
     ScmProvidersRepositoriesGetToManyRelationshipErrors,
@@ -24323,11 +29239,16 @@ export const scmProvidersRepositoriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related repositories for scm providers. `GET /v1/scmProviders/{id}/repositories` */
 export const scmProvidersRepositoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<ScmProvidersRepositoriesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  ScmProvidersRepositoriesGetToManyRelatedResponses,
+  ScmProvidersRepositoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmProvidersRepositoriesGetToManyRelatedResponses,
     ScmProvidersRepositoriesGetToManyRelatedErrors,
@@ -24349,6 +29270,7 @@ export const scmProvidersRepositoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get git references relationship IDs for scm repositories. `GET /v1/scmRepositories/{id}/relationships/gitReferences` */
 export const scmRepositoriesGitReferencesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24356,7 +29278,11 @@ export const scmRepositoriesGitReferencesGetToManyRelationship = <
     ScmRepositoriesGitReferencesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ScmRepositoriesGitReferencesGetToManyRelationshipResponses,
+  ScmRepositoriesGitReferencesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmRepositoriesGitReferencesGetToManyRelationshipResponses,
     ScmRepositoriesGitReferencesGetToManyRelationshipErrors,
@@ -24367,6 +29293,7 @@ export const scmRepositoriesGitReferencesGetToManyRelationship = <
     ...options,
   });
 
+/** List related git references for scm repositories. `GET /v1/scmRepositories/{id}/gitReferences` */
 export const scmRepositoriesGitReferencesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24374,7 +29301,11 @@ export const scmRepositoriesGitReferencesGetToManyRelated = <
     ScmRepositoriesGitReferencesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ScmRepositoriesGitReferencesGetToManyRelatedResponses,
+  ScmRepositoriesGitReferencesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmRepositoriesGitReferencesGetToManyRelatedResponses,
     ScmRepositoriesGitReferencesGetToManyRelatedErrors,
@@ -24394,6 +29325,7 @@ export const scmRepositoriesGitReferencesGetToManyRelated = <
     ...options,
   });
 
+/** Get pull requests relationship IDs for scm repositories. `GET /v1/scmRepositories/{id}/relationships/pullRequests` */
 export const scmRepositoriesPullRequestsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24401,7 +29333,11 @@ export const scmRepositoriesPullRequestsGetToManyRelationship = <
     ScmRepositoriesPullRequestsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ScmRepositoriesPullRequestsGetToManyRelationshipResponses,
+  ScmRepositoriesPullRequestsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmRepositoriesPullRequestsGetToManyRelationshipResponses,
     ScmRepositoriesPullRequestsGetToManyRelationshipErrors,
@@ -24412,6 +29348,7 @@ export const scmRepositoriesPullRequestsGetToManyRelationship = <
     ...options,
   });
 
+/** List related pull requests for scm repositories. `GET /v1/scmRepositories/{id}/pullRequests` */
 export const scmRepositoriesPullRequestsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24419,7 +29356,11 @@ export const scmRepositoriesPullRequestsGetToManyRelated = <
     ScmRepositoriesPullRequestsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  ScmRepositoriesPullRequestsGetToManyRelatedResponses,
+  ScmRepositoriesPullRequestsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     ScmRepositoriesPullRequestsGetToManyRelatedResponses,
     ScmRepositoriesPullRequestsGetToManyRelatedErrors,
@@ -24439,13 +29380,18 @@ export const scmRepositoriesPullRequestsGetToManyRelated = <
     ...options,
   });
 
+/** Get available territories relationship IDs for subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories` */
 export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
+    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
       SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
@@ -24456,6 +29402,7 @@ export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationship
       ...options,
     });
 
+/** List related available territories for subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}/availableTerritories` */
 export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24463,7 +29410,11 @@ export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelated = <
     SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
+  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
     SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
@@ -24477,13 +29428,18 @@ export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelated = <
     ...options,
   });
 
+/** Get subscription group localizations relationship IDs for subscription groups. `GET /v1/subscriptionGroups/{id}/relationships/subscriptionGroupLocalizations` */
 export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
     options: Options<
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipResponses,
+    SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipResponses,
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipErrors,
@@ -24494,13 +29450,18 @@ export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationsh
       ...options,
     });
 
+/** List related subscription group localizations for subscription groups. `GET /v1/subscriptionGroups/{id}/subscriptionGroupLocalizations` */
 export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelated =
   <ThrowOnError extends boolean = false>(
     options: Options<
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedResponses,
+    SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedResponses,
       SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedErrors,
@@ -24520,6 +29481,7 @@ export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelated =
       ...options,
     });
 
+/** Get subscriptions relationship IDs for subscription groups. `GET /v1/subscriptionGroups/{id}/relationships/subscriptions` */
 export const subscriptionGroupsSubscriptionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24527,7 +29489,11 @@ export const subscriptionGroupsSubscriptionsGetToManyRelationship = <
     SubscriptionGroupsSubscriptionsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupsSubscriptionsGetToManyRelationshipResponses,
+  SubscriptionGroupsSubscriptionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionGroupsSubscriptionsGetToManyRelationshipResponses,
     SubscriptionGroupsSubscriptionsGetToManyRelationshipErrors,
@@ -24538,6 +29504,7 @@ export const subscriptionGroupsSubscriptionsGetToManyRelationship = <
     ...options,
   });
 
+/** List related subscriptions for subscription groups. `GET /v1/subscriptionGroups/{id}/subscriptions` */
 export const subscriptionGroupsSubscriptionsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24545,7 +29512,11 @@ export const subscriptionGroupsSubscriptionsGetToManyRelated = <
     SubscriptionGroupsSubscriptionsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionGroupsSubscriptionsGetToManyRelatedResponses,
+  SubscriptionGroupsSubscriptionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionGroupsSubscriptionsGetToManyRelatedResponses,
     SubscriptionGroupsSubscriptionsGetToManyRelatedErrors,
@@ -24579,6 +29550,7 @@ export const subscriptionGroupsSubscriptionsGetToManyRelated = <
     ...options,
   });
 
+/** Read related values for subscription offer code one time use codes. `GET /v1/subscriptionOfferCodeOneTimeUseCodes/{id}/values` */
 export const subscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24586,7 +29558,11 @@ export const subscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
     SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedResponses,
+  SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedResponses,
     SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedErrors,
@@ -24597,6 +29573,7 @@ export const subscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelated = <
     ...options,
   });
 
+/** Get custom codes relationship IDs for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/relationships/customCodes` */
 export const subscriptionOfferCodesCustomCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24604,7 +29581,11 @@ export const subscriptionOfferCodesCustomCodesGetToManyRelationship = <
     SubscriptionOfferCodesCustomCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesCustomCodesGetToManyRelationshipResponses,
+  SubscriptionOfferCodesCustomCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesCustomCodesGetToManyRelationshipResponses,
     SubscriptionOfferCodesCustomCodesGetToManyRelationshipErrors,
@@ -24615,6 +29596,7 @@ export const subscriptionOfferCodesCustomCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related custom codes for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/customCodes` */
 export const subscriptionOfferCodesCustomCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24622,7 +29604,11 @@ export const subscriptionOfferCodesCustomCodesGetToManyRelated = <
     SubscriptionOfferCodesCustomCodesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesCustomCodesGetToManyRelatedResponses,
+  SubscriptionOfferCodesCustomCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesCustomCodesGetToManyRelatedResponses,
     SubscriptionOfferCodesCustomCodesGetToManyRelatedErrors,
@@ -24644,6 +29630,7 @@ export const subscriptionOfferCodesCustomCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get one time use codes relationship IDs for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/relationships/oneTimeUseCodes` */
 export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24651,7 +29638,11 @@ export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelationship = <
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesOneTimeUseCodesGetToManyRelationshipResponses,
+  SubscriptionOfferCodesOneTimeUseCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelationshipResponses,
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelationshipErrors,
@@ -24662,6 +29653,7 @@ export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related one time use codes for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/oneTimeUseCodes` */
 export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24669,7 +29661,11 @@ export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelated = <
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedResponses,
+  SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedResponses,
     SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedErrors,
@@ -24691,6 +29687,7 @@ export const subscriptionOfferCodesOneTimeUseCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get prices relationship IDs for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/relationships/prices` */
 export const subscriptionOfferCodesPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24698,7 +29695,11 @@ export const subscriptionOfferCodesPricesGetToManyRelationship = <
     SubscriptionOfferCodesPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesPricesGetToManyRelationshipResponses,
+  SubscriptionOfferCodesPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesPricesGetToManyRelationshipResponses,
     SubscriptionOfferCodesPricesGetToManyRelationshipErrors,
@@ -24709,6 +29710,7 @@ export const subscriptionOfferCodesPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related prices for subscription offer codes. `GET /v1/subscriptionOfferCodes/{id}/prices` */
 export const subscriptionOfferCodesPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24716,7 +29718,11 @@ export const subscriptionOfferCodesPricesGetToManyRelated = <
     SubscriptionOfferCodesPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionOfferCodesPricesGetToManyRelatedResponses,
+  SubscriptionOfferCodesPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionOfferCodesPricesGetToManyRelatedResponses,
     SubscriptionOfferCodesPricesGetToManyRelatedErrors,
@@ -24736,6 +29742,7 @@ export const subscriptionOfferCodesPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get equalizations relationship IDs for subscription price points. `GET /v1/subscriptionPricePoints/{id}/relationships/equalizations` */
 export const subscriptionPricePointsEqualizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24743,7 +29750,11 @@ export const subscriptionPricePointsEqualizationsGetToManyRelationship = <
     SubscriptionPricePointsEqualizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPricePointsEqualizationsGetToManyRelationshipResponses,
+  SubscriptionPricePointsEqualizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPricePointsEqualizationsGetToManyRelationshipResponses,
     SubscriptionPricePointsEqualizationsGetToManyRelationshipErrors,
@@ -24754,6 +29765,7 @@ export const subscriptionPricePointsEqualizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related equalizations for subscription price points. `GET /v1/subscriptionPricePoints/{id}/equalizations` */
 export const subscriptionPricePointsEqualizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24761,7 +29773,11 @@ export const subscriptionPricePointsEqualizationsGetToManyRelated = <
     SubscriptionPricePointsEqualizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPricePointsEqualizationsGetToManyRelatedResponses,
+  SubscriptionPricePointsEqualizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPricePointsEqualizationsGetToManyRelatedResponses,
     SubscriptionPricePointsEqualizationsGetToManyRelatedErrors,
@@ -24781,6 +29797,7 @@ export const subscriptionPricePointsEqualizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get prices relationship IDs for subscription promotional offers. `GET /v1/subscriptionPromotionalOffers/{id}/relationships/prices` */
 export const subscriptionPromotionalOffersPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24788,7 +29805,11 @@ export const subscriptionPromotionalOffersPricesGetToManyRelationship = <
     SubscriptionPromotionalOffersPricesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersPricesGetToManyRelationshipResponses,
+  SubscriptionPromotionalOffersPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPromotionalOffersPricesGetToManyRelationshipResponses,
     SubscriptionPromotionalOffersPricesGetToManyRelationshipErrors,
@@ -24799,6 +29820,7 @@ export const subscriptionPromotionalOffersPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related prices for subscription promotional offers. `GET /v1/subscriptionPromotionalOffers/{id}/prices` */
 export const subscriptionPromotionalOffersPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24806,7 +29828,11 @@ export const subscriptionPromotionalOffersPricesGetToManyRelated = <
     SubscriptionPromotionalOffersPricesGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionPromotionalOffersPricesGetToManyRelatedResponses,
+  SubscriptionPromotionalOffersPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionPromotionalOffersPricesGetToManyRelatedResponses,
     SubscriptionPromotionalOffersPricesGetToManyRelatedErrors,
@@ -24828,6 +29854,7 @@ export const subscriptionPromotionalOffersPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get app store review screenshot relationship ID for subscriptions. `GET /v1/subscriptions/{id}/relationships/appStoreReviewScreenshot` */
 export const subscriptionsAppStoreReviewScreenshotGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24835,7 +29862,11 @@ export const subscriptionsAppStoreReviewScreenshotGetToOneRelationship = <
     SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipResponses,
+  SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipResponses,
     SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipErrors,
@@ -24846,6 +29877,7 @@ export const subscriptionsAppStoreReviewScreenshotGetToOneRelationship = <
     ...options,
   });
 
+/** Read related app store review screenshot for subscriptions. `GET /v1/subscriptions/{id}/appStoreReviewScreenshot` */
 export const subscriptionsAppStoreReviewScreenshotGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24853,7 +29885,11 @@ export const subscriptionsAppStoreReviewScreenshotGetToOneRelated = <
     SubscriptionsAppStoreReviewScreenshotGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsAppStoreReviewScreenshotGetToOneRelatedResponses,
+  SubscriptionsAppStoreReviewScreenshotGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsAppStoreReviewScreenshotGetToOneRelatedResponses,
     SubscriptionsAppStoreReviewScreenshotGetToOneRelatedErrors,
@@ -24873,11 +29909,16 @@ export const subscriptionsAppStoreReviewScreenshotGetToOneRelated = <
     ...options,
   });
 
+/** Get images relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/images` */
 export const subscriptionsImagesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsImagesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsImagesGetToManyRelationshipResponses,
+  SubscriptionsImagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsImagesGetToManyRelationshipResponses,
     SubscriptionsImagesGetToManyRelationshipErrors,
@@ -24888,11 +29929,16 @@ export const subscriptionsImagesGetToManyRelationship = <
     ...options,
   });
 
+/** List related images for subscriptions. `GET /v1/subscriptions/{id}/images` */
 export const subscriptionsImagesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsImagesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsImagesGetToManyRelatedResponses,
+  SubscriptionsImagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsImagesGetToManyRelatedResponses,
     SubscriptionsImagesGetToManyRelatedErrors,
@@ -24910,6 +29956,7 @@ export const subscriptionsImagesGetToManyRelated = <
     ...options,
   });
 
+/** Remove introductory offers relationship for subscriptions. `DELETE /v1/subscriptions/{id}/relationships/introductoryOffers` */
 export const subscriptionsIntroductoryOffersDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24917,7 +29964,11 @@ export const subscriptionsIntroductoryOffersDeleteToManyRelationship = <
     SubscriptionsIntroductoryOffersDeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsIntroductoryOffersDeleteToManyRelationshipResponses,
+  SubscriptionsIntroductoryOffersDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionsIntroductoryOffersDeleteToManyRelationshipResponses,
     SubscriptionsIntroductoryOffersDeleteToManyRelationshipErrors,
@@ -24932,6 +29983,7 @@ export const subscriptionsIntroductoryOffersDeleteToManyRelationship = <
     },
   });
 
+/** Get introductory offers relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/introductoryOffers` */
 export const subscriptionsIntroductoryOffersGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24939,7 +29991,11 @@ export const subscriptionsIntroductoryOffersGetToManyRelationship = <
     SubscriptionsIntroductoryOffersGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsIntroductoryOffersGetToManyRelationshipResponses,
+  SubscriptionsIntroductoryOffersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsIntroductoryOffersGetToManyRelationshipResponses,
     SubscriptionsIntroductoryOffersGetToManyRelationshipErrors,
@@ -24950,6 +30006,7 @@ export const subscriptionsIntroductoryOffersGetToManyRelationship = <
     ...options,
   });
 
+/** List related introductory offers for subscriptions. `GET /v1/subscriptions/{id}/introductoryOffers` */
 export const subscriptionsIntroductoryOffersGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -24957,7 +30014,11 @@ export const subscriptionsIntroductoryOffersGetToManyRelated = <
     SubscriptionsIntroductoryOffersGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsIntroductoryOffersGetToManyRelatedResponses,
+  SubscriptionsIntroductoryOffersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsIntroductoryOffersGetToManyRelatedResponses,
     SubscriptionsIntroductoryOffersGetToManyRelatedErrors,
@@ -24980,6 +30041,7 @@ export const subscriptionsIntroductoryOffersGetToManyRelated = <
     ...options,
   });
 
+/** Get offer codes relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/offerCodes` */
 export const subscriptionsOfferCodesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -24987,7 +30049,11 @@ export const subscriptionsOfferCodesGetToManyRelationship = <
     SubscriptionsOfferCodesGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsOfferCodesGetToManyRelationshipResponses,
+  SubscriptionsOfferCodesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsOfferCodesGetToManyRelationshipResponses,
     SubscriptionsOfferCodesGetToManyRelationshipErrors,
@@ -24998,11 +30064,16 @@ export const subscriptionsOfferCodesGetToManyRelationship = <
     ...options,
   });
 
+/** List related offer codes for subscriptions. `GET /v1/subscriptions/{id}/offerCodes` */
 export const subscriptionsOfferCodesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsOfferCodesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsOfferCodesGetToManyRelatedResponses,
+  SubscriptionsOfferCodesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsOfferCodesGetToManyRelatedResponses,
     SubscriptionsOfferCodesGetToManyRelatedErrors,
@@ -25030,6 +30101,7 @@ export const subscriptionsOfferCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get price points relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/pricePoints` */
 export const subscriptionsPricePointsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25037,7 +30109,11 @@ export const subscriptionsPricePointsGetToManyRelationship = <
     SubscriptionsPricePointsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPricePointsGetToManyRelationshipResponses,
+  SubscriptionsPricePointsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPricePointsGetToManyRelationshipResponses,
     SubscriptionsPricePointsGetToManyRelationshipErrors,
@@ -25048,11 +30124,16 @@ export const subscriptionsPricePointsGetToManyRelationship = <
     ...options,
   });
 
+/** List related price points for subscriptions. `GET /v1/subscriptions/{id}/pricePoints` */
 export const subscriptionsPricePointsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsPricePointsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsPricePointsGetToManyRelatedResponses,
+  SubscriptionsPricePointsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPricePointsGetToManyRelatedResponses,
     SubscriptionsPricePointsGetToManyRelatedErrors,
@@ -25071,6 +30152,7 @@ export const subscriptionsPricePointsGetToManyRelated = <
     ...options,
   });
 
+/** Remove prices relationship for subscriptions. `DELETE /v1/subscriptions/{id}/relationships/prices` */
 export const subscriptionsPricesDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25078,7 +30160,11 @@ export const subscriptionsPricesDeleteToManyRelationship = <
     SubscriptionsPricesDeleteToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPricesDeleteToManyRelationshipResponses,
+  SubscriptionsPricesDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     SubscriptionsPricesDeleteToManyRelationshipResponses,
     SubscriptionsPricesDeleteToManyRelationshipErrors,
@@ -25093,11 +30179,16 @@ export const subscriptionsPricesDeleteToManyRelationship = <
     },
   });
 
+/** Get prices relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/prices` */
 export const subscriptionsPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsPricesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsPricesGetToManyRelationshipResponses,
+  SubscriptionsPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPricesGetToManyRelationshipResponses,
     SubscriptionsPricesGetToManyRelationshipErrors,
@@ -25108,11 +30199,16 @@ export const subscriptionsPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related prices for subscriptions. `GET /v1/subscriptions/{id}/prices` */
 export const subscriptionsPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<SubscriptionsPricesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  SubscriptionsPricesGetToManyRelatedResponses,
+  SubscriptionsPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPricesGetToManyRelatedResponses,
     SubscriptionsPricesGetToManyRelatedErrors,
@@ -25134,6 +30230,7 @@ export const subscriptionsPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get promoted purchase relationship ID for subscriptions. `GET /v1/subscriptions/{id}/relationships/promotedPurchase` */
 export const subscriptionsPromotedPurchaseGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25141,7 +30238,11 @@ export const subscriptionsPromotedPurchaseGetToOneRelationship = <
     SubscriptionsPromotedPurchaseGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPromotedPurchaseGetToOneRelationshipResponses,
+  SubscriptionsPromotedPurchaseGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPromotedPurchaseGetToOneRelationshipResponses,
     SubscriptionsPromotedPurchaseGetToOneRelationshipErrors,
@@ -25152,6 +30253,7 @@ export const subscriptionsPromotedPurchaseGetToOneRelationship = <
     ...options,
   });
 
+/** Read related promoted purchase for subscriptions. `GET /v1/subscriptions/{id}/promotedPurchase` */
 export const subscriptionsPromotedPurchaseGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25159,7 +30261,11 @@ export const subscriptionsPromotedPurchaseGetToOneRelated = <
     SubscriptionsPromotedPurchaseGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPromotedPurchaseGetToOneRelatedResponses,
+  SubscriptionsPromotedPurchaseGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPromotedPurchaseGetToOneRelatedResponses,
     SubscriptionsPromotedPurchaseGetToOneRelatedErrors,
@@ -25178,6 +30284,7 @@ export const subscriptionsPromotedPurchaseGetToOneRelated = <
     ...options,
   });
 
+/** Get promotional offers relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/promotionalOffers` */
 export const subscriptionsPromotionalOffersGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25185,7 +30292,11 @@ export const subscriptionsPromotionalOffersGetToManyRelationship = <
     SubscriptionsPromotionalOffersGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPromotionalOffersGetToManyRelationshipResponses,
+  SubscriptionsPromotionalOffersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPromotionalOffersGetToManyRelationshipResponses,
     SubscriptionsPromotionalOffersGetToManyRelationshipErrors,
@@ -25196,6 +30307,7 @@ export const subscriptionsPromotionalOffersGetToManyRelationship = <
     ...options,
   });
 
+/** List related promotional offers for subscriptions. `GET /v1/subscriptions/{id}/promotionalOffers` */
 export const subscriptionsPromotionalOffersGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25203,7 +30315,11 @@ export const subscriptionsPromotionalOffersGetToManyRelated = <
     SubscriptionsPromotionalOffersGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsPromotionalOffersGetToManyRelatedResponses,
+  SubscriptionsPromotionalOffersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsPromotionalOffersGetToManyRelatedResponses,
     SubscriptionsPromotionalOffersGetToManyRelatedErrors,
@@ -25225,6 +30341,7 @@ export const subscriptionsPromotionalOffersGetToManyRelated = <
     ...options,
   });
 
+/** Get subscription availability relationship ID for subscriptions. `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability` */
 export const subscriptionsSubscriptionAvailabilityGetToOneRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25232,7 +30349,11 @@ export const subscriptionsSubscriptionAvailabilityGetToOneRelationship = <
     SubscriptionsSubscriptionAvailabilityGetToOneRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses,
+  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses,
     SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors,
@@ -25243,6 +30364,7 @@ export const subscriptionsSubscriptionAvailabilityGetToOneRelationship = <
     ...options,
   });
 
+/** Read related subscription availability for subscriptions. `GET /v1/subscriptions/{id}/subscriptionAvailability` */
 export const subscriptionsSubscriptionAvailabilityGetToOneRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25250,7 +30372,11 @@ export const subscriptionsSubscriptionAvailabilityGetToOneRelated = <
     SubscriptionsSubscriptionAvailabilityGetToOneRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses,
+  SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses,
     SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors,
@@ -25268,6 +30394,7 @@ export const subscriptionsSubscriptionAvailabilityGetToOneRelated = <
     ...options,
   });
 
+/** Get subscription localizations relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/subscriptionLocalizations` */
 export const subscriptionsSubscriptionLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25275,7 +30402,11 @@ export const subscriptionsSubscriptionLocalizationsGetToManyRelationship = <
     SubscriptionsSubscriptionLocalizationsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsSubscriptionLocalizationsGetToManyRelationshipResponses,
+  SubscriptionsSubscriptionLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsSubscriptionLocalizationsGetToManyRelationshipResponses,
     SubscriptionsSubscriptionLocalizationsGetToManyRelationshipErrors,
@@ -25286,6 +30417,7 @@ export const subscriptionsSubscriptionLocalizationsGetToManyRelationship = <
     ...options,
   });
 
+/** List related subscription localizations for subscriptions. `GET /v1/subscriptions/{id}/subscriptionLocalizations` */
 export const subscriptionsSubscriptionLocalizationsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25293,7 +30425,11 @@ export const subscriptionsSubscriptionLocalizationsGetToManyRelated = <
     SubscriptionsSubscriptionLocalizationsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses,
+  SubscriptionsSubscriptionLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses,
     SubscriptionsSubscriptionLocalizationsGetToManyRelatedErrors,
@@ -25311,6 +30447,7 @@ export const subscriptionsSubscriptionLocalizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get win back offers relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/winBackOffers` */
 export const subscriptionsWinBackOffersGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25318,7 +30455,11 @@ export const subscriptionsWinBackOffersGetToManyRelationship = <
     SubscriptionsWinBackOffersGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsWinBackOffersGetToManyRelationshipResponses,
+  SubscriptionsWinBackOffersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsWinBackOffersGetToManyRelationshipResponses,
     SubscriptionsWinBackOffersGetToManyRelationshipErrors,
@@ -25329,6 +30470,7 @@ export const subscriptionsWinBackOffersGetToManyRelationship = <
     ...options,
   });
 
+/** List related win back offers for subscriptions. `GET /v1/subscriptions/{id}/winBackOffers` */
 export const subscriptionsWinBackOffersGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25336,7 +30478,11 @@ export const subscriptionsWinBackOffersGetToManyRelated = <
     SubscriptionsWinBackOffersGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  SubscriptionsWinBackOffersGetToManyRelatedResponses,
+  SubscriptionsWinBackOffersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     SubscriptionsWinBackOffersGetToManyRelatedResponses,
     SubscriptionsWinBackOffersGetToManyRelatedErrors,
@@ -25356,6 +30502,7 @@ export const subscriptionsWinBackOffersGetToManyRelated = <
     ...options,
   });
 
+/** Get visible apps relationship IDs for user invitations. `GET /v1/userInvitations/{id}/relationships/visibleApps` */
 export const userInvitationsVisibleAppsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
@@ -25363,7 +30510,11 @@ export const userInvitationsVisibleAppsGetToManyRelationship = <
     UserInvitationsVisibleAppsGetToManyRelationshipData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  UserInvitationsVisibleAppsGetToManyRelationshipResponses,
+  UserInvitationsVisibleAppsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UserInvitationsVisibleAppsGetToManyRelationshipResponses,
     UserInvitationsVisibleAppsGetToManyRelationshipErrors,
@@ -25374,6 +30525,7 @@ export const userInvitationsVisibleAppsGetToManyRelationship = <
     ...options,
   });
 
+/** List related visible apps for user invitations. `GET /v1/userInvitations/{id}/visibleApps` */
 export const userInvitationsVisibleAppsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
@@ -25381,7 +30533,11 @@ export const userInvitationsVisibleAppsGetToManyRelated = <
     UserInvitationsVisibleAppsGetToManyRelatedData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  UserInvitationsVisibleAppsGetToManyRelatedResponses,
+  UserInvitationsVisibleAppsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UserInvitationsVisibleAppsGetToManyRelatedResponses,
     UserInvitationsVisibleAppsGetToManyRelatedErrors,
@@ -25395,11 +30551,16 @@ export const userInvitationsVisibleAppsGetToManyRelated = <
     ...options,
   });
 
+/** Remove visible apps relationship for users. `DELETE /v1/users/{id}/relationships/visibleApps` */
 export const usersVisibleAppsDeleteToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UsersVisibleAppsDeleteToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersVisibleAppsDeleteToManyRelationshipResponses,
+  UsersVisibleAppsDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).delete<
     UsersVisibleAppsDeleteToManyRelationshipResponses,
     UsersVisibleAppsDeleteToManyRelationshipErrors,
@@ -25414,11 +30575,16 @@ export const usersVisibleAppsDeleteToManyRelationship = <
     },
   });
 
+/** Get visible apps relationship IDs for users. `GET /v1/users/{id}/relationships/visibleApps` */
 export const usersVisibleAppsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UsersVisibleAppsGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersVisibleAppsGetToManyRelationshipResponses,
+  UsersVisibleAppsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UsersVisibleAppsGetToManyRelationshipResponses,
     UsersVisibleAppsGetToManyRelationshipErrors,
@@ -25429,11 +30595,16 @@ export const usersVisibleAppsGetToManyRelationship = <
     ...options,
   });
 
+/** Replace visible apps relationships for users. `PATCH /v1/users/{id}/relationships/visibleApps` */
 export const usersVisibleAppsReplaceToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UsersVisibleAppsReplaceToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersVisibleAppsReplaceToManyRelationshipResponses,
+  UsersVisibleAppsReplaceToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).patch<
     UsersVisibleAppsReplaceToManyRelationshipResponses,
     UsersVisibleAppsReplaceToManyRelationshipErrors,
@@ -25448,11 +30619,16 @@ export const usersVisibleAppsReplaceToManyRelationship = <
     },
   });
 
+/** Add visible apps relationship for users. `POST /v1/users/{id}/relationships/visibleApps` */
 export const usersVisibleAppsCreateToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UsersVisibleAppsCreateToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersVisibleAppsCreateToManyRelationshipResponses,
+  UsersVisibleAppsCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).post<
     UsersVisibleAppsCreateToManyRelationshipResponses,
     UsersVisibleAppsCreateToManyRelationshipErrors,
@@ -25467,11 +30643,16 @@ export const usersVisibleAppsCreateToManyRelationship = <
     },
   });
 
+/** List related visible apps for users. `GET /v1/users/{id}/visibleApps` */
 export const usersVisibleAppsGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<UsersVisibleAppsGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  UsersVisibleAppsGetToManyRelatedResponses,
+  UsersVisibleAppsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     UsersVisibleAppsGetToManyRelatedResponses,
     UsersVisibleAppsGetToManyRelatedErrors,
@@ -25485,11 +30666,16 @@ export const usersVisibleAppsGetToManyRelated = <
     ...options,
   });
 
+/** Get deliveries relationship IDs for webhooks. `GET /v1/webhooks/{id}/relationships/deliveries` */
 export const webhooksDeliveriesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WebhooksDeliveriesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksDeliveriesGetToManyRelationshipResponses,
+  WebhooksDeliveriesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WebhooksDeliveriesGetToManyRelationshipResponses,
     WebhooksDeliveriesGetToManyRelationshipErrors,
@@ -25500,11 +30686,16 @@ export const webhooksDeliveriesGetToManyRelationship = <
     ...options,
   });
 
+/** List related deliveries for webhooks. `GET /v1/webhooks/{id}/deliveries` */
 export const webhooksDeliveriesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WebhooksDeliveriesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  WebhooksDeliveriesGetToManyRelatedResponses,
+  WebhooksDeliveriesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WebhooksDeliveriesGetToManyRelatedResponses,
     WebhooksDeliveriesGetToManyRelatedErrors,
@@ -25528,11 +30719,16 @@ export const webhooksDeliveriesGetToManyRelated = <
     ...options,
   });
 
+/** Get prices relationship IDs for win back offers. `GET /v1/winBackOffers/{id}/relationships/prices` */
 export const winBackOffersPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WinBackOffersPricesGetToManyRelationshipData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersPricesGetToManyRelationshipResponses,
+  WinBackOffersPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WinBackOffersPricesGetToManyRelationshipResponses,
     WinBackOffersPricesGetToManyRelationshipErrors,
@@ -25543,11 +30739,16 @@ export const winBackOffersPricesGetToManyRelationship = <
     ...options,
   });
 
+/** List related prices for win back offers. `GET /v1/winBackOffers/{id}/prices` */
 export const winBackOffersPricesGetToManyRelated = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<WinBackOffersPricesGetToManyRelatedData, ThrowOnError>,
-) =>
+): RequestResult<
+  WinBackOffersPricesGetToManyRelatedResponses,
+  WinBackOffersPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     WinBackOffersPricesGetToManyRelatedResponses,
     WinBackOffersPricesGetToManyRelatedErrors,
@@ -25567,11 +30768,16 @@ export const winBackOffersPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get beta tester usages metrics for apps. `GET /v1/apps/{id}/metrics/betaTesterUsages` */
 export const appsBetaTesterUsagesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<AppsBetaTesterUsagesGetMetricsData, ThrowOnError>,
-) =>
+): RequestResult<
+  AppsBetaTesterUsagesGetMetricsResponses,
+  AppsBetaTesterUsagesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     AppsBetaTesterUsagesGetMetricsResponses,
     AppsBetaTesterUsagesGetMetricsErrors,
@@ -25584,11 +30790,16 @@ export const appsBetaTesterUsagesGetMetrics = <
     ...options,
   });
 
+/** Get beta tester usages metrics for beta groups. `GET /v1/betaGroups/{id}/metrics/betaTesterUsages` */
 export const betaGroupsBetaTesterUsagesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsBetaTesterUsagesGetMetricsData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsBetaTesterUsagesGetMetricsResponses,
+  BetaGroupsBetaTesterUsagesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsBetaTesterUsagesGetMetricsResponses,
     BetaGroupsBetaTesterUsagesGetMetricsErrors,
@@ -25602,11 +30813,16 @@ export const betaGroupsBetaTesterUsagesGetMetrics = <
     ...options,
   });
 
+/** Get public link usages metrics for beta groups. `GET /v1/betaGroups/{id}/metrics/publicLinkUsages` */
 export const betaGroupsPublicLinkUsagesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaGroupsPublicLinkUsagesGetMetricsData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaGroupsPublicLinkUsagesGetMetricsResponses,
+  BetaGroupsPublicLinkUsagesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaGroupsPublicLinkUsagesGetMetricsResponses,
     BetaGroupsPublicLinkUsagesGetMetricsErrors,
@@ -25619,11 +30835,16 @@ export const betaGroupsPublicLinkUsagesGetMetrics = <
     ...options,
   });
 
+/** Get beta tester usages metrics for beta testers. `GET /v1/betaTesters/{id}/metrics/betaTesterUsages` */
 export const betaTestersBetaTesterUsagesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BetaTestersBetaTesterUsagesGetMetricsData, ThrowOnError>,
-) =>
+): RequestResult<
+  BetaTestersBetaTesterUsagesGetMetricsResponses,
+  BetaTestersBetaTesterUsagesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BetaTestersBetaTesterUsagesGetMetricsResponses,
     BetaTestersBetaTesterUsagesGetMetricsErrors,
@@ -25636,11 +30857,16 @@ export const betaTestersBetaTesterUsagesGetMetrics = <
     ...options,
   });
 
+/** Get beta build usages metrics for builds. `GET /v1/builds/{id}/metrics/betaBuildUsages` */
 export const buildsBetaBuildUsagesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
   options: Options<BuildsBetaBuildUsagesGetMetricsData, ThrowOnError>,
-) =>
+): RequestResult<
+  BuildsBetaBuildUsagesGetMetricsResponses,
+  BuildsBetaBuildUsagesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     BuildsBetaBuildUsagesGetMetricsResponses,
     BuildsBetaBuildUsagesGetMetricsErrors,
@@ -25652,6 +30878,7 @@ export const buildsBetaBuildUsagesGetMetrics = <
     ...options,
   });
 
+/** Get classic matchmaking requests metrics for game center details. `GET /v1/gameCenterDetails/{id}/metrics/classicMatchmakingRequests` */
 export const gameCenterDetailsClassicMatchmakingRequestsGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25659,7 +30886,11 @@ export const gameCenterDetailsClassicMatchmakingRequestsGetMetrics = <
     GameCenterDetailsClassicMatchmakingRequestsGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsClassicMatchmakingRequestsGetMetricsResponses,
+  GameCenterDetailsClassicMatchmakingRequestsGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsClassicMatchmakingRequestsGetMetricsResponses,
     GameCenterDetailsClassicMatchmakingRequestsGetMetricsErrors,
@@ -25678,6 +30909,7 @@ export const gameCenterDetailsClassicMatchmakingRequestsGetMetrics = <
     ...options,
   });
 
+/** Get rule based matchmaking requests metrics for game center details. `GET /v1/gameCenterDetails/{id}/metrics/ruleBasedMatchmakingRequests` */
 export const gameCenterDetailsRuleBasedMatchmakingRequestsGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25685,7 +30917,11 @@ export const gameCenterDetailsRuleBasedMatchmakingRequestsGetMetrics = <
     GameCenterDetailsRuleBasedMatchmakingRequestsGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterDetailsRuleBasedMatchmakingRequestsGetMetricsResponses,
+  GameCenterDetailsRuleBasedMatchmakingRequestsGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterDetailsRuleBasedMatchmakingRequestsGetMetricsResponses,
     GameCenterDetailsRuleBasedMatchmakingRequestsGetMetricsErrors,
@@ -25704,13 +30940,18 @@ export const gameCenterDetailsRuleBasedMatchmakingRequestsGetMetrics = <
     ...options,
   });
 
+/** Get experiment matchmaking queue sizes metrics for game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}/metrics/experimentMatchmakingQueueSizes` */
 export const gameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetrics =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsResponses,
+    GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsResponses,
       GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsErrors,
@@ -25724,13 +30965,18 @@ export const gameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetric
       ...options,
     });
 
+/** Get experiment matchmaking requests metrics for game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}/metrics/experimentMatchmakingRequests` */
 export const gameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetrics =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetricsData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetricsResponses,
+    GameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetricsErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetricsResponses,
       GameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetricsErrors,
@@ -25749,6 +30995,7 @@ export const gameCenterMatchmakingQueuesExperimentMatchmakingRequestsGetMetrics 
       ...options,
     });
 
+/** Get matchmaking queue sizes metrics for game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}/metrics/matchmakingQueueSizes` */
 export const gameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25756,7 +31003,11 @@ export const gameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetrics = <
     GameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetricsResponses,
+  GameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetricsResponses,
     GameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetricsErrors,
@@ -25770,6 +31021,7 @@ export const gameCenterMatchmakingQueuesMatchmakingQueueSizesGetMetrics = <
     ...options,
   });
 
+/** Get matchmaking requests metrics for game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}/metrics/matchmakingRequests` */
 export const gameCenterMatchmakingQueuesMatchmakingRequestsGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25777,7 +31029,11 @@ export const gameCenterMatchmakingQueuesMatchmakingRequestsGetMetrics = <
     GameCenterMatchmakingQueuesMatchmakingRequestsGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesMatchmakingRequestsGetMetricsResponses,
+  GameCenterMatchmakingQueuesMatchmakingRequestsGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingQueuesMatchmakingRequestsGetMetricsResponses,
     GameCenterMatchmakingQueuesMatchmakingRequestsGetMetricsErrors,
@@ -25796,6 +31052,7 @@ export const gameCenterMatchmakingQueuesMatchmakingRequestsGetMetrics = <
     ...options,
   });
 
+/** Get matchmaking sessions metrics for game center matchmaking queues. `GET /v1/gameCenterMatchmakingQueues/{id}/metrics/matchmakingSessions` */
 export const gameCenterMatchmakingQueuesMatchmakingSessionsGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25803,7 +31060,11 @@ export const gameCenterMatchmakingQueuesMatchmakingSessionsGetMetrics = <
     GameCenterMatchmakingQueuesMatchmakingSessionsGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingQueuesMatchmakingSessionsGetMetricsResponses,
+  GameCenterMatchmakingQueuesMatchmakingSessionsGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingQueuesMatchmakingSessionsGetMetricsResponses,
     GameCenterMatchmakingQueuesMatchmakingSessionsGetMetricsErrors,
@@ -25817,13 +31078,18 @@ export const gameCenterMatchmakingQueuesMatchmakingSessionsGetMetrics = <
     ...options,
   });
 
+/** Get matchmaking boolean rule results metrics for game center matchmaking rules. `GET /v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingBooleanRuleResults` */
 export const gameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetrics =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetricsData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetricsResponses,
+    GameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetricsErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetricsResponses,
       GameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetricsErrors,
@@ -25842,13 +31108,18 @@ export const gameCenterMatchmakingRulesMatchmakingBooleanRuleResultsGetMetrics =
       ...options,
     });
 
+/** Get matchmaking number rule results metrics for game center matchmaking rules. `GET /v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingNumberRuleResults` */
 export const gameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetrics =
   <ThrowOnError extends boolean = false>(
     options: Options<
       GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsData,
       ThrowOnError
     >,
-  ) =>
+  ): RequestResult<
+    GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsResponses,
+    GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsErrors,
+    ThrowOnError
+  > =>
     (options.client ?? client).get<
       GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsResponses,
       GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsErrors,
@@ -25867,6 +31138,7 @@ export const gameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetrics =
       ...options,
     });
 
+/** Get matchmaking rule errors metrics for game center matchmaking rules. `GET /v1/gameCenterMatchmakingRules/{id}/metrics/matchmakingRuleErrors` */
 export const gameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetrics = <
   ThrowOnError extends boolean = false,
 >(
@@ -25874,7 +31146,11 @@ export const gameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetrics = <
     GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsData,
     ThrowOnError
   >,
-) =>
+): RequestResult<
+  GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsResponses,
+  GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsErrors,
+  ThrowOnError
+> =>
   (options.client ?? client).get<
     GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsResponses,
     GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsErrors,
