@@ -1,17 +1,22 @@
 # @bradford-tech/asc-auth
 
-JWT authentication helper for the Apple App Store Connect API. Zero runtime dependencies — uses the Web Crypto API for ES256 signing.
+Zero-dependency JWT authentication for Apple's App Store Connect API, built on Web Crypto (`crypto.subtle`) for ES256 signing.
 
-## Installation
+## Install
 
 ```bash
 npm install @bradford-tech/asc-auth
 ```
 
-## Quick Start
+Also available on [jsr](https://jsr.io/@bradford-tech/asc-auth):
+
+```bash
+npx jsr add @bradford-tech/asc-auth
+```
+
+## Usage
 
 ```ts
-import { client } from "@bradford-tech/asc-sdk";
 import { createASCAuth } from "@bradford-tech/asc-auth";
 
 const auth = createASCAuth({
@@ -20,14 +25,26 @@ const auth = createASCAuth({
   privateKey: process.env.ASC_PRIVATE_KEY!,
 });
 
-client.setConfig({ auth });
-
-// All SDK calls now auto-authenticate with cached, auto-refreshing JWTs.
+const token = await auth();
+console.log(token.split(".").length);
+// => 3
 ```
 
-## Team Keys vs. Individual Keys
+`createASCAuth` returns a callable that produces cached, auto-refreshing JWTs.
 
-### Team Keys (default)
+### With `@bradford-tech/asc-sdk`
+
+The returned `auth` function is directly compatible with Hey API's `auth` callback:
+
+```ts
+import { client } from "@bradford-tech/asc-sdk";
+
+client.setConfig({ auth });
+```
+
+## Team keys vs. individual keys
+
+### Team keys (default)
 
 Team keys are scoped to the organization and require an Issuer ID:
 
@@ -39,7 +56,7 @@ const auth = createASCAuth({
 });
 ```
 
-### Individual Keys
+### Individual keys
 
 Individual keys are tied to a specific user's apps and permissions:
 
@@ -51,11 +68,11 @@ const auth = createASCAuth({
 });
 ```
 
-## Key Input Formats
+## Key input formats
 
-### PEM String (most common)
+### PEM string (most common)
 
-Pass the `.p8` file contents directly. Works with environment variables:
+Pass the `.p8` file contents directly. The PEM parser handles CRLF/LF line endings, missing `BEGIN`/`END` markers, single-line base64, literal `\n` from environment variables, and extra whitespace.
 
 ```ts
 // From environment variable
@@ -74,11 +91,9 @@ const auth = createASCAuth({
 });
 ```
 
-The PEM parser is forgiving: it handles CRLF/LF line endings, missing `BEGIN`/`END` markers, single-line base64, literal `\n` from environment variables, and extra whitespace.
-
 ### CryptoKey (pre-imported)
 
-If you import the key yourself (e.g., from a KMS or Vault):
+For KMS or Vault flows where the private key should never exist as a string in process memory:
 
 ```ts
 const key = await crypto.subtle.importKey(
@@ -96,14 +111,14 @@ const auth = createASCAuth({
 });
 ```
 
-## Token Caching
+## Token caching
 
-Tokens are cached and automatically refreshed. By default:
+Tokens are cached and automatically refreshed before expiry. Defaults:
 
-- Token lifetime: 1200 seconds (20 minutes — Apple's maximum for standard tokens)
+- Token lifetime: 1200 seconds (20 minutes, Apple's maximum for standard tokens)
 - Refresh buffer: 30 seconds (sign a new token 30s before expiry)
 
-Customize these:
+Concurrent callers share a single in-flight signing operation rather than triggering duplicate signs.
 
 ```ts
 const auth = createASCAuth({
@@ -115,16 +130,16 @@ const auth = createASCAuth({
 });
 ```
 
-The `expiration` parameter is the total token lifetime in seconds (`exp - iat`), which is what Apple checks — not wall-clock "seconds from now until expiry."
+The `expiration` parameter is the total token lifetime (`exp - iat`), which is what Apple checks -- not wall-clock "seconds from now until expiry."
 
-### Manual Cache Control
+### Manual cache control
 
 ```ts
 auth.refresh(); // Force sign a new token, bypassing cache
-auth.clearCache(); // Drop the cached token (does NOT invalidate it on Apple's side — JWTs are stateless)
+auth.clearCache(); // Drop the cached token (does NOT invalidate it on Apple's side -- JWTs are stateless)
 ```
 
-## Scoped Tokens
+## Scoped tokens
 
 Restrict a token to specific operations:
 
@@ -139,9 +154,9 @@ const auth = createASCAuth({
 
 Scoped tokens are GET-only by Apple's design. Apple ignores `limit`, `cursor`, and `sort` query params when matching scope entries.
 
-Long-lived tokens (up to 6 months) are accepted only for scoped GET requests against these Xcode Cloud/CI resources: build actions, build runs, git references, issues, macOS versions, products, providers, power-and-performance-metrics-and-logs, pull requests, repositories, test results, workflows, and Xcode versions. All other resources reject `exp - iat > 1200`.
+Long-lived tokens (up to 6 months) are accepted only for scoped GET requests against Xcode Cloud/CI resources: build actions, build runs, git references, issues, macOS versions, products, providers, power-and-performance-metrics-and-logs, pull requests, repositories, test results, workflows, and Xcode versions. All other resources reject `exp - iat > 1200`.
 
-## One-Shot Signing
+## One-shot signing
 
 For single-use tokens (e.g., pre-signing in CI):
 
@@ -151,15 +166,15 @@ import { signASCToken } from "@bradford-tech/asc-auth";
 const token = await signASCToken({
   issuerId: "...",
   keyId: "...",
-  privateKey: "...",
+  privateKey: process.env.ASC_PRIVATE_KEY!,
 });
 ```
 
-## Clock Skew
+`signASCToken` is the low-level function. It signs once, returns the token string, and does no caching.
 
-Token timestamps use the local system clock. If your clock runs ahead of Apple's servers, freshly signed tokens may be rejected. Apple tolerates approximately 60 seconds of skew. On systems with unreliable NTP, set `expiration: 1140` (19 minutes) rather than the full 1200 to leave margin.
+## Error handling
 
-## Error Handling
+Two error classes distinguish key-material problems from other auth failures:
 
 ```ts
 import { ASCAuthError, ASCAuthPEMError } from "@bradford-tech/asc-auth";
@@ -168,20 +183,22 @@ try {
   const token = await auth();
 } catch (err) {
   if (err instanceof ASCAuthPEMError) {
-    // Key parsing failed — bad PEM format, corrupt key data
+    // Key parsing failed -- bad PEM format, corrupt key data
     console.error("Key error:", err.message);
   } else if (err instanceof ASCAuthError) {
-    // Other auth error — missing options, crypto unavailable, signing failure
+    // Other auth error -- missing options, crypto unavailable, signing failure
     console.error("Auth error:", err.message);
   }
 }
 ```
 
-## Security
+`ASCAuthPEMError` extends `ASCAuthError`, so catching `ASCAuthError` covers both.
 
-**Private keys must never run in browser environments.** This package is designed for server-side runtimes: Node.js 20+, Deno, Bun, Cloudflare Workers, and Vercel Edge. If `crypto.subtle` is not available, it throws immediately with a descriptive error.
+## Clock skew
 
-## Runtime Support
+Token timestamps use the local system clock. Apple tolerates approximately 60 seconds of skew. On systems with unreliable NTP, set `expiration: 1140` (19 minutes) rather than the full 1200 to leave margin.
+
+## Runtime support
 
 | Runtime            | Status                                                |
 | ------------------ | ----------------------------------------------------- |
@@ -192,6 +209,16 @@ try {
 | Vercel Edge        | Supported                                             |
 | Browsers           | Not supported (private keys must not run client-side) |
 
+If `crypto.subtle` is not available, the library throws an `ASCAuthError` immediately with a descriptive message.
+
+## When to pick something else
+
+If you already depend on `jose` for other JWT work, [`appstore-connect-sdk`](https://www.npmjs.com/package/appstore-connect-sdk) is a reasonable choice with more download history. This package is for cases where at least one of these matters: zero runtime dependencies, concurrent request deduplication, KMS-resident keys, scoped or long-lived tokens, or forgiving PEM parsing from environment variables.
+
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/bradford-tech/asc-sdk).
+
 ## License
 
-[MIT](./LICENSE)
+[MIT](https://github.com/bradford-tech/asc-sdk/blob/main/LICENSE)

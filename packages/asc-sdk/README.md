@@ -1,44 +1,102 @@
 # @bradford-tech/asc-sdk
 
-TypeScript SDK for the Apple App Store Connect API, auto-generated from Apple's official OpenAPI spec.
+Auto-generated TypeScript SDK for Apple's App Store Connect API -- 1055 tree-shakeable operations, with `date-time` fields converted to native `Date` objects.
 
-## Installation
+## Install
 
 ```bash
 npm install @bradford-tech/asc-sdk
 ```
 
+Also available on [jsr](https://jsr.io/@bradford-tech/asc-sdk):
+
+```bash
+npx jsr add @bradford-tech/asc-sdk
+```
+
 ## Usage
+
+The SDK exports flat functions for every API operation and a `client` singleton for configuration. Auth is a callback that returns a JWT string -- pair it with [`@bradford-tech/asc-auth`](https://github.com/bradford-tech/asc-sdk/tree/main/packages/asc-auth#readme) or bring your own.
 
 ```ts
 import { client, appsGetCollection } from "@bradford-tech/asc-sdk";
+import { createASCAuth } from "@bradford-tech/asc-auth";
 
-client.setConfig({
-  auth: () => "<your-jwt-token>",
+const auth = createASCAuth({
+  issuerId: "57246542-96fe-1a63-e053-0824d011072a",
+  keyId: "2X9R4HXF34",
+  privateKey: process.env.ASC_PRIVATE_KEY!,
 });
 
+client.setConfig({ auth });
+
 const { data } = await appsGetCollection();
+console.log(data?.data.map((app) => app.attributes?.name));
+// => ["My App", "Another App"]
 ```
 
-## Date Handling
+### Bring your own auth
 
-Dates in API responses are automatically converted from ISO 8601 strings to native `Date` objects for endpoints whose schemas contain `date-time` fields (261 of 1055 endpoints). This includes fields like `createdDate`, `expirationDate`, `startDate`, and `earliestReleaseDate`.
+If you already have a JWT source, pass it directly:
 
-**Exceptions**:
+```ts
+client.setConfig({
+  auth: () => myExistingTokenFunction(),
+});
+```
 
-- **`included` arrays**: Dates inside JSON:API `included` arrays remain as ISO strings. Apple's `included` uses `oneOf` unions for polymorphic resources, and Hey API's transformer plugin does not process union types.
-- **Top-level schemas without dates**: Some endpoints' top-level response schemas have no `date-time` fields themselves — dates live on related sub-resources accessed via separate relationship endpoints. `appsGetCollection`, `appsGetInstance`, and `buildsGetCollection` are examples. For these endpoints, no transformer runs at all. Access dates via the dedicated relationship endpoints (e.g., `appsAppStoreVersionsGetToManyRelated`) or parse `included` items manually.
+### Filtering and including related resources
 
-If you access dates from either case, parse them yourself:
+Operations accept the same query parameters as Apple's REST API:
+
+```ts
+const { data } = await appsGetCollection({
+  query: {
+    "filter[bundleId]": ["com.example.myapp"],
+    include: ["appStoreVersions"],
+  },
+});
+```
+
+## Features
+
+- **Flat, tree-shakeable exports** -- each operation is a standalone function. Import only what you use; bundlers drop the rest.
+- **Date transforms** -- 261 of 1055 endpoints auto-convert `date-time` response fields to native `Date` objects via [`@hey-api/transformers`](https://heyapi.dev).
+- **Typed request and response** -- full TypeScript types generated from Apple's OpenAPI spec, including query parameters, request bodies, and response shapes.
+- **Daily spec updates** -- a GitHub Actions workflow downloads Apple's latest OpenAPI spec and opens a PR when it changes. The SDK stays current without manual intervention.
+- **ESM-only** -- `"type": "module"` with explicit `.js` extensions for Node.js ESM resolution. No CJS dual-publish overhead.
+
+## Date handling
+
+Dates in API responses are automatically converted from ISO 8601 strings to native `Date` objects for endpoints whose schemas contain `date-time` fields. This includes fields like `createdDate`, `expirationDate`, `startDate`, and `earliestReleaseDate`.
+
+**Exceptions:**
+
+- **`included` arrays** -- dates inside JSON:API `included` arrays remain as ISO strings. Apple's `included` uses `oneOf` unions for polymorphic resources, and the transformer plugin does not process union types.
+- **Top-level schemas without dates** -- some endpoints' top-level response schemas have no `date-time` fields. Dates live on related sub-resources accessed via separate relationship endpoints. `appsGetCollection`, `appsGetInstance`, and `buildsGetCollection` are examples. Access dates via the dedicated relationship endpoints (e.g., `appsAppStoreVersionsGetToManyRelated`) or parse `included` items manually.
+
+For either case, parse manually:
 
 ```ts
 const createdDate = new Date(includedItem.attributes.createdDate);
 ```
 
-## int64 Fields
+## int64 fields
 
-Fields marked as `int64` in Apple's spec (file sizes, disk metrics, upload offsets, part numbers) are returned as `number`, not `BigInt`. All observed ASC `int64` values are safely within `Number.MAX_SAFE_INTEGER` (~9 petabytes for file sizes; ASC apps are <10GB in practice). If you have a use case requiring `BigInt` precision, please [file an issue](https://github.com/bradford-tech/asc-sdk/issues).
+Fields marked as `int64` in Apple's spec (file sizes, disk metrics, upload offsets) are returned as `number`, not `BigInt`. All observed ASC `int64` values are well within `Number.MAX_SAFE_INTEGER` (~9 petabytes for file sizes). If you have a use case requiring `BigInt` precision, [file an issue](https://github.com/bradford-tech/asc-sdk/issues).
+
+## Generation
+
+All code in `src/client/` is auto-generated by [`@hey-api/openapi-ts`](https://heyapi.dev) from `spec/openapi.oas.json`. Do not edit generated files directly -- configure the generator in `openapi-ts.config.ts` and run:
+
+```bash
+npm run generate
+```
+
+## Contributing
+
+Bug reports and pull requests are welcome on [GitHub](https://github.com/bradford-tech/asc-sdk).
 
 ## License
 
-[MIT](./LICENSE)
+[MIT](https://github.com/bradford-tech/asc-sdk/blob/main/LICENSE)
