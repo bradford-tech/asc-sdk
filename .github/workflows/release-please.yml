@@ -44,6 +44,18 @@ jobs:
       - run: npm run build --workspaces --if-present
       - run: npm test --workspaces --if-present
 
+      - name: Pack SDK tarball
+        run: cd packages/asc-sdk && npm pack
+
+      - name: Install tarball in smoke test
+        run: cd smoke-test && npm install ../packages/asc-sdk/bradford-tech-asc-sdk-*.tgz
+
+      - name: Smoke test (runtime)
+        run: cd smoke-test && node test.mjs
+
+      - name: Smoke test (types)
+        run: cd smoke-test && npx tsc --noEmit
+
   publish:
     needs: [release-please, ci]
     if: ${{ needs.release-please.outputs.releases_created == 'true' }}
