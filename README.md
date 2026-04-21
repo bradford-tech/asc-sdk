@@ -17,6 +17,12 @@ Both packages are published to [npm](https://www.npmjs.com/org/bradford-tech) an
 npm install @bradford-tech/asc-sdk @bradford-tech/asc-auth
 ```
 
+Or with Deno:
+
+```bash
+deno add jsr:@bradford-tech/asc-sdk jsr:@bradford-tech/asc-auth
+```
+
 ```ts
 import { client, appsGetCollection } from "@bradford-tech/asc-sdk";
 import { createASCAuth } from "@bradford-tech/asc-auth";

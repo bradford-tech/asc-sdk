@@ -11,7 +11,8 @@ npm install @bradford-tech/asc-sdk
 Also available on [jsr](https://jsr.io/@bradford-tech/asc-sdk):
 
 ```bash
-npx jsr add @bradford-tech/asc-sdk
+deno add jsr:@bradford-tech/asc-sdk   # Deno
+npx jsr add @bradford-tech/asc-sdk    # npm via jsr
 ```
 
 ## Usage
@@ -84,6 +85,42 @@ const createdDate = new Date(includedItem.attributes.createdDate);
 ## int64 fields
 
 Fields marked as `int64` in Apple's spec (file sizes, disk metrics, upload offsets) are returned as `number`, not `BigInt`. All observed ASC `int64` values are well within `Number.MAX_SAFE_INTEGER` (~9 petabytes for file sizes). If you have a use case requiring `BigInt` precision, [file an issue](https://github.com/bradford-tech/asc-sdk/issues).
+
+## Error handling
+
+Every operation returns `{ data, error, request, response }`. On success, `data` is populated and `error` is `undefined`. On failure, `data` is `undefined` and `error` contains Apple's `ErrorResponse` body:
+
+```ts
+const { data, error } = await appsGetCollection();
+
+if (error) {
+  // error.errors is Apple's array of { status, code, title, detail }
+  console.error(error.errors?.[0]?.detail);
+} else {
+  console.log(data.data.map((app) => app.attributes?.name));
+}
+```
+
+To throw on errors instead of returning them:
+
+```ts
+client.setConfig({ auth, throwOnError: true });
+```
+
+## Configuration
+
+`client.setConfig()` accepts standard fetch options alongside SDK-specific ones:
+
+```ts
+client.setConfig({
+  auth,
+  baseUrl: "https://api.appstoreconnect.apple.com/", // default
+  fetch: customFetchImpl, // custom fetch (useful for logging or retries)
+  throwOnError: false, // true to throw instead of returning { error }
+});
+```
+
+The base URL is set automatically. Override it only if you're routing through a proxy.
 
 ## Generation
 

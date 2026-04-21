@@ -11,7 +11,8 @@ npm install @bradford-tech/asc-auth
 Also available on [jsr](https://jsr.io/@bradford-tech/asc-auth):
 
 ```bash
-npx jsr add @bradford-tech/asc-auth
+deno add jsr:@bradford-tech/asc-auth   # Deno
+npx jsr add @bradford-tech/asc-auth    # npm via jsr
 ```
 
 ## Usage
@@ -46,15 +47,7 @@ client.setConfig({ auth });
 
 ### Team keys (default)
 
-Team keys are scoped to the organization and require an Issuer ID:
-
-```ts
-const auth = createASCAuth({
-  issuerId: "57246542-96fe-1a63-e053-0824d011072a",
-  keyId: "2X9R4HXF34",
-  privateKey: process.env.ASC_PRIVATE_KEY!,
-});
-```
+Team keys are scoped to the organization and require an Issuer ID. The [usage example above](#usage) shows this pattern.
 
 ### Individual keys
 
@@ -214,6 +207,15 @@ If `crypto.subtle` is not available, the library throws an `ASCAuthError` immedi
 ## When to pick something else
 
 If you already depend on `jose` for other JWT work, [`appstore-connect-sdk`](https://www.npmjs.com/package/appstore-connect-sdk) is a reasonable choice with more download history. This package is for cases where at least one of these matters: zero runtime dependencies, concurrent request deduplication, KMS-resident keys, scoped or long-lived tokens, or forgiving PEM parsing from environment variables.
+
+## Exported types
+
+The package exports TypeScript interfaces for all configuration shapes:
+
+- `ASCAuthOptions` -- union of `ASCTeamKeyOptions | ASCIndividualKeyOptions`
+- `ASCTeamKeyOptions` -- team key config (with `issuerId`)
+- `ASCIndividualKeyOptions` -- individual key config (with `keyType: "individual"`)
+- `ASCAuth` -- the returned auth provider type (callable + `refresh()` + `clearCache()`)
 
 ## Contributing
 
