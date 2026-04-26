@@ -43,7 +43,7 @@ jobs:
       - name: Generate API changelog
         id: changelog
         if: steps.snapshot.outputs.has_previous == 'true'
-        uses: oasdiff/oasdiff-action/changelog@f436df497bac426b44e9ac0dc142f666f3157d1b # v0.0.41
+        uses: oasdiff/oasdiff-action/changelog@c002f996c3d084acf62ea6dd4f2e7a57b7bc2a35 # v0.0.43
         with:
           base: /tmp/previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
@@ -53,7 +53,7 @@ jobs:
       - name: Detect breaking changes
         id: breaking
         if: steps.snapshot.outputs.has_previous == 'true'
-        uses: oasdiff/oasdiff-action/breaking@f436df497bac426b44e9ac0dc142f666f3157d1b # v0.0.41
+        uses: oasdiff/oasdiff-action/breaking@c002f996c3d084acf62ea6dd4f2e7a57b7bc2a35 # v0.0.43
         with:
           base: /tmp/previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
