@@ -44,7 +44,7 @@
     "type-check": "tsc --noEmit"
   },
   "devDependencies": {
-    "@hey-api/openapi-ts": "^0.96.0",
+    "@hey-api/openapi-ts": "^0.96.1",
     "jiti": "^2.6.1",
     "rimraf": "^6.1.3"
   },
