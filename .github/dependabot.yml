@@ -40,5 +40,9 @@ updates:
       - dependency-name: "*"
         update-types:
           - version-update:semver-major
+      # v0.0.43+ emits a broken oasdiff.com review-link annotation on
+      # non-PR runs (schedule/workflow_dispatch). Pinned to v0.0.42 in
+      # update-spec.yml; revisit if upstream adds an opt-out.
+      - dependency-name: "oasdiff/oasdiff-action"
     assignees:
       - sbs44
