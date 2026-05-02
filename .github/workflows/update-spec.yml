@@ -24,7 +24,7 @@ jobs:
         id: snapshot
         run: |
           if [ -f packages/asc-sdk/spec/openapi.oas.json ]; then
-            cp packages/asc-sdk/spec/openapi.oas.json /tmp/previous-spec.json
+            cp packages/asc-sdk/spec/openapi.oas.json "$GITHUB_WORKSPACE/.previous-spec.json"
             echo "has_previous=true" >> "$GITHUB_OUTPUT"
           else
             echo "has_previous=false" >> "$GITHUB_OUTPUT"
@@ -45,7 +45,7 @@ jobs:
         if: steps.snapshot.outputs.has_previous == 'true'
         uses: oasdiff/oasdiff-action/changelog@37bf9ff785c7315df88216660826e71be4cc03da # v0.0.44
         with:
-          base: /tmp/previous-spec.json
+          base: .previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
           format: markdown
         continue-on-error: true
@@ -55,7 +55,7 @@ jobs:
         if: steps.snapshot.outputs.has_previous == 'true'
         uses: oasdiff/oasdiff-action/breaking@37bf9ff785c7315df88216660826e71be4cc03da # v0.0.44
         with:
-          base: /tmp/previous-spec.json
+          base: .previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
         continue-on-error: true
 
