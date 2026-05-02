@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.1.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.0.3...asc-sdk-v0.1.0) (2026-05-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* **sdk:** in RequestResult's error variant, `request` and `response` are now optional.
+
+### Features
+
+* **sdk:** regenerate client for openapi-ts 0.97.0 ([3acd53e](https://github.com/bradford-tech/asc-sdk/commit/3acd53e4c6aae86e34d7b2478e6ba52e91e7ce85))
+
 ## [0.0.3](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.0.2...asc-sdk-v0.0.3) (2026-04-20)
 
 
