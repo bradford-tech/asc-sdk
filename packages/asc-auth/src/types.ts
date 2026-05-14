@@ -44,6 +44,12 @@ export interface ASCIndividualKeyOptions {
   scope?: string[];
 }
 
+/**
+ * Options for `signASCToken` and `createASCAuth`. Pass an
+ * {@link ASCTeamKeyOptions} for the common case (team key with `issuerId`),
+ * or an {@link ASCIndividualKeyOptions} with `keyType: "individual"` for
+ * individual API keys.
+ */
 export type ASCAuthOptions = ASCTeamKeyOptions | ASCIndividualKeyOptions;
 
 /** The returned auth provider — a callable + utility methods. */
