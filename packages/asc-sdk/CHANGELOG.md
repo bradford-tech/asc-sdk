@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.1...asc-sdk-v0.1.2) (2026-05-14)
+
+
+### Features
+
+* **sdk:** generate JSDoc for all type exports ([e4d083d](https://github.com/bradford-tech/asc-sdk/commit/e4d083d15bebb2d4d716c1b942850025246c0f90))
+
 ## [0.1.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.0...asc-sdk-v0.1.1) (2026-05-14)
 
 
