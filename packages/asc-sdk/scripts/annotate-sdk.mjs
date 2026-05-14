@@ -53,6 +53,11 @@ function humanize(camel) {
     .toLowerCase();
 }
 
+/** Pick "a" or "an" for a PascalCase identifier based on its first sound. */
+function article(name) {
+  return /^[AEIOU]/.test(name) ? "an" : "a";
+}
+
 /** Generate JSDoc description from operationId parts. */
 function generateDoc(operationId, method, path) {
   const parts = operationId.split("_");
@@ -179,6 +184,99 @@ if (processed !== totalFunctions) {
   process.exit(1);
 }
 
+// --- Annotate types.gen.ts (add JSDoc to every exported type) ---
+
+const typesPath = resolve(ROOT, "src/client/types.gen.ts");
+let typesFile = readFileSync(typesPath, "utf-8");
+
+// Operation function names in PascalCase → spec info, used to detect
+// operation-level types like `AppsCreateInstanceData`.
+const opPascalToSpec = new Map();
+for (const [opId, info] of operationMap) {
+  const camel = toFunctionName(opId);
+  const pascal = camel[0].toUpperCase() + camel.slice(1);
+  opPascalToSpec.set(pascal, { opId, ...info });
+}
+
+const OP_VERBS = {
+  Data: "Request options for",
+  Response: "Successful response from",
+  Responses: "Response status map for",
+  Error: "Error response from",
+  Errors: "Error status map for",
+};
+
+// Order matters: longer/more-specific suffixes first so e.g. `Errors` is
+// tried before `Error`, and `WithoutIncludesResponse` before `Response`.
+const RESOURCE_SUFFIXES = [
+  ["WithoutIncludesResponse", "Response (without included resources) for"],
+  ["LinkagesResponse", "Linkage response for"],
+  ["LinkageResponse", "Linkage response for"],
+  ["LinkagesRequest", "Linkage request body for"],
+  ["LinkageRequest", "Linkage request body for"],
+  ["CreateRequest", "Request body for creating"],
+  ["UpdateRequest", "Request body for updating"],
+  ["InlineCreate", "Inline create payload for"],
+  ["InlineUpdate", "Inline update payload for"],
+  ["Attributes", "Attributes of"],
+  ["Relationships", "Relationships of"],
+  ["Response", "Response containing"],
+];
+
+function generateTypeDoc(typeName) {
+  // Operation-level type? Suffix attached to a known operation function name.
+  for (const [suffix, prefix] of Object.entries(OP_VERBS).sort(
+    (a, b) => b[0].length - a[0].length,
+  )) {
+    if (!typeName.endsWith(suffix)) continue;
+    const base = typeName.slice(0, -suffix.length);
+    const op = opPascalToSpec.get(base);
+    if (op) return `${prefix} \`${op.method} ${op.path}\`.`;
+  }
+
+  // Resource-level type with a known suffix.
+  for (const [suffix, prefix] of RESOURCE_SUFFIXES) {
+    if (!typeName.endsWith(suffix)) continue;
+    const base = typeName.slice(0, -suffix.length);
+    if (!base) continue;
+    return `${prefix} ${article(base)} ${humanize(base)}.`;
+  }
+
+  // Fallback: humanized name.
+  return `${humanize(typeName)}.`;
+}
+
+// Match an `export type X = ...` declaration, optionally preceded by a
+// single JSDoc block. Capturing groups: existing JSDoc (or empty) + name.
+const TYPE_REGEX =
+  /(\/\*\*[^]*?\*\/\n)?(export type ([A-Za-z][A-Za-z0-9]*) =)/g;
+
+// Existing JSDoc bodies that are just the type name (Hey API's default) are
+// treated as "empty" and overwritten. Anything richer is preserved.
+function isPlaceholderDoc(jsdoc, typeName) {
+  if (!jsdoc) return true;
+  const body = jsdoc
+    .replace(/\/\*\*|\*\//g, "")
+    .replace(/^\s*\*\s?/gm, "")
+    .trim();
+  return body === "" || body === typeName;
+}
+
+let typesAnnotated = 0;
+let typesPreserved = 0;
+
+typesFile = typesFile.replace(TYPE_REGEX, (match, jsdoc, decl, typeName) => {
+  if (!isPlaceholderDoc(jsdoc, typeName)) {
+    typesPreserved++;
+    return match;
+  }
+  typesAnnotated++;
+  const doc = `/** ${generateTypeDoc(typeName)} */\n`;
+  return doc + decl;
+});
+
+writeFileSync(typesPath, typesFile);
+
 // --- Annotate client.gen.ts (add explicit Client type to the client export) ---
 
 const clientPath = resolve(ROOT, "src/client/client.gen.ts");
@@ -206,4 +304,8 @@ if (!clientFile.includes("export const client: Client")) {
 // --- Write output ---
 
 writeFileSync(sdkPath, sdk);
-console.log(`Annotated ${processed} functions in sdk.gen.ts`);
+console.log(
+  `Annotated ${processed} functions in sdk.gen.ts, ` +
+    `${typesAnnotated} types in types.gen.ts ` +
+    `(${typesPreserved} preserved).`,
+);
