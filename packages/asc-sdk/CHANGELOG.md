@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.0...asc-sdk-v0.1.1) (2026-05-14)
+
+
+### Features
+
+* **sdk:** regenerate client for ASC API 4.3.1 spec ([9142b5c](https://github.com/bradford-tech/asc-sdk/commit/9142b5ceb764ac9b305e69c82042126e48fc9d6d))
+
 ## [0.1.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.0.3...asc-sdk-v0.1.0) (2026-05-02)
 
 
