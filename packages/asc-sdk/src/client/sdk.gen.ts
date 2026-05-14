@@ -3914,6 +3914,9 @@ export const alternativeDistributionPackageVersionsGetInstance = <
         "fields[alternativeDistributionPackageDeltas]": {
           array: { explode: false },
         },
+        "fields[alternativeDistributionPackages]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -4466,6 +4469,13 @@ export const appClipAdvancedExperiencesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appClipAdvancedExperiences]": { array: { explode: false } },
+        "fields[appClips]": { array: { explode: false } },
+        "fields[appClipAdvancedExperienceImages]": {
+          array: { explode: false },
+        },
+        "fields[appClipAdvancedExperienceLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -4543,6 +4553,7 @@ export const appClipAppStoreReviewDetailsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appClipAppStoreReviewDetails]": { array: { explode: false } },
+        "fields[appClipDefaultExperiences]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -4651,6 +4662,7 @@ export const appClipDefaultExperienceLocalizationsGetInstance = <
         "fields[appClipDefaultExperienceLocalizations]": {
           array: { explode: false },
         },
+        "fields[appClipDefaultExperiences]": { array: { explode: false } },
         "fields[appClipHeaderImages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -4749,6 +4761,7 @@ export const appClipDefaultExperiencesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appClipDefaultExperiences]": { array: { explode: false } },
+        "fields[appClips]": { array: { explode: false } },
         "fields[appStoreVersions]": { array: { explode: false } },
         "fields[appClipDefaultExperienceLocalizations]": {
           array: { explode: false },
@@ -4848,6 +4861,9 @@ export const appClipHeaderImagesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appClipHeaderImages]": { array: { explode: false } },
+        "fields[appClipDefaultExperienceLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -4896,6 +4912,7 @@ export const appClipsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[appClips]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[appClipDefaultExperiences]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -4978,6 +4995,7 @@ export const appCustomProductPageLocalizationsGetInstance = <
         "fields[appCustomProductPageLocalizations]": {
           array: { explode: false },
         },
+        "fields[appCustomProductPageVersions]": { array: { explode: false } },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -5060,6 +5078,7 @@ export const appCustomProductPageVersionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appCustomProductPageVersions]": { array: { explode: false } },
+        "fields[appCustomProductPages]": { array: { explode: false } },
         "fields[appCustomProductPageLocalizations]": {
           array: { explode: false },
         },
@@ -5160,6 +5179,7 @@ export const appCustomProductPagesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appCustomProductPages]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[appCustomProductPageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -5299,6 +5319,7 @@ export const appEncryptionDeclarationsGetCollection = <
         "filter[builds]": { array: { explode: false } },
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
         "fields[apps]": { array: { explode: false } },
+        "fields[builds]": { array: { explode: false } },
         "fields[appEncryptionDeclarationDocuments]": {
           array: { explode: false },
         },
@@ -5357,6 +5378,7 @@ export const appEncryptionDeclarationsGetInstance = <
       parameters: {
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
         "fields[apps]": { array: { explode: false } },
+        "fields[builds]": { array: { explode: false } },
         "fields[appEncryptionDeclarationDocuments]": {
           array: { explode: false },
         },
@@ -5432,6 +5454,7 @@ export const appEventLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appEvents]": { array: { explode: false } },
         "fields[appEventScreenshots]": { array: { explode: false } },
         "fields[appEventVideoClips]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -5528,6 +5551,7 @@ export const appEventScreenshotsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appEventScreenshots]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -5622,6 +5646,7 @@ export const appEventVideoClipsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appEventVideoClips]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -5806,6 +5831,7 @@ export const appInfoLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appInfoLocalizations]": { array: { explode: false } },
+        "fields[appInfos]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -5854,6 +5880,7 @@ export const appInfosGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[appInfos]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[ageRatingDeclarations]": { array: { explode: false } },
         "fields[appInfoLocalizations]": { array: { explode: false } },
         "fields[appCategories]": { array: { explode: false } },
@@ -5947,6 +5974,13 @@ export const appPreviewSetsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[appPreviewSets]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
         "fields[appPreviews]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -6012,6 +6046,7 @@ export const appPreviewsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[appPreviews]": { array: { explode: false } },
+        "fields[appPreviewSets]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -6060,6 +6095,8 @@ export const appPricePointsV3GetInstance = <
     querySerializer: {
       parameters: {
         "fields[appPricePoints]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -6111,6 +6148,7 @@ export const appPriceSchedulesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appPriceSchedules]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[territories]": { array: { explode: false } },
         "fields[appPrices]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -6184,6 +6222,13 @@ export const appScreenshotSetsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appScreenshotSets]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
         "fields[appScreenshots]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -6253,6 +6298,7 @@ export const appScreenshotsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[appScreenshots]": { array: { explode: false } },
+        "fields[appScreenshotSets]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -6347,6 +6393,7 @@ export const appStoreReviewAttachmentsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appStoreReviewAttachments]": { array: { explode: false } },
+        "fields[appStoreReviewDetails]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -6421,6 +6468,7 @@ export const appStoreReviewDetailsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appStoreReviewDetails]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
         "fields[appStoreReviewAttachments]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -6527,6 +6575,9 @@ export const appStoreVersionExperimentTreatmentLocalizationsGetInstance = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[appStoreVersionExperimentTreatments]": {
+          array: { explode: false },
+        },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -6612,6 +6663,7 @@ export const appStoreVersionExperimentTreatmentsGetInstance = <
         "fields[appStoreVersionExperimentTreatments]": {
           array: { explode: false },
         },
+        "fields[appStoreVersionExperiments]": { array: { explode: false } },
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
@@ -6724,6 +6776,8 @@ export const appStoreVersionExperimentsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[appStoreVersionExperiments]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
         "fields[appStoreVersionExperimentTreatments]": {
           array: { explode: false },
         },
@@ -6834,6 +6888,7 @@ export const appStoreVersionLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -7066,6 +7121,7 @@ export const appStoreVersionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[appStoreVersions]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[appStoreVersionLocalizations]": { array: { explode: false } },
         "fields[builds]": { array: { explode: false } },
         "fields[appStoreVersionPhasedReleases]": { array: { explode: false } },
@@ -7164,6 +7220,7 @@ export const appsGetCollection = <ThrowOnError extends boolean = false>(
         sort: { array: { explode: false } },
         "fields[apps]": { array: { explode: false } },
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
+        "fields[buildIcons]": { array: { explode: false } },
         "fields[ciProducts]": { array: { explode: false } },
         "fields[betaGroups]": { array: { explode: false } },
         "fields[appStoreVersions]": { array: { explode: false } },
@@ -7211,6 +7268,7 @@ export const appsGetInstance = <ThrowOnError extends boolean = false>(
       parameters: {
         "fields[apps]": { array: { explode: false } },
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
+        "fields[buildIcons]": { array: { explode: false } },
         "fields[ciProducts]": { array: { explode: false } },
         "fields[betaGroups]": { array: { explode: false } },
         "fields[appStoreVersions]": { array: { explode: false } },
@@ -7365,6 +7423,7 @@ export const backgroundAssetVersionAppStoreReleasesGetInstance = <
         "fields[backgroundAssetVersionAppStoreReleases]": {
           array: { explode: false },
         },
+        "fields[backgroundAssetVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7398,6 +7457,7 @@ export const backgroundAssetVersionExternalBetaReleasesGetInstance = <
         "fields[backgroundAssetVersionExternalBetaReleases]": {
           array: { explode: false },
         },
+        "fields[backgroundAssetVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7431,6 +7491,7 @@ export const backgroundAssetVersionInternalBetaReleasesGetInstance = <
         "fields[backgroundAssetVersionInternalBetaReleases]": {
           array: { explode: false },
         },
+        "fields[backgroundAssetVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7485,6 +7546,17 @@ export const backgroundAssetVersionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[backgroundAssetVersions]": { array: { explode: false } },
+        "fields[backgroundAssets]": { array: { explode: false } },
+        "fields[backgroundAssetVersionInternalBetaReleases]": {
+          array: { explode: false },
+        },
+        "fields[backgroundAssetVersionExternalBetaReleases]": {
+          array: { explode: false },
+        },
+        "fields[backgroundAssetVersionAppStoreReleases]": {
+          array: { explode: false },
+        },
+        "fields[backgroundAssetUploadFiles]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7537,6 +7609,8 @@ export const backgroundAssetsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[backgroundAssets]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
+        "fields[backgroundAssetVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7710,6 +7784,9 @@ export const betaAppClipInvocationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[betaAppClipInvocations]": { array: { explode: false } },
+        "fields[betaAppClipInvocationLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -8222,6 +8299,8 @@ export const betaFeedbackCrashSubmissionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[betaFeedbackCrashSubmissions]": { array: { explode: false } },
+        "fields[builds]": { array: { explode: false } },
+        "fields[betaTesters]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -8278,6 +8357,8 @@ export const betaFeedbackScreenshotSubmissionsGetInstance = <
         "fields[betaFeedbackScreenshotSubmissions]": {
           array: { explode: false },
         },
+        "fields[builds]": { array: { explode: false } },
+        "fields[betaTesters]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -8969,6 +9050,8 @@ export const buildUploadsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[buildUploads]": { array: { explode: false } },
+        "fields[builds]": { array: { explode: false } },
+        "fields[buildUploadFiles]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9012,6 +9095,7 @@ export const buildsGetCollection = <ThrowOnError extends boolean = false>(
         "fields[builds]": { array: { explode: false } },
         "fields[preReleaseVersions]": { array: { explode: false } },
         "fields[betaTesters]": { array: { explode: false } },
+        "fields[betaGroups]": { array: { explode: false } },
         "fields[betaBuildLocalizations]": { array: { explode: false } },
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
         "fields[betaAppReviewSubmissions]": { array: { explode: false } },
@@ -9019,6 +9103,8 @@ export const buildsGetCollection = <ThrowOnError extends boolean = false>(
         "fields[buildBetaDetails]": { array: { explode: false } },
         "fields[appStoreVersions]": { array: { explode: false } },
         "fields[buildIcons]": { array: { explode: false } },
+        "fields[buildBundles]": { array: { explode: false } },
+        "fields[buildUploads]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9046,6 +9132,7 @@ export const buildsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[builds]": { array: { explode: false } },
         "fields[preReleaseVersions]": { array: { explode: false } },
         "fields[betaTesters]": { array: { explode: false } },
+        "fields[betaGroups]": { array: { explode: false } },
         "fields[betaBuildLocalizations]": { array: { explode: false } },
         "fields[appEncryptionDeclarations]": { array: { explode: false } },
         "fields[betaAppReviewSubmissions]": { array: { explode: false } },
@@ -9053,6 +9140,8 @@ export const buildsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[buildBetaDetails]": { array: { explode: false } },
         "fields[appStoreVersions]": { array: { explode: false } },
         "fields[buildIcons]": { array: { explode: false } },
+        "fields[buildBundles]": { array: { explode: false } },
+        "fields[buildUploads]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9489,6 +9578,10 @@ export const ciBuildRunsGetInstance = <ThrowOnError extends boolean = false>(
       parameters: {
         "fields[ciBuildRuns]": { array: { explode: false } },
         "fields[builds]": { array: { explode: false } },
+        "fields[ciWorkflows]": { array: { explode: false } },
+        "fields[ciProducts]": { array: { explode: false } },
+        "fields[scmGitReferences]": { array: { explode: false } },
+        "fields[scmPullRequests]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9592,6 +9685,7 @@ export const ciProductsGetCollection = <ThrowOnError extends boolean = false>(
         "filter[app]": { array: { explode: false } },
         "fields[ciProducts]": { array: { explode: false } },
         "fields[apps]": { array: { explode: false } },
+        "fields[bundleIds]": { array: { explode: false } },
         "fields[scmRepositories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -9637,6 +9731,7 @@ export const ciProductsGetInstance = <ThrowOnError extends boolean = false>(
       parameters: {
         "fields[ciProducts]": { array: { explode: false } },
         "fields[apps]": { array: { explode: false } },
+        "fields[bundleIds]": { array: { explode: false } },
         "fields[scmRepositories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -9725,7 +9820,10 @@ export const ciWorkflowsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[ciWorkflows]": { array: { explode: false } },
+        "fields[ciProducts]": { array: { explode: false } },
         "fields[scmRepositories]": { array: { explode: false } },
+        "fields[ciXcodeVersions]": { array: { explode: false } },
+        "fields[ciMacOsVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9876,6 +9974,7 @@ export const customerReviewResponsesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[customerReviewResponses]": { array: { explode: false } },
+        "fields[customerReviews]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -9904,6 +10003,7 @@ export const customerReviewsGetInstance = <
       parameters: {
         "fields[customerReviews]": { array: { explode: false } },
         "fields[customerReviewResponses]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -10097,6 +10197,7 @@ export const endUserLicenseAgreementsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[endUserLicenseAgreements]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -10226,6 +10327,9 @@ export const gameCenterAchievementImagesV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterAchievementImages]": { array: { explode: false } },
+        "fields[gameCenterAchievementLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -10334,6 +10438,7 @@ export const gameCenterAchievementLocalizationsV2GetInstance = <
         "fields[gameCenterAchievementLocalizations]": {
           array: { explode: false },
         },
+        "fields[gameCenterAchievementVersions]": { array: { explode: false } },
         "fields[gameCenterAchievementImages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -10418,6 +10523,7 @@ export const gameCenterAchievementVersionsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterAchievementVersions]": { array: { explode: false } },
+        "fields[gameCenterAchievements]": { array: { explode: false } },
         "fields[gameCenterAchievementLocalizations]": {
           array: { explode: false },
         },
@@ -10491,6 +10597,9 @@ export const gameCenterAchievementsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterAchievements]": { array: { explode: false } },
+        "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[gameCenterGroups]": { array: { explode: false } },
+        "fields[gameCenterActivities]": { array: { explode: false } },
         "fields[gameCenterAchievementVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -10586,6 +10695,10 @@ export const gameCenterActivitiesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterActivities]": { array: { explode: false } },
+        "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[gameCenterGroups]": { array: { explode: false } },
+        "fields[gameCenterAchievements]": { array: { explode: false } },
+        "fields[gameCenterLeaderboards]": { array: { explode: false } },
         "fields[gameCenterActivityVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -10785,6 +10898,7 @@ export const gameCenterActivityLocalizationsGetInstance = <
         "fields[gameCenterActivityLocalizations]": {
           array: { explode: false },
         },
+        "fields[gameCenterActivityVersions]": { array: { explode: false } },
         "fields[gameCenterActivityImages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -10863,10 +10977,14 @@ export const gameCenterActivityVersionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterActivityVersions]": { array: { explode: false } },
+        "fields[gameCenterActivities]": { array: { explode: false } },
         "fields[gameCenterActivityLocalizations]": {
           array: { explode: false },
         },
         "fields[gameCenterActivityImages]": { array: { explode: false } },
+        "fields[gameCenterActivityVersionReleases]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -11143,6 +11261,7 @@ export const gameCenterChallengeLocalizationsGetInstance = <
         "fields[gameCenterChallengeLocalizations]": {
           array: { explode: false },
         },
+        "fields[gameCenterChallengeVersions]": { array: { explode: false } },
         "fields[gameCenterChallengeImages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -11221,7 +11340,11 @@ export const gameCenterChallengeVersionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterChallengeVersions]": { array: { explode: false } },
+        "fields[gameCenterChallenges]": { array: { explode: false } },
         "fields[gameCenterChallengeLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[gameCenterChallengeVersionReleases]": {
           array: { explode: false },
         },
         "fields[gameCenterChallengeImages]": { array: { explode: false } },
@@ -11295,7 +11418,10 @@ export const gameCenterChallengesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterChallenges]": { array: { explode: false } },
+        "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[gameCenterGroups]": { array: { explode: false } },
         "fields[gameCenterChallengeVersions]": { array: { explode: false } },
+        "fields[gameCenterLeaderboards]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -11371,6 +11497,7 @@ export const gameCenterDetailsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[gameCenterAppVersions]": { array: { explode: false } },
         "fields[gameCenterGroups]": { array: { explode: false } },
         "fields[gameCenterLeaderboards]": { array: { explode: false } },
@@ -11389,6 +11516,7 @@ export const gameCenterDetailsGetInstance = <
         "fields[gameCenterLeaderboardSetReleases]": {
           array: { explode: false },
         },
+        "fields[appStoreVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -11653,6 +11781,9 @@ export const gameCenterLeaderboardImagesV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboardImages]": { array: { explode: false } },
+        "fields[gameCenterLeaderboardLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -11761,6 +11892,7 @@ export const gameCenterLeaderboardLocalizationsV2GetInstance = <
         "fields[gameCenterLeaderboardLocalizations]": {
           array: { explode: false },
         },
+        "fields[gameCenterLeaderboardVersions]": { array: { explode: false } },
         "fields[gameCenterLeaderboardImages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -11868,6 +12000,9 @@ export const gameCenterLeaderboardSetImagesV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboardSetImages]": { array: { explode: false } },
+        "fields[gameCenterLeaderboardSetLocalizations]": {
+          array: { explode: false },
+        },
         include: { array: { explode: false } },
       },
     },
@@ -11974,6 +12109,9 @@ export const gameCenterLeaderboardSetLocalizationsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboardSetLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[gameCenterLeaderboardSetVersions]": {
           array: { explode: false },
         },
         "fields[gameCenterLeaderboardSetImages]": { array: { explode: false } },
@@ -12174,6 +12312,7 @@ export const gameCenterLeaderboardSetVersionsV2GetInstance = <
         "fields[gameCenterLeaderboardSetVersions]": {
           array: { explode: false },
         },
+        "fields[gameCenterLeaderboardSets]": { array: { explode: false } },
         "fields[gameCenterLeaderboardSetLocalizations]": {
           array: { explode: false },
         },
@@ -12247,6 +12386,8 @@ export const gameCenterLeaderboardSetsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboardSets]": { array: { explode: false } },
+        "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[gameCenterGroups]": { array: { explode: false } },
         "fields[gameCenterLeaderboards]": { array: { explode: false } },
         "fields[gameCenterLeaderboardSetVersions]": {
           array: { explode: false },
@@ -12331,6 +12472,7 @@ export const gameCenterLeaderboardVersionsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboardVersions]": { array: { explode: false } },
+        "fields[gameCenterLeaderboards]": { array: { explode: false } },
         "fields[gameCenterLeaderboardLocalizations]": {
           array: { explode: false },
         },
@@ -12406,6 +12548,11 @@ export const gameCenterLeaderboardsV2GetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterLeaderboards]": { array: { explode: false } },
+        "fields[gameCenterDetails]": { array: { explode: false } },
+        "fields[gameCenterGroups]": { array: { explode: false } },
+        "fields[gameCenterLeaderboardSets]": { array: { explode: false } },
+        "fields[gameCenterActivities]": { array: { explode: false } },
+        "fields[gameCenterChallenges]": { array: { explode: false } },
         "fields[gameCenterLeaderboardVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
@@ -12460,6 +12607,7 @@ export const gameCenterMatchmakingQueuesGetCollection = <
     querySerializer: {
       parameters: {
         "fields[gameCenterMatchmakingQueues]": { array: { explode: false } },
+        "fields[gameCenterMatchmakingRuleSets]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -12530,6 +12678,7 @@ export const gameCenterMatchmakingQueuesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[gameCenterMatchmakingQueues]": { array: { explode: false } },
+        "fields[gameCenterMatchmakingRuleSets]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -12965,6 +13114,7 @@ export const inAppPurchaseAppStoreReviewScreenshotsGetInstance = <
         "fields[inAppPurchaseAppStoreReviewScreenshots]": {
           array: { explode: false },
         },
+        "fields[inAppPurchases]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13069,6 +13219,7 @@ export const inAppPurchaseContentsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[inAppPurchaseContents]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13140,6 +13291,7 @@ export const inAppPurchaseImagesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[inAppPurchaseImages]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13234,6 +13386,7 @@ export const inAppPurchaseLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[inAppPurchaseLocalizations]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13318,6 +13471,7 @@ export const inAppPurchaseOfferCodeCustomCodesGetInstance = <
         "fields[inAppPurchaseOfferCodeCustomCodes]": {
           array: { explode: false },
         },
+        "fields[actors]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13409,6 +13563,7 @@ export const inAppPurchaseOfferCodeOneTimeUseCodesGetInstance = <
         "fields[inAppPurchaseOfferCodeOneTimeUseCodes]": {
           array: { explode: false },
         },
+        "fields[actors]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13927,6 +14082,10 @@ export const nominationsGetCollection = <ThrowOnError extends boolean = false>(
         "filter[relatedApps]": { array: { explode: false } },
         sort: { array: { explode: false } },
         "fields[nominations]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
+        "fields[actors]": { array: { explode: false } },
+        "fields[appEvents]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -13993,6 +14152,10 @@ export const nominationsGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[nominations]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
+        "fields[actors]": { array: { explode: false } },
+        "fields[appEvents]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14374,6 +14537,8 @@ export const promotedPurchasesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[promotedPurchases]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14495,7 +14660,10 @@ export const reviewSubmissionsGetCollection = <
         "filter[state]": { array: { explode: false } },
         "filter[app]": { array: { explode: false } },
         "fields[reviewSubmissions]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[reviewSubmissionItems]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
+        "fields[actors]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14548,7 +14716,10 @@ export const reviewSubmissionsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[reviewSubmissions]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         "fields[reviewSubmissionItems]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
+        "fields[actors]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14646,6 +14817,7 @@ export const routingAppCoveragesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[routingAppCoverages]": { array: { explode: false } },
+        "fields[appStoreVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14800,6 +14972,7 @@ export const scmGitReferencesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[scmGitReferences]": { array: { explode: false } },
+        "fields[scmRepositories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14869,6 +15042,7 @@ export const scmPullRequestsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[scmPullRequests]": { array: { explode: false } },
+        "fields[scmRepositories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14897,6 +15071,8 @@ export const scmRepositoriesGetCollection = <
       parameters: {
         "filter[id]": { array: { explode: false } },
         "fields[scmRepositories]": { array: { explode: false } },
+        "fields[scmProviders]": { array: { explode: false } },
+        "fields[scmGitReferences]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -14924,6 +15100,8 @@ export const scmRepositoriesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[scmRepositories]": { array: { explode: false } },
+        "fields[scmProviders]": { array: { explode: false } },
+        "fields[scmGitReferences]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15006,6 +15184,7 @@ export const subscriptionAppStoreReviewScreenshotsGetInstance = <
         "fields[subscriptionAppStoreReviewScreenshots]": {
           array: { explode: false },
         },
+        "fields[subscriptions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15209,6 +15388,7 @@ export const subscriptionGroupLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        "fields[subscriptionGroups]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15429,6 +15609,7 @@ export const subscriptionImagesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15604,6 +15785,7 @@ export const subscriptionLocalizationsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionLocalizations]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15688,6 +15870,7 @@ export const subscriptionOfferCodeCustomCodesGetInstance = <
         "fields[subscriptionOfferCodeCustomCodes]": {
           array: { explode: false },
         },
+        "fields[subscriptionOfferCodes]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15779,6 +15962,7 @@ export const subscriptionOfferCodeOneTimeUseCodesGetInstance = <
         "fields[subscriptionOfferCodeOneTimeUseCodes]": {
           array: { explode: false },
         },
+        "fields[subscriptionOfferCodes]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15862,6 +16046,7 @@ export const subscriptionOfferCodesGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionOfferCodes]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
         "fields[subscriptionOfferCodeOneTimeUseCodes]": {
           array: { explode: false },
         },
@@ -15922,6 +16107,7 @@ export const subscriptionPricePointsGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionPricePoints]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -16043,6 +16229,7 @@ export const subscriptionPromotionalOffersGetInstance = <
     querySerializer: {
       parameters: {
         "fields[subscriptionPromotionalOffers]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
         "fields[subscriptionPromotionalOfferPrices]": {
           array: { explode: false },
         },
@@ -16169,6 +16356,7 @@ export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[subscriptionAppStoreReviewScreenshots]": {
           array: { explode: false },
         },
+        "fields[subscriptionGroups]": { array: { explode: false } },
         "fields[subscriptionIntroductoryOffers]": { array: { explode: false } },
         "fields[subscriptionPromotionalOffers]": { array: { explode: false } },
         "fields[subscriptionOfferCodes]": { array: { explode: false } },
@@ -16560,6 +16748,7 @@ export const webhooksGetInstance = <ThrowOnError extends boolean = false>(
     querySerializer: {
       parameters: {
         "fields[webhooks]": { array: { explode: false } },
+        "fields[apps]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -19943,9 +20132,11 @@ export const appStoreVersionsCustomerReviewsGetToManyRelated = <
       parameters: {
         "filter[territory]": { array: { explode: false } },
         "filter[rating]": { array: { explode: false } },
+        "filter[reviewTerritory]": { array: { explode: false } },
         sort: { array: { explode: false } },
         "fields[customerReviews]": { array: { explode: false } },
         "fields[customerReviewResponses]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -21520,9 +21711,11 @@ export const appsCustomerReviewsGetToManyRelated = <
       parameters: {
         "filter[territory]": { array: { explode: false } },
         "filter[rating]": { array: { explode: false } },
+        "filter[reviewTerritory]": { array: { explode: false } },
         sort: { array: { explode: false } },
         "fields[customerReviews]": { array: { explode: false } },
         "fields[customerReviewResponses]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
