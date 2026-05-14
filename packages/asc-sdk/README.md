@@ -2,6 +2,8 @@
 
 Auto-generated TypeScript SDK for Apple's App Store Connect API -- 1055 tree-shakeable operations, with `date-time` fields converted to native `Date` objects.
 
+Generated against App Store Connect API spec 4.3.1.
+
 ## Install
 
 ```bash
