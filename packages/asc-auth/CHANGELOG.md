@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/bradford-tech/asc-sdk/compare/asc-auth-v0.0.3...asc-auth-v0.0.4) (2026-05-14)
+
+
+### Features
+
+* **auth:** document ASCAuthOptions union type ([3798d5d](https://github.com/bradford-tech/asc-sdk/commit/3798d5da9dc1a7af6be48d5ce0714245ab3d64a7))
+
 ## [0.0.3](https://github.com/bradford-tech/asc-sdk/compare/asc-auth-v0.0.2...asc-auth-v0.0.3) (2026-04-20)
 
 
