@@ -116,13 +116,13 @@ sdk = sdk.replace(
 // --- Annotate functions ---
 
 // Regex matches each exported function and captures name + response/error generics.
-// Three formatting variants (from prettier wrapping at different line lengths):
-//   1. `export const foo = <ThrowOnError...>(\n  options:` (short name)
-//   2. `export const foo = <\n  ThrowOnError...,\n>(\n  options:` (medium name)
-//   3. `export const foo =\n  <ThrowOnError...>(\n    options:` (long name, wrapped)
-// All whitespace between structural markers is flexible (\s*).
+// Two formatting variants (from prettier wrapping at different line lengths):
+//   1. Short: `export const foo = <ThrowOnError...>(\n  options:` (type param on same line)
+//   2. Long:  `export const foo = <\n  ThrowOnError...,\n>(\n  options:` (type param wrapped)
+// Since @hey-api/openapi-ts ≥0.98.1, the generator emits explicit RequestResult return
+// types, so the regex anchors on `): RequestResult<Responses, Errors, ThrowOnError`.
 const FN_REGEX =
-  /(?<jsdoc>\/\*\*[^]*?\*\/\n)?export const (?<name>\w+) =\s*<\s*ThrowOnError extends boolean = false,?\s*>?\(\s*(?<params>options\??\s*:\s*Options<[\s\S]*?>)\s*,?\s*\) =>\s*\(options\??\s*\.\s*client \?\? client\)\.\w+<\s*(?<responses>\w+),\s*(?<errors>\w+),\s*ThrowOnError,?\s*>/gm;
+  /(?<jsdoc>\/\*\*[^]*?\*\/\n)?export const (?<name>\w+) =\s*<[^>]*ThrowOnError[^>]*>\s*\(\s*options\??[^)]*\)\s*:\s*RequestResult<\s*(?<responses>\w+),\s*(?<errors>\w+),\s*ThrowOnError/gm;
 
 // Build function name → spec lookup
 const fnToSpec = new Map();
@@ -134,10 +134,7 @@ let processed = 0;
 
 sdk = sdk.replace(FN_REGEX, (match, ...args) => {
   const groups = args[args.length - 1]; // named groups are last arg
-  const { name, responses, errors, jsdoc } = groups;
-
-  // Idempotency: skip if already annotated
-  if (match.includes("): RequestResult<")) return match;
+  const { name, jsdoc } = groups;
 
   processed++;
 
@@ -147,19 +144,12 @@ sdk = sdk.replace(FN_REGEX, (match, ...args) => {
     ? generateDoc(specInfo.opId, specInfo.method, specInfo.path)
     : `/** ${name} */`;
 
-  // Insert return type: replace `) =>\n` with `): RequestResult<R, E, ThrowOnError> =>\n`
-  let annotated = match.replace(
-    /\) =>\n/,
-    `): RequestResult<${responses}, ${errors}, ThrowOnError> =>\n`,
-  );
-
   // Remove existing JSDoc if present, then prepend new one
+  let annotated = match;
   if (jsdoc) {
     annotated = annotated.slice(jsdoc.length);
   }
-  annotated = doc + "\n" + annotated;
-
-  return annotated;
+  return doc + "\n" + annotated;
 });
 
 // --- Drift assertion ---
