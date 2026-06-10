@@ -1,8 +1,8 @@
 # @bradford-tech/asc-sdk
 
-Auto-generated TypeScript SDK for Apple's App Store Connect API -- 1055 tree-shakeable operations, with `date-time` fields converted to native `Date` objects.
+Auto-generated TypeScript SDK for Apple's App Store Connect API -- 1013 tree-shakeable operations, with `date-time` fields converted to native `Date` objects.
 
-Generated against App Store Connect API spec 4.3.1.
+Generated against App Store Connect API spec 4.4.
 
 ## Install
 
@@ -64,7 +64,7 @@ const { data } = await appsGetCollection({
 ## Features
 
 - **Flat, tree-shakeable exports** -- each operation is a standalone function. Import only what you use; bundlers drop the rest.
-- **Date transforms** -- 261 of 1055 endpoints auto-convert `date-time` response fields to native `Date` objects via [`@hey-api/transformers`](https://heyapi.dev).
+- **Date transforms** -- 261 of 1013 endpoints auto-convert `date-time` response fields to native `Date` objects via [`@hey-api/transformers`](https://heyapi.dev).
 - **Typed request and response** -- full TypeScript types generated from Apple's OpenAPI spec, including query parameters, request bodies, and response shapes.
 - **Daily spec updates** -- a GitHub Actions workflow downloads Apple's latest OpenAPI spec and opens a PR when it changes. The SDK stays current without manual intervention.
 - **ESM-only** -- `"type": "module"` with explicit `.js` extensions for Node.js ESM resolution. No CJS dual-publish overhead.
