@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.2.0...asc-sdk-v0.2.1) (2026-06-10)
+
+
+### Bug Fixes
+
+* **docs:** update operation count and spec version for ASC API 4.4 ([de839c3](https://github.com/bradford-tech/asc-sdk/commit/de839c35ff3fcc4ddea4068d2fe1b62453b7ef1c))
+
 ## [0.2.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.2...asc-sdk-v0.2.0) (2026-06-10)
 
 
