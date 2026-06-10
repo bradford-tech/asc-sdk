@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.2...asc-sdk-v0.2.0) (2026-06-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **spec:** appPreviews, appPreviewSets, appScreenshots, appScreenshotSets, appEventScreenshots, appEventVideoClips, and associated relationship operations are no longer exported. These endpoints were removed by Apple in ASC API 4.4.
+
+### Miscellaneous Chores
+
+* **spec:** update App Store Connect OpenAPI spec ([#25](https://github.com/bradford-tech/asc-sdk/issues/25)) ([f4f1cea](https://github.com/bradford-tech/asc-sdk/commit/f4f1ceada9a467c96a4152a11f3a71c0e3bda2e4))
+
 ## [0.1.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.1.1...asc-sdk-v0.1.2) (2026-05-14)
 
 
