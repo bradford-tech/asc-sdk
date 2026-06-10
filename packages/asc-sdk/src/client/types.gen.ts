@@ -1845,6 +1845,9 @@ export type AppCustomProductPageLocalization = {
         id: string;
       };
     };
+    /**
+     * @deprecated
+     */
     appScreenshotSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -1853,6 +1856,9 @@ export type AppCustomProductPageLocalization = {
         id: string;
       }>;
     };
+    /**
+     * @deprecated
+     */
     appPreviewSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -1873,7 +1879,6 @@ export type AppCustomProductPageLocalization = {
   links?: ResourceLinks;
 };
 
-/** Inline create payload for an app custom product page localization. */
 export type AppCustomProductPageLocalizationInlineCreate = {
   type: "appCustomProductPageLocalizations";
   id?: string;
@@ -1891,7 +1896,9 @@ export type AppCustomProductPageLocalizationInlineCreate = {
   };
 };
 
-/** Response containing an app custom product page localizations. */
+/**
+ * AppCustomProductPageLocalizationsResponse
+ */
 export type AppCustomProductPageLocalizationsResponse = {
   data: Array<AppCustomProductPageLocalization>;
   included?: Array<
@@ -2401,6 +2408,9 @@ export type AppEventLocalization = {
         id: string;
       };
     };
+    /**
+     * @deprecated
+     */
     appEventScreenshots?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -2409,6 +2419,9 @@ export type AppEventLocalization = {
         id: string;
       }>;
     };
+    /**
+     * @deprecated
+     */
     appEventVideoClips?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -2421,7 +2434,9 @@ export type AppEventLocalization = {
   links?: ResourceLinks;
 };
 
-/** Response containing an app event localizations. */
+/**
+ * AppEventLocalizationsResponse
+ */
 export type AppEventLocalizationsResponse = {
   data: Array<AppEventLocalization>;
   included?: Array<
@@ -2490,7 +2505,11 @@ export type AppEventLocalizationUpdateRequest = {
   };
 };
 
-/** app event screenshot. */
+/**
+ * AppEventScreenshot
+ *
+ * @deprecated
+ */
 export type AppEventScreenshot = {
   type: "appEventScreenshots";
   id: string;
@@ -2514,53 +2533,11 @@ export type AppEventScreenshot = {
   links?: ResourceLinks;
 };
 
-/** Response containing an app event screenshots. */
-export type AppEventScreenshotsResponse = {
-  data: Array<AppEventScreenshot>;
-  included?: Array<AppEventLocalization>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app event screenshot. */
-export type AppEventScreenshotResponse = {
-  data: AppEventScreenshot;
-  included?: Array<AppEventLocalization>;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app event screenshot. */
-export type AppEventScreenshotCreateRequest = {
-  data: {
-    type: "appEventScreenshots";
-    attributes: {
-      fileSize: number;
-      fileName: string;
-      appEventAssetType: AppEventAssetType;
-    };
-    relationships: {
-      appEventLocalization: {
-        data: {
-          type: "appEventLocalizations";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** Request body for updating an app event screenshot. */
-export type AppEventScreenshotUpdateRequest = {
-  data: {
-    type: "appEventScreenshots";
-    id: string;
-    attributes?: {
-      uploaded?: boolean | null;
-    };
-  };
-};
-
-/** app event video clip. */
+/**
+ * AppEventVideoClip
+ *
+ * @deprecated
+ */
 export type AppEventVideoClip = {
   type: "appEventVideoClips";
   id: string;
@@ -2585,54 +2562,6 @@ export type AppEventVideoClip = {
     };
   };
   links?: ResourceLinks;
-};
-
-/** Response containing an app event video clips. */
-export type AppEventVideoClipsResponse = {
-  data: Array<AppEventVideoClip>;
-  included?: Array<AppEventLocalization>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app event video clip. */
-export type AppEventVideoClipResponse = {
-  data: AppEventVideoClip;
-  included?: Array<AppEventLocalization>;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app event video clip. */
-export type AppEventVideoClipCreateRequest = {
-  data: {
-    type: "appEventVideoClips";
-    attributes: {
-      fileSize: number;
-      fileName: string;
-      previewFrameTimeCode?: string | null;
-      appEventAssetType: AppEventAssetType;
-    };
-    relationships: {
-      appEventLocalization: {
-        data: {
-          type: "appEventLocalizations";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** Request body for updating an app event video clip. */
-export type AppEventVideoClipUpdateRequest = {
-  data: {
-    type: "appEventVideoClips";
-    id: string;
-    attributes?: {
-      previewFrameTimeCode?: string | null;
-      uploaded?: boolean | null;
-    };
-  };
 };
 
 /** app event. */
@@ -2913,7 +2842,6 @@ export type AppInfo = {
       | "FIFTEEN"
       | "NINETEEN"
       | "NOT_APPLICABLE";
-    kidsAgeBand?: KidsAgeBand;
   };
   relationships?: {
     app?: {
@@ -3089,7 +3017,11 @@ export type AppKeywordsResponse = {
   meta?: PagingInformation;
 };
 
-/** app preview set. */
+/**
+ * AppPreviewSet
+ *
+ * @deprecated
+ */
 export type AppPreviewSet = {
   type: "appPreviewSets";
   id: string;
@@ -3125,154 +3057,6 @@ export type AppPreviewSet = {
     };
   };
   links?: ResourceLinks;
-};
-
-/** Response containing an app preview sets. */
-export type AppPreviewSetsResponse = {
-  data: Array<AppPreviewSet>;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appPreviews";
-      } & AppPreview)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-  >;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app preview set. */
-export type AppPreviewSetResponse = {
-  data: AppPreviewSet;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appPreviews";
-      } & AppPreview)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-  >;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app preview set. */
-export type AppPreviewSetCreateRequest = {
-  data: {
-    type: "appPreviewSets";
-    attributes: {
-      previewType: PreviewType;
-    };
-    relationships?: {
-      appStoreVersionLocalization?: {
-        data?: {
-          type: "appStoreVersionLocalizations";
-          id: string;
-        };
-      };
-      appCustomProductPageLocalization?: {
-        data?: {
-          type: "appCustomProductPageLocalizations";
-          id: string;
-        };
-      };
-      appStoreVersionExperimentTreatmentLocalization?: {
-        data?: {
-          type: "appStoreVersionExperimentTreatmentLocalizations";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** app preview. */
-export type AppPreview = {
-  type: "appPreviews";
-  id: string;
-  attributes?: {
-    fileSize?: number;
-    fileName?: string;
-    sourceFileChecksum?: string;
-    previewFrameTimeCode?: string;
-    mimeType?: string;
-    videoUrl?: string;
-    previewFrameImage?: PreviewFrameImage;
-    previewImage?: ImageAsset;
-    uploadOperations?: Array<UploadOperation>;
-    assetDeliveryState?: AppMediaAssetState;
-    videoDeliveryState?: AppMediaVideoState;
-  };
-  relationships?: {
-    appPreviewSet?: {
-      data?: {
-        type: "appPreviewSets";
-        id: string;
-      };
-    };
-  };
-  links?: ResourceLinks;
-};
-
-/** Response containing an app previews. */
-export type AppPreviewsResponse = {
-  data: Array<AppPreview>;
-  included?: Array<AppPreviewSet>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app preview. */
-export type AppPreviewResponse = {
-  data: AppPreview;
-  included?: Array<AppPreviewSet>;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app preview. */
-export type AppPreviewCreateRequest = {
-  data: {
-    type: "appPreviews";
-    attributes: {
-      fileSize: number;
-      fileName: string;
-      previewFrameTimeCode?: string | null;
-      mimeType?: string | null;
-    };
-    relationships: {
-      appPreviewSet: {
-        data: {
-          type: "appPreviewSets";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** Request body for updating an app preview. */
-export type AppPreviewUpdateRequest = {
-  data: {
-    type: "appPreviews";
-    id: string;
-    attributes?: {
-      sourceFileChecksum?: string | null;
-      previewFrameTimeCode?: string | null;
-      uploaded?: boolean | null;
-    };
-  };
 };
 
 /** app price point v3. */
@@ -3474,7 +3258,11 @@ export type AppPricesV2Response = {
   meta?: PagingInformation;
 };
 
-/** app screenshot set. */
+/**
+ * AppScreenshotSet
+ *
+ * @deprecated
+ */
 export type AppScreenshotSet = {
   type: "appScreenshotSets";
   id: string;
@@ -3510,148 +3298,6 @@ export type AppScreenshotSet = {
     };
   };
   links?: ResourceLinks;
-};
-
-/** Response containing an app screenshot sets. */
-export type AppScreenshotSetsResponse = {
-  data: Array<AppScreenshotSet>;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appScreenshots";
-      } & AppScreenshot)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-  >;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app screenshot set. */
-export type AppScreenshotSetResponse = {
-  data: AppScreenshotSet;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appScreenshots";
-      } & AppScreenshot)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-  >;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app screenshot set. */
-export type AppScreenshotSetCreateRequest = {
-  data: {
-    type: "appScreenshotSets";
-    attributes: {
-      screenshotDisplayType: ScreenshotDisplayType;
-    };
-    relationships?: {
-      appStoreVersionLocalization?: {
-        data?: {
-          type: "appStoreVersionLocalizations";
-          id: string;
-        };
-      };
-      appCustomProductPageLocalization?: {
-        data?: {
-          type: "appCustomProductPageLocalizations";
-          id: string;
-        };
-      };
-      appStoreVersionExperimentTreatmentLocalization?: {
-        data?: {
-          type: "appStoreVersionExperimentTreatmentLocalizations";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** app screenshot. */
-export type AppScreenshot = {
-  type: "appScreenshots";
-  id: string;
-  attributes?: {
-    fileSize?: number;
-    fileName?: string;
-    sourceFileChecksum?: string;
-    imageAsset?: ImageAsset;
-    assetToken?: string;
-    assetType?: string;
-    uploadOperations?: Array<UploadOperation>;
-    assetDeliveryState?: AppMediaAssetState;
-  };
-  relationships?: {
-    appScreenshotSet?: {
-      data?: {
-        type: "appScreenshotSets";
-        id: string;
-      };
-    };
-  };
-  links?: ResourceLinks;
-};
-
-/** Response containing an app screenshots. */
-export type AppScreenshotsResponse = {
-  data: Array<AppScreenshot>;
-  included?: Array<AppScreenshotSet>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Response containing an app screenshot. */
-export type AppScreenshotResponse = {
-  data: AppScreenshot;
-  included?: Array<AppScreenshotSet>;
-  links: DocumentLinks;
-};
-
-/** Request body for creating an app screenshot. */
-export type AppScreenshotCreateRequest = {
-  data: {
-    type: "appScreenshots";
-    attributes: {
-      fileSize: number;
-      fileName: string;
-    };
-    relationships: {
-      appScreenshotSet: {
-        data: {
-          type: "appScreenshotSets";
-          id: string;
-        };
-      };
-    };
-  };
-};
-
-/** Request body for updating an app screenshot. */
-export type AppScreenshotUpdateRequest = {
-  data: {
-    type: "appScreenshots";
-    id: string;
-    attributes?: {
-      sourceFileChecksum?: string | null;
-      uploaded?: boolean | null;
-    };
-  };
 };
 
 /** app store review attachment. */
@@ -3826,6 +3472,9 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
         id: string;
       };
     };
+    /**
+     * @deprecated
+     */
     appScreenshotSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -3834,6 +3483,9 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
         id: string;
       }>;
     };
+    /**
+     * @deprecated
+     */
     appPreviewSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -3846,7 +3498,9 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
   links?: ResourceLinks;
 };
 
-/** Response containing an app store version experiment treatment localizations. */
+/**
+ * AppStoreVersionExperimentTreatmentLocalizationsResponse
+ */
 export type AppStoreVersionExperimentTreatmentLocalizationsResponse = {
   data: Array<AppStoreVersionExperimentTreatmentLocalization>;
   included?: Array<
@@ -4186,6 +3840,9 @@ export type AppStoreVersionLocalization = {
         id: string;
       };
     };
+    /**
+     * @deprecated
+     */
     appScreenshotSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -4194,6 +3851,9 @@ export type AppStoreVersionLocalization = {
         id: string;
       }>;
     };
+    /**
+     * @deprecated
+     */
     appPreviewSets?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -4214,7 +3874,9 @@ export type AppStoreVersionLocalization = {
   links?: ResourceLinks;
 };
 
-/** Response containing an app store version localizations. */
+/**
+ * AppStoreVersionLocalizationsResponse
+ */
 export type AppStoreVersionLocalizationsResponse = {
   data: Array<AppStoreVersionLocalization>;
   included?: Array<
@@ -5367,6 +5029,7 @@ export type BackgroundAssetVersion = {
       infos?: Array<StateDetail>;
     };
     version?: string;
+    locale?: string;
   };
   relationships?: {
     backgroundAsset?: {
@@ -14454,7 +14117,11 @@ export type SubscriptionAppStoreReviewScreenshotUpdateRequest = {
   };
 };
 
-/** subscription availability. */
+/**
+ * SubscriptionAvailability
+ *
+ * @deprecated
+ */
 export type SubscriptionAvailability = {
   type: "subscriptionAvailabilities";
   id: string;
@@ -14472,37 +14139,6 @@ export type SubscriptionAvailability = {
     };
   };
   links?: ResourceLinks;
-};
-
-/** Response containing a subscription availability. */
-export type SubscriptionAvailabilityResponse = {
-  data: SubscriptionAvailability;
-  included?: Array<Territory>;
-  links: DocumentLinks;
-};
-
-/** Request body for creating a subscription availability. */
-export type SubscriptionAvailabilityCreateRequest = {
-  data: {
-    type: "subscriptionAvailabilities";
-    attributes: {
-      availableInNewTerritories: boolean;
-    };
-    relationships: {
-      subscription: {
-        data: {
-          type: "subscriptions";
-          id: string;
-        };
-      };
-      availableTerritories: {
-        data: Array<{
-          type: "territories";
-          id: string;
-        }>;
-      };
-    };
-  };
 };
 
 /** subscription grace period. */
@@ -14811,6 +14447,7 @@ export type SubscriptionIntroductoryOffer = {
     duration?: SubscriptionOfferDuration;
     offerMode?: SubscriptionOfferMode;
     numberOfPeriods?: number;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -14845,6 +14482,7 @@ export type SubscriptionIntroductoryOfferInlineCreate = {
     duration: SubscriptionOfferDuration;
     offerMode: SubscriptionOfferMode;
     numberOfPeriods: number;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -14913,6 +14551,7 @@ export type SubscriptionIntroductoryOfferCreateRequest = {
       duration: SubscriptionOfferDuration;
       offerMode: SubscriptionOfferMode;
       numberOfPeriods: number;
+      targetSubscriptionPlanType?: SubscriptionPlanType;
     };
     relationships: {
       subscription: {
@@ -15232,6 +14871,7 @@ export type SubscriptionOfferCode = {
     sandboxCodeCount?: number;
     active?: boolean;
     autoRenewEnabled?: boolean;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -15321,6 +14961,7 @@ export type SubscriptionOfferCodeCreateRequest = {
       offerMode: SubscriptionOfferMode;
       numberOfPeriods: number;
       autoRenewEnabled?: boolean | null;
+      targetSubscriptionPlanType?: SubscriptionPlanType;
     };
     relationships: {
       subscription: {
@@ -15347,6 +14988,86 @@ export type SubscriptionOfferCodeUpdateRequest = {
     id: string;
     attributes?: {
       active?: boolean | null;
+    };
+  };
+};
+
+/** subscription plan availability. */
+export type SubscriptionPlanAvailability = {
+  type: "subscriptionPlanAvailabilities";
+  id: string;
+  attributes?: {
+    availableInNewTerritories?: boolean;
+    planType?: SubscriptionPlanType;
+  };
+  relationships?: {
+    availableTerritories?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "territories";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription plan availabilities. */
+export type SubscriptionPlanAvailabilitiesResponse = {
+  data: Array<SubscriptionPlanAvailability>;
+  included?: Array<Territory>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription plan availability. */
+export type SubscriptionPlanAvailabilityResponse = {
+  data: SubscriptionPlanAvailability;
+  included?: Array<Territory>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription plan availability. */
+export type SubscriptionPlanAvailabilityCreateRequest = {
+  data: {
+    type: "subscriptionPlanAvailabilities";
+    attributes: {
+      availableInNewTerritories?: boolean | null;
+      planType: SubscriptionPlanType;
+    };
+    relationships: {
+      availableTerritories: {
+        data: Array<{
+          type: "territories";
+          id: string;
+        }>;
+      };
+      subscription: {
+        data: {
+          type: "subscriptions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating a subscription plan availability. */
+export type SubscriptionPlanAvailabilityUpdateRequest = {
+  data: {
+    type: "subscriptionPlanAvailabilities";
+    id: string;
+    attributes?: {
+      availableInNewTerritories?: boolean | null;
+    };
+    relationships?: {
+      availableTerritories?: {
+        data?: Array<{
+          type: "territories";
+          id: string;
+        }>;
+      };
     };
   };
 };
@@ -15402,6 +15123,7 @@ export type SubscriptionPrice = {
   attributes?: {
     startDate?: Date;
     preserved?: boolean;
+    planType?: SubscriptionPlanType;
   };
   relationships?: {
     territory?: {
@@ -15427,6 +15149,7 @@ export type SubscriptionPriceInlineCreate = {
   attributes?: {
     startDate?: Date | null;
     preserveCurrentPrice?: boolean | null;
+    planType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -15486,6 +15209,7 @@ export type SubscriptionPriceCreateRequest = {
     attributes?: {
       startDate?: Date | null;
       preserveCurrentPrice?: boolean | null;
+      planType?: SubscriptionPlanType;
     };
     relationships: {
       subscription: {
@@ -15576,6 +15300,7 @@ export type SubscriptionPromotionalOffer = {
     numberOfPeriods?: number;
     offerCode?: string;
     offerMode?: SubscriptionOfferMode;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -15606,6 +15331,7 @@ export type SubscriptionPromotionalOfferInlineCreate = {
     numberOfPeriods: number;
     offerCode: string;
     offerMode: SubscriptionOfferMode;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     subscription?: {
@@ -15662,6 +15388,7 @@ export type SubscriptionPromotionalOfferCreateRequest = {
       numberOfPeriods: number;
       offerCode: string;
       offerMode: SubscriptionOfferMode;
+      targetSubscriptionPlanType?: SubscriptionPlanType;
     };
     relationships: {
       subscription: {
@@ -15828,6 +15555,9 @@ export type Subscription = {
         id: string;
       };
     };
+    /**
+     * @deprecated
+     */
     subscriptionAvailability?: {
       links?: RelationshipLinks;
       data?: {
@@ -15851,11 +15581,21 @@ export type Subscription = {
         id: string;
       }>;
     };
+    planAvailabilities?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionPlanAvailabilities";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
 
-/** Response containing a subscriptions. */
+/**
+ * SubscriptionsResponse
+ */
 export type SubscriptionsResponse = {
   data: Array<Subscription>;
   included?: Array<
@@ -15883,6 +15623,9 @@ export type SubscriptionsResponse = {
     | ({
         type: "subscriptionOfferCodes";
       } & SubscriptionOfferCode)
+    | ({
+        type: "subscriptionPlanAvailabilities";
+      } & SubscriptionPlanAvailability)
     | ({
         type: "subscriptionPrices";
       } & SubscriptionPrice)
@@ -15925,6 +15668,9 @@ export type SubscriptionResponse = {
     | ({
         type: "subscriptionOfferCodes";
       } & SubscriptionOfferCode)
+    | ({
+        type: "subscriptionPlanAvailabilities";
+      } & SubscriptionPlanAvailability)
     | ({
         type: "subscriptionPrices";
       } & SubscriptionPrice)
@@ -16546,6 +16292,7 @@ export type WinBackOffer = {
     endDate?: Date;
     priority?: "HIGH" | "NORMAL";
     promotionIntent?: "NOT_PROMOTED" | "USE_AUTO_GENERATED_ASSETS";
+    targetSubscriptionPlanType?: SubscriptionPlanType;
   };
   relationships?: {
     prices?: {
@@ -16592,6 +16339,7 @@ export type WinBackOfferCreateRequest = {
       endDate?: Date | null;
       priority: "HIGH" | "NORMAL";
       promotionIntent?: "NOT_PROMOTED" | "USE_AUTO_GENERATED_ASSETS";
+      targetSubscriptionPlanType?: SubscriptionPlanType;
     };
     relationships: {
       subscription: {
@@ -16799,27 +16547,6 @@ export type AppClipAppClipDefaultExperiencesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
-/** Linkage response for an app custom product page localization app preview sets. */
-export type AppCustomProductPageLocalizationAppPreviewSetsLinkagesResponse = {
-  data: Array<{
-    type: "appPreviewSets";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Linkage response for an app custom product page localization app screenshot sets. */
-export type AppCustomProductPageLocalizationAppScreenshotSetsLinkagesResponse =
-  {
-    data: Array<{
-      type: "appScreenshotSets";
-      id: string;
-    }>;
-    links: PagedDocumentLinks;
-    meta?: PagingInformation;
-  };
-
 /** Linkage response for an app custom product page localization search keywords. */
 export type AppCustomProductPageLocalizationSearchKeywordsLinkagesResponse = {
   data: Array<{
@@ -16874,26 +16601,6 @@ export type AppEncryptionDeclarationAppEncryptionDeclarationDocumentLinkageRespo
     };
     links: DocumentLinks;
   };
-
-/** Linkage response for an app event localization app event screenshots. */
-export type AppEventLocalizationAppEventScreenshotsLinkagesResponse = {
-  data: Array<{
-    type: "appEventScreenshots";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Linkage response for an app event localization app event video clips. */
-export type AppEventLocalizationAppEventVideoClipsLinkagesResponse = {
-  data: Array<{
-    type: "appEventVideoClips";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
 
 /** Linkage response for an app event localizations. */
 export type AppEventLocalizationsLinkagesResponse = {
@@ -16988,24 +16695,6 @@ export type AppInfoTerritoryAgeRatingsLinkagesResponse = {
   meta?: PagingInformation;
 };
 
-/** Linkage response for an app preview set app previews. */
-export type AppPreviewSetAppPreviewsLinkagesResponse = {
-  data: Array<{
-    type: "appPreviews";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Linkage request body for an app preview set app previews. */
-export type AppPreviewSetAppPreviewsLinkagesRequest = {
-  data: Array<{
-    type: "appPreviews";
-    id: string;
-  }>;
-};
-
 /** Linkage response for an app price point v3equalizations. */
 export type AppPricePointV3EqualizationsLinkagesResponse = {
   data: Array<{
@@ -17045,24 +16734,6 @@ export type AppPriceScheduleManualPricesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
-/** Linkage response for an app screenshot set app screenshots. */
-export type AppScreenshotSetAppScreenshotsLinkagesResponse = {
-  data: Array<{
-    type: "appScreenshots";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Linkage request body for an app screenshot set app screenshots. */
-export type AppScreenshotSetAppScreenshotsLinkagesRequest = {
-  data: Array<{
-    type: "appScreenshots";
-    id: string;
-  }>;
-};
-
 /** Linkage response for an app store review detail app store review attachments. */
 export type AppStoreReviewDetailAppStoreReviewAttachmentsLinkagesResponse = {
   data: Array<{
@@ -17072,28 +16743,6 @@ export type AppStoreReviewDetailAppStoreReviewAttachmentsLinkagesResponse = {
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
-
-/** Linkage response for an app store version experiment treatment localization app preview sets. */
-export type AppStoreVersionExperimentTreatmentLocalizationAppPreviewSetsLinkagesResponse =
-  {
-    data: Array<{
-      type: "appPreviewSets";
-      id: string;
-    }>;
-    links: PagedDocumentLinks;
-    meta?: PagingInformation;
-  };
-
-/** Linkage response for an app store version experiment treatment localization app screenshot sets. */
-export type AppStoreVersionExperimentTreatmentLocalizationAppScreenshotSetsLinkagesResponse =
-  {
-    data: Array<{
-      type: "appScreenshotSets";
-      id: string;
-    }>;
-    links: PagedDocumentLinks;
-    meta?: PagingInformation;
-  };
 
 /** Linkage response for an app store version experiment treatment app store version experiment treatment localizations. */
 export type AppStoreVersionExperimentTreatmentAppStoreVersionExperimentTreatmentLocalizationsLinkagesResponse =
@@ -17116,26 +16765,6 @@ export type AppStoreVersionExperimentV2AppStoreVersionExperimentTreatmentsLinkag
     links: PagedDocumentLinks;
     meta?: PagingInformation;
   };
-
-/** Linkage response for an app store version localization app preview sets. */
-export type AppStoreVersionLocalizationAppPreviewSetsLinkagesResponse = {
-  data: Array<{
-    type: "appPreviewSets";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
-/** Linkage response for an app store version localization app screenshot sets. */
-export type AppStoreVersionLocalizationAppScreenshotSetsLinkagesResponse = {
-  data: Array<{
-    type: "appScreenshotSets";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
 
 /** Linkage response for an app store version localization search keywords. */
 export type AppStoreVersionLocalizationSearchKeywordsLinkagesResponse = {
@@ -19109,16 +18738,6 @@ export type ScmRepositoryPullRequestsLinkagesResponse = {
   meta?: PagingInformation;
 };
 
-/** Linkage response for a subscription availability available territories. */
-export type SubscriptionAvailabilityAvailableTerritoriesLinkagesResponse = {
-  data: Array<{
-    type: "territories";
-    id: string;
-  }>;
-  links: PagedDocumentLinks;
-  meta?: PagingInformation;
-};
-
 /** Linkage response for a subscription group subscription group localizations. */
 export type SubscriptionGroupSubscriptionGroupLocalizationsLinkagesResponse = {
   data: Array<{
@@ -19167,6 +18786,24 @@ export type SubscriptionOfferCodePricesLinkagesResponse = {
   }>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription plan availability available territories. */
+export type SubscriptionPlanAvailabilityAvailableTerritoriesLinkagesResponse = {
+  data: Array<{
+    type: "territories";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage request body for a subscription plan availability available territories. */
+export type SubscriptionPlanAvailabilityAvailableTerritoriesLinkagesRequest = {
+  data: Array<{
+    type: "territories";
+    id: string;
+  }>;
 };
 
 /** Linkage response for a subscription price point equalizations. */
@@ -19236,6 +18873,16 @@ export type SubscriptionOfferCodesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for a subscription plan availabilities. */
+export type SubscriptionPlanAvailabilitiesLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionPlanAvailabilities";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for a subscription price points. */
 export type SubscriptionPricePointsLinkagesResponse = {
   data: Array<{
@@ -19281,15 +18928,6 @@ export type SubscriptionPromotionalOffersLinkagesResponse = {
   }>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
-};
-
-/** Linkage response for a subscription subscription availability. */
-export type SubscriptionSubscriptionAvailabilityLinkageResponse = {
-  data: {
-    type: "subscriptionAvailabilities";
-    id: string;
-  };
-  links: DocumentLinks;
 };
 
 /** Linkage response for a subscription subscription localizations. */
@@ -19797,6 +19435,7 @@ export type AppMediaVideoState = {
 export type AppStoreAgeRating =
   | "L"
   | "ALL"
+  | "ZERO_ZERO"
   | "ONE_PLUS"
   | "TWO_PLUS"
   | "THREE_PLUS"
@@ -20412,7 +20051,8 @@ export type MetricCategory =
   | "DISK"
   | "BATTERY"
   | "TERMINATION"
-  | "ANIMATION";
+  | "ANIMATION"
+  | "STORAGE";
 
 /** metrics insight. */
 export type MetricsInsight = {
@@ -20564,6 +20204,9 @@ export type SubscriptionOfferMode =
   | "PAY_AS_YOU_GO"
   | "PAY_UP_FRONT"
   | "FREE_TRIAL";
+
+/** subscription plan type. */
+export type SubscriptionPlanType = "MONTHLY" | "UPFRONT";
 
 /** subscription status url version. */
 export type SubscriptionStatusUrlVersion = "V1" | "V2";
@@ -24713,6 +24356,8 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appScreenshotSets
+     *
+     * @deprecated
      */
     "fields[appScreenshotSets]"?: Array<
       | "screenshotDisplayType"
@@ -24723,6 +24368,8 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appPreviewSets
+     *
+     * @deprecated
      */
     "fields[appPreviewSets]"?: Array<
       | "previewType"
@@ -24742,10 +24389,14 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appPreviewSets]"?: number;
     /**
      * maximum number of related appScreenshotSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appScreenshotSets]"?: number;
     /**
@@ -26159,6 +25810,8 @@ export type AppEventLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appEventScreenshots
+     *
+     * @deprecated
      */
     "fields[appEventScreenshots]"?: Array<
       | "fileSize"
@@ -26172,6 +25825,8 @@ export type AppEventLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appEventVideoClips
+     *
+     * @deprecated
      */
     "fields[appEventVideoClips]"?: Array<
       | "fileSize"
@@ -26192,10 +25847,14 @@ export type AppEventLocalizationsGetInstanceData = {
     include?: Array<"appEvent" | "appEventScreenshots" | "appEventVideoClips">;
     /**
      * maximum number of related appEventScreenshots returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appEventScreenshots]"?: number;
     /**
      * maximum number of related appEventVideoClips returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appEventVideoClips]"?: number;
   };
@@ -26305,519 +25964,6 @@ export type AppEventLocalizationsUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/appEventLocalizations/{id}`. */
 export type AppEventLocalizationsUpdateInstanceResponse =
   AppEventLocalizationsUpdateInstanceResponses[keyof AppEventLocalizationsUpdateInstanceResponses];
-
-/** Request options for `POST /v1/appEventScreenshots`. */
-export type AppEventScreenshotsCreateInstanceData = {
-  /**
-   * AppEventScreenshot representation
-   */
-  body: AppEventScreenshotCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appEventScreenshots";
-};
-
-/** Error status map for `POST /v1/appEventScreenshots`. */
-export type AppEventScreenshotsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appEventScreenshots`. */
-export type AppEventScreenshotsCreateInstanceError =
-  AppEventScreenshotsCreateInstanceErrors[keyof AppEventScreenshotsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appEventScreenshots`. */
-export type AppEventScreenshotsCreateInstanceResponses = {
-  /**
-   * Single AppEventScreenshot
-   */
-  201: AppEventScreenshotResponse;
-};
-
-/** Successful response from `POST /v1/appEventScreenshots`. */
-export type AppEventScreenshotsCreateInstanceResponse =
-  AppEventScreenshotsCreateInstanceResponses[keyof AppEventScreenshotsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appEventScreenshots/{id}";
-};
-
-/** Error status map for `DELETE /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsDeleteInstanceError =
-  AppEventScreenshotsDeleteInstanceErrors[keyof AppEventScreenshotsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsDeleteInstanceResponse =
-  AppEventScreenshotsDeleteInstanceResponses[keyof AppEventScreenshotsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appEventScreenshots
-     */
-    "fields[appEventScreenshots]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "imageAsset"
-      | "assetToken"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "appEventAssetType"
-      | "appEventLocalization"
-    >;
-    /**
-     * the fields to include for returned resources of type appEventLocalizations
-     */
-    "fields[appEventLocalizations]"?: Array<
-      | "locale"
-      | "name"
-      | "shortDescription"
-      | "longDescription"
-      | "appEvent"
-      | "appEventScreenshots"
-      | "appEventVideoClips"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appEventLocalization">;
-  };
-  url: "/v1/appEventScreenshots/{id}";
-};
-
-/** Error status map for `GET /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsGetInstanceError =
-  AppEventScreenshotsGetInstanceErrors[keyof AppEventScreenshotsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsGetInstanceResponses = {
-  /**
-   * Single AppEventScreenshot
-   */
-  200: AppEventScreenshotResponse;
-};
-
-/** Successful response from `GET /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsGetInstanceResponse =
-  AppEventScreenshotsGetInstanceResponses[keyof AppEventScreenshotsGetInstanceResponses];
-
-/** Request options for `PATCH /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsUpdateInstanceData = {
-  /**
-   * AppEventScreenshot representation
-   */
-  body: AppEventScreenshotUpdateRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appEventScreenshots/{id}";
-};
-
-/** Error status map for `PATCH /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsUpdateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsUpdateInstanceError =
-  AppEventScreenshotsUpdateInstanceErrors[keyof AppEventScreenshotsUpdateInstanceErrors];
-
-/** Response status map for `PATCH /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsUpdateInstanceResponses = {
-  /**
-   * Single AppEventScreenshot
-   */
-  200: AppEventScreenshotResponse;
-};
-
-/** Successful response from `PATCH /v1/appEventScreenshots/{id}`. */
-export type AppEventScreenshotsUpdateInstanceResponse =
-  AppEventScreenshotsUpdateInstanceResponses[keyof AppEventScreenshotsUpdateInstanceResponses];
-
-/** Request options for `POST /v1/appEventVideoClips`. */
-export type AppEventVideoClipsCreateInstanceData = {
-  /**
-   * AppEventVideoClip representation
-   */
-  body: AppEventVideoClipCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appEventVideoClips";
-};
-
-/** Error status map for `POST /v1/appEventVideoClips`. */
-export type AppEventVideoClipsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appEventVideoClips`. */
-export type AppEventVideoClipsCreateInstanceError =
-  AppEventVideoClipsCreateInstanceErrors[keyof AppEventVideoClipsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appEventVideoClips`. */
-export type AppEventVideoClipsCreateInstanceResponses = {
-  /**
-   * Single AppEventVideoClip
-   */
-  201: AppEventVideoClipResponse;
-};
-
-/** Successful response from `POST /v1/appEventVideoClips`. */
-export type AppEventVideoClipsCreateInstanceResponse =
-  AppEventVideoClipsCreateInstanceResponses[keyof AppEventVideoClipsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appEventVideoClips/{id}";
-};
-
-/** Error status map for `DELETE /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsDeleteInstanceError =
-  AppEventVideoClipsDeleteInstanceErrors[keyof AppEventVideoClipsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsDeleteInstanceResponse =
-  AppEventVideoClipsDeleteInstanceResponses[keyof AppEventVideoClipsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appEventVideoClips
-     */
-    "fields[appEventVideoClips]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "previewFrameTimeCode"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appEventAssetType"
-      | "appEventLocalization"
-    >;
-    /**
-     * the fields to include for returned resources of type appEventLocalizations
-     */
-    "fields[appEventLocalizations]"?: Array<
-      | "locale"
-      | "name"
-      | "shortDescription"
-      | "longDescription"
-      | "appEvent"
-      | "appEventScreenshots"
-      | "appEventVideoClips"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appEventLocalization">;
-  };
-  url: "/v1/appEventVideoClips/{id}";
-};
-
-/** Error status map for `GET /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsGetInstanceError =
-  AppEventVideoClipsGetInstanceErrors[keyof AppEventVideoClipsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsGetInstanceResponses = {
-  /**
-   * Single AppEventVideoClip
-   */
-  200: AppEventVideoClipResponse;
-};
-
-/** Successful response from `GET /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsGetInstanceResponse =
-  AppEventVideoClipsGetInstanceResponses[keyof AppEventVideoClipsGetInstanceResponses];
-
-/** Request options for `PATCH /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsUpdateInstanceData = {
-  /**
-   * AppEventVideoClip representation
-   */
-  body: AppEventVideoClipUpdateRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appEventVideoClips/{id}";
-};
-
-/** Error status map for `PATCH /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsUpdateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsUpdateInstanceError =
-  AppEventVideoClipsUpdateInstanceErrors[keyof AppEventVideoClipsUpdateInstanceErrors];
-
-/** Response status map for `PATCH /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsUpdateInstanceResponses = {
-  /**
-   * Single AppEventVideoClip
-   */
-  200: AppEventVideoClipResponse;
-};
-
-/** Successful response from `PATCH /v1/appEventVideoClips/{id}`. */
-export type AppEventVideoClipsUpdateInstanceResponse =
-  AppEventVideoClipsUpdateInstanceResponses[keyof AppEventVideoClipsUpdateInstanceResponses];
 
 /** Request options for `POST /v1/appEvents`. */
 export type AppEventsCreateInstanceData = {
@@ -27223,7 +26369,6 @@ export type AppInfoLocalizationsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -27369,7 +26514,6 @@ export type AppInfosGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -27614,501 +26758,6 @@ export type AppInfosUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/appInfos/{id}`. */
 export type AppInfosUpdateInstanceResponse =
   AppInfosUpdateInstanceResponses[keyof AppInfosUpdateInstanceResponses];
-
-/** Request options for `POST /v1/appPreviewSets`. */
-export type AppPreviewSetsCreateInstanceData = {
-  /**
-   * AppPreviewSet representation
-   */
-  body: AppPreviewSetCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appPreviewSets";
-};
-
-/** Error status map for `POST /v1/appPreviewSets`. */
-export type AppPreviewSetsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appPreviewSets`. */
-export type AppPreviewSetsCreateInstanceError =
-  AppPreviewSetsCreateInstanceErrors[keyof AppPreviewSetsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appPreviewSets`. */
-export type AppPreviewSetsCreateInstanceResponses = {
-  /**
-   * Single AppPreviewSet
-   */
-  201: AppPreviewSetResponse;
-};
-
-/** Successful response from `POST /v1/appPreviewSets`. */
-export type AppPreviewSetsCreateInstanceResponse =
-  AppPreviewSetsCreateInstanceResponses[keyof AppPreviewSetsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appPreviewSets/{id}";
-};
-
-/** Error status map for `DELETE /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsDeleteInstanceError =
-  AppPreviewSetsDeleteInstanceErrors[keyof AppPreviewSetsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsDeleteInstanceResponse =
-  AppPreviewSetsDeleteInstanceResponses[keyof AppPreviewSetsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appPreviewSets
-     */
-    "fields[appPreviewSets]"?: Array<
-      | "previewType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionLocalizations
-     */
-    "fields[appStoreVersionLocalizations]"?: Array<
-      | "description"
-      | "locale"
-      | "keywords"
-      | "marketingUrl"
-      | "promotionalText"
-      | "supportUrl"
-      | "whatsNew"
-      | "appStoreVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appCustomProductPageLocalizations
-     */
-    "fields[appCustomProductPageLocalizations]"?: Array<
-      | "locale"
-      | "promotionalText"
-      | "appCustomProductPageVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-     */
-    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-      | "locale"
-      | "appStoreVersionExperimentTreatment"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-    >;
-    /**
-     * the fields to include for returned resources of type appPreviews
-     */
-    "fields[appPreviews]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "previewFrameTimeCode"
-      | "mimeType"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appPreviewSet"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * maximum number of related appPreviews returned (when they are included)
-     */
-    "limit[appPreviews]"?: number;
-  };
-  url: "/v1/appPreviewSets/{id}";
-};
-
-/** Error status map for `GET /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsGetInstanceError =
-  AppPreviewSetsGetInstanceErrors[keyof AppPreviewSetsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsGetInstanceResponses = {
-  /**
-   * Single AppPreviewSet
-   */
-  200: AppPreviewSetResponse;
-};
-
-/** Successful response from `GET /v1/appPreviewSets/{id}`. */
-export type AppPreviewSetsGetInstanceResponse =
-  AppPreviewSetsGetInstanceResponses[keyof AppPreviewSetsGetInstanceResponses];
-
-/** Request options for `POST /v1/appPreviews`. */
-export type AppPreviewsCreateInstanceData = {
-  /**
-   * AppPreview representation
-   */
-  body: AppPreviewCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appPreviews";
-};
-
-/** Error status map for `POST /v1/appPreviews`. */
-export type AppPreviewsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appPreviews`. */
-export type AppPreviewsCreateInstanceError =
-  AppPreviewsCreateInstanceErrors[keyof AppPreviewsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appPreviews`. */
-export type AppPreviewsCreateInstanceResponses = {
-  /**
-   * Single AppPreview
-   */
-  201: AppPreviewResponse;
-};
-
-/** Successful response from `POST /v1/appPreviews`. */
-export type AppPreviewsCreateInstanceResponse =
-  AppPreviewsCreateInstanceResponses[keyof AppPreviewsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appPreviews/{id}`. */
-export type AppPreviewsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appPreviews/{id}";
-};
-
-/** Error status map for `DELETE /v1/appPreviews/{id}`. */
-export type AppPreviewsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appPreviews/{id}`. */
-export type AppPreviewsDeleteInstanceError =
-  AppPreviewsDeleteInstanceErrors[keyof AppPreviewsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appPreviews/{id}`. */
-export type AppPreviewsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appPreviews/{id}`. */
-export type AppPreviewsDeleteInstanceResponse =
-  AppPreviewsDeleteInstanceResponses[keyof AppPreviewsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appPreviews/{id}`. */
-export type AppPreviewsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appPreviews
-     */
-    "fields[appPreviews]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "previewFrameTimeCode"
-      | "mimeType"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appPreviewSet"
-    >;
-    /**
-     * the fields to include for returned resources of type appPreviewSets
-     */
-    "fields[appPreviewSets]"?: Array<
-      | "previewType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appPreviewSet">;
-  };
-  url: "/v1/appPreviews/{id}";
-};
-
-/** Error status map for `GET /v1/appPreviews/{id}`. */
-export type AppPreviewsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appPreviews/{id}`. */
-export type AppPreviewsGetInstanceError =
-  AppPreviewsGetInstanceErrors[keyof AppPreviewsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appPreviews/{id}`. */
-export type AppPreviewsGetInstanceResponses = {
-  /**
-   * Single AppPreview
-   */
-  200: AppPreviewResponse;
-};
-
-/** Successful response from `GET /v1/appPreviews/{id}`. */
-export type AppPreviewsGetInstanceResponse =
-  AppPreviewsGetInstanceResponses[keyof AppPreviewsGetInstanceResponses];
-
-/** Request options for `PATCH /v1/appPreviews/{id}`. */
-export type AppPreviewsUpdateInstanceData = {
-  /**
-   * AppPreview representation
-   */
-  body: AppPreviewUpdateRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appPreviews/{id}";
-};
-
-/** Error status map for `PATCH /v1/appPreviews/{id}`. */
-export type AppPreviewsUpdateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appPreviews/{id}`. */
-export type AppPreviewsUpdateInstanceError =
-  AppPreviewsUpdateInstanceErrors[keyof AppPreviewsUpdateInstanceErrors];
-
-/** Response status map for `PATCH /v1/appPreviews/{id}`. */
-export type AppPreviewsUpdateInstanceResponses = {
-  /**
-   * Single AppPreview
-   */
-  200: AppPreviewResponse;
-};
-
-/** Successful response from `PATCH /v1/appPreviews/{id}`. */
-export type AppPreviewsUpdateInstanceResponse =
-  AppPreviewsUpdateInstanceResponses[keyof AppPreviewsUpdateInstanceResponses];
 
 /** Request options for `GET /v3/appPricePoints/{id}`. */
 export type AppPricePointsV3GetInstanceData = {
@@ -28436,495 +27085,6 @@ export type AppPriceSchedulesGetInstanceResponses = {
 /** Successful response from `GET /v1/appPriceSchedules/{id}`. */
 export type AppPriceSchedulesGetInstanceResponse =
   AppPriceSchedulesGetInstanceResponses[keyof AppPriceSchedulesGetInstanceResponses];
-
-/** Request options for `POST /v1/appScreenshotSets`. */
-export type AppScreenshotSetsCreateInstanceData = {
-  /**
-   * AppScreenshotSet representation
-   */
-  body: AppScreenshotSetCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appScreenshotSets";
-};
-
-/** Error status map for `POST /v1/appScreenshotSets`. */
-export type AppScreenshotSetsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appScreenshotSets`. */
-export type AppScreenshotSetsCreateInstanceError =
-  AppScreenshotSetsCreateInstanceErrors[keyof AppScreenshotSetsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appScreenshotSets`. */
-export type AppScreenshotSetsCreateInstanceResponses = {
-  /**
-   * Single AppScreenshotSet
-   */
-  201: AppScreenshotSetResponse;
-};
-
-/** Successful response from `POST /v1/appScreenshotSets`. */
-export type AppScreenshotSetsCreateInstanceResponse =
-  AppScreenshotSetsCreateInstanceResponses[keyof AppScreenshotSetsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appScreenshotSets/{id}";
-};
-
-/** Error status map for `DELETE /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsDeleteInstanceError =
-  AppScreenshotSetsDeleteInstanceErrors[keyof AppScreenshotSetsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsDeleteInstanceResponse =
-  AppScreenshotSetsDeleteInstanceResponses[keyof AppScreenshotSetsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appScreenshotSets
-     */
-    "fields[appScreenshotSets]"?: Array<
-      | "screenshotDisplayType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appScreenshots"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionLocalizations
-     */
-    "fields[appStoreVersionLocalizations]"?: Array<
-      | "description"
-      | "locale"
-      | "keywords"
-      | "marketingUrl"
-      | "promotionalText"
-      | "supportUrl"
-      | "whatsNew"
-      | "appStoreVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appCustomProductPageLocalizations
-     */
-    "fields[appCustomProductPageLocalizations]"?: Array<
-      | "locale"
-      | "promotionalText"
-      | "appCustomProductPageVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-     */
-    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-      | "locale"
-      | "appStoreVersionExperimentTreatment"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-    >;
-    /**
-     * the fields to include for returned resources of type appScreenshots
-     */
-    "fields[appScreenshots]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "imageAsset"
-      | "assetToken"
-      | "assetType"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "appScreenshotSet"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appScreenshots"
-    >;
-    /**
-     * maximum number of related appScreenshots returned (when they are included)
-     */
-    "limit[appScreenshots]"?: number;
-  };
-  url: "/v1/appScreenshotSets/{id}";
-};
-
-/** Error status map for `GET /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsGetInstanceError =
-  AppScreenshotSetsGetInstanceErrors[keyof AppScreenshotSetsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsGetInstanceResponses = {
-  /**
-   * Single AppScreenshotSet
-   */
-  200: AppScreenshotSetResponse;
-};
-
-/** Successful response from `GET /v1/appScreenshotSets/{id}`. */
-export type AppScreenshotSetsGetInstanceResponse =
-  AppScreenshotSetsGetInstanceResponses[keyof AppScreenshotSetsGetInstanceResponses];
-
-/** Request options for `POST /v1/appScreenshots`. */
-export type AppScreenshotsCreateInstanceData = {
-  /**
-   * AppScreenshot representation
-   */
-  body: AppScreenshotCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/appScreenshots";
-};
-
-/** Error status map for `POST /v1/appScreenshots`. */
-export type AppScreenshotsCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/appScreenshots`. */
-export type AppScreenshotsCreateInstanceError =
-  AppScreenshotsCreateInstanceErrors[keyof AppScreenshotsCreateInstanceErrors];
-
-/** Response status map for `POST /v1/appScreenshots`. */
-export type AppScreenshotsCreateInstanceResponses = {
-  /**
-   * Single AppScreenshot
-   */
-  201: AppScreenshotResponse;
-};
-
-/** Successful response from `POST /v1/appScreenshots`. */
-export type AppScreenshotsCreateInstanceResponse =
-  AppScreenshotsCreateInstanceResponses[keyof AppScreenshotsCreateInstanceResponses];
-
-/** Request options for `DELETE /v1/appScreenshots/{id}`. */
-export type AppScreenshotsDeleteInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appScreenshots/{id}";
-};
-
-/** Error status map for `DELETE /v1/appScreenshots/{id}`. */
-export type AppScreenshotsDeleteInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `DELETE /v1/appScreenshots/{id}`. */
-export type AppScreenshotsDeleteInstanceError =
-  AppScreenshotsDeleteInstanceErrors[keyof AppScreenshotsDeleteInstanceErrors];
-
-/** Response status map for `DELETE /v1/appScreenshots/{id}`. */
-export type AppScreenshotsDeleteInstanceResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `DELETE /v1/appScreenshots/{id}`. */
-export type AppScreenshotsDeleteInstanceResponse =
-  AppScreenshotsDeleteInstanceResponses[keyof AppScreenshotsDeleteInstanceResponses];
-
-/** Request options for `GET /v1/appScreenshots/{id}`. */
-export type AppScreenshotsGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appScreenshots
-     */
-    "fields[appScreenshots]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "imageAsset"
-      | "assetToken"
-      | "assetType"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "appScreenshotSet"
-    >;
-    /**
-     * the fields to include for returned resources of type appScreenshotSets
-     */
-    "fields[appScreenshotSets]"?: Array<
-      | "screenshotDisplayType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appScreenshots"
-    >;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appScreenshotSet">;
-  };
-  url: "/v1/appScreenshots/{id}";
-};
-
-/** Error status map for `GET /v1/appScreenshots/{id}`. */
-export type AppScreenshotsGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appScreenshots/{id}`. */
-export type AppScreenshotsGetInstanceError =
-  AppScreenshotsGetInstanceErrors[keyof AppScreenshotsGetInstanceErrors];
-
-/** Response status map for `GET /v1/appScreenshots/{id}`. */
-export type AppScreenshotsGetInstanceResponses = {
-  /**
-   * Single AppScreenshot
-   */
-  200: AppScreenshotResponse;
-};
-
-/** Successful response from `GET /v1/appScreenshots/{id}`. */
-export type AppScreenshotsGetInstanceResponse =
-  AppScreenshotsGetInstanceResponses[keyof AppScreenshotsGetInstanceResponses];
-
-/** Request options for `PATCH /v1/appScreenshots/{id}`. */
-export type AppScreenshotsUpdateInstanceData = {
-  /**
-   * AppScreenshot representation
-   */
-  body: AppScreenshotUpdateRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appScreenshots/{id}";
-};
-
-/** Error status map for `PATCH /v1/appScreenshots/{id}`. */
-export type AppScreenshotsUpdateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appScreenshots/{id}`. */
-export type AppScreenshotsUpdateInstanceError =
-  AppScreenshotsUpdateInstanceErrors[keyof AppScreenshotsUpdateInstanceErrors];
-
-/** Response status map for `PATCH /v1/appScreenshots/{id}`. */
-export type AppScreenshotsUpdateInstanceResponses = {
-  /**
-   * Single AppScreenshot
-   */
-  200: AppScreenshotResponse;
-};
-
-/** Successful response from `PATCH /v1/appScreenshots/{id}`. */
-export type AppScreenshotsUpdateInstanceResponse =
-  AppScreenshotsUpdateInstanceResponses[keyof AppScreenshotsUpdateInstanceResponses];
 
 /** Request options for `POST /v1/appStoreReviewAttachments`. */
 export type AppStoreReviewAttachmentsCreateInstanceData = {
@@ -29565,6 +27725,8 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appScreenshotSets
+     *
+     * @deprecated
      */
     "fields[appScreenshotSets]"?: Array<
       | "screenshotDisplayType"
@@ -29575,6 +27737,8 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appPreviewSets
+     *
+     * @deprecated
      */
     "fields[appPreviewSets]"?: Array<
       | "previewType"
@@ -29593,10 +27757,14 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appPreviewSets]"?: number;
     /**
      * maximum number of related appScreenshotSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appScreenshotSets]"?: number;
   };
@@ -30445,6 +28613,8 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appScreenshotSets
+     *
+     * @deprecated
      */
     "fields[appScreenshotSets]"?: Array<
       | "screenshotDisplayType"
@@ -30455,6 +28625,8 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type appPreviewSets
+     *
+     * @deprecated
      */
     "fields[appPreviewSets]"?: Array<
       | "previewType"
@@ -30474,10 +28646,14 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appPreviewSets]"?: number;
     /**
      * maximum number of related appScreenshotSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appScreenshotSets]"?: number;
     /**
@@ -31747,7 +29923,6 @@ export type AppsGetCollectionData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -32302,7 +30477,6 @@ export type AppsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -32892,6 +31066,7 @@ export type BackgroundAssetVersionAppStoreReleasesGetInstanceData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -32973,6 +31148,7 @@ export type BackgroundAssetVersionExternalBetaReleasesGetInstanceData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -33054,6 +31230,7 @@ export type BackgroundAssetVersionInternalBetaReleasesGetInstanceData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -33184,6 +31361,7 @@ export type BackgroundAssetVersionsGetInstanceData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -33440,6 +31618,7 @@ export type BackgroundAssetsGetInstanceData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -55125,6 +53304,7 @@ export type PromotedPurchasesGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -57063,6 +55243,7 @@ export type SubscriptionAppStoreReviewScreenshotsGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -57175,133 +55356,6 @@ export type SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/subscriptionAppStoreReviewScreenshots/{id}`. */
 export type SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponse =
   SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses[keyof SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses];
-
-/** Request options for `POST /v1/subscriptionAvailabilities`. */
-export type SubscriptionAvailabilitiesCreateInstanceData = {
-  /**
-   * SubscriptionAvailability representation
-   */
-  body: SubscriptionAvailabilityCreateRequest;
-  path?: never;
-  query?: never;
-  url: "/v1/subscriptionAvailabilities";
-};
-
-/** Error status map for `POST /v1/subscriptionAvailabilities`. */
-export type SubscriptionAvailabilitiesCreateInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `POST /v1/subscriptionAvailabilities`. */
-export type SubscriptionAvailabilitiesCreateInstanceError =
-  SubscriptionAvailabilitiesCreateInstanceErrors[keyof SubscriptionAvailabilitiesCreateInstanceErrors];
-
-/** Response status map for `POST /v1/subscriptionAvailabilities`. */
-export type SubscriptionAvailabilitiesCreateInstanceResponses = {
-  /**
-   * Single SubscriptionAvailability
-   */
-  201: SubscriptionAvailabilityResponse;
-};
-
-/** Successful response from `POST /v1/subscriptionAvailabilities`. */
-export type SubscriptionAvailabilitiesCreateInstanceResponse =
-  SubscriptionAvailabilitiesCreateInstanceResponses[keyof SubscriptionAvailabilitiesCreateInstanceResponses];
-
-/** Request options for `GET /v1/subscriptionAvailabilities/{id}`. */
-export type SubscriptionAvailabilitiesGetInstanceData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type subscriptionAvailabilities
-     */
-    "fields[subscriptionAvailabilities]"?: Array<
-      "availableInNewTerritories" | "availableTerritories"
-    >;
-    /**
-     * the fields to include for returned resources of type territories
-     */
-    "fields[territories]"?: Array<"currency">;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"availableTerritories">;
-    /**
-     * maximum number of related availableTerritories returned (when they are included)
-     */
-    "limit[availableTerritories]"?: number;
-  };
-  url: "/v1/subscriptionAvailabilities/{id}";
-};
-
-/** Error status map for `GET /v1/subscriptionAvailabilities/{id}`. */
-export type SubscriptionAvailabilitiesGetInstanceErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/subscriptionAvailabilities/{id}`. */
-export type SubscriptionAvailabilitiesGetInstanceError =
-  SubscriptionAvailabilitiesGetInstanceErrors[keyof SubscriptionAvailabilitiesGetInstanceErrors];
-
-/** Response status map for `GET /v1/subscriptionAvailabilities/{id}`. */
-export type SubscriptionAvailabilitiesGetInstanceResponses = {
-  /**
-   * Single SubscriptionAvailability
-   */
-  200: SubscriptionAvailabilityResponse;
-};
-
-/** Successful response from `GET /v1/subscriptionAvailabilities/{id}`. */
-export type SubscriptionAvailabilitiesGetInstanceResponse =
-  SubscriptionAvailabilitiesGetInstanceResponses[keyof SubscriptionAvailabilitiesGetInstanceResponses];
 
 /** Request options for `GET /v1/subscriptionGracePeriods/{id}`. */
 export type SubscriptionGracePeriodsGetInstanceData = {
@@ -57871,6 +55925,7 @@ export type SubscriptionGroupsGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -58152,6 +56207,7 @@ export type SubscriptionImagesGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -58584,6 +56640,7 @@ export type SubscriptionLocalizationsGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -58788,6 +56845,7 @@ export type SubscriptionOfferCodeCustomCodesGetInstanceData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -58997,6 +57055,7 @@ export type SubscriptionOfferCodeOneTimeUseCodesGetInstanceData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -59194,6 +57253,7 @@ export type SubscriptionOfferCodesGetInstanceData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -59222,6 +57282,7 @@ export type SubscriptionOfferCodesGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -59377,6 +57438,197 @@ export type SubscriptionOfferCodesUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/subscriptionOfferCodes/{id}`. */
 export type SubscriptionOfferCodesUpdateInstanceResponse =
   SubscriptionOfferCodesUpdateInstanceResponses[keyof SubscriptionOfferCodesUpdateInstanceResponses];
+
+/** Request options for `POST /v1/subscriptionPlanAvailabilities`. */
+export type SubscriptionPlanAvailabilitiesCreateInstanceData = {
+  /**
+   * SubscriptionPlanAvailability representation
+   */
+  body: SubscriptionPlanAvailabilityCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/subscriptionPlanAvailabilities";
+};
+
+/** Error status map for `POST /v1/subscriptionPlanAvailabilities`. */
+export type SubscriptionPlanAvailabilitiesCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/subscriptionPlanAvailabilities`. */
+export type SubscriptionPlanAvailabilitiesCreateInstanceError =
+  SubscriptionPlanAvailabilitiesCreateInstanceErrors[keyof SubscriptionPlanAvailabilitiesCreateInstanceErrors];
+
+/** Response status map for `POST /v1/subscriptionPlanAvailabilities`. */
+export type SubscriptionPlanAvailabilitiesCreateInstanceResponses = {
+  /**
+   * Single SubscriptionPlanAvailability
+   */
+  201: SubscriptionPlanAvailabilityResponse;
+};
+
+/** Successful response from `POST /v1/subscriptionPlanAvailabilities`. */
+export type SubscriptionPlanAvailabilitiesCreateInstanceResponse =
+  SubscriptionPlanAvailabilitiesCreateInstanceResponses[keyof SubscriptionPlanAvailabilitiesCreateInstanceResponses];
+
+/** Request options for `GET /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionPlanAvailabilities
+     */
+    "fields[subscriptionPlanAvailabilities]"?: Array<
+      "availableInNewTerritories" | "planType" | "availableTerritories"
+    >;
+    /**
+     * the fields to include for returned resources of type territories
+     */
+    "fields[territories]"?: Array<"currency">;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"availableTerritories">;
+    /**
+     * maximum number of related availableTerritories returned (when they are included)
+     */
+    "limit[availableTerritories]"?: number;
+  };
+  url: "/v1/subscriptionPlanAvailabilities/{id}";
+};
+
+/** Error status map for `GET /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesGetInstanceError =
+  SubscriptionPlanAvailabilitiesGetInstanceErrors[keyof SubscriptionPlanAvailabilitiesGetInstanceErrors];
+
+/** Response status map for `GET /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesGetInstanceResponses = {
+  /**
+   * Single SubscriptionPlanAvailability
+   */
+  200: SubscriptionPlanAvailabilityResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesGetInstanceResponse =
+  SubscriptionPlanAvailabilitiesGetInstanceResponses[keyof SubscriptionPlanAvailabilitiesGetInstanceResponses];
+
+/** Request options for `PATCH /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesUpdateInstanceData = {
+  /**
+   * SubscriptionPlanAvailability representation
+   */
+  body: SubscriptionPlanAvailabilityUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptionPlanAvailabilities/{id}";
+};
+
+/** Error status map for `PATCH /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesUpdateInstanceError =
+  SubscriptionPlanAvailabilitiesUpdateInstanceErrors[keyof SubscriptionPlanAvailabilitiesUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesUpdateInstanceResponses = {
+  /**
+   * Single SubscriptionPlanAvailability
+   */
+  200: SubscriptionPlanAvailabilityResponse;
+};
+
+/** Successful response from `PATCH /v1/subscriptionPlanAvailabilities/{id}`. */
+export type SubscriptionPlanAvailabilitiesUpdateInstanceResponse =
+  SubscriptionPlanAvailabilitiesUpdateInstanceResponses[keyof SubscriptionPlanAvailabilitiesUpdateInstanceResponses];
 
 /** Request options for `GET /v1/subscriptionPricePoints/{id}`. */
 export type SubscriptionPricePointsGetInstanceData = {
@@ -59685,6 +57937,7 @@ export type SubscriptionPromotionalOffersGetInstanceData = {
       | "numberOfPeriods"
       | "offerCode"
       | "offerMode"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "prices"
     >;
@@ -59711,6 +57964,7 @@ export type SubscriptionPromotionalOffersGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -60030,6 +58284,7 @@ export type SubscriptionsGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -60066,6 +58321,7 @@ export type SubscriptionsGetInstanceData = {
       | "duration"
       | "offerMode"
       | "numberOfPeriods"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "territory"
       | "subscriptionPricePoint"
@@ -60079,6 +58335,7 @@ export type SubscriptionsGetInstanceData = {
       | "numberOfPeriods"
       | "offerCode"
       | "offerMode"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "prices"
     >;
@@ -60097,6 +58354,7 @@ export type SubscriptionsGetInstanceData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -60106,7 +58364,11 @@ export type SubscriptionsGetInstanceData = {
      * the fields to include for returned resources of type subscriptionPrices
      */
     "fields[subscriptionPrices]"?: Array<
-      "startDate" | "preserved" | "territory" | "subscriptionPricePoint"
+      | "startDate"
+      | "preserved"
+      | "planType"
+      | "territory"
+      | "subscriptionPricePoint"
     >;
     /**
      * the fields to include for returned resources of type promotedPurchases
@@ -60120,6 +58382,8 @@ export type SubscriptionsGetInstanceData = {
     >;
     /**
      * the fields to include for returned resources of type subscriptionAvailabilities
+     *
+     * @deprecated
      */
     "fields[subscriptionAvailabilities]"?: Array<
       "availableInNewTerritories" | "availableTerritories"
@@ -60140,6 +58404,7 @@ export type SubscriptionsGetInstanceData = {
       | "endDate"
       | "priority"
       | "promotionIntent"
+      | "targetSubscriptionPlanType"
       | "prices"
     >;
     /**
@@ -60156,6 +58421,12 @@ export type SubscriptionsGetInstanceData = {
       | "subscription"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionPlanAvailabilities
+     */
+    "fields[subscriptionPlanAvailabilities]"?: Array<
+      "availableInNewTerritories" | "planType" | "availableTerritories"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -60170,6 +58441,7 @@ export type SubscriptionsGetInstanceData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * maximum number of related images returned (when they are included)
@@ -60183,6 +58455,10 @@ export type SubscriptionsGetInstanceData = {
      * maximum number of related offerCodes returned (when they are included)
      */
     "limit[offerCodes]"?: number;
+    /**
+     * maximum number of related planAvailabilities returned (when they are included)
+     */
+    "limit[planAvailabilities]"?: number;
     /**
      * maximum number of related prices returned (when they are included)
      */
@@ -61777,6 +60053,7 @@ export type WinBackOffersGetInstanceData = {
       | "endDate"
       | "priority"
       | "promotionIntent"
+      | "targetSubscriptionPlanType"
       | "prices"
     >;
     /**
@@ -64320,474 +62597,6 @@ export type AppClipsAppClipDefaultExperiencesGetToManyRelatedResponses = {
 export type AppClipsAppClipDefaultExperiencesGetToManyRelatedResponse =
   AppClipsAppClipDefaultExperiencesGetToManyRelatedResponses[keyof AppClipsAppClipDefaultExperiencesGetToManyRelatedResponses];
 
-/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets";
-  };
-
-/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipError =
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors[keyof AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppCustomProductPageLocalizationAppPreviewSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponse =
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses[keyof AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * filter by attribute 'previewType'
-       */
-      "filter[previewType]"?: Array<
-        | "IPHONE_67"
-        | "IPHONE_61"
-        | "IPHONE_65"
-        | "IPHONE_58"
-        | "IPHONE_55"
-        | "IPHONE_47"
-        | "IPHONE_40"
-        | "IPHONE_35"
-        | "IPAD_PRO_3GEN_129"
-        | "IPAD_PRO_3GEN_11"
-        | "IPAD_PRO_129"
-        | "IPAD_105"
-        | "IPAD_97"
-        | "DESKTOP"
-        | "APPLE_TV"
-        | "APPLE_VISION_PRO"
-      >;
-      /**
-       * filter by id(s) of related 'appStoreVersionLocalization'
-       */
-      "filter[appStoreVersionLocalization]"?: Array<string>;
-      /**
-       * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
-       */
-      "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
-      /**
-       * the fields to include for returned resources of type appPreviewSets
-       */
-      "fields[appPreviewSets]"?: Array<
-        | "previewType"
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appPreviews"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionLocalizations
-       */
-      "fields[appStoreVersionLocalizations]"?: Array<
-        | "description"
-        | "locale"
-        | "keywords"
-        | "marketingUrl"
-        | "promotionalText"
-        | "supportUrl"
-        | "whatsNew"
-        | "appStoreVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appCustomProductPageLocalizations
-       */
-      "fields[appCustomProductPageLocalizations]"?: Array<
-        | "locale"
-        | "promotionalText"
-        | "appCustomProductPageVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-       */
-      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-        | "locale"
-        | "appStoreVersionExperimentTreatment"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-      >;
-      /**
-       * the fields to include for returned resources of type appPreviews
-       */
-      "fields[appPreviews]"?: Array<
-        | "fileSize"
-        | "fileName"
-        | "sourceFileChecksum"
-        | "previewFrameTimeCode"
-        | "mimeType"
-        | "videoUrl"
-        | "previewFrameImage"
-        | "previewImage"
-        | "uploadOperations"
-        | "assetDeliveryState"
-        | "videoDeliveryState"
-        | "appPreviewSet"
-      >;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-      /**
-       * comma-separated list of relationships to include
-       */
-      include?: Array<
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appPreviews"
-      >;
-      /**
-       * maximum number of related appPreviews returned (when they are included)
-       */
-      "limit[appPreviews]"?: number;
-    };
-    url: "/v1/appCustomProductPageLocalizations/{id}/appPreviewSets";
-  };
-
-/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedError =
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors[keyof AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppPreviewSets
-     */
-    200: AppPreviewSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets`. */
-export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponse =
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses[keyof AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipError =
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors[keyof AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppCustomProductPageLocalizationAppScreenshotSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponse =
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses[keyof AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * filter by attribute 'screenshotDisplayType'
-       */
-      "filter[screenshotDisplayType]"?: Array<
-        | "APP_IPHONE_67"
-        | "APP_IPHONE_61"
-        | "APP_IPHONE_65"
-        | "APP_IPHONE_58"
-        | "APP_IPHONE_55"
-        | "APP_IPHONE_47"
-        | "APP_IPHONE_40"
-        | "APP_IPHONE_35"
-        | "APP_IPAD_PRO_3GEN_129"
-        | "APP_IPAD_PRO_3GEN_11"
-        | "APP_IPAD_PRO_129"
-        | "APP_IPAD_105"
-        | "APP_IPAD_97"
-        | "APP_DESKTOP"
-        | "APP_WATCH_ULTRA"
-        | "APP_WATCH_SERIES_10"
-        | "APP_WATCH_SERIES_7"
-        | "APP_WATCH_SERIES_4"
-        | "APP_WATCH_SERIES_3"
-        | "APP_APPLE_TV"
-        | "APP_APPLE_VISION_PRO"
-        | "IMESSAGE_APP_IPHONE_67"
-        | "IMESSAGE_APP_IPHONE_61"
-        | "IMESSAGE_APP_IPHONE_65"
-        | "IMESSAGE_APP_IPHONE_58"
-        | "IMESSAGE_APP_IPHONE_55"
-        | "IMESSAGE_APP_IPHONE_47"
-        | "IMESSAGE_APP_IPHONE_40"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_129"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_11"
-        | "IMESSAGE_APP_IPAD_PRO_129"
-        | "IMESSAGE_APP_IPAD_105"
-        | "IMESSAGE_APP_IPAD_97"
-      >;
-      /**
-       * filter by id(s) of related 'appStoreVersionLocalization'
-       */
-      "filter[appStoreVersionLocalization]"?: Array<string>;
-      /**
-       * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
-       */
-      "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
-      /**
-       * the fields to include for returned resources of type appScreenshotSets
-       */
-      "fields[appScreenshotSets]"?: Array<
-        | "screenshotDisplayType"
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionLocalizations
-       */
-      "fields[appStoreVersionLocalizations]"?: Array<
-        | "description"
-        | "locale"
-        | "keywords"
-        | "marketingUrl"
-        | "promotionalText"
-        | "supportUrl"
-        | "whatsNew"
-        | "appStoreVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appCustomProductPageLocalizations
-       */
-      "fields[appCustomProductPageLocalizations]"?: Array<
-        | "locale"
-        | "promotionalText"
-        | "appCustomProductPageVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-       */
-      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-        | "locale"
-        | "appStoreVersionExperimentTreatment"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-      >;
-      /**
-       * the fields to include for returned resources of type appScreenshots
-       */
-      "fields[appScreenshots]"?: Array<
-        | "fileSize"
-        | "fileName"
-        | "sourceFileChecksum"
-        | "imageAsset"
-        | "assetToken"
-        | "assetType"
-        | "uploadOperations"
-        | "assetDeliveryState"
-        | "appScreenshotSet"
-      >;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-      /**
-       * comma-separated list of relationships to include
-       */
-      include?: Array<
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * maximum number of related appScreenshots returned (when they are included)
-       */
-      "limit[appScreenshots]"?: number;
-    };
-    url: "/v1/appCustomProductPageLocalizations/{id}/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedError =
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors[keyof AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppScreenshotSets
-     */
-    200: AppScreenshotSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
-export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
-
 /** Request options for `DELETE /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords`. */
 export type AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipData =
   {
@@ -65192,10 +63001,14 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
       >;
       /**
        * maximum number of related appScreenshotSets returned (when they are included)
+       *
+       * @deprecated
        */
       "limit[appScreenshotSets]"?: number;
       /**
        * maximum number of related appPreviewSets returned (when they are included)
+       *
+       * @deprecated
        */
       "limit[appPreviewSets]"?: number;
       /**
@@ -65545,305 +63358,6 @@ export type AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRel
 export type AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedResponse =
   AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedResponses[keyof AppEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRelatedResponses];
 
-/** Request options for `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appEventLocalizations/{id}/relationships/appEventScreenshots";
-  };
-
-/** Error status map for `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipError =
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors[keyof AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppEventLocalizationAppEventScreenshotsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponse =
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses[keyof AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appEventLocalizations/{id}/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appEventScreenshots
-     */
-    "fields[appEventScreenshots]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "imageAsset"
-      | "assetToken"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "appEventAssetType"
-      | "appEventLocalization"
-    >;
-    /**
-     * the fields to include for returned resources of type appEventLocalizations
-     */
-    "fields[appEventLocalizations]"?: Array<
-      | "locale"
-      | "name"
-      | "shortDescription"
-      | "longDescription"
-      | "appEvent"
-      | "appEventScreenshots"
-      | "appEventVideoClips"
-    >;
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appEventLocalization">;
-  };
-  url: "/v1/appEventLocalizations/{id}/appEventScreenshots";
-};
-
-/** Error status map for `GET /v1/appEventLocalizations/{id}/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appEventLocalizations/{id}/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedError =
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors[keyof AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appEventLocalizations/{id}/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppEventScreenshots
-     */
-    200: AppEventScreenshotsResponse;
-  };
-
-/** Successful response from `GET /v1/appEventLocalizations/{id}/appEventScreenshots`. */
-export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponse =
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses[keyof AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-  };
-  url: "/v1/appEventLocalizations/{id}/relationships/appEventVideoClips";
-};
-
-/** Error status map for `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipError =
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors[keyof AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppEventLocalizationAppEventVideoClipsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponse =
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses[keyof AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appEventVideoClips
-     */
-    "fields[appEventVideoClips]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "previewFrameTimeCode"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appEventAssetType"
-      | "appEventLocalization"
-    >;
-    /**
-     * the fields to include for returned resources of type appEventLocalizations
-     */
-    "fields[appEventLocalizations]"?: Array<
-      | "locale"
-      | "name"
-      | "shortDescription"
-      | "longDescription"
-      | "appEvent"
-      | "appEventScreenshots"
-      | "appEventVideoClips"
-    >;
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appEventLocalization">;
-  };
-  url: "/v1/appEventLocalizations/{id}/appEventVideoClips";
-};
-
-/** Error status map for `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedError =
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors[keyof AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses = {
-  /**
-   * List of AppEventVideoClips
-   */
-  200: AppEventVideoClipsResponse;
-};
-
-/** Successful response from `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
-export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponse =
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses[keyof AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses];
-
 /** Request options for `GET /v1/appEvents/{id}/relationships/localizations`. */
 export type AppEventsLocalizationsGetToManyRelationshipData = {
   body?: never;
@@ -65979,10 +63493,14 @@ export type AppEventsLocalizationsGetToManyRelatedData = {
     include?: Array<"appEvent" | "appEventScreenshots" | "appEventVideoClips">;
     /**
      * maximum number of related appEventScreenshots returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appEventScreenshots]"?: number;
     /**
      * maximum number of related appEventVideoClips returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appEventVideoClips]"?: number;
   };
@@ -66264,7 +63782,6 @@ export type AppInfosAppInfoLocalizationsGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -67170,217 +64687,6 @@ export type AppInfosTerritoryAgeRatingsGetToManyRelatedResponses = {
 export type AppInfosTerritoryAgeRatingsGetToManyRelatedResponse =
   AppInfosTerritoryAgeRatingsGetToManyRelatedResponses[keyof AppInfosTerritoryAgeRatingsGetToManyRelatedResponses];
 
-/** Request options for `GET /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelationshipData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-  };
-  url: "/v1/appPreviewSets/{id}/relationships/appPreviews";
-};
-
-/** Error status map for `GET /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelationshipErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelationshipError =
-  AppPreviewSetsAppPreviewsGetToManyRelationshipErrors[keyof AppPreviewSetsAppPreviewsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelationshipResponses = {
-  /**
-   * List of related linkages
-   */
-  200: AppPreviewSetAppPreviewsLinkagesResponse;
-};
-
-/** Successful response from `GET /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelationshipResponse =
-  AppPreviewSetsAppPreviewsGetToManyRelationshipResponses[keyof AppPreviewSetsAppPreviewsGetToManyRelationshipResponses];
-
-/** Request options for `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsReplaceToManyRelationshipData = {
-  /**
-   * List of related linkages
-   */
-  body: AppPreviewSetAppPreviewsLinkagesRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appPreviewSets/{id}/relationships/appPreviews";
-};
-
-/** Error status map for `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsReplaceToManyRelationshipError =
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors[keyof AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors];
-
-/** Response status map for `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses = {
-  /**
-   * Success (no content)
-   */
-  204: void;
-};
-
-/** Successful response from `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews`. */
-export type AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponse =
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses[keyof AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appPreviewSets/{id}/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appPreviews
-     */
-    "fields[appPreviews]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "previewFrameTimeCode"
-      | "mimeType"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appPreviewSet"
-    >;
-    /**
-     * the fields to include for returned resources of type appPreviewSets
-     */
-    "fields[appPreviewSets]"?: Array<
-      | "previewType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appPreviewSet">;
-  };
-  url: "/v1/appPreviewSets/{id}/appPreviews";
-};
-
-/** Error status map for `GET /v1/appPreviewSets/{id}/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appPreviewSets/{id}/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelatedError =
-  AppPreviewSetsAppPreviewsGetToManyRelatedErrors[keyof AppPreviewSetsAppPreviewsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appPreviewSets/{id}/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelatedResponses = {
-  /**
-   * List of AppPreviews
-   */
-  200: AppPreviewsResponse;
-};
-
-/** Successful response from `GET /v1/appPreviewSets/{id}/appPreviews`. */
-export type AppPreviewSetsAppPreviewsGetToManyRelatedResponse =
-  AppPreviewSetsAppPreviewsGetToManyRelatedResponses[keyof AppPreviewSetsAppPreviewsGetToManyRelatedResponses];
-
 /** Request options for `GET /v3/appPricePoints/{id}/relationships/equalizations`. */
 export type AppPricePointsV3EqualizationsGetToManyRelationshipData = {
   body?: never;
@@ -67982,215 +65288,6 @@ export type AppPriceSchedulesManualPricesGetToManyRelatedResponses = {
 export type AppPriceSchedulesManualPricesGetToManyRelatedResponse =
   AppPriceSchedulesManualPricesGetToManyRelatedResponses[keyof AppPriceSchedulesManualPricesGetToManyRelatedResponses];
 
-/** Request options for `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelationshipData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-  };
-  url: "/v1/appScreenshotSets/{id}/relationships/appScreenshots";
-};
-
-/** Error status map for `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelationshipError =
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors[keyof AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses = {
-  /**
-   * List of related linkages
-   */
-  200: AppScreenshotSetAppScreenshotsLinkagesResponse;
-};
-
-/** Successful response from `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponse =
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses[keyof AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses];
-
-/** Request options for `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipData = {
-  /**
-   * List of related linkages
-   */
-  body: AppScreenshotSetAppScreenshotsLinkagesRequest;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/appScreenshotSets/{id}/relationships/appScreenshots";
-};
-
-/** Error status map for `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Request entity error(s)
-   */
-  409: ErrorResponse;
-  /**
-   * Unprocessable request entity error(s)
-   */
-  422: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipError =
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors[keyof AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors];
-
-/** Response status map for `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses =
-  {
-    /**
-     * Success (no content)
-     */
-    204: void;
-  };
-
-/** Successful response from `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponse =
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses[keyof AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appScreenshotSets/{id}/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type appScreenshots
-     */
-    "fields[appScreenshots]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "imageAsset"
-      | "assetToken"
-      | "assetType"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "appScreenshotSet"
-    >;
-    /**
-     * the fields to include for returned resources of type appScreenshotSets
-     */
-    "fields[appScreenshotSets]"?: Array<
-      | "screenshotDisplayType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appScreenshots"
-    >;
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"appScreenshotSet">;
-  };
-  url: "/v1/appScreenshotSets/{id}/appScreenshots";
-};
-
-/** Error status map for `GET /v1/appScreenshotSets/{id}/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appScreenshotSets/{id}/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelatedError =
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors[keyof AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appScreenshotSets/{id}/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses = {
-  /**
-   * List of AppScreenshots
-   */
-  200: AppScreenshotsResponse;
-};
-
-/** Successful response from `GET /v1/appScreenshotSets/{id}/appScreenshots`. */
-export type AppScreenshotSetsAppScreenshotsGetToManyRelatedResponse =
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses[keyof AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses];
-
 /** Request options for `GET /v1/appStoreReviewDetails/{id}/relationships/appStoreReviewAttachments`. */
 export type AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationshipData =
   {
@@ -68343,474 +65440,6 @@ export type AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedRespon
 export type AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedResponse =
   AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedResponses[keyof AppStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelatedResponses];
 
-/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipError =
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppStoreVersionExperimentTreatmentLocalizationAppPreviewSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponse =
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * filter by attribute 'previewType'
-       */
-      "filter[previewType]"?: Array<
-        | "IPHONE_67"
-        | "IPHONE_61"
-        | "IPHONE_65"
-        | "IPHONE_58"
-        | "IPHONE_55"
-        | "IPHONE_47"
-        | "IPHONE_40"
-        | "IPHONE_35"
-        | "IPAD_PRO_3GEN_129"
-        | "IPAD_PRO_3GEN_11"
-        | "IPAD_PRO_129"
-        | "IPAD_105"
-        | "IPAD_97"
-        | "DESKTOP"
-        | "APPLE_TV"
-        | "APPLE_VISION_PRO"
-      >;
-      /**
-       * filter by id(s) of related 'appStoreVersionLocalization'
-       */
-      "filter[appStoreVersionLocalization]"?: Array<string>;
-      /**
-       * filter by id(s) of related 'appCustomProductPageLocalization'
-       */
-      "filter[appCustomProductPageLocalization]"?: Array<string>;
-      /**
-       * the fields to include for returned resources of type appPreviewSets
-       */
-      "fields[appPreviewSets]"?: Array<
-        | "previewType"
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appPreviews"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionLocalizations
-       */
-      "fields[appStoreVersionLocalizations]"?: Array<
-        | "description"
-        | "locale"
-        | "keywords"
-        | "marketingUrl"
-        | "promotionalText"
-        | "supportUrl"
-        | "whatsNew"
-        | "appStoreVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appCustomProductPageLocalizations
-       */
-      "fields[appCustomProductPageLocalizations]"?: Array<
-        | "locale"
-        | "promotionalText"
-        | "appCustomProductPageVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-       */
-      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-        | "locale"
-        | "appStoreVersionExperimentTreatment"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-      >;
-      /**
-       * the fields to include for returned resources of type appPreviews
-       */
-      "fields[appPreviews]"?: Array<
-        | "fileSize"
-        | "fileName"
-        | "sourceFileChecksum"
-        | "previewFrameTimeCode"
-        | "mimeType"
-        | "videoUrl"
-        | "previewFrameImage"
-        | "previewImage"
-        | "uploadOperations"
-        | "assetDeliveryState"
-        | "videoDeliveryState"
-        | "appPreviewSet"
-      >;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-      /**
-       * comma-separated list of relationships to include
-       */
-      include?: Array<
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appPreviews"
-      >;
-      /**
-       * maximum number of related appPreviews returned (when they are included)
-       */
-      "limit[appPreviews]"?: number;
-    };
-    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedError =
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppPreviewSets
-     */
-    200: AppPreviewSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponse =
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipError =
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppStoreVersionExperimentTreatmentLocalizationAppScreenshotSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponse =
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * filter by attribute 'screenshotDisplayType'
-       */
-      "filter[screenshotDisplayType]"?: Array<
-        | "APP_IPHONE_67"
-        | "APP_IPHONE_61"
-        | "APP_IPHONE_65"
-        | "APP_IPHONE_58"
-        | "APP_IPHONE_55"
-        | "APP_IPHONE_47"
-        | "APP_IPHONE_40"
-        | "APP_IPHONE_35"
-        | "APP_IPAD_PRO_3GEN_129"
-        | "APP_IPAD_PRO_3GEN_11"
-        | "APP_IPAD_PRO_129"
-        | "APP_IPAD_105"
-        | "APP_IPAD_97"
-        | "APP_DESKTOP"
-        | "APP_WATCH_ULTRA"
-        | "APP_WATCH_SERIES_10"
-        | "APP_WATCH_SERIES_7"
-        | "APP_WATCH_SERIES_4"
-        | "APP_WATCH_SERIES_3"
-        | "APP_APPLE_TV"
-        | "APP_APPLE_VISION_PRO"
-        | "IMESSAGE_APP_IPHONE_67"
-        | "IMESSAGE_APP_IPHONE_61"
-        | "IMESSAGE_APP_IPHONE_65"
-        | "IMESSAGE_APP_IPHONE_58"
-        | "IMESSAGE_APP_IPHONE_55"
-        | "IMESSAGE_APP_IPHONE_47"
-        | "IMESSAGE_APP_IPHONE_40"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_129"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_11"
-        | "IMESSAGE_APP_IPAD_PRO_129"
-        | "IMESSAGE_APP_IPAD_105"
-        | "IMESSAGE_APP_IPAD_97"
-      >;
-      /**
-       * filter by id(s) of related 'appStoreVersionLocalization'
-       */
-      "filter[appStoreVersionLocalization]"?: Array<string>;
-      /**
-       * filter by id(s) of related 'appCustomProductPageLocalization'
-       */
-      "filter[appCustomProductPageLocalization]"?: Array<string>;
-      /**
-       * the fields to include for returned resources of type appScreenshotSets
-       */
-      "fields[appScreenshotSets]"?: Array<
-        | "screenshotDisplayType"
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionLocalizations
-       */
-      "fields[appStoreVersionLocalizations]"?: Array<
-        | "description"
-        | "locale"
-        | "keywords"
-        | "marketingUrl"
-        | "promotionalText"
-        | "supportUrl"
-        | "whatsNew"
-        | "appStoreVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appCustomProductPageLocalizations
-       */
-      "fields[appCustomProductPageLocalizations]"?: Array<
-        | "locale"
-        | "promotionalText"
-        | "appCustomProductPageVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-       */
-      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-        | "locale"
-        | "appStoreVersionExperimentTreatment"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-      >;
-      /**
-       * the fields to include for returned resources of type appScreenshots
-       */
-      "fields[appScreenshots]"?: Array<
-        | "fileSize"
-        | "fileName"
-        | "sourceFileChecksum"
-        | "imageAsset"
-        | "assetToken"
-        | "assetType"
-        | "uploadOperations"
-        | "assetDeliveryState"
-        | "appScreenshotSet"
-      >;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-      /**
-       * comma-separated list of relationships to include
-       */
-      include?: Array<
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * maximum number of related appScreenshots returned (when they are included)
-       */
-      "limit[appScreenshots]"?: number;
-    };
-    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedError =
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppScreenshotSets
-     */
-    200: AppScreenshotSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
-
 /** Request options for `GET /v1/appStoreVersionExperimentTreatments/{id}/relationships/appStoreVersionExperimentTreatmentLocalizations`. */
 export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipData =
   {
@@ -68942,10 +65571,14 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
       >;
       /**
        * maximum number of related appScreenshotSets returned (when they are included)
+       *
+       * @deprecated
        */
       "limit[appScreenshotSets]"?: number;
       /**
        * maximum number of related appPreviewSets returned (when they are included)
+       *
+       * @deprecated
        */
       "limit[appPreviewSets]"?: number;
     };
@@ -69165,472 +65798,6 @@ export type AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetTo
 /** Successful response from `GET /v2/appStoreVersionExperiments/{id}/appStoreVersionExperimentTreatments`. */
 export type AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedResponse =
   AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedResponses[keyof AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipError =
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors[keyof AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppStoreVersionLocalizationAppPreviewSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponse =
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses[keyof AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * filter by attribute 'previewType'
-     */
-    "filter[previewType]"?: Array<
-      | "IPHONE_67"
-      | "IPHONE_61"
-      | "IPHONE_65"
-      | "IPHONE_58"
-      | "IPHONE_55"
-      | "IPHONE_47"
-      | "IPHONE_40"
-      | "IPHONE_35"
-      | "IPAD_PRO_3GEN_129"
-      | "IPAD_PRO_3GEN_11"
-      | "IPAD_PRO_129"
-      | "IPAD_105"
-      | "IPAD_97"
-      | "DESKTOP"
-      | "APPLE_TV"
-      | "APPLE_VISION_PRO"
-    >;
-    /**
-     * filter by id(s) of related 'appCustomProductPageLocalization'
-     */
-    "filter[appCustomProductPageLocalization]"?: Array<string>;
-    /**
-     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
-     */
-    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
-    /**
-     * the fields to include for returned resources of type appPreviewSets
-     */
-    "fields[appPreviewSets]"?: Array<
-      | "previewType"
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionLocalizations
-     */
-    "fields[appStoreVersionLocalizations]"?: Array<
-      | "description"
-      | "locale"
-      | "keywords"
-      | "marketingUrl"
-      | "promotionalText"
-      | "supportUrl"
-      | "whatsNew"
-      | "appStoreVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appCustomProductPageLocalizations
-     */
-    "fields[appCustomProductPageLocalizations]"?: Array<
-      | "locale"
-      | "promotionalText"
-      | "appCustomProductPageVersion"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-      | "searchKeywords"
-    >;
-    /**
-     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-     */
-    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-      | "locale"
-      | "appStoreVersionExperimentTreatment"
-      | "appScreenshotSets"
-      | "appPreviewSets"
-    >;
-    /**
-     * the fields to include for returned resources of type appPreviews
-     */
-    "fields[appPreviews]"?: Array<
-      | "fileSize"
-      | "fileName"
-      | "sourceFileChecksum"
-      | "previewFrameTimeCode"
-      | "mimeType"
-      | "videoUrl"
-      | "previewFrameImage"
-      | "previewImage"
-      | "uploadOperations"
-      | "assetDeliveryState"
-      | "videoDeliveryState"
-      | "appPreviewSet"
-    >;
-    /**
-     * maximum resources per page
-     */
-    limit?: number;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<
-      | "appStoreVersionLocalization"
-      | "appCustomProductPageLocalization"
-      | "appStoreVersionExperimentTreatmentLocalization"
-      | "appPreviews"
-    >;
-    /**
-     * maximum number of related appPreviews returned (when they are included)
-     */
-    "limit[appPreviews]"?: number;
-  };
-  url: "/v1/appStoreVersionLocalizations/{id}/appPreviewSets";
-};
-
-/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedError =
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors[keyof AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppPreviewSets
-     */
-    200: AppPreviewSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets`. */
-export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponse =
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses[keyof AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipError =
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors[keyof AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: AppStoreVersionLocalizationAppScreenshotSetsLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponse =
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses[keyof AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * filter by attribute 'screenshotDisplayType'
-       */
-      "filter[screenshotDisplayType]"?: Array<
-        | "APP_IPHONE_67"
-        | "APP_IPHONE_61"
-        | "APP_IPHONE_65"
-        | "APP_IPHONE_58"
-        | "APP_IPHONE_55"
-        | "APP_IPHONE_47"
-        | "APP_IPHONE_40"
-        | "APP_IPHONE_35"
-        | "APP_IPAD_PRO_3GEN_129"
-        | "APP_IPAD_PRO_3GEN_11"
-        | "APP_IPAD_PRO_129"
-        | "APP_IPAD_105"
-        | "APP_IPAD_97"
-        | "APP_DESKTOP"
-        | "APP_WATCH_ULTRA"
-        | "APP_WATCH_SERIES_10"
-        | "APP_WATCH_SERIES_7"
-        | "APP_WATCH_SERIES_4"
-        | "APP_WATCH_SERIES_3"
-        | "APP_APPLE_TV"
-        | "APP_APPLE_VISION_PRO"
-        | "IMESSAGE_APP_IPHONE_67"
-        | "IMESSAGE_APP_IPHONE_61"
-        | "IMESSAGE_APP_IPHONE_65"
-        | "IMESSAGE_APP_IPHONE_58"
-        | "IMESSAGE_APP_IPHONE_55"
-        | "IMESSAGE_APP_IPHONE_47"
-        | "IMESSAGE_APP_IPHONE_40"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_129"
-        | "IMESSAGE_APP_IPAD_PRO_3GEN_11"
-        | "IMESSAGE_APP_IPAD_PRO_129"
-        | "IMESSAGE_APP_IPAD_105"
-        | "IMESSAGE_APP_IPAD_97"
-      >;
-      /**
-       * filter by id(s) of related 'appCustomProductPageLocalization'
-       */
-      "filter[appCustomProductPageLocalization]"?: Array<string>;
-      /**
-       * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
-       */
-      "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
-      /**
-       * the fields to include for returned resources of type appScreenshotSets
-       */
-      "fields[appScreenshotSets]"?: Array<
-        | "screenshotDisplayType"
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionLocalizations
-       */
-      "fields[appStoreVersionLocalizations]"?: Array<
-        | "description"
-        | "locale"
-        | "keywords"
-        | "marketingUrl"
-        | "promotionalText"
-        | "supportUrl"
-        | "whatsNew"
-        | "appStoreVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appCustomProductPageLocalizations
-       */
-      "fields[appCustomProductPageLocalizations]"?: Array<
-        | "locale"
-        | "promotionalText"
-        | "appCustomProductPageVersion"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-        | "searchKeywords"
-      >;
-      /**
-       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
-       */
-      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
-        | "locale"
-        | "appStoreVersionExperimentTreatment"
-        | "appScreenshotSets"
-        | "appPreviewSets"
-      >;
-      /**
-       * the fields to include for returned resources of type appScreenshots
-       */
-      "fields[appScreenshots]"?: Array<
-        | "fileSize"
-        | "fileName"
-        | "sourceFileChecksum"
-        | "imageAsset"
-        | "assetToken"
-        | "assetType"
-        | "uploadOperations"
-        | "assetDeliveryState"
-        | "appScreenshotSet"
-      >;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-      /**
-       * comma-separated list of relationships to include
-       */
-      include?: Array<
-        | "appStoreVersionLocalization"
-        | "appCustomProductPageLocalization"
-        | "appStoreVersionExperimentTreatmentLocalization"
-        | "appScreenshots"
-      >;
-      /**
-       * maximum number of related appScreenshots returned (when they are included)
-       */
-      "limit[appScreenshots]"?: number;
-    };
-    url: "/v1/appStoreVersionLocalizations/{id}/appScreenshotSets";
-  };
-
-/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedError =
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors[keyof AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses =
-  {
-    /**
-     * List of AppScreenshotSets
-     */
-    200: AppScreenshotSetsResponse;
-  };
-
-/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
-export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
 
 /** Request options for `DELETE /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords`. */
 export type AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipData =
@@ -70886,10 +67053,14 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
     >;
     /**
      * maximum number of related appScreenshotSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appScreenshotSets]"?: number;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
+     *
+     * @deprecated
      */
     "limit[appPreviewSets]"?: number;
     /**
@@ -73650,7 +69821,6 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -75128,6 +71298,10 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
      */
     "filter[assetPackIdentifier]"?: Array<string>;
     /**
+     * filter by attribute 'versions.locale'
+     */
+    "filter[versions.locale]"?: Array<string>;
+    /**
      * filter by attribute 'versions.platforms'
      */
     "filter[versions.platforms]"?: Array<
@@ -75225,6 +71399,7 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -78335,6 +74510,7 @@ export type AppsPerfPowerMetricsGetToManyRelatedData = {
       | "MEMORY"
       | "ANIMATION"
       | "TERMINATION"
+      | "STORAGE"
     >;
     /**
      * filter by attribute 'deviceType'
@@ -78692,6 +74868,7 @@ export type AppsPromotedPurchasesGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * maximum resources per page
@@ -79377,6 +75554,7 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -79834,6 +76012,10 @@ export type BackgroundAssetsVersionsGetToManyRelatedData = {
   };
   query?: {
     /**
+     * filter by attribute 'locale'
+     */
+    "filter[locale]"?: Array<string>;
+    /**
      * filter by attribute 'platforms'
      */
     "filter[platforms]"?: Array<"IOS" | "MAC_OS" | "TV_OS" | "VISION_OS">;
@@ -79892,6 +76074,7 @@ export type BackgroundAssetsVersionsGetToManyRelatedData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -85366,6 +81549,7 @@ export type BuildsPerfPowerMetricsGetToManyRelatedData = {
       | "MEMORY"
       | "ANIMATION"
       | "TERMINATION"
+      | "STORAGE"
     >;
     /**
      * filter by attribute 'deviceType'
@@ -87904,7 +84088,6 @@ export type CiProductsAppGetToOneRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -100473,6 +96656,7 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -101751,6 +97935,7 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "state"
       | "stateDetails"
       | "version"
+      | "locale"
       | "backgroundAsset"
       | "internalBetaRelease"
       | "externalBetaRelease"
@@ -102303,132 +98488,6 @@ export type ScmRepositoriesPullRequestsGetToManyRelatedResponses = {
 export type ScmRepositoriesPullRequestsGetToManyRelatedResponse =
   ScmRepositoriesPullRequestsGetToManyRelatedResponses[keyof ScmRepositoriesPullRequestsGetToManyRelatedResponses];
 
-/** Request options for `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/subscriptionAvailabilities/{id}/relationships/availableTerritories";
-  };
-
-/** Error status map for `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipError =
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors[keyof SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors];
-
-/** Response status map for `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses =
-  {
-    /**
-     * List of related linkages
-     */
-    200: SubscriptionAvailabilityAvailableTerritoriesLinkagesResponse;
-  };
-
-/** Successful response from `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponse =
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses[keyof SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses];
-
-/** Request options for `GET /v1/subscriptionAvailabilities/{id}/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedData =
-  {
-    body?: never;
-    path: {
-      /**
-       * the id of the requested resource
-       */
-      id: string;
-    };
-    query?: {
-      /**
-       * the fields to include for returned resources of type territories
-       */
-      "fields[territories]"?: Array<"currency">;
-      /**
-       * maximum resources per page
-       */
-      limit?: number;
-    };
-    url: "/v1/subscriptionAvailabilities/{id}/availableTerritories";
-  };
-
-/** Error status map for `GET /v1/subscriptionAvailabilities/{id}/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors =
-  {
-    /**
-     * Parameter error(s)
-     */
-    400: ErrorResponse;
-    /**
-     * Unauthorized error(s)
-     */
-    401: ErrorResponse;
-    /**
-     * Forbidden error
-     */
-    403: ErrorResponse;
-    /**
-     * Not found error
-     */
-    404: ErrorResponse;
-    /**
-     * Rate limit exceeded error
-     */
-    429: ErrorResponse;
-  };
-
-/** Error response from `GET /v1/subscriptionAvailabilities/{id}/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedError =
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors[keyof SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors];
-
-/** Response status map for `GET /v1/subscriptionAvailabilities/{id}/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses =
-  {
-    /**
-     * List of Territories
-     */
-    200: TerritoriesResponse;
-  };
-
-/** Successful response from `GET /v1/subscriptionAvailabilities/{id}/availableTerritories`. */
-export type SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponse =
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses[keyof SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses];
-
 /** Request options for `GET /v1/subscriptionGroups/{id}/relationships/subscriptionGroupLocalizations`. */
 export type SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipData =
   {
@@ -102685,6 +98744,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -102721,6 +98781,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "duration"
       | "offerMode"
       | "numberOfPeriods"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "territory"
       | "subscriptionPricePoint"
@@ -102734,6 +98795,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "numberOfPeriods"
       | "offerCode"
       | "offerMode"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "prices"
     >;
@@ -102752,6 +98814,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -102761,7 +98824,11 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
      * the fields to include for returned resources of type subscriptionPrices
      */
     "fields[subscriptionPrices]"?: Array<
-      "startDate" | "preserved" | "territory" | "subscriptionPricePoint"
+      | "startDate"
+      | "preserved"
+      | "planType"
+      | "territory"
+      | "subscriptionPricePoint"
     >;
     /**
      * the fields to include for returned resources of type promotedPurchases
@@ -102795,6 +98862,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "endDate"
       | "priority"
       | "promotionIntent"
+      | "targetSubscriptionPlanType"
       | "prices"
     >;
     /**
@@ -102809,6 +98877,12 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "uploadOperations"
       | "state"
       | "subscription"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPlanAvailabilities
+     */
+    "fields[subscriptionPlanAvailabilities]"?: Array<
+      "availableInNewTerritories" | "planType" | "availableTerritories"
     >;
     /**
      * maximum resources per page
@@ -102829,6 +98903,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * maximum number of related subscriptionLocalizations returned (when they are included)
@@ -102858,6 +98933,10 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
      * maximum number of related images returned (when they are included)
      */
     "limit[images]"?: number;
+    /**
+     * maximum number of related planAvailabilities returned (when they are included)
+     */
+    "limit[planAvailabilities]"?: number;
   };
   url: "/v1/subscriptionGroups/{id}/subscriptions";
 };
@@ -103050,6 +99129,7 @@ export type SubscriptionOfferCodesCustomCodesGetToManyRelatedData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -103203,6 +99283,7 @@ export type SubscriptionOfferCodesOneTimeUseCodesGetToManyRelatedData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -103403,6 +99484,199 @@ export type SubscriptionOfferCodesPricesGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptionOfferCodes/{id}/prices`. */
 export type SubscriptionOfferCodesPricesGetToManyRelatedResponse =
   SubscriptionOfferCodesPricesGetToManyRelatedResponses[keyof SubscriptionOfferCodesPricesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+    };
+    url: "/v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories";
+  };
+
+/** Error status map for `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipError =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: SubscriptionPlanAvailabilityAvailableTerritoriesLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponse =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses];
+
+/** Request options for `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipData =
+  {
+    /**
+     * List of related linkages
+     */
+    body: SubscriptionPlanAvailabilityAvailableTerritoriesLinkagesRequest;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: never;
+    url: "/v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories";
+  };
+
+/** Error status map for `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Request entity error(s)
+     */
+    409: ErrorResponse;
+    /**
+     * Unprocessable request entity error(s)
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipError =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors];
+
+/** Response status map for `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses =
+  {
+    /**
+     * Success (no content)
+     */
+    204: void;
+  };
+
+/** Successful response from `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponse =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * the fields to include for returned resources of type territories
+       */
+      "fields[territories]"?: Array<"currency">;
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+    };
+    url: "/v1/subscriptionPlanAvailabilities/{id}/availableTerritories";
+  };
+
+/** Error status map for `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedError =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses =
+  {
+    /**
+     * List of Territories
+     */
+    200: TerritoriesResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories`. */
+export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponse =
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptionPricePoints/{id}/relationships/equalizations`. */
 export type SubscriptionPricePointsEqualizationsGetToManyRelationshipData = {
@@ -103793,6 +100067,7 @@ export type SubscriptionsAppStoreReviewScreenshotGetToOneRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -103946,6 +100221,7 @@ export type SubscriptionsImagesGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * maximum resources per page
@@ -104144,6 +100420,7 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "duration"
       | "offerMode"
       | "numberOfPeriods"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "territory"
       | "subscriptionPricePoint"
@@ -104171,6 +100448,7 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -104325,6 +100603,7 @@ export type SubscriptionsOfferCodesGetToManyRelatedData = {
       | "sandboxCodeCount"
       | "active"
       | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "oneTimeUseCodes"
       | "customCodes"
@@ -104353,6 +100632,7 @@ export type SubscriptionsOfferCodesGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -104448,6 +100728,140 @@ export type SubscriptionsOfferCodesGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptions/{id}/offerCodes`. */
 export type SubscriptionsOfferCodesGetToManyRelatedResponse =
   SubscriptionsOfferCodesGetToManyRelatedResponses[keyof SubscriptionsOfferCodesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/relationships/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptions/{id}/relationships/planAvailabilities";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/relationships/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/relationships/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelationshipError =
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors[keyof SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/relationships/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionPlanAvailabilitiesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/relationships/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponse =
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses[keyof SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionPlanAvailabilities
+     */
+    "fields[subscriptionPlanAvailabilities]"?: Array<
+      "availableInNewTerritories" | "planType" | "availableTerritories"
+    >;
+    /**
+     * the fields to include for returned resources of type territories
+     */
+    "fields[territories]"?: Array<"currency">;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"availableTerritories">;
+    /**
+     * maximum number of related availableTerritories returned (when they are included)
+     */
+    "limit[availableTerritories]"?: number;
+  };
+  url: "/v1/subscriptions/{id}/planAvailabilities";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelatedError =
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors[keyof SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionPlanAvailabilities
+   */
+  200: SubscriptionPlanAvailabilitiesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/planAvailabilities`. */
+export type SubscriptionsPlanAvailabilitiesGetToManyRelatedResponse =
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses[keyof SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptions/{id}/relationships/pricePoints`. */
 export type SubscriptionsPricePointsGetToManyRelationshipData = {
@@ -104720,6 +101134,10 @@ export type SubscriptionsPricesGetToManyRelatedData = {
   };
   query?: {
     /**
+     * filter by attribute 'planType'
+     */
+    "filter[planType]"?: Array<"MONTHLY" | "UPFRONT">;
+    /**
      * filter by id(s) of related 'subscriptionPricePoint'
      */
     "filter[subscriptionPricePoint]"?: Array<string>;
@@ -104731,7 +101149,11 @@ export type SubscriptionsPricesGetToManyRelatedData = {
      * the fields to include for returned resources of type subscriptionPrices
      */
     "fields[subscriptionPrices]"?: Array<
-      "startDate" | "preserved" | "territory" | "subscriptionPricePoint"
+      | "startDate"
+      | "preserved"
+      | "planType"
+      | "territory"
+      | "subscriptionPricePoint"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -104916,6 +101338,7 @@ export type SubscriptionsPromotedPurchaseGetToOneRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * comma-separated list of relationships to include
@@ -105046,6 +101469,7 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedData = {
       | "numberOfPeriods"
       | "offerCode"
       | "offerMode"
+      | "targetSubscriptionPlanType"
       | "subscription"
       | "prices"
     >;
@@ -105072,6 +101496,7 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -105134,132 +101559,6 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptions/{id}/promotionalOffers`. */
 export type SubscriptionsPromotionalOffersGetToManyRelatedResponse =
   SubscriptionsPromotionalOffersGetToManyRelatedResponses[keyof SubscriptionsPromotionalOffersGetToManyRelatedResponses];
-
-/** Request options for `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelationshipData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: never;
-  url: "/v1/subscriptions/{id}/relationships/subscriptionAvailability";
-};
-
-/** Error status map for `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelationshipError =
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors[keyof SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors];
-
-/** Response status map for `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses =
-  {
-    /**
-     * Related linkage
-     */
-    200: SubscriptionSubscriptionAvailabilityLinkageResponse;
-  };
-
-/** Successful response from `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponse =
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses[keyof SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses];
-
-/** Request options for `GET /v1/subscriptions/{id}/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelatedData = {
-  body?: never;
-  path: {
-    /**
-     * the id of the requested resource
-     */
-    id: string;
-  };
-  query?: {
-    /**
-     * the fields to include for returned resources of type subscriptionAvailabilities
-     */
-    "fields[subscriptionAvailabilities]"?: Array<
-      "availableInNewTerritories" | "availableTerritories"
-    >;
-    /**
-     * the fields to include for returned resources of type territories
-     */
-    "fields[territories]"?: Array<"currency">;
-    /**
-     * comma-separated list of relationships to include
-     */
-    include?: Array<"availableTerritories">;
-    /**
-     * maximum number of related availableTerritories returned (when they are included)
-     */
-    "limit[availableTerritories]"?: number;
-  };
-  url: "/v1/subscriptions/{id}/subscriptionAvailability";
-};
-
-/** Error status map for `GET /v1/subscriptions/{id}/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors = {
-  /**
-   * Parameter error(s)
-   */
-  400: ErrorResponse;
-  /**
-   * Unauthorized error(s)
-   */
-  401: ErrorResponse;
-  /**
-   * Forbidden error
-   */
-  403: ErrorResponse;
-  /**
-   * Not found error
-   */
-  404: ErrorResponse;
-  /**
-   * Rate limit exceeded error
-   */
-  429: ErrorResponse;
-};
-
-/** Error response from `GET /v1/subscriptions/{id}/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelatedError =
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors[keyof SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors];
-
-/** Response status map for `GET /v1/subscriptions/{id}/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses = {
-  /**
-   * Single SubscriptionAvailability
-   */
-  200: SubscriptionAvailabilityResponse;
-};
-
-/** Successful response from `GET /v1/subscriptions/{id}/subscriptionAvailability`. */
-export type SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponse =
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses[keyof SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses];
 
 /** Request options for `GET /v1/subscriptions/{id}/relationships/subscriptionLocalizations`. */
 export type SubscriptionsSubscriptionLocalizationsGetToManyRelationshipData = {
@@ -105360,6 +101659,7 @@ export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedData = {
       | "subscriptionAvailability"
       | "winBackOffers"
       | "images"
+      | "planAvailabilities"
     >;
     /**
      * maximum resources per page
@@ -105497,6 +101797,7 @@ export type SubscriptionsWinBackOffersGetToManyRelatedData = {
       | "endDate"
       | "priority"
       | "promotionIntent"
+      | "targetSubscriptionPlanType"
       | "prices"
     >;
     /**

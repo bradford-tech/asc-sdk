@@ -532,18 +532,6 @@ import type {
   AppClipsGetInstanceData,
   AppClipsGetInstanceErrors,
   AppClipsGetInstanceResponses,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipData,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedData,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-  AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
   AppCustomProductPageLocalizationsCreateInstanceData,
   AppCustomProductPageLocalizationsCreateInstanceErrors,
   AppCustomProductPageLocalizationsCreateInstanceResponses,
@@ -625,18 +613,6 @@ import type {
   AppEncryptionDeclarationsGetInstanceData,
   AppEncryptionDeclarationsGetInstanceErrors,
   AppEncryptionDeclarationsGetInstanceResponses,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedData,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipData,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedData,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipData,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses,
   AppEventLocalizationsCreateInstanceData,
   AppEventLocalizationsCreateInstanceErrors,
   AppEventLocalizationsCreateInstanceResponses,
@@ -652,18 +628,6 @@ import type {
   AppEventsCreateInstanceData,
   AppEventsCreateInstanceErrors,
   AppEventsCreateInstanceResponses,
-  AppEventScreenshotsCreateInstanceData,
-  AppEventScreenshotsCreateInstanceErrors,
-  AppEventScreenshotsCreateInstanceResponses,
-  AppEventScreenshotsDeleteInstanceData,
-  AppEventScreenshotsDeleteInstanceErrors,
-  AppEventScreenshotsDeleteInstanceResponses,
-  AppEventScreenshotsGetInstanceData,
-  AppEventScreenshotsGetInstanceErrors,
-  AppEventScreenshotsGetInstanceResponses,
-  AppEventScreenshotsUpdateInstanceData,
-  AppEventScreenshotsUpdateInstanceErrors,
-  AppEventScreenshotsUpdateInstanceResponses,
   AppEventsDeleteInstanceData,
   AppEventsDeleteInstanceErrors,
   AppEventsDeleteInstanceResponses,
@@ -679,18 +643,6 @@ import type {
   AppEventsUpdateInstanceData,
   AppEventsUpdateInstanceErrors,
   AppEventsUpdateInstanceResponses,
-  AppEventVideoClipsCreateInstanceData,
-  AppEventVideoClipsCreateInstanceErrors,
-  AppEventVideoClipsCreateInstanceResponses,
-  AppEventVideoClipsDeleteInstanceData,
-  AppEventVideoClipsDeleteInstanceErrors,
-  AppEventVideoClipsDeleteInstanceResponses,
-  AppEventVideoClipsGetInstanceData,
-  AppEventVideoClipsGetInstanceErrors,
-  AppEventVideoClipsGetInstanceResponses,
-  AppEventVideoClipsUpdateInstanceData,
-  AppEventVideoClipsUpdateInstanceErrors,
-  AppEventVideoClipsUpdateInstanceResponses,
   AppInfoLocalizationsCreateInstanceData,
   AppInfoLocalizationsCreateInstanceErrors,
   AppInfoLocalizationsCreateInstanceResponses,
@@ -763,36 +715,6 @@ import type {
   AppInfosUpdateInstanceData,
   AppInfosUpdateInstanceErrors,
   AppInfosUpdateInstanceResponses,
-  AppPreviewsCreateInstanceData,
-  AppPreviewsCreateInstanceErrors,
-  AppPreviewsCreateInstanceResponses,
-  AppPreviewsDeleteInstanceData,
-  AppPreviewsDeleteInstanceErrors,
-  AppPreviewsDeleteInstanceResponses,
-  AppPreviewSetsAppPreviewsGetToManyRelatedData,
-  AppPreviewSetsAppPreviewsGetToManyRelatedErrors,
-  AppPreviewSetsAppPreviewsGetToManyRelatedResponses,
-  AppPreviewSetsAppPreviewsGetToManyRelationshipData,
-  AppPreviewSetsAppPreviewsGetToManyRelationshipErrors,
-  AppPreviewSetsAppPreviewsGetToManyRelationshipResponses,
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipData,
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors,
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses,
-  AppPreviewSetsCreateInstanceData,
-  AppPreviewSetsCreateInstanceErrors,
-  AppPreviewSetsCreateInstanceResponses,
-  AppPreviewSetsDeleteInstanceData,
-  AppPreviewSetsDeleteInstanceErrors,
-  AppPreviewSetsDeleteInstanceResponses,
-  AppPreviewSetsGetInstanceData,
-  AppPreviewSetsGetInstanceErrors,
-  AppPreviewSetsGetInstanceResponses,
-  AppPreviewsGetInstanceData,
-  AppPreviewsGetInstanceErrors,
-  AppPreviewsGetInstanceResponses,
-  AppPreviewsUpdateInstanceData,
-  AppPreviewsUpdateInstanceErrors,
-  AppPreviewsUpdateInstanceResponses,
   AppPricePointsV3EqualizationsGetToManyRelatedData,
   AppPricePointsV3EqualizationsGetToManyRelatedErrors,
   AppPricePointsV3EqualizationsGetToManyRelatedResponses,
@@ -982,36 +904,6 @@ import type {
   AppsCiProductGetToOneRelationshipData,
   AppsCiProductGetToOneRelationshipErrors,
   AppsCiProductGetToOneRelationshipResponses,
-  AppScreenshotsCreateInstanceData,
-  AppScreenshotsCreateInstanceErrors,
-  AppScreenshotsCreateInstanceResponses,
-  AppScreenshotsDeleteInstanceData,
-  AppScreenshotsDeleteInstanceErrors,
-  AppScreenshotsDeleteInstanceResponses,
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedData,
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors,
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses,
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipData,
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors,
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses,
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipData,
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors,
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses,
-  AppScreenshotSetsCreateInstanceData,
-  AppScreenshotSetsCreateInstanceErrors,
-  AppScreenshotSetsCreateInstanceResponses,
-  AppScreenshotSetsDeleteInstanceData,
-  AppScreenshotSetsDeleteInstanceErrors,
-  AppScreenshotSetsDeleteInstanceResponses,
-  AppScreenshotSetsGetInstanceData,
-  AppScreenshotSetsGetInstanceErrors,
-  AppScreenshotSetsGetInstanceResponses,
-  AppScreenshotsGetInstanceData,
-  AppScreenshotsGetInstanceErrors,
-  AppScreenshotsGetInstanceResponses,
-  AppScreenshotsUpdateInstanceData,
-  AppScreenshotsUpdateInstanceErrors,
-  AppScreenshotsUpdateInstanceResponses,
   AppsCustomerReviewsGetToManyRelatedData,
   AppsCustomerReviewsGetToManyRelatedErrors,
   AppsCustomerReviewsGetToManyRelatedResponses,
@@ -1138,18 +1030,6 @@ import type {
   AppStoreVersionExperimentsV2UpdateInstanceData,
   AppStoreVersionExperimentsV2UpdateInstanceErrors,
   AppStoreVersionExperimentsV2UpdateInstanceResponses,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedData,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipData,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-  AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedData,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-  AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
   AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceData,
   AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceErrors,
   AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponses,
@@ -1177,18 +1057,6 @@ import type {
   AppStoreVersionExperimentTreatmentsUpdateInstanceData,
   AppStoreVersionExperimentTreatmentsUpdateInstanceErrors,
   AppStoreVersionExperimentTreatmentsUpdateInstanceResponses,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipData,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
   AppStoreVersionLocalizationsCreateInstanceData,
   AppStoreVersionLocalizationsCreateInstanceErrors,
   AppStoreVersionLocalizationsCreateInstanceResponses,
@@ -3085,18 +2953,6 @@ import type {
   SubscriptionAppStoreReviewScreenshotsUpdateInstanceData,
   SubscriptionAppStoreReviewScreenshotsUpdateInstanceErrors,
   SubscriptionAppStoreReviewScreenshotsUpdateInstanceResponses,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
-  SubscriptionAvailabilitiesCreateInstanceData,
-  SubscriptionAvailabilitiesCreateInstanceErrors,
-  SubscriptionAvailabilitiesCreateInstanceResponses,
-  SubscriptionAvailabilitiesGetInstanceData,
-  SubscriptionAvailabilitiesGetInstanceErrors,
-  SubscriptionAvailabilitiesGetInstanceResponses,
   SubscriptionGracePeriodsGetInstanceData,
   SubscriptionGracePeriodsGetInstanceErrors,
   SubscriptionGracePeriodsGetInstanceResponses,
@@ -3223,6 +3079,24 @@ import type {
   SubscriptionOfferCodesUpdateInstanceData,
   SubscriptionOfferCodesUpdateInstanceErrors,
   SubscriptionOfferCodesUpdateInstanceResponses,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipData,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors,
+  SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses,
+  SubscriptionPlanAvailabilitiesCreateInstanceData,
+  SubscriptionPlanAvailabilitiesCreateInstanceErrors,
+  SubscriptionPlanAvailabilitiesCreateInstanceResponses,
+  SubscriptionPlanAvailabilitiesGetInstanceData,
+  SubscriptionPlanAvailabilitiesGetInstanceErrors,
+  SubscriptionPlanAvailabilitiesGetInstanceResponses,
+  SubscriptionPlanAvailabilitiesUpdateInstanceData,
+  SubscriptionPlanAvailabilitiesUpdateInstanceErrors,
+  SubscriptionPlanAvailabilitiesUpdateInstanceResponses,
   SubscriptionPricePointsEqualizationsGetToManyRelatedData,
   SubscriptionPricePointsEqualizationsGetToManyRelatedErrors,
   SubscriptionPricePointsEqualizationsGetToManyRelatedResponses,
@@ -3292,6 +3166,12 @@ import type {
   SubscriptionsOfferCodesGetToManyRelationshipData,
   SubscriptionsOfferCodesGetToManyRelationshipErrors,
   SubscriptionsOfferCodesGetToManyRelationshipResponses,
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedData,
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors,
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses,
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipData,
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors,
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses,
   SubscriptionsPricePointsGetToManyRelatedData,
   SubscriptionsPricePointsGetToManyRelatedErrors,
   SubscriptionsPricePointsGetToManyRelatedResponses,
@@ -3319,12 +3199,6 @@ import type {
   SubscriptionsPromotionalOffersGetToManyRelationshipData,
   SubscriptionsPromotionalOffersGetToManyRelationshipErrors,
   SubscriptionsPromotionalOffersGetToManyRelationshipResponses,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedData,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipData,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedData,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedErrors,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses,
@@ -5489,196 +5363,6 @@ export const appEventLocalizationsUpdateInstance = <
     },
   });
 
-/** Create app event screenshots. `POST /v1/appEventScreenshots` */
-export const appEventScreenshotsCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventScreenshotsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventScreenshotsCreateInstanceResponses,
-  AppEventScreenshotsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppEventScreenshotsCreateInstanceResponses,
-    AppEventScreenshotsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventScreenshots",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app event screenshots. `DELETE /v1/appEventScreenshots/{id}` */
-export const appEventScreenshotsDeleteInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventScreenshotsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventScreenshotsDeleteInstanceResponses,
-  AppEventScreenshotsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppEventScreenshotsDeleteInstanceResponses,
-    AppEventScreenshotsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventScreenshots/{id}",
-    ...options,
-  });
-
-/** Read app event screenshots. `GET /v1/appEventScreenshots/{id}` */
-export const appEventScreenshotsGetInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventScreenshotsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventScreenshotsGetInstanceResponses,
-  AppEventScreenshotsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventScreenshotsGetInstanceResponses,
-    AppEventScreenshotsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appEventScreenshots]": { array: { explode: false } },
-        "fields[appEventLocalizations]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventScreenshots/{id}",
-    ...options,
-  });
-
-/** Update app event screenshots. `PATCH /v1/appEventScreenshots/{id}` */
-export const appEventScreenshotsUpdateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventScreenshotsUpdateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventScreenshotsUpdateInstanceResponses,
-  AppEventScreenshotsUpdateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppEventScreenshotsUpdateInstanceResponses,
-    AppEventScreenshotsUpdateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventScreenshots/{id}",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Create app event video clips. `POST /v1/appEventVideoClips` */
-export const appEventVideoClipsCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventVideoClipsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventVideoClipsCreateInstanceResponses,
-  AppEventVideoClipsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppEventVideoClipsCreateInstanceResponses,
-    AppEventVideoClipsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventVideoClips",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app event video clips. `DELETE /v1/appEventVideoClips/{id}` */
-export const appEventVideoClipsDeleteInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventVideoClipsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventVideoClipsDeleteInstanceResponses,
-  AppEventVideoClipsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppEventVideoClipsDeleteInstanceResponses,
-    AppEventVideoClipsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventVideoClips/{id}",
-    ...options,
-  });
-
-/** Read app event video clips. `GET /v1/appEventVideoClips/{id}` */
-export const appEventVideoClipsGetInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventVideoClipsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventVideoClipsGetInstanceResponses,
-  AppEventVideoClipsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventVideoClipsGetInstanceResponses,
-    AppEventVideoClipsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appEventVideoClips]": { array: { explode: false } },
-        "fields[appEventLocalizations]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventVideoClips/{id}",
-    ...options,
-  });
-
-/** Update app event video clips. `PATCH /v1/appEventVideoClips/{id}` */
-export const appEventVideoClipsUpdateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppEventVideoClipsUpdateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppEventVideoClipsUpdateInstanceResponses,
-  AppEventVideoClipsUpdateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppEventVideoClipsUpdateInstanceResponses,
-    AppEventVideoClipsUpdateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventVideoClips/{id}",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
 /** Create app events. `POST /v1/appEvents` */
 export const appEventsCreateInstance = <ThrowOnError extends boolean = false>(
   options: Options<AppEventsCreateInstanceData, ThrowOnError>,
@@ -5914,169 +5598,6 @@ export const appInfosUpdateInstance = <ThrowOnError extends boolean = false>(
     },
   });
 
-/** Create app preview sets. `POST /v1/appPreviewSets` */
-export const appPreviewSetsCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppPreviewSetsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewSetsCreateInstanceResponses,
-  AppPreviewSetsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppPreviewSetsCreateInstanceResponses,
-    AppPreviewSetsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app preview sets. `DELETE /v1/appPreviewSets/{id}` */
-export const appPreviewSetsDeleteInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppPreviewSetsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewSetsDeleteInstanceResponses,
-  AppPreviewSetsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppPreviewSetsDeleteInstanceResponses,
-    AppPreviewSetsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets/{id}",
-    ...options,
-  });
-
-/** Read app preview sets. `GET /v1/appPreviewSets/{id}` */
-export const appPreviewSetsGetInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppPreviewSetsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewSetsGetInstanceResponses,
-  AppPreviewSetsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppPreviewSetsGetInstanceResponses,
-    AppPreviewSetsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appPreviewSets]": { array: { explode: false } },
-        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-        "fields[appCustomProductPageLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appPreviews]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets/{id}",
-    ...options,
-  });
-
-/** Create app previews. `POST /v1/appPreviews` */
-export const appPreviewsCreateInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppPreviewsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewsCreateInstanceResponses,
-  AppPreviewsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppPreviewsCreateInstanceResponses,
-    AppPreviewsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviews",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app previews. `DELETE /v1/appPreviews/{id}` */
-export const appPreviewsDeleteInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppPreviewsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewsDeleteInstanceResponses,
-  AppPreviewsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppPreviewsDeleteInstanceResponses,
-    AppPreviewsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviews/{id}",
-    ...options,
-  });
-
-/** Read app previews. `GET /v1/appPreviews/{id}` */
-export const appPreviewsGetInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppPreviewsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewsGetInstanceResponses,
-  AppPreviewsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppPreviewsGetInstanceResponses,
-    AppPreviewsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appPreviews]": { array: { explode: false } },
-        "fields[appPreviewSets]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviews/{id}",
-    ...options,
-  });
-
-/** Update app previews. `PATCH /v1/appPreviews/{id}` */
-export const appPreviewsUpdateInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppPreviewsUpdateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppPreviewsUpdateInstanceResponses,
-  AppPreviewsUpdateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppPreviewsUpdateInstanceResponses,
-    AppPreviewsUpdateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviews/{id}",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
 /** Read app price points v3. `GET /v3/appPricePoints/{id}` */
 export const appPricePointsV3GetInstance = <
   ThrowOnError extends boolean = false,
@@ -6158,177 +5679,6 @@ export const appPriceSchedulesGetInstance = <
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appPriceSchedules/{id}",
     ...options,
-  });
-
-/** Create app screenshot sets. `POST /v1/appScreenshotSets` */
-export const appScreenshotSetsCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotSetsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotSetsCreateInstanceResponses,
-  AppScreenshotSetsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppScreenshotSetsCreateInstanceResponses,
-    AppScreenshotSetsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app screenshot sets. `DELETE /v1/appScreenshotSets/{id}` */
-export const appScreenshotSetsDeleteInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotSetsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotSetsDeleteInstanceResponses,
-  AppScreenshotSetsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppScreenshotSetsDeleteInstanceResponses,
-    AppScreenshotSetsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets/{id}",
-    ...options,
-  });
-
-/** Read app screenshot sets. `GET /v1/appScreenshotSets/{id}` */
-export const appScreenshotSetsGetInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotSetsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotSetsGetInstanceResponses,
-  AppScreenshotSetsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppScreenshotSetsGetInstanceResponses,
-    AppScreenshotSetsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appScreenshotSets]": { array: { explode: false } },
-        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-        "fields[appCustomProductPageLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appScreenshots]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets/{id}",
-    ...options,
-  });
-
-/** Create app screenshots. `POST /v1/appScreenshots` */
-export const appScreenshotsCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotsCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotsCreateInstanceResponses,
-  AppScreenshotsCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    AppScreenshotsCreateInstanceResponses,
-    AppScreenshotsCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshots",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Delete app screenshots. `DELETE /v1/appScreenshots/{id}` */
-export const appScreenshotsDeleteInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotsDeleteInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotsDeleteInstanceResponses,
-  AppScreenshotsDeleteInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).delete<
-    AppScreenshotsDeleteInstanceResponses,
-    AppScreenshotsDeleteInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshots/{id}",
-    ...options,
-  });
-
-/** Read app screenshots. `GET /v1/appScreenshots/{id}` */
-export const appScreenshotsGetInstance = <ThrowOnError extends boolean = false>(
-  options: Options<AppScreenshotsGetInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotsGetInstanceResponses,
-  AppScreenshotsGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppScreenshotsGetInstanceResponses,
-    AppScreenshotsGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appScreenshots]": { array: { explode: false } },
-        "fields[appScreenshotSets]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshots/{id}",
-    ...options,
-  });
-
-/** Update app screenshots. `PATCH /v1/appScreenshots/{id}` */
-export const appScreenshotsUpdateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppScreenshotsUpdateInstanceData, ThrowOnError>,
-): RequestResult<
-  AppScreenshotsUpdateInstanceResponses,
-  AppScreenshotsUpdateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppScreenshotsUpdateInstanceResponses,
-    AppScreenshotsUpdateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshots/{id}",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
   });
 
 /** Create app store review attachments. `POST /v1/appStoreReviewAttachments` */
@@ -15220,57 +14570,6 @@ export const subscriptionAppStoreReviewScreenshotsUpdateInstance = <
     },
   });
 
-/** Create subscription availabilities. `POST /v1/subscriptionAvailabilities` */
-export const subscriptionAvailabilitiesCreateInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<SubscriptionAvailabilitiesCreateInstanceData, ThrowOnError>,
-): RequestResult<
-  SubscriptionAvailabilitiesCreateInstanceResponses,
-  SubscriptionAvailabilitiesCreateInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).post<
-    SubscriptionAvailabilitiesCreateInstanceResponses,
-    SubscriptionAvailabilitiesCreateInstanceErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/subscriptionAvailabilities",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** Read subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}` */
-export const subscriptionAvailabilitiesGetInstance = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<SubscriptionAvailabilitiesGetInstanceData, ThrowOnError>,
-): RequestResult<
-  SubscriptionAvailabilitiesGetInstanceResponses,
-  SubscriptionAvailabilitiesGetInstanceErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    SubscriptionAvailabilitiesGetInstanceResponses,
-    SubscriptionAvailabilitiesGetInstanceErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[subscriptionAvailabilities]": { array: { explode: false } },
-        "fields[territories]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/subscriptionAvailabilities/{id}",
-    ...options,
-  });
-
 /** Read subscription grace periods. `GET /v1/subscriptionGracePeriods/{id}` */
 export const subscriptionGracePeriodsGetInstance = <
   ThrowOnError extends boolean = false,
@@ -16089,6 +15388,87 @@ export const subscriptionOfferCodesUpdateInstance = <
     },
   });
 
+/** Create subscription plan availabilities. `POST /v1/subscriptionPlanAvailabilities` */
+export const subscriptionPlanAvailabilitiesCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPlanAvailabilitiesCreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPlanAvailabilitiesCreateInstanceResponses,
+  SubscriptionPlanAvailabilitiesCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionPlanAvailabilitiesCreateInstanceResponses,
+    SubscriptionPlanAvailabilitiesCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPlanAvailabilities",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read subscription plan availabilities. `GET /v1/subscriptionPlanAvailabilities/{id}` */
+export const subscriptionPlanAvailabilitiesGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionPlanAvailabilitiesGetInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionPlanAvailabilitiesGetInstanceResponses,
+  SubscriptionPlanAvailabilitiesGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionPlanAvailabilitiesGetInstanceResponses,
+    SubscriptionPlanAvailabilitiesGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPlanAvailabilities/{id}",
+    ...options,
+  });
+
+/** Update subscription plan availabilities. `PATCH /v1/subscriptionPlanAvailabilities/{id}` */
+export const subscriptionPlanAvailabilitiesUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPlanAvailabilitiesUpdateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPlanAvailabilitiesUpdateInstanceResponses,
+  SubscriptionPlanAvailabilitiesUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    SubscriptionPlanAvailabilitiesUpdateInstanceResponses,
+    SubscriptionPlanAvailabilitiesUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPlanAvailabilities/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Read subscription price points. `GET /v1/subscriptionPricePoints/{id}` */
 export const subscriptionPricePointsGetInstance = <
   ThrowOnError extends boolean = false,
@@ -16365,6 +15745,7 @@ export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[subscriptionAvailabilities]": { array: { explode: false } },
         "fields[winBackOffers]": { array: { explode: false } },
         "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -17724,133 +17105,6 @@ export const appClipsAppClipDefaultExperiencesGetToManyRelated = <
     ...options,
   });
 
-/** Get app preview sets relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets` */
-export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-      AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appCustomProductPageLocalizations/{id}/relationships/appPreviewSets",
-      ...options,
-    });
-
-/** List related app preview sets for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/appPreviewSets` */
-export const appCustomProductPageLocalizationsAppPreviewSetsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-  AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-    AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "filter[previewType]": { array: { explode: false } },
-        "filter[appStoreVersionLocalization]": { array: { explode: false } },
-        "filter[appStoreVersionExperimentTreatmentLocalization]": {
-          array: { explode: false },
-        },
-        "fields[appPreviewSets]": { array: { explode: false } },
-        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-        "fields[appCustomProductPageLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appPreviews]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appCustomProductPageLocalizations/{id}/appPreviewSets",
-    ...options,
-  });
-
-/** Get app screenshot sets relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets` */
-export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appCustomProductPageLocalizations/{id}/relationships/appScreenshotSets",
-      ...options,
-    });
-
-/** List related app screenshot sets for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets` */
-export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelated =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-    AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-      AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-      ThrowOnError
-    >({
-      querySerializer: {
-        parameters: {
-          "filter[screenshotDisplayType]": { array: { explode: false } },
-          "filter[appStoreVersionLocalization]": { array: { explode: false } },
-          "filter[appStoreVersionExperimentTreatmentLocalization]": {
-            array: { explode: false },
-          },
-          "fields[appScreenshotSets]": { array: { explode: false } },
-          "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-          "fields[appCustomProductPageLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appScreenshots]": { array: { explode: false } },
-          include: { array: { explode: false } },
-        },
-      },
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appCustomProductPageLocalizations/{id}/appScreenshotSets",
-      ...options,
-    });
-
 /** Remove search keywords relationship for app custom product page localizations. `DELETE /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -18117,112 +17371,6 @@ export const appEncryptionDeclarationsAppEncryptionDeclarationDocumentGetToOneRe
       url: "/v1/appEncryptionDeclarations/{id}/appEncryptionDeclarationDocument",
       ...options,
     });
-
-/** Get app event screenshots relationship IDs for app event localizations. `GET /v1/appEventLocalizations/{id}/relationships/appEventScreenshots` */
-export const appEventLocalizationsAppEventScreenshotsGetToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipResponses,
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventLocalizations/{id}/relationships/appEventScreenshots",
-    ...options,
-  });
-
-/** List related app event screenshots for app event localizations. `GET /v1/appEventLocalizations/{id}/appEventScreenshots` */
-export const appEventLocalizationsAppEventScreenshotsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses,
-  AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelatedResponses,
-    AppEventLocalizationsAppEventScreenshotsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appEventScreenshots]": { array: { explode: false } },
-        "fields[appEventLocalizations]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventLocalizations/{id}/appEventScreenshots",
-    ...options,
-  });
-
-/** Get app event video clips relationship IDs for app event localizations. `GET /v1/appEventLocalizations/{id}/relationships/appEventVideoClips` */
-export const appEventLocalizationsAppEventVideoClipsGetToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipResponses,
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventLocalizations/{id}/relationships/appEventVideoClips",
-    ...options,
-  });
-
-/** List related app event video clips for app event localizations. `GET /v1/appEventLocalizations/{id}/appEventVideoClips` */
-export const appEventLocalizationsAppEventVideoClipsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses,
-  AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses,
-    AppEventLocalizationsAppEventVideoClipsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appEventVideoClips]": { array: { explode: false } },
-        "fields[appEventLocalizations]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appEventLocalizations/{id}/appEventVideoClips",
-    ...options,
-  });
 
 /** Get localizations relationship IDs for app events. `GET /v1/appEvents/{id}/relationships/localizations` */
 export const appEventsLocalizationsGetToManyRelationship = <
@@ -18740,83 +17888,6 @@ export const appInfosTerritoryAgeRatingsGetToManyRelated = <
     ...options,
   });
 
-/** Get app previews relationship IDs for app preview sets. `GET /v1/appPreviewSets/{id}/relationships/appPreviews` */
-export const appPreviewSetsAppPreviewsGetToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppPreviewSetsAppPreviewsGetToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppPreviewSetsAppPreviewsGetToManyRelationshipResponses,
-  AppPreviewSetsAppPreviewsGetToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppPreviewSetsAppPreviewsGetToManyRelationshipResponses,
-    AppPreviewSetsAppPreviewsGetToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets/{id}/relationships/appPreviews",
-    ...options,
-  });
-
-/** Replace app previews relationships for app preview sets. `PATCH /v1/appPreviewSets/{id}/relationships/appPreviews` */
-export const appPreviewSetsAppPreviewsReplaceToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppPreviewSetsAppPreviewsReplaceToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses,
-  AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppPreviewSetsAppPreviewsReplaceToManyRelationshipResponses,
-    AppPreviewSetsAppPreviewsReplaceToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets/{id}/relationships/appPreviews",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** List related app previews for app preview sets. `GET /v1/appPreviewSets/{id}/appPreviews` */
-export const appPreviewSetsAppPreviewsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<AppPreviewSetsAppPreviewsGetToManyRelatedData, ThrowOnError>,
-): RequestResult<
-  AppPreviewSetsAppPreviewsGetToManyRelatedResponses,
-  AppPreviewSetsAppPreviewsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppPreviewSetsAppPreviewsGetToManyRelatedResponses,
-    AppPreviewSetsAppPreviewsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appPreviews]": { array: { explode: false } },
-        "fields[appPreviewSets]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appPreviewSets/{id}/appPreviews",
-    ...options,
-  });
-
 /** Get equalizations relationship IDs for app price points v3. `GET /v3/appPricePoints/{id}/relationships/equalizations` */
 export const appPricePointsV3EqualizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -19039,86 +18110,6 @@ export const appPriceSchedulesManualPricesGetToManyRelated = <
     ...options,
   });
 
-/** Get app screenshots relationship IDs for app screenshot sets. `GET /v1/appScreenshotSets/{id}/relationships/appScreenshots` */
-export const appScreenshotSetsAppScreenshotsGetToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppScreenshotSetsAppScreenshotsGetToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses,
-  AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppScreenshotSetsAppScreenshotsGetToManyRelationshipResponses,
-    AppScreenshotSetsAppScreenshotsGetToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets/{id}/relationships/appScreenshots",
-    ...options,
-  });
-
-/** Replace app screenshots relationships for app screenshot sets. `PATCH /v1/appScreenshotSets/{id}/relationships/appScreenshots` */
-export const appScreenshotSetsAppScreenshotsReplaceToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses,
-  AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).patch<
-    AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipResponses,
-    AppScreenshotSetsAppScreenshotsReplaceToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets/{id}/relationships/appScreenshots",
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...options.headers,
-    },
-  });
-
-/** List related app screenshots for app screenshot sets. `GET /v1/appScreenshotSets/{id}/appScreenshots` */
-export const appScreenshotSetsAppScreenshotsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppScreenshotSetsAppScreenshotsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses,
-  AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppScreenshotSetsAppScreenshotsGetToManyRelatedResponses,
-    AppScreenshotSetsAppScreenshotsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[appScreenshots]": { array: { explode: false } },
-        "fields[appScreenshotSets]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appScreenshotSets/{id}/appScreenshots",
-    ...options,
-  });
-
 /** Get app store review attachments relationship IDs for app store review details. `GET /v1/appStoreReviewDetails/{id}/relationships/appStoreReviewAttachments` */
 export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -19170,132 +18161,6 @@ export const appStoreReviewDetailsAppStoreReviewAttachmentsGetToManyRelated = <
     url: "/v1/appStoreReviewDetails/{id}/appStoreReviewAttachments",
     ...options,
   });
-
-/** Get app preview sets relationship IDs for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets` */
-export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appPreviewSets",
-      ...options,
-    });
-
-/** List related app preview sets for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets` */
-export const appStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelated =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-    AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-      AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-      ThrowOnError
-    >({
-      querySerializer: {
-        parameters: {
-          "filter[previewType]": { array: { explode: false } },
-          "filter[appStoreVersionLocalization]": { array: { explode: false } },
-          "filter[appCustomProductPageLocalization]": {
-            array: { explode: false },
-          },
-          "fields[appPreviewSets]": { array: { explode: false } },
-          "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-          "fields[appCustomProductPageLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appPreviews]": { array: { explode: false } },
-          include: { array: { explode: false } },
-        },
-      },
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appPreviewSets",
-      ...options,
-    });
-
-/** Get app screenshot sets relationship IDs for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets` */
-export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/appScreenshotSets",
-      ...options,
-    });
-
-/** List related app screenshot sets for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets` */
-export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelated =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-    AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-      AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-      ThrowOnError
-    >({
-      querySerializer: {
-        parameters: {
-          "filter[screenshotDisplayType]": { array: { explode: false } },
-          "filter[appStoreVersionLocalization]": { array: { explode: false } },
-          "filter[appCustomProductPageLocalization]": {
-            array: { explode: false },
-          },
-          "fields[appScreenshotSets]": { array: { explode: false } },
-          "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-          "fields[appCustomProductPageLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-            array: { explode: false },
-          },
-          "fields[appScreenshots]": { array: { explode: false } },
-          include: { array: { explode: false } },
-        },
-      },
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets",
-      ...options,
-    });
 
 /** Get app store version experiment treatment localizations relationship IDs for app store version experiment treatments. `GET /v1/appStoreVersionExperimentTreatments/{id}/relationships/appStoreVersionExperimentTreatmentLocalizations` */
 export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationship =
@@ -19412,139 +18277,6 @@ export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetT
       url: "/v2/appStoreVersionExperiments/{id}/appStoreVersionExperimentTreatments",
       ...options,
     });
-
-/** Get app preview sets relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets` */
-export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipResponses,
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appStoreVersionLocalizations/{id}/relationships/appPreviewSets",
-    ...options,
-  });
-
-/** List related app preview sets for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/appPreviewSets` */
-export const appStoreVersionLocalizationsAppPreviewSetsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-  AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedResponses,
-    AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "filter[previewType]": { array: { explode: false } },
-        "filter[appCustomProductPageLocalization]": {
-          array: { explode: false },
-        },
-        "filter[appStoreVersionExperimentTreatmentLocalization]": {
-          array: { explode: false },
-        },
-        "fields[appPreviewSets]": { array: { explode: false } },
-        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-        "fields[appCustomProductPageLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appPreviews]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appStoreVersionLocalizations/{id}/appPreviewSets",
-    ...options,
-  });
-
-/** Get app screenshot sets relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets` */
-export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipResponses,
-      AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/appStoreVersionLocalizations/{id}/relationships/appScreenshotSets",
-      ...options,
-    });
-
-/** List related app screenshot sets for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets` */
-export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-  AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses,
-    AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "filter[screenshotDisplayType]": { array: { explode: false } },
-        "filter[appCustomProductPageLocalization]": {
-          array: { explode: false },
-        },
-        "filter[appStoreVersionExperimentTreatmentLocalization]": {
-          array: { explode: false },
-        },
-        "fields[appScreenshotSets]": { array: { explode: false } },
-        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
-        "fields[appCustomProductPageLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
-          array: { explode: false },
-        },
-        "fields[appScreenshots]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/appStoreVersionLocalizations/{id}/appScreenshotSets",
-    ...options,
-  });
 
 /** Remove search keywords relationship for app store version localizations. `DELETE /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords` */
 export const appStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationship =
@@ -21133,6 +19865,7 @@ export const appsBackgroundAssetsGetToManyRelated = <
       parameters: {
         "filter[archived]": { array: { explode: false } },
         "filter[assetPackIdentifier]": { array: { explode: false } },
+        "filter[versions.locale]": { array: { explode: false } },
         "filter[versions.platforms]": { array: { explode: false } },
         sort: { array: { explode: false } },
         "fields[backgroundAssets]": { array: { explode: false } },
@@ -22455,6 +21188,7 @@ export const backgroundAssetsVersionsGetToManyRelated = <
   >({
     querySerializer: {
       parameters: {
+        "filter[locale]": { array: { explode: false } },
         "filter[platforms]": { array: { explode: false } },
         "filter[state]": { array: { explode: false } },
         "filter[version]": { array: { explode: false } },
@@ -29573,54 +28307,6 @@ export const scmRepositoriesPullRequestsGetToManyRelated = <
     ...options,
   });
 
-/** Get available territories relationship IDs for subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}/relationships/availableTerritories` */
-export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationship =
-  <ThrowOnError extends boolean = false>(
-    options: Options<
-      SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
-      ThrowOnError
-    >,
-  ): RequestResult<
-    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
-    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
-    ThrowOnError
-  > =>
-    (options.client ?? client).get<
-      SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
-      SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
-      ThrowOnError
-    >({
-      security: [{ scheme: "bearer", type: "http" }],
-      url: "/v1/subscriptionAvailabilities/{id}/relationships/availableTerritories",
-      ...options,
-    });
-
-/** List related available territories for subscription availabilities. `GET /v1/subscriptionAvailabilities/{id}/availableTerritories` */
-export const subscriptionAvailabilitiesAvailableTerritoriesGetToManyRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
-  SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
-    SubscriptionAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: { "fields[territories]": { array: { explode: false } } },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/subscriptionAvailabilities/{id}/availableTerritories",
-    ...options,
-  });
-
 /** Get subscription group localizations relationship IDs for subscription groups. `GET /v1/subscriptionGroups/{id}/relationships/subscriptionGroupLocalizations` */
 export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -29735,6 +28421,7 @@ export const subscriptionGroupsSubscriptionsGetToManyRelated = <
         "fields[subscriptionAvailabilities]": { array: { explode: false } },
         "fields[winBackOffers]": { array: { explode: false } },
         "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -29934,6 +28621,79 @@ export const subscriptionOfferCodesPricesGetToManyRelated = <
     url: "/v1/subscriptionOfferCodes/{id}/prices",
     ...options,
   });
+
+/** Get available territories relationship IDs for subscription plan availabilities. `GET /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories` */
+export const subscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationship =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipResponses,
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelationshipErrors,
+      ThrowOnError
+    >({
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories",
+      ...options,
+    });
+
+/** Replace available territories relationships for subscription plan availabilities. `PATCH /v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories` */
+export const subscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationship =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses,
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).patch<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipResponses,
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesReplaceToManyRelationshipErrors,
+      ThrowOnError
+    >({
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/subscriptionPlanAvailabilities/{id}/relationships/availableTerritories",
+      ...options,
+      headers: {
+        "Content-Type": "application/json",
+        ...options.headers,
+      },
+    });
+
+/** List related available territories for subscription plan availabilities. `GET /v1/subscriptionPlanAvailabilities/{id}/availableTerritories` */
+export const subscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelated =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
+    SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses,
+      SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedErrors,
+      ThrowOnError
+    >({
+      querySerializer: {
+        parameters: { "fields[territories]": { array: { explode: false } } },
+      },
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/subscriptionPlanAvailabilities/{id}/availableTerritories",
+      ...options,
+    });
 
 /** Get equalizations relationship IDs for subscription price points. `GET /v1/subscriptionPricePoints/{id}/relationships/equalizations` */
 export const subscriptionPricePointsEqualizationsGetToManyRelationship = <
@@ -30294,6 +29054,59 @@ export const subscriptionsOfferCodesGetToManyRelated = <
     ...options,
   });
 
+/** Get plan availabilities relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/planAvailabilities` */
+export const subscriptionsPlanAvailabilitiesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsPlanAvailabilitiesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses,
+  SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsPlanAvailabilitiesGetToManyRelationshipResponses,
+    SubscriptionsPlanAvailabilitiesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/planAvailabilities",
+    ...options,
+  });
+
+/** List related plan availabilities for subscriptions. `GET /v1/subscriptions/{id}/planAvailabilities` */
+export const subscriptionsPlanAvailabilitiesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsPlanAvailabilitiesGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses,
+  SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsPlanAvailabilitiesGetToManyRelatedResponses,
+    SubscriptionsPlanAvailabilitiesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/planAvailabilities",
+    ...options,
+  });
+
 /** Get price points relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/pricePoints` */
 export const subscriptionsPricePointsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -30409,6 +29222,7 @@ export const subscriptionsPricesGetToManyRelated = <
   >({
     querySerializer: {
       parameters: {
+        "filter[planType]": { array: { explode: false } },
         "filter[subscriptionPricePoint]": { array: { explode: false } },
         "filter[territory]": { array: { explode: false } },
         "fields[subscriptionPrices]": { array: { explode: false } },
@@ -30531,59 +29345,6 @@ export const subscriptionsPromotionalOffersGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptions/{id}/promotionalOffers",
-    ...options,
-  });
-
-/** Get subscription availability relationship ID for subscriptions. `GET /v1/subscriptions/{id}/relationships/subscriptionAvailability` */
-export const subscriptionsSubscriptionAvailabilityGetToOneRelationship = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    SubscriptionsSubscriptionAvailabilityGetToOneRelationshipData,
-    ThrowOnError
-  >,
-): RequestResult<
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    SubscriptionsSubscriptionAvailabilityGetToOneRelationshipResponses,
-    SubscriptionsSubscriptionAvailabilityGetToOneRelationshipErrors,
-    ThrowOnError
-  >({
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/subscriptions/{id}/relationships/subscriptionAvailability",
-    ...options,
-  });
-
-/** Read related subscription availability for subscriptions. `GET /v1/subscriptions/{id}/subscriptionAvailability` */
-export const subscriptionsSubscriptionAvailabilityGetToOneRelated = <
-  ThrowOnError extends boolean = false,
->(
-  options: Options<
-    SubscriptionsSubscriptionAvailabilityGetToOneRelatedData,
-    ThrowOnError
-  >,
-): RequestResult<
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses,
-  SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors,
-  ThrowOnError
-> =>
-  (options.client ?? client).get<
-    SubscriptionsSubscriptionAvailabilityGetToOneRelatedResponses,
-    SubscriptionsSubscriptionAvailabilityGetToOneRelatedErrors,
-    ThrowOnError
-  >({
-    querySerializer: {
-      parameters: {
-        "fields[subscriptionAvailabilities]": { array: { explode: false } },
-        "fields[territories]": { array: { explode: false } },
-        include: { array: { explode: false } },
-      },
-    },
-    security: [{ scheme: "bearer", type: "http" }],
-    url: "/v1/subscriptions/{id}/subscriptionAvailability",
     ...options,
   });
 
