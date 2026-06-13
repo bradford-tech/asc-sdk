@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.2.1...asc-sdk-v0.3.0) (2026-06-13)
+
+
+### Features
+
+* **sdk:** release client regenerated for ASC API 4.4 spec ([6dfaf89](https://github.com/bradford-tech/asc-sdk/commit/6dfaf8954ade6ddfad9cbf1d9db0d7e59ea9f078))
+
 ## [0.2.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.2.0...asc-sdk-v0.2.1) (2026-06-10)
 
 
