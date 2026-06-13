@@ -6,7 +6,7 @@ TypeScript SDK and JWT auth for Apple's App Store Connect API, built on Web Cryp
 
 | Package                                                    | Description                                                                                |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| [`@bradford-tech/asc-sdk`](./packages/asc-sdk/README.md)   | 1013 auto-generated, tree-shakeable operations from Apple's OpenAPI spec                   |
+| [`@bradford-tech/asc-sdk`](./packages/asc-sdk/README.md)   | 1057 auto-generated, tree-shakeable operations from Apple's OpenAPI spec                   |
 | [`@bradford-tech/asc-auth`](./packages/asc-auth/README.md) | ES256 JWT signer with token caching, single-flight deduplication, and edge runtime support |
 
 Both packages are published to [npm](https://www.npmjs.com/org/bradford-tech) and [jsr](https://jsr.io/@bradford-tech).
