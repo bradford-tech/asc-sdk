@@ -104,6 +104,12 @@ export interface Config {
   responseValidator?: (data: unknown) => Promise<unknown>;
 }
 
+/**
+ * Arbitrary metadata passed through the `meta` request option.
+ */
+
+export interface ClientMeta {}
+
 type IsExactlyNeverOrNeverUndefined<T> = [T] extends [never]
   ? true
   : [T] extends [never | undefined]
