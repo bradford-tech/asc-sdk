@@ -527,15 +527,9 @@ export type AlternativeDistributionPackageVersion = {
 export type AlternativeDistributionPackageVersionsResponse = {
   data: Array<AlternativeDistributionPackageVersion>;
   included?: Array<
-    | ({
-        type: "alternativeDistributionPackageDeltas";
-      } & AlternativeDistributionPackageDelta)
-    | ({
-        type: "alternativeDistributionPackageVariants";
-      } & AlternativeDistributionPackageVariant)
-    | ({
-        type: "alternativeDistributionPackages";
-      } & AlternativeDistributionPackage)
+    | AlternativeDistributionPackageDelta
+    | AlternativeDistributionPackageVariant
+    | AlternativeDistributionPackage
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -545,15 +539,9 @@ export type AlternativeDistributionPackageVersionsResponse = {
 export type AlternativeDistributionPackageVersionResponse = {
   data: AlternativeDistributionPackageVersion;
   included?: Array<
-    | ({
-        type: "alternativeDistributionPackageDeltas";
-      } & AlternativeDistributionPackageDelta)
-    | ({
-        type: "alternativeDistributionPackageVariants";
-      } & AlternativeDistributionPackageVariant)
-    | ({
-        type: "alternativeDistributionPackages";
-      } & AlternativeDistributionPackage)
+    | AlternativeDistributionPackageDelta
+    | AlternativeDistributionPackageVariant
+    | AlternativeDistributionPackage
   >;
   links: DocumentLinks;
 };
@@ -1100,15 +1088,9 @@ export type AppClipAdvancedExperience = {
 export type AppClipAdvancedExperiencesResponse = {
   data: Array<AppClipAdvancedExperience>;
   included?: Array<
-    | ({
-        type: "appClipAdvancedExperienceImages";
-      } & AppClipAdvancedExperienceImage)
-    | ({
-        type: "appClipAdvancedExperienceLocalizations";
-      } & AppClipAdvancedExperienceLocalization)
-    | ({
-        type: "appClips";
-      } & AppClip)
+    | AppClipAdvancedExperienceImage
+    | AppClipAdvancedExperienceLocalization
+    | AppClip
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -1118,15 +1100,9 @@ export type AppClipAdvancedExperiencesResponse = {
 export type AppClipAdvancedExperienceResponse = {
   data: AppClipAdvancedExperience;
   included?: Array<
-    | ({
-        type: "appClipAdvancedExperienceImages";
-      } & AppClipAdvancedExperienceImage)
-    | ({
-        type: "appClipAdvancedExperienceLocalizations";
-      } & AppClipAdvancedExperienceLocalization)
-    | ({
-        type: "appClips";
-      } & AppClip)
+    | AppClipAdvancedExperienceImage
+    | AppClipAdvancedExperienceLocalization
+    | AppClip
   >;
   links: DocumentLinks;
 };
@@ -1485,14 +1461,7 @@ export type AppClipDefaultExperienceLocalization = {
 /** Response containing an app clip default experience localizations. */
 export type AppClipDefaultExperienceLocalizationsResponse = {
   data: Array<AppClipDefaultExperienceLocalization>;
-  included?: Array<
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "appClipHeaderImages";
-      } & AppClipHeaderImage)
-  >;
+  included?: Array<AppClipDefaultExperience | AppClipHeaderImage>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -1500,14 +1469,7 @@ export type AppClipDefaultExperienceLocalizationsResponse = {
 /** Response containing an app clip default experience localization. */
 export type AppClipDefaultExperienceLocalizationResponse = {
   data: AppClipDefaultExperienceLocalization;
-  included?: Array<
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "appClipHeaderImages";
-      } & AppClipHeaderImage)
-  >;
+  included?: Array<AppClipDefaultExperience | AppClipHeaderImage>;
   links: DocumentLinks;
 };
 
@@ -1585,18 +1547,10 @@ export type AppClipDefaultExperience = {
 export type AppClipDefaultExperiencesResponse = {
   data: Array<AppClipDefaultExperience>;
   included?: Array<
-    | ({
-        type: "appClipAppStoreReviewDetails";
-      } & AppClipAppStoreReviewDetail)
-    | ({
-        type: "appClipDefaultExperienceLocalizations";
-      } & AppClipDefaultExperienceLocalization)
-    | ({
-        type: "appClips";
-      } & AppClip)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
+    | AppClipAppStoreReviewDetail
+    | AppClipDefaultExperienceLocalization
+    | AppClip
+    | AppStoreVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -1606,18 +1560,10 @@ export type AppClipDefaultExperiencesResponse = {
 export type AppClipDefaultExperienceResponse = {
   data: AppClipDefaultExperience;
   included?: Array<
-    | ({
-        type: "appClipAppStoreReviewDetails";
-      } & AppClipAppStoreReviewDetail)
-    | ({
-        type: "appClipDefaultExperienceLocalizations";
-      } & AppClipDefaultExperienceLocalization)
-    | ({
-        type: "appClips";
-      } & AppClip)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
+    | AppClipAppStoreReviewDetail
+    | AppClipDefaultExperienceLocalization
+    | AppClip
+    | AppStoreVersion
   >;
   links: DocumentLinks;
 };
@@ -1804,14 +1750,7 @@ export type AppClip = {
 /** Response containing an app clips. */
 export type AppClipsResponse = {
   data: Array<AppClip>;
-  included?: Array<
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "apps";
-      } & App)
-  >;
+  included?: Array<AppClipDefaultExperience | App>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -1819,14 +1758,7 @@ export type AppClipsResponse = {
 /** Response containing an app clip. */
 export type AppClipResponse = {
   data: AppClip;
-  included?: Array<
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "apps";
-      } & App)
-  >;
+  included?: Array<AppClipDefaultExperience | App>;
   links: DocumentLinks;
 };
 
@@ -1895,18 +1827,7 @@ export type AppCustomProductPageLocalizationInlineCreate = {
 export type AppCustomProductPageLocalizationsResponse = {
   data: Array<AppCustomProductPageLocalization>;
   included?: Array<
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "appKeywords";
-      } & AppKeyword)
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
+    AppCustomProductPageVersion | AppKeyword | AppPreviewSet | AppScreenshotSet
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -1916,18 +1837,7 @@ export type AppCustomProductPageLocalizationsResponse = {
 export type AppCustomProductPageLocalizationResponse = {
   data: AppCustomProductPageLocalization;
   included?: Array<
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "appKeywords";
-      } & AppKeyword)
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
+    AppCustomProductPageVersion | AppKeyword | AppPreviewSet | AppScreenshotSet
   >;
   links: DocumentLinks;
 };
@@ -2024,14 +1934,7 @@ export type AppCustomProductPageVersionInlineCreate = {
 /** Response containing an app custom product page versions. */
 export type AppCustomProductPageVersionsResponse = {
   data: Array<AppCustomProductPageVersion>;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appCustomProductPages";
-      } & AppCustomProductPage)
-  >;
+  included?: Array<AppCustomProductPageLocalization | AppCustomProductPage>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -2039,14 +1942,7 @@ export type AppCustomProductPageVersionsResponse = {
 /** Response containing an app custom product page version. */
 export type AppCustomProductPageVersionResponse = {
   data: AppCustomProductPageVersion;
-  included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appCustomProductPages";
-      } & AppCustomProductPage)
-  >;
+  included?: Array<AppCustomProductPageLocalization | AppCustomProductPage>;
   links: DocumentLinks;
 };
 
@@ -2117,15 +2013,7 @@ export type AppCustomProductPage = {
 export type AppCustomProductPagesResponse = {
   data: Array<AppCustomProductPage>;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "apps";
-      } & App)
+    AppCustomProductPageLocalization | AppCustomProductPageVersion | App
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -2135,15 +2023,7 @@ export type AppCustomProductPagesResponse = {
 export type AppCustomProductPageResponse = {
   data: AppCustomProductPage;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "apps";
-      } & App)
+    AppCustomProductPageLocalization | AppCustomProductPageVersion | App
   >;
   links: DocumentLinks;
 };
@@ -2326,17 +2206,7 @@ export type AppEncryptionDeclaration = {
  */
 export type AppEncryptionDeclarationsResponse = {
   data: Array<AppEncryptionDeclaration>;
-  included?: Array<
-    | ({
-        type: "appEncryptionDeclarationDocuments";
-      } & AppEncryptionDeclarationDocument)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<AppEncryptionDeclarationDocument | App | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -2344,17 +2214,7 @@ export type AppEncryptionDeclarationsResponse = {
 /** Response containing an app encryption declaration. */
 export type AppEncryptionDeclarationResponse = {
   data: AppEncryptionDeclaration;
-  included?: Array<
-    | ({
-        type: "appEncryptionDeclarationDocuments";
-      } & AppEncryptionDeclarationDocument)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<AppEncryptionDeclarationDocument | App | Build>;
   links: DocumentLinks;
 };
 
@@ -2424,17 +2284,7 @@ export type AppEventLocalization = {
 /** Response containing an app event localizations. */
 export type AppEventLocalizationsResponse = {
   data: Array<AppEventLocalization>;
-  included?: Array<
-    | ({
-        type: "appEventScreenshots";
-      } & AppEventScreenshot)
-    | ({
-        type: "appEventVideoClips";
-      } & AppEventVideoClip)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-  >;
+  included?: Array<AppEventScreenshot | AppEventVideoClip | AppEvent>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -2442,17 +2292,7 @@ export type AppEventLocalizationsResponse = {
 /** Response containing an app event localization. */
 export type AppEventLocalizationResponse = {
   data: AppEventLocalization;
-  included?: Array<
-    | ({
-        type: "appEventScreenshots";
-      } & AppEventScreenshot)
-    | ({
-        type: "appEventVideoClips";
-      } & AppEventVideoClip)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-  >;
+  included?: Array<AppEventScreenshot | AppEventVideoClip | AppEvent>;
   links: DocumentLinks;
 };
 
@@ -2991,18 +2831,7 @@ export type AppInfo = {
 export type AppInfosResponse = {
   data: Array<AppInfo>;
   included?: Array<
-    | ({
-        type: "ageRatingDeclarations";
-      } & AgeRatingDeclaration)
-    | ({
-        type: "appCategories";
-      } & AppCategory)
-    | ({
-        type: "appInfoLocalizations";
-      } & AppInfoLocalization)
-    | ({
-        type: "apps";
-      } & App)
+    AgeRatingDeclaration | AppCategory | AppInfoLocalization | App
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3012,18 +2841,7 @@ export type AppInfosResponse = {
 export type AppInfoResponse = {
   data: AppInfo;
   included?: Array<
-    | ({
-        type: "ageRatingDeclarations";
-      } & AgeRatingDeclaration)
-    | ({
-        type: "appCategories";
-      } & AppCategory)
-    | ({
-        type: "appInfoLocalizations";
-      } & AppInfoLocalization)
-    | ({
-        type: "apps";
-      } & App)
+    AgeRatingDeclaration | AppCategory | AppInfoLocalization | App
   >;
   links: DocumentLinks;
 };
@@ -3130,18 +2948,10 @@ export type AppPreviewSet = {
 export type AppPreviewSetsResponse = {
   data: Array<AppPreviewSet>;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appPreviews";
-      } & AppPreview)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
+    | AppCustomProductPageLocalization
+    | AppPreview
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3151,18 +2961,10 @@ export type AppPreviewSetsResponse = {
 export type AppPreviewSetResponse = {
   data: AppPreviewSet;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appPreviews";
-      } & AppPreview)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
+    | AppCustomProductPageLocalization
+    | AppPreview
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
   >;
   links: DocumentLinks;
 };
@@ -3305,14 +3107,7 @@ export type AppPricePointV3 = {
 /** Response containing an app price points v3. */
 export type AppPricePointsV3Response = {
   data: Array<AppPricePointV3>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<App | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -3320,14 +3115,7 @@ export type AppPricePointsV3Response = {
 /** Response containing an app price point v3. */
 export type AppPricePointV3Response = {
   data: AppPricePointV3;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<App | Territory>;
   links: DocumentLinks;
 };
 
@@ -3372,17 +3160,7 @@ export type AppPriceSchedule = {
 /** Response containing an app price schedule. */
 export type AppPriceScheduleResponse = {
   data: AppPriceSchedule;
-  included?: Array<
-    | ({
-        type: "appPrices";
-      } & AppPriceV2)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<AppPriceV2 | App | Territory>;
   links: DocumentLinks;
 };
 
@@ -3461,14 +3239,7 @@ export type AppPriceV2InlineCreate = {
 /** Response containing an app prices v2. */
 export type AppPricesV2Response = {
   data: Array<AppPriceV2>;
-  included?: Array<
-    | ({
-        type: "appPricePoints";
-      } & AppPricePointV3)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<AppPricePointV3 | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -3515,18 +3286,10 @@ export type AppScreenshotSet = {
 export type AppScreenshotSetsResponse = {
   data: Array<AppScreenshotSet>;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appScreenshots";
-      } & AppScreenshot)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
+    | AppCustomProductPageLocalization
+    | AppScreenshot
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3536,18 +3299,10 @@ export type AppScreenshotSetsResponse = {
 export type AppScreenshotSetResponse = {
   data: AppScreenshotSet;
   included?: Array<
-    | ({
-        type: "appCustomProductPageLocalizations";
-      } & AppCustomProductPageLocalization)
-    | ({
-        type: "appScreenshots";
-      } & AppScreenshot)
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
+    | AppCustomProductPageLocalization
+    | AppScreenshot
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
   >;
   links: DocumentLinks;
 };
@@ -3757,14 +3512,7 @@ export type AppStoreReviewDetail = {
 /** Response containing an app store review detail. */
 export type AppStoreReviewDetailResponse = {
   data: AppStoreReviewDetail;
-  included?: Array<
-    | ({
-        type: "appStoreReviewAttachments";
-      } & AppStoreReviewAttachment)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-  >;
+  included?: Array<AppStoreReviewAttachment | AppStoreVersion>;
   links: DocumentLinks;
 };
 
@@ -3849,15 +3597,7 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
 export type AppStoreVersionExperimentTreatmentLocalizationsResponse = {
   data: Array<AppStoreVersionExperimentTreatmentLocalization>;
   included?: Array<
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
-    | ({
-        type: "appStoreVersionExperimentTreatments";
-      } & AppStoreVersionExperimentTreatment)
+    AppPreviewSet | AppScreenshotSet | AppStoreVersionExperimentTreatment
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3867,15 +3607,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsResponse = {
 export type AppStoreVersionExperimentTreatmentLocalizationResponse = {
   data: AppStoreVersionExperimentTreatmentLocalization;
   included?: Array<
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
-    | ({
-        type: "appStoreVersionExperimentTreatments";
-      } & AppStoreVersionExperimentTreatment)
+    AppPreviewSet | AppScreenshotSet | AppStoreVersionExperimentTreatment
   >;
   links: DocumentLinks;
 };
@@ -3937,12 +3669,7 @@ export type AppStoreVersionExperimentTreatment = {
 export type AppStoreVersionExperimentTreatmentsResponse = {
   data: Array<AppStoreVersionExperimentTreatment>;
   included?: Array<
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
+    AppStoreVersionExperimentTreatmentLocalization | AppStoreVersionExperiment
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3952,12 +3679,7 @@ export type AppStoreVersionExperimentTreatmentsResponse = {
 export type AppStoreVersionExperimentTreatmentResponse = {
   data: AppStoreVersionExperimentTreatment;
   included?: Array<
-    | ({
-        type: "appStoreVersionExperimentTreatmentLocalizations";
-      } & AppStoreVersionExperimentTreatmentLocalization)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
+    AppStoreVersionExperimentTreatmentLocalization | AppStoreVersionExperiment
   >;
   links: DocumentLinks;
 };
@@ -4056,17 +3778,7 @@ export type AppStoreVersionExperimentV2 = {
 /** Response containing an app store version experiments v2. */
 export type AppStoreVersionExperimentsV2Response = {
   data: Array<AppStoreVersionExperimentV2>;
-  included?: Array<
-    | ({
-        type: "appStoreVersionExperimentTreatments";
-      } & AppStoreVersionExperimentTreatment)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-  >;
+  included?: Array<AppStoreVersionExperimentTreatment | AppStoreVersion | App>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -4074,17 +3786,7 @@ export type AppStoreVersionExperimentsV2Response = {
 /** Response containing an app store version experiment v2. */
 export type AppStoreVersionExperimentV2Response = {
   data: AppStoreVersionExperimentV2;
-  included?: Array<
-    | ({
-        type: "appStoreVersionExperimentTreatments";
-      } & AppStoreVersionExperimentTreatment)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-  >;
+  included?: Array<AppStoreVersionExperimentTreatment | AppStoreVersion | App>;
   links: DocumentLinks;
 };
 
@@ -4217,18 +3919,7 @@ export type AppStoreVersionLocalization = {
 export type AppStoreVersionLocalizationsResponse = {
   data: Array<AppStoreVersionLocalization>;
   included?: Array<
-    | ({
-        type: "appKeywords";
-      } & AppKeyword)
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
+    AppKeyword | AppPreviewSet | AppScreenshotSet | AppStoreVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -4238,18 +3929,7 @@ export type AppStoreVersionLocalizationsResponse = {
 export type AppStoreVersionLocalizationResponse = {
   data: AppStoreVersionLocalization;
   included?: Array<
-    | ({
-        type: "appKeywords";
-      } & AppKeyword)
-    | ({
-        type: "appPreviewSets";
-      } & AppPreviewSet)
-    | ({
-        type: "appScreenshotSets";
-      } & AppScreenshotSet)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
+    AppKeyword | AppPreviewSet | AppScreenshotSet | AppStoreVersion
   >;
   links: DocumentLinks;
 };
@@ -4543,39 +4223,17 @@ export type AppStoreVersion = {
 export type AppStoreVersionsResponse = {
   data: Array<AppStoreVersion>;
   included?: Array<
-    | ({
-        type: "alternativeDistributionPackages";
-      } & AlternativeDistributionPackage)
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "appStoreReviewDetails";
-      } & AppStoreReviewDetail)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-    | ({
-        type: "appStoreVersionPhasedReleases";
-      } & AppStoreVersionPhasedRelease)
-    | ({
-        type: "appStoreVersionSubmissions";
-      } & AppStoreVersionSubmission)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-    | ({
-        type: "routingAppCoverages";
-      } & RoutingAppCoverage)
+    | AlternativeDistributionPackage
+    | AppClipDefaultExperience
+    | AppStoreReviewDetail
+    | AppStoreVersionExperiment
+    | AppStoreVersionLocalization
+    | AppStoreVersionPhasedRelease
+    | AppStoreVersionSubmission
+    | App
+    | Build
+    | GameCenterAppVersion
+    | RoutingAppCoverage
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -4585,39 +4243,17 @@ export type AppStoreVersionsResponse = {
 export type AppStoreVersionResponse = {
   data: AppStoreVersion;
   included?: Array<
-    | ({
-        type: "alternativeDistributionPackages";
-      } & AlternativeDistributionPackage)
-    | ({
-        type: "appClipDefaultExperiences";
-      } & AppClipDefaultExperience)
-    | ({
-        type: "appStoreReviewDetails";
-      } & AppStoreReviewDetail)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
-    | ({
-        type: "appStoreVersionLocalizations";
-      } & AppStoreVersionLocalization)
-    | ({
-        type: "appStoreVersionPhasedReleases";
-      } & AppStoreVersionPhasedRelease)
-    | ({
-        type: "appStoreVersionSubmissions";
-      } & AppStoreVersionSubmission)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-    | ({
-        type: "routingAppCoverages";
-      } & RoutingAppCoverage)
+    | AlternativeDistributionPackage
+    | AppClipDefaultExperience
+    | AppStoreReviewDetail
+    | AppStoreVersionExperiment
+    | AppStoreVersionLocalization
+    | AppStoreVersionPhasedRelease
+    | AppStoreVersionSubmission
+    | App
+    | Build
+    | GameCenterAppVersion
+    | RoutingAppCoverage
   >;
   links: DocumentLinks;
 };
@@ -5026,78 +4662,30 @@ export type App = {
 export type AppsResponse = {
   data: Array<App>;
   included?: Array<
-    | ({
-        type: "androidToIosAppMappingDetails";
-      } & AndroidToIosAppMappingDetail)
-    | ({
-        type: "appClips";
-      } & AppClip)
-    | ({
-        type: "appCustomProductPages";
-      } & AppCustomProductPage)
-    | ({
-        type: "appEncryptionDeclarations";
-      } & AppEncryptionDeclaration)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "appInfos";
-      } & AppInfo)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperimentV2)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "betaAppLocalizations";
-      } & BetaAppLocalization)
-    | ({
-        type: "betaAppReviewDetails";
-      } & BetaAppReviewDetail)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "betaLicenseAgreements";
-      } & BetaLicenseAgreement)
-    | ({
-        type: "buildIcons";
-      } & BuildIcon)
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "endUserLicenseAgreements";
-      } & EndUserLicenseAgreement)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterEnabledVersions";
-      } & GameCenterEnabledVersion)
-    | ({
-        type: "inAppPurchases";
-      } & InAppPurchase)
-    | ({
-        type: "preReleaseVersions";
-      } & PrereleaseVersion)
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
-    | ({
-        type: "reviewSubmissions";
-      } & ReviewSubmission)
-    | ({
-        type: "subscriptionGracePeriods";
-      } & SubscriptionGracePeriod)
-    | ({
-        type: "subscriptionGroups";
-      } & SubscriptionGroup)
+    | AndroidToIosAppMappingDetail
+    | AppClip
+    | AppCustomProductPage
+    | AppEncryptionDeclaration
+    | AppEvent
+    | AppInfo
+    | AppStoreVersionExperimentV2
+    | AppStoreVersion
+    | BetaAppLocalization
+    | BetaAppReviewDetail
+    | BetaGroup
+    | BetaLicenseAgreement
+    | BuildIcon
+    | Build
+    | CiProduct
+    | EndUserLicenseAgreement
+    | GameCenterDetail
+    | GameCenterEnabledVersion
+    | InAppPurchase
+    | PrereleaseVersion
+    | PromotedPurchase
+    | ReviewSubmission
+    | SubscriptionGracePeriod
+    | SubscriptionGroup
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -5107,78 +4695,30 @@ export type AppsResponse = {
 export type AppResponse = {
   data: App;
   included?: Array<
-    | ({
-        type: "androidToIosAppMappingDetails";
-      } & AndroidToIosAppMappingDetail)
-    | ({
-        type: "appClips";
-      } & AppClip)
-    | ({
-        type: "appCustomProductPages";
-      } & AppCustomProductPage)
-    | ({
-        type: "appEncryptionDeclarations";
-      } & AppEncryptionDeclaration)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "appInfos";
-      } & AppInfo)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperimentV2)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "betaAppLocalizations";
-      } & BetaAppLocalization)
-    | ({
-        type: "betaAppReviewDetails";
-      } & BetaAppReviewDetail)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "betaLicenseAgreements";
-      } & BetaLicenseAgreement)
-    | ({
-        type: "buildIcons";
-      } & BuildIcon)
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "endUserLicenseAgreements";
-      } & EndUserLicenseAgreement)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterEnabledVersions";
-      } & GameCenterEnabledVersion)
-    | ({
-        type: "inAppPurchases";
-      } & InAppPurchase)
-    | ({
-        type: "preReleaseVersions";
-      } & PrereleaseVersion)
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
-    | ({
-        type: "reviewSubmissions";
-      } & ReviewSubmission)
-    | ({
-        type: "subscriptionGracePeriods";
-      } & SubscriptionGracePeriod)
-    | ({
-        type: "subscriptionGroups";
-      } & SubscriptionGroup)
+    | AndroidToIosAppMappingDetail
+    | AppClip
+    | AppCustomProductPage
+    | AppEncryptionDeclaration
+    | AppEvent
+    | AppInfo
+    | AppStoreVersionExperimentV2
+    | AppStoreVersion
+    | BetaAppLocalization
+    | BetaAppReviewDetail
+    | BetaGroup
+    | BetaLicenseAgreement
+    | BuildIcon
+    | Build
+    | CiProduct
+    | EndUserLicenseAgreement
+    | GameCenterDetail
+    | GameCenterEnabledVersion
+    | InAppPurchase
+    | PrereleaseVersion
+    | PromotedPurchase
+    | ReviewSubmission
+    | SubscriptionGracePeriod
+    | SubscriptionGroup
   >;
   links: DocumentLinks;
 };
@@ -5416,21 +4956,11 @@ export type BackgroundAssetVersion = {
 export type BackgroundAssetVersionsResponse = {
   data: Array<BackgroundAssetVersion>;
   included?: Array<
-    | ({
-        type: "backgroundAssetUploadFiles";
-      } & BackgroundAssetUploadFile)
-    | ({
-        type: "backgroundAssetVersionAppStoreReleases";
-      } & BackgroundAssetVersionAppStoreRelease)
-    | ({
-        type: "backgroundAssetVersionExternalBetaReleases";
-      } & BackgroundAssetVersionExternalBetaRelease)
-    | ({
-        type: "backgroundAssetVersionInternalBetaReleases";
-      } & BackgroundAssetVersionInternalBetaRelease)
-    | ({
-        type: "backgroundAssets";
-      } & BackgroundAsset)
+    | BackgroundAssetUploadFile
+    | BackgroundAssetVersionAppStoreRelease
+    | BackgroundAssetVersionExternalBetaRelease
+    | BackgroundAssetVersionInternalBetaRelease
+    | BackgroundAsset
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -5440,21 +4970,11 @@ export type BackgroundAssetVersionsResponse = {
 export type BackgroundAssetVersionResponse = {
   data: BackgroundAssetVersion;
   included?: Array<
-    | ({
-        type: "backgroundAssetUploadFiles";
-      } & BackgroundAssetUploadFile)
-    | ({
-        type: "backgroundAssetVersionAppStoreReleases";
-      } & BackgroundAssetVersionAppStoreRelease)
-    | ({
-        type: "backgroundAssetVersionExternalBetaReleases";
-      } & BackgroundAssetVersionExternalBetaRelease)
-    | ({
-        type: "backgroundAssetVersionInternalBetaReleases";
-      } & BackgroundAssetVersionInternalBetaRelease)
-    | ({
-        type: "backgroundAssets";
-      } & BackgroundAsset)
+    | BackgroundAssetUploadFile
+    | BackgroundAssetVersionAppStoreRelease
+    | BackgroundAssetVersionExternalBetaRelease
+    | BackgroundAssetVersionInternalBetaRelease
+    | BackgroundAsset
   >;
   links: DocumentLinks;
 };
@@ -5519,14 +5039,7 @@ export type BackgroundAsset = {
 /** Response containing a background assets. */
 export type BackgroundAssetsResponse = {
   data: Array<BackgroundAsset>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "backgroundAssetVersions";
-      } & BackgroundAssetVersion)
-  >;
+  included?: Array<App | BackgroundAssetVersion>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -5534,14 +5047,7 @@ export type BackgroundAssetsResponse = {
 /** Response containing a background asset. */
 export type BackgroundAssetResponse = {
   data: BackgroundAsset;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "backgroundAssetVersions";
-      } & BackgroundAssetVersion)
-  >;
+  included?: Array<App | BackgroundAssetVersion>;
   links: DocumentLinks;
 };
 
@@ -6025,14 +5531,7 @@ export type BetaFeedbackCrashSubmission = {
 /** Response containing a beta feedback crash submissions. */
 export type BetaFeedbackCrashSubmissionsResponse = {
   data: Array<BetaFeedbackCrashSubmission>;
-  included?: Array<
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BetaTester | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -6040,14 +5539,7 @@ export type BetaFeedbackCrashSubmissionsResponse = {
 /** Response containing a beta feedback crash submission. */
 export type BetaFeedbackCrashSubmissionResponse = {
   data: BetaFeedbackCrashSubmission;
-  included?: Array<
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BetaTester | Build>;
   links: DocumentLinks;
 };
 
@@ -6098,14 +5590,7 @@ export type BetaFeedbackScreenshotSubmission = {
 /** Response containing a beta feedback screenshot submissions. */
 export type BetaFeedbackScreenshotSubmissionsResponse = {
   data: Array<BetaFeedbackScreenshotSubmission>;
-  included?: Array<
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BetaTester | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -6113,14 +5598,7 @@ export type BetaFeedbackScreenshotSubmissionsResponse = {
 /** Response containing a beta feedback screenshot submission. */
 export type BetaFeedbackScreenshotSubmissionResponse = {
   data: BetaFeedbackScreenshotSubmission;
-  included?: Array<
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BetaTester | Build>;
   links: DocumentLinks;
 };
 
@@ -6183,20 +5661,7 @@ export type BetaGroup = {
 /** Response containing a beta groups. */
 export type BetaGroupsResponse = {
   data: Array<BetaGroup>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaRecruitmentCriteria";
-      } & BetaRecruitmentCriterion)
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | BetaRecruitmentCriterion | BetaTester | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -6204,20 +5669,7 @@ export type BetaGroupsResponse = {
 /** Response containing a beta group. */
 export type BetaGroupResponse = {
   data: BetaGroup;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaRecruitmentCriteria";
-      } & BetaRecruitmentCriterion)
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | BetaRecruitmentCriterion | BetaTester | Build>;
   links: DocumentLinks;
 };
 
@@ -6489,17 +5941,7 @@ export type BetaTester = {
 /** Response containing a beta testers. */
 export type BetaTestersResponse = {
   data: Array<BetaTester>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | BetaGroup | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -6507,17 +5949,7 @@ export type BetaTestersResponse = {
 /** Response containing a beta tester. */
 export type BetaTesterResponse = {
   data: BetaTester;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | BetaGroup | Build>;
   links: DocumentLinks;
 };
 
@@ -6845,14 +6277,7 @@ export type BuildUpload = {
 /** Response containing a build uploads. */
 export type BuildUploadsResponse = {
   data: Array<BuildUpload>;
-  included?: Array<
-    | ({
-        type: "buildUploadFiles";
-      } & BuildUploadFile)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BuildUploadFile | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -6860,14 +6285,7 @@ export type BuildUploadsResponse = {
 /** Response containing a build upload. */
 export type BuildUploadResponse = {
   data: BuildUpload;
-  included?: Array<
-    | ({
-        type: "buildUploadFiles";
-      } & BuildUploadFile)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<BuildUploadFile | Build>;
   links: DocumentLinks;
 };
 
@@ -7011,42 +6429,18 @@ export type Build = {
 export type BuildsResponse = {
   data: Array<Build>;
   included?: Array<
-    | ({
-        type: "appEncryptionDeclarations";
-      } & AppEncryptionDeclaration)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaAppReviewSubmissions";
-      } & BetaAppReviewSubmission)
-    | ({
-        type: "betaBuildLocalizations";
-      } & BetaBuildLocalization)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "buildBetaDetails";
-      } & BuildBetaDetail)
-    | ({
-        type: "buildBundles";
-      } & BuildBundle)
-    | ({
-        type: "buildIcons";
-      } & BuildIcon)
-    | ({
-        type: "buildUploads";
-      } & BuildUpload)
-    | ({
-        type: "preReleaseVersions";
-      } & PrereleaseVersion)
+    | AppEncryptionDeclaration
+    | AppStoreVersion
+    | App
+    | BetaAppReviewSubmission
+    | BetaBuildLocalization
+    | BetaGroup
+    | BetaTester
+    | BuildBetaDetail
+    | BuildBundle
+    | BuildIcon
+    | BuildUpload
+    | PrereleaseVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -7056,42 +6450,18 @@ export type BuildsResponse = {
 export type BuildResponse = {
   data: Build;
   included?: Array<
-    | ({
-        type: "appEncryptionDeclarations";
-      } & AppEncryptionDeclaration)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "betaAppReviewSubmissions";
-      } & BetaAppReviewSubmission)
-    | ({
-        type: "betaBuildLocalizations";
-      } & BetaBuildLocalization)
-    | ({
-        type: "betaGroups";
-      } & BetaGroup)
-    | ({
-        type: "betaTesters";
-      } & BetaTester)
-    | ({
-        type: "buildBetaDetails";
-      } & BuildBetaDetail)
-    | ({
-        type: "buildBundles";
-      } & BuildBundle)
-    | ({
-        type: "buildIcons";
-      } & BuildIcon)
-    | ({
-        type: "buildUploads";
-      } & BuildUpload)
-    | ({
-        type: "preReleaseVersions";
-      } & PrereleaseVersion)
+    | AppEncryptionDeclaration
+    | AppStoreVersion
+    | App
+    | BetaAppReviewSubmission
+    | BetaBuildLocalization
+    | BetaGroup
+    | BetaTester
+    | BuildBetaDetail
+    | BuildBundle
+    | BuildIcon
+    | BuildUpload
+    | PrereleaseVersion
   >;
   links: DocumentLinks;
 };
@@ -7205,17 +6575,7 @@ export type BundleId = {
 /** Response containing a bundle ids. */
 export type BundleIdsResponse = {
   data: Array<BundleId>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "bundleIdCapabilities";
-      } & BundleIdCapability)
-    | ({
-        type: "profiles";
-      } & Profile)
-  >;
+  included?: Array<App | BundleIdCapability | Profile>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -7223,17 +6583,7 @@ export type BundleIdsResponse = {
 /** Response containing a bundle id. */
 export type BundleIdResponse = {
   data: BundleId;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "bundleIdCapabilities";
-      } & BundleIdCapability)
-    | ({
-        type: "profiles";
-      } & Profile)
-  >;
+  included?: Array<App | BundleIdCapability | Profile>;
   links: DocumentLinks;
 };
 
@@ -7507,21 +6857,7 @@ export type CiBuildRun = {
 export type CiBuildRunsResponse = {
   data: Array<CiBuildRun>;
   included?: Array<
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "ciWorkflows";
-      } & CiWorkflow)
-    | ({
-        type: "scmGitReferences";
-      } & ScmGitReference)
-    | ({
-        type: "scmPullRequests";
-      } & ScmPullRequest)
+    Build | CiProduct | CiWorkflow | ScmGitReference | ScmPullRequest
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -7531,21 +6867,7 @@ export type CiBuildRunsResponse = {
 export type CiBuildRunResponse = {
   data: CiBuildRun;
   included?: Array<
-    | ({
-        type: "builds";
-      } & Build)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "ciWorkflows";
-      } & CiWorkflow)
-    | ({
-        type: "scmGitReferences";
-      } & ScmGitReference)
-    | ({
-        type: "scmPullRequests";
-      } & ScmPullRequest)
+    Build | CiProduct | CiWorkflow | ScmGitReference | ScmPullRequest
   >;
   links: DocumentLinks;
 };
@@ -7695,17 +7017,7 @@ export type CiProduct = {
 /** Response containing a ci products. */
 export type CiProductsResponse = {
   data: Array<CiProduct>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "bundleIds";
-      } & BundleId)
-    | ({
-        type: "scmRepositories";
-      } & ScmRepository)
-  >;
+  included?: Array<App | BundleId | ScmRepository>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -7713,17 +7025,7 @@ export type CiProductsResponse = {
 /** Response containing a ci product. */
 export type CiProductResponse = {
   data: CiProduct;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "bundleIds";
-      } & BundleId)
-    | ({
-        type: "scmRepositories";
-      } & ScmRepository)
-  >;
+  included?: Array<App | BundleId | ScmRepository>;
   links: DocumentLinks;
 };
 
@@ -7818,20 +7120,7 @@ export type CiWorkflow = {
 /** Response containing a ci workflows. */
 export type CiWorkflowsResponse = {
   data: Array<CiWorkflow>;
-  included?: Array<
-    | ({
-        type: "ciMacOsVersions";
-      } & CiMacOsVersion)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "ciXcodeVersions";
-      } & CiXcodeVersion)
-    | ({
-        type: "scmRepositories";
-      } & ScmRepository)
-  >;
+  included?: Array<CiMacOsVersion | CiProduct | CiXcodeVersion | ScmRepository>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -7839,20 +7128,7 @@ export type CiWorkflowsResponse = {
 /** Response containing a ci workflow. */
 export type CiWorkflowResponse = {
   data: CiWorkflow;
-  included?: Array<
-    | ({
-        type: "ciMacOsVersions";
-      } & CiMacOsVersion)
-    | ({
-        type: "ciProducts";
-      } & CiProduct)
-    | ({
-        type: "ciXcodeVersions";
-      } & CiXcodeVersion)
-    | ({
-        type: "scmRepositories";
-      } & ScmRepository)
-  >;
+  included?: Array<CiMacOsVersion | CiProduct | CiXcodeVersion | ScmRepository>;
   links: DocumentLinks;
 };
 
@@ -8095,14 +7371,7 @@ export type CustomerReview = {
 /** Response containing a customer reviews. */
 export type CustomerReviewsResponse = {
   data: Array<CustomerReview>;
-  included?: Array<
-    | ({
-        type: "customerReviewResponses";
-      } & CustomerReviewResponseV1)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<CustomerReviewResponseV1 | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -8110,14 +7379,7 @@ export type CustomerReviewsResponse = {
 /** Response containing a customer review. */
 export type CustomerReviewResponse = {
   data: CustomerReview;
-  included?: Array<
-    | ({
-        type: "customerReviewResponses";
-      } & CustomerReviewResponseV1)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<CustomerReviewResponseV1 | Territory>;
   links: DocumentLinks;
 };
 
@@ -8263,14 +7525,7 @@ export type EndUserLicenseAgreement = {
 /** Response containing an end user license agreement. */
 export type EndUserLicenseAgreementResponse = {
   data: EndUserLicenseAgreement;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<App | Territory>;
   links: DocumentLinks;
 };
 
@@ -8408,12 +7663,7 @@ export type GameCenterAchievementLocalizationV2 = {
 export type GameCenterAchievementLocalizationsV2Response = {
   data: Array<GameCenterAchievementLocalizationV2>;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementImages";
-      } & GameCenterAchievementImageV2)
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
+    GameCenterAchievementImageV2 | GameCenterAchievementVersionV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -8423,12 +7673,7 @@ export type GameCenterAchievementLocalizationsV2Response = {
 export type GameCenterAchievementLocalizationV2Response = {
   data: GameCenterAchievementLocalizationV2;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementImages";
-      } & GameCenterAchievementImageV2)
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
+    GameCenterAchievementImageV2 | GameCenterAchievementVersionV2
   >;
   links: DocumentLinks;
 };
@@ -8540,12 +7785,7 @@ export type GameCenterAchievementVersionV2InlineCreate = {
 export type GameCenterAchievementVersionsV2Response = {
   data: Array<GameCenterAchievementVersionV2>;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementLocalizations";
-      } & GameCenterAchievementLocalizationV2)
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievementV2)
+    GameCenterAchievementLocalizationV2 | GameCenterAchievementV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -8555,12 +7795,7 @@ export type GameCenterAchievementVersionsV2Response = {
 export type GameCenterAchievementVersionV2Response = {
   data: GameCenterAchievementVersionV2;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementLocalizations";
-      } & GameCenterAchievementLocalizationV2)
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievementV2)
+    GameCenterAchievementLocalizationV2 | GameCenterAchievementV2
   >;
   links: DocumentLinks;
 };
@@ -8629,18 +7864,10 @@ export type GameCenterAchievementV2 = {
 export type GameCenterAchievementsV2Response = {
   data: Array<GameCenterAchievementV2>;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
+    | GameCenterAchievementVersionV2
+    | GameCenterActivity
+    | GameCenterDetail
+    | GameCenterGroup
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -8650,18 +7877,10 @@ export type GameCenterAchievementsV2Response = {
 export type GameCenterAchievementV2Response = {
   data: GameCenterAchievementV2;
   included?: Array<
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
+    | GameCenterAchievementVersionV2
+    | GameCenterActivity
+    | GameCenterDetail
+    | GameCenterGroup
   >;
   links: DocumentLinks;
 };
@@ -8870,21 +8089,11 @@ export type GameCenterActivity = {
 export type GameCenterActivitiesResponse = {
   data: Array<GameCenterActivity>;
   included?: Array<
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterAchievement
+    | GameCenterActivityVersion
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboard
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -8894,21 +8103,11 @@ export type GameCenterActivitiesResponse = {
 export type GameCenterActivityResponse = {
   data: GameCenterActivity;
   included?: Array<
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterAchievement
+    | GameCenterActivityVersion
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboard
   >;
   links: DocumentLinks;
 };
@@ -9053,14 +8252,7 @@ export type GameCenterActivityLocalization = {
 /** Response containing a game center activity localizations. */
 export type GameCenterActivityLocalizationsResponse = {
   data: Array<GameCenterActivityLocalization>;
-  included?: Array<
-    | ({
-        type: "gameCenterActivityImages";
-      } & GameCenterActivityImage)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-  >;
+  included?: Array<GameCenterActivityImage | GameCenterActivityVersion>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -9068,14 +8260,7 @@ export type GameCenterActivityLocalizationsResponse = {
 /** Response containing a game center activity localization. */
 export type GameCenterActivityLocalizationResponse = {
   data: GameCenterActivityLocalization;
-  included?: Array<
-    | ({
-        type: "gameCenterActivityImages";
-      } & GameCenterActivityImage)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-  >;
+  included?: Array<GameCenterActivityImage | GameCenterActivityVersion>;
   links: DocumentLinks;
 };
 
@@ -9193,18 +8378,10 @@ export type GameCenterActivityVersionInlineCreate = {
 export type GameCenterActivityVersionsResponse = {
   data: Array<GameCenterActivityVersion>;
   included?: Array<
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterActivityImages";
-      } & GameCenterActivityImage)
-    | ({
-        type: "gameCenterActivityLocalizations";
-      } & GameCenterActivityLocalization)
-    | ({
-        type: "gameCenterActivityVersionReleases";
-      } & GameCenterActivityVersionRelease)
+    | GameCenterActivity
+    | GameCenterActivityImage
+    | GameCenterActivityLocalization
+    | GameCenterActivityVersionRelease
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -9214,18 +8391,10 @@ export type GameCenterActivityVersionsResponse = {
 export type GameCenterActivityVersionResponse = {
   data: GameCenterActivityVersion;
   included?: Array<
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterActivityImages";
-      } & GameCenterActivityImage)
-    | ({
-        type: "gameCenterActivityLocalizations";
-      } & GameCenterActivityLocalization)
-    | ({
-        type: "gameCenterActivityVersionReleases";
-      } & GameCenterActivityVersionRelease)
+    | GameCenterActivity
+    | GameCenterActivityImage
+    | GameCenterActivityLocalization
+    | GameCenterActivityVersionRelease
   >;
   links: DocumentLinks;
 };
@@ -9289,14 +8458,7 @@ export type GameCenterAppVersion = {
 /** Response containing a game center app versions. */
 export type GameCenterAppVersionsResponse = {
   data: Array<GameCenterAppVersion>;
-  included?: Array<
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-  >;
+  included?: Array<AppStoreVersion | GameCenterAppVersion>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -9304,14 +8466,7 @@ export type GameCenterAppVersionsResponse = {
 /** Response containing a game center app version. */
 export type GameCenterAppVersionResponse = {
   data: GameCenterAppVersion;
-  included?: Array<
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-  >;
+  included?: Array<AppStoreVersion | GameCenterAppVersion>;
   links: DocumentLinks;
 };
 
@@ -9427,14 +8582,7 @@ export type GameCenterChallengeLocalization = {
 /** Response containing a game center challenge localizations. */
 export type GameCenterChallengeLocalizationsResponse = {
   data: Array<GameCenterChallengeLocalization>;
-  included?: Array<
-    | ({
-        type: "gameCenterChallengeImages";
-      } & GameCenterChallengeImage)
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-  >;
+  included?: Array<GameCenterChallengeImage | GameCenterChallengeVersion>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -9442,14 +8590,7 @@ export type GameCenterChallengeLocalizationsResponse = {
 /** Response containing a game center challenge localization. */
 export type GameCenterChallengeLocalizationResponse = {
   data: GameCenterChallengeLocalization;
-  included?: Array<
-    | ({
-        type: "gameCenterChallengeImages";
-      } & GameCenterChallengeImage)
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-  >;
+  included?: Array<GameCenterChallengeImage | GameCenterChallengeVersion>;
   links: DocumentLinks;
 };
 
@@ -9563,18 +8704,10 @@ export type GameCenterChallengeVersionInlineCreate = {
 export type GameCenterChallengeVersionsResponse = {
   data: Array<GameCenterChallengeVersion>;
   included?: Array<
-    | ({
-        type: "gameCenterChallengeImages";
-      } & GameCenterChallengeImage)
-    | ({
-        type: "gameCenterChallengeLocalizations";
-      } & GameCenterChallengeLocalization)
-    | ({
-        type: "gameCenterChallengeVersionReleases";
-      } & GameCenterChallengeVersionRelease)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
+    | GameCenterChallengeImage
+    | GameCenterChallengeLocalization
+    | GameCenterChallengeVersionRelease
+    | GameCenterChallenge
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -9584,18 +8717,10 @@ export type GameCenterChallengeVersionsResponse = {
 export type GameCenterChallengeVersionResponse = {
   data: GameCenterChallengeVersion;
   included?: Array<
-    | ({
-        type: "gameCenterChallengeImages";
-      } & GameCenterChallengeImage)
-    | ({
-        type: "gameCenterChallengeLocalizations";
-      } & GameCenterChallengeLocalization)
-    | ({
-        type: "gameCenterChallengeVersionReleases";
-      } & GameCenterChallengeVersionRelease)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
+    | GameCenterChallengeImage
+    | GameCenterChallengeLocalization
+    | GameCenterChallengeVersionRelease
+    | GameCenterChallenge
   >;
   links: DocumentLinks;
 };
@@ -9674,18 +8799,10 @@ export type GameCenterChallenge = {
 export type GameCenterChallengesResponse = {
   data: Array<GameCenterChallenge>;
   included?: Array<
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterChallengeVersion
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboard
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -9695,18 +8812,10 @@ export type GameCenterChallengesResponse = {
 export type GameCenterChallengeResponse = {
   data: GameCenterChallenge;
   included?: Array<
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterChallengeVersion
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboard
   >;
   links: DocumentLinks;
 };
@@ -10003,48 +9112,20 @@ export type GameCenterDetail = {
 export type GameCenterDetailsResponse = {
   data: Array<GameCenterDetail>;
   included?: Array<
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "gameCenterAchievementReleases";
-      } & GameCenterAchievementRelease)
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterActivityVersionReleases";
-      } & GameCenterActivityVersionRelease)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-    | ({
-        type: "gameCenterChallengeVersionReleases";
-      } & GameCenterChallengeVersionRelease)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardReleases";
-      } & GameCenterLeaderboardRelease)
-    | ({
-        type: "gameCenterLeaderboardSetReleases";
-      } & GameCenterLeaderboardSetRelease)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | AppStoreVersion
+    | App
+    | GameCenterAchievementRelease
+    | GameCenterAchievement
+    | GameCenterActivity
+    | GameCenterActivityVersionRelease
+    | GameCenterAppVersion
+    | GameCenterChallengeVersionRelease
+    | GameCenterChallenge
+    | GameCenterGroup
+    | GameCenterLeaderboardRelease
+    | GameCenterLeaderboardSetRelease
+    | GameCenterLeaderboardSet
+    | GameCenterLeaderboard
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -10054,48 +9135,20 @@ export type GameCenterDetailsResponse = {
 export type GameCenterDetailResponse = {
   data: GameCenterDetail;
   included?: Array<
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "gameCenterAchievementReleases";
-      } & GameCenterAchievementRelease)
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterActivityVersionReleases";
-      } & GameCenterActivityVersionRelease)
-    | ({
-        type: "gameCenterAppVersions";
-      } & GameCenterAppVersion)
-    | ({
-        type: "gameCenterChallengeVersionReleases";
-      } & GameCenterChallengeVersionRelease)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardReleases";
-      } & GameCenterLeaderboardRelease)
-    | ({
-        type: "gameCenterLeaderboardSetReleases";
-      } & GameCenterLeaderboardSetRelease)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | AppStoreVersion
+    | App
+    | GameCenterAchievementRelease
+    | GameCenterAchievement
+    | GameCenterActivity
+    | GameCenterActivityVersionRelease
+    | GameCenterAppVersion
+    | GameCenterChallengeVersionRelease
+    | GameCenterChallenge
+    | GameCenterGroup
+    | GameCenterLeaderboardRelease
+    | GameCenterLeaderboardSetRelease
+    | GameCenterLeaderboardSet
+    | GameCenterLeaderboard
   >;
   links: DocumentLinks;
 };
@@ -10306,24 +9359,12 @@ export type GameCenterGroup = {
 export type GameCenterGroupsResponse = {
   data: Array<GameCenterGroup>;
   included?: Array<
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterAchievement
+    | GameCenterActivity
+    | GameCenterChallenge
+    | GameCenterDetail
+    | GameCenterLeaderboardSet
+    | GameCenterLeaderboard
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -10333,24 +9374,12 @@ export type GameCenterGroupsResponse = {
 export type GameCenterGroupResponse = {
   data: GameCenterGroup;
   included?: Array<
-    | ({
-        type: "gameCenterAchievements";
-      } & GameCenterAchievement)
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
+    | GameCenterAchievement
+    | GameCenterActivity
+    | GameCenterChallenge
+    | GameCenterDetail
+    | GameCenterLeaderboardSet
+    | GameCenterLeaderboard
   >;
   links: DocumentLinks;
 };
@@ -10509,12 +9538,7 @@ export type GameCenterLeaderboardLocalizationV2 = {
 export type GameCenterLeaderboardLocalizationsV2Response = {
   data: Array<GameCenterLeaderboardLocalizationV2>;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardImages";
-      } & GameCenterLeaderboardImageV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    GameCenterLeaderboardImageV2 | GameCenterLeaderboardVersionV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -10524,12 +9548,7 @@ export type GameCenterLeaderboardLocalizationsV2Response = {
 export type GameCenterLeaderboardLocalizationV2Response = {
   data: GameCenterLeaderboardLocalizationV2;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardImages";
-      } & GameCenterLeaderboardImageV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    GameCenterLeaderboardImageV2 | GameCenterLeaderboardVersionV2
   >;
   links: DocumentLinks;
 };
@@ -10689,12 +9708,7 @@ export type GameCenterLeaderboardSetLocalizationV2 = {
 export type GameCenterLeaderboardSetLocalizationsV2Response = {
   data: Array<GameCenterLeaderboardSetLocalizationV2>;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSetImages";
-      } & GameCenterLeaderboardSetImageV2)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
+    GameCenterLeaderboardSetImageV2 | GameCenterLeaderboardSetVersionV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -10704,12 +9718,7 @@ export type GameCenterLeaderboardSetLocalizationsV2Response = {
 export type GameCenterLeaderboardSetLocalizationV2Response = {
   data: GameCenterLeaderboardSetLocalizationV2;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSetImages";
-      } & GameCenterLeaderboardSetImageV2)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
+    GameCenterLeaderboardSetImageV2 | GameCenterLeaderboardSetVersionV2
   >;
   links: DocumentLinks;
 };
@@ -10774,14 +9783,7 @@ export type GameCenterLeaderboardSetMemberLocalization = {
 /** Response containing a game center leaderboard set member localizations. */
 export type GameCenterLeaderboardSetMemberLocalizationsResponse = {
   data: Array<GameCenterLeaderboardSetMemberLocalization>;
-  included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
-  >;
+  included?: Array<GameCenterLeaderboardSet | GameCenterLeaderboard>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -10789,14 +9791,7 @@ export type GameCenterLeaderboardSetMemberLocalizationsResponse = {
 /** Response containing a game center leaderboard set member localization. */
 export type GameCenterLeaderboardSetMemberLocalizationResponse = {
   data: GameCenterLeaderboardSetMemberLocalization;
-  included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSet)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboard)
-  >;
+  included?: Array<GameCenterLeaderboardSet | GameCenterLeaderboard>;
   links: DocumentLinks;
 };
 
@@ -10909,12 +9904,7 @@ export type GameCenterLeaderboardSetVersionV2InlineCreate = {
 export type GameCenterLeaderboardSetVersionsV2Response = {
   data: Array<GameCenterLeaderboardSetVersionV2>;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSetLocalizations";
-      } & GameCenterLeaderboardSetLocalizationV2)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSetV2)
+    GameCenterLeaderboardSetLocalizationV2 | GameCenterLeaderboardSetV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -10924,12 +9914,7 @@ export type GameCenterLeaderboardSetVersionsV2Response = {
 export type GameCenterLeaderboardSetVersionV2Response = {
   data: GameCenterLeaderboardSetVersionV2;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardSetLocalizations";
-      } & GameCenterLeaderboardSetLocalizationV2)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSetV2)
+    GameCenterLeaderboardSetLocalizationV2 | GameCenterLeaderboardSetV2
   >;
   links: DocumentLinks;
 };
@@ -10994,18 +9979,10 @@ export type GameCenterLeaderboardSetV2 = {
 export type GameCenterLeaderboardSetsV2Response = {
   data: Array<GameCenterLeaderboardSetV2>;
   included?: Array<
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboardV2)
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboardSetVersionV2
+    | GameCenterLeaderboardV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -11015,18 +9992,10 @@ export type GameCenterLeaderboardSetsV2Response = {
 export type GameCenterLeaderboardSetV2Response = {
   data: GameCenterLeaderboardSetV2;
   included?: Array<
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboardV2)
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboardSetVersionV2
+    | GameCenterLeaderboardV2
   >;
   links: DocumentLinks;
 };
@@ -11190,12 +10159,7 @@ export type GameCenterLeaderboardVersionV2InlineCreate = {
 export type GameCenterLeaderboardVersionsV2Response = {
   data: Array<GameCenterLeaderboardVersionV2>;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardLocalizations";
-      } & GameCenterLeaderboardLocalizationV2)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboardV2)
+    GameCenterLeaderboardLocalizationV2 | GameCenterLeaderboardV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -11205,12 +10169,7 @@ export type GameCenterLeaderboardVersionsV2Response = {
 export type GameCenterLeaderboardVersionV2Response = {
   data: GameCenterLeaderboardVersionV2;
   included?: Array<
-    | ({
-        type: "gameCenterLeaderboardLocalizations";
-      } & GameCenterLeaderboardLocalizationV2)
-    | ({
-        type: "gameCenterLeaderboards";
-      } & GameCenterLeaderboardV2)
+    GameCenterLeaderboardLocalizationV2 | GameCenterLeaderboardV2
   >;
   links: DocumentLinks;
 };
@@ -11388,24 +10347,12 @@ export type GameCenterLeaderboardV2 = {
 export type GameCenterLeaderboardsV2Response = {
   data: Array<GameCenterLeaderboardV2>;
   included?: Array<
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSetV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    | GameCenterActivity
+    | GameCenterChallenge
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboardSetV2
+    | GameCenterLeaderboardVersionV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -11415,24 +10362,12 @@ export type GameCenterLeaderboardsV2Response = {
 export type GameCenterLeaderboardV2Response = {
   data: GameCenterLeaderboardV2;
   included?: Array<
-    | ({
-        type: "gameCenterActivities";
-      } & GameCenterActivity)
-    | ({
-        type: "gameCenterChallenges";
-      } & GameCenterChallenge)
-    | ({
-        type: "gameCenterDetails";
-      } & GameCenterDetail)
-    | ({
-        type: "gameCenterGroups";
-      } & GameCenterGroup)
-    | ({
-        type: "gameCenterLeaderboardSets";
-      } & GameCenterLeaderboardSetV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    | GameCenterActivity
+    | GameCenterChallenge
+    | GameCenterDetail
+    | GameCenterGroup
+    | GameCenterLeaderboardSetV2
+    | GameCenterLeaderboardVersionV2
   >;
   links: DocumentLinks;
 };
@@ -11616,12 +10551,7 @@ export type GameCenterMatchmakingRuleSetTest = {
 export type GameCenterMatchmakingRuleSetTestResponse = {
   data: GameCenterMatchmakingRuleSetTest;
   included?: Array<
-    | ({
-        type: "gameCenterMatchmakingTestPlayerProperties";
-      } & GameCenterMatchmakingTestPlayerProperty)
-    | ({
-        type: "gameCenterMatchmakingTestRequests";
-      } & GameCenterMatchmakingTestRequest)
+    GameCenterMatchmakingTestPlayerProperty | GameCenterMatchmakingTestRequest
   >;
   links: DocumentLinks;
 };
@@ -11694,15 +10624,9 @@ export type GameCenterMatchmakingRuleSet = {
 export type GameCenterMatchmakingRuleSetsResponse = {
   data: Array<GameCenterMatchmakingRuleSet>;
   included?: Array<
-    | ({
-        type: "gameCenterMatchmakingQueues";
-      } & GameCenterMatchmakingQueue)
-    | ({
-        type: "gameCenterMatchmakingRules";
-      } & GameCenterMatchmakingRule)
-    | ({
-        type: "gameCenterMatchmakingTeams";
-      } & GameCenterMatchmakingTeam)
+    | GameCenterMatchmakingQueue
+    | GameCenterMatchmakingRule
+    | GameCenterMatchmakingTeam
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -11712,15 +10636,9 @@ export type GameCenterMatchmakingRuleSetsResponse = {
 export type GameCenterMatchmakingRuleSetResponse = {
   data: GameCenterMatchmakingRuleSet;
   included?: Array<
-    | ({
-        type: "gameCenterMatchmakingQueues";
-      } & GameCenterMatchmakingQueue)
-    | ({
-        type: "gameCenterMatchmakingRules";
-      } & GameCenterMatchmakingRule)
-    | ({
-        type: "gameCenterMatchmakingTeams";
-      } & GameCenterMatchmakingTeam)
+    | GameCenterMatchmakingQueue
+    | GameCenterMatchmakingRule
+    | GameCenterMatchmakingTeam
   >;
   links: DocumentLinks;
 };
@@ -12484,15 +11402,9 @@ export type InAppPurchaseOfferCode = {
 export type InAppPurchaseOfferCodesResponse = {
   data: Array<InAppPurchaseOfferCode>;
   included?: Array<
-    | ({
-        type: "inAppPurchaseOfferCodeCustomCodes";
-      } & InAppPurchaseOfferCodeCustomCode)
-    | ({
-        type: "inAppPurchaseOfferCodeOneTimeUseCodes";
-      } & InAppPurchaseOfferCodeOneTimeUseCode)
-    | ({
-        type: "inAppPurchaseOfferPrices";
-      } & InAppPurchaseOfferPrice)
+    | InAppPurchaseOfferCodeCustomCode
+    | InAppPurchaseOfferCodeOneTimeUseCode
+    | InAppPurchaseOfferPrice
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -12502,15 +11414,9 @@ export type InAppPurchaseOfferCodesResponse = {
 export type InAppPurchaseOfferCodeResponse = {
   data: InAppPurchaseOfferCode;
   included?: Array<
-    | ({
-        type: "inAppPurchaseOfferCodeCustomCodes";
-      } & InAppPurchaseOfferCodeCustomCode)
-    | ({
-        type: "inAppPurchaseOfferCodeOneTimeUseCodes";
-      } & InAppPurchaseOfferCodeOneTimeUseCode)
-    | ({
-        type: "inAppPurchaseOfferPrices";
-      } & InAppPurchaseOfferPrice)
+    | InAppPurchaseOfferCodeCustomCode
+    | InAppPurchaseOfferCodeOneTimeUseCode
+    | InAppPurchaseOfferPrice
   >;
   links: DocumentLinks;
 };
@@ -12598,14 +11504,7 @@ export type InAppPurchaseOfferPriceInlineCreate = {
 /** Response containing an in app purchase offer prices. */
 export type InAppPurchaseOfferPricesResponse = {
   data: Array<InAppPurchaseOfferPrice>;
-  included?: Array<
-    | ({
-        type: "inAppPurchasePricePoints";
-      } & InAppPurchasePricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<InAppPurchasePricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -12675,14 +11574,7 @@ export type InAppPurchasePriceSchedule = {
 /** Response containing an in app purchase price schedule. */
 export type InAppPurchasePriceScheduleResponse = {
   data: InAppPurchasePriceSchedule;
-  included?: Array<
-    | ({
-        type: "inAppPurchasePrices";
-      } & InAppPurchasePrice)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<InAppPurchasePrice | Territory>;
   links: DocumentLinks;
 };
 
@@ -12767,14 +11659,7 @@ export type InAppPurchasePriceInlineCreate = {
 /** Response containing an in app purchase prices. */
 export type InAppPurchasePricesResponse = {
   data: Array<InAppPurchasePrice>;
-  included?: Array<
-    | ({
-        type: "inAppPurchasePricePoints";
-      } & InAppPurchasePricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<InAppPurchasePricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -12955,33 +11840,15 @@ export type InAppPurchaseV2 = {
 export type InAppPurchasesV2Response = {
   data: Array<InAppPurchaseV2>;
   included?: Array<
-    | ({
-        type: "inAppPurchaseAppStoreReviewScreenshots";
-      } & InAppPurchaseAppStoreReviewScreenshot)
-    | ({
-        type: "inAppPurchaseAvailabilities";
-      } & InAppPurchaseAvailability)
-    | ({
-        type: "inAppPurchaseContents";
-      } & InAppPurchaseContent)
-    | ({
-        type: "inAppPurchaseImages";
-      } & InAppPurchaseImage)
-    | ({
-        type: "inAppPurchaseLocalizations";
-      } & InAppPurchaseLocalization)
-    | ({
-        type: "inAppPurchaseOfferCodes";
-      } & InAppPurchaseOfferCode)
-    | ({
-        type: "inAppPurchasePricePoints";
-      } & InAppPurchasePricePoint)
-    | ({
-        type: "inAppPurchasePriceSchedules";
-      } & InAppPurchasePriceSchedule)
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
+    | InAppPurchaseAppStoreReviewScreenshot
+    | InAppPurchaseAvailability
+    | InAppPurchaseContent
+    | InAppPurchaseImage
+    | InAppPurchaseLocalization
+    | InAppPurchaseOfferCode
+    | InAppPurchasePricePoint
+    | InAppPurchasePriceSchedule
+    | PromotedPurchase
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -12991,33 +11858,15 @@ export type InAppPurchasesV2Response = {
 export type InAppPurchaseV2Response = {
   data: InAppPurchaseV2;
   included?: Array<
-    | ({
-        type: "inAppPurchaseAppStoreReviewScreenshots";
-      } & InAppPurchaseAppStoreReviewScreenshot)
-    | ({
-        type: "inAppPurchaseAvailabilities";
-      } & InAppPurchaseAvailability)
-    | ({
-        type: "inAppPurchaseContents";
-      } & InAppPurchaseContent)
-    | ({
-        type: "inAppPurchaseImages";
-      } & InAppPurchaseImage)
-    | ({
-        type: "inAppPurchaseLocalizations";
-      } & InAppPurchaseLocalization)
-    | ({
-        type: "inAppPurchaseOfferCodes";
-      } & InAppPurchaseOfferCode)
-    | ({
-        type: "inAppPurchasePricePoints";
-      } & InAppPurchasePricePoint)
-    | ({
-        type: "inAppPurchasePriceSchedules";
-      } & InAppPurchasePriceSchedule)
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
+    | InAppPurchaseAppStoreReviewScreenshot
+    | InAppPurchaseAvailability
+    | InAppPurchaseContent
+    | InAppPurchaseImage
+    | InAppPurchaseLocalization
+    | InAppPurchaseOfferCode
+    | InAppPurchasePricePoint
+    | InAppPurchasePriceSchedule
+    | PromotedPurchase
   >;
   links: DocumentLinks;
 };
@@ -13229,20 +12078,7 @@ export type Nomination = {
 /** Response containing a nominations. */
 export type NominationsResponse = {
   data: Array<Nomination>;
-  included?: Array<
-    | ({
-        type: "actors";
-      } & Actor)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<Actor | AppEvent | App | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -13250,20 +12086,7 @@ export type NominationsResponse = {
 /** Response containing a nomination. */
 export type NominationResponse = {
   data: Nomination;
-  included?: Array<
-    | ({
-        type: "actors";
-      } & Actor)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<Actor | AppEvent | App | Territory>;
   links: DocumentLinks;
 };
 
@@ -13442,14 +12265,7 @@ export type PrereleaseVersion = {
 /** Response containing a pre release versions. */
 export type PreReleaseVersionsResponse = {
   data: Array<PrereleaseVersion>;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | Build>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -13457,14 +12273,7 @@ export type PreReleaseVersionsResponse = {
 /** Response containing a prerelease version. */
 export type PrereleaseVersionResponse = {
   data: PrereleaseVersion;
-  included?: Array<
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "builds";
-      } & Build)
-  >;
+  included?: Array<App | Build>;
   links: DocumentLinks;
 };
 
@@ -13527,17 +12336,7 @@ export type Profile = {
 /** Response containing a profiles. */
 export type ProfilesResponse = {
   data: Array<Profile>;
-  included?: Array<
-    | ({
-        type: "bundleIds";
-      } & BundleId)
-    | ({
-        type: "certificates";
-      } & Certificate)
-    | ({
-        type: "devices";
-      } & Device)
-  >;
+  included?: Array<BundleId | Certificate | Device>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -13545,17 +12344,7 @@ export type ProfilesResponse = {
 /** Response containing a profile. */
 export type ProfileResponse = {
   data: Profile;
-  included?: Array<
-    | ({
-        type: "bundleIds";
-      } & BundleId)
-    | ({
-        type: "certificates";
-      } & Certificate)
-    | ({
-        type: "devices";
-      } & Device)
-  >;
+  included?: Array<BundleId | Certificate | Device>;
   links: DocumentLinks;
 };
 
@@ -13633,14 +12422,7 @@ export type PromotedPurchase = {
 /** Response containing a promoted purchases. */
 export type PromotedPurchasesResponse = {
   data: Array<PromotedPurchase>;
-  included?: Array<
-    | ({
-        type: "inAppPurchases";
-      } & InAppPurchaseV2)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<InAppPurchaseV2 | Subscription>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -13648,14 +12430,7 @@ export type PromotedPurchasesResponse = {
 /** Response containing a promoted purchase. */
 export type PromotedPurchaseResponse = {
   data: PromotedPurchase;
-  included?: Array<
-    | ({
-        type: "inAppPurchases";
-      } & InAppPurchaseV2)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<InAppPurchaseV2 | Subscription>;
   links: DocumentLinks;
 };
 
@@ -13789,36 +12564,16 @@ export type ReviewSubmissionItem = {
 export type ReviewSubmissionItemsResponse = {
   data: Array<ReviewSubmissionItem>;
   included?: Array<
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "backgroundAssetVersions";
-      } & BackgroundAssetVersion)
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    | AppCustomProductPageVersion
+    | AppEvent
+    | AppStoreVersionExperiment
+    | AppStoreVersion
+    | BackgroundAssetVersion
+    | GameCenterAchievementVersionV2
+    | GameCenterActivityVersion
+    | GameCenterChallengeVersion
+    | GameCenterLeaderboardSetVersionV2
+    | GameCenterLeaderboardVersionV2
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -13828,36 +12583,16 @@ export type ReviewSubmissionItemsResponse = {
 export type ReviewSubmissionItemResponse = {
   data: ReviewSubmissionItem;
   included?: Array<
-    | ({
-        type: "appCustomProductPageVersions";
-      } & AppCustomProductPageVersion)
-    | ({
-        type: "appEvents";
-      } & AppEvent)
-    | ({
-        type: "appStoreVersionExperiments";
-      } & AppStoreVersionExperiment)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "backgroundAssetVersions";
-      } & BackgroundAssetVersion)
-    | ({
-        type: "gameCenterAchievementVersions";
-      } & GameCenterAchievementVersionV2)
-    | ({
-        type: "gameCenterActivityVersions";
-      } & GameCenterActivityVersion)
-    | ({
-        type: "gameCenterChallengeVersions";
-      } & GameCenterChallengeVersion)
-    | ({
-        type: "gameCenterLeaderboardSetVersions";
-      } & GameCenterLeaderboardSetVersionV2)
-    | ({
-        type: "gameCenterLeaderboardVersions";
-      } & GameCenterLeaderboardVersionV2)
+    | AppCustomProductPageVersion
+    | AppEvent
+    | AppStoreVersionExperiment
+    | AppStoreVersion
+    | BackgroundAssetVersion
+    | GameCenterAchievementVersionV2
+    | GameCenterActivityVersion
+    | GameCenterChallengeVersion
+    | GameCenterLeaderboardSetVersionV2
+    | GameCenterLeaderboardVersionV2
   >;
   links: DocumentLinks;
 };
@@ -14011,20 +12746,7 @@ export type ReviewSubmission = {
 /** Response containing a review submissions. */
 export type ReviewSubmissionsResponse = {
   data: Array<ReviewSubmission>;
-  included?: Array<
-    | ({
-        type: "actors";
-      } & Actor)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "reviewSubmissionItems";
-      } & ReviewSubmissionItem)
-  >;
+  included?: Array<Actor | AppStoreVersion | App | ReviewSubmissionItem>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -14032,20 +12754,7 @@ export type ReviewSubmissionsResponse = {
 /** Response containing a review submission. */
 export type ReviewSubmissionResponse = {
   data: ReviewSubmission;
-  included?: Array<
-    | ({
-        type: "actors";
-      } & Actor)
-    | ({
-        type: "appStoreVersions";
-      } & AppStoreVersion)
-    | ({
-        type: "apps";
-      } & App)
-    | ({
-        type: "reviewSubmissionItems";
-      } & ReviewSubmissionItem)
-  >;
+  included?: Array<Actor | AppStoreVersion | App | ReviewSubmissionItem>;
   links: DocumentLinks;
 };
 
@@ -14365,14 +13074,7 @@ export type ScmRepository = {
 /** Response containing a scm repositories. */
 export type ScmRepositoriesResponse = {
   data: Array<ScmRepository>;
-  included?: Array<
-    | ({
-        type: "scmGitReferences";
-      } & ScmGitReference)
-    | ({
-        type: "scmProviders";
-      } & ScmProvider)
-  >;
+  included?: Array<ScmGitReference | ScmProvider>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -14380,14 +13082,7 @@ export type ScmRepositoriesResponse = {
 /** Response containing a scm repository. */
 export type ScmRepositoryResponse = {
   data: ScmRepository;
-  included?: Array<
-    | ({
-        type: "scmGitReferences";
-      } & ScmGitReference)
-    | ({
-        type: "scmProviders";
-      } & ScmProvider)
-  >;
+  included?: Array<ScmGitReference | ScmProvider>;
   links: DocumentLinks;
 };
 
@@ -14642,14 +13337,7 @@ export type SubscriptionGroup = {
 /** Response containing a subscription groups. */
 export type SubscriptionGroupsResponse = {
   data: Array<SubscriptionGroup>;
-  included?: Array<
-    | ({
-        type: "subscriptionGroupLocalizations";
-      } & SubscriptionGroupLocalization)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<SubscriptionGroupLocalization | Subscription>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -14657,14 +13345,7 @@ export type SubscriptionGroupsResponse = {
 /** Response containing a subscription group. */
 export type SubscriptionGroupResponse = {
   data: SubscriptionGroup;
-  included?: Array<
-    | ({
-        type: "subscriptionGroupLocalizations";
-      } & SubscriptionGroupLocalization)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<SubscriptionGroupLocalization | Subscription>;
   links: DocumentLinks;
 };
 
@@ -14846,17 +13527,7 @@ export type SubscriptionIntroductoryOfferInlineCreate = {
 /** Response containing a subscription introductory offers. */
 export type SubscriptionIntroductoryOffersResponse = {
   data: Array<SubscriptionIntroductoryOffer>;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Subscription | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -14864,17 +13535,7 @@ export type SubscriptionIntroductoryOffersResponse = {
 /** Response containing a subscription introductory offer. */
 export type SubscriptionIntroductoryOfferResponse = {
   data: SubscriptionIntroductoryOffer;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Subscription | Territory>;
   links: DocumentLinks;
 };
 
@@ -15180,14 +13841,7 @@ export type SubscriptionOfferCodePriceInlineCreate = {
 /** Response containing a subscription offer code prices. */
 export type SubscriptionOfferCodePricesResponse = {
   data: Array<SubscriptionOfferCodePrice>;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -15249,18 +13903,10 @@ export type SubscriptionOfferCode = {
 export type SubscriptionOfferCodesResponse = {
   data: Array<SubscriptionOfferCode>;
   included?: Array<
-    | ({
-        type: "subscriptionOfferCodeCustomCodes";
-      } & SubscriptionOfferCodeCustomCode)
-    | ({
-        type: "subscriptionOfferCodeOneTimeUseCodes";
-      } & SubscriptionOfferCodeOneTimeUseCode)
-    | ({
-        type: "subscriptionOfferCodePrices";
-      } & SubscriptionOfferCodePrice)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
+    | SubscriptionOfferCodeCustomCode
+    | SubscriptionOfferCodeOneTimeUseCode
+    | SubscriptionOfferCodePrice
+    | Subscription
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -15270,18 +13916,10 @@ export type SubscriptionOfferCodesResponse = {
 export type SubscriptionOfferCodeResponse = {
   data: SubscriptionOfferCode;
   included?: Array<
-    | ({
-        type: "subscriptionOfferCodeCustomCodes";
-      } & SubscriptionOfferCodeCustomCode)
-    | ({
-        type: "subscriptionOfferCodeOneTimeUseCodes";
-      } & SubscriptionOfferCodeOneTimeUseCode)
-    | ({
-        type: "subscriptionOfferCodePrices";
-      } & SubscriptionOfferCodePrice)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
+    | SubscriptionOfferCodeCustomCode
+    | SubscriptionOfferCodeOneTimeUseCode
+    | SubscriptionOfferCodePrice
+    | Subscription
   >;
   links: DocumentLinks;
 };
@@ -15513,14 +14151,7 @@ export type SubscriptionPriceInlineCreate = {
 /** Response containing a subscription prices. */
 export type SubscriptionPricesResponse = {
   data: Array<SubscriptionPrice>;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -15528,14 +14159,7 @@ export type SubscriptionPricesResponse = {
 /** Response containing a subscription price. */
 export type SubscriptionPriceResponse = {
   data: SubscriptionPrice;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Territory>;
   links: DocumentLinks;
 };
 
@@ -15615,14 +14239,7 @@ export type SubscriptionPromotionalOfferPriceInlineCreate = {
 /** Response containing a subscription promotional offer prices. */
 export type SubscriptionPromotionalOfferPricesResponse = {
   data: Array<SubscriptionPromotionalOfferPrice>;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -15689,14 +14306,7 @@ export type SubscriptionPromotionalOfferInlineCreate = {
 /** Response containing a subscription promotional offers. */
 export type SubscriptionPromotionalOffersResponse = {
   data: Array<SubscriptionPromotionalOffer>;
-  included?: Array<
-    | ({
-        type: "subscriptionPromotionalOfferPrices";
-      } & SubscriptionPromotionalOfferPrice)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<SubscriptionPromotionalOfferPrice | Subscription>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -15704,14 +14314,7 @@ export type SubscriptionPromotionalOffersResponse = {
 /** Response containing a subscription promotional offer. */
 export type SubscriptionPromotionalOfferResponse = {
   data: SubscriptionPromotionalOffer;
-  included?: Array<
-    | ({
-        type: "subscriptionPromotionalOfferPrices";
-      } & SubscriptionPromotionalOfferPrice)
-    | ({
-        type: "subscriptions";
-      } & Subscription)
-  >;
+  included?: Array<SubscriptionPromotionalOfferPrice | Subscription>;
   links: DocumentLinks;
 };
 
@@ -15936,42 +14539,18 @@ export type Subscription = {
 export type SubscriptionsResponse = {
   data: Array<Subscription>;
   included?: Array<
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
-    | ({
-        type: "subscriptionAppStoreReviewScreenshots";
-      } & SubscriptionAppStoreReviewScreenshot)
-    | ({
-        type: "subscriptionAvailabilities";
-      } & SubscriptionAvailability)
-    | ({
-        type: "subscriptionGroups";
-      } & SubscriptionGroup)
-    | ({
-        type: "subscriptionImages";
-      } & SubscriptionImage)
-    | ({
-        type: "subscriptionIntroductoryOffers";
-      } & SubscriptionIntroductoryOffer)
-    | ({
-        type: "subscriptionLocalizations";
-      } & SubscriptionLocalization)
-    | ({
-        type: "subscriptionOfferCodes";
-      } & SubscriptionOfferCode)
-    | ({
-        type: "subscriptionPlanAvailabilities";
-      } & SubscriptionPlanAvailability)
-    | ({
-        type: "subscriptionPrices";
-      } & SubscriptionPrice)
-    | ({
-        type: "subscriptionPromotionalOffers";
-      } & SubscriptionPromotionalOffer)
-    | ({
-        type: "winBackOffers";
-      } & WinBackOffer)
+    | PromotedPurchase
+    | SubscriptionAppStoreReviewScreenshot
+    | SubscriptionAvailability
+    | SubscriptionGroup
+    | SubscriptionImage
+    | SubscriptionIntroductoryOffer
+    | SubscriptionLocalization
+    | SubscriptionOfferCode
+    | SubscriptionPlanAvailability
+    | SubscriptionPrice
+    | SubscriptionPromotionalOffer
+    | WinBackOffer
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -15981,42 +14560,18 @@ export type SubscriptionsResponse = {
 export type SubscriptionResponse = {
   data: Subscription;
   included?: Array<
-    | ({
-        type: "promotedPurchases";
-      } & PromotedPurchase)
-    | ({
-        type: "subscriptionAppStoreReviewScreenshots";
-      } & SubscriptionAppStoreReviewScreenshot)
-    | ({
-        type: "subscriptionAvailabilities";
-      } & SubscriptionAvailability)
-    | ({
-        type: "subscriptionGroups";
-      } & SubscriptionGroup)
-    | ({
-        type: "subscriptionImages";
-      } & SubscriptionImage)
-    | ({
-        type: "subscriptionIntroductoryOffers";
-      } & SubscriptionIntroductoryOffer)
-    | ({
-        type: "subscriptionLocalizations";
-      } & SubscriptionLocalization)
-    | ({
-        type: "subscriptionOfferCodes";
-      } & SubscriptionOfferCode)
-    | ({
-        type: "subscriptionPlanAvailabilities";
-      } & SubscriptionPlanAvailability)
-    | ({
-        type: "subscriptionPrices";
-      } & SubscriptionPrice)
-    | ({
-        type: "subscriptionPromotionalOffers";
-      } & SubscriptionPromotionalOffer)
-    | ({
-        type: "winBackOffers";
-      } & WinBackOffer)
+    | PromotedPurchase
+    | SubscriptionAppStoreReviewScreenshot
+    | SubscriptionAvailability
+    | SubscriptionGroup
+    | SubscriptionImage
+    | SubscriptionIntroductoryOffer
+    | SubscriptionLocalization
+    | SubscriptionOfferCode
+    | SubscriptionPlanAvailability
+    | SubscriptionPrice
+    | SubscriptionPromotionalOffer
+    | WinBackOffer
   >;
   links: DocumentLinks;
 };
@@ -16600,14 +15155,7 @@ export type WinBackOfferPriceInlineCreate = {
 /** Response containing a win back offer prices. */
 export type WinBackOfferPricesResponse = {
   data: Array<WinBackOfferPrice>;
-  included?: Array<
-    | ({
-        type: "subscriptionPricePoints";
-      } & SubscriptionPricePoint)
-    | ({
-        type: "territories";
-      } & Territory)
-  >;
+  included?: Array<SubscriptionPricePoint | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
