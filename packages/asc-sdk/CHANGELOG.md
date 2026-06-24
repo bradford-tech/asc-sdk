@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.3.0...asc-sdk-v0.3.1) (2026-06-24)
+
+
+### Bug Fixes
+
+* **sdk:** regenerate client output after openapi-ts bump ([cc51dea](https://github.com/bradford-tech/asc-sdk/commit/cc51dea2642b83064cebcb98e3a2984f1404cbce))
+
 ## [0.3.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.2.1...asc-sdk-v0.3.0) (2026-06-13)
 
 
