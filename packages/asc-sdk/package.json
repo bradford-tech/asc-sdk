@@ -20,7 +20,7 @@
     "directory": "packages/asc-sdk"
   },
   "license": "MIT",
-  "author": "Bradford Technologies <asc-sdk@bradford.tech>",
+  "author": "Bradford Technologies <asc-sdk@sargent.dev>",
   "sideEffects": [
     "./dist/client/client.gen.js"
   ],
