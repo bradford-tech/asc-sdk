@@ -2748,11 +2748,7 @@ export type AppInfo = {
      * @deprecated
      */
     koreaAgeRating?:
-      | "ALL"
-      | "TWELVE"
-      | "FIFTEEN"
-      | "NINETEEN"
-      | "NOT_APPLICABLE";
+      "ALL" | "TWELVE" | "FIFTEEN" | "NINETEEN" | "NOT_APPLICABLE";
   };
   relationships?: {
     app?: {
@@ -4398,8 +4394,7 @@ export type App = {
     subscriptionStatusUrlForSandbox?: string;
     subscriptionStatusUrlVersionForSandbox?: SubscriptionStatusUrlVersion;
     contentRightsDeclaration?:
-      | "DOES_NOT_USE_THIRD_PARTY_CONTENT"
-      | "USES_THIRD_PARTY_CONTENT";
+      "DOES_NOT_USE_THIRD_PARTY_CONTENT" | "USES_THIRD_PARTY_CONTENT";
     streamlinedPurchasingEnabled?: boolean;
   };
   relationships?: {
@@ -4737,8 +4732,7 @@ export type AppUpdateRequest = {
       subscriptionStatusUrlForSandbox?: string | null;
       subscriptionStatusUrlVersionForSandbox?: SubscriptionStatusUrlVersion;
       contentRightsDeclaration?:
-        | "DOES_NOT_USE_THIRD_PARTY_CONTENT"
-        | "USES_THIRD_PARTY_CONTENT";
+        "DOES_NOT_USE_THIRD_PARTY_CONTENT" | "USES_THIRD_PARTY_CONTENT";
       streamlinedPurchasingEnabled?: boolean | null;
     };
   };
@@ -11142,10 +11136,7 @@ export type InAppPurchaseLocalization = {
     locale?: string;
     description?: string;
     state?:
-      | "PREPARE_FOR_SUBMISSION"
-      | "WAITING_FOR_REVIEW"
-      | "APPROVED"
-      | "REJECTED";
+      "PREPARE_FOR_SUBMISSION" | "WAITING_FOR_REVIEW" | "APPROVED" | "REJECTED";
   };
   relationships?: {
     inAppPurchaseV2?: {
@@ -12483,11 +12474,7 @@ export type ReviewSubmissionItem = {
   id: string;
   attributes?: {
     state?:
-      | "READY_FOR_REVIEW"
-      | "ACCEPTED"
-      | "APPROVED"
-      | "REJECTED"
-      | "REMOVED";
+      "READY_FOR_REVIEW" | "ACCEPTED" | "APPROVED" | "REJECTED" | "REMOVED";
   };
   relationships?: {
     appStoreVersion?: {
@@ -13215,10 +13202,7 @@ export type SubscriptionGroupLocalization = {
     customAppName?: string;
     locale?: string;
     state?:
-      | "PREPARE_FOR_SUBMISSION"
-      | "WAITING_FOR_REVIEW"
-      | "APPROVED"
-      | "REJECTED";
+      "PREPARE_FOR_SUBMISSION" | "WAITING_FOR_REVIEW" | "APPROVED" | "REJECTED";
   };
   relationships?: {
     subscriptionGroup?: {
@@ -13595,10 +13579,7 @@ export type SubscriptionLocalization = {
     locale?: string;
     description?: string;
     state?:
-      | "PREPARE_FOR_SUBMISSION"
-      | "WAITING_FOR_REVIEW"
-      | "APPROVED"
-      | "REJECTED";
+      "PREPARE_FOR_SUBMISSION" | "WAITING_FOR_REVIEW" | "APPROVED" | "REJECTED";
   };
   relationships?: {
     subscription?: {
@@ -18393,12 +18374,7 @@ export type AppClipAdvancedExperienceLanguage =
 
 /** app encryption declaration state. */
 export type AppEncryptionDeclarationState =
-  | "CREATED"
-  | "IN_REVIEW"
-  | "APPROVED"
-  | "REJECTED"
-  | "INVALID"
-  | "EXPIRED";
+  "CREATED" | "IN_REVIEW" | "APPROVED" | "REJECTED" | "INVALID" | "EXPIRED";
 
 /** app event asset type. */
 export type AppEventAssetType = "EVENT_CARD" | "EVENT_DETAILS_PAGE";
@@ -18528,10 +18504,7 @@ export type BackgroundAssetVersionExternalBetaReleaseState =
 
 /** background asset version state. */
 export type BackgroundAssetVersionState =
-  | "AWAITING_UPLOAD"
-  | "PROCESSING"
-  | "FAILED"
-  | "COMPLETE";
+  "AWAITING_UPLOAD" | "PROCESSING" | "FAILED" | "COMPLETE";
 
 /** beta feedback screenshot image. */
 export type BetaFeedbackScreenshotImage = {
@@ -18546,27 +18519,15 @@ export type BetaInviteType = "EMAIL" | "PUBLIC_LINK";
 
 /** beta review state. */
 export type BetaReviewState =
-  | "WAITING_FOR_REVIEW"
-  | "IN_REVIEW"
-  | "REJECTED"
-  | "APPROVED";
+  "WAITING_FOR_REVIEW" | "IN_REVIEW" | "REJECTED" | "APPROVED";
 
 /** beta tester state. */
 export type BetaTesterState =
-  | "NOT_INVITED"
-  | "INVITED"
-  | "ACCEPTED"
-  | "INSTALLED"
-  | "REVOKED";
+  "NOT_INVITED" | "INVITED" | "ACCEPTED" | "INSTALLED" | "REVOKED";
 
 /** brazil age rating. */
 export type BrazilAgeRating =
-  | "L"
-  | "TEN"
-  | "TWELVE"
-  | "FOURTEEN"
-  | "SIXTEEN"
-  | "EIGHTEEN";
+  "L" | "TEN" | "TWELVE" | "FOURTEEN" | "SIXTEEN" | "EIGHTEEN";
 
 /** build audience type. */
 export type BuildAudienceType = "INTERNAL_ONLY" | "APP_STORE_ELIGIBLE";
@@ -18576,10 +18537,7 @@ export type BuildBundleType = "APP" | "APP_CLIP" | "WATCH_APP";
 
 /** build upload state. */
 export type BuildUploadState =
-  | "AWAITING_UPLOAD"
-  | "PROCESSING"
-  | "FAILED"
-  | "COMPLETE";
+  "AWAITING_UPLOAD" | "PROCESSING" | "FAILED" | "COMPLETE";
 
 /** bundle id platform. */
 export type BundleIdPlatform = "IOS" | "MAC_OS" | "UNIVERSAL";
@@ -18729,11 +18687,7 @@ export type CiBranchStartCondition = {
 
 /** ci completion status. */
 export type CiCompletionStatus =
-  | "SUCCEEDED"
-  | "FAILED"
-  | "ERRORED"
-  | "CANCELED"
-  | "SKIPPED";
+  "SUCCEEDED" | "FAILED" | "ERRORED" | "CANCELED" | "SKIPPED";
 
 /** ci execution progress. */
 export type CiExecutionProgress = "PENDING" | "RUNNING" | "COMPLETE";
@@ -18842,11 +18796,7 @@ export type CiTestDestinationKind = "SIMULATOR" | "MAC";
 
 /** ci test status. */
 export type CiTestStatus =
-  | "SUCCESS"
-  | "FAILURE"
-  | "MIXED"
-  | "SKIPPED"
-  | "EXPECTED_FAILURE";
+  "SUCCESS" | "FAILURE" | "MIXED" | "SKIPPED" | "EXPECTED_FAILURE";
 
 /** delivery file upload operation. */
 export type DeliveryFileUploadOperation = {
@@ -18862,20 +18812,11 @@ export type DeliveryFileUploadOperation = {
 
 /** device connection type. */
 export type DeviceConnectionType =
-  | "WIFI"
-  | "MOBILE_DATA"
-  | "WIRE"
-  | "UNKNOWN"
-  | "NONE";
+  "WIFI" | "MOBILE_DATA" | "WIRE" | "UNKNOWN" | "NONE";
 
 /** device family. */
 export type DeviceFamily =
-  | "IPHONE"
-  | "IPAD"
-  | "APPLE_TV"
-  | "APPLE_WATCH"
-  | "MAC"
-  | "VISION";
+  "IPHONE" | "IPAD" | "APPLE_TV" | "APPLE_WATCH" | "MAC" | "VISION";
 
 /** device family os version filter. */
 export type DeviceFamilyOsVersionFilter = {
@@ -19018,9 +18959,7 @@ export type InAppPurchaseState =
 
 /** in app purchase type. */
 export type InAppPurchaseType =
-  | "CONSUMABLE"
-  | "NON_CONSUMABLE"
-  | "NON_RENEWING_SUBSCRIPTION";
+  "CONSUMABLE" | "NON_CONSUMABLE" | "NON_RENEWING_SUBSCRIPTION";
 
 /** integer range. */
 export type IntegerRange = {
@@ -19183,9 +19122,7 @@ export type SubscriptionCustomerEligibility = "NEW" | "EXISTING" | "EXPIRED";
 
 /** subscription grace period duration. */
 export type SubscriptionGracePeriodDuration =
-  | "THREE_DAYS"
-  | "SIXTEEN_DAYS"
-  | "TWENTY_EIGHT_DAYS";
+  "THREE_DAYS" | "SIXTEEN_DAYS" | "TWENTY_EIGHT_DAYS";
 
 /** subscription offer duration. */
 export type SubscriptionOfferDuration =
@@ -19200,14 +19137,11 @@ export type SubscriptionOfferDuration =
 
 /** subscription offer eligibility. */
 export type SubscriptionOfferEligibility =
-  | "STACK_WITH_INTRO_OFFERS"
-  | "REPLACE_INTRO_OFFERS";
+  "STACK_WITH_INTRO_OFFERS" | "REPLACE_INTRO_OFFERS";
 
 /** subscription offer mode. */
 export type SubscriptionOfferMode =
-  | "PAY_AS_YOU_GO"
-  | "PAY_UP_FRONT"
-  | "FREE_TRIAL";
+  "PAY_AS_YOU_GO" | "PAY_UP_FRONT" | "FREE_TRIAL";
 
 /** subscription plan type. */
 export type SubscriptionPlanType = "MONTHLY" | "UPFRONT";
