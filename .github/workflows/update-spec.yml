@@ -33,7 +33,19 @@ jobs:
       - name: Download latest spec
         run: |
           curl -sfL -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
-          unzip -o -j /tmp/spec.zip "openapi.oas.json" -d packages/asc-sdk/spec
+          rm -rf /tmp/spec-extract
+          mkdir -p /tmp/spec-extract
+          # Apple's archive filename is not stable (e.g. "openapi.oas (2).json"),
+          # so extract whatever JSON it contains, ignoring macOS resource forks.
+          unzip -o -j /tmp/spec.zip -x "__MACOSX/*" -d /tmp/spec-extract
+          spec_file=$(find /tmp/spec-extract -maxdepth 1 -type f -name '*.json' | head -n1)
+          if [ -z "$spec_file" ]; then
+            echo "::error::No JSON spec file found in Apple's archive" >&2
+            unzip -l /tmp/spec.zip >&2
+            exit 1
+          fi
+          mkdir -p packages/asc-sdk/spec
+          cp "$spec_file" packages/asc-sdk/spec/openapi.oas.json
 
       - name: Validate spec
         id: lint
