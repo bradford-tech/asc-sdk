@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.3.1...asc-sdk-v0.3.2) (2026-07-17)
+
+
+### Features
+
+* **sdk:** add in-app purchase and subscription version endpoints ([da48c2d](https://github.com/bradford-tech/asc-sdk/commit/da48c2df530c61dade8b64506721874efb279f08))
+
 ## [0.3.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.3.0...asc-sdk-v0.3.1) (2026-06-24)
 
 
