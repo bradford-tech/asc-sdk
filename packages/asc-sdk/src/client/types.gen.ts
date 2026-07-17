@@ -174,6 +174,8 @@ export type AgeRatingDeclaration = {
       | "FREQUENT_OR_INTENSE"
       | "INFREQUENT"
       | "FREQUENT";
+    socialMedia?: boolean;
+    socialMediaAgeRestricted?: boolean;
     horrorOrFearThemes?:
       | "NONE"
       | "INFREQUENT_OR_MILD"
@@ -299,6 +301,8 @@ export type AgeRatingDeclarationUpdateRequest = {
         | "FREQUENT_OR_INTENSE"
         | "INFREQUENT"
         | "FREQUENT";
+      socialMedia?: boolean | null;
+      socialMediaAgeRestricted?: boolean | null;
       horrorOrFearThemes?:
         | "NONE"
         | "INFREQUENT_OR_MILD"
@@ -2749,6 +2753,7 @@ export type AppInfo = {
      */
     koreaAgeRating?:
       "ALL" | "TWELVE" | "FIFTEEN" | "NINETEEN" | "NOT_APPLICABLE";
+    kidsAgeBand?: KidsAgeBand;
   };
   relationships?: {
     app?: {
@@ -11127,6 +11132,64 @@ export type InAppPurchaseImageUpdateRequest = {
   };
 };
 
+/** in app purchase image v2. */
+export type InAppPurchaseImageV2 = {
+  type: "inAppPurchaseImages";
+  id: string;
+  attributes?: {
+    fileSize?: number;
+    fileName?: string;
+    assetToken?: string;
+    imageAsset?: ImageAsset;
+    uploadOperations?: Array<UploadOperation>;
+    assetDeliveryState?: AppMediaAssetState;
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an in app purchase images v2. */
+export type InAppPurchaseImagesV2Response = {
+  data: Array<InAppPurchaseImageV2>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an in app purchase image v2. */
+export type InAppPurchaseImageV2Response = {
+  data: InAppPurchaseImageV2;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an in app purchase image v2. */
+export type InAppPurchaseImageV2CreateRequest = {
+  data: {
+    type: "inAppPurchaseImages";
+    attributes: {
+      fileSize: number;
+      fileName: string;
+    };
+    relationships: {
+      version: {
+        data: {
+          type: "inAppPurchaseVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating an in app purchase image v2. */
+export type InAppPurchaseImageV2UpdateRequest = {
+  data: {
+    type: "inAppPurchaseImages";
+    id: string;
+    attributes?: {
+      uploaded?: boolean | null;
+    };
+  };
+};
+
 /** in app purchase localization. */
 export type InAppPurchaseLocalization = {
   type: "inAppPurchaseLocalizations";
@@ -11186,6 +11249,73 @@ export type InAppPurchaseLocalizationCreateRequest = {
 
 /** Request body for updating an in app purchase localization. */
 export type InAppPurchaseLocalizationUpdateRequest = {
+  data: {
+    type: "inAppPurchaseLocalizations";
+    id: string;
+    attributes?: {
+      name?: string | null;
+      description?: string | null;
+    };
+  };
+};
+
+/** in app purchase localization v2. */
+export type InAppPurchaseLocalizationV2 = {
+  type: "inAppPurchaseLocalizations";
+  id: string;
+  attributes?: {
+    name?: string;
+    locale?: string;
+    description?: string;
+  };
+  relationships?: {
+    version?: {
+      data?: {
+        type: "inAppPurchaseVersions";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an in app purchase localizations v2. */
+export type InAppPurchaseLocalizationsV2Response = {
+  data: Array<InAppPurchaseLocalizationV2>;
+  included?: Array<InAppPurchaseVersion>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an in app purchase localization v2. */
+export type InAppPurchaseLocalizationV2Response = {
+  data: InAppPurchaseLocalizationV2;
+  included?: Array<InAppPurchaseVersion>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an in app purchase localization v2. */
+export type InAppPurchaseLocalizationV2CreateRequest = {
+  data: {
+    type: "inAppPurchaseLocalizations";
+    attributes: {
+      name: string;
+      locale: string;
+      description?: string | null;
+    };
+    relationships: {
+      version: {
+        data: {
+          type: "inAppPurchaseVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating an in app purchase localization v2. */
+export type InAppPurchaseLocalizationV2UpdateRequest = {
   data: {
     type: "inAppPurchaseLocalizations";
     id: string;
@@ -11692,6 +11822,91 @@ export type InAppPurchaseSubmissionCreateRequest = {
   };
 };
 
+/** in app purchase version. */
+export type InAppPurchaseVersion = {
+  type: "inAppPurchaseVersions";
+  id: string;
+  attributes?: {
+    version?: number;
+    state?:
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED";
+  };
+  relationships?: {
+    inAppPurchase?: {
+      data?: {
+        type: "inAppPurchases";
+        id: string;
+      };
+    };
+    image?: {
+      links?: RelationshipLinks;
+      data?: {
+        type: "inAppPurchaseImages";
+        id: string;
+      };
+    };
+    images?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "inAppPurchaseImages";
+        id: string;
+      }>;
+    };
+    localizations?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "inAppPurchaseLocalizations";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an in app purchase versions. */
+export type InAppPurchaseVersionsResponse = {
+  data: Array<InAppPurchaseVersion>;
+  included?: Array<
+    InAppPurchaseImageV2 | InAppPurchaseLocalizationV2 | InAppPurchaseV2
+  >;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an in app purchase version. */
+export type InAppPurchaseVersionResponse = {
+  data: InAppPurchaseVersion;
+  included?: Array<
+    InAppPurchaseImageV2 | InAppPurchaseLocalizationV2 | InAppPurchaseV2
+  >;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an in app purchase version. */
+export type InAppPurchaseVersionCreateRequest = {
+  data: {
+    type: "inAppPurchaseVersions";
+    relationships: {
+      inAppPurchase: {
+        data: {
+          type: "inAppPurchases";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
 /**
  * InAppPurchase
  *
@@ -11823,6 +12038,14 @@ export type InAppPurchaseV2 = {
         id: string;
       }>;
     };
+    versions?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "inAppPurchaseVersions";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -11839,6 +12062,7 @@ export type InAppPurchasesV2Response = {
     | InAppPurchaseOfferCode
     | InAppPurchasePricePoint
     | InAppPurchasePriceSchedule
+    | InAppPurchaseVersion
     | PromotedPurchase
   >;
   links: PagedDocumentLinks;
@@ -11857,6 +12081,7 @@ export type InAppPurchaseV2Response = {
     | InAppPurchaseOfferCode
     | InAppPurchasePricePoint
     | InAppPurchasePriceSchedule
+    | InAppPurchaseVersion
     | PromotedPurchase
   >;
   links: DocumentLinks;
@@ -12543,6 +12768,24 @@ export type ReviewSubmissionItem = {
         id: string;
       };
     };
+    inAppPurchaseVersion?: {
+      data?: {
+        type: "inAppPurchaseVersions";
+        id: string;
+      };
+    };
+    subscriptionVersion?: {
+      data?: {
+        type: "subscriptionVersions";
+        id: string;
+      };
+    };
+    subscriptionGroupVersion?: {
+      data?: {
+        type: "subscriptionGroupVersions";
+        id: string;
+      };
+    };
   };
   links?: ResourceLinks;
 };
@@ -12561,6 +12804,9 @@ export type ReviewSubmissionItemsResponse = {
     | GameCenterChallengeVersion
     | GameCenterLeaderboardSetVersionV2
     | GameCenterLeaderboardVersionV2
+    | InAppPurchaseVersion
+    | SubscriptionGroupVersion
+    | SubscriptionVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -12580,6 +12826,9 @@ export type ReviewSubmissionItemResponse = {
     | GameCenterChallengeVersion
     | GameCenterLeaderboardSetVersionV2
     | GameCenterLeaderboardVersionV2
+    | InAppPurchaseVersion
+    | SubscriptionGroupVersion
+    | SubscriptionVersion
   >;
   links: DocumentLinks;
 };
@@ -12658,6 +12907,24 @@ export type ReviewSubmissionItemCreateRequest = {
       gameCenterLeaderboardVersion?: {
         data?: {
           type: "gameCenterLeaderboardVersions";
+          id: string;
+        };
+      };
+      inAppPurchaseVersion?: {
+        data?: {
+          type: "inAppPurchaseVersions";
+          id: string;
+        };
+      };
+      subscriptionVersion?: {
+        data?: {
+          type: "subscriptionVersions";
+          id: string;
+        };
+      };
+      subscriptionGroupVersion?: {
+        data?: {
+          type: "subscriptionGroupVersions";
           id: string;
         };
       };
@@ -13193,6 +13460,73 @@ export type SubscriptionGracePeriodUpdateRequest = {
   };
 };
 
+/** subscription group localization v2. */
+export type SubscriptionGroupLocalizationV2 = {
+  type: "subscriptionGroupLocalizations";
+  id: string;
+  attributes?: {
+    name?: string;
+    customAppName?: string;
+    locale?: string;
+  };
+  relationships?: {
+    version?: {
+      data?: {
+        type: "subscriptionGroupVersions";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription group localizations v2. */
+export type SubscriptionGroupLocalizationsV2Response = {
+  data: Array<SubscriptionGroupLocalizationV2>;
+  included?: Array<SubscriptionGroupVersion>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription group localization v2. */
+export type SubscriptionGroupLocalizationV2Response = {
+  data: SubscriptionGroupLocalizationV2;
+  included?: Array<SubscriptionGroupVersion>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription group localization v2. */
+export type SubscriptionGroupLocalizationV2CreateRequest = {
+  data: {
+    type: "subscriptionGroupLocalizations";
+    attributes: {
+      name: string;
+      customAppName?: string | null;
+      locale: string;
+    };
+    relationships: {
+      version: {
+        data: {
+          type: "subscriptionGroupVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating a subscription group localization v2. */
+export type SubscriptionGroupLocalizationV2UpdateRequest = {
+  data: {
+    type: "subscriptionGroupLocalizations";
+    id: string;
+    attributes?: {
+      name?: string | null;
+      customAppName?: string | null;
+    };
+  };
+};
+
 /** subscription group localization. */
 export type SubscriptionGroupLocalization = {
   type: "subscriptionGroupLocalizations";
@@ -13290,6 +13624,72 @@ export type SubscriptionGroupSubmissionCreateRequest = {
   };
 };
 
+/** subscription group version. */
+export type SubscriptionGroupVersion = {
+  type: "subscriptionGroupVersions";
+  id: string;
+  attributes?: {
+    version?: number;
+    state?:
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED";
+  };
+  relationships?: {
+    subscriptionGroup?: {
+      data?: {
+        type: "subscriptionGroups";
+        id: string;
+      };
+    };
+    localizations?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionGroupLocalizations";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription group versions. */
+export type SubscriptionGroupVersionsResponse = {
+  data: Array<SubscriptionGroupVersion>;
+  included?: Array<SubscriptionGroupLocalizationV2 | SubscriptionGroup>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription group version. */
+export type SubscriptionGroupVersionResponse = {
+  data: SubscriptionGroupVersion;
+  included?: Array<SubscriptionGroupLocalizationV2 | SubscriptionGroup>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription group version. */
+export type SubscriptionGroupVersionCreateRequest = {
+  data: {
+    type: "subscriptionGroupVersions";
+    relationships: {
+      subscriptionGroup: {
+        data: {
+          type: "subscriptionGroups";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
 /** subscription group. */
 export type SubscriptionGroup = {
   type: "subscriptionGroups";
@@ -13314,6 +13714,14 @@ export type SubscriptionGroup = {
         id: string;
       }>;
     };
+    versions?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionGroupVersions";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -13321,7 +13729,9 @@ export type SubscriptionGroup = {
 /** Response containing a subscription groups. */
 export type SubscriptionGroupsResponse = {
   data: Array<SubscriptionGroup>;
-  included?: Array<SubscriptionGroupLocalization | Subscription>;
+  included?: Array<
+    SubscriptionGroupLocalization | SubscriptionGroupVersion | Subscription
+  >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -13329,7 +13739,9 @@ export type SubscriptionGroupsResponse = {
 /** Response containing a subscription group. */
 export type SubscriptionGroupResponse = {
   data: SubscriptionGroup;
-  included?: Array<SubscriptionGroupLocalization | Subscription>;
+  included?: Array<
+    SubscriptionGroupLocalization | SubscriptionGroupVersion | Subscription
+  >;
   links: DocumentLinks;
 };
 
@@ -13434,6 +13846,64 @@ export type SubscriptionImageUpdateRequest = {
     id: string;
     attributes?: {
       sourceFileChecksum?: string | null;
+      uploaded?: boolean | null;
+    };
+  };
+};
+
+/** subscription image v2. */
+export type SubscriptionImageV2 = {
+  type: "subscriptionImages";
+  id: string;
+  attributes?: {
+    fileSize?: number;
+    fileName?: string;
+    assetToken?: string;
+    imageAsset?: ImageAsset;
+    uploadOperations?: Array<UploadOperation>;
+    assetDeliveryState?: AppMediaAssetState;
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription images v2. */
+export type SubscriptionImagesV2Response = {
+  data: Array<SubscriptionImageV2>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription image v2. */
+export type SubscriptionImageV2Response = {
+  data: SubscriptionImageV2;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription image v2. */
+export type SubscriptionImageV2CreateRequest = {
+  data: {
+    type: "subscriptionImages";
+    attributes: {
+      fileSize: number;
+      fileName: string;
+    };
+    relationships: {
+      version: {
+        data: {
+          type: "subscriptionVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating a subscription image v2. */
+export type SubscriptionImageV2UpdateRequest = {
+  data: {
+    type: "subscriptionImages";
+    id: string;
+    attributes?: {
       uploaded?: boolean | null;
     };
   };
@@ -13566,6 +14036,73 @@ export type SubscriptionIntroductoryOfferUpdateRequest = {
     id: string;
     attributes?: {
       endDate?: Date | null;
+    };
+  };
+};
+
+/** subscription localization v2. */
+export type SubscriptionLocalizationV2 = {
+  type: "subscriptionLocalizations";
+  id: string;
+  attributes?: {
+    name?: string;
+    locale?: string;
+    description?: string;
+  };
+  relationships?: {
+    version?: {
+      data?: {
+        type: "subscriptionVersions";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription localizations v2. */
+export type SubscriptionLocalizationsV2Response = {
+  data: Array<SubscriptionLocalizationV2>;
+  included?: Array<SubscriptionVersion>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription localization v2. */
+export type SubscriptionLocalizationV2Response = {
+  data: SubscriptionLocalizationV2;
+  included?: Array<SubscriptionVersion>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription localization v2. */
+export type SubscriptionLocalizationV2CreateRequest = {
+  data: {
+    type: "subscriptionLocalizations";
+    attributes: {
+      name: string;
+      locale: string;
+      description?: string | null;
+    };
+    relationships: {
+      version: {
+        data: {
+          type: "subscriptionVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating a subscription localization v2. */
+export type SubscriptionLocalizationV2UpdateRequest = {
+  data: {
+    type: "subscriptionLocalizations";
+    id: string;
+    attributes?: {
+      name?: string | null;
+      description?: string | null;
     };
   };
 };
@@ -14047,6 +14584,9 @@ export type SubscriptionPricePoint = {
     equalizations?: {
       links?: RelationshipLinks;
     };
+    adjustedEqualizations?: {
+      links?: RelationshipLinks;
+    };
   };
   links?: ResourceLinks;
 };
@@ -14383,6 +14923,91 @@ export type SubscriptionSubmissionCreateRequest = {
   };
 };
 
+/** subscription version. */
+export type SubscriptionVersion = {
+  type: "subscriptionVersions";
+  id: string;
+  attributes?: {
+    version?: number;
+    state?:
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED";
+  };
+  relationships?: {
+    subscription?: {
+      data?: {
+        type: "subscriptions";
+        id: string;
+      };
+    };
+    image?: {
+      links?: RelationshipLinks;
+      data?: {
+        type: "subscriptionImages";
+        id: string;
+      };
+    };
+    images?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionImages";
+        id: string;
+      }>;
+    };
+    localizations?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionLocalizations";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription versions. */
+export type SubscriptionVersionsResponse = {
+  data: Array<SubscriptionVersion>;
+  included?: Array<
+    SubscriptionImageV2 | SubscriptionLocalizationV2 | Subscription
+  >;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a subscription version. */
+export type SubscriptionVersionResponse = {
+  data: SubscriptionVersion;
+  included?: Array<
+    SubscriptionImageV2 | SubscriptionLocalizationV2 | Subscription
+  >;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription version. */
+export type SubscriptionVersionCreateRequest = {
+  data: {
+    type: "subscriptionVersions";
+    relationships: {
+      subscription: {
+        data: {
+          type: "subscriptions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
 /** subscription. */
 export type Subscription = {
   type: "subscriptions";
@@ -14510,6 +15135,14 @@ export type Subscription = {
         id: string;
       }>;
     };
+    versions?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionVersions";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -14531,6 +15164,7 @@ export type SubscriptionsResponse = {
     | SubscriptionPlanAvailability
     | SubscriptionPrice
     | SubscriptionPromotionalOffer
+    | SubscriptionVersion
     | WinBackOffer
   >;
   links: PagedDocumentLinks;
@@ -14552,6 +15186,7 @@ export type SubscriptionResponse = {
     | SubscriptionPlanAvailability
     | SubscriptionPrice
     | SubscriptionPromotionalOffer
+    | SubscriptionVersion
     | WinBackOffer
   >;
   links: DocumentLinks;
@@ -17510,6 +18145,35 @@ export type InAppPurchasePriceScheduleManualPricesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for an in app purchase version image. */
+export type InAppPurchaseVersionImageLinkageResponse = {
+  data: {
+    type: "inAppPurchaseImages";
+    id: string;
+  };
+  links: DocumentLinks;
+};
+
+/** Linkage response for an in app purchase version images. */
+export type InAppPurchaseVersionImagesLinkagesResponse = {
+  data: Array<{
+    type: "inAppPurchaseImages";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an in app purchase version localizations. */
+export type InAppPurchaseVersionLocalizationsLinkagesResponse = {
+  data: Array<{
+    type: "inAppPurchaseLocalizations";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for an in app purchase v2app store review screenshot. */
 export type InAppPurchaseV2AppStoreReviewScreenshotLinkageResponse = {
   data: {
@@ -17593,6 +18257,16 @@ export type InAppPurchaseV2PromotedPurchaseLinkageResponse = {
     id: string;
   };
   links: DocumentLinks;
+};
+
+/** Linkage response for an in app purchase v2versions. */
+export type InAppPurchaseV2VersionsLinkagesResponse = {
+  data: Array<{
+    type: "inAppPurchaseVersions";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
 };
 
 /** Linkage response for a merchant id certificates. */
@@ -17723,6 +18397,16 @@ export type ScmRepositoryPullRequestsLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for a subscription group version localizations. */
+export type SubscriptionGroupVersionLocalizationsLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionGroupLocalizations";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for a subscription group subscription group localizations. */
 export type SubscriptionGroupSubscriptionGroupLocalizationsLinkagesResponse = {
   data: Array<{
@@ -17737,6 +18421,16 @@ export type SubscriptionGroupSubscriptionGroupLocalizationsLinkagesResponse = {
 export type SubscriptionGroupSubscriptionsLinkagesResponse = {
   data: Array<{
     type: "subscriptions";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription group versions. */
+export type SubscriptionGroupVersionsLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionGroupVersions";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -17805,6 +18499,35 @@ export type SubscriptionPricePointEqualizationsLinkagesResponse = {
 export type SubscriptionPromotionalOfferPricesLinkagesResponse = {
   data: Array<{
     type: "subscriptionPromotionalOfferPrices";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription version image. */
+export type SubscriptionVersionImageLinkageResponse = {
+  data: {
+    type: "subscriptionImages";
+    id: string;
+  };
+  links: DocumentLinks;
+};
+
+/** Linkage response for a subscription version images. */
+export type SubscriptionVersionImagesLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionImages";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription version localizations. */
+export type SubscriptionVersionLocalizationsLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionLocalizations";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -17919,6 +18642,16 @@ export type SubscriptionPromotionalOffersLinkagesResponse = {
 export type SubscriptionSubscriptionLocalizationsLinkagesResponse = {
   data: Array<{
     type: "subscriptionLocalizations";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription versions. */
+export type SubscriptionVersionsLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionVersions";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -25804,6 +26537,7 @@ export type AppInfoLocalizationsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -25949,6 +26683,7 @@ export type AppInfosGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -26040,6 +26775,8 @@ export type AppInfosGetInstanceData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "socialMedia"
+      | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
       | "matureOrSuggestiveThemes"
       | "unrestrictedWebAccess"
@@ -30326,6 +31063,7 @@ export type AppsGetCollectionData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -30374,12 +31112,16 @@ export type AppsGetCollectionData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
@@ -30880,6 +31622,7 @@ export type AppsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -30928,12 +31671,16 @@ export type AppsGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
@@ -49340,6 +50087,7 @@ export type InAppPurchaseAppStoreReviewScreenshotsGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -49616,6 +50364,7 @@ export type InAppPurchaseContentsGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -49816,6 +50565,7 @@ export type InAppPurchaseImagesGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -49928,6 +50678,243 @@ export type InAppPurchaseImagesUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/inAppPurchaseImages/{id}`. */
 export type InAppPurchaseImagesUpdateInstanceResponse =
   InAppPurchaseImagesUpdateInstanceResponses[keyof InAppPurchaseImagesUpdateInstanceResponses];
+
+/** Request options for `POST /v2/inAppPurchaseImages`. */
+export type InAppPurchaseImagesV2CreateInstanceData = {
+  /**
+   * InAppPurchaseImage representation
+   */
+  body: InAppPurchaseImageV2CreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v2/inAppPurchaseImages";
+};
+
+/** Error status map for `POST /v2/inAppPurchaseImages`. */
+export type InAppPurchaseImagesV2CreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v2/inAppPurchaseImages`. */
+export type InAppPurchaseImagesV2CreateInstanceError =
+  InAppPurchaseImagesV2CreateInstanceErrors[keyof InAppPurchaseImagesV2CreateInstanceErrors];
+
+/** Response status map for `POST /v2/inAppPurchaseImages`. */
+export type InAppPurchaseImagesV2CreateInstanceResponses = {
+  /**
+   * Single InAppPurchaseImage
+   */
+  201: InAppPurchaseImageV2Response;
+};
+
+/** Successful response from `POST /v2/inAppPurchaseImages`. */
+export type InAppPurchaseImagesV2CreateInstanceResponse =
+  InAppPurchaseImagesV2CreateInstanceResponses[keyof InAppPurchaseImagesV2CreateInstanceResponses];
+
+/** Request options for `DELETE /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2DeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/inAppPurchaseImages/{id}";
+};
+
+/** Error status map for `DELETE /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2DeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2DeleteInstanceError =
+  InAppPurchaseImagesV2DeleteInstanceErrors[keyof InAppPurchaseImagesV2DeleteInstanceErrors];
+
+/** Response status map for `DELETE /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2DeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2DeleteInstanceResponse =
+  InAppPurchaseImagesV2DeleteInstanceResponses[keyof InAppPurchaseImagesV2DeleteInstanceResponses];
+
+/** Request options for `GET /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2GetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseImages
+     */
+    "fields[inAppPurchaseImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+  };
+  url: "/v2/inAppPurchaseImages/{id}";
+};
+
+/** Error status map for `GET /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2GetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2GetInstanceError =
+  InAppPurchaseImagesV2GetInstanceErrors[keyof InAppPurchaseImagesV2GetInstanceErrors];
+
+/** Response status map for `GET /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2GetInstanceResponses = {
+  /**
+   * Single InAppPurchaseImage
+   */
+  200: InAppPurchaseImageV2Response;
+};
+
+/** Successful response from `GET /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2GetInstanceResponse =
+  InAppPurchaseImagesV2GetInstanceResponses[keyof InAppPurchaseImagesV2GetInstanceResponses];
+
+/** Request options for `PATCH /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2UpdateInstanceData = {
+  /**
+   * InAppPurchaseImage representation
+   */
+  body: InAppPurchaseImageV2UpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/inAppPurchaseImages/{id}";
+};
+
+/** Error status map for `PATCH /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2UpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2UpdateInstanceError =
+  InAppPurchaseImagesV2UpdateInstanceErrors[keyof InAppPurchaseImagesV2UpdateInstanceErrors];
+
+/** Response status map for `PATCH /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2UpdateInstanceResponses = {
+  /**
+   * Single InAppPurchaseImage
+   */
+  200: InAppPurchaseImageV2Response;
+};
+
+/** Successful response from `PATCH /v2/inAppPurchaseImages/{id}`. */
+export type InAppPurchaseImagesV2UpdateInstanceResponse =
+  InAppPurchaseImagesV2UpdateInstanceResponses[keyof InAppPurchaseImagesV2UpdateInstanceResponses];
 
 /** Request options for `POST /v1/inAppPurchaseLocalizations`. */
 export type InAppPurchaseLocalizationsCreateInstanceData = {
@@ -50073,6 +51060,7 @@ export type InAppPurchaseLocalizationsGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -50185,6 +51173,253 @@ export type InAppPurchaseLocalizationsUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/inAppPurchaseLocalizations/{id}`. */
 export type InAppPurchaseLocalizationsUpdateInstanceResponse =
   InAppPurchaseLocalizationsUpdateInstanceResponses[keyof InAppPurchaseLocalizationsUpdateInstanceResponses];
+
+/** Request options for `POST /v2/inAppPurchaseLocalizations`. */
+export type InAppPurchaseLocalizationsV2CreateInstanceData = {
+  /**
+   * InAppPurchaseLocalization representation
+   */
+  body: InAppPurchaseLocalizationV2CreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v2/inAppPurchaseLocalizations";
+};
+
+/** Error status map for `POST /v2/inAppPurchaseLocalizations`. */
+export type InAppPurchaseLocalizationsV2CreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v2/inAppPurchaseLocalizations`. */
+export type InAppPurchaseLocalizationsV2CreateInstanceError =
+  InAppPurchaseLocalizationsV2CreateInstanceErrors[keyof InAppPurchaseLocalizationsV2CreateInstanceErrors];
+
+/** Response status map for `POST /v2/inAppPurchaseLocalizations`. */
+export type InAppPurchaseLocalizationsV2CreateInstanceResponses = {
+  /**
+   * Single InAppPurchaseLocalization
+   */
+  201: InAppPurchaseLocalizationV2Response;
+};
+
+/** Successful response from `POST /v2/inAppPurchaseLocalizations`. */
+export type InAppPurchaseLocalizationsV2CreateInstanceResponse =
+  InAppPurchaseLocalizationsV2CreateInstanceResponses[keyof InAppPurchaseLocalizationsV2CreateInstanceResponses];
+
+/** Request options for `DELETE /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2DeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/inAppPurchaseLocalizations/{id}";
+};
+
+/** Error status map for `DELETE /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2DeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2DeleteInstanceError =
+  InAppPurchaseLocalizationsV2DeleteInstanceErrors[keyof InAppPurchaseLocalizationsV2DeleteInstanceErrors];
+
+/** Response status map for `DELETE /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2DeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2DeleteInstanceResponse =
+  InAppPurchaseLocalizationsV2DeleteInstanceResponses[keyof InAppPurchaseLocalizationsV2DeleteInstanceResponses];
+
+/** Request options for `GET /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2GetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseLocalizations
+     */
+    "fields[inAppPurchaseLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v2/inAppPurchaseLocalizations/{id}";
+};
+
+/** Error status map for `GET /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2GetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2GetInstanceError =
+  InAppPurchaseLocalizationsV2GetInstanceErrors[keyof InAppPurchaseLocalizationsV2GetInstanceErrors];
+
+/** Response status map for `GET /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2GetInstanceResponses = {
+  /**
+   * Single InAppPurchaseLocalization
+   */
+  200: InAppPurchaseLocalizationV2Response;
+};
+
+/** Successful response from `GET /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2GetInstanceResponse =
+  InAppPurchaseLocalizationsV2GetInstanceResponses[keyof InAppPurchaseLocalizationsV2GetInstanceResponses];
+
+/** Request options for `PATCH /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2UpdateInstanceData = {
+  /**
+   * InAppPurchaseLocalization representation
+   */
+  body: InAppPurchaseLocalizationV2UpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/inAppPurchaseLocalizations/{id}";
+};
+
+/** Error status map for `PATCH /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2UpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2UpdateInstanceError =
+  InAppPurchaseLocalizationsV2UpdateInstanceErrors[keyof InAppPurchaseLocalizationsV2UpdateInstanceErrors];
+
+/** Response status map for `PATCH /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2UpdateInstanceResponses = {
+  /**
+   * Single InAppPurchaseLocalization
+   */
+  200: InAppPurchaseLocalizationV2Response;
+};
+
+/** Successful response from `PATCH /v2/inAppPurchaseLocalizations/{id}`. */
+export type InAppPurchaseLocalizationsV2UpdateInstanceResponse =
+  InAppPurchaseLocalizationsV2UpdateInstanceResponses[keyof InAppPurchaseLocalizationsV2UpdateInstanceResponses];
 
 /** Request options for `POST /v1/inAppPurchaseOfferCodeCustomCodes`. */
 export type InAppPurchaseOfferCodeCustomCodesCreateInstanceData = {
@@ -51004,6 +52239,177 @@ export type InAppPurchaseSubmissionsCreateInstanceResponses = {
 export type InAppPurchaseSubmissionsCreateInstanceResponse =
   InAppPurchaseSubmissionsCreateInstanceResponses[keyof InAppPurchaseSubmissionsCreateInstanceResponses];
 
+/** Request options for `POST /v1/inAppPurchaseVersions`. */
+export type InAppPurchaseVersionsCreateInstanceData = {
+  /**
+   * InAppPurchaseVersion representation
+   */
+  body: InAppPurchaseVersionCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/inAppPurchaseVersions";
+};
+
+/** Error status map for `POST /v1/inAppPurchaseVersions`. */
+export type InAppPurchaseVersionsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/inAppPurchaseVersions`. */
+export type InAppPurchaseVersionsCreateInstanceError =
+  InAppPurchaseVersionsCreateInstanceErrors[keyof InAppPurchaseVersionsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/inAppPurchaseVersions`. */
+export type InAppPurchaseVersionsCreateInstanceResponses = {
+  /**
+   * Single InAppPurchaseVersion
+   */
+  201: InAppPurchaseVersionResponse;
+};
+
+/** Successful response from `POST /v1/inAppPurchaseVersions`. */
+export type InAppPurchaseVersionsCreateInstanceResponse =
+  InAppPurchaseVersionsCreateInstanceResponses[keyof InAppPurchaseVersionsCreateInstanceResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}`. */
+export type InAppPurchaseVersionsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchases
+     */
+    "fields[inAppPurchases]"?: Array<
+      | "name"
+      | "productId"
+      | "inAppPurchaseType"
+      | "state"
+      | "reviewNote"
+      | "familySharable"
+      | "contentHosting"
+      | "inAppPurchaseLocalizations"
+      | "pricePoints"
+      | "content"
+      | "appStoreReviewScreenshot"
+      | "promotedPurchase"
+      | "iapPriceSchedule"
+      | "inAppPurchaseAvailability"
+      | "images"
+      | "offerCodes"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseImages
+     */
+    "fields[inAppPurchaseImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseLocalizations
+     */
+    "fields[inAppPurchaseLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"inAppPurchase" | "image" | "images" | "localizations">;
+    /**
+     * maximum number of related images returned (when they are included)
+     */
+    "limit[images]"?: number;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}`. */
+export type InAppPurchaseVersionsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}`. */
+export type InAppPurchaseVersionsGetInstanceError =
+  InAppPurchaseVersionsGetInstanceErrors[keyof InAppPurchaseVersionsGetInstanceErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}`. */
+export type InAppPurchaseVersionsGetInstanceResponses = {
+  /**
+   * Single InAppPurchaseVersion
+   */
+  200: InAppPurchaseVersionResponse;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}`. */
+export type InAppPurchaseVersionsGetInstanceResponse =
+  InAppPurchaseVersionsGetInstanceResponses[keyof InAppPurchaseVersionsGetInstanceResponses];
+
 /** Request options for `POST /v2/inAppPurchases`. */
 export type InAppPurchasesV2CreateInstanceData = {
   /**
@@ -51142,6 +52548,7 @@ export type InAppPurchasesV2GetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type inAppPurchaseLocalizations
@@ -51224,6 +52631,17 @@ export type InAppPurchasesV2GetInstanceData = {
       | "prices"
     >;
     /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -51236,6 +52654,7 @@ export type InAppPurchasesV2GetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * maximum number of related images returned (when they are included)
@@ -51253,6 +52672,10 @@ export type InAppPurchasesV2GetInstanceData = {
      * maximum number of related pricePoints returned (when they are included)
      */
     "limit[pricePoints]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
   };
   url: "/v2/inAppPurchases/{id}";
 };
@@ -53683,6 +55106,7 @@ export type PromotedPurchasesGetInstanceData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -53708,6 +55132,7 @@ export type PromotedPurchasesGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -54107,6 +55532,9 @@ export type ReviewSubmissionsGetCollectionData = {
       | "gameCenterChallengeVersion"
       | "gameCenterLeaderboardSetVersion"
       | "gameCenterLeaderboardVersion"
+      | "inAppPurchaseVersion"
+      | "subscriptionVersion"
+      | "subscriptionGroupVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -54355,6 +55783,9 @@ export type ReviewSubmissionsGetInstanceData = {
       | "gameCenterChallengeVersion"
       | "gameCenterLeaderboardSetVersion"
       | "gameCenterLeaderboardVersion"
+      | "inAppPurchaseVersion"
+      | "subscriptionVersion"
+      | "subscriptionGroupVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -55647,6 +57078,7 @@ export type SubscriptionAppStoreReviewScreenshotsGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -55884,6 +57316,248 @@ export type SubscriptionGracePeriodsUpdateInstanceResponses = {
 export type SubscriptionGracePeriodsUpdateInstanceResponse =
   SubscriptionGracePeriodsUpdateInstanceResponses[keyof SubscriptionGracePeriodsUpdateInstanceResponses];
 
+/** Request options for `POST /v2/subscriptionGroupLocalizations`. */
+export type SubscriptionGroupLocalizationsV2CreateInstanceData = {
+  /**
+   * SubscriptionGroupLocalization representation
+   */
+  body: SubscriptionGroupLocalizationV2CreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v2/subscriptionGroupLocalizations";
+};
+
+/** Error status map for `POST /v2/subscriptionGroupLocalizations`. */
+export type SubscriptionGroupLocalizationsV2CreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v2/subscriptionGroupLocalizations`. */
+export type SubscriptionGroupLocalizationsV2CreateInstanceError =
+  SubscriptionGroupLocalizationsV2CreateInstanceErrors[keyof SubscriptionGroupLocalizationsV2CreateInstanceErrors];
+
+/** Response status map for `POST /v2/subscriptionGroupLocalizations`. */
+export type SubscriptionGroupLocalizationsV2CreateInstanceResponses = {
+  /**
+   * Single SubscriptionGroupLocalization
+   */
+  201: SubscriptionGroupLocalizationV2Response;
+};
+
+/** Successful response from `POST /v2/subscriptionGroupLocalizations`. */
+export type SubscriptionGroupLocalizationsV2CreateInstanceResponse =
+  SubscriptionGroupLocalizationsV2CreateInstanceResponses[keyof SubscriptionGroupLocalizationsV2CreateInstanceResponses];
+
+/** Request options for `DELETE /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2DeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionGroupLocalizations/{id}";
+};
+
+/** Error status map for `DELETE /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2DeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2DeleteInstanceError =
+  SubscriptionGroupLocalizationsV2DeleteInstanceErrors[keyof SubscriptionGroupLocalizationsV2DeleteInstanceErrors];
+
+/** Response status map for `DELETE /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2DeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2DeleteInstanceResponse =
+  SubscriptionGroupLocalizationsV2DeleteInstanceResponses[keyof SubscriptionGroupLocalizationsV2DeleteInstanceResponses];
+
+/** Request options for `GET /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2GetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionGroupLocalizations
+     */
+    "fields[subscriptionGroupLocalizations]"?: Array<
+      "name" | "customAppName" | "locale" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v2/subscriptionGroupLocalizations/{id}";
+};
+
+/** Error status map for `GET /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2GetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2GetInstanceError =
+  SubscriptionGroupLocalizationsV2GetInstanceErrors[keyof SubscriptionGroupLocalizationsV2GetInstanceErrors];
+
+/** Response status map for `GET /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2GetInstanceResponses = {
+  /**
+   * Single SubscriptionGroupLocalization
+   */
+  200: SubscriptionGroupLocalizationV2Response;
+};
+
+/** Successful response from `GET /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2GetInstanceResponse =
+  SubscriptionGroupLocalizationsV2GetInstanceResponses[keyof SubscriptionGroupLocalizationsV2GetInstanceResponses];
+
+/** Request options for `PATCH /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2UpdateInstanceData = {
+  /**
+   * SubscriptionGroupLocalization representation
+   */
+  body: SubscriptionGroupLocalizationV2UpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionGroupLocalizations/{id}";
+};
+
+/** Error status map for `PATCH /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2UpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2UpdateInstanceError =
+  SubscriptionGroupLocalizationsV2UpdateInstanceErrors[keyof SubscriptionGroupLocalizationsV2UpdateInstanceErrors];
+
+/** Response status map for `PATCH /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2UpdateInstanceResponses = {
+  /**
+   * Single SubscriptionGroupLocalization
+   */
+  200: SubscriptionGroupLocalizationV2Response;
+};
+
+/** Successful response from `PATCH /v2/subscriptionGroupLocalizations/{id}`. */
+export type SubscriptionGroupLocalizationsV2UpdateInstanceResponse =
+  SubscriptionGroupLocalizationsV2UpdateInstanceResponses[keyof SubscriptionGroupLocalizationsV2UpdateInstanceResponses];
+
 /** Request options for `POST /v1/subscriptionGroupLocalizations`. */
 export type SubscriptionGroupLocalizationsCreateInstanceData = {
   /**
@@ -56012,7 +57686,10 @@ export type SubscriptionGroupLocalizationsGetInstanceData = {
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -56181,6 +57858,144 @@ export type SubscriptionGroupSubmissionsCreateInstanceResponses = {
 export type SubscriptionGroupSubmissionsCreateInstanceResponse =
   SubscriptionGroupSubmissionsCreateInstanceResponses[keyof SubscriptionGroupSubmissionsCreateInstanceResponses];
 
+/** Request options for `POST /v1/subscriptionGroupVersions`. */
+export type SubscriptionGroupVersionsCreateInstanceData = {
+  /**
+   * SubscriptionGroupVersion representation
+   */
+  body: SubscriptionGroupVersionCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/subscriptionGroupVersions";
+};
+
+/** Error status map for `POST /v1/subscriptionGroupVersions`. */
+export type SubscriptionGroupVersionsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/subscriptionGroupVersions`. */
+export type SubscriptionGroupVersionsCreateInstanceError =
+  SubscriptionGroupVersionsCreateInstanceErrors[keyof SubscriptionGroupVersionsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/subscriptionGroupVersions`. */
+export type SubscriptionGroupVersionsCreateInstanceResponses = {
+  /**
+   * Single SubscriptionGroupVersion
+   */
+  201: SubscriptionGroupVersionResponse;
+};
+
+/** Successful response from `POST /v1/subscriptionGroupVersions`. */
+export type SubscriptionGroupVersionsCreateInstanceResponse =
+  SubscriptionGroupVersionsCreateInstanceResponses[keyof SubscriptionGroupVersionsCreateInstanceResponses];
+
+/** Request options for `GET /v1/subscriptionGroupVersions/{id}`. */
+export type SubscriptionGroupVersionsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroups
+     */
+    "fields[subscriptionGroups]"?: Array<
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupLocalizations
+     */
+    "fields[subscriptionGroupLocalizations]"?: Array<
+      "name" | "customAppName" | "locale" | "version"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscriptionGroup" | "localizations">;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/subscriptionGroupVersions/{id}";
+};
+
+/** Error status map for `GET /v1/subscriptionGroupVersions/{id}`. */
+export type SubscriptionGroupVersionsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionGroupVersions/{id}`. */
+export type SubscriptionGroupVersionsGetInstanceError =
+  SubscriptionGroupVersionsGetInstanceErrors[keyof SubscriptionGroupVersionsGetInstanceErrors];
+
+/** Response status map for `GET /v1/subscriptionGroupVersions/{id}`. */
+export type SubscriptionGroupVersionsGetInstanceResponses = {
+  /**
+   * Single SubscriptionGroupVersion
+   */
+  200: SubscriptionGroupVersionResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionGroupVersions/{id}`. */
+export type SubscriptionGroupVersionsGetInstanceResponse =
+  SubscriptionGroupVersionsGetInstanceResponses[keyof SubscriptionGroupVersionsGetInstanceResponses];
+
 /** Request options for `POST /v1/subscriptionGroups`. */
 export type SubscriptionGroupsCreateInstanceData = {
   /**
@@ -56303,7 +58118,10 @@ export type SubscriptionGroupsGetInstanceData = {
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -56329,6 +58147,7 @@ export type SubscriptionGroupsGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -56337,9 +58156,17 @@ export type SubscriptionGroupsGetInstanceData = {
       "name" | "customAppName" | "locale" | "state" | "subscriptionGroup"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
-    include?: Array<"subscriptions" | "subscriptionGroupLocalizations">;
+    include?: Array<
+      "subscriptions" | "subscriptionGroupLocalizations" | "versions"
+    >;
     /**
      * maximum number of related subscriptionGroupLocalizations returned (when they are included)
      */
@@ -56348,6 +58175,10 @@ export type SubscriptionGroupsGetInstanceData = {
      * maximum number of related subscriptions returned (when they are included)
      */
     "limit[subscriptions]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
   };
   url: "/v1/subscriptionGroups/{id}";
 };
@@ -56611,6 +58442,7 @@ export type SubscriptionImagesGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -56723,6 +58555,243 @@ export type SubscriptionImagesUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/subscriptionImages/{id}`. */
 export type SubscriptionImagesUpdateInstanceResponse =
   SubscriptionImagesUpdateInstanceResponses[keyof SubscriptionImagesUpdateInstanceResponses];
+
+/** Request options for `POST /v2/subscriptionImages`. */
+export type SubscriptionImagesV2CreateInstanceData = {
+  /**
+   * SubscriptionImage representation
+   */
+  body: SubscriptionImageV2CreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v2/subscriptionImages";
+};
+
+/** Error status map for `POST /v2/subscriptionImages`. */
+export type SubscriptionImagesV2CreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v2/subscriptionImages`. */
+export type SubscriptionImagesV2CreateInstanceError =
+  SubscriptionImagesV2CreateInstanceErrors[keyof SubscriptionImagesV2CreateInstanceErrors];
+
+/** Response status map for `POST /v2/subscriptionImages`. */
+export type SubscriptionImagesV2CreateInstanceResponses = {
+  /**
+   * Single SubscriptionImage
+   */
+  201: SubscriptionImageV2Response;
+};
+
+/** Successful response from `POST /v2/subscriptionImages`. */
+export type SubscriptionImagesV2CreateInstanceResponse =
+  SubscriptionImagesV2CreateInstanceResponses[keyof SubscriptionImagesV2CreateInstanceResponses];
+
+/** Request options for `DELETE /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2DeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionImages/{id}";
+};
+
+/** Error status map for `DELETE /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2DeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2DeleteInstanceError =
+  SubscriptionImagesV2DeleteInstanceErrors[keyof SubscriptionImagesV2DeleteInstanceErrors];
+
+/** Response status map for `DELETE /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2DeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2DeleteInstanceResponse =
+  SubscriptionImagesV2DeleteInstanceResponses[keyof SubscriptionImagesV2DeleteInstanceResponses];
+
+/** Request options for `GET /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2GetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+  };
+  url: "/v2/subscriptionImages/{id}";
+};
+
+/** Error status map for `GET /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2GetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2GetInstanceError =
+  SubscriptionImagesV2GetInstanceErrors[keyof SubscriptionImagesV2GetInstanceErrors];
+
+/** Response status map for `GET /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2GetInstanceResponses = {
+  /**
+   * Single SubscriptionImage
+   */
+  200: SubscriptionImageV2Response;
+};
+
+/** Successful response from `GET /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2GetInstanceResponse =
+  SubscriptionImagesV2GetInstanceResponses[keyof SubscriptionImagesV2GetInstanceResponses];
+
+/** Request options for `PATCH /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2UpdateInstanceData = {
+  /**
+   * SubscriptionImage representation
+   */
+  body: SubscriptionImageV2UpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionImages/{id}";
+};
+
+/** Error status map for `PATCH /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2UpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2UpdateInstanceError =
+  SubscriptionImagesV2UpdateInstanceErrors[keyof SubscriptionImagesV2UpdateInstanceErrors];
+
+/** Response status map for `PATCH /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2UpdateInstanceResponses = {
+  /**
+   * Single SubscriptionImage
+   */
+  200: SubscriptionImageV2Response;
+};
+
+/** Successful response from `PATCH /v2/subscriptionImages/{id}`. */
+export type SubscriptionImagesV2UpdateInstanceResponse =
+  SubscriptionImagesV2UpdateInstanceResponses[keyof SubscriptionImagesV2UpdateInstanceResponses];
 
 /** Request options for `POST /v1/subscriptionIntroductoryOffers`. */
 export type SubscriptionIntroductoryOffersCreateInstanceData = {
@@ -56896,6 +58965,253 @@ export type SubscriptionIntroductoryOffersUpdateInstanceResponses = {
 export type SubscriptionIntroductoryOffersUpdateInstanceResponse =
   SubscriptionIntroductoryOffersUpdateInstanceResponses[keyof SubscriptionIntroductoryOffersUpdateInstanceResponses];
 
+/** Request options for `POST /v2/subscriptionLocalizations`. */
+export type SubscriptionLocalizationsV2CreateInstanceData = {
+  /**
+   * SubscriptionLocalization representation
+   */
+  body: SubscriptionLocalizationV2CreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v2/subscriptionLocalizations";
+};
+
+/** Error status map for `POST /v2/subscriptionLocalizations`. */
+export type SubscriptionLocalizationsV2CreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v2/subscriptionLocalizations`. */
+export type SubscriptionLocalizationsV2CreateInstanceError =
+  SubscriptionLocalizationsV2CreateInstanceErrors[keyof SubscriptionLocalizationsV2CreateInstanceErrors];
+
+/** Response status map for `POST /v2/subscriptionLocalizations`. */
+export type SubscriptionLocalizationsV2CreateInstanceResponses = {
+  /**
+   * Single SubscriptionLocalization
+   */
+  201: SubscriptionLocalizationV2Response;
+};
+
+/** Successful response from `POST /v2/subscriptionLocalizations`. */
+export type SubscriptionLocalizationsV2CreateInstanceResponse =
+  SubscriptionLocalizationsV2CreateInstanceResponses[keyof SubscriptionLocalizationsV2CreateInstanceResponses];
+
+/** Request options for `DELETE /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2DeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionLocalizations/{id}";
+};
+
+/** Error status map for `DELETE /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2DeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2DeleteInstanceError =
+  SubscriptionLocalizationsV2DeleteInstanceErrors[keyof SubscriptionLocalizationsV2DeleteInstanceErrors];
+
+/** Response status map for `DELETE /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2DeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2DeleteInstanceResponse =
+  SubscriptionLocalizationsV2DeleteInstanceResponses[keyof SubscriptionLocalizationsV2DeleteInstanceResponses];
+
+/** Request options for `GET /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2GetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionLocalizations
+     */
+    "fields[subscriptionLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v2/subscriptionLocalizations/{id}";
+};
+
+/** Error status map for `GET /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2GetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2GetInstanceError =
+  SubscriptionLocalizationsV2GetInstanceErrors[keyof SubscriptionLocalizationsV2GetInstanceErrors];
+
+/** Response status map for `GET /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2GetInstanceResponses = {
+  /**
+   * Single SubscriptionLocalization
+   */
+  200: SubscriptionLocalizationV2Response;
+};
+
+/** Successful response from `GET /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2GetInstanceResponse =
+  SubscriptionLocalizationsV2GetInstanceResponses[keyof SubscriptionLocalizationsV2GetInstanceResponses];
+
+/** Request options for `PATCH /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2UpdateInstanceData = {
+  /**
+   * SubscriptionLocalization representation
+   */
+  body: SubscriptionLocalizationV2UpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v2/subscriptionLocalizations/{id}";
+};
+
+/** Error status map for `PATCH /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2UpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2UpdateInstanceError =
+  SubscriptionLocalizationsV2UpdateInstanceErrors[keyof SubscriptionLocalizationsV2UpdateInstanceErrors];
+
+/** Response status map for `PATCH /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2UpdateInstanceResponses = {
+  /**
+   * Single SubscriptionLocalization
+   */
+  200: SubscriptionLocalizationV2Response;
+};
+
+/** Successful response from `PATCH /v2/subscriptionLocalizations/{id}`. */
+export type SubscriptionLocalizationsV2UpdateInstanceResponse =
+  SubscriptionLocalizationsV2UpdateInstanceResponses[keyof SubscriptionLocalizationsV2UpdateInstanceResponses];
+
 /** Request options for `POST /v1/subscriptionLocalizations`. */
 export type SubscriptionLocalizationsCreateInstanceData = {
   /**
@@ -57044,6 +59360,7 @@ export type SubscriptionLocalizationsGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -57686,6 +60003,7 @@ export type SubscriptionOfferCodesGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -58052,6 +60370,7 @@ export type SubscriptionPricePointsGetInstanceData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -58368,6 +60687,7 @@ export type SubscriptionPromotionalOffersGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -58546,6 +60866,181 @@ export type SubscriptionSubmissionsCreateInstanceResponses = {
 export type SubscriptionSubmissionsCreateInstanceResponse =
   SubscriptionSubmissionsCreateInstanceResponses[keyof SubscriptionSubmissionsCreateInstanceResponses];
 
+/** Request options for `POST /v1/subscriptionVersions`. */
+export type SubscriptionVersionsCreateInstanceData = {
+  /**
+   * SubscriptionVersion representation
+   */
+  body: SubscriptionVersionCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/subscriptionVersions";
+};
+
+/** Error status map for `POST /v1/subscriptionVersions`. */
+export type SubscriptionVersionsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/subscriptionVersions`. */
+export type SubscriptionVersionsCreateInstanceError =
+  SubscriptionVersionsCreateInstanceErrors[keyof SubscriptionVersionsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/subscriptionVersions`. */
+export type SubscriptionVersionsCreateInstanceResponses = {
+  /**
+   * Single SubscriptionVersion
+   */
+  201: SubscriptionVersionResponse;
+};
+
+/** Successful response from `POST /v1/subscriptionVersions`. */
+export type SubscriptionVersionsCreateInstanceResponse =
+  SubscriptionVersionsCreateInstanceResponses[keyof SubscriptionVersionsCreateInstanceResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}`. */
+export type SubscriptionVersionsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionLocalizations
+     */
+    "fields[subscriptionLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscription" | "image" | "images" | "localizations">;
+    /**
+     * maximum number of related images returned (when they are included)
+     */
+    "limit[images]"?: number;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/subscriptionVersions/{id}";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}`. */
+export type SubscriptionVersionsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}`. */
+export type SubscriptionVersionsGetInstanceError =
+  SubscriptionVersionsGetInstanceErrors[keyof SubscriptionVersionsGetInstanceErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}`. */
+export type SubscriptionVersionsGetInstanceResponses = {
+  /**
+   * Single SubscriptionVersion
+   */
+  200: SubscriptionVersionResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}`. */
+export type SubscriptionVersionsGetInstanceResponse =
+  SubscriptionVersionsGetInstanceResponses[keyof SubscriptionVersionsGetInstanceResponses];
+
 /** Request options for `POST /v1/subscriptions`. */
 export type SubscriptionsCreateInstanceData = {
   /**
@@ -58688,6 +61183,7 @@ export type SubscriptionsGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -58713,7 +61209,10 @@ export type SubscriptionsGetInstanceData = {
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionIntroductoryOffers
@@ -58830,6 +61329,17 @@ export type SubscriptionsGetInstanceData = {
       "availableInNewTerritories" | "planType" | "availableTerritories"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -58845,6 +61355,7 @@ export type SubscriptionsGetInstanceData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * maximum number of related images returned (when they are included)
@@ -58874,6 +61385,10 @@ export type SubscriptionsGetInstanceData = {
      * maximum number of related subscriptionLocalizations returned (when they are included)
      */
     "limit[subscriptionLocalizations]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
     /**
      * maximum number of related winBackOffers returned (when they are included)
      */
@@ -64792,6 +67307,8 @@ export type AppInfosAgeRatingDeclarationGetToOneRelatedData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "socialMedia"
+      | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
       | "matureOrSuggestiveThemes"
       | "unrestrictedWebAccess"
@@ -64944,6 +67461,7 @@ export type AppInfosAppInfoLocalizationsGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -72329,6 +74847,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -72420,6 +74939,8 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "socialMedia"
+      | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
       | "matureOrSuggestiveThemes"
       | "unrestrictedWebAccess"
@@ -76734,6 +79255,7 @@ export type AppsInAppPurchasesV2GetToManyRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type inAppPurchaseLocalizations
@@ -76810,6 +79332,17 @@ export type AppsInAppPurchasesV2GetToManyRelatedData = {
       | "prices"
     >;
     /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -76825,6 +79358,7 @@ export type AppsInAppPurchasesV2GetToManyRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * maximum number of related inAppPurchaseLocalizations returned (when they are included)
@@ -76838,6 +79372,10 @@ export type AppsInAppPurchasesV2GetToManyRelatedData = {
      * maximum number of related offerCodes returned (when they are included)
      */
     "limit[offerCodes]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
   };
   url: "/v1/apps/{id}/inAppPurchasesV2";
 };
@@ -77352,6 +79890,7 @@ export type AppsPromotedPurchasesGetToManyRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -77377,6 +79916,7 @@ export type AppsPromotedPurchasesGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * maximum resources per page
@@ -77603,6 +80143,9 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "gameCenterChallengeVersion"
       | "gameCenterLeaderboardSetVersion"
       | "gameCenterLeaderboardVersion"
+      | "inAppPurchaseVersion"
+      | "subscriptionVersion"
+      | "subscriptionGroupVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -78037,7 +80580,10 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -78063,6 +80609,7 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -78071,13 +80618,21 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
       "name" | "customAppName" | "locale" | "state" | "subscriptionGroup"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
     /**
      * comma-separated list of relationships to include
      */
-    include?: Array<"subscriptions" | "subscriptionGroupLocalizations">;
+    include?: Array<
+      "subscriptions" | "subscriptionGroupLocalizations" | "versions"
+    >;
     /**
      * maximum number of related subscriptions returned (when they are included)
      */
@@ -78086,6 +80641,10 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
      * maximum number of related subscriptionGroupLocalizations returned (when they are included)
      */
     "limit[subscriptionGroupLocalizations]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
   };
   url: "/v1/apps/{id}/subscriptionGroups";
 };
@@ -86596,6 +89155,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
+      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -86644,12 +89204,16 @@ export type CiProductsAppGetToOneRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
@@ -97876,6 +100440,388 @@ export type InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponses = {
 export type InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponse =
   InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponses[keyof InAppPurchasePriceSchedulesManualPricesGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/relationships/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/inAppPurchaseVersions/{id}/relationships/image";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/relationships/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelationshipError =
+  InAppPurchaseVersionsImageGetToOneRelationshipErrors[keyof InAppPurchaseVersionsImageGetToOneRelationshipErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelationshipResponses = {
+  /**
+   * Related linkage
+   */
+  200: InAppPurchaseVersionImageLinkageResponse;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/relationships/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelationshipResponse =
+  InAppPurchaseVersionsImageGetToOneRelationshipResponses[keyof InAppPurchaseVersionsImageGetToOneRelationshipResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseImages
+     */
+    "fields[inAppPurchaseImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}/image";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelatedError =
+  InAppPurchaseVersionsImageGetToOneRelatedErrors[keyof InAppPurchaseVersionsImageGetToOneRelatedErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelatedResponses = {
+  /**
+   * Single InAppPurchaseImage
+   */
+  200: InAppPurchaseImageV2Response;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/image`. */
+export type InAppPurchaseVersionsImageGetToOneRelatedResponse =
+  InAppPurchaseVersionsImageGetToOneRelatedResponses[keyof InAppPurchaseVersionsImageGetToOneRelatedResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/relationships/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}/relationships/images";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/relationships/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelationshipError =
+  InAppPurchaseVersionsImagesGetToManyRelationshipErrors[keyof InAppPurchaseVersionsImagesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: InAppPurchaseVersionImagesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/relationships/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelationshipResponse =
+  InAppPurchaseVersionsImagesGetToManyRelationshipResponses[keyof InAppPurchaseVersionsImagesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseImages
+     */
+    "fields[inAppPurchaseImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}/images";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelatedError =
+  InAppPurchaseVersionsImagesGetToManyRelatedErrors[keyof InAppPurchaseVersionsImagesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelatedResponses = {
+  /**
+   * List of InAppPurchaseImages
+   */
+  200: InAppPurchaseImagesV2Response;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/images`. */
+export type InAppPurchaseVersionsImagesGetToManyRelatedResponse =
+  InAppPurchaseVersionsImagesGetToManyRelatedResponses[keyof InAppPurchaseVersionsImagesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}/relationships/localizations";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelationshipError =
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors[keyof InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: InAppPurchaseVersionLocalizationsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponse =
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses[keyof InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/inAppPurchaseVersions/{id}/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type inAppPurchaseLocalizations
+     */
+    "fields[inAppPurchaseLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v1/inAppPurchaseVersions/{id}/localizations";
+};
+
+/** Error status map for `GET /v1/inAppPurchaseVersions/{id}/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/inAppPurchaseVersions/{id}/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelatedError =
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors[keyof InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/inAppPurchaseVersions/{id}/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses = {
+  /**
+   * List of InAppPurchaseLocalizations
+   */
+  200: InAppPurchaseLocalizationsV2Response;
+};
+
+/** Successful response from `GET /v1/inAppPurchaseVersions/{id}/localizations`. */
+export type InAppPurchaseVersionsLocalizationsGetToManyRelatedResponse =
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses[keyof InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses];
+
 /** Request options for `GET /v2/inAppPurchases/{id}/relationships/appStoreReviewScreenshot`. */
 export type InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationshipData = {
   body?: never;
@@ -97975,6 +100921,7 @@ export type InAppPurchasesV2AppStoreReviewScreenshotGetToOneRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -98113,6 +101060,7 @@ export type InAppPurchasesV2ContentGetToOneRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -98402,6 +101350,7 @@ export type InAppPurchasesV2ImagesGetToManyRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * maximum resources per page
@@ -98681,6 +101630,7 @@ export type InAppPurchasesV2InAppPurchaseLocalizationsGetToManyRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * maximum resources per page
@@ -99140,6 +102090,7 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -99165,6 +102116,7 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -99213,6 +102165,198 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponses = {
 /** Successful response from `GET /v2/inAppPurchases/{id}/promotedPurchase`. */
 export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponse =
   InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponses[keyof InAppPurchasesV2PromotedPurchaseGetToOneRelatedResponses];
+
+/** Request options for `GET /v2/inAppPurchases/{id}/relationships/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v2/inAppPurchases/{id}/relationships/versions";
+};
+
+/** Error status map for `GET /v2/inAppPurchases/{id}/relationships/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/inAppPurchases/{id}/relationships/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelationshipError =
+  InAppPurchasesV2VersionsGetToManyRelationshipErrors[keyof InAppPurchasesV2VersionsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v2/inAppPurchases/{id}/relationships/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: InAppPurchaseV2VersionsLinkagesResponse;
+};
+
+/** Successful response from `GET /v2/inAppPurchases/{id}/relationships/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelationshipResponse =
+  InAppPurchasesV2VersionsGetToManyRelationshipResponses[keyof InAppPurchasesV2VersionsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v2/inAppPurchases/{id}/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchases
+     */
+    "fields[inAppPurchases]"?: Array<
+      | "name"
+      | "productId"
+      | "inAppPurchaseType"
+      | "state"
+      | "reviewNote"
+      | "familySharable"
+      | "contentHosting"
+      | "inAppPurchaseLocalizations"
+      | "pricePoints"
+      | "content"
+      | "appStoreReviewScreenshot"
+      | "promotedPurchase"
+      | "iapPriceSchedule"
+      | "inAppPurchaseAvailability"
+      | "images"
+      | "offerCodes"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseImages
+     */
+    "fields[inAppPurchaseImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * the fields to include for returned resources of type inAppPurchaseLocalizations
+     */
+    "fields[inAppPurchaseLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"inAppPurchase" | "image" | "images" | "localizations">;
+    /**
+     * maximum number of related images returned (when they are included)
+     */
+    "limit[images]"?: number;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v2/inAppPurchases/{id}/versions";
+};
+
+/** Error status map for `GET /v2/inAppPurchases/{id}/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v2/inAppPurchases/{id}/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelatedError =
+  InAppPurchasesV2VersionsGetToManyRelatedErrors[keyof InAppPurchasesV2VersionsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v2/inAppPurchases/{id}/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelatedResponses = {
+  /**
+   * List of InAppPurchaseVersions
+   */
+  200: InAppPurchaseVersionsResponse;
+};
+
+/** Successful response from `GET /v2/inAppPurchases/{id}/versions`. */
+export type InAppPurchasesV2VersionsGetToManyRelatedResponse =
+  InAppPurchasesV2VersionsGetToManyRelatedResponses[keyof InAppPurchasesV2VersionsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/merchantIds/{id}/relationships/certificates`. */
 export type MerchantIdsCertificatesGetToManyRelationshipData = {
@@ -100361,6 +103505,9 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "gameCenterChallengeVersion"
       | "gameCenterLeaderboardSetVersion"
       | "gameCenterLeaderboardVersion"
+      | "inAppPurchaseVersion"
+      | "subscriptionVersion"
+      | "subscriptionGroupVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -100494,6 +103641,34 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       "version" | "state" | "leaderboard" | "localizations"
     >;
     /**
+     * the fields to include for returned resources of type inAppPurchaseVersions
+     */
+    "fields[inAppPurchaseVersions]"?: Array<
+      | "version"
+      | "state"
+      | "inAppPurchase"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -100512,6 +103687,9 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "gameCenterChallengeVersion"
       | "gameCenterLeaderboardSetVersion"
       | "gameCenterLeaderboardVersion"
+      | "inAppPurchaseVersion"
+      | "subscriptionVersion"
+      | "subscriptionGroupVersion"
     >;
   };
   url: "/v1/reviewSubmissions/{id}/items";
@@ -100996,6 +104174,140 @@ export type ScmRepositoriesPullRequestsGetToManyRelatedResponses = {
 export type ScmRepositoriesPullRequestsGetToManyRelatedResponse =
   ScmRepositoriesPullRequestsGetToManyRelatedResponses[keyof ScmRepositoriesPullRequestsGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionGroupVersions/{id}/relationships/localizations";
+};
+
+/** Error status map for `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelationshipError =
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors[keyof SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: SubscriptionGroupVersionLocalizationsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponse =
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses[keyof SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionGroupVersions/{id}/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionGroupLocalizations
+     */
+    "fields[subscriptionGroupLocalizations]"?: Array<
+      "name" | "customAppName" | "locale" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v1/subscriptionGroupVersions/{id}/localizations";
+};
+
+/** Error status map for `GET /v1/subscriptionGroupVersions/{id}/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionGroupVersions/{id}/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelatedError =
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors[keyof SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionGroupVersions/{id}/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionGroupLocalizations
+   */
+  200: SubscriptionGroupLocalizationsV2Response;
+};
+
+/** Successful response from `GET /v1/subscriptionGroupVersions/{id}/localizations`. */
+export type SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponse =
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses[keyof SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses];
+
 /** Request options for `GET /v1/subscriptionGroups/{id}/relationships/subscriptionGroupLocalizations`. */
 export type SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationshipData =
   {
@@ -101078,7 +104390,10 @@ export type SubscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelatedData
        * the fields to include for returned resources of type subscriptionGroups
        */
       "fields[subscriptionGroups]"?: Array<
-        "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+        | "referenceName"
+        | "subscriptions"
+        | "subscriptionGroupLocalizations"
+        | "versions"
       >;
       /**
        * maximum resources per page
@@ -101253,6 +104568,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -101278,7 +104594,10 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
      * the fields to include for returned resources of type subscriptionGroups
      */
     "fields[subscriptionGroups]"?: Array<
-      "referenceName" | "subscriptions" | "subscriptionGroupLocalizations"
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionIntroductoryOffers
@@ -101393,6 +104712,17 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       "availableInNewTerritories" | "planType" | "availableTerritories"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -101412,6 +104742,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * maximum number of related subscriptionLocalizations returned (when they are included)
@@ -101445,6 +104776,10 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
      * maximum number of related planAvailabilities returned (when they are included)
      */
     "limit[planAvailabilities]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
   };
   url: "/v1/subscriptionGroups/{id}/subscriptions";
 };
@@ -101488,6 +104823,165 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptionGroups/{id}/subscriptions`. */
 export type SubscriptionGroupsSubscriptionsGetToManyRelatedResponse =
   SubscriptionGroupsSubscriptionsGetToManyRelatedResponses[keyof SubscriptionGroupsSubscriptionsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionGroups/{id}/relationships/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionGroups/{id}/relationships/versions";
+};
+
+/** Error status map for `GET /v1/subscriptionGroups/{id}/relationships/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionGroups/{id}/relationships/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelationshipError =
+  SubscriptionGroupsVersionsGetToManyRelationshipErrors[keyof SubscriptionGroupsVersionsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionGroups/{id}/relationships/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionGroupVersionsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionGroups/{id}/relationships/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelationshipResponse =
+  SubscriptionGroupsVersionsGetToManyRelationshipResponses[keyof SubscriptionGroupsVersionsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionGroups/{id}/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupVersions
+     */
+    "fields[subscriptionGroupVersions]"?: Array<
+      "version" | "state" | "subscriptionGroup" | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroups
+     */
+    "fields[subscriptionGroups]"?: Array<
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroupLocalizations
+     */
+    "fields[subscriptionGroupLocalizations]"?: Array<
+      "name" | "customAppName" | "locale" | "version"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscriptionGroup" | "localizations">;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/subscriptionGroups/{id}/versions";
+};
+
+/** Error status map for `GET /v1/subscriptionGroups/{id}/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionGroups/{id}/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelatedError =
+  SubscriptionGroupsVersionsGetToManyRelatedErrors[keyof SubscriptionGroupsVersionsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionGroups/{id}/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionGroupVersions
+   */
+  200: SubscriptionGroupVersionsResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionGroups/{id}/versions`. */
+export type SubscriptionGroupsVersionsGetToManyRelatedResponse =
+  SubscriptionGroupsVersionsGetToManyRelatedResponses[keyof SubscriptionGroupsVersionsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptionOfferCodeOneTimeUseCodes/{id}/values`. */
 export type SubscriptionOfferCodeOneTimeUseCodesValuesGetToOneRelatedData = {
@@ -101940,6 +105434,7 @@ export type SubscriptionOfferCodesPricesGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * maximum resources per page
@@ -102186,6 +105681,101 @@ export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedRe
 export type SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponse =
   SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses[keyof SubscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations`. */
+export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by id(s) of related 'territory'
+     */
+    "filter[territory]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'subscription'
+     */
+    "filter[subscription]"?: Array<string>;
+    /**
+     * filter by upfrontPricePointId
+     */
+    "filter[upfrontPricePointId]"?: Array<string>;
+    /**
+     * filter by planType
+     */
+    "filter[planType]"?: Array<string>;
+    /**
+     * the fields to include for returned resources of type subscriptionPricePoints
+     */
+    "fields[subscriptionPricePoints]"?: Array<
+      | "customerPrice"
+      | "proceeds"
+      | "proceedsYear2"
+      | "territory"
+      | "equalizations"
+      | "adjustedEqualizations"
+    >;
+    /**
+     * the fields to include for returned resources of type territories
+     */
+    "fields[territories]"?: Array<"currency">;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"territory">;
+  };
+  url: "/v1/subscriptionPricePoints/{id}/adjustedEqualizations";
+};
+
+/** Error status map for `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations`. */
+export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations`. */
+export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedError =
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors[keyof SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations`. */
+export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses =
+  {
+    /**
+     * List of SubscriptionPricePoints
+     */
+    200: SubscriptionPricePointsResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations`. */
+export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponse =
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses[keyof SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses];
+
 /** Request options for `GET /v1/subscriptionPricePoints/{id}/relationships/equalizations`. */
 export type SubscriptionPricePointsEqualizationsGetToManyRelationshipData = {
   body?: never;
@@ -102264,6 +105854,14 @@ export type SubscriptionPricePointsEqualizationsGetToManyRelatedData = {
      */
     "filter[subscription]"?: Array<string>;
     /**
+     * filter by upfrontPricePointId
+     */
+    "filter[upfrontPricePointId]"?: Array<string>;
+    /**
+     * filter by planType
+     */
+    "filter[planType]"?: Array<string>;
+    /**
      * the fields to include for returned resources of type subscriptionPricePoints
      */
     "fields[subscriptionPricePoints]"?: Array<
@@ -102272,6 +105870,7 @@ export type SubscriptionPricePointsEqualizationsGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -102421,6 +106020,7 @@ export type SubscriptionPromotionalOffersPricesGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * maximum resources per page
@@ -102473,6 +106073,388 @@ export type SubscriptionPromotionalOffersPricesGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptionPromotionalOffers/{id}/prices`. */
 export type SubscriptionPromotionalOffersPricesGetToManyRelatedResponse =
   SubscriptionPromotionalOffersPricesGetToManyRelatedResponses[keyof SubscriptionPromotionalOffersPricesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/relationships/image`. */
+export type SubscriptionVersionsImageGetToOneRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptionVersions/{id}/relationships/image";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/relationships/image`. */
+export type SubscriptionVersionsImageGetToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/relationships/image`. */
+export type SubscriptionVersionsImageGetToOneRelationshipError =
+  SubscriptionVersionsImageGetToOneRelationshipErrors[keyof SubscriptionVersionsImageGetToOneRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/relationships/image`. */
+export type SubscriptionVersionsImageGetToOneRelationshipResponses = {
+  /**
+   * Related linkage
+   */
+  200: SubscriptionVersionImageLinkageResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/relationships/image`. */
+export type SubscriptionVersionsImageGetToOneRelationshipResponse =
+  SubscriptionVersionsImageGetToOneRelationshipResponses[keyof SubscriptionVersionsImageGetToOneRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/image`. */
+export type SubscriptionVersionsImageGetToOneRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+  };
+  url: "/v1/subscriptionVersions/{id}/image";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/image`. */
+export type SubscriptionVersionsImageGetToOneRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/image`. */
+export type SubscriptionVersionsImageGetToOneRelatedError =
+  SubscriptionVersionsImageGetToOneRelatedErrors[keyof SubscriptionVersionsImageGetToOneRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/image`. */
+export type SubscriptionVersionsImageGetToOneRelatedResponses = {
+  /**
+   * Single SubscriptionImage
+   */
+  200: SubscriptionImageV2Response;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/image`. */
+export type SubscriptionVersionsImageGetToOneRelatedResponse =
+  SubscriptionVersionsImageGetToOneRelatedResponses[keyof SubscriptionVersionsImageGetToOneRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/relationships/images`. */
+export type SubscriptionVersionsImagesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionVersions/{id}/relationships/images";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/relationships/images`. */
+export type SubscriptionVersionsImagesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/relationships/images`. */
+export type SubscriptionVersionsImagesGetToManyRelationshipError =
+  SubscriptionVersionsImagesGetToManyRelationshipErrors[keyof SubscriptionVersionsImagesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/relationships/images`. */
+export type SubscriptionVersionsImagesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionVersionImagesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/relationships/images`. */
+export type SubscriptionVersionsImagesGetToManyRelationshipResponse =
+  SubscriptionVersionsImagesGetToManyRelationshipResponses[keyof SubscriptionVersionsImagesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/images`. */
+export type SubscriptionVersionsImagesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionVersions/{id}/images";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/images`. */
+export type SubscriptionVersionsImagesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/images`. */
+export type SubscriptionVersionsImagesGetToManyRelatedError =
+  SubscriptionVersionsImagesGetToManyRelatedErrors[keyof SubscriptionVersionsImagesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/images`. */
+export type SubscriptionVersionsImagesGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionImages
+   */
+  200: SubscriptionImagesV2Response;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/images`. */
+export type SubscriptionVersionsImagesGetToManyRelatedResponse =
+  SubscriptionVersionsImagesGetToManyRelatedResponses[keyof SubscriptionVersionsImagesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/relationships/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionVersions/{id}/relationships/localizations";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/relationships/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/relationships/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelationshipError =
+  SubscriptionVersionsLocalizationsGetToManyRelationshipErrors[keyof SubscriptionVersionsLocalizationsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/relationships/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionVersionLocalizationsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/relationships/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelationshipResponse =
+  SubscriptionVersionsLocalizationsGetToManyRelationshipResponses[keyof SubscriptionVersionsLocalizationsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionVersions/{id}/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionLocalizations
+     */
+    "fields[subscriptionLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"version">;
+  };
+  url: "/v1/subscriptionVersions/{id}/localizations";
+};
+
+/** Error status map for `GET /v1/subscriptionVersions/{id}/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionVersions/{id}/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelatedError =
+  SubscriptionVersionsLocalizationsGetToManyRelatedErrors[keyof SubscriptionVersionsLocalizationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionVersions/{id}/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionLocalizations
+   */
+  200: SubscriptionLocalizationsV2Response;
+};
+
+/** Successful response from `GET /v1/subscriptionVersions/{id}/localizations`. */
+export type SubscriptionVersionsLocalizationsGetToManyRelatedResponse =
+  SubscriptionVersionsLocalizationsGetToManyRelatedResponses[keyof SubscriptionVersionsLocalizationsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptions/{id}/relationships/appStoreReviewScreenshot`. */
 export type SubscriptionsAppStoreReviewScreenshotGetToOneRelationshipData = {
@@ -102576,6 +106558,7 @@ export type SubscriptionsAppStoreReviewScreenshotGetToOneRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -102730,6 +106713,7 @@ export type SubscriptionsImagesGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * maximum resources per page
@@ -102957,6 +106941,7 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -102971,6 +106956,7 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * maximum resources per page
@@ -103141,6 +107127,7 @@ export type SubscriptionsOfferCodesGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -103444,6 +107431,14 @@ export type SubscriptionsPricePointsGetToManyRelatedData = {
      */
     "filter[territory]"?: Array<string>;
     /**
+     * filter by upfrontPricePointId
+     */
+    "filter[upfrontPricePointId]"?: Array<string>;
+    /**
+     * filter by planType
+     */
+    "filter[planType]"?: Array<string>;
+    /**
      * the fields to include for returned resources of type subscriptionPricePoints
      */
     "fields[subscriptionPricePoints]"?: Array<
@@ -103452,6 +107447,7 @@ export type SubscriptionsPricePointsGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -103676,6 +107672,7 @@ export type SubscriptionsPricesGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * maximum resources per page
@@ -103822,6 +107819,7 @@ export type SubscriptionsPromotedPurchaseGetToOneRelatedData = {
       | "inAppPurchaseAvailability"
       | "images"
       | "offerCodes"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptions
@@ -103847,6 +107845,7 @@ export type SubscriptionsPromotedPurchaseGetToOneRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * comma-separated list of relationships to include
@@ -104005,6 +108004,7 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -104168,6 +108168,7 @@ export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedData = {
       | "winBackOffers"
       | "images"
       | "planAvailabilities"
+      | "versions"
     >;
     /**
      * maximum resources per page
@@ -104220,6 +108221,202 @@ export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptions/{id}/subscriptionLocalizations`. */
 export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponse =
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses[keyof SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/relationships/versions`. */
+export type SubscriptionsVersionsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptions/{id}/relationships/versions";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/relationships/versions`. */
+export type SubscriptionsVersionsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/relationships/versions`. */
+export type SubscriptionsVersionsGetToManyRelationshipError =
+  SubscriptionsVersionsGetToManyRelationshipErrors[keyof SubscriptionsVersionsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/relationships/versions`. */
+export type SubscriptionsVersionsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionVersionsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/relationships/versions`. */
+export type SubscriptionsVersionsGetToManyRelationshipResponse =
+  SubscriptionsVersionsGetToManyRelationshipResponses[keyof SubscriptionsVersionsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/versions`. */
+export type SubscriptionsVersionsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REPLACED_WITH_NEW_VERSION"
+      | "REJECTED"
+      | "DEVELOPER_REJECTED"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "assetDeliveryState"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionLocalizations
+     */
+    "fields[subscriptionLocalizations]"?: Array<
+      "name" | "locale" | "description" | "version"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscription" | "image" | "images" | "localizations">;
+    /**
+     * maximum number of related images returned (when they are included)
+     */
+    "limit[images]"?: number;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/subscriptions/{id}/versions";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/versions`. */
+export type SubscriptionsVersionsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/versions`. */
+export type SubscriptionsVersionsGetToManyRelatedError =
+  SubscriptionsVersionsGetToManyRelatedErrors[keyof SubscriptionsVersionsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/versions`. */
+export type SubscriptionsVersionsGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionVersions
+   */
+  200: SubscriptionVersionsResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/versions`. */
+export type SubscriptionsVersionsGetToManyRelatedResponse =
+  SubscriptionsVersionsGetToManyRelatedResponses[keyof SubscriptionsVersionsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptions/{id}/relationships/winBackOffers`. */
 export type SubscriptionsWinBackOffersGetToManyRelationshipData = {
@@ -105156,6 +109353,7 @@ export type WinBackOffersPricesGetToManyRelatedData = {
       | "proceedsYear2"
       | "territory"
       | "equalizations"
+      | "adjustedEqualizations"
     >;
     /**
      * maximum resources per page

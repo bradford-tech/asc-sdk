@@ -2702,6 +2702,18 @@ import type {
   InAppPurchaseImagesUpdateInstanceData,
   InAppPurchaseImagesUpdateInstanceErrors,
   InAppPurchaseImagesUpdateInstanceResponses,
+  InAppPurchaseImagesV2CreateInstanceData,
+  InAppPurchaseImagesV2CreateInstanceErrors,
+  InAppPurchaseImagesV2CreateInstanceResponses,
+  InAppPurchaseImagesV2DeleteInstanceData,
+  InAppPurchaseImagesV2DeleteInstanceErrors,
+  InAppPurchaseImagesV2DeleteInstanceResponses,
+  InAppPurchaseImagesV2GetInstanceData,
+  InAppPurchaseImagesV2GetInstanceErrors,
+  InAppPurchaseImagesV2GetInstanceResponses,
+  InAppPurchaseImagesV2UpdateInstanceData,
+  InAppPurchaseImagesV2UpdateInstanceErrors,
+  InAppPurchaseImagesV2UpdateInstanceResponses,
   InAppPurchaseLocalizationsCreateInstanceData,
   InAppPurchaseLocalizationsCreateInstanceErrors,
   InAppPurchaseLocalizationsCreateInstanceResponses,
@@ -2714,6 +2726,18 @@ import type {
   InAppPurchaseLocalizationsUpdateInstanceData,
   InAppPurchaseLocalizationsUpdateInstanceErrors,
   InAppPurchaseLocalizationsUpdateInstanceResponses,
+  InAppPurchaseLocalizationsV2CreateInstanceData,
+  InAppPurchaseLocalizationsV2CreateInstanceErrors,
+  InAppPurchaseLocalizationsV2CreateInstanceResponses,
+  InAppPurchaseLocalizationsV2DeleteInstanceData,
+  InAppPurchaseLocalizationsV2DeleteInstanceErrors,
+  InAppPurchaseLocalizationsV2DeleteInstanceResponses,
+  InAppPurchaseLocalizationsV2GetInstanceData,
+  InAppPurchaseLocalizationsV2GetInstanceErrors,
+  InAppPurchaseLocalizationsV2GetInstanceResponses,
+  InAppPurchaseLocalizationsV2UpdateInstanceData,
+  InAppPurchaseLocalizationsV2UpdateInstanceErrors,
+  InAppPurchaseLocalizationsV2UpdateInstanceResponses,
   InAppPurchaseOfferCodeCustomCodesCreateInstanceData,
   InAppPurchaseOfferCodeCustomCodesCreateInstanceErrors,
   InAppPurchaseOfferCodeCustomCodesCreateInstanceResponses,
@@ -2861,6 +2885,36 @@ import type {
   InAppPurchasesV2UpdateInstanceData,
   InAppPurchasesV2UpdateInstanceErrors,
   InAppPurchasesV2UpdateInstanceResponses,
+  InAppPurchasesV2VersionsGetToManyRelatedData,
+  InAppPurchasesV2VersionsGetToManyRelatedErrors,
+  InAppPurchasesV2VersionsGetToManyRelatedResponses,
+  InAppPurchasesV2VersionsGetToManyRelationshipData,
+  InAppPurchasesV2VersionsGetToManyRelationshipErrors,
+  InAppPurchasesV2VersionsGetToManyRelationshipResponses,
+  InAppPurchaseVersionsCreateInstanceData,
+  InAppPurchaseVersionsCreateInstanceErrors,
+  InAppPurchaseVersionsCreateInstanceResponses,
+  InAppPurchaseVersionsGetInstanceData,
+  InAppPurchaseVersionsGetInstanceErrors,
+  InAppPurchaseVersionsGetInstanceResponses,
+  InAppPurchaseVersionsImageGetToOneRelatedData,
+  InAppPurchaseVersionsImageGetToOneRelatedErrors,
+  InAppPurchaseVersionsImageGetToOneRelatedResponses,
+  InAppPurchaseVersionsImageGetToOneRelationshipData,
+  InAppPurchaseVersionsImageGetToOneRelationshipErrors,
+  InAppPurchaseVersionsImageGetToOneRelationshipResponses,
+  InAppPurchaseVersionsImagesGetToManyRelatedData,
+  InAppPurchaseVersionsImagesGetToManyRelatedErrors,
+  InAppPurchaseVersionsImagesGetToManyRelatedResponses,
+  InAppPurchaseVersionsImagesGetToManyRelationshipData,
+  InAppPurchaseVersionsImagesGetToManyRelationshipErrors,
+  InAppPurchaseVersionsImagesGetToManyRelationshipResponses,
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedData,
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors,
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses,
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipData,
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors,
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses,
   MarketplaceSearchDetailsCreateInstanceData,
   MarketplaceSearchDetailsCreateInstanceErrors,
   MarketplaceSearchDetailsCreateInstanceResponses,
@@ -3104,6 +3158,18 @@ import type {
   SubscriptionGroupLocalizationsUpdateInstanceData,
   SubscriptionGroupLocalizationsUpdateInstanceErrors,
   SubscriptionGroupLocalizationsUpdateInstanceResponses,
+  SubscriptionGroupLocalizationsV2CreateInstanceData,
+  SubscriptionGroupLocalizationsV2CreateInstanceErrors,
+  SubscriptionGroupLocalizationsV2CreateInstanceResponses,
+  SubscriptionGroupLocalizationsV2DeleteInstanceData,
+  SubscriptionGroupLocalizationsV2DeleteInstanceErrors,
+  SubscriptionGroupLocalizationsV2DeleteInstanceResponses,
+  SubscriptionGroupLocalizationsV2GetInstanceData,
+  SubscriptionGroupLocalizationsV2GetInstanceErrors,
+  SubscriptionGroupLocalizationsV2GetInstanceResponses,
+  SubscriptionGroupLocalizationsV2UpdateInstanceData,
+  SubscriptionGroupLocalizationsV2UpdateInstanceErrors,
+  SubscriptionGroupLocalizationsV2UpdateInstanceResponses,
   SubscriptionGroupsCreateInstanceData,
   SubscriptionGroupsCreateInstanceErrors,
   SubscriptionGroupsCreateInstanceResponses,
@@ -3131,6 +3197,24 @@ import type {
   SubscriptionGroupsUpdateInstanceData,
   SubscriptionGroupsUpdateInstanceErrors,
   SubscriptionGroupsUpdateInstanceResponses,
+  SubscriptionGroupsVersionsGetToManyRelatedData,
+  SubscriptionGroupsVersionsGetToManyRelatedErrors,
+  SubscriptionGroupsVersionsGetToManyRelatedResponses,
+  SubscriptionGroupsVersionsGetToManyRelationshipData,
+  SubscriptionGroupsVersionsGetToManyRelationshipErrors,
+  SubscriptionGroupsVersionsGetToManyRelationshipResponses,
+  SubscriptionGroupVersionsCreateInstanceData,
+  SubscriptionGroupVersionsCreateInstanceErrors,
+  SubscriptionGroupVersionsCreateInstanceResponses,
+  SubscriptionGroupVersionsGetInstanceData,
+  SubscriptionGroupVersionsGetInstanceErrors,
+  SubscriptionGroupVersionsGetInstanceResponses,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedData,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipData,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses,
   SubscriptionImagesCreateInstanceData,
   SubscriptionImagesCreateInstanceErrors,
   SubscriptionImagesCreateInstanceResponses,
@@ -3143,6 +3227,18 @@ import type {
   SubscriptionImagesUpdateInstanceData,
   SubscriptionImagesUpdateInstanceErrors,
   SubscriptionImagesUpdateInstanceResponses,
+  SubscriptionImagesV2CreateInstanceData,
+  SubscriptionImagesV2CreateInstanceErrors,
+  SubscriptionImagesV2CreateInstanceResponses,
+  SubscriptionImagesV2DeleteInstanceData,
+  SubscriptionImagesV2DeleteInstanceErrors,
+  SubscriptionImagesV2DeleteInstanceResponses,
+  SubscriptionImagesV2GetInstanceData,
+  SubscriptionImagesV2GetInstanceErrors,
+  SubscriptionImagesV2GetInstanceResponses,
+  SubscriptionImagesV2UpdateInstanceData,
+  SubscriptionImagesV2UpdateInstanceErrors,
+  SubscriptionImagesV2UpdateInstanceResponses,
   SubscriptionIntroductoryOffersCreateInstanceData,
   SubscriptionIntroductoryOffersCreateInstanceErrors,
   SubscriptionIntroductoryOffersCreateInstanceResponses,
@@ -3164,6 +3260,18 @@ import type {
   SubscriptionLocalizationsUpdateInstanceData,
   SubscriptionLocalizationsUpdateInstanceErrors,
   SubscriptionLocalizationsUpdateInstanceResponses,
+  SubscriptionLocalizationsV2CreateInstanceData,
+  SubscriptionLocalizationsV2CreateInstanceErrors,
+  SubscriptionLocalizationsV2CreateInstanceResponses,
+  SubscriptionLocalizationsV2DeleteInstanceData,
+  SubscriptionLocalizationsV2DeleteInstanceErrors,
+  SubscriptionLocalizationsV2DeleteInstanceResponses,
+  SubscriptionLocalizationsV2GetInstanceData,
+  SubscriptionLocalizationsV2GetInstanceErrors,
+  SubscriptionLocalizationsV2GetInstanceResponses,
+  SubscriptionLocalizationsV2UpdateInstanceData,
+  SubscriptionLocalizationsV2UpdateInstanceErrors,
+  SubscriptionLocalizationsV2UpdateInstanceResponses,
   SubscriptionOfferCodeCustomCodesCreateInstanceData,
   SubscriptionOfferCodeCustomCodesCreateInstanceErrors,
   SubscriptionOfferCodeCustomCodesCreateInstanceResponses,
@@ -3230,6 +3338,9 @@ import type {
   SubscriptionPlanAvailabilitiesUpdateInstanceData,
   SubscriptionPlanAvailabilitiesUpdateInstanceErrors,
   SubscriptionPlanAvailabilitiesUpdateInstanceResponses,
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData,
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors,
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses,
   SubscriptionPricePointsEqualizationsGetToManyRelatedData,
   SubscriptionPricePointsEqualizationsGetToManyRelatedErrors,
   SubscriptionPricePointsEqualizationsGetToManyRelatedResponses,
@@ -3344,12 +3455,42 @@ import type {
   SubscriptionsUpdateInstanceData,
   SubscriptionsUpdateInstanceErrors,
   SubscriptionsUpdateInstanceResponses,
+  SubscriptionsVersionsGetToManyRelatedData,
+  SubscriptionsVersionsGetToManyRelatedErrors,
+  SubscriptionsVersionsGetToManyRelatedResponses,
+  SubscriptionsVersionsGetToManyRelationshipData,
+  SubscriptionsVersionsGetToManyRelationshipErrors,
+  SubscriptionsVersionsGetToManyRelationshipResponses,
   SubscriptionsWinBackOffersGetToManyRelatedData,
   SubscriptionsWinBackOffersGetToManyRelatedErrors,
   SubscriptionsWinBackOffersGetToManyRelatedResponses,
   SubscriptionsWinBackOffersGetToManyRelationshipData,
   SubscriptionsWinBackOffersGetToManyRelationshipErrors,
   SubscriptionsWinBackOffersGetToManyRelationshipResponses,
+  SubscriptionVersionsCreateInstanceData,
+  SubscriptionVersionsCreateInstanceErrors,
+  SubscriptionVersionsCreateInstanceResponses,
+  SubscriptionVersionsGetInstanceData,
+  SubscriptionVersionsGetInstanceErrors,
+  SubscriptionVersionsGetInstanceResponses,
+  SubscriptionVersionsImageGetToOneRelatedData,
+  SubscriptionVersionsImageGetToOneRelatedErrors,
+  SubscriptionVersionsImageGetToOneRelatedResponses,
+  SubscriptionVersionsImageGetToOneRelationshipData,
+  SubscriptionVersionsImageGetToOneRelationshipErrors,
+  SubscriptionVersionsImageGetToOneRelationshipResponses,
+  SubscriptionVersionsImagesGetToManyRelatedData,
+  SubscriptionVersionsImagesGetToManyRelatedErrors,
+  SubscriptionVersionsImagesGetToManyRelatedResponses,
+  SubscriptionVersionsImagesGetToManyRelationshipData,
+  SubscriptionVersionsImagesGetToManyRelationshipErrors,
+  SubscriptionVersionsImagesGetToManyRelationshipResponses,
+  SubscriptionVersionsLocalizationsGetToManyRelatedData,
+  SubscriptionVersionsLocalizationsGetToManyRelatedErrors,
+  SubscriptionVersionsLocalizationsGetToManyRelatedResponses,
+  SubscriptionVersionsLocalizationsGetToManyRelationshipData,
+  SubscriptionVersionsLocalizationsGetToManyRelationshipErrors,
+  SubscriptionVersionsLocalizationsGetToManyRelationshipResponses,
   TerritoriesGetCollectionData,
   TerritoriesGetCollectionErrors,
   TerritoriesGetCollectionResponses,
@@ -13331,6 +13472,99 @@ export const inAppPurchaseImagesUpdateInstance = <
     },
   });
 
+/** Create in app purchase images v2. `POST /v2/inAppPurchaseImages` */
+export const inAppPurchaseImagesV2CreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseImagesV2CreateInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseImagesV2CreateInstanceResponses,
+  InAppPurchaseImagesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    InAppPurchaseImagesV2CreateInstanceResponses,
+    InAppPurchaseImagesV2CreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseImages",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete in app purchase images v2. `DELETE /v2/inAppPurchaseImages/{id}` */
+export const inAppPurchaseImagesV2DeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseImagesV2DeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseImagesV2DeleteInstanceResponses,
+  InAppPurchaseImagesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    InAppPurchaseImagesV2DeleteInstanceResponses,
+    InAppPurchaseImagesV2DeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseImages/{id}",
+    ...options,
+  });
+
+/** Read in app purchase images v2. `GET /v2/inAppPurchaseImages/{id}` */
+export const inAppPurchaseImagesV2GetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseImagesV2GetInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseImagesV2GetInstanceResponses,
+  InAppPurchaseImagesV2GetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseImagesV2GetInstanceResponses,
+    InAppPurchaseImagesV2GetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseImages/{id}",
+    ...options,
+  });
+
+/** Update in app purchase images v2. `PATCH /v2/inAppPurchaseImages/{id}` */
+export const inAppPurchaseImagesV2UpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseImagesV2UpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseImagesV2UpdateInstanceResponses,
+  InAppPurchaseImagesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    InAppPurchaseImagesV2UpdateInstanceResponses,
+    InAppPurchaseImagesV2UpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseImages/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create in app purchase localizations. `POST /v1/inAppPurchaseLocalizations` */
 export const inAppPurchaseLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -13419,6 +13653,110 @@ export const inAppPurchaseLocalizationsUpdateInstance = <
   >({
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/inAppPurchaseLocalizations/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Create in app purchase localizations v2. `POST /v2/inAppPurchaseLocalizations` */
+export const inAppPurchaseLocalizationsV2CreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseLocalizationsV2CreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseLocalizationsV2CreateInstanceResponses,
+  InAppPurchaseLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    InAppPurchaseLocalizationsV2CreateInstanceResponses,
+    InAppPurchaseLocalizationsV2CreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseLocalizations",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete in app purchase localizations v2. `DELETE /v2/inAppPurchaseLocalizations/{id}` */
+export const inAppPurchaseLocalizationsV2DeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseLocalizationsV2DeleteInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseLocalizationsV2DeleteInstanceResponses,
+  InAppPurchaseLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    InAppPurchaseLocalizationsV2DeleteInstanceResponses,
+    InAppPurchaseLocalizationsV2DeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseLocalizations/{id}",
+    ...options,
+  });
+
+/** Read in app purchase localizations v2. `GET /v2/inAppPurchaseLocalizations/{id}` */
+export const inAppPurchaseLocalizationsV2GetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseLocalizationsV2GetInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseLocalizationsV2GetInstanceResponses,
+  InAppPurchaseLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseLocalizationsV2GetInstanceResponses,
+    InAppPurchaseLocalizationsV2GetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseLocalizations]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseLocalizations/{id}",
+    ...options,
+  });
+
+/** Update in app purchase localizations v2. `PATCH /v2/inAppPurchaseLocalizations/{id}` */
+export const inAppPurchaseLocalizationsV2UpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseLocalizationsV2UpdateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseLocalizationsV2UpdateInstanceResponses,
+  InAppPurchaseLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    InAppPurchaseLocalizationsV2UpdateInstanceResponses,
+    InAppPurchaseLocalizationsV2UpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchaseLocalizations/{id}",
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -13776,6 +14114,59 @@ export const inAppPurchaseSubmissionsCreateInstance = <
     },
   });
 
+/** Create in app purchase versions. `POST /v1/inAppPurchaseVersions` */
+export const inAppPurchaseVersionsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseVersionsCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseVersionsCreateInstanceResponses,
+  InAppPurchaseVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    InAppPurchaseVersionsCreateInstanceResponses,
+    InAppPurchaseVersionsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}` */
+export const inAppPurchaseVersionsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseVersionsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseVersionsGetInstanceResponses,
+  InAppPurchaseVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsGetInstanceResponses,
+    InAppPurchaseVersionsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
+        "fields[inAppPurchaseImages]": { array: { explode: false } },
+        "fields[inAppPurchaseLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}",
+    ...options,
+  });
+
 /** Create in app purchases v2. `POST /v2/inAppPurchases` */
 export const inAppPurchasesV2CreateInstance = <
   ThrowOnError extends boolean = false,
@@ -13849,6 +14240,7 @@ export const inAppPurchasesV2GetInstance = <
         "fields[inAppPurchaseAvailabilities]": { array: { explode: false } },
         "fields[inAppPurchaseImages]": { array: { explode: false } },
         "fields[inAppPurchaseOfferCodes]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15276,6 +15668,113 @@ export const subscriptionGracePeriodsUpdateInstance = <
     },
   });
 
+/** Create subscription group localizations v2. `POST /v2/subscriptionGroupLocalizations` */
+export const subscriptionGroupLocalizationsV2CreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupLocalizationsV2CreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupLocalizationsV2CreateInstanceResponses,
+  SubscriptionGroupLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionGroupLocalizationsV2CreateInstanceResponses,
+    SubscriptionGroupLocalizationsV2CreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionGroupLocalizations",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete subscription group localizations v2. `DELETE /v2/subscriptionGroupLocalizations/{id}` */
+export const subscriptionGroupLocalizationsV2DeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupLocalizationsV2DeleteInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupLocalizationsV2DeleteInstanceResponses,
+  SubscriptionGroupLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    SubscriptionGroupLocalizationsV2DeleteInstanceResponses,
+    SubscriptionGroupLocalizationsV2DeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionGroupLocalizations/{id}",
+    ...options,
+  });
+
+/** Read subscription group localizations v2. `GET /v2/subscriptionGroupLocalizations/{id}` */
+export const subscriptionGroupLocalizationsV2GetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupLocalizationsV2GetInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupLocalizationsV2GetInstanceResponses,
+  SubscriptionGroupLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupLocalizationsV2GetInstanceResponses,
+    SubscriptionGroupLocalizationsV2GetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionGroupLocalizations/{id}",
+    ...options,
+  });
+
+/** Update subscription group localizations v2. `PATCH /v2/subscriptionGroupLocalizations/{id}` */
+export const subscriptionGroupLocalizationsV2UpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupLocalizationsV2UpdateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupLocalizationsV2UpdateInstanceResponses,
+  SubscriptionGroupLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    SubscriptionGroupLocalizationsV2UpdateInstanceResponses,
+    SubscriptionGroupLocalizationsV2UpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionGroupLocalizations/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create subscription group localizations. `POST /v1/subscriptionGroupLocalizations` */
 export const subscriptionGroupLocalizationsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -15407,6 +15906,58 @@ export const subscriptionGroupSubmissionsCreateInstance = <
     },
   });
 
+/** Create subscription group versions. `POST /v1/subscriptionGroupVersions` */
+export const subscriptionGroupVersionsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionGroupVersionsCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionGroupVersionsCreateInstanceResponses,
+  SubscriptionGroupVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionGroupVersionsCreateInstanceResponses,
+    SubscriptionGroupVersionsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroupVersions",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read subscription group versions. `GET /v1/subscriptionGroupVersions/{id}` */
+export const subscriptionGroupVersionsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionGroupVersionsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionGroupVersionsGetInstanceResponses,
+  SubscriptionGroupVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupVersionsGetInstanceResponses,
+    SubscriptionGroupVersionsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
+        "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroupVersions/{id}",
+    ...options,
+  });
+
 /** Create subscription groups. `POST /v1/subscriptionGroups` */
 export const subscriptionGroupsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -15471,6 +16022,7 @@ export const subscriptionGroupsGetInstance = <
         "fields[subscriptionGroups]": { array: { explode: false } },
         "fields[subscriptions]": { array: { explode: false } },
         "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -15598,6 +16150,99 @@ export const subscriptionImagesUpdateInstance = <
     },
   });
 
+/** Create subscription images v2. `POST /v2/subscriptionImages` */
+export const subscriptionImagesV2CreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionImagesV2CreateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionImagesV2CreateInstanceResponses,
+  SubscriptionImagesV2CreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionImagesV2CreateInstanceResponses,
+    SubscriptionImagesV2CreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionImages",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete subscription images v2. `DELETE /v2/subscriptionImages/{id}` */
+export const subscriptionImagesV2DeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionImagesV2DeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionImagesV2DeleteInstanceResponses,
+  SubscriptionImagesV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    SubscriptionImagesV2DeleteInstanceResponses,
+    SubscriptionImagesV2DeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionImages/{id}",
+    ...options,
+  });
+
+/** Read subscription images v2. `GET /v2/subscriptionImages/{id}` */
+export const subscriptionImagesV2GetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionImagesV2GetInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionImagesV2GetInstanceResponses,
+  SubscriptionImagesV2GetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionImagesV2GetInstanceResponses,
+    SubscriptionImagesV2GetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionImages/{id}",
+    ...options,
+  });
+
+/** Update subscription images v2. `PATCH /v2/subscriptionImages/{id}` */
+export const subscriptionImagesV2UpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionImagesV2UpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionImagesV2UpdateInstanceResponses,
+  SubscriptionImagesV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    SubscriptionImagesV2UpdateInstanceResponses,
+    SubscriptionImagesV2UpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionImages/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create subscription introductory offers. `POST /v1/subscriptionIntroductoryOffers` */
 export const subscriptionIntroductoryOffersCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -15672,6 +16317,101 @@ export const subscriptionIntroductoryOffersUpdateInstance = <
       subscriptionIntroductoryOffersUpdateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptionIntroductoryOffers/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Create subscription localizations v2. `POST /v2/subscriptionLocalizations` */
+export const subscriptionLocalizationsV2CreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionLocalizationsV2CreateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionLocalizationsV2CreateInstanceResponses,
+  SubscriptionLocalizationsV2CreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionLocalizationsV2CreateInstanceResponses,
+    SubscriptionLocalizationsV2CreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionLocalizations",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete subscription localizations v2. `DELETE /v2/subscriptionLocalizations/{id}` */
+export const subscriptionLocalizationsV2DeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionLocalizationsV2DeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionLocalizationsV2DeleteInstanceResponses,
+  SubscriptionLocalizationsV2DeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    SubscriptionLocalizationsV2DeleteInstanceResponses,
+    SubscriptionLocalizationsV2DeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionLocalizations/{id}",
+    ...options,
+  });
+
+/** Read subscription localizations v2. `GET /v2/subscriptionLocalizations/{id}` */
+export const subscriptionLocalizationsV2GetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionLocalizationsV2GetInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionLocalizationsV2GetInstanceResponses,
+  SubscriptionLocalizationsV2GetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionLocalizationsV2GetInstanceResponses,
+    SubscriptionLocalizationsV2GetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionLocalizations]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionLocalizations/{id}",
+    ...options,
+  });
+
+/** Update subscription localizations v2. `PATCH /v2/subscriptionLocalizations/{id}` */
+export const subscriptionLocalizationsV2UpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionLocalizationsV2UpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionLocalizationsV2UpdateInstanceResponses,
+  SubscriptionLocalizationsV2UpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    SubscriptionLocalizationsV2UpdateInstanceResponses,
+    SubscriptionLocalizationsV2UpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/subscriptionLocalizations/{id}",
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -16329,6 +17069,59 @@ export const subscriptionSubmissionsCreateInstance = <
     },
   });
 
+/** Create subscription versions. `POST /v1/subscriptionVersions` */
+export const subscriptionVersionsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionVersionsCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionVersionsCreateInstanceResponses,
+  SubscriptionVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionVersionsCreateInstanceResponses,
+    SubscriptionVersionsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read subscription versions. `GET /v1/subscriptionVersions/{id}` */
+export const subscriptionVersionsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionVersionsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  SubscriptionVersionsGetInstanceResponses,
+  SubscriptionVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsGetInstanceResponses,
+    SubscriptionVersionsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptionLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}",
+    ...options,
+  });
+
 /** Create subscriptions. `POST /v1/subscriptions` */
 export const subscriptionsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -16403,6 +17196,7 @@ export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[winBackOffers]": { array: { explode: false } },
         "fields[subscriptionImages]": { array: { explode: false } },
         "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -21935,6 +22729,7 @@ export const appsInAppPurchasesV2GetToManyRelated = <
         "fields[inAppPurchaseAvailabilities]": { array: { explode: false } },
         "fields[inAppPurchaseImages]": { array: { explode: false } },
         "fields[inAppPurchaseOfferCodes]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -22348,6 +23143,7 @@ export const appsSubscriptionGroupsGetToManyRelated = <
         "fields[subscriptionGroups]": { array: { explode: false } },
         "fields[subscriptions]": { array: { explode: false } },
         "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -28562,6 +29358,158 @@ export const inAppPurchasePriceSchedulesManualPricesGetToManyRelated = <
     ...options,
   });
 
+/** Get image relationship ID for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/relationships/image` */
+export const inAppPurchaseVersionsImageGetToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseVersionsImageGetToOneRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseVersionsImageGetToOneRelationshipResponses,
+  InAppPurchaseVersionsImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsImageGetToOneRelationshipResponses,
+    InAppPurchaseVersionsImageGetToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/relationships/image",
+    ...options,
+  });
+
+/** Read related image for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/image` */
+export const inAppPurchaseVersionsImageGetToOneRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchaseVersionsImageGetToOneRelatedData, ThrowOnError>,
+): RequestResult<
+  InAppPurchaseVersionsImageGetToOneRelatedResponses,
+  InAppPurchaseVersionsImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsImageGetToOneRelatedResponses,
+    InAppPurchaseVersionsImageGetToOneRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/image",
+    ...options,
+  });
+
+/** Get images relationship IDs for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/relationships/images` */
+export const inAppPurchaseVersionsImagesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseVersionsImagesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseVersionsImagesGetToManyRelationshipResponses,
+  InAppPurchaseVersionsImagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsImagesGetToManyRelationshipResponses,
+    InAppPurchaseVersionsImagesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/relationships/images",
+    ...options,
+  });
+
+/** List related images for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/images` */
+export const inAppPurchaseVersionsImagesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseVersionsImagesGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseVersionsImagesGetToManyRelatedResponses,
+  InAppPurchaseVersionsImagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsImagesGetToManyRelatedResponses,
+    InAppPurchaseVersionsImagesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/images",
+    ...options,
+  });
+
+/** Get localizations relationship IDs for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/relationships/localizations` */
+export const inAppPurchaseVersionsLocalizationsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseVersionsLocalizationsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses,
+  InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsLocalizationsGetToManyRelationshipResponses,
+    InAppPurchaseVersionsLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/relationships/localizations",
+    ...options,
+  });
+
+/** List related localizations for in app purchase versions. `GET /v1/inAppPurchaseVersions/{id}/localizations` */
+export const inAppPurchaseVersionsLocalizationsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchaseVersionsLocalizationsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses,
+  InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchaseVersionsLocalizationsGetToManyRelatedResponses,
+    InAppPurchaseVersionsLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[inAppPurchaseLocalizations]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/inAppPurchaseVersions/{id}/localizations",
+    ...options,
+  });
+
 /** Get app store review screenshot relationship ID for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/appStoreReviewScreenshot` */
 export const inAppPurchasesV2AppStoreReviewScreenshotGetToOneRelationship = <
   ThrowOnError extends boolean = false,
@@ -29051,6 +29999,59 @@ export const inAppPurchasesV2PromotedPurchaseGetToOneRelated = <
     ...options,
   });
 
+/** Get versions relationship IDs for in app purchases v2. `GET /v2/inAppPurchases/{id}/relationships/versions` */
+export const inAppPurchasesV2VersionsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    InAppPurchasesV2VersionsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  InAppPurchasesV2VersionsGetToManyRelationshipResponses,
+  InAppPurchasesV2VersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchasesV2VersionsGetToManyRelationshipResponses,
+    InAppPurchasesV2VersionsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchases/{id}/relationships/versions",
+    ...options,
+  });
+
+/** List related versions for in app purchases v2. `GET /v2/inAppPurchases/{id}/versions` */
+export const inAppPurchasesV2VersionsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<InAppPurchasesV2VersionsGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  InAppPurchasesV2VersionsGetToManyRelatedResponses,
+  InAppPurchasesV2VersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    InAppPurchasesV2VersionsGetToManyRelatedResponses,
+    InAppPurchasesV2VersionsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[state]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
+        "fields[inAppPurchases]": { array: { explode: false } },
+        "fields[inAppPurchaseImages]": { array: { explode: false } },
+        "fields[inAppPurchaseLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v2/inAppPurchases/{id}/versions",
+    ...options,
+  });
+
 /** Get certificates relationship IDs for merchant ids. `GET /v1/merchantIds/{id}/relationships/certificates` */
 export const merchantIdsCertificatesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -29441,6 +30442,9 @@ export const reviewSubmissionsItemsGetToManyRelated = <
           array: { explode: false },
         },
         "fields[gameCenterLeaderboardVersions]": { array: { explode: false } },
+        "fields[inAppPurchaseVersions]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -29613,6 +30617,59 @@ export const scmRepositoriesPullRequestsGetToManyRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for subscription group versions. `GET /v1/subscriptionGroupVersions/{id}/relationships/localizations` */
+export const subscriptionGroupVersionsLocalizationsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupVersionsLocalizationsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupVersionsLocalizationsGetToManyRelationshipResponses,
+    SubscriptionGroupVersionsLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroupVersions/{id}/relationships/localizations",
+    ...options,
+  });
+
+/** List related localizations for subscription group versions. `GET /v1/subscriptionGroupVersions/{id}/localizations` */
+export const subscriptionGroupVersionsLocalizationsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupVersionsLocalizationsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses,
+  SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupVersionsLocalizationsGetToManyRelatedResponses,
+    SubscriptionGroupVersionsLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroupVersions/{id}/localizations",
+    ...options,
+  });
+
 /** Get subscription group localizations relationship IDs for subscription groups. `GET /v1/subscriptionGroups/{id}/relationships/subscriptionGroupLocalizations` */
 export const subscriptionGroupsSubscriptionGroupLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -29728,11 +30785,67 @@ export const subscriptionGroupsSubscriptionsGetToManyRelated = <
         "fields[winBackOffers]": { array: { explode: false } },
         "fields[subscriptionImages]": { array: { explode: false } },
         "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptionGroups/{id}/subscriptions",
+    ...options,
+  });
+
+/** Get versions relationship IDs for subscription groups. `GET /v1/subscriptionGroups/{id}/relationships/versions` */
+export const subscriptionGroupsVersionsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupsVersionsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupsVersionsGetToManyRelationshipResponses,
+  SubscriptionGroupsVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupsVersionsGetToManyRelationshipResponses,
+    SubscriptionGroupsVersionsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroups/{id}/relationships/versions",
+    ...options,
+  });
+
+/** List related versions for subscription groups. `GET /v1/subscriptionGroups/{id}/versions` */
+export const subscriptionGroupsVersionsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionGroupsVersionsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionGroupsVersionsGetToManyRelatedResponses,
+  SubscriptionGroupsVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionGroupsVersionsGetToManyRelatedResponses,
+    SubscriptionGroupsVersionsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[state]": { array: { explode: false } },
+        "fields[subscriptionGroupVersions]": { array: { explode: false } },
+        "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[subscriptionGroupLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionGroups/{id}/versions",
     ...options,
   });
 
@@ -30001,6 +31114,40 @@ export const subscriptionPlanAvailabilitiesAvailableTerritoriesGetToManyRelated 
       ...options,
     });
 
+/** List related adjusted equalizations for subscription price points. `GET /v1/subscriptionPricePoints/{id}/adjustedEqualizations` */
+export const subscriptionPricePointsAdjustedEqualizationsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses,
+  SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses,
+    SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[territory]": { array: { explode: false } },
+        "filter[subscription]": { array: { explode: false } },
+        "filter[upfrontPricePointId]": { array: { explode: false } },
+        "filter[planType]": { array: { explode: false } },
+        "fields[subscriptionPricePoints]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPricePoints/{id}/adjustedEqualizations",
+    ...options,
+  });
+
 /** Get equalizations relationship IDs for subscription price points. `GET /v1/subscriptionPricePoints/{id}/relationships/equalizations` */
 export const subscriptionPricePointsEqualizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -30046,6 +31193,8 @@ export const subscriptionPricePointsEqualizationsGetToManyRelated = <
       parameters: {
         "filter[territory]": { array: { explode: false } },
         "filter[subscription]": { array: { explode: false } },
+        "filter[upfrontPricePointId]": { array: { explode: false } },
+        "filter[planType]": { array: { explode: false } },
         "fields[subscriptionPricePoints]": { array: { explode: false } },
         "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -30110,6 +31259,158 @@ export const subscriptionPromotionalOffersPricesGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptionPromotionalOffers/{id}/prices",
+    ...options,
+  });
+
+/** Get image relationship ID for subscription versions. `GET /v1/subscriptionVersions/{id}/relationships/image` */
+export const subscriptionVersionsImageGetToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionVersionsImageGetToOneRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionVersionsImageGetToOneRelationshipResponses,
+  SubscriptionVersionsImageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsImageGetToOneRelationshipResponses,
+    SubscriptionVersionsImageGetToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/relationships/image",
+    ...options,
+  });
+
+/** Read related image for subscription versions. `GET /v1/subscriptionVersions/{id}/image` */
+export const subscriptionVersionsImageGetToOneRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionVersionsImageGetToOneRelatedData, ThrowOnError>,
+): RequestResult<
+  SubscriptionVersionsImageGetToOneRelatedResponses,
+  SubscriptionVersionsImageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsImageGetToOneRelatedResponses,
+    SubscriptionVersionsImageGetToOneRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/image",
+    ...options,
+  });
+
+/** Get images relationship IDs for subscription versions. `GET /v1/subscriptionVersions/{id}/relationships/images` */
+export const subscriptionVersionsImagesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionVersionsImagesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionVersionsImagesGetToManyRelationshipResponses,
+  SubscriptionVersionsImagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsImagesGetToManyRelationshipResponses,
+    SubscriptionVersionsImagesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/relationships/images",
+    ...options,
+  });
+
+/** List related images for subscription versions. `GET /v1/subscriptionVersions/{id}/images` */
+export const subscriptionVersionsImagesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionVersionsImagesGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionVersionsImagesGetToManyRelatedResponses,
+  SubscriptionVersionsImagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsImagesGetToManyRelatedResponses,
+    SubscriptionVersionsImagesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionImages]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/images",
+    ...options,
+  });
+
+/** Get localizations relationship IDs for subscription versions. `GET /v1/subscriptionVersions/{id}/relationships/localizations` */
+export const subscriptionVersionsLocalizationsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionVersionsLocalizationsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionVersionsLocalizationsGetToManyRelationshipResponses,
+  SubscriptionVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsLocalizationsGetToManyRelationshipResponses,
+    SubscriptionVersionsLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/relationships/localizations",
+    ...options,
+  });
+
+/** List related localizations for subscription versions. `GET /v1/subscriptionVersions/{id}/localizations` */
+export const subscriptionVersionsLocalizationsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionVersionsLocalizationsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionVersionsLocalizationsGetToManyRelatedResponses,
+  SubscriptionVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionVersionsLocalizationsGetToManyRelatedResponses,
+    SubscriptionVersionsLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionLocalizations]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionVersions/{id}/localizations",
     ...options,
   });
 
@@ -30454,6 +31755,8 @@ export const subscriptionsPricePointsGetToManyRelated = <
     querySerializer: {
       parameters: {
         "filter[territory]": { array: { explode: false } },
+        "filter[upfrontPricePointId]": { array: { explode: false } },
+        "filter[planType]": { array: { explode: false } },
         "fields[subscriptionPricePoints]": { array: { explode: false } },
         "fields[territories]": { array: { explode: false } },
         include: { array: { explode: false } },
@@ -30704,6 +32007,59 @@ export const subscriptionsSubscriptionLocalizationsGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptions/{id}/subscriptionLocalizations",
+    ...options,
+  });
+
+/** Get versions relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/versions` */
+export const subscriptionsVersionsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsVersionsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsVersionsGetToManyRelationshipResponses,
+  SubscriptionsVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsVersionsGetToManyRelationshipResponses,
+    SubscriptionsVersionsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/versions",
+    ...options,
+  });
+
+/** List related versions for subscriptions. `GET /v1/subscriptions/{id}/versions` */
+export const subscriptionsVersionsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionsVersionsGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  SubscriptionsVersionsGetToManyRelatedResponses,
+  SubscriptionsVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsVersionsGetToManyRelatedResponses,
+    SubscriptionsVersionsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[state]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptionLocalizations]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/versions",
     ...options,
   });
 
