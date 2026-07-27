@@ -11,6 +11,10 @@
     "lint": "eslint . --quiet --max-warnings 0",
     "type-check": "npm run type-check --workspaces --if-present"
   },
+  "overrides": {
+    "brace-expansion": "^5.0.8",
+    "js-yaml": "^4.3.0"
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "eslint": "^10.8.0",
