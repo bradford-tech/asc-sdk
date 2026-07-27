@@ -32,7 +32,12 @@ jobs:
 
       - name: Download latest spec
         run: |
-          curl -sfL -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
+          # Apple's CDN occasionally resets the TLS handshake (curl exit 35).
+          # --retry alone does not retry connection-level errors, so
+          # --retry-all-errors is required; -S keeps the diagnostic visible.
+          curl -sSfL --retry 5 --retry-all-errors --retry-delay 2 \
+            --connect-timeout 15 --max-time 120 \
+            -o /tmp/spec.zip "https://developer.apple.com/sample-code/app-store-connect/app-store-connect-openapi-specification.zip"
           rm -rf /tmp/spec-extract
           mkdir -p /tmp/spec-extract
           # Apple's archive filename is not stable (e.g. "openapi.oas (2).json"),
