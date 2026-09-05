@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
       - name: Snapshot previous spec
         id: snapshot
@@ -60,7 +60,7 @@ jobs:
       - name: Generate API changelog
         id: changelog
         if: steps.snapshot.outputs.has_previous == 'true'
-        uses: oasdiff/oasdiff-action/changelog@9de38a0cce19e0c0ac89d7d760dc5c499fb8a2a7 # v0.0.42
+        uses: oasdiff/oasdiff-action/changelog@54d7a752569cb30b644b7f27a362c1077973d1c0 # v0.1.14
         with:
           base: .previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
@@ -70,7 +70,7 @@ jobs:
       - name: Detect breaking changes
         id: breaking
         if: steps.snapshot.outputs.has_previous == 'true'
-        uses: oasdiff/oasdiff-action/breaking@9de38a0cce19e0c0ac89d7d760dc5c499fb8a2a7 # v0.0.42
+        uses: oasdiff/oasdiff-action/breaking@54d7a752569cb30b644b7f27a362c1077973d1c0 # v0.1.14
         with:
           base: .previous-spec.json
           revision: packages/asc-sdk/spec/openapi.oas.json
