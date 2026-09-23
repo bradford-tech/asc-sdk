@@ -172,6 +172,7 @@ import type {
   GameCenterLeaderboardEntrySubmissionsCreateInstanceResponse,
   GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedResponse,
   GameCenterLeaderboardsV2CreateInstanceResponse,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponse,
   GameCenterLeaderboardsV2GetInstanceResponse,
   GameCenterLeaderboardsV2UpdateInstanceResponse,
   GameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsResponse,
@@ -183,6 +184,7 @@ import type {
   GameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsResponse,
   GameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsResponse,
   GameCenterPlayerAchievementSubmissionsCreateInstanceResponse,
+  GameCenterScoreModerationsUpdateInstanceResponse,
   InAppPurchaseContentsGetInstanceResponse,
   InAppPurchaseOfferCodeCustomCodesCreateInstanceResponse,
   InAppPurchaseOfferCodeCustomCodesGetInstanceResponse,
@@ -1879,6 +1881,30 @@ export const gameCenterPlayerAchievementSubmissionsCreateInstanceResponseTransfo
       gameCenterPlayerAchievementSubmissionResponseSchemaResponseTransformer(
         data,
       );
+    return data;
+  };
+
+const gameCenterScoreModerationSchemaResponseTransformer = (data: any) => {
+  if (data.attributes) {
+    if (data.attributes.submittedDate) {
+      data.attributes.submittedDate = new Date(data.attributes.submittedDate);
+    }
+  }
+  return data;
+};
+
+const gameCenterScoreModerationResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  data.data = gameCenterScoreModerationSchemaResponseTransformer(data.data);
+  return data;
+};
+
+export const gameCenterScoreModerationsUpdateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<GameCenterScoreModerationsUpdateInstanceResponse> => {
+    data = gameCenterScoreModerationResponseSchemaResponseTransformer(data);
     return data;
   };
 
@@ -3656,6 +3682,23 @@ export const gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedRe
     data: any,
   ): Promise<GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedResponse> => {
     data = gameCenterLeaderboardsV2ResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const gameCenterScoreModerationsResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  data.data = data.data.map((item: any) =>
+    gameCenterScoreModerationSchemaResponseTransformer(item),
+  );
+  return data;
+};
+
+export const gameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponse> => {
+    data = gameCenterScoreModerationsResponseSchemaResponseTransformer(data);
     return data;
   };
 

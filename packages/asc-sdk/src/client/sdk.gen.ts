@@ -179,6 +179,7 @@ import {
   gameCenterLeaderboardEntrySubmissionsCreateInstanceResponseTransformer,
   gameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedResponseTransformer,
   gameCenterLeaderboardsV2CreateInstanceResponseTransformer,
+  gameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponseTransformer,
   gameCenterLeaderboardsV2GetInstanceResponseTransformer,
   gameCenterLeaderboardsV2UpdateInstanceResponseTransformer,
   gameCenterMatchmakingQueuesExperimentMatchmakingQueueSizesGetMetricsResponseTransformer,
@@ -190,6 +191,7 @@ import {
   gameCenterMatchmakingRulesMatchmakingNumberRuleResultsGetMetricsResponseTransformer,
   gameCenterMatchmakingRulesMatchmakingRuleErrorsGetMetricsResponseTransformer,
   gameCenterPlayerAchievementSubmissionsCreateInstanceResponseTransformer,
+  gameCenterScoreModerationsUpdateInstanceResponseTransformer,
   inAppPurchaseContentsGetInstanceResponseTransformer,
   inAppPurchaseOfferCodeCustomCodesCreateInstanceResponseTransformer,
   inAppPurchaseOfferCodeCustomCodesGetInstanceResponseTransformer,
@@ -1052,6 +1054,9 @@ import type {
   AppsMarketplaceSearchDetailGetToOneRelationshipData,
   AppsMarketplaceSearchDetailGetToOneRelationshipErrors,
   AppsMarketplaceSearchDetailGetToOneRelationshipResponses,
+  AppsPerformanceOverviewsGetToManyRelatedData,
+  AppsPerformanceOverviewsGetToManyRelatedErrors,
+  AppsPerformanceOverviewsGetToManyRelatedResponses,
   AppsPerfPowerMetricsGetToManyRelatedData,
   AppsPerfPowerMetricsGetToManyRelatedErrors,
   AppsPerfPowerMetricsGetToManyRelatedResponses,
@@ -2282,6 +2287,15 @@ import type {
   GameCenterChallengeVersionsLocalizationsGetToManyRelationshipData,
   GameCenterChallengeVersionsLocalizationsGetToManyRelationshipErrors,
   GameCenterChallengeVersionsLocalizationsGetToManyRelationshipResponses,
+  GameCenterDetailPlayersUpdateInstanceData,
+  GameCenterDetailPlayersUpdateInstanceErrors,
+  GameCenterDetailPlayersUpdateInstanceResponses,
+  GameCenterDetailsBlockedPlayersGetToManyRelatedData,
+  GameCenterDetailsBlockedPlayersGetToManyRelatedErrors,
+  GameCenterDetailsBlockedPlayersGetToManyRelatedResponses,
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipData,
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors,
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses,
   GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipData,
   GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipErrors,
   GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipResponses,
@@ -2543,6 +2557,12 @@ import type {
   GameCenterLeaderboardsV2DeleteInstanceData,
   GameCenterLeaderboardsV2DeleteInstanceErrors,
   GameCenterLeaderboardsV2DeleteInstanceResponses,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedData,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipData,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors,
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses,
   GameCenterLeaderboardsV2GetInstanceData,
   GameCenterLeaderboardsV2GetInstanceErrors,
   GameCenterLeaderboardsV2GetInstanceResponses,
@@ -2663,6 +2683,9 @@ import type {
   GameCenterPlayerAchievementSubmissionsCreateInstanceData,
   GameCenterPlayerAchievementSubmissionsCreateInstanceErrors,
   GameCenterPlayerAchievementSubmissionsCreateInstanceResponses,
+  GameCenterScoreModerationsUpdateInstanceData,
+  GameCenterScoreModerationsUpdateInstanceErrors,
+  GameCenterScoreModerationsUpdateInstanceResponses,
   InAppPurchaseAppStoreReviewScreenshotsCreateInstanceData,
   InAppPurchaseAppStoreReviewScreenshotsCreateInstanceErrors,
   InAppPurchaseAppStoreReviewScreenshotsCreateInstanceResponses,
@@ -11602,6 +11625,30 @@ export const gameCenterChallengesUpdateInstance = <
     },
   });
 
+/** Update game center detail players. `PATCH /v1/gameCenterDetailPlayers/{id}` */
+export const gameCenterDetailPlayersUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<GameCenterDetailPlayersUpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  GameCenterDetailPlayersUpdateInstanceResponses,
+  GameCenterDetailPlayersUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    GameCenterDetailPlayersUpdateInstanceResponses,
+    GameCenterDetailPlayersUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/gameCenterDetailPlayers/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create game center details. `POST /v1/gameCenterDetails` */
 export const gameCenterDetailsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -13182,6 +13229,32 @@ export const gameCenterPlayerAchievementSubmissionsCreateInstance = <
       gameCenterPlayerAchievementSubmissionsCreateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/gameCenterPlayerAchievementSubmissions",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Update game center score moderations. `PATCH /v1/gameCenterScoreModerations/{id}` */
+export const gameCenterScoreModerationsUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<GameCenterScoreModerationsUpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  GameCenterScoreModerationsUpdateInstanceResponses,
+  GameCenterScoreModerationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    GameCenterScoreModerationsUpdateInstanceResponses,
+    GameCenterScoreModerationsUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer:
+      gameCenterScoreModerationsUpdateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/gameCenterScoreModerations/{id}",
     ...options,
     headers: {
       "Content-Type": "application/json",
@@ -22816,6 +22889,29 @@ export const appsPerfPowerMetricsGetToManyRelated = <
     ...options,
   });
 
+/** List related performance overviews for apps. `GET /v1/apps/{id}/performanceOverviews` */
+export const appsPerformanceOverviewsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppsPerformanceOverviewsGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  AppsPerformanceOverviewsGetToManyRelatedResponses,
+  AppsPerformanceOverviewsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppsPerformanceOverviewsGetToManyRelatedResponses,
+    AppsPerformanceOverviewsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: { "filter[deviceType]": { array: { explode: false } } },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/apps/{id}/performanceOverviews",
+    ...options,
+  });
+
 /** Get pre release versions relationship IDs for apps. `GET /v1/apps/{id}/relationships/preReleaseVersions` */
 export const appsPreReleaseVersionsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -27251,6 +27347,57 @@ export const gameCenterChallengesVersionsGetToManyRelated = <
     ...options,
   });
 
+/** Get blocked players relationship IDs for game center details. `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers` */
+export const gameCenterDetailsBlockedPlayersGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    GameCenterDetailsBlockedPlayersGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses,
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses,
+    GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/gameCenterDetails/{id}/relationships/blockedPlayers",
+    ...options,
+  });
+
+/** List related blocked players for game center details. `GET /v1/gameCenterDetails/{id}/blockedPlayers` */
+export const gameCenterDetailsBlockedPlayersGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    GameCenterDetailsBlockedPlayersGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  GameCenterDetailsBlockedPlayersGetToManyRelatedResponses,
+  GameCenterDetailsBlockedPlayersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    GameCenterDetailsBlockedPlayersGetToManyRelatedResponses,
+    GameCenterDetailsBlockedPlayersGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[gameCenterDetailPlayers]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/gameCenterDetails/{id}/blockedPlayers",
+    ...options,
+  });
+
 /** Replace challenges minimum platform versions relationships for game center details. `PATCH /v1/gameCenterDetails/{id}/relationships/challengesMinimumPlatformVersions` */
 export const gameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -28689,6 +28836,59 @@ export const gameCenterLeaderboardsV2ChallengeUpdateToOneRelationship = <
       ...options.headers,
     },
   });
+
+/** Get game center score moderations relationship IDs for game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations` */
+export const gameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationship =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses,
+    GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses,
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors,
+      ThrowOnError
+    >({
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations",
+      ...options,
+    });
+
+/** List related game center score moderations for game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations` */
+export const gameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelated =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses,
+    GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses,
+      GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors,
+      ThrowOnError
+    >({
+      querySerializer: {
+        parameters: {
+          "fields[gameCenterScoreModerations]": { array: { explode: false } },
+          "fields[gameCenterDetailPlayers]": { array: { explode: false } },
+          include: { array: { explode: false } },
+        },
+      },
+      responseTransformer:
+        gameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponseTransformer,
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations",
+      ...options,
+    });
 
 /** Get versions relationship IDs for game center leaderboards v2. `GET /v2/gameCenterLeaderboards/{id}/relationships/versions` */
 export const gameCenterLeaderboardsV2VersionsGetToManyRelationship = <
