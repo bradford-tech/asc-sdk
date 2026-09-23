@@ -225,7 +225,9 @@ export type AgeRatingDeclaration = {
       | "SIXTEEN_PLUS"
       | "EIGHTEEN_PLUS"
       | "UNRATED";
-    koreaAgeRatingOverride?: "NONE" | "FIFTEEN_PLUS" | "NINETEEN_PLUS";
+    koreaAgeRatingOverride?:
+      "NONE" | "ALL" | "TWELVE_PLUS" | "FIFTEEN_PLUS" | "NINETEEN_PLUS";
+    gracRatingClassificationNumber?: string;
     developerAgeRatingInfoUrl?: string;
   };
   links?: ResourceLinks;
@@ -352,7 +354,9 @@ export type AgeRatingDeclarationUpdateRequest = {
         | "SIXTEEN_PLUS"
         | "EIGHTEEN_PLUS"
         | "UNRATED";
-      koreaAgeRatingOverride?: "NONE" | "FIFTEEN_PLUS" | "NINETEEN_PLUS";
+      koreaAgeRatingOverride?:
+        "NONE" | "ALL" | "TWELVE_PLUS" | "FIFTEEN_PLUS" | "NINETEEN_PLUS";
+      gracRatingClassificationNumber?: string | null;
       developerAgeRatingInfoUrl?: string | null;
     };
   };
@@ -2753,7 +2757,6 @@ export type AppInfo = {
      */
     koreaAgeRating?:
       "ALL" | "TWELVE" | "FIFTEEN" | "NINETEEN" | "NOT_APPLICABLE";
-    kidsAgeBand?: KidsAgeBand;
   };
   relationships?: {
     app?: {
@@ -4545,6 +4548,9 @@ export type App = {
         type: "gameCenterEnabledVersions";
         id: string;
       }>;
+    };
+    performanceOverviews?: {
+      links?: RelationshipLinks;
     };
     perfPowerMetrics?: {
       links?: RelationshipLinks;
@@ -8901,8 +8907,45 @@ export type GameCenterChallengeUpdateRequest = {
 };
 
 /**
- * GameCenterDetail
+ * GameCenterDetailPlayer
  */
+export type GameCenterDetailPlayer = {
+  type: "gameCenterDetailPlayers";
+  id: string;
+  attributes?: {
+    nickname?: string;
+    blocked?: boolean;
+    bundleId?: string;
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a game center detail players. */
+export type GameCenterDetailPlayersResponse = {
+  data: Array<GameCenterDetailPlayer>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a game center detail player. */
+export type GameCenterDetailPlayerResponse = {
+  data: GameCenterDetailPlayer;
+  links: DocumentLinks;
+};
+
+/** Request body for updating a game center detail player. */
+export type GameCenterDetailPlayerUpdateRequest = {
+  data: {
+    type: "gameCenterDetailPlayers";
+    id: string;
+    attributes?: {
+      blocked?: boolean | null;
+      bundleId?: string | null;
+    };
+  };
+};
+
+/** game center detail. */
 export type GameCenterDetail = {
   type: "gameCenterDetails";
   id: string;
@@ -9092,6 +9135,9 @@ export type GameCenterDetail = {
         type: "gameCenterLeaderboardSetReleases";
         id: string;
       }>;
+    };
+    blockedPlayers?: {
+      links?: RelationshipLinks;
     };
     challengesMinimumPlatformVersions?: {
       links?: RelationshipLinks;
@@ -10316,6 +10362,9 @@ export type GameCenterLeaderboardV2 = {
         id: string;
       }>;
     };
+    gameCenterScoreModerations?: {
+      links?: RelationshipLinks;
+    };
     activity?: {
       links?: RelationshipLinks;
       data?: {
@@ -10909,6 +10958,56 @@ export type GameCenterPlayerAchievementSubmissionCreateRequest = {
       submittedDate?: Date | null;
       vendorIdentifier: string;
       preReleased?: boolean | null;
+    };
+  };
+};
+
+/** game center score moderation. */
+export type GameCenterScoreModeration = {
+  type: "gameCenterScoreModerations";
+  id: string;
+  attributes?: {
+    rank?: string;
+    score?: string;
+    submittedDate?: Date;
+    blocked?: boolean;
+    preReleased?: boolean;
+    context?: string;
+    challengeIds?: Array<string>;
+  };
+  relationships?: {
+    player?: {
+      data?: {
+        type: "gameCenterDetailPlayers";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a game center score moderations. */
+export type GameCenterScoreModerationsResponse = {
+  data: Array<GameCenterScoreModeration>;
+  included?: Array<GameCenterDetailPlayer>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a game center score moderation. */
+export type GameCenterScoreModerationResponse = {
+  data: GameCenterScoreModeration;
+  included?: Array<GameCenterDetailPlayer>;
+  links: DocumentLinks;
+};
+
+/** Request body for updating a game center score moderation. */
+export type GameCenterScoreModerationUpdateRequest = {
+  data: {
+    type: "gameCenterScoreModerations";
+    id: string;
+    attributes?: {
+      blocked?: boolean | null;
     };
   };
 };
@@ -15036,6 +15135,8 @@ export type Subscription = {
       | "ONE_YEAR";
     reviewNote?: string;
     groupLevel?: number;
+    multiSeatStatus?: "ENABLED" | "DISABLED";
+    marketSettings?: Array<"APPLE_SCHOOL" | "APP_STORE" | "APPLE_BUSINESS">;
   };
   relationships?: {
     subscriptionLocalizations?: {
@@ -15238,6 +15339,10 @@ export type SubscriptionUpdateRequest = {
         | "ONE_YEAR";
       reviewNote?: string | null;
       groupLevel?: number | null;
+      multiSeatStatus?: "ENABLED" | "DISABLED";
+      marketSettings?: Array<
+        "APPLE_SCHOOL" | "APP_STORE" | "APPLE_BUSINESS"
+      > | null;
     };
     relationships?: {
       introductoryOffers?: {
@@ -17759,6 +17864,16 @@ export type GameCenterChallengeVersionsLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for a game center detail blocked players. */
+export type GameCenterDetailBlockedPlayersLinkagesResponse = {
+  data: Array<{
+    type: "gameCenterDetailPlayers";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage request body for a game center detail challenges minimum platform versions. */
 export type GameCenterDetailChallengesMinimumPlatformVersionsLinkagesRequest = {
   data: Array<{
@@ -18025,6 +18140,17 @@ export type GameCenterLeaderboardV2ChallengeLinkageRequest = {
     id: string;
   };
 };
+
+/** Linkage response for a game center leaderboard v2game center score moderations. */
+export type GameCenterLeaderboardV2GameCenterScoreModerationsLinkagesResponse =
+  {
+    data: Array<{
+      type: "gameCenterScoreModerations";
+      id: string;
+    }>;
+    links: PagedDocumentLinks;
+    meta?: PagingInformation;
+  };
 
 /** Linkage response for a game center leaderboard v2versions. */
 export type GameCenterLeaderboardV2VersionsLinkagesResponse = {
@@ -19753,6 +19879,23 @@ export type MetricsInsight = {
 /** offer code environment. */
 export type OfferCodeEnvironment = "PRODUCTION" | "SANDBOX";
 
+/** performance signature. */
+export type PerformanceSignature = {
+  signatureId?: string;
+  signature?: string;
+  count?: number;
+  weight?: number;
+  sourceFile?: string;
+  lineNumber?: number;
+  trendInfo?: DiagnosticInsightDirection;
+  metricsSummary?: {
+    referenceVersions?: Array<{
+      version?: string;
+      value?: number;
+    }>;
+  };
+};
+
 /** phased release state. */
 export type PhasedReleaseState = "INACTIVE" | "ACTIVE" | "PAUSED" | "COMPLETE";
 
@@ -20242,6 +20385,61 @@ export type XcodeMetrics = {
       }>;
     }>;
   }>;
+};
+
+/** xcode overview. */
+export type XcodeOverview = {
+  version?: string;
+  appMetadata?: {
+    bundleId?: string;
+    appId?: string;
+    latestVersion?: string;
+    platform?: string;
+  };
+  insights?: {
+    regressions?: Array<MetricsInsight>;
+    trendingUp?: Array<MetricsInsight>;
+  };
+  categories?: Array<{
+    identifier?: string;
+    displayName?: string;
+    sections?: Array<{
+      identifier?: string;
+      displayName?: string;
+      relevanceScore?: number;
+      sortOrder?: number;
+      unit?: {
+        identifier?: string;
+        displayName?: string;
+      };
+      datasets?: Array<{
+        filterCriteria?: {
+          percentile?: string;
+          device?: string;
+          deviceMarketingName?: string;
+        };
+        points?: Array<{
+          version?: string;
+          value?: number;
+          errorMargin?: number;
+          percentageBreakdown?: {
+            value?: number;
+            subSystemLabel?: string;
+          };
+        }>;
+        recommendedMetricGoal?: {
+          value?: number;
+          detail?: string;
+        };
+      }>;
+    }>;
+  }>;
+  signatures?: {
+    topHangPoint?: Array<PerformanceSignature>;
+    topLaunchPoint?: Array<PerformanceSignature>;
+    topDiskWritePoint?: Array<PerformanceSignature>;
+  };
+  telemetryIdentifier?: string;
 };
 
 /** Request options for `POST /v1/accessibilityDeclarations`. */
@@ -23802,6 +24000,7 @@ export type AppClipsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -24546,6 +24745,7 @@ export type AppCustomProductPagesGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -24960,6 +25160,7 @@ export type AppEncryptionDeclarationsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -25206,6 +25407,7 @@ export type AppEncryptionDeclarationsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -26537,7 +26739,6 @@ export type AppInfoLocalizationsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -26683,7 +26884,6 @@ export type AppInfosGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -26733,6 +26933,7 @@ export type AppInfosGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -26787,6 +26988,7 @@ export type AppInfosGetInstanceData = {
       | "ageRatingOverride"
       | "ageRatingOverrideV2"
       | "koreaAgeRatingOverride"
+      | "gracRatingClassificationNumber"
       | "developerAgeRatingInfoUrl"
     >;
     /**
@@ -27480,6 +27682,7 @@ export type AppPricePointsV3GetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -27663,6 +27866,7 @@ export type AppPriceSchedulesGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -29408,6 +29612,7 @@ export type AppStoreVersionExperimentsV2GetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -30375,6 +30580,7 @@ export type AppStoreVersionsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -30871,6 +31077,7 @@ export type AppsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -31063,7 +31270,6 @@ export type AppsGetCollectionData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -31208,6 +31414,7 @@ export type AppsGetCollectionData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -31430,6 +31637,7 @@ export type AppsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -31622,7 +31830,6 @@ export type AppsGetInstanceData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -31767,6 +31974,7 @@ export type AppsGetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -32737,6 +32945,7 @@ export type BackgroundAssetsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -33370,6 +33579,7 @@ export type BetaAppLocalizationsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -33608,6 +33818,7 @@ export type BetaAppLocalizationsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -33803,6 +34014,7 @@ export type BetaAppReviewDetailsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -33935,6 +34147,7 @@ export type BetaAppReviewDetailsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -35216,6 +35429,7 @@ export type BetaGroupsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -35525,6 +35739,7 @@ export type BetaGroupsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -35771,6 +35986,7 @@ export type BetaLicenseAgreementsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -35893,6 +36109,7 @@ export type BetaLicenseAgreementsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -36411,6 +36628,7 @@ export type BetaTestersGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -36720,6 +36938,7 @@ export type BetaTestersGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -37808,6 +38027,7 @@ export type BuildsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -38151,6 +38371,7 @@ export type BuildsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -38687,6 +38908,7 @@ export type BundleIdsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -38953,6 +39175,7 @@ export type BundleIdsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -40126,6 +40349,7 @@ export type CiProductsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -40341,6 +40565,7 @@ export type CiProductsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -41702,6 +41927,7 @@ export type EndUserLicenseAgreementsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -42725,6 +42951,7 @@ export type GameCenterAchievementsV2GetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -43050,6 +43277,7 @@ export type GameCenterActivitiesGetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -43111,6 +43339,7 @@ export type GameCenterActivitiesGetInstanceData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -45045,6 +45274,7 @@ export type GameCenterChallengesGetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -45098,6 +45328,7 @@ export type GameCenterChallengesGetInstanceData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -45222,6 +45453,70 @@ export type GameCenterChallengesUpdateInstanceResponses = {
 export type GameCenterChallengesUpdateInstanceResponse =
   GameCenterChallengesUpdateInstanceResponses[keyof GameCenterChallengesUpdateInstanceResponses];
 
+/** Request options for `PATCH /v1/gameCenterDetailPlayers/{id}`. */
+export type GameCenterDetailPlayersUpdateInstanceData = {
+  /**
+   * GameCenterDetailPlayer representation
+   */
+  body: GameCenterDetailPlayerUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/gameCenterDetailPlayers/{id}";
+};
+
+/** Error status map for `PATCH /v1/gameCenterDetailPlayers/{id}`. */
+export type GameCenterDetailPlayersUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/gameCenterDetailPlayers/{id}`. */
+export type GameCenterDetailPlayersUpdateInstanceError =
+  GameCenterDetailPlayersUpdateInstanceErrors[keyof GameCenterDetailPlayersUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/gameCenterDetailPlayers/{id}`. */
+export type GameCenterDetailPlayersUpdateInstanceResponses = {
+  /**
+   * Single GameCenterDetailPlayer
+   */
+  200: GameCenterDetailPlayerResponse;
+};
+
+/** Successful response from `PATCH /v1/gameCenterDetailPlayers/{id}`. */
+export type GameCenterDetailPlayersUpdateInstanceResponse =
+  GameCenterDetailPlayersUpdateInstanceResponses[keyof GameCenterDetailPlayersUpdateInstanceResponses];
+
 /** Request options for `POST /v1/gameCenterDetails`. */
 export type GameCenterDetailsCreateInstanceData = {
   /**
@@ -45313,6 +45608,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -45353,6 +45649,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -45421,6 +45718,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -45816,6 +46114,7 @@ export type GameCenterGroupsGetCollectionData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -45843,6 +46142,7 @@ export type GameCenterGroupsGetCollectionData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -46172,6 +46472,7 @@ export type GameCenterGroupsGetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -46199,6 +46500,7 @@ export type GameCenterGroupsGetInstanceData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -48087,6 +48389,7 @@ export type GameCenterLeaderboardSetsV2GetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -48124,6 +48427,7 @@ export type GameCenterLeaderboardSetsV2GetInstanceData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -48350,6 +48654,7 @@ export type GameCenterLeaderboardVersionsV2GetInstanceData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -48557,6 +48862,7 @@ export type GameCenterLeaderboardsV2GetInstanceData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -48587,6 +48893,7 @@ export type GameCenterLeaderboardsV2GetInstanceData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -49934,6 +50241,70 @@ export type GameCenterPlayerAchievementSubmissionsCreateInstanceResponses = {
 /** Successful response from `POST /v1/gameCenterPlayerAchievementSubmissions`. */
 export type GameCenterPlayerAchievementSubmissionsCreateInstanceResponse =
   GameCenterPlayerAchievementSubmissionsCreateInstanceResponses[keyof GameCenterPlayerAchievementSubmissionsCreateInstanceResponses];
+
+/** Request options for `PATCH /v1/gameCenterScoreModerations/{id}`. */
+export type GameCenterScoreModerationsUpdateInstanceData = {
+  /**
+   * GameCenterScoreModeration representation
+   */
+  body: GameCenterScoreModerationUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/gameCenterScoreModerations/{id}";
+};
+
+/** Error status map for `PATCH /v1/gameCenterScoreModerations/{id}`. */
+export type GameCenterScoreModerationsUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/gameCenterScoreModerations/{id}`. */
+export type GameCenterScoreModerationsUpdateInstanceError =
+  GameCenterScoreModerationsUpdateInstanceErrors[keyof GameCenterScoreModerationsUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/gameCenterScoreModerations/{id}`. */
+export type GameCenterScoreModerationsUpdateInstanceResponses = {
+  /**
+   * Single GameCenterScoreModeration
+   */
+  200: GameCenterScoreModerationResponse;
+};
+
+/** Successful response from `PATCH /v1/gameCenterScoreModerations/{id}`. */
+export type GameCenterScoreModerationsUpdateInstanceResponse =
+  GameCenterScoreModerationsUpdateInstanceResponses[keyof GameCenterScoreModerationsUpdateInstanceResponses];
 
 /** Request options for `POST /v1/inAppPurchaseAppStoreReviewScreenshots`. */
 export type InAppPurchaseAppStoreReviewScreenshotsCreateInstanceData = {
@@ -53396,6 +53767,7 @@ export type NominationsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -53694,6 +54066,7 @@ export type NominationsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -54338,6 +54711,7 @@ export type PreReleaseVersionsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -54497,6 +54871,7 @@ export type PreReleaseVersionsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -55119,6 +55494,8 @@ export type PromotedPurchasesGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -55494,6 +55871,7 @@ export type ReviewSubmissionsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -55745,6 +56123,7 @@ export type ReviewSubmissionsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -57065,6 +57444,8 @@ export type SubscriptionAppStoreReviewScreenshotsGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -58134,6 +58515,8 @@ export type SubscriptionGroupsGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -58429,6 +58812,8 @@ export type SubscriptionImagesGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -59347,6 +59732,8 @@ export type SubscriptionLocalizationsGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -59990,6 +60377,8 @@ export type SubscriptionOfferCodesGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -60674,6 +61063,8 @@ export type SubscriptionPromotionalOffersGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -60953,6 +61344,8 @@ export type SubscriptionVersionsGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -61170,6 +61563,8 @@ export type SubscriptionsGetInstanceData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -61704,6 +62099,7 @@ export type UserInvitationsGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -61947,6 +62343,7 @@ export type UserInvitationsGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -62106,6 +62503,7 @@ export type UsersGetCollectionData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -62293,6 +62691,7 @@ export type UsersGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -62703,6 +63102,7 @@ export type WebhooksGetInstanceData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -64917,6 +65317,7 @@ export type AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedDa
         | "inAppPurchases"
         | "subscriptionGroups"
         | "gameCenterEnabledVersions"
+        | "performanceOverviews"
         | "perfPowerMetrics"
         | "appCustomProductPages"
         | "inAppPurchasesV2"
@@ -67319,6 +67720,7 @@ export type AppInfosAgeRatingDeclarationGetToOneRelatedData = {
       | "ageRatingOverride"
       | "ageRatingOverrideV2"
       | "koreaAgeRatingOverride"
+      | "gracRatingClassificationNumber"
       | "developerAgeRatingInfoUrl"
     >;
   };
@@ -67461,7 +67863,6 @@ export type AppInfosAppInfoLocalizationsGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -68694,6 +69095,7 @@ export type AppPricePointsV3EqualizationsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -71794,6 +72196,7 @@ export type AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -74045,6 +74448,7 @@ export type AppsAppClipsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -74249,6 +74653,7 @@ export type AppsAppCustomProductPagesGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -74475,6 +74880,7 @@ export type AppsAppEncryptionDeclarationsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -74847,7 +75253,6 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -74897,6 +75302,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -74951,6 +75357,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "ageRatingOverride"
       | "ageRatingOverrideV2"
       | "koreaAgeRatingOverride"
+      | "gracRatingClassificationNumber"
       | "developerAgeRatingInfoUrl"
     >;
     /**
@@ -75151,6 +75558,7 @@ export type AppsAppPricePointsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -75336,6 +75744,7 @@ export type AppsAppPriceScheduleGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -75562,6 +75971,7 @@ export type AppsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -75884,6 +76294,7 @@ export type AppsAppStoreVersionsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -76397,6 +76808,7 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -77974,6 +78386,7 @@ export type AppsCiProductGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -78753,6 +79166,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -78793,6 +79207,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -78861,6 +79276,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -79606,6 +80022,64 @@ export type AppsPerfPowerMetricsGetToManyRelatedResponses = {
 export type AppsPerfPowerMetricsGetToManyRelatedResponse =
   AppsPerfPowerMetricsGetToManyRelatedResponses[keyof AppsPerfPowerMetricsGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/apps/{id}/performanceOverviews`. */
+export type AppsPerformanceOverviewsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'deviceType'
+     */
+    "filter[deviceType]"?: Array<string>;
+  };
+  url: "/v1/apps/{id}/performanceOverviews";
+};
+
+/** Error status map for `GET /v1/apps/{id}/performanceOverviews`. */
+export type AppsPerformanceOverviewsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/apps/{id}/performanceOverviews`. */
+export type AppsPerformanceOverviewsGetToManyRelatedError =
+  AppsPerformanceOverviewsGetToManyRelatedErrors[keyof AppsPerformanceOverviewsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/apps/{id}/performanceOverviews`. */
+export type AppsPerformanceOverviewsGetToManyRelatedResponses = {
+  /**
+   * List of PerformanceOverviews
+   */
+  200: XcodeOverview;
+};
+
+/** Successful response from `GET /v1/apps/{id}/performanceOverviews`. */
+export type AppsPerformanceOverviewsGetToManyRelatedResponse =
+  AppsPerformanceOverviewsGetToManyRelatedResponses[keyof AppsPerformanceOverviewsGetToManyRelatedResponses];
+
 /** Request options for `GET /v1/apps/{id}/relationships/preReleaseVersions`. */
 export type AppsPreReleaseVersionsGetToManyRelationshipData = {
   body?: never;
@@ -79903,6 +80377,8 @@ export type AppsPromotedPurchasesGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -80105,6 +80581,7 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -80596,6 +81073,8 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -80801,6 +81280,7 @@ export type AppsWebhooksGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -81355,6 +81835,7 @@ export type BetaAppLocalizationsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -81522,6 +82003,7 @@ export type BetaAppReviewDetailsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -82077,6 +82559,7 @@ export type BetaGroupsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -83007,6 +83490,7 @@ export type BetaLicenseAgreementsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -83247,6 +83731,7 @@ export type BetaTestersAppsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -84064,6 +84549,7 @@ export type BuildBetaDetailsBuildGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -84964,6 +85450,7 @@ export type BuildsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -85353,6 +85840,7 @@ export type BuildsAppStoreVersionGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -86880,6 +87368,7 @@ export type BundleIdsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -88386,6 +88875,7 @@ export type CiBuildRunsBuildsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -88963,6 +89453,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -89155,7 +89646,6 @@ export type CiProductsAppGetToOneRelatedData = {
       | "brazilAgeRatingV2"
       | "franceAgeRating"
       | "koreaAgeRating"
-      | "kidsAgeBand"
       | "app"
       | "ageRatingDeclaration"
       | "appInfoLocalizations"
@@ -89298,6 +89788,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -92363,6 +92854,7 @@ export type GameCenterAppVersionsAppStoreVersionGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -93517,6 +94009,128 @@ export type GameCenterChallengesVersionsGetToManyRelatedResponses = {
 export type GameCenterChallengesVersionsGetToManyRelatedResponse =
   GameCenterChallengesVersionsGetToManyRelatedResponses[keyof GameCenterChallengesVersionsGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/gameCenterDetails/{id}/relationships/blockedPlayers";
+};
+
+/** Error status map for `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelationshipError =
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors[keyof GameCenterDetailsBlockedPlayersGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: GameCenterDetailBlockedPlayersLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/gameCenterDetails/{id}/relationships/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelationshipResponse =
+  GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses[keyof GameCenterDetailsBlockedPlayersGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/gameCenterDetails/{id}/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type gameCenterDetailPlayers
+     */
+    "fields[gameCenterDetailPlayers]"?: Array<
+      "nickname" | "blocked" | "bundleId"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/gameCenterDetails/{id}/blockedPlayers";
+};
+
+/** Error status map for `GET /v1/gameCenterDetails/{id}/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/gameCenterDetails/{id}/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelatedError =
+  GameCenterDetailsBlockedPlayersGetToManyRelatedErrors[keyof GameCenterDetailsBlockedPlayersGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/gameCenterDetails/{id}/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelatedResponses = {
+  /**
+   * List of GameCenterDetailPlayers
+   */
+  200: GameCenterDetailPlayersResponse;
+};
+
+/** Successful response from `GET /v1/gameCenterDetails/{id}/blockedPlayers`. */
+export type GameCenterDetailsBlockedPlayersGetToManyRelatedResponse =
+  GameCenterDetailsBlockedPlayersGetToManyRelatedResponses[keyof GameCenterDetailsBlockedPlayersGetToManyRelatedResponses];
+
 /** Request options for `PATCH /v1/gameCenterDetails/{id}/relationships/challengesMinimumPlatformVersions`. */
 export type GameCenterDetailsChallengesMinimumPlatformVersionsReplaceToManyRelationshipData =
   {
@@ -93776,6 +94390,7 @@ export type GameCenterDetailsGameCenterAchievementsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -93993,6 +94608,7 @@ export type GameCenterDetailsGameCenterActivitiesGetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -94054,6 +94670,7 @@ export type GameCenterDetailsGameCenterActivitiesGetToManyRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -94439,6 +95056,7 @@ export type GameCenterDetailsGameCenterChallengesGetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -94492,6 +95110,7 @@ export type GameCenterDetailsGameCenterChallengesGetToManyRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -94660,6 +95279,7 @@ export type GameCenterDetailsGameCenterGroupGetToOneRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -94687,6 +95307,7 @@ export type GameCenterDetailsGameCenterGroupGetToOneRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -95040,6 +95661,7 @@ export type GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -95077,6 +95699,7 @@ export type GameCenterDetailsGameCenterLeaderboardSetsV2GetToManyRelatedData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -95324,6 +95947,7 @@ export type GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -95354,6 +95978,7 @@ export type GameCenterDetailsGameCenterLeaderboardsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -95683,6 +96308,7 @@ export type GameCenterGroupsGameCenterAchievementsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -95900,6 +96526,7 @@ export type GameCenterGroupsGameCenterActivitiesGetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -95961,6 +96588,7 @@ export type GameCenterGroupsGameCenterActivitiesGetToManyRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -96181,6 +96809,7 @@ export type GameCenterGroupsGameCenterChallengesGetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -96234,6 +96863,7 @@ export type GameCenterGroupsGameCenterChallengesGetToManyRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -96396,6 +97026,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -96436,6 +97067,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -96504,6 +97136,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "releases"
       | "activity"
       | "challenge"
+      | "gameCenterScoreModerations"
       | "versions"
     >;
     /**
@@ -96962,6 +97595,7 @@ export type GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -96999,6 +97633,7 @@ export type GameCenterGroupsGameCenterLeaderboardSetsV2GetToManyRelatedData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -97246,6 +97881,7 @@ export type GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -97276,6 +97912,7 @@ export type GameCenterGroupsGameCenterLeaderboardsV2GetToManyRelatedData = {
       | "challengeReleases"
       | "leaderboardReleases"
       | "leaderboardSetReleases"
+      | "blockedPlayers"
       | "challengesMinimumPlatformVersions"
     >;
     /**
@@ -98139,6 +98776,7 @@ export type GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedDat
         | "gameCenterDetail"
         | "gameCenterGroup"
         | "gameCenterLeaderboardSets"
+        | "gameCenterScoreModerations"
         | "activity"
         | "challenge"
         | "versions"
@@ -98169,6 +98807,7 @@ export type GameCenterLeaderboardSetsV2GameCenterLeaderboardsGetToManyRelatedDat
         | "challengeReleases"
         | "leaderboardReleases"
         | "leaderboardSetReleases"
+        | "blockedPlayers"
         | "challengesMinimumPlatformVersions"
       >;
       /**
@@ -98739,6 +99378,155 @@ export type GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponses =
 export type GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponse =
   GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponses[keyof GameCenterLeaderboardsV2ChallengeUpdateToOneRelationshipResponses];
 
+/** Request options for `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+    };
+    url: "/v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations";
+  };
+
+/** Error status map for `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipError =
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors[keyof GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: GameCenterLeaderboardV2GameCenterScoreModerationsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v2/gameCenterLeaderboards/{id}/relationships/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponse =
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses[keyof GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * filter by attribute 'blocked'
+       */
+      "exists[blocked]"?: boolean;
+      /**
+       * the fields to include for returned resources of type gameCenterScoreModerations
+       */
+      "fields[gameCenterScoreModerations]"?: Array<
+        | "rank"
+        | "score"
+        | "submittedDate"
+        | "blocked"
+        | "preReleased"
+        | "context"
+        | "challengeIds"
+        | "player"
+      >;
+      /**
+       * the fields to include for returned resources of type gameCenterDetailPlayers
+       */
+      "fields[gameCenterDetailPlayers]"?: Array<
+        "nickname" | "blocked" | "bundleId"
+      >;
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+      /**
+       * comma-separated list of relationships to include
+       */
+      include?: Array<"player">;
+    };
+    url: "/v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations";
+  };
+
+/** Error status map for `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedError =
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors[keyof GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses =
+  {
+    /**
+     * List of GameCenterScoreModerations
+     */
+    200: GameCenterScoreModerationsResponse;
+  };
+
+/** Successful response from `GET /v2/gameCenterLeaderboards/{id}/gameCenterScoreModerations`. */
+export type GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponse =
+  GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses[keyof GameCenterLeaderboardsV2GameCenterScoreModerationsGetToManyRelatedResponses];
+
 /** Request options for `GET /v2/gameCenterLeaderboards/{id}/relationships/versions`. */
 export type GameCenterLeaderboardsV2VersionsGetToManyRelationshipData = {
   body?: never;
@@ -98833,6 +99621,7 @@ export type GameCenterLeaderboardsV2VersionsGetToManyRelatedData = {
       | "gameCenterDetail"
       | "gameCenterGroup"
       | "gameCenterLeaderboardSets"
+      | "gameCenterScoreModerations"
       | "activity"
       | "challenge"
       | "versions"
@@ -102103,6 +102892,8 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -102831,6 +103622,7 @@ export type PreReleaseVersionsAppGetToOneRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -104555,6 +105347,8 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -105690,7 +106484,7 @@ export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData = {
      */
     id: string;
   };
-  query?: {
+  query: {
     /**
      * filter by id(s) of related 'territory'
      */
@@ -105706,7 +106500,7 @@ export type SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData = {
     /**
      * filter by planType
      */
-    "filter[planType]"?: Array<string>;
+    "filter[planType]": Array<string>;
     /**
      * the fields to include for returned resources of type subscriptionPricePoints
      */
@@ -106545,6 +107339,8 @@ export type SubscriptionsAppStoreReviewScreenshotGetToOneRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -106700,6 +107496,8 @@ export type SubscriptionsImagesGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -106928,6 +107726,8 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -107114,6 +107914,8 @@ export type SubscriptionsOfferCodesGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -107832,6 +108634,8 @@ export type SubscriptionsPromotedPurchaseGetToOneRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -107991,6 +108795,8 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -108155,6 +108961,8 @@ export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -108326,6 +109134,8 @@ export type SubscriptionsVersionsGetToManyRelatedData = {
       | "subscriptionPeriod"
       | "reviewNote"
       | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
       | "subscriptionLocalizations"
       | "appStoreReviewScreenshot"
       | "group"
@@ -108673,6 +109483,7 @@ export type UserInvitationsVisibleAppsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -109041,6 +109852,7 @@ export type UsersVisibleAppsGetToManyRelatedData = {
       | "inAppPurchases"
       | "subscriptionGroups"
       | "gameCenterEnabledVersions"
+      | "performanceOverviews"
       | "perfPowerMetrics"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
