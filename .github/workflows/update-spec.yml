@@ -16,9 +16,17 @@ concurrency:
 jobs:
   update-spec:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: lts/*
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - run: npm ci
 
       - name: Snapshot previous spec
         id: snapshot
@@ -76,12 +84,48 @@ jobs:
           revision: packages/asc-sdk/spec/openapi.oas.json
         continue-on-error: true
 
+      # CI rejects any PR whose committed src/client differs from a fresh
+      # generation, so the regenerated SDK must ship in the same PR as the spec.
+      - name: Regenerate SDK
+        id: generate
+        continue-on-error: true
+        run: |
+          # The snapshot is not prettier-ignored; drop it before `npm run fix`.
+          rm -f "$GITHUB_WORKSPACE/.previous-spec.json"
+          npm run generate
+
+      - name: Detect SDK changes
+        id: sdk
+        env:
+          GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+        run: |
+          if [ "$GENERATE_OUTCOME" != "success" ]; then
+            # `generate` wipes src/client before writing; never commit a partial tree.
+            git checkout -- packages/asc-sdk/src/client
+            git clean -fdq packages/asc-sdk/src/client
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          elif [ -n "$(git status --porcelain packages/asc-sdk/src/client)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build PR metadata
         env:
           CHANGELOG: ${{ steps.changelog.outputs.changelog }}
           BREAKING: ${{ steps.breaking.outputs.breaking }}
           LINT_OUTCOME: ${{ steps.lint.outcome }}
+          GENERATE_OUTCOME: ${{ steps.generate.outcome }}
+          SDK_CHANGED: ${{ steps.sdk.outputs.changed }}
         run: |
+          # A `feat` commit makes release-please cut an SDK release; a spec-only
+          # change (docs, descriptions) stays a `chore` and releases nothing.
+          if [ "$SDK_CHANGED" = "true" ]; then
+            echo 'PR_TITLE=feat(sdk): update SDK for App Store Connect OpenAPI spec changes' >> "$GITHUB_ENV"
+          else
+            echo 'PR_TITLE=chore(spec): update App Store Connect OpenAPI spec' >> "$GITHUB_ENV"
+          fi
+
           {
             echo 'PR_BODY<<EOF_9f3a7b2c'
             echo 'The upstream App Store Connect OpenAPI specification has changed.'
@@ -92,6 +136,14 @@ jobs:
               echo '**Spec validation:** Passed'
             else
               echo '**Spec validation:** Failed — review lint output in the [workflow run](https://github.com/bradford-tech/asc-sdk/actions).'
+            fi
+            echo ''
+            if [ "$GENERATE_OUTCOME" != "success" ]; then
+              echo '**SDK regeneration:** Failed — run `npm run generate` locally, fix the generator, and push to this branch. CI will fail until the SDK is regenerated.'
+            elif [ "$SDK_CHANGED" = "true" ]; then
+              echo '**SDK regeneration:** `packages/asc-sdk/src/client` regenerated and included in this PR.'
+            else
+              echo '**SDK regeneration:** No changes to generated code.'
             fi
             if [ -n "$BREAKING" ]; then
               echo ''
@@ -121,12 +173,14 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
-          commit-message: "chore(spec): update App Store Connect OpenAPI spec"
-          title: "chore(spec): update App Store Connect OpenAPI spec"
+          commit-message: ${{ env.PR_TITLE }}
+          title: ${{ env.PR_TITLE }}
           body: ${{ env.PR_BODY }}
           branch: update-openapi-spec
           delete-branch: true
-          add-paths: packages/asc-sdk/spec/openapi.oas.json
+          add-paths: |
+            packages/asc-sdk/spec/openapi.oas.json
+            packages/asc-sdk/src/client
           labels: ${{ env.PR_LABELS }}
           assignees: sbs44
           reviewers: sbs44
