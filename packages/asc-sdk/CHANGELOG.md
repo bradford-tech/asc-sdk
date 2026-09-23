@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.0](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.3.2...asc-sdk-v0.4.0) (2026-09-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **sdk:** kidsAgeBand is removed from AppInfo and AppInfoLocalization attributes, and filter[planType] is now a required query parameter on subscriptionPricePointsAdjustedEqualizations.
+
+### Features
+
+* **sdk:** regenerate SDK for App Store Connect API 4.5 ([#48](https://github.com/bradford-tech/asc-sdk/issues/48)) ([5785233](https://github.com/bradford-tech/asc-sdk/commit/5785233999c86782248b29f07c7d9826026fdf72))
+
 ## [0.3.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.3.1...asc-sdk-v0.3.2) (2026-07-17)
 
 
