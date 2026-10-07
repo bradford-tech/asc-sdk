@@ -793,6 +793,783 @@ export type AndroidToIosAppMappingDetailUpdateRequest = {
   };
 };
 
+/** app asset library. */
+export type AppAssetLibrary = {
+  type: "appAssetLibraries";
+  id: string;
+  relationships?: {
+    images?: {
+      links?: RelationshipLinks;
+    };
+    videos?: {
+      links?: RelationshipLinks;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an app asset library. */
+export type AppAssetLibraryResponse = {
+  data: AppAssetLibrary;
+  links: DocumentLinks;
+};
+
+/** app asset library image. */
+export type AppAssetLibraryImage = {
+  type: "appAssetLibraryImages";
+  id: string;
+  attributes?:
+    | ({
+        state: "AWAITING_UPLOAD";
+      } & AppAssetLibraryImageAwaitingUploadAttributes)
+    | ({
+        state: "UPLOAD_COMPLETE";
+      } & AppAssetLibraryImageUploadCompleteAttributes)
+    | ({
+        state: "FAILED";
+      } & AppAssetLibraryImageFailedAttributes)
+    | ({
+        state: "COMPLETE" | "PREPARE_FOR_SUBMISSION";
+      } & AppAssetLibraryImageCommonAttributes)
+    | ({
+        state: "READY_FOR_REVIEW";
+      } & AppAssetLibraryImageReadyForReviewAttributes)
+    | ({
+        state: "WAITING_FOR_REVIEW";
+      } & AppAssetLibraryImageWaitingForReviewAttributes)
+    | ({
+        state: "IN_REVIEW";
+      } & AppAssetLibraryImageInReviewAttributes)
+    | ({
+        state: "ACCEPTED";
+      } & AppAssetLibraryImageAcceptedAttributes)
+    | ({
+        state: "APPROVED";
+      } & AppAssetLibraryImageApprovedAttributes)
+    | ({
+        state: "REJECTED";
+      } & AppAssetLibraryImageRejectedAttributes)
+    | ({
+        state: "ARCHIVED";
+      } & AppAssetLibraryImageArchivedAttributes);
+  relationships?: {
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Attributes of an app asset library image common. */
+export type AppAssetLibraryImageCommonAttributes = {
+  category?: AppAssetLibraryAssetCategory;
+  createdDate?: Date;
+  lastModifiedDate?: Date;
+  fileName?: string;
+  fileSize?: number;
+  imageAsset?: ImageAsset;
+  referenceName?: string;
+  specId?: string;
+  state: AppAssetLibraryAssetState;
+  stateDetails?: Array<StateDetail>;
+};
+
+/** Attributes of an app asset library image accepted. */
+export type AppAssetLibraryImageAcceptedAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image approved. */
+export type AppAssetLibraryImageApprovedAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image archived. */
+export type AppAssetLibraryImageArchivedAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image awaiting upload. */
+export type AppAssetLibraryImageAwaitingUploadAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library image failed. */
+export type AppAssetLibraryImageFailedAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library image in review. */
+export type AppAssetLibraryImageInReviewAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image ready for review. */
+export type AppAssetLibraryImageReadyForReviewAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image rejected. */
+export type AppAssetLibraryImageRejectedAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library image upload complete. */
+export type AppAssetLibraryImageUploadCompleteAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library image waiting for review. */
+export type AppAssetLibraryImageWaitingForReviewAttributes =
+  AppAssetLibraryImageCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Response containing an app asset library images. */
+export type AppAssetLibraryImagesResponse = {
+  data: Array<AppAssetLibraryImage>;
+  included?: Array<AppAssetLibraryPlacement>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an app asset library image. */
+export type AppAssetLibraryImageResponse = {
+  data: AppAssetLibraryImage;
+  included?: Array<AppAssetLibraryPlacement>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an app asset library image. */
+export type AppAssetLibraryImageCreateRequest = {
+  data: {
+    type: "appAssetLibraryImages";
+    attributes: {
+      category: AppAssetLibraryAssetCategory;
+      fileName: string;
+      fileSize: number;
+      referenceName?: string | null;
+    };
+    relationships: {
+      assetLibrary: {
+        data: {
+          type: "appAssetLibraries";
+          id: string;
+        };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
+      };
+    };
+  };
+};
+
+/** Request body for updating an app asset library image. */
+export type AppAssetLibraryImageUpdateRequest = {
+  data: {
+    type: "appAssetLibraryImages";
+    id: string;
+    attributes?: {
+      archived?: boolean | null;
+      referenceName?: string | null;
+      uploaded?: boolean | null;
+    };
+  };
+};
+
+/** app asset library placement ordering request. */
+export type AppAssetLibraryPlacementOrderingRequest = {
+  type: "appAssetLibraryPlacementOrderingRequests";
+  id: string;
+  relationships?: {
+    orderedPlacements?: {
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an app asset library placement ordering request. */
+export type AppAssetLibraryPlacementOrderingRequestResponse = {
+  data: AppAssetLibraryPlacementOrderingRequest;
+  included?: Array<AppAssetLibraryPlacement>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an app asset library placement ordering request. */
+export type AppAssetLibraryPlacementOrderingRequestCreateRequest = {
+  data: (
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+  ) & {
+    type: "appAssetLibraryPlacementOrderingRequests";
+    attributes?: {
+      placementGroup?: string | null;
+    };
+    relationships?: {
+      orderedPlacements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
+      };
+      appStoreVersionLocalization?: {
+        data?: {
+          type: "appStoreVersionLocalizations";
+          id: string;
+        };
+      };
+      appCustomProductPageLocalization?: {
+        data?: {
+          type: "appCustomProductPageLocalizations";
+          id: string;
+        };
+      };
+      appStoreVersionExperimentTreatmentLocalization?: {
+        data?: {
+          type: "appStoreVersionExperimentTreatmentLocalizations";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** app asset library placement. */
+export type AppAssetLibraryPlacement = {
+  type: "appAssetLibraryPlacements";
+  id: string;
+  attributes?: {
+    mediaType?: AppAssetLibraryMediaType;
+    placementType?: AppAssetLibraryPlacementType;
+    placementGroup?: string;
+    createdDate?: Date;
+    lastModifiedDate?: Date;
+    state?: AppAssetLibraryPlacementState;
+    stateDetails?: Array<StateDetail>;
+  };
+  relationships?:
+    | ({
+        mediaType: "IMAGE";
+      } & AppAssetLibraryPlacementImageRelationships)
+    | ({
+        mediaType: "VIDEO";
+      } & AppAssetLibraryPlacementVideoRelationships);
+  links?: ResourceLinks;
+};
+
+/** Relationships of an app asset library placement common. */
+export type AppAssetLibraryPlacementCommonRelationships = {
+  appEventLocalization?: {
+    data?: {
+      type: "appEventLocalizations";
+      id: string;
+    };
+  };
+  appStoreVersionLocalization?: {
+    data?: {
+      type: "appStoreVersionLocalizations";
+      id: string;
+    };
+  };
+  appCustomProductPageLocalization?: {
+    data?: {
+      type: "appCustomProductPageLocalizations";
+      id: string;
+    };
+  };
+  appStoreVersionExperimentTreatmentLocalization?: {
+    data?: {
+      type: "appStoreVersionExperimentTreatmentLocalizations";
+      id: string;
+    };
+  };
+};
+
+/** Relationships of an app asset library placement image. */
+export type AppAssetLibraryPlacementImageRelationships =
+  AppAssetLibraryPlacementCommonRelationships & {
+    image?: {
+      data?: {
+        type: "appAssetLibraryImages";
+        id: string;
+      };
+    };
+  };
+
+/** Relationships of an app asset library placement video. */
+export type AppAssetLibraryPlacementVideoRelationships =
+  AppAssetLibraryPlacementCommonRelationships & {
+    video?: {
+      data?: {
+        type: "appAssetLibraryVideos";
+        id: string;
+      };
+    };
+  };
+
+/** Response containing an app asset library placements. */
+export type AppAssetLibraryPlacementsResponse = {
+  data: Array<AppAssetLibraryPlacement>;
+  included?: Array<
+    | AppAssetLibraryImage
+    | AppAssetLibraryVideo
+    | AppCustomProductPageLocalization
+    | AppEventLocalization
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
+  >;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an app asset library placement. */
+export type AppAssetLibraryPlacementResponse = {
+  data: AppAssetLibraryPlacement;
+  included?: Array<
+    | AppAssetLibraryImage
+    | AppAssetLibraryVideo
+    | AppCustomProductPageLocalization
+    | AppEventLocalization
+    | AppStoreVersionExperimentTreatmentLocalization
+    | AppStoreVersionLocalization
+  >;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an app asset library placement. */
+export type AppAssetLibraryPlacementCreateRequest = {
+  data: (
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
+  ) & {
+    type: "appAssetLibraryPlacements";
+    attributes?: {
+      placementType?: AppAssetLibraryPlacementType;
+      placementGroup?: string | null;
+    };
+    relationships?: {
+      image?: {
+        data?: {
+          type: "appAssetLibraryImages";
+          id: string;
+        };
+      };
+      video?: {
+        data?: {
+          type: "appAssetLibraryVideos";
+          id: string;
+        };
+      };
+      appEventLocalization?: {
+        data?: {
+          type: "appEventLocalizations";
+          id: string;
+        };
+      };
+      appStoreVersionLocalization?: {
+        data?: {
+          type: "appStoreVersionLocalizations";
+          id: string;
+        };
+      };
+      appCustomProductPageLocalization?: {
+        data?: {
+          type: "appCustomProductPageLocalizations";
+          id: string;
+        };
+      };
+      appStoreVersionExperimentTreatmentLocalization?: {
+        data?: {
+          type: "appStoreVersionExperimentTreatmentLocalizations";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** app asset library ref datum. */
+export type AppAssetLibraryRefDatum = {
+  type: "appAssetLibraryRefData";
+  id: string;
+  attributes?: {
+    features?: Array<{
+      featureId?: AppAssetLibraryFeature;
+      placementPolicies?: Array<{
+        placementType?: AppAssetLibraryPlacementType;
+        groupLimits?: Array<{
+          groupIds?: Array<string>;
+          maxCount?: number;
+        }>;
+      }>;
+    }>;
+    placementProfileGroups?: Array<{
+      placementProfileGroupId?: string;
+      platform?: AppAssetLibraryPlacementPlatform;
+      displayClassId?: AppAssetLibraryDisplayClass;
+    }>;
+    imageSpecs?: Array<{
+      specId?: string;
+      shortName?: string;
+      dimensions?: {
+        minWidth?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        maxHeight?: number;
+      };
+      aspectRatio?: string;
+      compatiblePlacementTypes?: Array<AppAssetLibraryPlacementType>;
+      alphaAllowed?: boolean;
+      fileExtensions?: Array<string>;
+      maxFileSize?: number;
+      mimeTypes?: Array<string>;
+      universalAsset?: boolean;
+    }>;
+    videoSpecs?: Array<{
+      specId?: string;
+      shortName?: string;
+      dimensions?: {
+        minWidth?: number;
+        maxWidth?: number;
+        minHeight?: number;
+        maxHeight?: number;
+      };
+      aspectRatio?: string;
+      compatiblePlacementTypes?: Array<AppAssetLibraryPlacementType>;
+      frameRates?: Array<{
+        minFps?: number;
+        maxFps?: number;
+      }>;
+      duration?: {
+        min?: string;
+        max?: string;
+      };
+      audioRequired?: boolean;
+      fileExtensions?: Array<string>;
+      maxFileSize?: number;
+      mimeTypes?: Array<string>;
+      universalAsset?: boolean;
+    }>;
+    placementTypes?: Array<{
+      placementTypeId?: AppAssetLibraryPlacementType;
+      acceptsAssetCategories?: Array<AppAssetLibraryAssetCategory>;
+      specMappings?: Array<{
+        placementGroupId?: string;
+        specs?: Array<string>;
+      }>;
+    }>;
+    displayClasses?: Array<{
+      displayClassId?: AppAssetLibraryDisplayClass;
+      deviceFamily?: DeviceFamily;
+      screenDimensions?: Array<string>;
+    }>;
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing an app asset library ref data. */
+export type AppAssetLibraryRefDataResponse = {
+  data: Array<AppAssetLibraryRefDatum>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an app asset library ref datum. */
+export type AppAssetLibraryRefDatumResponse = {
+  data: AppAssetLibraryRefDatum;
+  links: DocumentLinks;
+};
+
+/** app asset library video. */
+export type AppAssetLibraryVideo = {
+  type: "appAssetLibraryVideos";
+  id: string;
+  attributes?:
+    | ({
+        state: "AWAITING_UPLOAD";
+      } & AppAssetLibraryVideoAwaitingUploadAttributes)
+    | ({
+        state: "UPLOAD_COMPLETE";
+      } & AppAssetLibraryVideoUploadCompleteAttributes)
+    | ({
+        state: "FAILED";
+      } & AppAssetLibraryVideoFailedAttributes)
+    | ({
+        state: "COMPLETE" | "PREPARE_FOR_SUBMISSION";
+      } & AppAssetLibraryVideoCommonAttributes)
+    | ({
+        state: "READY_FOR_REVIEW";
+      } & AppAssetLibraryVideoReadyForReviewAttributes)
+    | ({
+        state: "WAITING_FOR_REVIEW";
+      } & AppAssetLibraryVideoWaitingForReviewAttributes)
+    | ({
+        state: "IN_REVIEW";
+      } & AppAssetLibraryVideoInReviewAttributes)
+    | ({
+        state: "ACCEPTED";
+      } & AppAssetLibraryVideoAcceptedAttributes)
+    | ({
+        state: "APPROVED";
+      } & AppAssetLibraryVideoApprovedAttributes)
+    | ({
+        state: "REJECTED";
+      } & AppAssetLibraryVideoRejectedAttributes)
+    | ({
+        state: "ARCHIVED";
+      } & AppAssetLibraryVideoArchivedAttributes);
+  relationships?: {
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Attributes of an app asset library video common. */
+export type AppAssetLibraryVideoCommonAttributes = {
+  category?: AppAssetLibraryAssetCategory;
+  createdDate?: Date;
+  lastModifiedDate?: Date;
+  fileName?: string;
+  fileSize?: number;
+  previewFrameImage?: PreviewFrameImage;
+  previewFrameTimeCode?: string;
+  referenceName?: string;
+  specId?: string;
+  state: AppAssetLibraryAssetState;
+  stateDetails?: Array<StateDetail>;
+  videoAsset?: string;
+};
+
+/** Attributes of an app asset library video accepted. */
+export type AppAssetLibraryVideoAcceptedAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video approved. */
+export type AppAssetLibraryVideoApprovedAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video archived. */
+export type AppAssetLibraryVideoArchivedAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video awaiting upload. */
+export type AppAssetLibraryVideoAwaitingUploadAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library video failed. */
+export type AppAssetLibraryVideoFailedAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library video in review. */
+export type AppAssetLibraryVideoInReviewAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video ready for review. */
+export type AppAssetLibraryVideoReadyForReviewAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video rejected. */
+export type AppAssetLibraryVideoRejectedAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Attributes of an app asset library video upload complete. */
+export type AppAssetLibraryVideoUploadCompleteAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    uploadOperations?: Array<UploadOperation>;
+  };
+
+/** Attributes of an app asset library video waiting for review. */
+export type AppAssetLibraryVideoWaitingForReviewAttributes =
+  AppAssetLibraryVideoCommonAttributes & {
+    [key: string]: unknown;
+  };
+
+/** Response containing an app asset library videos. */
+export type AppAssetLibraryVideosResponse = {
+  data: Array<AppAssetLibraryVideo>;
+  included?: Array<AppAssetLibraryPlacement>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing an app asset library video. */
+export type AppAssetLibraryVideoResponse = {
+  data: AppAssetLibraryVideo;
+  included?: Array<AppAssetLibraryPlacement>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating an app asset library video. */
+export type AppAssetLibraryVideoCreateRequest = {
+  data: {
+    type: "appAssetLibraryVideos";
+    attributes: {
+      category: AppAssetLibraryAssetCategory;
+      fileName: string;
+      fileSize: number;
+      previewFrameTimeCode?: string | null;
+      referenceName?: string | null;
+    };
+    relationships: {
+      assetLibrary: {
+        data: {
+          type: "appAssetLibraries";
+          id: string;
+        };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
+      };
+    };
+  };
+};
+
+/** Request body for updating an app asset library video. */
+export type AppAssetLibraryVideoUpdateRequest = {
+  data: {
+    type: "appAssetLibraryVideos";
+    id: string;
+    attributes?: {
+      archived?: boolean | null;
+      previewFrameTimeCode?: string | null;
+      referenceName?: string | null;
+      uploaded?: boolean | null;
+    };
+  };
+};
+
 /** app availability v2. */
 export type AppAvailabilityV2 = {
   type: "appAvailabilities";
@@ -1809,6 +2586,14 @@ export type AppCustomProductPageLocalization = {
         id: string;
       }>;
     };
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -1828,6 +2613,12 @@ export type AppCustomProductPageLocalizationInlineCreate = {
         id: string;
       };
     };
+    placements?: {
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
   };
 };
 
@@ -1835,7 +2626,11 @@ export type AppCustomProductPageLocalizationInlineCreate = {
 export type AppCustomProductPageLocalizationsResponse = {
   data: Array<AppCustomProductPageLocalization>;
   included?: Array<
-    AppCustomProductPageVersion | AppKeyword | AppPreviewSet | AppScreenshotSet
+    | AppAssetLibraryPlacement
+    | AppCustomProductPageVersion
+    | AppKeyword
+    | AppPreviewSet
+    | AppScreenshotSet
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -1845,7 +2640,11 @@ export type AppCustomProductPageLocalizationsResponse = {
 export type AppCustomProductPageLocalizationResponse = {
   data: AppCustomProductPageLocalization;
   included?: Array<
-    AppCustomProductPageVersion | AppKeyword | AppPreviewSet | AppScreenshotSet
+    | AppAssetLibraryPlacement
+    | AppCustomProductPageVersion
+    | AppKeyword
+    | AppPreviewSet
+    | AppScreenshotSet
   >;
   links: DocumentLinks;
 };
@@ -1864,6 +2663,12 @@ export type AppCustomProductPageLocalizationCreateRequest = {
           type: "appCustomProductPageVersions";
           id: string;
         };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
       };
     };
   };
@@ -2285,6 +3090,14 @@ export type AppEventLocalization = {
         id: string;
       }>;
     };
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -2292,7 +3105,9 @@ export type AppEventLocalization = {
 /** Response containing an app event localizations. */
 export type AppEventLocalizationsResponse = {
   data: Array<AppEventLocalization>;
-  included?: Array<AppEventScreenshot | AppEventVideoClip | AppEvent>;
+  included?: Array<
+    AppAssetLibraryPlacement | AppEventScreenshot | AppEventVideoClip | AppEvent
+  >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -2300,7 +3115,9 @@ export type AppEventLocalizationsResponse = {
 /** Response containing an app event localization. */
 export type AppEventLocalizationResponse = {
   data: AppEventLocalization;
-  included?: Array<AppEventScreenshot | AppEventVideoClip | AppEvent>;
+  included?: Array<
+    AppAssetLibraryPlacement | AppEventScreenshot | AppEventVideoClip | AppEvent
+  >;
   links: DocumentLinks;
 };
 
@@ -2320,6 +3137,12 @@ export type AppEventLocalizationCreateRequest = {
           type: "appEvents";
           id: string;
         };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
       };
     };
   };
@@ -3593,6 +4416,14 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
         id: string;
       }>;
     };
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -3601,7 +4432,10 @@ export type AppStoreVersionExperimentTreatmentLocalization = {
 export type AppStoreVersionExperimentTreatmentLocalizationsResponse = {
   data: Array<AppStoreVersionExperimentTreatmentLocalization>;
   included?: Array<
-    AppPreviewSet | AppScreenshotSet | AppStoreVersionExperimentTreatment
+    | AppAssetLibraryPlacement
+    | AppPreviewSet
+    | AppScreenshotSet
+    | AppStoreVersionExperimentTreatment
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3611,7 +4445,10 @@ export type AppStoreVersionExperimentTreatmentLocalizationsResponse = {
 export type AppStoreVersionExperimentTreatmentLocalizationResponse = {
   data: AppStoreVersionExperimentTreatmentLocalization;
   included?: Array<
-    AppPreviewSet | AppScreenshotSet | AppStoreVersionExperimentTreatment
+    | AppAssetLibraryPlacement
+    | AppPreviewSet
+    | AppScreenshotSet
+    | AppStoreVersionExperimentTreatment
   >;
   links: DocumentLinks;
 };
@@ -3629,6 +4466,12 @@ export type AppStoreVersionExperimentTreatmentLocalizationCreateRequest = {
           type: "appStoreVersionExperimentTreatments";
           id: string;
         };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
       };
     };
   };
@@ -3915,6 +4758,14 @@ export type AppStoreVersionLocalization = {
         id: string;
       }>;
     };
+    placements?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "appAssetLibraryPlacements";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -3923,7 +4774,11 @@ export type AppStoreVersionLocalization = {
 export type AppStoreVersionLocalizationsResponse = {
   data: Array<AppStoreVersionLocalization>;
   included?: Array<
-    AppKeyword | AppPreviewSet | AppScreenshotSet | AppStoreVersion
+    | AppAssetLibraryPlacement
+    | AppKeyword
+    | AppPreviewSet
+    | AppScreenshotSet
+    | AppStoreVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -3933,7 +4788,11 @@ export type AppStoreVersionLocalizationsResponse = {
 export type AppStoreVersionLocalizationResponse = {
   data: AppStoreVersionLocalization;
   included?: Array<
-    AppKeyword | AppPreviewSet | AppScreenshotSet | AppStoreVersion
+    | AppAssetLibraryPlacement
+    | AppKeyword
+    | AppPreviewSet
+    | AppScreenshotSet
+    | AppStoreVersion
   >;
   links: DocumentLinks;
 };
@@ -3957,6 +4816,12 @@ export type AppStoreVersionLocalizationCreateRequest = {
           type: "appStoreVersions";
           id: string;
         };
+      };
+      placements?: {
+        data?: Array<{
+          type: "appAssetLibraryPlacements";
+          id: string;
+        }>;
       };
     };
   };
@@ -4636,6 +5501,9 @@ export type App = {
       links?: RelationshipLinks;
     };
     backgroundAssets?: {
+      links?: RelationshipLinks;
+    };
+    assetLibrary?: {
       links?: RelationshipLinks;
     };
     betaFeedbackScreenshotSubmissions?: {
@@ -12831,6 +13699,18 @@ export type ReviewSubmissionItem = {
         id: string;
       };
     };
+    appAssetLibraryImage?: {
+      data?: {
+        type: "appAssetLibraryImages";
+        id: string;
+      };
+    };
+    appAssetLibraryVideo?: {
+      data?: {
+        type: "appAssetLibraryVideos";
+        id: string;
+      };
+    };
     backgroundAssetVersion?: {
       data?: {
         type: "backgroundAssetVersions";
@@ -12893,6 +13773,8 @@ export type ReviewSubmissionItem = {
 export type ReviewSubmissionItemsResponse = {
   data: Array<ReviewSubmissionItem>;
   included?: Array<
+    | AppAssetLibraryImage
+    | AppAssetLibraryVideo
     | AppCustomProductPageVersion
     | AppEvent
     | AppStoreVersionExperiment
@@ -12915,6 +13797,8 @@ export type ReviewSubmissionItemsResponse = {
 export type ReviewSubmissionItemResponse = {
   data: ReviewSubmissionItem;
   included?: Array<
+    | AppAssetLibraryImage
+    | AppAssetLibraryVideo
     | AppCustomProductPageVersion
     | AppEvent
     | AppStoreVersionExperiment
@@ -12970,6 +13854,18 @@ export type ReviewSubmissionItemCreateRequest = {
       appEvent?: {
         data?: {
           type: "appEvents";
+          id: string;
+        };
+      };
+      appAssetLibraryImage?: {
+        data?: {
+          type: "appAssetLibraryImages";
+          id: string;
+        };
+      };
+      appAssetLibraryVideo?: {
+        data?: {
+          type: "appAssetLibraryVideos";
           id: string;
         };
       };
@@ -16042,6 +16938,46 @@ export type AnalyticsReportInstancesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for an app asset library images. */
+export type AppAssetLibraryImagesLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryImages";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an app asset library videos. */
+export type AppAssetLibraryVideosLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryVideos";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an app asset library image placements. */
+export type AppAssetLibraryImagePlacementsLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryPlacements";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an app asset library video placements. */
+export type AppAssetLibraryVideoPlacementsLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryPlacements";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for an app availability v2territory availabilities. */
 export type AppAvailabilityV2TerritoryAvailabilitiesLinkagesResponse = {
   data: Array<{
@@ -16174,6 +17110,16 @@ export type AppCustomProductPageLocalizationAppScreenshotSetsLinkagesResponse =
     meta?: PagingInformation;
   };
 
+/** Linkage response for an app custom product page localization placements. */
+export type AppCustomProductPageLocalizationPlacementsLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryPlacements";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for an app custom product page localization search keywords. */
 export type AppCustomProductPageLocalizationSearchKeywordsLinkagesResponse = {
   data: Array<{
@@ -16243,6 +17189,16 @@ export type AppEventLocalizationAppEventScreenshotsLinkagesResponse = {
 export type AppEventLocalizationAppEventVideoClipsLinkagesResponse = {
   data: Array<{
     type: "appEventVideoClips";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an app event localization placements. */
+export type AppEventLocalizationPlacementsLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryPlacements";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -16449,6 +17405,17 @@ export type AppStoreVersionExperimentTreatmentLocalizationAppScreenshotSetsLinka
     meta?: PagingInformation;
   };
 
+/** Linkage response for an app store version experiment treatment localization placements. */
+export type AppStoreVersionExperimentTreatmentLocalizationPlacementsLinkagesResponse =
+  {
+    data: Array<{
+      type: "appAssetLibraryPlacements";
+      id: string;
+    }>;
+    links: PagedDocumentLinks;
+    meta?: PagingInformation;
+  };
+
 /** Linkage response for an app store version experiment treatment app store version experiment treatment localizations. */
 export type AppStoreVersionExperimentTreatmentAppStoreVersionExperimentTreatmentLocalizationsLinkagesResponse =
   {
@@ -16485,6 +17452,16 @@ export type AppStoreVersionLocalizationAppPreviewSetsLinkagesResponse = {
 export type AppStoreVersionLocalizationAppScreenshotSetsLinkagesResponse = {
   data: Array<{
     type: "appScreenshotSets";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for an app store version localization placements. */
+export type AppStoreVersionLocalizationPlacementsLinkagesResponse = {
+  data: Array<{
+    type: "appAssetLibraryPlacements";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -16785,6 +17762,15 @@ export type AppAppTagsLinkagesResponse = {
   }>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
+};
+
+/** Linkage response for an app asset library. */
+export type AppAssetLibraryLinkageResponse = {
+  data: {
+    type: "appAssetLibraries";
+    id: string;
+  };
+  links: DocumentLinks;
 };
 
 /** Linkage response for an app background assets. */
@@ -19192,6 +20178,98 @@ export type RelationshipLinks = {
   self?: string;
   related?: string;
 };
+
+/** app asset library asset category. */
+export type AppAssetLibraryAssetCategory =
+  "CREATIVE_ASSETS" | "APP_SCREENSHOTS_AND_PREVIEWS";
+
+/** app asset library asset state. */
+export type AppAssetLibraryAssetState =
+  | "AWAITING_UPLOAD"
+  | "UPLOAD_COMPLETE"
+  | "FAILED"
+  | "COMPLETE"
+  | "PREPARE_FOR_SUBMISSION"
+  | "READY_FOR_REVIEW"
+  | "WAITING_FOR_REVIEW"
+  | "IN_REVIEW"
+  | "ACCEPTED"
+  | "APPROVED"
+  | "REJECTED"
+  | "ARCHIVED";
+
+/** app asset library display class. */
+export type AppAssetLibraryDisplayClass =
+  | "DEFAULT"
+  | "WATCH_ULTRA"
+  | "WATCH_SERIES_10"
+  | "WATCH_SERIES_7"
+  | "WATCH_SERIES_4"
+  | "WATCH_SERIES_3"
+  | "IPHONE_DUO"
+  | "IPHONE_DYNAMIC_ISLAND_LARGE_DISPLAY"
+  | "IPHONE_DYNAMIC_ISLAND_MEDIUM_DISPLAY"
+  | "IPHONE_FACE_ID_LARGE_DISPLAY"
+  | "IPHONE_FACE_ID_MEDIUM_DISPLAY"
+  | "IPHONE_HOME_BUTTON_LARGE_DISPLAY"
+  | "IPHONE_HOME_BUTTON_MEDIUM_DISPLAY"
+  | "IPHONE_HOME_BUTTON_40_DISPLAY"
+  | "IPHONE_HOME_BUTTON_35_DISPLAY"
+  | "IPAD_13_DISPLAY"
+  | "IPAD_11_DISPLAY"
+  | "IPAD_129_DISPLAY"
+  | "IPAD_105_DISPLAY"
+  | "IPAD_97_DISPLAY";
+
+/** app asset library feature. */
+export type AppAssetLibraryFeature =
+  | "APP_STORE_VERSIONS"
+  | "CUSTOM_PRODUCT_PAGES"
+  | "PRODUCT_PAGE_OPTIMIZATIONS"
+  | "IN_APP_EVENTS"
+  | "IN_APP_PURCHASES"
+  | "SUBSCRIPTIONS"
+  | "RETENTION_MESSAGING"
+  | "GAME_CENTER"
+  | "APP_CLIPS"
+  | "APPLE_ADS";
+
+/** app asset library media type. */
+export type AppAssetLibraryMediaType = "IMAGE" | "VIDEO";
+
+/** app asset library placement platform. */
+export type AppAssetLibraryPlacementPlatform =
+  | "IPHONE_APP_STORE"
+  | "IPAD_APP_STORE"
+  | "WATCH_APP_STORE"
+  | "IMESSAGE_APP_STORE"
+  | "VISION_PRO_APP_STORE"
+  | "MAC_APP_STORE"
+  | "TV_APP_STORE"
+  | "ANY";
+
+/** app asset library placement state. */
+export type AppAssetLibraryPlacementState =
+  | "ASSET_PROCESSING"
+  | "FAILED"
+  | "PARENT_PREPARE_FOR_SUBMISSION"
+  | "PARENT_READY_FOR_REVIEW"
+  | "PARENT_WAITING_FOR_REVIEW"
+  | "PARENT_IN_REVIEW"
+  | "PARENT_APPROVED";
+
+/** app asset library placement type. */
+export type AppAssetLibraryPlacementType =
+  | "APP_SCREENSHOT"
+  | "IMESSAGE_APP_SCREENSHOT"
+  | "APP_PREVIEW"
+  | "PRODUCT_PAGE_HEADER_ASSET"
+  | "APP_STORE_SEARCH_RESULTS_ASSET"
+  | "SEARCH_RESULTS_ADS_ASSET"
+  | "TODAY_TAB_ADS_ASSET"
+  | "EVENT_CARD_ASSET"
+  | "EVENT_DETAILS_PAGE_ASSET"
+  | "RETENTION_MESSAGE_ASSET";
 
 /** app clip action. */
 export type AppClipAction = "OPEN" | "VIEW" | "PLAY";
@@ -22268,6 +23346,1106 @@ export type AndroidToIosAppMappingDetailsUpdateInstanceResponses = {
 export type AndroidToIosAppMappingDetailsUpdateInstanceResponse =
   AndroidToIosAppMappingDetailsUpdateInstanceResponses[keyof AndroidToIosAppMappingDetailsUpdateInstanceResponses];
 
+/** Request options for `GET /v1/appAssetLibraries/{id}`. */
+export type AppAssetLibrariesGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraries
+     */
+    "fields[appAssetLibraries]"?: Array<"images" | "videos">;
+  };
+  url: "/v1/appAssetLibraries/{id}";
+};
+
+/** Error status map for `GET /v1/appAssetLibraries/{id}`. */
+export type AppAssetLibrariesGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraries/{id}`. */
+export type AppAssetLibrariesGetInstanceError =
+  AppAssetLibrariesGetInstanceErrors[keyof AppAssetLibrariesGetInstanceErrors];
+
+/** Response status map for `GET /v1/appAssetLibraries/{id}`. */
+export type AppAssetLibrariesGetInstanceResponses = {
+  /**
+   * Single AppAssetLibrary
+   */
+  200: AppAssetLibraryResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraries/{id}`. */
+export type AppAssetLibrariesGetInstanceResponse =
+  AppAssetLibrariesGetInstanceResponses[keyof AppAssetLibrariesGetInstanceResponses];
+
+/** Request options for `POST /v1/appAssetLibraryImages`. */
+export type AppAssetLibraryImagesCreateInstanceData = {
+  /**
+   * AppAssetLibraryImage representation
+   */
+  body: AppAssetLibraryImageCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/appAssetLibraryImages";
+};
+
+/** Error status map for `POST /v1/appAssetLibraryImages`. */
+export type AppAssetLibraryImagesCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/appAssetLibraryImages`. */
+export type AppAssetLibraryImagesCreateInstanceError =
+  AppAssetLibraryImagesCreateInstanceErrors[keyof AppAssetLibraryImagesCreateInstanceErrors];
+
+/** Response status map for `POST /v1/appAssetLibraryImages`. */
+export type AppAssetLibraryImagesCreateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryImage
+   */
+  201: AppAssetLibraryImageResponse;
+};
+
+/** Successful response from `POST /v1/appAssetLibraryImages`. */
+export type AppAssetLibraryImagesCreateInstanceResponse =
+  AppAssetLibraryImagesCreateInstanceResponses[keyof AppAssetLibraryImagesCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/appAssetLibraryImages/{id}";
+};
+
+/** Error status map for `DELETE /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesDeleteInstanceError =
+  AppAssetLibraryImagesDeleteInstanceErrors[keyof AppAssetLibraryImagesDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesDeleteInstanceResponse =
+  AppAssetLibraryImagesDeleteInstanceResponses[keyof AppAssetLibraryImagesDeleteInstanceResponses];
+
+/** Request options for `GET /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"placements">;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
+  };
+  url: "/v1/appAssetLibraryImages/{id}";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesGetInstanceError =
+  AppAssetLibraryImagesGetInstanceErrors[keyof AppAssetLibraryImagesGetInstanceErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesGetInstanceResponses = {
+  /**
+   * Single AppAssetLibraryImage
+   */
+  200: AppAssetLibraryImageResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesGetInstanceResponse =
+  AppAssetLibraryImagesGetInstanceResponses[keyof AppAssetLibraryImagesGetInstanceResponses];
+
+/** Request options for `PATCH /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesUpdateInstanceData = {
+  /**
+   * AppAssetLibraryImage representation
+   */
+  body: AppAssetLibraryImageUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/appAssetLibraryImages/{id}";
+};
+
+/** Error status map for `PATCH /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesUpdateInstanceError =
+  AppAssetLibraryImagesUpdateInstanceErrors[keyof AppAssetLibraryImagesUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesUpdateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryImage
+   */
+  200: AppAssetLibraryImageResponse;
+};
+
+/** Successful response from `PATCH /v1/appAssetLibraryImages/{id}`. */
+export type AppAssetLibraryImagesUpdateInstanceResponse =
+  AppAssetLibraryImagesUpdateInstanceResponses[keyof AppAssetLibraryImagesUpdateInstanceResponses];
+
+/** Request options for `POST /v1/appAssetLibraryPlacementOrderingRequests`. */
+export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceData = {
+  /**
+   * AppAssetLibraryPlacementOrderingRequest representation
+   */
+  body: AppAssetLibraryPlacementOrderingRequestCreateRequest;
+  path?: never;
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"orderedPlacements">;
+    /**
+     * maximum number of related orderedPlacements returned (when they are included)
+     */
+    "limit[orderedPlacements]"?: number;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacementOrderingRequests
+     */
+    "fields[appAssetLibraryPlacementOrderingRequests]"?: Array<"orderedPlacements">;
+  };
+  url: "/v1/appAssetLibraryPlacementOrderingRequests";
+};
+
+/** Error status map for `POST /v1/appAssetLibraryPlacementOrderingRequests`. */
+export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/appAssetLibraryPlacementOrderingRequests`. */
+export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceError =
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors[keyof AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/appAssetLibraryPlacementOrderingRequests`. */
+export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryPlacementOrderingRequest
+   */
+  201: AppAssetLibraryPlacementOrderingRequestResponse;
+};
+
+/** Successful response from `POST /v1/appAssetLibraryPlacementOrderingRequests`. */
+export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponse =
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses[keyof AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses];
+
+/** Request options for `POST /v1/appAssetLibraryPlacements`. */
+export type AppAssetLibraryPlacementsCreateInstanceData = {
+  /**
+   * AppAssetLibraryPlacement representation
+   */
+  body: AppAssetLibraryPlacementCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/appAssetLibraryPlacements";
+};
+
+/** Error status map for `POST /v1/appAssetLibraryPlacements`. */
+export type AppAssetLibraryPlacementsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/appAssetLibraryPlacements`. */
+export type AppAssetLibraryPlacementsCreateInstanceError =
+  AppAssetLibraryPlacementsCreateInstanceErrors[keyof AppAssetLibraryPlacementsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/appAssetLibraryPlacements`. */
+export type AppAssetLibraryPlacementsCreateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryPlacement
+   */
+  201: AppAssetLibraryPlacementResponse;
+};
+
+/** Successful response from `POST /v1/appAssetLibraryPlacements`. */
+export type AppAssetLibraryPlacementsCreateInstanceResponse =
+  AppAssetLibraryPlacementsCreateInstanceResponses[keyof AppAssetLibraryPlacementsCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/appAssetLibraryPlacements/{id}";
+};
+
+/** Error status map for `DELETE /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsDeleteInstanceError =
+  AppAssetLibraryPlacementsDeleteInstanceErrors[keyof AppAssetLibraryPlacementsDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsDeleteInstanceResponse =
+  AppAssetLibraryPlacementsDeleteInstanceResponses[keyof AppAssetLibraryPlacementsDeleteInstanceResponses];
+
+/** Request options for `GET /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appAssetLibraryPlacements/{id}";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsGetInstanceError =
+  AppAssetLibraryPlacementsGetInstanceErrors[keyof AppAssetLibraryPlacementsGetInstanceErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsGetInstanceResponses = {
+  /**
+   * Single AppAssetLibraryPlacement
+   */
+  200: AppAssetLibraryPlacementResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryPlacements/{id}`. */
+export type AppAssetLibraryPlacementsGetInstanceResponse =
+  AppAssetLibraryPlacementsGetInstanceResponses[keyof AppAssetLibraryPlacementsGetInstanceResponses];
+
+/** Request options for `GET /v1/appAssetLibraryRefData`. */
+export type AppAssetLibraryRefDataGetCollectionData = {
+  body?: never;
+  path?: never;
+  query?: {
+    /**
+     * filter by attribute 'placementTypes'
+     */
+    "filter[placementTypes]"?: Array<string>;
+    /**
+     * filter by attribute 'placementProfileGroups'
+     */
+    "filter[placementProfileGroups]"?: Array<string>;
+    /**
+     * filter by attribute 'features'
+     */
+    "filter[features]"?: Array<string>;
+    /**
+     * filter by specs
+     */
+    "filter[specs]"?: Array<string>;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryRefData
+     */
+    "fields[appAssetLibraryRefData]"?: Array<
+      | "features"
+      | "placementProfileGroups"
+      | "imageSpecs"
+      | "videoSpecs"
+      | "placementTypes"
+      | "displayClasses"
+    >;
+  };
+  url: "/v1/appAssetLibraryRefData";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryRefData`. */
+export type AppAssetLibraryRefDataGetCollectionErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryRefData`. */
+export type AppAssetLibraryRefDataGetCollectionError =
+  AppAssetLibraryRefDataGetCollectionErrors[keyof AppAssetLibraryRefDataGetCollectionErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryRefData`. */
+export type AppAssetLibraryRefDataGetCollectionResponses = {
+  /**
+   * List of AppAssetLibraryRefData
+   */
+  200: AppAssetLibraryRefDataResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryRefData`. */
+export type AppAssetLibraryRefDataGetCollectionResponse =
+  AppAssetLibraryRefDataGetCollectionResponses[keyof AppAssetLibraryRefDataGetCollectionResponses];
+
+/** Request options for `GET /v1/appAssetLibraryRefData/{id}`. */
+export type AppAssetLibraryRefDataGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryRefData
+     */
+    "fields[appAssetLibraryRefData]"?: Array<
+      | "features"
+      | "placementProfileGroups"
+      | "imageSpecs"
+      | "videoSpecs"
+      | "placementTypes"
+      | "displayClasses"
+    >;
+  };
+  url: "/v1/appAssetLibraryRefData/{id}";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryRefData/{id}`. */
+export type AppAssetLibraryRefDataGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryRefData/{id}`. */
+export type AppAssetLibraryRefDataGetInstanceError =
+  AppAssetLibraryRefDataGetInstanceErrors[keyof AppAssetLibraryRefDataGetInstanceErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryRefData/{id}`. */
+export type AppAssetLibraryRefDataGetInstanceResponses = {
+  /**
+   * Single AppAssetLibraryRefDatum
+   */
+  200: AppAssetLibraryRefDatumResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryRefData/{id}`. */
+export type AppAssetLibraryRefDataGetInstanceResponse =
+  AppAssetLibraryRefDataGetInstanceResponses[keyof AppAssetLibraryRefDataGetInstanceResponses];
+
+/** Request options for `POST /v1/appAssetLibraryVideos`. */
+export type AppAssetLibraryVideosCreateInstanceData = {
+  /**
+   * AppAssetLibraryVideo representation
+   */
+  body: AppAssetLibraryVideoCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/appAssetLibraryVideos";
+};
+
+/** Error status map for `POST /v1/appAssetLibraryVideos`. */
+export type AppAssetLibraryVideosCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/appAssetLibraryVideos`. */
+export type AppAssetLibraryVideosCreateInstanceError =
+  AppAssetLibraryVideosCreateInstanceErrors[keyof AppAssetLibraryVideosCreateInstanceErrors];
+
+/** Response status map for `POST /v1/appAssetLibraryVideos`. */
+export type AppAssetLibraryVideosCreateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryVideo
+   */
+  201: AppAssetLibraryVideoResponse;
+};
+
+/** Successful response from `POST /v1/appAssetLibraryVideos`. */
+export type AppAssetLibraryVideosCreateInstanceResponse =
+  AppAssetLibraryVideosCreateInstanceResponses[keyof AppAssetLibraryVideosCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/appAssetLibraryVideos/{id}";
+};
+
+/** Error status map for `DELETE /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosDeleteInstanceError =
+  AppAssetLibraryVideosDeleteInstanceErrors[keyof AppAssetLibraryVideosDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosDeleteInstanceResponse =
+  AppAssetLibraryVideosDeleteInstanceResponses[keyof AppAssetLibraryVideosDeleteInstanceResponses];
+
+/** Request options for `GET /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"placements">;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
+  };
+  url: "/v1/appAssetLibraryVideos/{id}";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosGetInstanceError =
+  AppAssetLibraryVideosGetInstanceErrors[keyof AppAssetLibraryVideosGetInstanceErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosGetInstanceResponses = {
+  /**
+   * Single AppAssetLibraryVideo
+   */
+  200: AppAssetLibraryVideoResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosGetInstanceResponse =
+  AppAssetLibraryVideosGetInstanceResponses[keyof AppAssetLibraryVideosGetInstanceResponses];
+
+/** Request options for `PATCH /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosUpdateInstanceData = {
+  /**
+   * AppAssetLibraryVideo representation
+   */
+  body: AppAssetLibraryVideoUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/appAssetLibraryVideos/{id}";
+};
+
+/** Error status map for `PATCH /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosUpdateInstanceError =
+  AppAssetLibraryVideosUpdateInstanceErrors[keyof AppAssetLibraryVideosUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosUpdateInstanceResponses = {
+  /**
+   * Single AppAssetLibraryVideo
+   */
+  200: AppAssetLibraryVideoResponse;
+};
+
+/** Successful response from `PATCH /v1/appAssetLibraryVideos/{id}`. */
+export type AppAssetLibraryVideosUpdateInstanceResponse =
+  AppAssetLibraryVideosUpdateInstanceResponses[keyof AppAssetLibraryVideosUpdateInstanceResponses];
+
 /** Request options for `POST /v2/appAvailabilities`. */
 export type AppAvailabilitiesV2CreateInstanceData = {
   /**
@@ -24017,6 +26195,7 @@ export type AppClipsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -24213,6 +26392,7 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appCustomProductPageVersions
@@ -24245,6 +26425,24 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
       | "appPreviews"
     >;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -24252,6 +26450,7 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
@@ -24261,6 +26460,10 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
      * maximum number of related appScreenshotSets returned (when they are included)
      */
     "limit[appScreenshotSets]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
     /**
      * maximum number of related searchKeywords returned (when they are included)
      */
@@ -24464,6 +26667,7 @@ export type AppCustomProductPageVersionsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * comma-separated list of relationships to include
@@ -24762,6 +26966,7 @@ export type AppCustomProductPagesGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -25177,6 +27382,7 @@ export type AppEncryptionDeclarationsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -25424,6 +27630,7 @@ export type AppEncryptionDeclarationsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -25656,6 +27863,7 @@ export type AppEventLocalizationsGetInstanceData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appEvents
@@ -25703,9 +27911,29 @@ export type AppEventLocalizationsGetInstanceData = {
       | "appEventLocalization"
     >;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
-    include?: Array<"appEvent" | "appEventScreenshots" | "appEventVideoClips">;
+    include?: Array<
+      "appEvent" | "appEventScreenshots" | "appEventVideoClips" | "placements"
+    >;
     /**
      * maximum number of related appEventScreenshots returned (when they are included)
      */
@@ -25714,6 +27942,10 @@ export type AppEventLocalizationsGetInstanceData = {
      * maximum number of related appEventVideoClips returned (when they are included)
      */
     "limit[appEventVideoClips]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
   };
   url: "/v1/appEventLocalizations/{id}";
 };
@@ -25964,6 +28196,7 @@ export type AppEventScreenshotsGetInstanceData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * comma-separated list of relationships to include
@@ -26222,6 +28455,7 @@ export type AppEventVideoClipsGetInstanceData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * comma-separated list of relationships to include
@@ -26480,6 +28714,7 @@ export type AppEventsGetInstanceData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * comma-separated list of relationships to include
@@ -26950,6 +29185,7 @@ export type AppInfosGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -27276,6 +29512,7 @@ export type AppPreviewSetsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -27287,6 +29524,7 @@ export type AppPreviewSetsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -27296,6 +29534,7 @@ export type AppPreviewSetsGetInstanceData = {
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appPreviews
@@ -27699,6 +29938,7 @@ export type AppPricePointsV3GetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -27883,6 +30123,7 @@ export type AppPriceSchedulesGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -28100,6 +30341,7 @@ export type AppScreenshotSetsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -28111,6 +30353,7 @@ export type AppScreenshotSetsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -28120,6 +30363,7 @@ export type AppScreenshotSetsGetInstanceData = {
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appScreenshots
@@ -29070,6 +31314,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersionExperimentTreatments
@@ -29104,12 +31349,31 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
       | "appPreviews"
     >;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
@@ -29119,6 +31383,10 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
      * maximum number of related appScreenshotSets returned (when they are included)
      */
     "limit[appScreenshotSets]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
   };
   url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}";
 };
@@ -29319,6 +31587,7 @@ export type AppStoreVersionExperimentTreatmentsGetInstanceData = {
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * comma-separated list of relationships to include
@@ -29629,6 +31898,7 @@ export type AppStoreVersionExperimentsV2GetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -29934,6 +32204,7 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -29985,6 +32256,24 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
       | "appPreviews"
     >;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -29992,6 +32281,7 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * maximum number of related appPreviewSets returned (when they are included)
@@ -30001,6 +32291,10 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
      * maximum number of related appScreenshotSets returned (when they are included)
      */
     "limit[appScreenshotSets]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
     /**
      * maximum number of related searchKeywords returned (when they are included)
      */
@@ -30597,6 +32891,7 @@ export type AppStoreVersionsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -30618,6 +32913,7 @@ export type AppStoreVersionsGetInstanceData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type builds
@@ -31094,6 +33390,7 @@ export type AppsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -31654,6 +33951,7 @@ export type AppsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -32962,6 +35260,7 @@ export type BackgroundAssetsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -33596,6 +35895,7 @@ export type BetaAppLocalizationsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -33835,6 +36135,7 @@ export type BetaAppLocalizationsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -34031,6 +36332,7 @@ export type BetaAppReviewDetailsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -34164,6 +36466,7 @@ export type BetaAppReviewDetailsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -35446,6 +37749,7 @@ export type BetaGroupsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -35756,6 +38060,7 @@ export type BetaGroupsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -36003,6 +38308,7 @@ export type BetaLicenseAgreementsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -36126,6 +38432,7 @@ export type BetaLicenseAgreementsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -36645,6 +38952,7 @@ export type BetaTestersGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -36955,6 +39263,7 @@ export type BetaTestersGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -38044,6 +40353,7 @@ export type BuildsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -38388,6 +40698,7 @@ export type BuildsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -38925,6 +41236,7 @@ export type BundleIdsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -39192,6 +41504,7 @@ export type BundleIdsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -40366,6 +42679,7 @@ export type CiProductsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -40582,6 +42896,7 @@ export type CiProductsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -41944,6 +44259,7 @@ export type EndUserLicenseAgreementsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -45666,6 +47982,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -53784,6 +56101,7 @@ export type NominationsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -54083,6 +56401,7 @@ export type NominationsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -54728,6 +57047,7 @@ export type PreReleaseVersionsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -54888,6 +57208,7 @@ export type PreReleaseVersionsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -55888,6 +58209,7 @@ export type ReviewSubmissionsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -55904,6 +58226,8 @@ export type ReviewSubmissionsGetCollectionData = {
       | "appStoreVersionExperiment"
       | "appStoreVersionExperimentV2"
       | "appEvent"
+      | "appAssetLibraryImage"
+      | "appAssetLibraryVideo"
       | "backgroundAssetVersion"
       | "gameCenterAchievementVersion"
       | "gameCenterActivityVersion"
@@ -56140,6 +58464,7 @@ export type ReviewSubmissionsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -56156,6 +58481,8 @@ export type ReviewSubmissionsGetInstanceData = {
       | "appStoreVersionExperiment"
       | "appStoreVersionExperimentV2"
       | "appEvent"
+      | "appAssetLibraryImage"
+      | "appAssetLibraryVideo"
       | "backgroundAssetVersion"
       | "gameCenterAchievementVersion"
       | "gameCenterActivityVersion"
@@ -62116,6 +64443,7 @@ export type UserInvitationsGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -62360,6 +64688,7 @@ export type UserInvitationsGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -62520,6 +64849,7 @@ export type UsersGetCollectionData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -62708,6 +65038,7 @@ export type UsersGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -63119,6 +65450,7 @@ export type WebhooksGetInstanceData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -64314,6 +66646,1016 @@ export type AnalyticsReportsInstancesGetToManyRelatedResponses = {
 export type AnalyticsReportsInstancesGetToManyRelatedResponse =
   AnalyticsReportsInstancesGetToManyRelatedResponses[keyof AnalyticsReportsInstancesGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/appAssetLibraries/{id}/relationships/images`. */
+export type AppAssetLibrariesImagesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appAssetLibraries/{id}/relationships/images";
+};
+
+/** Error status map for `GET /v1/appAssetLibraries/{id}/relationships/images`. */
+export type AppAssetLibrariesImagesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraries/{id}/relationships/images`. */
+export type AppAssetLibrariesImagesGetToManyRelationshipError =
+  AppAssetLibrariesImagesGetToManyRelationshipErrors[keyof AppAssetLibrariesImagesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appAssetLibraries/{id}/relationships/images`. */
+export type AppAssetLibrariesImagesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppAssetLibraryImagesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraries/{id}/relationships/images`. */
+export type AppAssetLibrariesImagesGetToManyRelationshipResponse =
+  AppAssetLibrariesImagesGetToManyRelationshipResponses[keyof AppAssetLibrariesImagesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appAssetLibraries/{id}/images`. */
+export type AppAssetLibrariesImagesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'category'
+     */
+    "filter[category]"?: Array<
+      "CREATIVE_ASSETS" | "APP_SCREENSHOTS_AND_PREVIEWS"
+    >;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "AWAITING_UPLOAD"
+      | "UPLOAD_COMPLETE"
+      | "FAILED"
+      | "COMPLETE"
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REJECTED"
+      | "ARCHIVED"
+    >;
+    /**
+     * filter by attribute 'referenceName'
+     */
+    "filter[referenceName]"?: Array<string>;
+    /**
+     * filter by attribute 'specId'
+     */
+    "filter[specId]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "referenceName"
+      | "-referenceName"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"placements">;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
+  };
+  url: "/v1/appAssetLibraries/{id}/images";
+};
+
+/** Error status map for `GET /v1/appAssetLibraries/{id}/images`. */
+export type AppAssetLibrariesImagesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraries/{id}/images`. */
+export type AppAssetLibrariesImagesGetToManyRelatedError =
+  AppAssetLibrariesImagesGetToManyRelatedErrors[keyof AppAssetLibrariesImagesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appAssetLibraries/{id}/images`. */
+export type AppAssetLibrariesImagesGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryImages
+   */
+  200: AppAssetLibraryImagesResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraries/{id}/images`. */
+export type AppAssetLibrariesImagesGetToManyRelatedResponse =
+  AppAssetLibrariesImagesGetToManyRelatedResponses[keyof AppAssetLibrariesImagesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appAssetLibraries/{id}/relationships/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appAssetLibraries/{id}/relationships/videos";
+};
+
+/** Error status map for `GET /v1/appAssetLibraries/{id}/relationships/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraries/{id}/relationships/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelationshipError =
+  AppAssetLibrariesVideosGetToManyRelationshipErrors[keyof AppAssetLibrariesVideosGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appAssetLibraries/{id}/relationships/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppAssetLibraryVideosLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraries/{id}/relationships/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelationshipResponse =
+  AppAssetLibrariesVideosGetToManyRelationshipResponses[keyof AppAssetLibrariesVideosGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appAssetLibraries/{id}/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'category'
+     */
+    "filter[category]"?: Array<
+      "CREATIVE_ASSETS" | "APP_SCREENSHOTS_AND_PREVIEWS"
+    >;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "AWAITING_UPLOAD"
+      | "UPLOAD_COMPLETE"
+      | "FAILED"
+      | "COMPLETE"
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "ACCEPTED"
+      | "APPROVED"
+      | "REJECTED"
+      | "ARCHIVED"
+    >;
+    /**
+     * filter by attribute 'referenceName'
+     */
+    "filter[referenceName]"?: Array<string>;
+    /**
+     * filter by attribute 'specId'
+     */
+    "filter[specId]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "referenceName"
+      | "-referenceName"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"placements">;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
+  };
+  url: "/v1/appAssetLibraries/{id}/videos";
+};
+
+/** Error status map for `GET /v1/appAssetLibraries/{id}/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraries/{id}/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelatedError =
+  AppAssetLibrariesVideosGetToManyRelatedErrors[keyof AppAssetLibrariesVideosGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appAssetLibraries/{id}/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryVideos
+   */
+  200: AppAssetLibraryVideosResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraries/{id}/videos`. */
+export type AppAssetLibrariesVideosGetToManyRelatedResponse =
+  AppAssetLibrariesVideosGetToManyRelatedResponses[keyof AppAssetLibrariesVideosGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appAssetLibraryImages/{id}/relationships/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appAssetLibraryImages/{id}/relationships/placements";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryImages/{id}/relationships/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryImages/{id}/relationships/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelationshipError =
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors[keyof AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryImages/{id}/relationships/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppAssetLibraryImagePlacementsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryImages/{id}/relationships/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelationshipResponse =
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses[keyof AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appAssetLibraryImages/{id}/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'placementType'
+     */
+    "filter[placementType]"?: Array<
+      | "APP_SCREENSHOT"
+      | "IMESSAGE_APP_SCREENSHOT"
+      | "APP_PREVIEW"
+      | "PRODUCT_PAGE_HEADER_ASSET"
+      | "APP_STORE_SEARCH_RESULTS_ASSET"
+      | "SEARCH_RESULTS_ADS_ASSET"
+      | "TODAY_TAB_ADS_ASSET"
+      | "EVENT_CARD_ASSET"
+      | "EVENT_DETAILS_PAGE_ASSET"
+      | "RETENTION_MESSAGE_ASSET"
+    >;
+    /**
+     * filter by attribute 'placementGroup'
+     */
+    "filter[placementGroup]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "ASSET_PROCESSING"
+      | "FAILED"
+      | "PARENT_PREPARE_FOR_SUBMISSION"
+      | "PARENT_READY_FOR_REVIEW"
+      | "PARENT_WAITING_FOR_REVIEW"
+      | "PARENT_IN_REVIEW"
+      | "PARENT_APPROVED"
+    >;
+    /**
+     * filter by id(s) of related 'video'
+     */
+    "filter[video]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appEventLocalization'
+     */
+    "filter[appEventLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionLocalization'
+     */
+    "filter[appStoreVersionLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appCustomProductPageLocalization'
+     */
+    "filter[appCustomProductPageLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
+     */
+    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "placementGroupPosition"
+      | "-placementGroupPosition"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appAssetLibraryImages/{id}/placements";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryImages/{id}/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryImages/{id}/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelatedError =
+  AppAssetLibraryImagesPlacementsGetToManyRelatedErrors[keyof AppAssetLibraryImagesPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryImages/{id}/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryPlacements
+   */
+  200: AppAssetLibraryPlacementsResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryImages/{id}/placements`. */
+export type AppAssetLibraryImagesPlacementsGetToManyRelatedResponse =
+  AppAssetLibraryImagesPlacementsGetToManyRelatedResponses[keyof AppAssetLibraryImagesPlacementsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appAssetLibraryVideos/{id}/relationships/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appAssetLibraryVideos/{id}/relationships/placements";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryVideos/{id}/relationships/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryVideos/{id}/relationships/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelationshipError =
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors[keyof AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryVideos/{id}/relationships/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppAssetLibraryVideoPlacementsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryVideos/{id}/relationships/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelationshipResponse =
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses[keyof AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appAssetLibraryVideos/{id}/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'placementType'
+     */
+    "filter[placementType]"?: Array<
+      | "APP_SCREENSHOT"
+      | "IMESSAGE_APP_SCREENSHOT"
+      | "APP_PREVIEW"
+      | "PRODUCT_PAGE_HEADER_ASSET"
+      | "APP_STORE_SEARCH_RESULTS_ASSET"
+      | "SEARCH_RESULTS_ADS_ASSET"
+      | "TODAY_TAB_ADS_ASSET"
+      | "EVENT_CARD_ASSET"
+      | "EVENT_DETAILS_PAGE_ASSET"
+      | "RETENTION_MESSAGE_ASSET"
+    >;
+    /**
+     * filter by attribute 'placementGroup'
+     */
+    "filter[placementGroup]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "ASSET_PROCESSING"
+      | "FAILED"
+      | "PARENT_PREPARE_FOR_SUBMISSION"
+      | "PARENT_READY_FOR_REVIEW"
+      | "PARENT_WAITING_FOR_REVIEW"
+      | "PARENT_IN_REVIEW"
+      | "PARENT_APPROVED"
+    >;
+    /**
+     * filter by id(s) of related 'image'
+     */
+    "filter[image]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appEventLocalization'
+     */
+    "filter[appEventLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionLocalization'
+     */
+    "filter[appStoreVersionLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appCustomProductPageLocalization'
+     */
+    "filter[appCustomProductPageLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
+     */
+    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "placementGroupPosition"
+      | "-placementGroupPosition"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appAssetLibraryVideos/{id}/placements";
+};
+
+/** Error status map for `GET /v1/appAssetLibraryVideos/{id}/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appAssetLibraryVideos/{id}/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelatedError =
+  AppAssetLibraryVideosPlacementsGetToManyRelatedErrors[keyof AppAssetLibraryVideosPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appAssetLibraryVideos/{id}/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryPlacements
+   */
+  200: AppAssetLibraryPlacementsResponse;
+};
+
+/** Successful response from `GET /v1/appAssetLibraryVideos/{id}/placements`. */
+export type AppAssetLibraryVideosPlacementsGetToManyRelatedResponse =
+  AppAssetLibraryVideosPlacementsGetToManyRelatedResponses[keyof AppAssetLibraryVideosPlacementsGetToManyRelatedResponses];
+
 /** Request options for `GET /v2/appAvailabilities/{id}/relationships/territoryAvailabilities`. */
 export type AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationshipData =
   {
@@ -65334,6 +68676,7 @@ export type AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedDa
         | "marketplaceSearchDetail"
         | "buildUploads"
         | "backgroundAssets"
+        | "assetLibrary"
         | "betaFeedbackScreenshotSubmissions"
         | "betaFeedbackCrashSubmissions"
         | "searchKeywords"
@@ -65355,6 +68698,7 @@ export type AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedDa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type builds
@@ -66042,6 +69386,7 @@ export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData 
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -66053,6 +69398,7 @@ export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData 
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -66062,6 +69408,7 @@ export type AppCustomProductPageLocalizationsAppPreviewSetsGetToManyRelatedData 
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appPreviews
@@ -66286,6 +69633,7 @@ export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedDa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -66297,6 +69645,7 @@ export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedDa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -66306,6 +69655,7 @@ export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedDa
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appScreenshots
@@ -66383,6 +69733,310 @@ export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedRe
 /** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/appScreenshotSets`. */
 export type AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
   AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+    };
+    url: "/v1/appCustomProductPageLocalizations/{id}/relationships/placements";
+  };
+
+/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipError =
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors[keyof AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: AppCustomProductPageLocalizationPlacementsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponse =
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses[keyof AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appCustomProductPageLocalizations/{id}/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'placementType'
+     */
+    "filter[placementType]"?: Array<
+      | "APP_SCREENSHOT"
+      | "IMESSAGE_APP_SCREENSHOT"
+      | "APP_PREVIEW"
+      | "PRODUCT_PAGE_HEADER_ASSET"
+      | "APP_STORE_SEARCH_RESULTS_ASSET"
+      | "SEARCH_RESULTS_ADS_ASSET"
+      | "TODAY_TAB_ADS_ASSET"
+      | "EVENT_CARD_ASSET"
+      | "EVENT_DETAILS_PAGE_ASSET"
+      | "RETENTION_MESSAGE_ASSET"
+    >;
+    /**
+     * filter by attribute 'placementGroup'
+     */
+    "filter[placementGroup]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "ASSET_PROCESSING"
+      | "FAILED"
+      | "PARENT_PREPARE_FOR_SUBMISSION"
+      | "PARENT_READY_FOR_REVIEW"
+      | "PARENT_WAITING_FOR_REVIEW"
+      | "PARENT_IN_REVIEW"
+      | "PARENT_APPROVED"
+    >;
+    /**
+     * filter by id(s) of related 'image'
+     */
+    "filter[image]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'video'
+     */
+    "filter[video]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appEventLocalization'
+     */
+    "filter[appEventLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionLocalization'
+     */
+    "filter[appStoreVersionLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
+     */
+    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "placementGroupPosition"
+      | "-placementGroupPosition"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appCustomProductPageLocalizations/{id}/placements";
+};
+
+/** Error status map for `GET /v1/appCustomProductPageLocalizations/{id}/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/appCustomProductPageLocalizations/{id}/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedError =
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors[keyof AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appCustomProductPageLocalizations/{id}/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses =
+  {
+    /**
+     * List of AppAssetLibraryPlacements
+     */
+    200: AppAssetLibraryPlacementsResponse;
+  };
+
+/** Successful response from `GET /v1/appCustomProductPageLocalizations/{id}/placements`. */
+export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponse =
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses[keyof AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses];
 
 /** Request options for `DELETE /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords`. */
 export type AppCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationshipData =
@@ -66738,6 +70392,7 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageVersions
@@ -66774,6 +70429,24 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
        */
       "fields[appKeywords]"?: Array<never>;
       /**
+       * the fields to include for returned resources of type appAssetLibraryPlacements
+       */
+      "fields[appAssetLibraryPlacements]"?: Array<
+        | "mediaType"
+        | "placementType"
+        | "placementGroup"
+        | "createdDate"
+        | "lastModifiedDate"
+        | "state"
+        | "stateDetails"
+        | "image"
+        | "video"
+        | "appEventLocalization"
+        | "appStoreVersionLocalization"
+        | "appCustomProductPageLocalization"
+        | "appStoreVersionExperimentTreatmentLocalization"
+      >;
+      /**
        * maximum resources per page
        */
       limit?: number;
@@ -66785,6 +70458,7 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * maximum number of related appScreenshotSets returned (when they are included)
@@ -66798,6 +70472,10 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
        * maximum number of related searchKeywords returned (when they are included)
        */
       "limit[searchKeywords]"?: number;
+      /**
+       * maximum number of related placements returned (when they are included)
+       */
+      "limit[placements]"?: number;
     };
     url: "/v1/appCustomProductPageVersions/{id}/appCustomProductPageLocalizations";
   };
@@ -66955,6 +70633,7 @@ export type AppCustomProductPagesAppCustomProductPageVersionsGetToManyRelatedDat
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * maximum resources per page
@@ -67236,6 +70915,7 @@ export type AppEventLocalizationsAppEventScreenshotsGetToManyRelatedData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * maximum resources per page
@@ -67387,6 +71067,7 @@ export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * maximum resources per page
@@ -67439,6 +71120,305 @@ export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/appEventLocalizations/{id}/appEventVideoClips`. */
 export type AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponse =
   AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses[keyof AppEventLocalizationsAppEventVideoClipsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appEventLocalizations/{id}/relationships/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appEventLocalizations/{id}/relationships/placements";
+};
+
+/** Error status map for `GET /v1/appEventLocalizations/{id}/relationships/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appEventLocalizations/{id}/relationships/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelationshipError =
+  AppEventLocalizationsPlacementsGetToManyRelationshipErrors[keyof AppEventLocalizationsPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appEventLocalizations/{id}/relationships/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppEventLocalizationPlacementsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/appEventLocalizations/{id}/relationships/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelationshipResponse =
+  AppEventLocalizationsPlacementsGetToManyRelationshipResponses[keyof AppEventLocalizationsPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appEventLocalizations/{id}/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'placementType'
+     */
+    "filter[placementType]"?: Array<
+      | "APP_SCREENSHOT"
+      | "IMESSAGE_APP_SCREENSHOT"
+      | "APP_PREVIEW"
+      | "PRODUCT_PAGE_HEADER_ASSET"
+      | "APP_STORE_SEARCH_RESULTS_ASSET"
+      | "SEARCH_RESULTS_ADS_ASSET"
+      | "TODAY_TAB_ADS_ASSET"
+      | "EVENT_CARD_ASSET"
+      | "EVENT_DETAILS_PAGE_ASSET"
+      | "RETENTION_MESSAGE_ASSET"
+    >;
+    /**
+     * filter by attribute 'placementGroup'
+     */
+    "filter[placementGroup]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "ASSET_PROCESSING"
+      | "FAILED"
+      | "PARENT_PREPARE_FOR_SUBMISSION"
+      | "PARENT_READY_FOR_REVIEW"
+      | "PARENT_WAITING_FOR_REVIEW"
+      | "PARENT_IN_REVIEW"
+      | "PARENT_APPROVED"
+    >;
+    /**
+     * filter by id(s) of related 'image'
+     */
+    "filter[image]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'video'
+     */
+    "filter[video]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionLocalization'
+     */
+    "filter[appStoreVersionLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appCustomProductPageLocalization'
+     */
+    "filter[appCustomProductPageLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
+     */
+    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "placementGroupPosition"
+      | "-placementGroupPosition"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appEventLocalizations/{id}/placements";
+};
+
+/** Error status map for `GET /v1/appEventLocalizations/{id}/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appEventLocalizations/{id}/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelatedError =
+  AppEventLocalizationsPlacementsGetToManyRelatedErrors[keyof AppEventLocalizationsPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appEventLocalizations/{id}/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryPlacements
+   */
+  200: AppAssetLibraryPlacementsResponse;
+};
+
+/** Successful response from `GET /v1/appEventLocalizations/{id}/placements`. */
+export type AppEventLocalizationsPlacementsGetToManyRelatedResponse =
+  AppEventLocalizationsPlacementsGetToManyRelatedResponses[keyof AppEventLocalizationsPlacementsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/appEvents/{id}/relationships/localizations`. */
 export type AppEventsLocalizationsGetToManyRelationshipData = {
@@ -67519,6 +71499,7 @@ export type AppEventsLocalizationsGetToManyRelatedData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appEvents
@@ -67566,13 +71547,33 @@ export type AppEventsLocalizationsGetToManyRelatedData = {
       | "appEventLocalization"
     >;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
     /**
      * comma-separated list of relationships to include
      */
-    include?: Array<"appEvent" | "appEventScreenshots" | "appEventVideoClips">;
+    include?: Array<
+      "appEvent" | "appEventScreenshots" | "appEventVideoClips" | "placements"
+    >;
     /**
      * maximum number of related appEventScreenshots returned (when they are included)
      */
@@ -67581,6 +71582,10 @@ export type AppEventsLocalizationsGetToManyRelatedData = {
      * maximum number of related appEventVideoClips returned (when they are included)
      */
     "limit[appEventVideoClips]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
   };
   url: "/v1/appEvents/{id}/localizations";
 };
@@ -69112,6 +73117,7 @@ export type AppPricePointsV3EqualizationsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -70068,6 +74074,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToMa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -70079,6 +74086,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToMa
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -70088,6 +74096,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppPreviewSetsGetToMa
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appPreviews
@@ -70312,6 +74321,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetT
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -70323,6 +74333,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetT
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -70332,6 +74343,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetT
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appScreenshots
@@ -70409,6 +74421,311 @@ export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetT
 /** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/appScreenshotSets`. */
 export type AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
   AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+    };
+    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements";
+  };
+
+/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipError =
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: AppStoreVersionExperimentTreatmentLocalizationPlacementsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponse =
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedData =
+  {
+    body?: never;
+    path: {
+      /**
+       * the id of the requested resource
+       */
+      id: string;
+    };
+    query?: {
+      /**
+       * filter by attribute 'placementType'
+       */
+      "filter[placementType]"?: Array<
+        | "APP_SCREENSHOT"
+        | "IMESSAGE_APP_SCREENSHOT"
+        | "APP_PREVIEW"
+        | "PRODUCT_PAGE_HEADER_ASSET"
+        | "APP_STORE_SEARCH_RESULTS_ASSET"
+        | "SEARCH_RESULTS_ADS_ASSET"
+        | "TODAY_TAB_ADS_ASSET"
+        | "EVENT_CARD_ASSET"
+        | "EVENT_DETAILS_PAGE_ASSET"
+        | "RETENTION_MESSAGE_ASSET"
+      >;
+      /**
+       * filter by attribute 'placementGroup'
+       */
+      "filter[placementGroup]"?: Array<string>;
+      /**
+       * filter by attribute 'state'
+       */
+      "filter[state]"?: Array<
+        | "ASSET_PROCESSING"
+        | "FAILED"
+        | "PARENT_PREPARE_FOR_SUBMISSION"
+        | "PARENT_READY_FOR_REVIEW"
+        | "PARENT_WAITING_FOR_REVIEW"
+        | "PARENT_IN_REVIEW"
+        | "PARENT_APPROVED"
+      >;
+      /**
+       * filter by id(s) of related 'image'
+       */
+      "filter[image]"?: Array<string>;
+      /**
+       * filter by id(s) of related 'video'
+       */
+      "filter[video]"?: Array<string>;
+      /**
+       * filter by id(s) of related 'appEventLocalization'
+       */
+      "filter[appEventLocalization]"?: Array<string>;
+      /**
+       * filter by id(s) of related 'appStoreVersionLocalization'
+       */
+      "filter[appStoreVersionLocalization]"?: Array<string>;
+      /**
+       * filter by id(s) of related 'appCustomProductPageLocalization'
+       */
+      "filter[appCustomProductPageLocalization]"?: Array<string>;
+      /**
+       * filter by id(s)
+       */
+      "filter[id]"?: Array<string>;
+      /**
+       * comma-separated list of sort expressions; resources will be sorted as specified
+       */
+      sort?: Array<
+        | "createdDate"
+        | "-createdDate"
+        | "lastModifiedDate"
+        | "-lastModifiedDate"
+        | "placementGroupPosition"
+        | "-placementGroupPosition"
+      >;
+      /**
+       * the fields to include for returned resources of type appAssetLibraryPlacements
+       */
+      "fields[appAssetLibraryPlacements]"?: Array<
+        | "mediaType"
+        | "placementType"
+        | "placementGroup"
+        | "createdDate"
+        | "lastModifiedDate"
+        | "state"
+        | "stateDetails"
+        | "image"
+        | "video"
+        | "appEventLocalization"
+        | "appStoreVersionLocalization"
+        | "appCustomProductPageLocalization"
+        | "appStoreVersionExperimentTreatmentLocalization"
+      >;
+      /**
+       * the fields to include for returned resources of type appAssetLibraryImages
+       */
+      "fields[appAssetLibraryImages]"?: Array<
+        | "category"
+        | "createdDate"
+        | "lastModifiedDate"
+        | "fileName"
+        | "fileSize"
+        | "imageAsset"
+        | "referenceName"
+        | "specId"
+        | "state"
+        | "stateDetails"
+        | "uploadOperations"
+        | "placements"
+      >;
+      /**
+       * the fields to include for returned resources of type appAssetLibraryVideos
+       */
+      "fields[appAssetLibraryVideos]"?: Array<
+        | "category"
+        | "createdDate"
+        | "lastModifiedDate"
+        | "fileName"
+        | "fileSize"
+        | "previewFrameImage"
+        | "previewFrameTimeCode"
+        | "referenceName"
+        | "specId"
+        | "state"
+        | "stateDetails"
+        | "uploadOperations"
+        | "videoAsset"
+        | "placements"
+      >;
+      /**
+       * the fields to include for returned resources of type appEventLocalizations
+       */
+      "fields[appEventLocalizations]"?: Array<
+        | "locale"
+        | "name"
+        | "shortDescription"
+        | "longDescription"
+        | "appEvent"
+        | "appEventScreenshots"
+        | "appEventVideoClips"
+        | "placements"
+      >;
+      /**
+       * the fields to include for returned resources of type appStoreVersionLocalizations
+       */
+      "fields[appStoreVersionLocalizations]"?: Array<
+        | "description"
+        | "locale"
+        | "keywords"
+        | "marketingUrl"
+        | "promotionalText"
+        | "supportUrl"
+        | "whatsNew"
+        | "appStoreVersion"
+        | "appScreenshotSets"
+        | "appPreviewSets"
+        | "searchKeywords"
+        | "placements"
+      >;
+      /**
+       * the fields to include for returned resources of type appCustomProductPageLocalizations
+       */
+      "fields[appCustomProductPageLocalizations]"?: Array<
+        | "locale"
+        | "promotionalText"
+        | "appCustomProductPageVersion"
+        | "appScreenshotSets"
+        | "appPreviewSets"
+        | "searchKeywords"
+        | "placements"
+      >;
+      /**
+       * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+       */
+      "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+        | "locale"
+        | "appStoreVersionExperimentTreatment"
+        | "appScreenshotSets"
+        | "appPreviewSets"
+        | "placements"
+      >;
+      /**
+       * maximum resources per page
+       */
+      limit?: number;
+      /**
+       * comma-separated list of relationships to include
+       */
+      include?: Array<
+        | "image"
+        | "video"
+        | "appEventLocalization"
+        | "appStoreVersionLocalization"
+        | "appCustomProductPageLocalization"
+        | "appStoreVersionExperimentTreatmentLocalization"
+      >;
+    };
+    url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements";
+  };
+
+/** Error status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedError =
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors[keyof AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses =
+  {
+    /**
+     * List of AppAssetLibraryPlacements
+     */
+    200: AppAssetLibraryPlacementsResponse;
+  };
+
+/** Successful response from `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements`. */
+export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponse =
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses[keyof AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/appStoreVersionExperimentTreatments/{id}/relationships/appStoreVersionExperimentTreatmentLocalizations`. */
 export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationshipData =
@@ -70494,6 +74811,7 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatments
@@ -70528,6 +74846,24 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
         | "appPreviews"
       >;
       /**
+       * the fields to include for returned resources of type appAssetLibraryPlacements
+       */
+      "fields[appAssetLibraryPlacements]"?: Array<
+        | "mediaType"
+        | "placementType"
+        | "placementGroup"
+        | "createdDate"
+        | "lastModifiedDate"
+        | "state"
+        | "stateDetails"
+        | "image"
+        | "video"
+        | "appEventLocalization"
+        | "appStoreVersionLocalization"
+        | "appCustomProductPageLocalization"
+        | "appStoreVersionExperimentTreatmentLocalization"
+      >;
+      /**
        * maximum resources per page
        */
       limit?: number;
@@ -70538,6 +74874,7 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * maximum number of related appScreenshotSets returned (when they are included)
@@ -70547,6 +74884,10 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
        * maximum number of related appPreviewSets returned (when they are included)
        */
       "limit[appPreviewSets]"?: number;
+      /**
+       * maximum number of related placements returned (when they are included)
+       */
+      "limit[placements]"?: number;
     };
     url: "/v1/appStoreVersionExperimentTreatments/{id}/appStoreVersionExperimentTreatmentLocalizations";
   };
@@ -70702,6 +75043,7 @@ export type AppStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetTo
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * maximum resources per page
@@ -70890,6 +75232,7 @@ export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -70901,6 +75244,7 @@ export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -70910,6 +75254,7 @@ export type AppStoreVersionLocalizationsAppPreviewSetsGetToManyRelatedData = {
       | "appStoreVersionExperimentTreatment"
       | "appScreenshotSets"
       | "appPreviewSets"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appPreviews
@@ -71133,6 +75478,7 @@ export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData =
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appCustomProductPageLocalizations
@@ -71144,6 +75490,7 @@ export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData =
         | "appScreenshotSets"
         | "appPreviewSets"
         | "searchKeywords"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
@@ -71153,6 +75500,7 @@ export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedData =
         | "appStoreVersionExperimentTreatment"
         | "appScreenshotSets"
         | "appPreviewSets"
+        | "placements"
       >;
       /**
        * the fields to include for returned resources of type appScreenshots
@@ -71230,6 +75578,307 @@ export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedRespons
 /** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/appScreenshotSets`. */
 export type AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponse =
   AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses[keyof AppStoreVersionLocalizationsAppScreenshotSetsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/appStoreVersionLocalizations/{id}/relationships/placements";
+};
+
+/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelationshipError =
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors[keyof AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: AppStoreVersionLocalizationPlacementsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponse =
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses[keyof AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/appStoreVersionLocalizations/{id}/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'placementType'
+     */
+    "filter[placementType]"?: Array<
+      | "APP_SCREENSHOT"
+      | "IMESSAGE_APP_SCREENSHOT"
+      | "APP_PREVIEW"
+      | "PRODUCT_PAGE_HEADER_ASSET"
+      | "APP_STORE_SEARCH_RESULTS_ASSET"
+      | "SEARCH_RESULTS_ADS_ASSET"
+      | "TODAY_TAB_ADS_ASSET"
+      | "EVENT_CARD_ASSET"
+      | "EVENT_DETAILS_PAGE_ASSET"
+      | "RETENTION_MESSAGE_ASSET"
+    >;
+    /**
+     * filter by attribute 'placementGroup'
+     */
+    "filter[placementGroup]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "ASSET_PROCESSING"
+      | "FAILED"
+      | "PARENT_PREPARE_FOR_SUBMISSION"
+      | "PARENT_READY_FOR_REVIEW"
+      | "PARENT_WAITING_FOR_REVIEW"
+      | "PARENT_IN_REVIEW"
+      | "PARENT_APPROVED"
+    >;
+    /**
+     * filter by id(s) of related 'image'
+     */
+    "filter[image]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'video'
+     */
+    "filter[video]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appEventLocalization'
+     */
+    "filter[appEventLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appCustomProductPageLocalization'
+     */
+    "filter[appCustomProductPageLocalization]"?: Array<string>;
+    /**
+     * filter by id(s) of related 'appStoreVersionExperimentTreatmentLocalization'
+     */
+    "filter[appStoreVersionExperimentTreatmentLocalization]"?: Array<string>;
+    /**
+     * filter by id(s)
+     */
+    "filter[id]"?: Array<string>;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<
+      | "createdDate"
+      | "-createdDate"
+      | "lastModifiedDate"
+      | "-lastModifiedDate"
+      | "placementGroupPosition"
+      | "-placementGroupPosition"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+  };
+  url: "/v1/appStoreVersionLocalizations/{id}/placements";
+};
+
+/** Error status map for `GET /v1/appStoreVersionLocalizations/{id}/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/appStoreVersionLocalizations/{id}/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedError =
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors[keyof AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/appStoreVersionLocalizations/{id}/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses = {
+  /**
+   * List of AppAssetLibraryPlacements
+   */
+  200: AppAssetLibraryPlacementsResponse;
+};
+
+/** Successful response from `GET /v1/appStoreVersionLocalizations/{id}/placements`. */
+export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponse =
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses[keyof AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses];
 
 /** Request options for `DELETE /v1/appStoreVersionLocalizations/{id}/relationships/searchKeywords`. */
 export type AppStoreVersionLocalizationsSearchKeywordsDeleteToManyRelationshipData =
@@ -72213,6 +76862,7 @@ export type AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -72417,6 +77067,7 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -72472,6 +77123,24 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
      */
     "fields[appKeywords]"?: Array<never>;
     /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -72483,6 +77152,7 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * maximum number of related appScreenshotSets returned (when they are included)
@@ -72496,6 +77166,10 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
      * maximum number of related searchKeywords returned (when they are included)
      */
     "limit[searchKeywords]"?: number;
+    /**
+     * maximum number of related placements returned (when they are included)
+     */
+    "limit[placements]"?: number;
   };
   url: "/v1/appStoreVersions/{id}/appStoreVersionLocalizations";
 };
@@ -74465,6 +79139,7 @@ export type AppsAppClipsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -74670,6 +79345,7 @@ export type AppsAppCustomProductPagesGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -74897,6 +79573,7 @@ export type AppsAppEncryptionDeclarationsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -75116,6 +79793,7 @@ export type AppsAppEventsGetToManyRelatedData = {
       | "appEvent"
       | "appEventScreenshots"
       | "appEventVideoClips"
+      | "placements"
     >;
     /**
      * maximum resources per page
@@ -75319,6 +79997,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -75575,6 +80254,7 @@ export type AppsAppPricePointsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -75761,6 +80441,7 @@ export type AppsAppPriceScheduleGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -75988,6 +80669,7 @@ export type AppsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -76311,6 +80993,7 @@ export type AppsAppStoreVersionsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -76332,6 +81015,7 @@ export type AppsAppStoreVersionsGetToManyRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type builds
@@ -76661,6 +81345,117 @@ export type AppsAppTagsGetToManyRelatedResponses = {
 export type AppsAppTagsGetToManyRelatedResponse =
   AppsAppTagsGetToManyRelatedResponses[keyof AppsAppTagsGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/apps/{id}/relationships/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/apps/{id}/relationships/assetLibrary";
+};
+
+/** Error status map for `GET /v1/apps/{id}/relationships/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/apps/{id}/relationships/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelationshipError =
+  AppsAssetLibraryGetToOneRelationshipErrors[keyof AppsAssetLibraryGetToOneRelationshipErrors];
+
+/** Response status map for `GET /v1/apps/{id}/relationships/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelationshipResponses = {
+  /**
+   * Related linkage
+   */
+  200: AppAssetLibraryLinkageResponse;
+};
+
+/** Successful response from `GET /v1/apps/{id}/relationships/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelationshipResponse =
+  AppsAssetLibraryGetToOneRelationshipResponses[keyof AppsAssetLibraryGetToOneRelationshipResponses];
+
+/** Request options for `GET /v1/apps/{id}/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraries
+     */
+    "fields[appAssetLibraries]"?: Array<"images" | "videos">;
+  };
+  url: "/v1/apps/{id}/assetLibrary";
+};
+
+/** Error status map for `GET /v1/apps/{id}/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/apps/{id}/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelatedError =
+  AppsAssetLibraryGetToOneRelatedErrors[keyof AppsAssetLibraryGetToOneRelatedErrors];
+
+/** Response status map for `GET /v1/apps/{id}/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelatedResponses = {
+  /**
+   * Single AppAssetLibrary
+   */
+  200: AppAssetLibraryResponse;
+};
+
+/** Successful response from `GET /v1/apps/{id}/assetLibrary`. */
+export type AppsAssetLibraryGetToOneRelatedResponse =
+  AppsAssetLibraryGetToOneRelatedResponses[keyof AppsAssetLibraryGetToOneRelatedResponses];
+
 /** Request options for `GET /v1/apps/{id}/relationships/backgroundAssets`. */
 export type AppsBackgroundAssetsGetToManyRelationshipData = {
   body?: never;
@@ -76825,6 +81620,7 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -78403,6 +83199,7 @@ export type AppsCiProductGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -79224,6 +84021,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -80598,6 +85396,7 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -80614,6 +85413,8 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "appStoreVersionExperiment"
       | "appStoreVersionExperimentV2"
       | "appEvent"
+      | "appAssetLibraryImage"
+      | "appAssetLibraryVideo"
       | "backgroundAssetVersion"
       | "gameCenterAchievementVersion"
       | "gameCenterActivityVersion"
@@ -81297,6 +86098,7 @@ export type AppsWebhooksGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -81852,6 +86654,7 @@ export type BetaAppLocalizationsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -82020,6 +86823,7 @@ export type BetaAppReviewDetailsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -82576,6 +87380,7 @@ export type BetaGroupsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -83507,6 +88312,7 @@ export type BetaLicenseAgreementsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -83748,6 +88554,7 @@ export type BetaTestersAppsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -84566,6 +89373,7 @@ export type BuildBetaDetailsBuildGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -85467,6 +90275,7 @@ export type BuildsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -85857,6 +90666,7 @@ export type BuildsAppStoreVersionGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -85878,6 +90688,7 @@ export type BuildsAppStoreVersionGetToOneRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type builds
@@ -87385,6 +92196,7 @@ export type BundleIdsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -88892,6 +93704,7 @@ export type CiBuildRunsBuildsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -89470,6 +94283,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -92871,6 +97685,7 @@ export type GameCenterAppVersionsAppStoreVersionGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -92892,6 +97707,7 @@ export type GameCenterAppVersionsAppStoreVersionGetToOneRelatedData = {
       | "appScreenshotSets"
       | "appPreviewSets"
       | "searchKeywords"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type builds
@@ -97084,6 +101900,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -103639,6 +108456,7 @@ export type PreReleaseVersionsAppGetToOneRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -104291,6 +109109,8 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "appStoreVersionExperiment"
       | "appStoreVersionExperimentV2"
       | "appEvent"
+      | "appAssetLibraryImage"
+      | "appAssetLibraryVideo"
       | "backgroundAssetVersion"
       | "gameCenterAchievementVersion"
       | "gameCenterActivityVersion"
@@ -104372,6 +109192,42 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "territorySchedules"
       | "archivedTerritorySchedules"
       | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
     >;
     /**
      * the fields to include for returned resources of type backgroundAssetVersions
@@ -104473,6 +109329,8 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "appStoreVersionExperiment"
       | "appStoreVersionExperimentV2"
       | "appEvent"
+      | "appAssetLibraryImage"
+      | "appAssetLibraryVideo"
       | "backgroundAssetVersion"
       | "gameCenterAchievementVersion"
       | "gameCenterActivityVersion"
@@ -109500,6 +114358,7 @@ export type UserInvitationsVisibleAppsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"
@@ -109869,6 +114728,7 @@ export type UsersVisibleAppsGetToManyRelatedData = {
       | "marketplaceSearchDetail"
       | "buildUploads"
       | "backgroundAssets"
+      | "assetLibrary"
       | "betaFeedbackScreenshotSubmissions"
       | "betaFeedbackCrashSubmissions"
       | "searchKeywords"

@@ -15,15 +15,38 @@ import type {
   AlternativeDistributionPackageVersionsVariantsGetToManyRelatedResponse,
   AnalyticsReportInstancesGetInstanceResponse,
   AnalyticsReportsInstancesGetToManyRelatedResponse,
+  AppAssetLibrariesImagesGetToManyRelatedResponse,
+  AppAssetLibrariesVideosGetToManyRelatedResponse,
+  AppAssetLibraryImagesCreateInstanceResponse,
+  AppAssetLibraryImagesGetInstanceResponse,
+  AppAssetLibraryImagesPlacementsGetToManyRelatedResponse,
+  AppAssetLibraryImagesUpdateInstanceResponse,
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponse,
+  AppAssetLibraryPlacementsCreateInstanceResponse,
+  AppAssetLibraryPlacementsGetInstanceResponse,
+  AppAssetLibraryVideosCreateInstanceResponse,
+  AppAssetLibraryVideosGetInstanceResponse,
+  AppAssetLibraryVideosPlacementsGetToManyRelatedResponse,
+  AppAssetLibraryVideosUpdateInstanceResponse,
   AppAvailabilitiesV2CreateInstanceResponse,
   AppAvailabilitiesV2GetInstanceResponse,
   AppAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedResponse,
   AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedResponse,
+  AppCustomProductPageLocalizationsCreateInstanceResponse,
+  AppCustomProductPageLocalizationsGetInstanceResponse,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponse,
+  AppCustomProductPageLocalizationsUpdateInstanceResponse,
+  AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponse,
   AppEncryptionDeclarationsCreateInstanceResponse,
   AppEncryptionDeclarationsGetCollectionResponse,
   AppEncryptionDeclarationsGetInstanceResponse,
+  AppEventLocalizationsCreateInstanceResponse,
+  AppEventLocalizationsGetInstanceResponse,
+  AppEventLocalizationsPlacementsGetToManyRelatedResponse,
+  AppEventLocalizationsUpdateInstanceResponse,
   AppEventsCreateInstanceResponse,
   AppEventsGetInstanceResponse,
+  AppEventsLocalizationsGetToManyRelatedResponse,
   AppEventsUpdateInstanceResponse,
   AppPriceSchedulesAutomaticPricesGetToManyRelatedResponse,
   AppPriceSchedulesCreateInstanceResponse,
@@ -51,13 +74,22 @@ import type {
   AppStoreVersionExperimentsV2CreateInstanceResponse,
   AppStoreVersionExperimentsV2GetInstanceResponse,
   AppStoreVersionExperimentsV2UpdateInstanceResponse,
+  AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponse,
+  AppStoreVersionExperimentTreatmentLocalizationsGetInstanceResponse,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponse,
+  AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponse,
   AppStoreVersionExperimentTreatmentsCreateInstanceResponse,
   AppStoreVersionExperimentTreatmentsGetInstanceResponse,
   AppStoreVersionExperimentTreatmentsUpdateInstanceResponse,
+  AppStoreVersionLocalizationsCreateInstanceResponse,
+  AppStoreVersionLocalizationsGetInstanceResponse,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponse,
+  AppStoreVersionLocalizationsUpdateInstanceResponse,
   AppStoreVersionPhasedReleasesCreateInstanceResponse,
   AppStoreVersionPhasedReleasesUpdateInstanceResponse,
   AppStoreVersionsAlternativeDistributionPackageGetToOneRelatedResponse,
   AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedResponse,
+  AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponse,
   AppStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedResponse,
   AppStoreVersionsBuildGetToOneRelatedResponse,
   AppStoreVersionsCreateInstanceResponse,
@@ -473,6 +505,123 @@ export const analyticsReportInstancesGetInstanceResponseTransformer = async (
   return data;
 };
 
+const appAssetLibraryPlacementSchemaResponseTransformer = (data: any) => {
+  if (data.attributes) {
+    if (data.attributes.createdDate) {
+      data.attributes.createdDate = new Date(data.attributes.createdDate);
+    }
+    if (data.attributes.lastModifiedDate) {
+      data.attributes.lastModifiedDate = new Date(
+        data.attributes.lastModifiedDate,
+      );
+    }
+  }
+  return data;
+};
+
+const appAssetLibraryImageResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appAssetLibraryImagesCreateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryImagesCreateInstanceResponse> => {
+  data = appAssetLibraryImageResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appAssetLibraryImagesGetInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryImagesGetInstanceResponse> => {
+  data = appAssetLibraryImageResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appAssetLibraryImagesUpdateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryImagesUpdateInstanceResponse> => {
+  data = appAssetLibraryImageResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+const appAssetLibraryPlacementOrderingRequestResponseSchemaResponseTransformer =
+  (data: any) => {
+    if (data.included) {
+      data.included = data.included.map((item: any) =>
+        appAssetLibraryPlacementSchemaResponseTransformer(item),
+      );
+    }
+    return data;
+  };
+
+export const appAssetLibraryPlacementOrderingRequestsCreateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponse> => {
+    data =
+      appAssetLibraryPlacementOrderingRequestResponseSchemaResponseTransformer(
+        data,
+      );
+    return data;
+  };
+
+const appAssetLibraryPlacementResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  data.data = appAssetLibraryPlacementSchemaResponseTransformer(data.data);
+  return data;
+};
+
+export const appAssetLibraryPlacementsCreateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibraryPlacementsCreateInstanceResponse> => {
+    data = appAssetLibraryPlacementResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appAssetLibraryPlacementsGetInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryPlacementsGetInstanceResponse> => {
+  data = appAssetLibraryPlacementResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+const appAssetLibraryVideoResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appAssetLibraryVideosCreateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryVideosCreateInstanceResponse> => {
+  data = appAssetLibraryVideoResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appAssetLibraryVideosGetInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryVideosGetInstanceResponse> => {
+  data = appAssetLibraryVideoResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appAssetLibraryVideosUpdateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppAssetLibraryVideosUpdateInstanceResponse> => {
+  data = appAssetLibraryVideoResponseSchemaResponseTransformer(data);
+  return data;
+};
+
 const territoryAvailabilitySchemaResponseTransformer = (data: any) => {
   if (data.attributes) {
     if (data.attributes.releaseDate) {
@@ -509,6 +658,44 @@ export const appAvailabilitiesV2GetInstanceResponseTransformer = async (
   data = appAvailabilityV2ResponseSchemaResponseTransformer(data);
   return data;
 };
+
+const appCustomProductPageLocalizationResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appCustomProductPageLocalizationsCreateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppCustomProductPageLocalizationsCreateInstanceResponse> => {
+    data =
+      appCustomProductPageLocalizationResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appCustomProductPageLocalizationsGetInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppCustomProductPageLocalizationsGetInstanceResponse> => {
+    data =
+      appCustomProductPageLocalizationResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appCustomProductPageLocalizationsUpdateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppCustomProductPageLocalizationsUpdateInstanceResponse> => {
+    data =
+      appCustomProductPageLocalizationResponseSchemaResponseTransformer(data);
+    return data;
+  };
 
 const appEncryptionDeclarationSchemaResponseTransformer = (data: any) => {
   if (data.attributes) {
@@ -557,6 +744,36 @@ export const appEncryptionDeclarationsGetInstanceResponseTransformer = async (
   data: any,
 ): Promise<AppEncryptionDeclarationsGetInstanceResponse> => {
   data = appEncryptionDeclarationResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+const appEventLocalizationResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appEventLocalizationsCreateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppEventLocalizationsCreateInstanceResponse> => {
+  data = appEventLocalizationResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appEventLocalizationsGetInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppEventLocalizationsGetInstanceResponse> => {
+  data = appEventLocalizationResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const appEventLocalizationsUpdateInstanceResponseTransformer = async (
+  data: any,
+): Promise<AppEventLocalizationsUpdateInstanceResponse> => {
+  data = appEventLocalizationResponseSchemaResponseTransformer(data);
   return data;
 };
 
@@ -657,6 +874,38 @@ export const appPriceSchedulesGetInstanceResponseTransformer = async (
   return data;
 };
 
+const appStoreVersionExperimentTreatmentLocalizationResponseSchemaResponseTransformer =
+  (data: any) => {
+    if (data.included) {
+      data.included = data.included.map((item: any) =>
+        appAssetLibraryPlacementSchemaResponseTransformer(item),
+      );
+    }
+    return data;
+  };
+
+export const appStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponse> => {
+    data =
+      appStoreVersionExperimentTreatmentLocalizationResponseSchemaResponseTransformer(
+        data,
+      );
+    return data;
+  };
+
+export const appStoreVersionExperimentTreatmentLocalizationsGetInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionExperimentTreatmentLocalizationsGetInstanceResponse> => {
+    data =
+      appStoreVersionExperimentTreatmentLocalizationResponseSchemaResponseTransformer(
+        data,
+      );
+    return data;
+  };
+
 const appStoreVersionExperimentTreatmentSchemaResponseTransformer = (
   data: any,
 ) => {
@@ -749,6 +998,41 @@ export const appStoreVersionExperimentsV2UpdateInstanceResponseTransformer =
     data: any,
   ): Promise<AppStoreVersionExperimentsV2UpdateInstanceResponse> => {
     data = appStoreVersionExperimentV2ResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appStoreVersionLocalizationResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appStoreVersionLocalizationsCreateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionLocalizationsCreateInstanceResponse> => {
+    data = appStoreVersionLocalizationResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appStoreVersionLocalizationsGetInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionLocalizationsGetInstanceResponse> => {
+    data = appStoreVersionLocalizationResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appStoreVersionLocalizationsUpdateInstanceResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionLocalizationsUpdateInstanceResponse> => {
+    data = appStoreVersionLocalizationResponseSchemaResponseTransformer(data);
     return data;
   };
 
@@ -2857,6 +3141,65 @@ export const analyticsReportsInstancesGetToManyRelatedResponseTransformer =
     return data;
   };
 
+const appAssetLibraryImagesResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appAssetLibrariesImagesGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibrariesImagesGetToManyRelatedResponse> => {
+    data = appAssetLibraryImagesResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appAssetLibraryVideosResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appAssetLibrariesVideosGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibrariesVideosGetToManyRelatedResponse> => {
+    data = appAssetLibraryVideosResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appAssetLibraryPlacementsResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  data.data = data.data.map((item: any) =>
+    appAssetLibraryPlacementSchemaResponseTransformer(item),
+  );
+  return data;
+};
+
+export const appAssetLibraryImagesPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibraryImagesPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appAssetLibraryVideosPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppAssetLibraryVideosPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
 const territoryAvailabilitiesResponseSchemaResponseTransformer = (
   data: any,
 ) => {
@@ -2882,6 +3225,58 @@ export const appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedR
     return data;
   };
 
+export const appCustomProductPageLocalizationsPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appCustomProductPageLocalizationsResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponse> => {
+    data =
+      appCustomProductPageLocalizationsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+export const appEventLocalizationsPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppEventLocalizationsPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appEventLocalizationsResponseSchemaResponseTransformer = (data: any) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appEventsLocalizationsGetToManyRelatedResponseTransformer = async (
+  data: any,
+): Promise<AppEventsLocalizationsGetToManyRelatedResponse> => {
+  data = appEventLocalizationsResponseSchemaResponseTransformer(data);
+  return data;
+};
+
 const appPricesV2ResponseSchemaResponseTransformer = (data: any) => {
   data.data = data.data.map((item: any) =>
     appPriceV2SchemaResponseTransformer(item),
@@ -2905,6 +3300,35 @@ export const appPriceSchedulesManualPricesGetToManyRelatedResponseTransformer =
     return data;
   };
 
+export const appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appStoreVersionExperimentTreatmentLocalizationsResponseSchemaResponseTransformer =
+  (data: any) => {
+    if (data.included) {
+      data.included = data.included.map((item: any) =>
+        appAssetLibraryPlacementSchemaResponseTransformer(item),
+      );
+    }
+    return data;
+  };
+
+export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponse> => {
+    data =
+      appStoreVersionExperimentTreatmentLocalizationsResponseSchemaResponseTransformer(
+        data,
+      );
+    return data;
+  };
+
 const appStoreVersionExperimentTreatmentsResponseSchemaResponseTransformer = (
   data: any,
 ) => {
@@ -2922,6 +3346,14 @@ export const appStoreVersionExperimentsV2AppStoreVersionExperimentTreatmentsGetT
       appStoreVersionExperimentTreatmentsResponseSchemaResponseTransformer(
         data,
       );
+    return data;
+  };
+
+export const appStoreVersionLocalizationsPlacementsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponse> => {
+    data = appAssetLibraryPlacementsResponseSchemaResponseTransformer(data);
     return data;
   };
 
@@ -2953,6 +3385,25 @@ export const appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedRespons
     data: any,
   ): Promise<AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedResponse> => {
     data = appStoreVersionExperimentsV2ResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const appStoreVersionLocalizationsResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponse> => {
+    data = appStoreVersionLocalizationsResponseSchemaResponseTransformer(data);
     return data;
   };
 

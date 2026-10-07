@@ -22,15 +22,38 @@ import {
   alternativeDistributionPackageVersionsVariantsGetToManyRelatedResponseTransformer,
   analyticsReportInstancesGetInstanceResponseTransformer,
   analyticsReportsInstancesGetToManyRelatedResponseTransformer,
+  appAssetLibrariesImagesGetToManyRelatedResponseTransformer,
+  appAssetLibrariesVideosGetToManyRelatedResponseTransformer,
+  appAssetLibraryImagesCreateInstanceResponseTransformer,
+  appAssetLibraryImagesGetInstanceResponseTransformer,
+  appAssetLibraryImagesPlacementsGetToManyRelatedResponseTransformer,
+  appAssetLibraryImagesUpdateInstanceResponseTransformer,
+  appAssetLibraryPlacementOrderingRequestsCreateInstanceResponseTransformer,
+  appAssetLibraryPlacementsCreateInstanceResponseTransformer,
+  appAssetLibraryPlacementsGetInstanceResponseTransformer,
+  appAssetLibraryVideosCreateInstanceResponseTransformer,
+  appAssetLibraryVideosGetInstanceResponseTransformer,
+  appAssetLibraryVideosPlacementsGetToManyRelatedResponseTransformer,
+  appAssetLibraryVideosUpdateInstanceResponseTransformer,
   appAvailabilitiesV2CreateInstanceResponseTransformer,
   appAvailabilitiesV2GetInstanceResponseTransformer,
   appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelatedResponseTransformer,
   appClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedResponseTransformer,
+  appCustomProductPageLocalizationsCreateInstanceResponseTransformer,
+  appCustomProductPageLocalizationsGetInstanceResponseTransformer,
+  appCustomProductPageLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+  appCustomProductPageLocalizationsUpdateInstanceResponseTransformer,
+  appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponseTransformer,
   appEncryptionDeclarationsCreateInstanceResponseTransformer,
   appEncryptionDeclarationsGetCollectionResponseTransformer,
   appEncryptionDeclarationsGetInstanceResponseTransformer,
+  appEventLocalizationsCreateInstanceResponseTransformer,
+  appEventLocalizationsGetInstanceResponseTransformer,
+  appEventLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+  appEventLocalizationsUpdateInstanceResponseTransformer,
   appEventsCreateInstanceResponseTransformer,
   appEventsGetInstanceResponseTransformer,
+  appEventsLocalizationsGetToManyRelatedResponseTransformer,
   appEventsUpdateInstanceResponseTransformer,
   appPriceSchedulesAutomaticPricesGetToManyRelatedResponseTransformer,
   appPriceSchedulesCreateInstanceResponseTransformer,
@@ -58,13 +81,22 @@ import {
   appStoreVersionExperimentsV2CreateInstanceResponseTransformer,
   appStoreVersionExperimentsV2GetInstanceResponseTransformer,
   appStoreVersionExperimentsV2UpdateInstanceResponseTransformer,
+  appStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponseTransformer,
+  appStoreVersionExperimentTreatmentLocalizationsGetInstanceResponseTransformer,
+  appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+  appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponseTransformer,
   appStoreVersionExperimentTreatmentsCreateInstanceResponseTransformer,
   appStoreVersionExperimentTreatmentsGetInstanceResponseTransformer,
   appStoreVersionExperimentTreatmentsUpdateInstanceResponseTransformer,
+  appStoreVersionLocalizationsCreateInstanceResponseTransformer,
+  appStoreVersionLocalizationsGetInstanceResponseTransformer,
+  appStoreVersionLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+  appStoreVersionLocalizationsUpdateInstanceResponseTransformer,
   appStoreVersionPhasedReleasesCreateInstanceResponseTransformer,
   appStoreVersionPhasedReleasesUpdateInstanceResponseTransformer,
   appStoreVersionsAlternativeDistributionPackageGetToOneRelatedResponseTransformer,
   appStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedResponseTransformer,
+  appStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponseTransformer,
   appStoreVersionsAppStoreVersionPhasedReleaseGetToOneRelatedResponseTransformer,
   appStoreVersionsBuildGetToOneRelatedResponseTransformer,
   appStoreVersionsCreateInstanceResponseTransformer,
@@ -400,6 +432,75 @@ import type {
   AndroidToIosAppMappingDetailsUpdateInstanceData,
   AndroidToIosAppMappingDetailsUpdateInstanceErrors,
   AndroidToIosAppMappingDetailsUpdateInstanceResponses,
+  AppAssetLibrariesGetInstanceData,
+  AppAssetLibrariesGetInstanceErrors,
+  AppAssetLibrariesGetInstanceResponses,
+  AppAssetLibrariesImagesGetToManyRelatedData,
+  AppAssetLibrariesImagesGetToManyRelatedErrors,
+  AppAssetLibrariesImagesGetToManyRelatedResponses,
+  AppAssetLibrariesImagesGetToManyRelationshipData,
+  AppAssetLibrariesImagesGetToManyRelationshipErrors,
+  AppAssetLibrariesImagesGetToManyRelationshipResponses,
+  AppAssetLibrariesVideosGetToManyRelatedData,
+  AppAssetLibrariesVideosGetToManyRelatedErrors,
+  AppAssetLibrariesVideosGetToManyRelatedResponses,
+  AppAssetLibrariesVideosGetToManyRelationshipData,
+  AppAssetLibrariesVideosGetToManyRelationshipErrors,
+  AppAssetLibrariesVideosGetToManyRelationshipResponses,
+  AppAssetLibraryImagesCreateInstanceData,
+  AppAssetLibraryImagesCreateInstanceErrors,
+  AppAssetLibraryImagesCreateInstanceResponses,
+  AppAssetLibraryImagesDeleteInstanceData,
+  AppAssetLibraryImagesDeleteInstanceErrors,
+  AppAssetLibraryImagesDeleteInstanceResponses,
+  AppAssetLibraryImagesGetInstanceData,
+  AppAssetLibraryImagesGetInstanceErrors,
+  AppAssetLibraryImagesGetInstanceResponses,
+  AppAssetLibraryImagesPlacementsGetToManyRelatedData,
+  AppAssetLibraryImagesPlacementsGetToManyRelatedErrors,
+  AppAssetLibraryImagesPlacementsGetToManyRelatedResponses,
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipData,
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors,
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses,
+  AppAssetLibraryImagesUpdateInstanceData,
+  AppAssetLibraryImagesUpdateInstanceErrors,
+  AppAssetLibraryImagesUpdateInstanceResponses,
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceData,
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors,
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses,
+  AppAssetLibraryPlacementsCreateInstanceData,
+  AppAssetLibraryPlacementsCreateInstanceErrors,
+  AppAssetLibraryPlacementsCreateInstanceResponses,
+  AppAssetLibraryPlacementsDeleteInstanceData,
+  AppAssetLibraryPlacementsDeleteInstanceErrors,
+  AppAssetLibraryPlacementsDeleteInstanceResponses,
+  AppAssetLibraryPlacementsGetInstanceData,
+  AppAssetLibraryPlacementsGetInstanceErrors,
+  AppAssetLibraryPlacementsGetInstanceResponses,
+  AppAssetLibraryRefDataGetCollectionData,
+  AppAssetLibraryRefDataGetCollectionErrors,
+  AppAssetLibraryRefDataGetCollectionResponses,
+  AppAssetLibraryRefDataGetInstanceData,
+  AppAssetLibraryRefDataGetInstanceErrors,
+  AppAssetLibraryRefDataGetInstanceResponses,
+  AppAssetLibraryVideosCreateInstanceData,
+  AppAssetLibraryVideosCreateInstanceErrors,
+  AppAssetLibraryVideosCreateInstanceResponses,
+  AppAssetLibraryVideosDeleteInstanceData,
+  AppAssetLibraryVideosDeleteInstanceErrors,
+  AppAssetLibraryVideosDeleteInstanceResponses,
+  AppAssetLibraryVideosGetInstanceData,
+  AppAssetLibraryVideosGetInstanceErrors,
+  AppAssetLibraryVideosGetInstanceResponses,
+  AppAssetLibraryVideosPlacementsGetToManyRelatedData,
+  AppAssetLibraryVideosPlacementsGetToManyRelatedErrors,
+  AppAssetLibraryVideosPlacementsGetToManyRelatedResponses,
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipData,
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors,
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses,
+  AppAssetLibraryVideosUpdateInstanceData,
+  AppAssetLibraryVideosUpdateInstanceErrors,
+  AppAssetLibraryVideosUpdateInstanceResponses,
   AppAvailabilitiesV2CreateInstanceData,
   AppAvailabilitiesV2CreateInstanceErrors,
   AppAvailabilitiesV2CreateInstanceResponses,
@@ -556,6 +657,12 @@ import type {
   AppCustomProductPageLocalizationsGetInstanceData,
   AppCustomProductPageLocalizationsGetInstanceErrors,
   AppCustomProductPageLocalizationsGetInstanceResponses,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipData,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses,
   AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipData,
   AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
   AppCustomProductPageLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
@@ -649,6 +756,12 @@ import type {
   AppEventLocalizationsGetInstanceData,
   AppEventLocalizationsGetInstanceErrors,
   AppEventLocalizationsGetInstanceResponses,
+  AppEventLocalizationsPlacementsGetToManyRelatedData,
+  AppEventLocalizationsPlacementsGetToManyRelatedErrors,
+  AppEventLocalizationsPlacementsGetToManyRelatedResponses,
+  AppEventLocalizationsPlacementsGetToManyRelationshipData,
+  AppEventLocalizationsPlacementsGetToManyRelationshipErrors,
+  AppEventLocalizationsPlacementsGetToManyRelationshipResponses,
   AppEventLocalizationsUpdateInstanceData,
   AppEventLocalizationsUpdateInstanceErrors,
   AppEventLocalizationsUpdateInstanceResponses,
@@ -919,6 +1032,12 @@ import type {
   AppsAppTagsGetToManyRelationshipData,
   AppsAppTagsGetToManyRelationshipErrors,
   AppsAppTagsGetToManyRelationshipResponses,
+  AppsAssetLibraryGetToOneRelatedData,
+  AppsAssetLibraryGetToOneRelatedErrors,
+  AppsAssetLibraryGetToOneRelatedResponses,
+  AppsAssetLibraryGetToOneRelationshipData,
+  AppsAssetLibraryGetToOneRelationshipErrors,
+  AppsAssetLibraryGetToOneRelationshipResponses,
   AppsBackgroundAssetsGetToManyRelatedData,
   AppsBackgroundAssetsGetToManyRelatedErrors,
   AppsBackgroundAssetsGetToManyRelatedResponses,
@@ -1165,6 +1284,12 @@ import type {
   AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData,
   AppStoreVersionExperimentTreatmentLocalizationsGetInstanceErrors,
   AppStoreVersionExperimentTreatmentLocalizationsGetInstanceResponses,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedData,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipData,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors,
+  AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses,
   AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedData,
   AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedErrors,
   AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponses,
@@ -1204,6 +1329,12 @@ import type {
   AppStoreVersionLocalizationsGetInstanceData,
   AppStoreVersionLocalizationsGetInstanceErrors,
   AppStoreVersionLocalizationsGetInstanceResponses,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedData,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipData,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses,
   AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipData,
   AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipErrors,
   AppStoreVersionLocalizationsSearchKeywordsCreateToManyRelationshipResponses,
@@ -4410,6 +4541,403 @@ export const androidToIosAppMappingDetailsUpdateInstance = <
     },
   });
 
+/** Read app asset libraries. `GET /v1/appAssetLibraries/{id}` */
+export const appAssetLibrariesGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibrariesGetInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibrariesGetInstanceResponses,
+  AppAssetLibrariesGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibrariesGetInstanceResponses,
+    AppAssetLibrariesGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraries]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraries/{id}",
+    ...options,
+  });
+
+/** Create app asset library images. `POST /v1/appAssetLibraryImages` */
+export const appAssetLibraryImagesCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryImagesCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryImagesCreateInstanceResponses,
+  AppAssetLibraryImagesCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    AppAssetLibraryImagesCreateInstanceResponses,
+    AppAssetLibraryImagesCreateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer: appAssetLibraryImagesCreateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete app asset library images. `DELETE /v1/appAssetLibraryImages/{id}` */
+export const appAssetLibraryImagesDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryImagesDeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryImagesDeleteInstanceResponses,
+  AppAssetLibraryImagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    AppAssetLibraryImagesDeleteInstanceResponses,
+    AppAssetLibraryImagesDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages/{id}",
+    ...options,
+  });
+
+/** Read app asset library images. `GET /v1/appAssetLibraryImages/{id}` */
+export const appAssetLibraryImagesGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryImagesGetInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryImagesGetInstanceResponses,
+  AppAssetLibraryImagesGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryImagesGetInstanceResponses,
+    AppAssetLibraryImagesGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer: appAssetLibraryImagesGetInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages/{id}",
+    ...options,
+  });
+
+/** Update app asset library images. `PATCH /v1/appAssetLibraryImages/{id}` */
+export const appAssetLibraryImagesUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryImagesUpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryImagesUpdateInstanceResponses,
+  AppAssetLibraryImagesUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    AppAssetLibraryImagesUpdateInstanceResponses,
+    AppAssetLibraryImagesUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer: appAssetLibraryImagesUpdateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Create app asset library placement ordering requests. `POST /v1/appAssetLibraryPlacementOrderingRequests` */
+export const appAssetLibraryPlacementOrderingRequestsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibraryPlacementOrderingRequestsCreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses,
+  AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    AppAssetLibraryPlacementOrderingRequestsCreateInstanceResponses,
+    AppAssetLibraryPlacementOrderingRequestsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+        "fields[appAssetLibraryPlacementOrderingRequests]": {
+          array: { explode: false },
+        },
+      },
+    },
+    responseTransformer:
+      appAssetLibraryPlacementOrderingRequestsCreateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryPlacementOrderingRequests",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Create app asset library placements. `POST /v1/appAssetLibraryPlacements` */
+export const appAssetLibraryPlacementsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryPlacementsCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryPlacementsCreateInstanceResponses,
+  AppAssetLibraryPlacementsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    AppAssetLibraryPlacementsCreateInstanceResponses,
+    AppAssetLibraryPlacementsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer:
+      appAssetLibraryPlacementsCreateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryPlacements",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete app asset library placements. `DELETE /v1/appAssetLibraryPlacements/{id}` */
+export const appAssetLibraryPlacementsDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryPlacementsDeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryPlacementsDeleteInstanceResponses,
+  AppAssetLibraryPlacementsDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    AppAssetLibraryPlacementsDeleteInstanceResponses,
+    AppAssetLibraryPlacementsDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryPlacements/{id}",
+    ...options,
+  });
+
+/** Read app asset library placements. `GET /v1/appAssetLibraryPlacements/{id}` */
+export const appAssetLibraryPlacementsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryPlacementsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryPlacementsGetInstanceResponses,
+  AppAssetLibraryPlacementsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryPlacementsGetInstanceResponses,
+    AppAssetLibraryPlacementsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appAssetLibraryPlacementsGetInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryPlacements/{id}",
+    ...options,
+  });
+
+/** List app asset library ref data. `GET /v1/appAssetLibraryRefData` */
+export const appAssetLibraryRefDataGetCollection = <
+  ThrowOnError extends boolean = false,
+>(
+  options?: Options<AppAssetLibraryRefDataGetCollectionData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryRefDataGetCollectionResponses,
+  AppAssetLibraryRefDataGetCollectionErrors,
+  ThrowOnError
+> =>
+  (options?.client ?? client).get<
+    AppAssetLibraryRefDataGetCollectionResponses,
+    AppAssetLibraryRefDataGetCollectionErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementTypes]": { array: { explode: false } },
+        "filter[placementProfileGroups]": { array: { explode: false } },
+        "filter[features]": { array: { explode: false } },
+        "filter[specs]": { array: { explode: false } },
+        "fields[appAssetLibraryRefData]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryRefData",
+    ...options,
+  });
+
+/** Read app asset library ref data. `GET /v1/appAssetLibraryRefData/{id}` */
+export const appAssetLibraryRefDataGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryRefDataGetInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryRefDataGetInstanceResponses,
+  AppAssetLibraryRefDataGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryRefDataGetInstanceResponses,
+    AppAssetLibraryRefDataGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryRefData]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryRefData/{id}",
+    ...options,
+  });
+
+/** Create app asset library videos. `POST /v1/appAssetLibraryVideos` */
+export const appAssetLibraryVideosCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryVideosCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryVideosCreateInstanceResponses,
+  AppAssetLibraryVideosCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    AppAssetLibraryVideosCreateInstanceResponses,
+    AppAssetLibraryVideosCreateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer: appAssetLibraryVideosCreateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete app asset library videos. `DELETE /v1/appAssetLibraryVideos/{id}` */
+export const appAssetLibraryVideosDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryVideosDeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryVideosDeleteInstanceResponses,
+  AppAssetLibraryVideosDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    AppAssetLibraryVideosDeleteInstanceResponses,
+    AppAssetLibraryVideosDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos/{id}",
+    ...options,
+  });
+
+/** Read app asset library videos. `GET /v1/appAssetLibraryVideos/{id}` */
+export const appAssetLibraryVideosGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryVideosGetInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryVideosGetInstanceResponses,
+  AppAssetLibraryVideosGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryVideosGetInstanceResponses,
+    AppAssetLibraryVideosGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer: appAssetLibraryVideosGetInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos/{id}",
+    ...options,
+  });
+
+/** Update app asset library videos. `PATCH /v1/appAssetLibraryVideos/{id}` */
+export const appAssetLibraryVideosUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibraryVideosUpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibraryVideosUpdateInstanceResponses,
+  AppAssetLibraryVideosUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    AppAssetLibraryVideosUpdateInstanceResponses,
+    AppAssetLibraryVideosUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer: appAssetLibraryVideosUpdateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create app availabilities v2. `POST /v2/appAvailabilities` */
 export const appAvailabilitiesV2CreateInstance = <
   ThrowOnError extends boolean = false,
@@ -5111,6 +5639,8 @@ export const appCustomProductPageLocalizationsCreateInstance = <
     AppCustomProductPageLocalizationsCreateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer:
+      appCustomProductPageLocalizationsCreateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appCustomProductPageLocalizations",
     ...options,
@@ -5169,9 +5699,12 @@ export const appCustomProductPageLocalizationsGetInstance = <
         "fields[appCustomProductPageVersions]": { array: { explode: false } },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer:
+      appCustomProductPageLocalizationsGetInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appCustomProductPageLocalizations/{id}",
     ...options,
@@ -5195,6 +5728,8 @@ export const appCustomProductPageLocalizationsUpdateInstance = <
     AppCustomProductPageLocalizationsUpdateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer:
+      appCustomProductPageLocalizationsUpdateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appCustomProductPageLocalizations/{id}",
     ...options,
@@ -5578,6 +6113,7 @@ export const appEventLocalizationsCreateInstance = <
     AppEventLocalizationsCreateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer: appEventLocalizationsCreateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appEventLocalizations",
     ...options,
@@ -5628,9 +6164,11 @@ export const appEventLocalizationsGetInstance = <
         "fields[appEvents]": { array: { explode: false } },
         "fields[appEventScreenshots]": { array: { explode: false } },
         "fields[appEventVideoClips]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer: appEventLocalizationsGetInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appEventLocalizations/{id}",
     ...options,
@@ -5651,6 +6189,7 @@ export const appEventLocalizationsUpdateInstance = <
     AppEventLocalizationsUpdateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer: appEventLocalizationsUpdateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appEventLocalizations/{id}",
     ...options,
@@ -6691,6 +7230,8 @@ export const appStoreVersionExperimentTreatmentLocalizationsCreateInstance = <
     AppStoreVersionExperimentTreatmentLocalizationsCreateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer:
+      appStoreVersionExperimentTreatmentLocalizationsCreateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionExperimentTreatmentLocalizations",
     ...options,
@@ -6751,9 +7292,12 @@ export const appStoreVersionExperimentTreatmentLocalizationsGetInstance = <
         },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer:
+      appStoreVersionExperimentTreatmentLocalizationsGetInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}",
     ...options,
@@ -7009,6 +7553,8 @@ export const appStoreVersionLocalizationsCreateInstance = <
     AppStoreVersionLocalizationsCreateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer:
+      appStoreVersionLocalizationsCreateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionLocalizations",
     ...options,
@@ -7062,9 +7608,12 @@ export const appStoreVersionLocalizationsGetInstance = <
         "fields[appStoreVersions]": { array: { explode: false } },
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer:
+      appStoreVersionLocalizationsGetInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionLocalizations/{id}",
     ...options,
@@ -7088,6 +7637,8 @@ export const appStoreVersionLocalizationsUpdateInstance = <
     AppStoreVersionLocalizationsUpdateInstanceErrors,
     ThrowOnError
   >({
+    responseTransformer:
+      appStoreVersionLocalizationsUpdateInstanceResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionLocalizations/{id}",
     ...options,
@@ -18110,6 +18661,278 @@ export const analyticsReportsInstancesGetToManyRelated = <
     ...options,
   });
 
+/** Get images relationship IDs for app asset libraries. `GET /v1/appAssetLibraries/{id}/relationships/images` */
+export const appAssetLibrariesImagesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibrariesImagesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibrariesImagesGetToManyRelationshipResponses,
+  AppAssetLibrariesImagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibrariesImagesGetToManyRelationshipResponses,
+    AppAssetLibrariesImagesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraries/{id}/relationships/images",
+    ...options,
+  });
+
+/** List related images for app asset libraries. `GET /v1/appAssetLibraries/{id}/images` */
+export const appAssetLibrariesImagesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibrariesImagesGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibrariesImagesGetToManyRelatedResponses,
+  AppAssetLibrariesImagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibrariesImagesGetToManyRelatedResponses,
+    AppAssetLibrariesImagesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[category]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[referenceName]": { array: { explode: false } },
+        "filter[specId]": { array: { explode: false } },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appAssetLibrariesImagesGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraries/{id}/images",
+    ...options,
+  });
+
+/** Get videos relationship IDs for app asset libraries. `GET /v1/appAssetLibraries/{id}/relationships/videos` */
+export const appAssetLibrariesVideosGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibrariesVideosGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibrariesVideosGetToManyRelationshipResponses,
+  AppAssetLibrariesVideosGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibrariesVideosGetToManyRelationshipResponses,
+    AppAssetLibrariesVideosGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraries/{id}/relationships/videos",
+    ...options,
+  });
+
+/** List related videos for app asset libraries. `GET /v1/appAssetLibraries/{id}/videos` */
+export const appAssetLibrariesVideosGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppAssetLibrariesVideosGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  AppAssetLibrariesVideosGetToManyRelatedResponses,
+  AppAssetLibrariesVideosGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibrariesVideosGetToManyRelatedResponses,
+    AppAssetLibrariesVideosGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[category]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[referenceName]": { array: { explode: false } },
+        "filter[specId]": { array: { explode: false } },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appAssetLibrariesVideosGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraries/{id}/videos",
+    ...options,
+  });
+
+/** Get placements relationship IDs for app asset library images. `GET /v1/appAssetLibraryImages/{id}/relationships/placements` */
+export const appAssetLibraryImagesPlacementsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibraryImagesPlacementsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses,
+  AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryImagesPlacementsGetToManyRelationshipResponses,
+    AppAssetLibraryImagesPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages/{id}/relationships/placements",
+    ...options,
+  });
+
+/** List related placements for app asset library images. `GET /v1/appAssetLibraryImages/{id}/placements` */
+export const appAssetLibraryImagesPlacementsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibraryImagesPlacementsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibraryImagesPlacementsGetToManyRelatedResponses,
+  AppAssetLibraryImagesPlacementsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryImagesPlacementsGetToManyRelatedResponses,
+    AppAssetLibraryImagesPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementType]": { array: { explode: false } },
+        "filter[placementGroup]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[video]": { array: { explode: false } },
+        "filter[appEventLocalization]": { array: { explode: false } },
+        "filter[appStoreVersionLocalization]": { array: { explode: false } },
+        "filter[appCustomProductPageLocalization]": {
+          array: { explode: false },
+        },
+        "filter[appStoreVersionExperimentTreatmentLocalization]": {
+          array: { explode: false },
+        },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appAssetLibraryImagesPlacementsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryImages/{id}/placements",
+    ...options,
+  });
+
+/** Get placements relationship IDs for app asset library videos. `GET /v1/appAssetLibraryVideos/{id}/relationships/placements` */
+export const appAssetLibraryVideosPlacementsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibraryVideosPlacementsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses,
+  AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryVideosPlacementsGetToManyRelationshipResponses,
+    AppAssetLibraryVideosPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos/{id}/relationships/placements",
+    ...options,
+  });
+
+/** List related placements for app asset library videos. `GET /v1/appAssetLibraryVideos/{id}/placements` */
+export const appAssetLibraryVideosPlacementsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppAssetLibraryVideosPlacementsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppAssetLibraryVideosPlacementsGetToManyRelatedResponses,
+  AppAssetLibraryVideosPlacementsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppAssetLibraryVideosPlacementsGetToManyRelatedResponses,
+    AppAssetLibraryVideosPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementType]": { array: { explode: false } },
+        "filter[placementGroup]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[image]": { array: { explode: false } },
+        "filter[appEventLocalization]": { array: { explode: false } },
+        "filter[appStoreVersionLocalization]": { array: { explode: false } },
+        "filter[appCustomProductPageLocalization]": {
+          array: { explode: false },
+        },
+        "filter[appStoreVersionExperimentTreatmentLocalization]": {
+          array: { explode: false },
+        },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appAssetLibraryVideosPlacementsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appAssetLibraryVideos/{id}/placements",
+    ...options,
+  });
+
 /** Get territory availabilities relationship IDs for app availabilities v2. `GET /v2/appAvailabilities/{id}/relationships/territoryAvailabilities` */
 export const appAvailabilitiesV2TerritoryAvailabilitiesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -18756,6 +19579,81 @@ export const appCustomProductPageLocalizationsAppScreenshotSetsGetToManyRelated 
       ...options,
     });
 
+/** Get placements relationship IDs for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/relationships/placements` */
+export const appCustomProductPageLocalizationsPlacementsGetToManyRelationship =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses,
+    AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipResponses,
+      AppCustomProductPageLocalizationsPlacementsGetToManyRelationshipErrors,
+      ThrowOnError
+    >({
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/appCustomProductPageLocalizations/{id}/relationships/placements",
+      ...options,
+    });
+
+/** List related placements for app custom product page localizations. `GET /v1/appCustomProductPageLocalizations/{id}/placements` */
+export const appCustomProductPageLocalizationsPlacementsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses,
+  AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppCustomProductPageLocalizationsPlacementsGetToManyRelatedResponses,
+    AppCustomProductPageLocalizationsPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementType]": { array: { explode: false } },
+        "filter[placementGroup]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[image]": { array: { explode: false } },
+        "filter[video]": { array: { explode: false } },
+        "filter[appEventLocalization]": { array: { explode: false } },
+        "filter[appStoreVersionLocalization]": { array: { explode: false } },
+        "filter[appStoreVersionExperimentTreatmentLocalization]": {
+          array: { explode: false },
+        },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appCustomProductPageLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appCustomProductPageLocalizations/{id}/placements",
+    ...options,
+  });
+
 /** Remove search keywords relationship for app custom product page localizations. `DELETE /v1/appCustomProductPageLocalizations/{id}/relationships/searchKeywords` */
 export const appCustomProductPageLocalizationsSearchKeywordsDeleteToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -18909,9 +19807,12 @@ export const appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToM
           "fields[appScreenshotSets]": { array: { explode: false } },
           "fields[appPreviewSets]": { array: { explode: false } },
           "fields[appKeywords]": { array: { explode: false } },
+          "fields[appAssetLibraryPlacements]": { array: { explode: false } },
           include: { array: { explode: false } },
         },
       },
+      responseTransformer:
+        appCustomProductPageVersionsAppCustomProductPageLocalizationsGetToManyRelatedResponseTransformer,
       security: [{ scheme: "bearer", type: "http" }],
       url: "/v1/appCustomProductPageVersions/{id}/appCustomProductPageLocalizations",
       ...options,
@@ -19129,6 +20030,84 @@ export const appEventLocalizationsAppEventVideoClipsGetToManyRelated = <
     ...options,
   });
 
+/** Get placements relationship IDs for app event localizations. `GET /v1/appEventLocalizations/{id}/relationships/placements` */
+export const appEventLocalizationsPlacementsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppEventLocalizationsPlacementsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppEventLocalizationsPlacementsGetToManyRelationshipResponses,
+  AppEventLocalizationsPlacementsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppEventLocalizationsPlacementsGetToManyRelationshipResponses,
+    AppEventLocalizationsPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appEventLocalizations/{id}/relationships/placements",
+    ...options,
+  });
+
+/** List related placements for app event localizations. `GET /v1/appEventLocalizations/{id}/placements` */
+export const appEventLocalizationsPlacementsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppEventLocalizationsPlacementsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppEventLocalizationsPlacementsGetToManyRelatedResponses,
+  AppEventLocalizationsPlacementsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppEventLocalizationsPlacementsGetToManyRelatedResponses,
+    AppEventLocalizationsPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementType]": { array: { explode: false } },
+        "filter[placementGroup]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[image]": { array: { explode: false } },
+        "filter[video]": { array: { explode: false } },
+        "filter[appStoreVersionLocalization]": { array: { explode: false } },
+        "filter[appCustomProductPageLocalization]": {
+          array: { explode: false },
+        },
+        "filter[appStoreVersionExperimentTreatmentLocalization]": {
+          array: { explode: false },
+        },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appEventLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appEventLocalizations/{id}/placements",
+    ...options,
+  });
+
 /** Get localizations relationship IDs for app events. `GET /v1/appEvents/{id}/relationships/localizations` */
 export const appEventsLocalizationsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -19173,9 +20152,12 @@ export const appEventsLocalizationsGetToManyRelated = <
         "fields[appEvents]": { array: { explode: false } },
         "fields[appEventScreenshots]": { array: { explode: false } },
         "fields[appEventVideoClips]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer:
+      appEventsLocalizationsGetToManyRelatedResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appEvents/{id}/localizations",
     ...options,
@@ -20202,6 +21184,80 @@ export const appStoreVersionExperimentTreatmentLocalizationsAppScreenshotSetsGet
       ...options,
     });
 
+/** Get placements relationship IDs for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements` */
+export const appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationship =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipResponses,
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelationshipErrors,
+      ThrowOnError
+    >({
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/relationships/placements",
+      ...options,
+    });
+
+/** List related placements for app store version experiment treatment localizations. `GET /v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements` */
+export const appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelated =
+  <ThrowOnError extends boolean = false>(
+    options: Options<
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedData,
+      ThrowOnError
+    >,
+  ): RequestResult<
+    AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses,
+    AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  > =>
+    (options.client ?? client).get<
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponses,
+      AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedErrors,
+      ThrowOnError
+    >({
+      querySerializer: {
+        parameters: {
+          "filter[placementType]": { array: { explode: false } },
+          "filter[placementGroup]": { array: { explode: false } },
+          "filter[state]": { array: { explode: false } },
+          "filter[image]": { array: { explode: false } },
+          "filter[video]": { array: { explode: false } },
+          "filter[appEventLocalization]": { array: { explode: false } },
+          "filter[appStoreVersionLocalization]": { array: { explode: false } },
+          "filter[appCustomProductPageLocalization]": {
+            array: { explode: false },
+          },
+          "filter[id]": { array: { explode: false } },
+          sort: { array: { explode: false } },
+          "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+          "fields[appAssetLibraryImages]": { array: { explode: false } },
+          "fields[appAssetLibraryVideos]": { array: { explode: false } },
+          "fields[appEventLocalizations]": { array: { explode: false } },
+          "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+          "fields[appCustomProductPageLocalizations]": {
+            array: { explode: false },
+          },
+          "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+            array: { explode: false },
+          },
+          include: { array: { explode: false } },
+        },
+      },
+      responseTransformer:
+        appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+      security: [{ scheme: "bearer", type: "http" }],
+      url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements",
+      ...options,
+    });
+
 /** Get app store version experiment treatment localizations relationship IDs for app store version experiment treatments. `GET /v1/appStoreVersionExperimentTreatments/{id}/relationships/appStoreVersionExperimentTreatmentLocalizations` */
 export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelationship =
   <ThrowOnError extends boolean = false>(
@@ -20252,9 +21308,12 @@ export const appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatme
           },
           "fields[appScreenshotSets]": { array: { explode: false } },
           "fields[appPreviewSets]": { array: { explode: false } },
+          "fields[appAssetLibraryPlacements]": { array: { explode: false } },
           include: { array: { explode: false } },
         },
       },
+      responseTransformer:
+        appStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmentLocalizationsGetToManyRelatedResponseTransformer,
       security: [{ scheme: "bearer", type: "http" }],
       url: "/v1/appStoreVersionExperimentTreatments/{id}/appStoreVersionExperimentTreatmentLocalizations",
       ...options,
@@ -20448,6 +21507,84 @@ export const appStoreVersionLocalizationsAppScreenshotSetsGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersionLocalizations/{id}/appScreenshotSets",
+    ...options,
+  });
+
+/** Get placements relationship IDs for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/relationships/placements` */
+export const appStoreVersionLocalizationsPlacementsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppStoreVersionLocalizationsPlacementsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppStoreVersionLocalizationsPlacementsGetToManyRelationshipResponses,
+    AppStoreVersionLocalizationsPlacementsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appStoreVersionLocalizations/{id}/relationships/placements",
+    ...options,
+  });
+
+/** List related placements for app store version localizations. `GET /v1/appStoreVersionLocalizations/{id}/placements` */
+export const appStoreVersionLocalizationsPlacementsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppStoreVersionLocalizationsPlacementsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses,
+  AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppStoreVersionLocalizationsPlacementsGetToManyRelatedResponses,
+    AppStoreVersionLocalizationsPlacementsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[placementType]": { array: { explode: false } },
+        "filter[placementGroup]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        "filter[image]": { array: { explode: false } },
+        "filter[video]": { array: { explode: false } },
+        "filter[appEventLocalization]": { array: { explode: false } },
+        "filter[appCustomProductPageLocalization]": {
+          array: { explode: false },
+        },
+        "filter[appStoreVersionExperimentTreatmentLocalization]": {
+          array: { explode: false },
+        },
+        "filter[id]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      appStoreVersionLocalizationsPlacementsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/appStoreVersionLocalizations/{id}/placements",
     ...options,
   });
 
@@ -20860,9 +21997,12 @@ export const appStoreVersionsAppStoreVersionLocalizationsGetToManyRelated = <
         "fields[appScreenshotSets]": { array: { explode: false } },
         "fields[appPreviewSets]": { array: { explode: false } },
         "fields[appKeywords]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
+    responseTransformer:
+      appStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedResponseTransformer,
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/appStoreVersions/{id}/appStoreVersionLocalizations",
     ...options,
@@ -21996,6 +23136,51 @@ export const appsAppTagsGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/apps/{id}/appTags",
+    ...options,
+  });
+
+/** Get asset library relationship ID for apps. `GET /v1/apps/{id}/relationships/assetLibrary` */
+export const appsAssetLibraryGetToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppsAssetLibraryGetToOneRelationshipData, ThrowOnError>,
+): RequestResult<
+  AppsAssetLibraryGetToOneRelationshipResponses,
+  AppsAssetLibraryGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppsAssetLibraryGetToOneRelationshipResponses,
+    AppsAssetLibraryGetToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/apps/{id}/relationships/assetLibrary",
+    ...options,
+  });
+
+/** Read related asset library for apps. `GET /v1/apps/{id}/assetLibrary` */
+export const appsAssetLibraryGetToOneRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppsAssetLibraryGetToOneRelatedData, ThrowOnError>,
+): RequestResult<
+  AppsAssetLibraryGetToOneRelatedResponses,
+  AppsAssetLibraryGetToOneRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppsAssetLibraryGetToOneRelatedResponses,
+    AppsAssetLibraryGetToOneRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraries]": { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/apps/{id}/assetLibrary",
     ...options,
   });
 
@@ -30634,6 +31819,8 @@ export const reviewSubmissionsItemsGetToManyRelated = <
         "fields[appCustomProductPageVersions]": { array: { explode: false } },
         "fields[appStoreVersionExperiments]": { array: { explode: false } },
         "fields[appEvents]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
         "fields[backgroundAssetVersions]": { array: { explode: false } },
         "fields[gameCenterAchievementVersions]": { array: { explode: false } },
         "fields[gameCenterActivityVersions]": { array: { explode: false } },
