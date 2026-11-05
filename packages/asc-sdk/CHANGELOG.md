@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.4.1...asc-sdk-v0.4.2) (2026-11-05)
+
+
+### Features
+
+* **sdk:** update SDK for App Store Connect OpenAPI spec changes ([#58](https://github.com/bradford-tech/asc-sdk/issues/58)) ([4bdc54d](https://github.com/bradford-tech/asc-sdk/commit/4bdc54dfc29a43246feeed1bde871118e551e23f))
+
 ## [0.4.1](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.4.0...asc-sdk-v0.4.1) (2026-10-07)
 
 
