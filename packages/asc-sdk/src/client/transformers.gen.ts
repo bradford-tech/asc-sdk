@@ -256,6 +256,10 @@ import type {
   ProfilesDevicesGetToManyRelatedResponse,
   ProfilesGetCollectionResponse,
   ProfilesGetInstanceResponse,
+  RetentionMessagesVersionsGetToManyRelatedResponse,
+  RetentionMessageVersionsCreateInstanceResponse,
+  RetentionMessageVersionsGetInstanceResponse,
+  RetentionMessageVersionsPlacementGetToOneRelatedResponse,
   ReviewSubmissionsCreateInstanceResponse,
   ReviewSubmissionsGetCollectionResponse,
   ReviewSubmissionsGetInstanceResponse,
@@ -2591,6 +2595,31 @@ export const profilesGetInstanceResponseTransformer = async (
   return data;
 };
 
+const retentionMessageVersionResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const retentionMessageVersionsCreateInstanceResponseTransformer = async (
+  data: any,
+): Promise<RetentionMessageVersionsCreateInstanceResponse> => {
+  data = retentionMessageVersionResponseSchemaResponseTransformer(data);
+  return data;
+};
+
+export const retentionMessageVersionsGetInstanceResponseTransformer = async (
+  data: any,
+): Promise<RetentionMessageVersionsGetInstanceResponse> => {
+  data = retentionMessageVersionResponseSchemaResponseTransformer(data);
+  return data;
+};
+
 const reviewSubmissionSchemaResponseTransformer = (data: any) => {
   if (data.attributes) {
     if (data.attributes.submittedDate) {
@@ -4301,6 +4330,33 @@ export const profilesDevicesGetToManyRelatedResponseTransformer = async (
   data = devicesWithoutIncludesResponseSchemaResponseTransformer(data);
   return data;
 };
+
+export const retentionMessageVersionsPlacementGetToOneRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<RetentionMessageVersionsPlacementGetToOneRelatedResponse> => {
+    data = appAssetLibraryPlacementResponseSchemaResponseTransformer(data);
+    return data;
+  };
+
+const retentionMessageVersionsResponseSchemaResponseTransformer = (
+  data: any,
+) => {
+  if (data.included) {
+    data.included = data.included.map((item: any) =>
+      appAssetLibraryPlacementSchemaResponseTransformer(item),
+    );
+  }
+  return data;
+};
+
+export const retentionMessagesVersionsGetToManyRelatedResponseTransformer =
+  async (
+    data: any,
+  ): Promise<RetentionMessagesVersionsGetToManyRelatedResponse> => {
+    data = retentionMessageVersionsResponseSchemaResponseTransformer(data);
+    return data;
+  };
 
 export const scmProvidersRepositoriesGetToManyRelatedResponseTransformer =
   async (

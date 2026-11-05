@@ -1127,6 +1127,12 @@ export type AppAssetLibraryPlacementCommonRelationships = {
       id: string;
     };
   };
+  retentionMessageVersion?: {
+    data?: {
+      type: "retentionMessageVersions";
+      id: string;
+    };
+  };
 };
 
 /** Relationships of an app asset library placement image. */
@@ -1161,6 +1167,7 @@ export type AppAssetLibraryPlacementsResponse = {
     | AppEventLocalization
     | AppStoreVersionExperimentTreatmentLocalization
     | AppStoreVersionLocalization
+    | RetentionMessageVersion
   >;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
@@ -1176,6 +1183,7 @@ export type AppAssetLibraryPlacementResponse = {
     | AppEventLocalization
     | AppStoreVersionExperimentTreatmentLocalization
     | AppStoreVersionLocalization
+    | RetentionMessageVersion
   >;
   links: DocumentLinks;
 };
@@ -1183,6 +1191,14 @@ export type AppAssetLibraryPlacementResponse = {
 /** Request body for creating an app asset library placement. */
 export type AppAssetLibraryPlacementCreateRequest = {
   data: (
+    | {
+        attributes: {
+          [key: string]: unknown;
+        };
+        relationships: {
+          [key: string]: unknown;
+        };
+      }
     | {
         attributes: {
           [key: string]: unknown;
@@ -1287,6 +1303,12 @@ export type AppAssetLibraryPlacementCreateRequest = {
       appStoreVersionExperimentTreatmentLocalization?: {
         data?: {
           type: "appStoreVersionExperimentTreatmentLocalizations";
+          id: string;
+        };
+      };
+      retentionMessageVersion?: {
+        data?: {
+          type: "retentionMessageVersions";
           id: string;
         };
       };
@@ -5406,6 +5428,14 @@ export type App = {
         id: string;
       }>;
     };
+    retentionMessages?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionMessages";
+        id: string;
+      }>;
+    };
     gameCenterEnabledVersions?: {
       links?: RelationshipLinks;
       meta?: PagingInformation;
@@ -5557,6 +5587,7 @@ export type AppsResponse = {
     | InAppPurchase
     | PrereleaseVersion
     | PromotedPurchase
+    | RetentionMessage
     | ReviewSubmission
     | SubscriptionGracePeriod
     | SubscriptionGroup
@@ -5590,6 +5621,7 @@ export type AppResponse = {
     | InAppPurchase
     | PrereleaseVersion
     | PromotedPurchase
+    | RetentionMessage
     | ReviewSubmission
     | SubscriptionGracePeriod
     | SubscriptionGroup
@@ -13660,6 +13692,342 @@ export type PromotedPurchaseUpdateRequest = {
   };
 };
 
+/** retention message localization. */
+export type RetentionMessageLocalization = {
+  type: "retentionMessageLocalizations";
+  id: string;
+  attributes?: {
+    locale?: string;
+    header?: string;
+    body?: string;
+  };
+  relationships?: {
+    retentionMessageVersion?: {
+      data?: {
+        type: "retentionMessageVersions";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a retention message localizations. */
+export type RetentionMessageLocalizationsResponse = {
+  data: Array<RetentionMessageLocalization>;
+  included?: Array<RetentionMessageVersion>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a retention message localization. */
+export type RetentionMessageLocalizationResponse = {
+  data: RetentionMessageLocalization;
+  included?: Array<RetentionMessageVersion>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a retention message localization. */
+export type RetentionMessageLocalizationCreateRequest = {
+  data: {
+    type: "retentionMessageLocalizations";
+    attributes: {
+      locale: string;
+      header?: string | null;
+      body?: string | null;
+    };
+    relationships: {
+      retentionMessageVersion: {
+        data: {
+          type: "retentionMessageVersions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** Request body for updating a retention message localization. */
+export type RetentionMessageLocalizationUpdateRequest = {
+  data: {
+    type: "retentionMessageLocalizations";
+    id: string;
+    attributes?: {
+      header?: string | null;
+      body?: string | null;
+    };
+  };
+};
+
+/** retention message version. */
+export type RetentionMessageVersion = {
+  type: "retentionMessageVersions";
+  id: string;
+  attributes?: {
+    state?:
+      | "PREPARE_FOR_SUBMISSION"
+      | "READY_FOR_REVIEW"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "DEVELOPER_REJECTED"
+      | "REJECTED"
+      | "ACCEPTED"
+      | "APPROVED";
+  };
+  relationships?: {
+    retentionMessage?: {
+      data?: {
+        type: "retentionMessages";
+        id: string;
+      };
+    };
+    localizations?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionMessageLocalizations";
+        id: string;
+      }>;
+    };
+    placement?: {
+      links?: RelationshipLinks;
+      data?: {
+        type: "appAssetLibraryPlacements";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a retention message versions. */
+export type RetentionMessageVersionsResponse = {
+  data: Array<RetentionMessageVersion>;
+  included?: Array<
+    AppAssetLibraryPlacement | RetentionMessageLocalization | RetentionMessage
+  >;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a retention message version. */
+export type RetentionMessageVersionResponse = {
+  data: RetentionMessageVersion;
+  included?: Array<
+    AppAssetLibraryPlacement | RetentionMessageLocalization | RetentionMessage
+  >;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a retention message version. */
+export type RetentionMessageVersionCreateRequest = {
+  data: {
+    type: "retentionMessageVersions";
+    relationships: {
+      retentionMessage: {
+        data: {
+          type: "retentionMessages";
+          id: string;
+        };
+      };
+      placement?: {
+        data?: {
+          type: "appAssetLibraryPlacements";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** retention message. */
+export type RetentionMessage = {
+  type: "retentionMessages";
+  id: string;
+  attributes?: {
+    referenceName?: string;
+  };
+  relationships?: {
+    versions?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionMessageVersions";
+        id: string;
+      }>;
+    };
+    subscriptions?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptions";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a retention messages. */
+export type RetentionMessagesResponse = {
+  data: Array<RetentionMessage>;
+  included?: Array<RetentionMessageVersion | Subscription>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a retention message. */
+export type RetentionMessageResponse = {
+  data: RetentionMessage;
+  included?: Array<RetentionMessageVersion | Subscription>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a retention message. */
+export type RetentionMessageCreateRequest = {
+  data: {
+    type: "retentionMessages";
+    attributes: {
+      referenceName: string;
+    };
+    relationships: {
+      app: {
+        data: {
+          type: "apps";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** retention offer price. */
+export type RetentionOfferPrice = {
+  type: "retentionOfferPrices";
+  id: string;
+  relationships?: {
+    territory?: {
+      data?: {
+        type: "territories";
+        id: string;
+      };
+    };
+    subscriptionPricePoint?: {
+      data?: {
+        type: "subscriptionPricePoints";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Inline create payload for a retention offer price. */
+export type RetentionOfferPriceInlineCreate = {
+  type: "retentionOfferPrices";
+  id?: string;
+};
+
+/** Response containing a retention offer prices. */
+export type RetentionOfferPricesResponse = {
+  data: Array<RetentionOfferPrice>;
+  included?: Array<SubscriptionPricePoint | Territory>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** retention offer. */
+export type RetentionOffer = {
+  type: "retentionOffers";
+  id: string;
+  attributes?: {
+    referenceName?: string;
+    offerId?: string;
+    duration?: SubscriptionOfferDuration;
+    offerMode?: SubscriptionOfferMode;
+    periodCount?: number;
+    customerEligibilityPaidSubscriptionDurationInMonths?: number;
+    customerEligibilityWaitBetweenOffersInMonths?: number;
+    targetSubscriptionPlanType?: SubscriptionPlanType;
+  };
+  relationships?: {
+    subscription?: {
+      data?: {
+        type: "subscriptions";
+        id: string;
+      };
+    };
+    prices?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionOfferPrices";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a retention offers. */
+export type RetentionOffersResponse = {
+  data: Array<RetentionOffer>;
+  included?: Array<RetentionOfferPrice | Subscription>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Response containing a retention offer. */
+export type RetentionOfferResponse = {
+  data: RetentionOffer;
+  included?: Array<RetentionOfferPrice | Subscription>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a retention offer. */
+export type RetentionOfferCreateRequest = {
+  data: {
+    type: "retentionOffers";
+    attributes: {
+      referenceName: string;
+      offerId: string;
+      duration: SubscriptionOfferDuration;
+      offerMode: SubscriptionOfferMode;
+      periodCount: number;
+      customerEligibilityPaidSubscriptionDurationInMonths: number;
+      customerEligibilityWaitBetweenOffersInMonths?: number | null;
+      targetSubscriptionPlanType?: SubscriptionPlanType;
+    };
+    relationships: {
+      subscription: {
+        data: {
+          type: "subscriptions";
+          id: string;
+        };
+      };
+      prices: {
+        data: Array<{
+          type: "retentionOfferPrices";
+          id: string;
+        }>;
+      };
+    };
+  };
+  included?: Array<RetentionOfferPriceInlineCreate>;
+};
+
+/** Request body for updating a retention offer. */
+export type RetentionOfferUpdateRequest = {
+  data: {
+    type: "retentionOffers";
+    id: string;
+    attributes?: {
+      customerEligibilityPaidSubscriptionDurationInMonths?: number | null;
+      customerEligibilityWaitBetweenOffersInMonths?: number | null;
+    };
+  };
+};
+
 /** review submission item. */
 export type ReviewSubmissionItem = {
   type: "reviewSubmissionItems";
@@ -13765,6 +14133,12 @@ export type ReviewSubmissionItem = {
         id: string;
       };
     };
+    retentionMessageVersion?: {
+      data?: {
+        type: "retentionMessageVersions";
+        id: string;
+      };
+    };
   };
   links?: ResourceLinks;
 };
@@ -13786,6 +14160,7 @@ export type ReviewSubmissionItemsResponse = {
     | GameCenterLeaderboardSetVersionV2
     | GameCenterLeaderboardVersionV2
     | InAppPurchaseVersion
+    | RetentionMessageVersion
     | SubscriptionGroupVersion
     | SubscriptionVersion
   >;
@@ -13810,6 +14185,7 @@ export type ReviewSubmissionItemResponse = {
     | GameCenterLeaderboardSetVersionV2
     | GameCenterLeaderboardVersionV2
     | InAppPurchaseVersion
+    | RetentionMessageVersion
     | SubscriptionGroupVersion
     | SubscriptionVersion
   >;
@@ -13920,6 +14296,12 @@ export type ReviewSubmissionItemCreateRequest = {
       subscriptionGroupVersion?: {
         data?: {
           type: "subscriptionGroupVersions";
+          id: string;
+        };
+      };
+      retentionMessageVersion?: {
+        data?: {
+          type: "retentionMessageVersions";
           id: string;
         };
       };
@@ -16140,6 +16522,29 @@ export type Subscription = {
         id: string;
       }>;
     };
+    retentionOffers?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionOffers";
+        id: string;
+      }>;
+    };
+    retentionMessage?: {
+      links?: RelationshipLinks;
+      data?: {
+        type: "retentionMessages";
+        id: string;
+      };
+    };
+    retentionMessageOffers?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "retentionOffers";
+        id: string;
+      }>;
+    };
   };
   links?: ResourceLinks;
 };
@@ -16151,6 +16556,8 @@ export type SubscriptionsResponse = {
   data: Array<Subscription>;
   included?: Array<
     | PromotedPurchase
+    | RetentionMessage
+    | RetentionOffer
     | SubscriptionAppStoreReviewScreenshot
     | SubscriptionAvailability
     | SubscriptionGroup
@@ -16173,6 +16580,8 @@ export type SubscriptionResponse = {
   data: Subscription;
   included?: Array<
     | PromotedPurchase
+    | RetentionMessage
+    | RetentionOffer
     | SubscriptionAppStoreReviewScreenshot
     | SubscriptionAvailability
     | SubscriptionGroup
@@ -16256,6 +16665,18 @@ export type SubscriptionUpdateRequest = {
       prices?: {
         data?: Array<{
           type: "subscriptionPrices";
+          id: string;
+        }>;
+      };
+      retentionMessage?: {
+        data?: {
+          type: "retentionMessages";
+          id: string;
+        };
+      };
+      retentionMessageOffers?: {
+        data?: Array<{
+          type: "retentionOffers";
           id: string;
         }>;
       };
@@ -17999,6 +18420,16 @@ export type AppPromotedPurchasesLinkagesRequest = {
   }>;
 };
 
+/** Linkage response for an app retention messages. */
+export type AppRetentionMessagesLinkagesResponse = {
+  data: Array<{
+    type: "retentionMessages";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for an app review submissions. */
 export type AppReviewSubmissionsLinkagesResponse = {
   data: Array<{
@@ -19469,6 +19900,55 @@ export type ProfileDevicesLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for a retention message version localizations. */
+export type RetentionMessageVersionLocalizationsLinkagesResponse = {
+  data: Array<{
+    type: "retentionMessageLocalizations";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a retention message version placement. */
+export type RetentionMessageVersionPlacementLinkageResponse = {
+  data: {
+    type: "appAssetLibraryPlacements";
+    id: string;
+  };
+  links: DocumentLinks;
+};
+
+/** Linkage response for a retention message subscriptions. */
+export type RetentionMessageSubscriptionsLinkagesResponse = {
+  data: Array<{
+    type: "subscriptions";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a retention message versions. */
+export type RetentionMessageVersionsLinkagesResponse = {
+  data: Array<{
+    type: "retentionMessageVersions";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a retention offer prices. */
+export type RetentionOfferPricesLinkagesResponse = {
+  data: Array<{
+    type: "retentionOfferPrices";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for a review submission items. */
 export type ReviewSubmissionItemsLinkagesResponse = {
   data: Array<{
@@ -19744,6 +20224,51 @@ export type SubscriptionPromotedPurchaseLinkageResponse = {
 export type SubscriptionPromotionalOffersLinkagesResponse = {
   data: Array<{
     type: "subscriptionPromotionalOffers";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage response for a subscription retention message. */
+export type SubscriptionRetentionMessageLinkageResponse = {
+  data: {
+    type: "retentionMessages";
+    id: string;
+  };
+  links: DocumentLinks;
+};
+
+/** Linkage request body for a subscription retention message. */
+export type SubscriptionRetentionMessageLinkageRequest = {
+  data: {
+    type: "retentionMessages";
+    id: string;
+  };
+};
+
+/** Linkage response for a subscription retention message offers. */
+export type SubscriptionRetentionMessageOffersLinkagesResponse = {
+  data: Array<{
+    type: "retentionOffers";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
+/** Linkage request body for a subscription retention message offers. */
+export type SubscriptionRetentionMessageOffersLinkagesRequest = {
+  data: Array<{
+    type: "retentionOffers";
+    id: string;
+  }>;
+};
+
+/** Linkage response for a subscription retention offers. */
+export type SubscriptionRetentionOffersLinkagesResponse = {
+  data: Array<{
+    type: "retentionOffers";
     id: string;
   }>;
   links: PagedDocumentLinks;
@@ -23556,6 +24081,7 @@ export type AppAssetLibraryImagesGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -23698,6 +24224,7 @@ export type AppAssetLibraryPlacementOrderingRequestsCreateInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -23894,6 +24421,7 @@ export type AppAssetLibraryPlacementsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -23984,6 +24512,12 @@ export type AppAssetLibraryPlacementsGetInstanceData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -23993,6 +24527,7 @@ export type AppAssetLibraryPlacementsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appAssetLibraryPlacements/{id}";
@@ -24329,6 +24864,7 @@ export type AppAssetLibraryVideosGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -26177,6 +26713,7 @@ export type AppClipsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -26441,6 +26978,7 @@ export type AppCustomProductPageLocalizationsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -26948,6 +27486,7 @@ export type AppCustomProductPagesGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -27364,6 +27903,7 @@ export type AppEncryptionDeclarationsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -27612,6 +28152,7 @@ export type AppEncryptionDeclarationsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -27927,6 +28468,7 @@ export type AppEventLocalizationsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -29167,6 +29709,7 @@ export type AppInfosGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -29920,6 +30463,7 @@ export type AppPricePointsV3GetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -30105,6 +30649,7 @@ export type AppPriceSchedulesGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -31365,6 +31910,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -31880,6 +32426,7 @@ export type AppStoreVersionExperimentsV2GetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -32272,6 +32819,7 @@ export type AppStoreVersionLocalizationsGetInstanceData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * comma-separated list of relationships to include
@@ -32873,6 +33421,7 @@ export type AppStoreVersionsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -33372,6 +33921,7 @@ export type AppsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -33625,6 +34175,12 @@ export type AppsGetCollectionData = {
       | "subscriptions"
       | "subscriptionGroupLocalizations"
       | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
     >;
     /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
@@ -33759,6 +34315,7 @@ export type AppsGetCollectionData = {
       | "endUserLicenseAgreement"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -33838,6 +34395,10 @@ export type AppsGetCollectionData = {
      * maximum number of related promotedPurchases returned (when they are included)
      */
     "limit[promotedPurchases]"?: number;
+    /**
+     * maximum number of related retentionMessages returned (when they are included)
+     */
+    "limit[retentionMessages]"?: number;
     /**
      * maximum number of related reviewSubmissions returned (when they are included)
      */
@@ -33933,6 +34494,7 @@ export type AppsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -34188,6 +34750,12 @@ export type AppsGetInstanceData = {
       | "versions"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
      *
      * @deprecated
@@ -34316,6 +34884,7 @@ export type AppsGetInstanceData = {
       | "endUserLicenseAgreement"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -34395,6 +34964,10 @@ export type AppsGetInstanceData = {
      * maximum number of related promotedPurchases returned (when they are included)
      */
     "limit[promotedPurchases]"?: number;
+    /**
+     * maximum number of related retentionMessages returned (when they are included)
+     */
+    "limit[retentionMessages]"?: number;
     /**
      * maximum number of related reviewSubmissions returned (when they are included)
      */
@@ -35242,6 +35815,7 @@ export type BackgroundAssetsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -35877,6 +36451,7 @@ export type BetaAppLocalizationsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -36117,6 +36692,7 @@ export type BetaAppLocalizationsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -36314,6 +36890,7 @@ export type BetaAppReviewDetailsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -36448,6 +37025,7 @@ export type BetaAppReviewDetailsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -37731,6 +38309,7 @@ export type BetaGroupsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -38042,6 +38621,7 @@ export type BetaGroupsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -38290,6 +38870,7 @@ export type BetaLicenseAgreementsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -38414,6 +38995,7 @@ export type BetaLicenseAgreementsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -38934,6 +39516,7 @@ export type BetaTestersGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -39245,6 +39828,7 @@ export type BetaTestersGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -40335,6 +40919,7 @@ export type BuildsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -40680,6 +41265,7 @@ export type BuildsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -41218,6 +41804,7 @@ export type BundleIdsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -41486,6 +42073,7 @@ export type BundleIdsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -42661,6 +43249,7 @@ export type CiProductsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -42878,6 +43467,7 @@ export type CiProductsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -44241,6 +44831,7 @@ export type EndUserLicenseAgreementsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -47964,6 +48555,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -56083,6 +56675,7 @@ export type NominationsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -56383,6 +56976,7 @@ export type NominationsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -57029,6 +57623,7 @@ export type PreReleaseVersionsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -57190,6 +57785,7 @@ export type PreReleaseVersionsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -57831,6 +58427,9 @@ export type PromotedPurchasesGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -57943,6 +58542,905 @@ export type PromotedPurchasesUpdateInstanceResponses = {
 /** Successful response from `PATCH /v1/promotedPurchases/{id}`. */
 export type PromotedPurchasesUpdateInstanceResponse =
   PromotedPurchasesUpdateInstanceResponses[keyof PromotedPurchasesUpdateInstanceResponses];
+
+/** Request options for `POST /v1/retentionMessageLocalizations`. */
+export type RetentionMessageLocalizationsCreateInstanceData = {
+  /**
+   * RetentionMessageLocalization representation
+   */
+  body: RetentionMessageLocalizationCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/retentionMessageLocalizations";
+};
+
+/** Error status map for `POST /v1/retentionMessageLocalizations`. */
+export type RetentionMessageLocalizationsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/retentionMessageLocalizations`. */
+export type RetentionMessageLocalizationsCreateInstanceError =
+  RetentionMessageLocalizationsCreateInstanceErrors[keyof RetentionMessageLocalizationsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/retentionMessageLocalizations`. */
+export type RetentionMessageLocalizationsCreateInstanceResponses = {
+  /**
+   * Single RetentionMessageLocalization
+   */
+  201: RetentionMessageLocalizationResponse;
+};
+
+/** Successful response from `POST /v1/retentionMessageLocalizations`. */
+export type RetentionMessageLocalizationsCreateInstanceResponse =
+  RetentionMessageLocalizationsCreateInstanceResponses[keyof RetentionMessageLocalizationsCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionMessageLocalizations/{id}";
+};
+
+/** Error status map for `DELETE /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsDeleteInstanceError =
+  RetentionMessageLocalizationsDeleteInstanceErrors[keyof RetentionMessageLocalizationsDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsDeleteInstanceResponse =
+  RetentionMessageLocalizationsDeleteInstanceResponses[keyof RetentionMessageLocalizationsDeleteInstanceResponses];
+
+/** Request options for `GET /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessageLocalizations
+     */
+    "fields[retentionMessageLocalizations]"?: Array<
+      "locale" | "header" | "body" | "retentionMessageVersion"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"retentionMessageVersion">;
+  };
+  url: "/v1/retentionMessageLocalizations/{id}";
+};
+
+/** Error status map for `GET /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsGetInstanceError =
+  RetentionMessageLocalizationsGetInstanceErrors[keyof RetentionMessageLocalizationsGetInstanceErrors];
+
+/** Response status map for `GET /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsGetInstanceResponses = {
+  /**
+   * Single RetentionMessageLocalization
+   */
+  200: RetentionMessageLocalizationResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsGetInstanceResponse =
+  RetentionMessageLocalizationsGetInstanceResponses[keyof RetentionMessageLocalizationsGetInstanceResponses];
+
+/** Request options for `PATCH /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsUpdateInstanceData = {
+  /**
+   * RetentionMessageLocalization representation
+   */
+  body: RetentionMessageLocalizationUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionMessageLocalizations/{id}";
+};
+
+/** Error status map for `PATCH /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsUpdateInstanceError =
+  RetentionMessageLocalizationsUpdateInstanceErrors[keyof RetentionMessageLocalizationsUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsUpdateInstanceResponses = {
+  /**
+   * Single RetentionMessageLocalization
+   */
+  200: RetentionMessageLocalizationResponse;
+};
+
+/** Successful response from `PATCH /v1/retentionMessageLocalizations/{id}`. */
+export type RetentionMessageLocalizationsUpdateInstanceResponse =
+  RetentionMessageLocalizationsUpdateInstanceResponses[keyof RetentionMessageLocalizationsUpdateInstanceResponses];
+
+/** Request options for `POST /v1/retentionMessageVersions`. */
+export type RetentionMessageVersionsCreateInstanceData = {
+  /**
+   * RetentionMessageVersion representation
+   */
+  body: RetentionMessageVersionCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/retentionMessageVersions";
+};
+
+/** Error status map for `POST /v1/retentionMessageVersions`. */
+export type RetentionMessageVersionsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/retentionMessageVersions`. */
+export type RetentionMessageVersionsCreateInstanceError =
+  RetentionMessageVersionsCreateInstanceErrors[keyof RetentionMessageVersionsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/retentionMessageVersions`. */
+export type RetentionMessageVersionsCreateInstanceResponses = {
+  /**
+   * Single RetentionMessageVersion
+   */
+  201: RetentionMessageVersionResponse;
+};
+
+/** Successful response from `POST /v1/retentionMessageVersions`. */
+export type RetentionMessageVersionsCreateInstanceResponse =
+  RetentionMessageVersionsCreateInstanceResponses[keyof RetentionMessageVersionsCreateInstanceResponses];
+
+/** Request options for `GET /v1/retentionMessageVersions/{id}`. */
+export type RetentionMessageVersionsGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageLocalizations
+     */
+    "fields[retentionMessageLocalizations]"?: Array<
+      "locale" | "header" | "body" | "retentionMessageVersion"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"retentionMessage" | "localizations" | "placement">;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/retentionMessageVersions/{id}";
+};
+
+/** Error status map for `GET /v1/retentionMessageVersions/{id}`. */
+export type RetentionMessageVersionsGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageVersions/{id}`. */
+export type RetentionMessageVersionsGetInstanceError =
+  RetentionMessageVersionsGetInstanceErrors[keyof RetentionMessageVersionsGetInstanceErrors];
+
+/** Response status map for `GET /v1/retentionMessageVersions/{id}`. */
+export type RetentionMessageVersionsGetInstanceResponses = {
+  /**
+   * Single RetentionMessageVersion
+   */
+  200: RetentionMessageVersionResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessageVersions/{id}`. */
+export type RetentionMessageVersionsGetInstanceResponse =
+  RetentionMessageVersionsGetInstanceResponses[keyof RetentionMessageVersionsGetInstanceResponses];
+
+/** Request options for `POST /v1/retentionMessages`. */
+export type RetentionMessagesCreateInstanceData = {
+  /**
+   * RetentionMessage representation
+   */
+  body: RetentionMessageCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/retentionMessages";
+};
+
+/** Error status map for `POST /v1/retentionMessages`. */
+export type RetentionMessagesCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/retentionMessages`. */
+export type RetentionMessagesCreateInstanceError =
+  RetentionMessagesCreateInstanceErrors[keyof RetentionMessagesCreateInstanceErrors];
+
+/** Response status map for `POST /v1/retentionMessages`. */
+export type RetentionMessagesCreateInstanceResponses = {
+  /**
+   * Single RetentionMessage
+   */
+  201: RetentionMessageResponse;
+};
+
+/** Successful response from `POST /v1/retentionMessages`. */
+export type RetentionMessagesCreateInstanceResponse =
+  RetentionMessagesCreateInstanceResponses[keyof RetentionMessagesCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/retentionMessages/{id}`. */
+export type RetentionMessagesDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionMessages/{id}";
+};
+
+/** Error status map for `DELETE /v1/retentionMessages/{id}`. */
+export type RetentionMessagesDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/retentionMessages/{id}`. */
+export type RetentionMessagesDeleteInstanceError =
+  RetentionMessagesDeleteInstanceErrors[keyof RetentionMessagesDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/retentionMessages/{id}`. */
+export type RetentionMessagesDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/retentionMessages/{id}`. */
+export type RetentionMessagesDeleteInstanceResponse =
+  RetentionMessagesDeleteInstanceResponses[keyof RetentionMessagesDeleteInstanceResponses];
+
+/** Request options for `GET /v1/retentionMessages/{id}`. */
+export type RetentionMessagesGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"versions" | "subscriptions">;
+    /**
+     * maximum number of related subscriptions returned (when they are included)
+     */
+    "limit[subscriptions]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
+  };
+  url: "/v1/retentionMessages/{id}";
+};
+
+/** Error status map for `GET /v1/retentionMessages/{id}`. */
+export type RetentionMessagesGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessages/{id}`. */
+export type RetentionMessagesGetInstanceError =
+  RetentionMessagesGetInstanceErrors[keyof RetentionMessagesGetInstanceErrors];
+
+/** Response status map for `GET /v1/retentionMessages/{id}`. */
+export type RetentionMessagesGetInstanceResponses = {
+  /**
+   * Single RetentionMessage
+   */
+  200: RetentionMessageResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessages/{id}`. */
+export type RetentionMessagesGetInstanceResponse =
+  RetentionMessagesGetInstanceResponses[keyof RetentionMessagesGetInstanceResponses];
+
+/** Request options for `POST /v1/retentionOffers`. */
+export type RetentionOffersCreateInstanceData = {
+  /**
+   * RetentionOffer representation
+   */
+  body: RetentionOfferCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/retentionOffers";
+};
+
+/** Error status map for `POST /v1/retentionOffers`. */
+export type RetentionOffersCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/retentionOffers`. */
+export type RetentionOffersCreateInstanceError =
+  RetentionOffersCreateInstanceErrors[keyof RetentionOffersCreateInstanceErrors];
+
+/** Response status map for `POST /v1/retentionOffers`. */
+export type RetentionOffersCreateInstanceResponses = {
+  /**
+   * Single RetentionOffer
+   */
+  201: RetentionOfferResponse;
+};
+
+/** Successful response from `POST /v1/retentionOffers`. */
+export type RetentionOffersCreateInstanceResponse =
+  RetentionOffersCreateInstanceResponses[keyof RetentionOffersCreateInstanceResponses];
+
+/** Request options for `DELETE /v1/retentionOffers/{id}`. */
+export type RetentionOffersDeleteInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionOffers/{id}";
+};
+
+/** Error status map for `DELETE /v1/retentionOffers/{id}`. */
+export type RetentionOffersDeleteInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `DELETE /v1/retentionOffers/{id}`. */
+export type RetentionOffersDeleteInstanceError =
+  RetentionOffersDeleteInstanceErrors[keyof RetentionOffersDeleteInstanceErrors];
+
+/** Response status map for `DELETE /v1/retentionOffers/{id}`. */
+export type RetentionOffersDeleteInstanceResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `DELETE /v1/retentionOffers/{id}`. */
+export type RetentionOffersDeleteInstanceResponse =
+  RetentionOffersDeleteInstanceResponses[keyof RetentionOffersDeleteInstanceResponses];
+
+/** Request options for `GET /v1/retentionOffers/{id}`. */
+export type RetentionOffersGetInstanceData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionOfferPrices
+     */
+    "fields[retentionOfferPrices]"?: Array<
+      "territory" | "subscriptionPricePoint"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscription" | "prices">;
+    /**
+     * maximum number of related prices returned (when they are included)
+     */
+    "limit[prices]"?: number;
+  };
+  url: "/v1/retentionOffers/{id}";
+};
+
+/** Error status map for `GET /v1/retentionOffers/{id}`. */
+export type RetentionOffersGetInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionOffers/{id}`. */
+export type RetentionOffersGetInstanceError =
+  RetentionOffersGetInstanceErrors[keyof RetentionOffersGetInstanceErrors];
+
+/** Response status map for `GET /v1/retentionOffers/{id}`. */
+export type RetentionOffersGetInstanceResponses = {
+  /**
+   * Single RetentionOffer
+   */
+  200: RetentionOfferResponse;
+};
+
+/** Successful response from `GET /v1/retentionOffers/{id}`. */
+export type RetentionOffersGetInstanceResponse =
+  RetentionOffersGetInstanceResponses[keyof RetentionOffersGetInstanceResponses];
+
+/** Request options for `PATCH /v1/retentionOffers/{id}`. */
+export type RetentionOffersUpdateInstanceData = {
+  /**
+   * RetentionOffer representation
+   */
+  body: RetentionOfferUpdateRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionOffers/{id}";
+};
+
+/** Error status map for `PATCH /v1/retentionOffers/{id}`. */
+export type RetentionOffersUpdateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/retentionOffers/{id}`. */
+export type RetentionOffersUpdateInstanceError =
+  RetentionOffersUpdateInstanceErrors[keyof RetentionOffersUpdateInstanceErrors];
+
+/** Response status map for `PATCH /v1/retentionOffers/{id}`. */
+export type RetentionOffersUpdateInstanceResponses = {
+  /**
+   * Single RetentionOffer
+   */
+  200: RetentionOfferResponse;
+};
+
+/** Successful response from `PATCH /v1/retentionOffers/{id}`. */
+export type RetentionOffersUpdateInstanceResponse =
+  RetentionOffersUpdateInstanceResponses[keyof RetentionOffersUpdateInstanceResponses];
 
 /** Request options for `POST /v1/reviewSubmissionItems`. */
 export type ReviewSubmissionItemsCreateInstanceData = {
@@ -58191,6 +59689,7 @@ export type ReviewSubmissionsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -58237,6 +59736,7 @@ export type ReviewSubmissionsGetCollectionData = {
       | "inAppPurchaseVersion"
       | "subscriptionVersion"
       | "subscriptionGroupVersion"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -58446,6 +59946,7 @@ export type ReviewSubmissionsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -58492,6 +59993,7 @@ export type ReviewSubmissionsGetInstanceData = {
       | "inAppPurchaseVersion"
       | "subscriptionVersion"
       | "subscriptionGroupVersion"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -59787,6 +61289,9 @@ export type SubscriptionAppStoreReviewScreenshotsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -60858,6 +62363,9 @@ export type SubscriptionGroupsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -61155,6 +62663,9 @@ export type SubscriptionImagesGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -62075,6 +63586,9 @@ export type SubscriptionLocalizationsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -62720,6 +64234,9 @@ export type SubscriptionOfferCodesGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -63406,6 +64923,9 @@ export type SubscriptionPromotionalOffersGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -63687,6 +65207,9 @@ export type SubscriptionVersionsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionImages
@@ -63906,6 +65429,9 @@ export type SubscriptionsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -64062,6 +65588,27 @@ export type SubscriptionsGetInstanceData = {
       | "localizations"
     >;
     /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
      * comma-separated list of relationships to include
      */
     include?: Array<
@@ -64078,6 +65625,9 @@ export type SubscriptionsGetInstanceData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * maximum number of related images returned (when they are included)
@@ -64103,6 +65653,14 @@ export type SubscriptionsGetInstanceData = {
      * maximum number of related promotionalOffers returned (when they are included)
      */
     "limit[promotionalOffers]"?: number;
+    /**
+     * maximum number of related retentionMessageOffers returned (when they are included)
+     */
+    "limit[retentionMessageOffers]"?: number;
+    /**
+     * maximum number of related retentionOffers returned (when they are included)
+     */
+    "limit[retentionOffers]"?: number;
     /**
      * maximum number of related subscriptionLocalizations returned (when they are included)
      */
@@ -64425,6 +65983,7 @@ export type UserInvitationsGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -64670,6 +66229,7 @@ export type UserInvitationsGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -64831,6 +66391,7 @@ export type UsersGetCollectionData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -65020,6 +66581,7 @@ export type UsersGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -65432,6 +66994,7 @@ export type WebhooksGetInstanceData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -66794,6 +68357,7 @@ export type AppAssetLibrariesImagesGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * maximum resources per page
@@ -67001,6 +68565,7 @@ export type AppAssetLibrariesVideosGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * maximum resources per page
@@ -67209,6 +68774,7 @@ export type AppAssetLibraryImagesPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -67299,6 +68865,12 @@ export type AppAssetLibraryImagesPlacementsGetToManyRelatedData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -67312,6 +68884,7 @@ export type AppAssetLibraryImagesPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appAssetLibraryImages/{id}/placements";
@@ -67508,6 +69081,7 @@ export type AppAssetLibraryVideosPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -67598,6 +69172,12 @@ export type AppAssetLibraryVideosPlacementsGetToManyRelatedData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -67611,6 +69191,7 @@ export type AppAssetLibraryVideosPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appAssetLibraryVideos/{id}/placements";
@@ -68658,6 +70239,7 @@ export type AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedDa
         | "appAvailabilityV2"
         | "inAppPurchases"
         | "subscriptionGroups"
+        | "retentionMessages"
         | "gameCenterEnabledVersions"
         | "performanceOverviews"
         | "perfPowerMetrics"
@@ -69888,6 +71470,7 @@ export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -69978,6 +71561,12 @@ export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -69991,6 +71580,7 @@ export type AppCustomProductPageLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appCustomProductPageLocalizations/{id}/placements";
@@ -70445,6 +72035,7 @@ export type AppCustomProductPageVersionsAppCustomProductPageLocalizationsGetToMa
         | "appStoreVersionLocalization"
         | "appCustomProductPageLocalization"
         | "appStoreVersionExperimentTreatmentLocalization"
+        | "retentionMessageVersion"
       >;
       /**
        * maximum resources per page
@@ -71272,6 +72863,7 @@ export type AppEventLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -71362,6 +72954,12 @@ export type AppEventLocalizationsPlacementsGetToManyRelatedData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -71375,6 +72973,7 @@ export type AppEventLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appEventLocalizations/{id}/placements";
@@ -71563,6 +73162,7 @@ export type AppEventsLocalizationsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * maximum resources per page
@@ -73099,6 +74699,7 @@ export type AppPricePointsV3EqualizationsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -74577,6 +76178,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRe
         | "appStoreVersionLocalization"
         | "appCustomProductPageLocalization"
         | "appStoreVersionExperimentTreatmentLocalization"
+        | "retentionMessageVersion"
       >;
       /**
        * the fields to include for returned resources of type appAssetLibraryImages
@@ -74667,6 +76269,12 @@ export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRe
         | "placements"
       >;
       /**
+       * the fields to include for returned resources of type retentionMessageVersions
+       */
+      "fields[retentionMessageVersions]"?: Array<
+        "state" | "retentionMessage" | "localizations" | "placement"
+      >;
+      /**
        * maximum resources per page
        */
       limit?: number;
@@ -74680,6 +76288,7 @@ export type AppStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyRe
         | "appStoreVersionLocalization"
         | "appCustomProductPageLocalization"
         | "appStoreVersionExperimentTreatmentLocalization"
+        | "retentionMessageVersion"
       >;
     };
     url: "/v1/appStoreVersionExperimentTreatmentLocalizations/{id}/placements";
@@ -74862,6 +76471,7 @@ export type AppStoreVersionExperimentTreatmentsAppStoreVersionExperimentTreatmen
         | "appStoreVersionLocalization"
         | "appCustomProductPageLocalization"
         | "appStoreVersionExperimentTreatmentLocalization"
+        | "retentionMessageVersion"
       >;
       /**
        * maximum resources per page
@@ -75732,6 +77342,7 @@ export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appAssetLibraryImages
@@ -75822,6 +77433,12 @@ export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedData = {
       | "placements"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -75835,6 +77452,7 @@ export type AppStoreVersionLocalizationsPlacementsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/appStoreVersionLocalizations/{id}/placements";
@@ -76844,6 +78462,7 @@ export type AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -77139,6 +78758,7 @@ export type AppStoreVersionsAppStoreVersionLocalizationsGetToManyRelatedData = {
       | "appStoreVersionLocalization"
       | "appCustomProductPageLocalization"
       | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
     >;
     /**
      * maximum resources per page
@@ -79121,6 +80741,7 @@ export type AppsAppClipsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -79327,6 +80948,7 @@ export type AppsAppCustomProductPagesGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -79555,6 +81177,7 @@ export type AppsAppEncryptionDeclarationsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -79979,6 +81602,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -80236,6 +81860,7 @@ export type AppsAppPricePointsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -80423,6 +82048,7 @@ export type AppsAppPriceScheduleGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -80651,6 +82277,7 @@ export type AppsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -80975,6 +82602,7 @@ export type AppsAppStoreVersionsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -81602,6 +83230,7 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -83181,6 +84810,7 @@ export type AppsCiProductGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -84003,6 +85633,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -85191,6 +86822,9 @@ export type AppsPromotedPurchasesGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * maximum resources per page
@@ -85243,6 +86877,177 @@ export type AppsPromotedPurchasesGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/apps/{id}/promotedPurchases`. */
 export type AppsPromotedPurchasesGetToManyRelatedResponse =
   AppsPromotedPurchasesGetToManyRelatedResponses[keyof AppsPromotedPurchasesGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/apps/{id}/relationships/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/apps/{id}/relationships/retentionMessages";
+};
+
+/** Error status map for `GET /v1/apps/{id}/relationships/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/apps/{id}/relationships/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelationshipError =
+  AppsRetentionMessagesGetToManyRelationshipErrors[keyof AppsRetentionMessagesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/apps/{id}/relationships/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: AppRetentionMessagesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/apps/{id}/relationships/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelationshipResponse =
+  AppsRetentionMessagesGetToManyRelationshipResponses[keyof AppsRetentionMessagesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/apps/{id}/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"versions" | "subscriptions">;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
+    /**
+     * maximum number of related subscriptions returned (when they are included)
+     */
+    "limit[subscriptions]"?: number;
+  };
+  url: "/v1/apps/{id}/retentionMessages";
+};
+
+/** Error status map for `GET /v1/apps/{id}/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/apps/{id}/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelatedError =
+  AppsRetentionMessagesGetToManyRelatedErrors[keyof AppsRetentionMessagesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/apps/{id}/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelatedResponses = {
+  /**
+   * List of RetentionMessages
+   */
+  200: RetentionMessagesResponse;
+};
+
+/** Successful response from `GET /v1/apps/{id}/retentionMessages`. */
+export type AppsRetentionMessagesGetToManyRelatedResponse =
+  AppsRetentionMessagesGetToManyRelatedResponses[keyof AppsRetentionMessagesGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/apps/{id}/relationships/reviewSubmissions`. */
 export type AppsReviewSubmissionsGetToManyRelationshipData = {
@@ -85378,6 +87183,7 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -85424,6 +87230,7 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "inAppPurchaseVersion"
       | "subscriptionVersion"
       | "subscriptionGroupVersion"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -85890,6 +87697,9 @@ export type AppsSubscriptionGroupsGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionGroupLocalizations
@@ -86080,6 +87890,7 @@ export type AppsWebhooksGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -86636,6 +88447,7 @@ export type BetaAppLocalizationsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -86805,6 +88617,7 @@ export type BetaAppReviewDetailsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -87362,6 +89175,7 @@ export type BetaGroupsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -88294,6 +90108,7 @@ export type BetaLicenseAgreementsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -88536,6 +90351,7 @@ export type BetaTestersAppsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -89355,6 +91171,7 @@ export type BuildBetaDetailsBuildGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -90257,6 +92074,7 @@ export type BuildsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -90648,6 +92466,7 @@ export type BuildsAppStoreVersionGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -92178,6 +93997,7 @@ export type BundleIdsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -93686,6 +95506,7 @@ export type CiBuildRunsBuildsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -94265,6 +96086,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -94520,6 +96342,12 @@ export type CiProductsAppGetToOneRelatedData = {
       | "versions"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
      * the fields to include for returned resources of type gameCenterEnabledVersions
      */
     "fields[gameCenterEnabledVersions]"?: Array<
@@ -94646,6 +96474,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "endUserLicenseAgreement"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "appCustomProductPages"
       | "inAppPurchasesV2"
@@ -94699,6 +96528,10 @@ export type CiProductsAppGetToOneRelatedData = {
      * maximum number of related subscriptionGroups returned (when they are included)
      */
     "limit[subscriptionGroups]"?: number;
+    /**
+     * maximum number of related retentionMessages returned (when they are included)
+     */
+    "limit[retentionMessages]"?: number;
     /**
      * maximum number of related gameCenterEnabledVersions returned (when they are included)
      *
@@ -97667,6 +99500,7 @@ export type GameCenterAppVersionsAppStoreVersionGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -101882,6 +103716,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -107725,6 +109560,9 @@ export type InAppPurchasesV2PromotedPurchaseGetToOneRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -108438,6 +110276,7 @@ export type PreReleaseVersionsAppGetToOneRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -109031,6 +110870,1089 @@ export type ProfilesDevicesGetToManyRelatedResponses = {
 export type ProfilesDevicesGetToManyRelatedResponse =
   ProfilesDevicesGetToManyRelatedResponses[keyof ProfilesDevicesGetToManyRelatedResponses];
 
+/** Request options for `GET /v1/retentionMessageVersions/{id}/relationships/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/retentionMessageVersions/{id}/relationships/localizations";
+};
+
+/** Error status map for `GET /v1/retentionMessageVersions/{id}/relationships/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageVersions/{id}/relationships/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelationshipError =
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors[keyof RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/retentionMessageVersions/{id}/relationships/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: RetentionMessageVersionLocalizationsLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/retentionMessageVersions/{id}/relationships/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelationshipResponse =
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses[keyof RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/retentionMessageVersions/{id}/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessageLocalizations
+     */
+    "fields[retentionMessageLocalizations]"?: Array<
+      "locale" | "header" | "body" | "retentionMessageVersion"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"retentionMessageVersion">;
+  };
+  url: "/v1/retentionMessageVersions/{id}/localizations";
+};
+
+/** Error status map for `GET /v1/retentionMessageVersions/{id}/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageVersions/{id}/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelatedError =
+  RetentionMessageVersionsLocalizationsGetToManyRelatedErrors[keyof RetentionMessageVersionsLocalizationsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/retentionMessageVersions/{id}/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelatedResponses = {
+  /**
+   * List of RetentionMessageLocalizations
+   */
+  200: RetentionMessageLocalizationsResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessageVersions/{id}/localizations`. */
+export type RetentionMessageVersionsLocalizationsGetToManyRelatedResponse =
+  RetentionMessageVersionsLocalizationsGetToManyRelatedResponses[keyof RetentionMessageVersionsLocalizationsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/retentionMessageVersions/{id}/relationships/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/retentionMessageVersions/{id}/relationships/placement";
+};
+
+/** Error status map for `GET /v1/retentionMessageVersions/{id}/relationships/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageVersions/{id}/relationships/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelationshipError =
+  RetentionMessageVersionsPlacementGetToOneRelationshipErrors[keyof RetentionMessageVersionsPlacementGetToOneRelationshipErrors];
+
+/** Response status map for `GET /v1/retentionMessageVersions/{id}/relationships/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelationshipResponses = {
+  /**
+   * Related linkage
+   */
+  200: RetentionMessageVersionPlacementLinkageResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessageVersions/{id}/relationships/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelationshipResponse =
+  RetentionMessageVersionsPlacementGetToOneRelationshipResponses[keyof RetentionMessageVersionsPlacementGetToOneRelationshipResponses];
+
+/** Request options for `GET /v1/retentionMessageVersions/{id}/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryImages
+     */
+    "fields[appAssetLibraryImages]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "imageAsset"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryVideos
+     */
+    "fields[appAssetLibraryVideos]"?: Array<
+      | "category"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "fileName"
+      | "fileSize"
+      | "previewFrameImage"
+      | "previewFrameTimeCode"
+      | "referenceName"
+      | "specId"
+      | "state"
+      | "stateDetails"
+      | "uploadOperations"
+      | "videoAsset"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appEventLocalizations
+     */
+    "fields[appEventLocalizations]"?: Array<
+      | "locale"
+      | "name"
+      | "shortDescription"
+      | "longDescription"
+      | "appEvent"
+      | "appEventScreenshots"
+      | "appEventVideoClips"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionLocalizations
+     */
+    "fields[appStoreVersionLocalizations]"?: Array<
+      | "description"
+      | "locale"
+      | "keywords"
+      | "marketingUrl"
+      | "promotionalText"
+      | "supportUrl"
+      | "whatsNew"
+      | "appStoreVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appCustomProductPageLocalizations
+     */
+    "fields[appCustomProductPageLocalizations]"?: Array<
+      | "locale"
+      | "promotionalText"
+      | "appCustomProductPageVersion"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "searchKeywords"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type appStoreVersionExperimentTreatmentLocalizations
+     */
+    "fields[appStoreVersionExperimentTreatmentLocalizations]"?: Array<
+      | "locale"
+      | "appStoreVersionExperimentTreatment"
+      | "appScreenshotSets"
+      | "appPreviewSets"
+      | "placements"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
+    >;
+  };
+  url: "/v1/retentionMessageVersions/{id}/placement";
+};
+
+/** Error status map for `GET /v1/retentionMessageVersions/{id}/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessageVersions/{id}/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelatedError =
+  RetentionMessageVersionsPlacementGetToOneRelatedErrors[keyof RetentionMessageVersionsPlacementGetToOneRelatedErrors];
+
+/** Response status map for `GET /v1/retentionMessageVersions/{id}/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelatedResponses = {
+  /**
+   * Single AppAssetLibraryPlacement
+   */
+  200: AppAssetLibraryPlacementResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessageVersions/{id}/placement`. */
+export type RetentionMessageVersionsPlacementGetToOneRelatedResponse =
+  RetentionMessageVersionsPlacementGetToOneRelatedResponses[keyof RetentionMessageVersionsPlacementGetToOneRelatedResponses];
+
+/** Request options for `GET /v1/retentionMessages/{id}/relationships/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/retentionMessages/{id}/relationships/subscriptions";
+};
+
+/** Error status map for `GET /v1/retentionMessages/{id}/relationships/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessages/{id}/relationships/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelationshipError =
+  RetentionMessagesSubscriptionsGetToManyRelationshipErrors[keyof RetentionMessagesSubscriptionsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/retentionMessages/{id}/relationships/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: RetentionMessageSubscriptionsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessages/{id}/relationships/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelationshipResponse =
+  RetentionMessagesSubscriptionsGetToManyRelationshipResponses[keyof RetentionMessagesSubscriptionsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/retentionMessages/{id}/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by attribute 'productId'
+     */
+    "filter[productId]"?: Array<string>;
+    /**
+     * filter by attribute 'name'
+     */
+    "filter[name]"?: Array<string>;
+    /**
+     * filter by attribute 'state'
+     */
+    "filter[state]"?: Array<
+      | "MISSING_METADATA"
+      | "READY_TO_SUBMIT"
+      | "WAITING_FOR_REVIEW"
+      | "IN_REVIEW"
+      | "DEVELOPER_ACTION_NEEDED"
+      | "PENDING_BINARY_APPROVAL"
+      | "APPROVED"
+      | "DEVELOPER_REMOVED_FROM_SALE"
+      | "REMOVED_FROM_SALE"
+      | "REJECTED"
+    >;
+    /**
+     * comma-separated list of sort expressions; resources will be sorted as specified
+     */
+    sort?: Array<"name" | "-name">;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionLocalizations
+     */
+    "fields[subscriptionLocalizations]"?: Array<
+      "name" | "locale" | "description" | "state" | "subscription"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionAppStoreReviewScreenshots
+     */
+    "fields[subscriptionAppStoreReviewScreenshots]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "sourceFileChecksum"
+      | "imageAsset"
+      | "assetToken"
+      | "assetType"
+      | "uploadOperations"
+      | "assetDeliveryState"
+      | "subscription"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionGroups
+     */
+    "fields[subscriptionGroups]"?: Array<
+      | "referenceName"
+      | "subscriptions"
+      | "subscriptionGroupLocalizations"
+      | "versions"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionIntroductoryOffers
+     */
+    "fields[subscriptionIntroductoryOffers]"?: Array<
+      | "startDate"
+      | "endDate"
+      | "duration"
+      | "offerMode"
+      | "numberOfPeriods"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "territory"
+      | "subscriptionPricePoint"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPromotionalOffers
+     */
+    "fields[subscriptionPromotionalOffers]"?: Array<
+      | "duration"
+      | "name"
+      | "numberOfPeriods"
+      | "offerCode"
+      | "offerMode"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionOfferCodes
+     */
+    "fields[subscriptionOfferCodes]"?: Array<
+      | "name"
+      | "customerEligibilities"
+      | "offerEligibility"
+      | "duration"
+      | "offerMode"
+      | "numberOfPeriods"
+      | "totalNumberOfCodes"
+      | "productionCodeCount"
+      | "sandboxCodeCount"
+      | "active"
+      | "autoRenewEnabled"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "oneTimeUseCodes"
+      | "customCodes"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPrices
+     */
+    "fields[subscriptionPrices]"?: Array<
+      | "startDate"
+      | "preserved"
+      | "planType"
+      | "territory"
+      | "subscriptionPricePoint"
+    >;
+    /**
+     * the fields to include for returned resources of type promotedPurchases
+     */
+    "fields[promotedPurchases]"?: Array<
+      | "visibleForAllUsers"
+      | "enabled"
+      | "state"
+      | "inAppPurchaseV2"
+      | "subscription"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionAvailabilities
+     */
+    "fields[subscriptionAvailabilities]"?: Array<
+      "availableInNewTerritories" | "availableTerritories"
+    >;
+    /**
+     * the fields to include for returned resources of type winBackOffers
+     */
+    "fields[winBackOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityTimeSinceLastSubscribedInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "startDate"
+      | "endDate"
+      | "priority"
+      | "promotionIntent"
+      | "targetSubscriptionPlanType"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionImages
+     */
+    "fields[subscriptionImages]"?: Array<
+      | "fileSize"
+      | "fileName"
+      | "sourceFileChecksum"
+      | "assetToken"
+      | "imageAsset"
+      | "uploadOperations"
+      | "state"
+      | "subscription"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPlanAvailabilities
+     */
+    "fields[subscriptionPlanAvailabilities]"?: Array<
+      "availableInNewTerritories" | "planType" | "availableTerritories"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionVersions
+     */
+    "fields[subscriptionVersions]"?: Array<
+      | "version"
+      | "state"
+      | "subscription"
+      | "image"
+      | "images"
+      | "localizations"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * maximum number of related subscriptionLocalizations returned (when they are included)
+     */
+    "limit[subscriptionLocalizations]"?: number;
+    /**
+     * maximum number of related introductoryOffers returned (when they are included)
+     */
+    "limit[introductoryOffers]"?: number;
+    /**
+     * maximum number of related promotionalOffers returned (when they are included)
+     */
+    "limit[promotionalOffers]"?: number;
+    /**
+     * maximum number of related offerCodes returned (when they are included)
+     */
+    "limit[offerCodes]"?: number;
+    /**
+     * maximum number of related prices returned (when they are included)
+     */
+    "limit[prices]"?: number;
+    /**
+     * maximum number of related winBackOffers returned (when they are included)
+     */
+    "limit[winBackOffers]"?: number;
+    /**
+     * maximum number of related images returned (when they are included)
+     */
+    "limit[images]"?: number;
+    /**
+     * maximum number of related planAvailabilities returned (when they are included)
+     */
+    "limit[planAvailabilities]"?: number;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
+    /**
+     * maximum number of related retentionOffers returned (when they are included)
+     */
+    "limit[retentionOffers]"?: number;
+    /**
+     * maximum number of related retentionMessageOffers returned (when they are included)
+     */
+    "limit[retentionMessageOffers]"?: number;
+  };
+  url: "/v1/retentionMessages/{id}/subscriptions";
+};
+
+/** Error status map for `GET /v1/retentionMessages/{id}/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessages/{id}/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelatedError =
+  RetentionMessagesSubscriptionsGetToManyRelatedErrors[keyof RetentionMessagesSubscriptionsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/retentionMessages/{id}/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelatedResponses = {
+  /**
+   * List of Subscriptions
+   */
+  200: SubscriptionsResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessages/{id}/subscriptions`. */
+export type RetentionMessagesSubscriptionsGetToManyRelatedResponse =
+  RetentionMessagesSubscriptionsGetToManyRelatedResponses[keyof RetentionMessagesSubscriptionsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/retentionMessages/{id}/relationships/versions`. */
+export type RetentionMessagesVersionsGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/retentionMessages/{id}/relationships/versions";
+};
+
+/** Error status map for `GET /v1/retentionMessages/{id}/relationships/versions`. */
+export type RetentionMessagesVersionsGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessages/{id}/relationships/versions`. */
+export type RetentionMessagesVersionsGetToManyRelationshipError =
+  RetentionMessagesVersionsGetToManyRelationshipErrors[keyof RetentionMessagesVersionsGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/retentionMessages/{id}/relationships/versions`. */
+export type RetentionMessagesVersionsGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: RetentionMessageVersionsLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessages/{id}/relationships/versions`. */
+export type RetentionMessagesVersionsGetToManyRelationshipResponse =
+  RetentionMessagesVersionsGetToManyRelationshipResponses[keyof RetentionMessagesVersionsGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/retentionMessages/{id}/versions`. */
+export type RetentionMessagesVersionsGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageLocalizations
+     */
+    "fields[retentionMessageLocalizations]"?: Array<
+      "locale" | "header" | "body" | "retentionMessageVersion"
+    >;
+    /**
+     * the fields to include for returned resources of type appAssetLibraryPlacements
+     */
+    "fields[appAssetLibraryPlacements]"?: Array<
+      | "mediaType"
+      | "placementType"
+      | "placementGroup"
+      | "createdDate"
+      | "lastModifiedDate"
+      | "state"
+      | "stateDetails"
+      | "image"
+      | "video"
+      | "appEventLocalization"
+      | "appStoreVersionLocalization"
+      | "appCustomProductPageLocalization"
+      | "appStoreVersionExperimentTreatmentLocalization"
+      | "retentionMessageVersion"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"retentionMessage" | "localizations" | "placement">;
+    /**
+     * maximum number of related localizations returned (when they are included)
+     */
+    "limit[localizations]"?: number;
+  };
+  url: "/v1/retentionMessages/{id}/versions";
+};
+
+/** Error status map for `GET /v1/retentionMessages/{id}/versions`. */
+export type RetentionMessagesVersionsGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionMessages/{id}/versions`. */
+export type RetentionMessagesVersionsGetToManyRelatedError =
+  RetentionMessagesVersionsGetToManyRelatedErrors[keyof RetentionMessagesVersionsGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/retentionMessages/{id}/versions`. */
+export type RetentionMessagesVersionsGetToManyRelatedResponses = {
+  /**
+   * List of RetentionMessageVersions
+   */
+  200: RetentionMessageVersionsResponse;
+};
+
+/** Successful response from `GET /v1/retentionMessages/{id}/versions`. */
+export type RetentionMessagesVersionsGetToManyRelatedResponse =
+  RetentionMessagesVersionsGetToManyRelatedResponses[keyof RetentionMessagesVersionsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/retentionOffers/{id}/relationships/prices`. */
+export type RetentionOffersPricesGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/retentionOffers/{id}/relationships/prices";
+};
+
+/** Error status map for `GET /v1/retentionOffers/{id}/relationships/prices`. */
+export type RetentionOffersPricesGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionOffers/{id}/relationships/prices`. */
+export type RetentionOffersPricesGetToManyRelationshipError =
+  RetentionOffersPricesGetToManyRelationshipErrors[keyof RetentionOffersPricesGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/retentionOffers/{id}/relationships/prices`. */
+export type RetentionOffersPricesGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: RetentionOfferPricesLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/retentionOffers/{id}/relationships/prices`. */
+export type RetentionOffersPricesGetToManyRelationshipResponse =
+  RetentionOffersPricesGetToManyRelationshipResponses[keyof RetentionOffersPricesGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/retentionOffers/{id}/prices`. */
+export type RetentionOffersPricesGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by id(s) of related 'territory'
+     */
+    "filter[territory]"?: Array<string>;
+    /**
+     * the fields to include for returned resources of type retentionOfferPrices
+     */
+    "fields[retentionOfferPrices]"?: Array<
+      "territory" | "subscriptionPricePoint"
+    >;
+    /**
+     * the fields to include for returned resources of type territories
+     */
+    "fields[territories]"?: Array<"currency">;
+    /**
+     * the fields to include for returned resources of type subscriptionPricePoints
+     */
+    "fields[subscriptionPricePoints]"?: Array<
+      | "customerPrice"
+      | "proceeds"
+      | "proceedsYear2"
+      | "territory"
+      | "equalizations"
+      | "adjustedEqualizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"territory" | "subscriptionPricePoint">;
+  };
+  url: "/v1/retentionOffers/{id}/prices";
+};
+
+/** Error status map for `GET /v1/retentionOffers/{id}/prices`. */
+export type RetentionOffersPricesGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/retentionOffers/{id}/prices`. */
+export type RetentionOffersPricesGetToManyRelatedError =
+  RetentionOffersPricesGetToManyRelatedErrors[keyof RetentionOffersPricesGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/retentionOffers/{id}/prices`. */
+export type RetentionOffersPricesGetToManyRelatedResponses = {
+  /**
+   * List of RetentionOfferPrices
+   */
+  200: RetentionOfferPricesResponse;
+};
+
+/** Successful response from `GET /v1/retentionOffers/{id}/prices`. */
+export type RetentionOffersPricesGetToManyRelatedResponse =
+  RetentionOffersPricesGetToManyRelatedResponses[keyof RetentionOffersPricesGetToManyRelatedResponses];
+
 /** Request options for `GET /v1/reviewSubmissions/{id}/relationships/items`. */
 export type ReviewSubmissionsItemsGetToManyRelationshipData = {
   body?: never;
@@ -109120,6 +112042,7 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "inAppPurchaseVersion"
       | "subscriptionVersion"
       | "subscriptionGroupVersion"
+      | "retentionMessageVersion"
     >;
     /**
      * the fields to include for returned resources of type appStoreVersions
@@ -109317,6 +112240,12 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       "version" | "state" | "subscriptionGroup" | "localizations"
     >;
     /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -109340,6 +112269,7 @@ export type ReviewSubmissionsItemsGetToManyRelatedData = {
       | "inAppPurchaseVersion"
       | "subscriptionVersion"
       | "subscriptionGroupVersion"
+      | "retentionMessageVersion"
     >;
   };
   url: "/v1/reviewSubmissions/{id}/items";
@@ -110221,6 +113151,9 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionLocalizations
@@ -110375,6 +113308,27 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "localizations"
     >;
     /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
@@ -110395,6 +113349,9 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * maximum number of related subscriptionLocalizations returned (when they are included)
@@ -110432,6 +113389,14 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
      * maximum number of related versions returned (when they are included)
      */
     "limit[versions]"?: number;
+    /**
+     * maximum number of related retentionOffers returned (when they are included)
+     */
+    "limit[retentionOffers]"?: number;
+    /**
+     * maximum number of related retentionMessageOffers returned (when they are included)
+     */
+    "limit[retentionMessageOffers]"?: number;
   };
   url: "/v1/subscriptionGroups/{id}/subscriptions";
 };
@@ -112213,6 +115178,9 @@ export type SubscriptionsAppStoreReviewScreenshotGetToOneRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -112370,6 +115338,9 @@ export type SubscriptionsImagesGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * maximum resources per page
@@ -112600,6 +115571,9 @@ export type SubscriptionsIntroductoryOffersGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -112788,6 +115762,9 @@ export type SubscriptionsOfferCodesGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionOfferCodeOneTimeUseCodes
@@ -113508,6 +116485,9 @@ export type SubscriptionsPromotedPurchaseGetToOneRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * comma-separated list of relationships to include
@@ -113669,6 +116649,9 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionPromotionalOfferPrices
@@ -113731,6 +116714,717 @@ export type SubscriptionsPromotionalOffersGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptions/{id}/promotionalOffers`. */
 export type SubscriptionsPromotionalOffersGetToManyRelatedResponse =
   SubscriptionsPromotionalOffersGetToManyRelatedResponses[keyof SubscriptionsPromotionalOffersGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptions/{id}/relationships/retentionMessage";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelationshipError =
+  SubscriptionsRetentionMessageGetToOneRelationshipErrors[keyof SubscriptionsRetentionMessageGetToOneRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelationshipResponses = {
+  /**
+   * Related linkage
+   */
+  200: SubscriptionRetentionMessageLinkageResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelationshipResponse =
+  SubscriptionsRetentionMessageGetToOneRelationshipResponses[keyof SubscriptionsRetentionMessageGetToOneRelationshipResponses];
+
+/** Request options for `PATCH /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageUpdateToOneRelationshipData = {
+  /**
+   * Related linkage
+   */
+  body: SubscriptionRetentionMessageLinkageRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptions/{id}/relationships/retentionMessage";
+};
+
+/** Error status map for `PATCH /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageUpdateToOneRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `PATCH /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageUpdateToOneRelationshipError =
+  SubscriptionsRetentionMessageUpdateToOneRelationshipErrors[keyof SubscriptionsRetentionMessageUpdateToOneRelationshipErrors];
+
+/** Response status map for `PATCH /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageUpdateToOneRelationshipResponses = {
+  /**
+   * Success (no content)
+   */
+  204: void;
+};
+
+/** Successful response from `PATCH /v1/subscriptions/{id}/relationships/retentionMessage`. */
+export type SubscriptionsRetentionMessageUpdateToOneRelationshipResponse =
+  SubscriptionsRetentionMessageUpdateToOneRelationshipResponses[keyof SubscriptionsRetentionMessageUpdateToOneRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionMessages
+     */
+    "fields[retentionMessages]"?: Array<
+      "referenceName" | "versions" | "subscriptions"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionMessageVersions
+     */
+    "fields[retentionMessageVersions]"?: Array<
+      "state" | "retentionMessage" | "localizations" | "placement"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"versions" | "subscriptions">;
+    /**
+     * maximum number of related versions returned (when they are included)
+     */
+    "limit[versions]"?: number;
+    /**
+     * maximum number of related subscriptions returned (when they are included)
+     */
+    "limit[subscriptions]"?: number;
+  };
+  url: "/v1/subscriptions/{id}/retentionMessage";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelatedError =
+  SubscriptionsRetentionMessageGetToOneRelatedErrors[keyof SubscriptionsRetentionMessageGetToOneRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelatedResponses = {
+  /**
+   * Single RetentionMessage
+   */
+  200: RetentionMessageResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/retentionMessage`. */
+export type SubscriptionsRetentionMessageGetToOneRelatedResponse =
+  SubscriptionsRetentionMessageGetToOneRelatedResponses[keyof SubscriptionsRetentionMessageGetToOneRelatedResponses];
+
+/** Request options for `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersDeleteToManyRelationshipData = {
+  /**
+   * List of related linkages
+   */
+  body: SubscriptionRetentionMessageOffersLinkagesRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers";
+};
+
+/** Error status map for `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Request entity error(s)
+     */
+    409: ErrorResponse;
+    /**
+     * Unprocessable request entity error(s)
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersDeleteToManyRelationshipError =
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors[keyof SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors];
+
+/** Response status map for `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses =
+  {
+    /**
+     * Success (no content)
+     */
+    204: void;
+  };
+
+/** Successful response from `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponse =
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses[keyof SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelationshipError =
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors[keyof SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: SubscriptionRetentionMessageOffersLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelationshipResponse =
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses[keyof SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses];
+
+/** Request options for `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersCreateToManyRelationshipData = {
+  /**
+   * List of related linkages
+   */
+  body: SubscriptionRetentionMessageOffersLinkagesRequest;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: never;
+  url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers";
+};
+
+/** Error status map for `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Request entity error(s)
+     */
+    409: ErrorResponse;
+    /**
+     * Unprocessable request entity error(s)
+     */
+    422: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersCreateToManyRelationshipError =
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors[keyof SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors];
+
+/** Response status map for `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses =
+  {
+    /**
+     * Success (no content)
+     */
+    204: void;
+  };
+
+/** Successful response from `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponse =
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses[keyof SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionOfferPrices
+     */
+    "fields[retentionOfferPrices]"?: Array<
+      "territory" | "subscriptionPricePoint"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscription" | "prices">;
+    /**
+     * maximum number of related prices returned (when they are included)
+     */
+    "limit[prices]"?: number;
+  };
+  url: "/v1/subscriptions/{id}/retentionMessageOffers";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelatedError =
+  SubscriptionsRetentionMessageOffersGetToManyRelatedErrors[keyof SubscriptionsRetentionMessageOffersGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelatedResponses = {
+  /**
+   * List of RetentionOffers
+   */
+  200: RetentionOffersResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/retentionMessageOffers`. */
+export type SubscriptionsRetentionMessageOffersGetToManyRelatedResponse =
+  SubscriptionsRetentionMessageOffersGetToManyRelatedResponses[keyof SubscriptionsRetentionMessageOffersGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/relationships/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptions/{id}/relationships/retentionOffers";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/relationships/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelationshipErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/relationships/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelationshipError =
+  SubscriptionsRetentionOffersGetToManyRelationshipErrors[keyof SubscriptionsRetentionOffersGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/relationships/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelationshipResponses = {
+  /**
+   * List of related linkages
+   */
+  200: SubscriptionRetentionOffersLinkagesResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/relationships/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelationshipResponse =
+  SubscriptionsRetentionOffersGetToManyRelationshipResponses[keyof SubscriptionsRetentionOffersGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptions/{id}/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * the fields to include for returned resources of type retentionOffers
+     */
+    "fields[retentionOffers]"?: Array<
+      | "referenceName"
+      | "offerId"
+      | "duration"
+      | "offerMode"
+      | "periodCount"
+      | "customerEligibilityPaidSubscriptionDurationInMonths"
+      | "customerEligibilityWaitBetweenOffersInMonths"
+      | "targetSubscriptionPlanType"
+      | "subscription"
+      | "prices"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptions
+     */
+    "fields[subscriptions]"?: Array<
+      | "name"
+      | "productId"
+      | "familySharable"
+      | "state"
+      | "subscriptionPeriod"
+      | "reviewNote"
+      | "groupLevel"
+      | "multiSeatStatus"
+      | "marketSettings"
+      | "subscriptionLocalizations"
+      | "appStoreReviewScreenshot"
+      | "group"
+      | "introductoryOffers"
+      | "promotionalOffers"
+      | "offerCodes"
+      | "prices"
+      | "pricePoints"
+      | "promotedPurchase"
+      | "subscriptionAvailability"
+      | "winBackOffers"
+      | "images"
+      | "planAvailabilities"
+      | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
+    >;
+    /**
+     * the fields to include for returned resources of type retentionOfferPrices
+     */
+    "fields[retentionOfferPrices]"?: Array<
+      "territory" | "subscriptionPricePoint"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscription" | "prices">;
+    /**
+     * maximum number of related prices returned (when they are included)
+     */
+    "limit[prices]"?: number;
+  };
+  url: "/v1/subscriptions/{id}/retentionOffers";
+};
+
+/** Error status map for `GET /v1/subscriptions/{id}/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptions/{id}/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelatedError =
+  SubscriptionsRetentionOffersGetToManyRelatedErrors[keyof SubscriptionsRetentionOffersGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptions/{id}/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelatedResponses = {
+  /**
+   * List of RetentionOffers
+   */
+  200: RetentionOffersResponse;
+};
+
+/** Successful response from `GET /v1/subscriptions/{id}/retentionOffers`. */
+export type SubscriptionsRetentionOffersGetToManyRelatedResponse =
+  SubscriptionsRetentionOffersGetToManyRelatedResponses[keyof SubscriptionsRetentionOffersGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptions/{id}/relationships/subscriptionLocalizations`. */
 export type SubscriptionsSubscriptionLocalizationsGetToManyRelationshipData = {
@@ -113835,6 +117529,9 @@ export type SubscriptionsSubscriptionLocalizationsGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * maximum resources per page
@@ -114008,6 +117705,9 @@ export type SubscriptionsVersionsGetToManyRelatedData = {
       | "images"
       | "planAvailabilities"
       | "versions"
+      | "retentionOffers"
+      | "retentionMessage"
+      | "retentionMessageOffers"
     >;
     /**
      * the fields to include for returned resources of type subscriptionImages
@@ -114340,6 +118040,7 @@ export type UserInvitationsVisibleAppsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
@@ -114710,6 +118411,7 @@ export type UsersVisibleAppsGetToManyRelatedData = {
       | "appAvailabilityV2"
       | "inAppPurchases"
       | "subscriptionGroups"
+      | "retentionMessages"
       | "gameCenterEnabledVersions"
       | "performanceOverviews"
       | "perfPowerMetrics"
