@@ -263,6 +263,10 @@ import {
   profilesDevicesGetToManyRelatedResponseTransformer,
   profilesGetCollectionResponseTransformer,
   profilesGetInstanceResponseTransformer,
+  retentionMessagesVersionsGetToManyRelatedResponseTransformer,
+  retentionMessageVersionsCreateInstanceResponseTransformer,
+  retentionMessageVersionsGetInstanceResponseTransformer,
+  retentionMessageVersionsPlacementGetToOneRelatedResponseTransformer,
   reviewSubmissionsCreateInstanceResponseTransformer,
   reviewSubmissionsGetCollectionResponseTransformer,
   reviewSubmissionsGetInstanceResponseTransformer,
@@ -1194,6 +1198,12 @@ import type {
   AppsPromotedPurchasesReplaceToManyRelationshipData,
   AppsPromotedPurchasesReplaceToManyRelationshipErrors,
   AppsPromotedPurchasesReplaceToManyRelationshipResponses,
+  AppsRetentionMessagesGetToManyRelatedData,
+  AppsRetentionMessagesGetToManyRelatedErrors,
+  AppsRetentionMessagesGetToManyRelatedResponses,
+  AppsRetentionMessagesGetToManyRelationshipData,
+  AppsRetentionMessagesGetToManyRelationshipErrors,
+  AppsRetentionMessagesGetToManyRelationshipResponses,
   AppsReviewSubmissionsGetToManyRelatedData,
   AppsReviewSubmissionsGetToManyRelatedErrors,
   AppsReviewSubmissionsGetToManyRelatedResponses,
@@ -3195,6 +3205,75 @@ import type {
   PromotedPurchasesUpdateInstanceData,
   PromotedPurchasesUpdateInstanceErrors,
   PromotedPurchasesUpdateInstanceResponses,
+  RetentionMessageLocalizationsCreateInstanceData,
+  RetentionMessageLocalizationsCreateInstanceErrors,
+  RetentionMessageLocalizationsCreateInstanceResponses,
+  RetentionMessageLocalizationsDeleteInstanceData,
+  RetentionMessageLocalizationsDeleteInstanceErrors,
+  RetentionMessageLocalizationsDeleteInstanceResponses,
+  RetentionMessageLocalizationsGetInstanceData,
+  RetentionMessageLocalizationsGetInstanceErrors,
+  RetentionMessageLocalizationsGetInstanceResponses,
+  RetentionMessageLocalizationsUpdateInstanceData,
+  RetentionMessageLocalizationsUpdateInstanceErrors,
+  RetentionMessageLocalizationsUpdateInstanceResponses,
+  RetentionMessagesCreateInstanceData,
+  RetentionMessagesCreateInstanceErrors,
+  RetentionMessagesCreateInstanceResponses,
+  RetentionMessagesDeleteInstanceData,
+  RetentionMessagesDeleteInstanceErrors,
+  RetentionMessagesDeleteInstanceResponses,
+  RetentionMessagesGetInstanceData,
+  RetentionMessagesGetInstanceErrors,
+  RetentionMessagesGetInstanceResponses,
+  RetentionMessagesSubscriptionsGetToManyRelatedData,
+  RetentionMessagesSubscriptionsGetToManyRelatedErrors,
+  RetentionMessagesSubscriptionsGetToManyRelatedResponses,
+  RetentionMessagesSubscriptionsGetToManyRelationshipData,
+  RetentionMessagesSubscriptionsGetToManyRelationshipErrors,
+  RetentionMessagesSubscriptionsGetToManyRelationshipResponses,
+  RetentionMessagesVersionsGetToManyRelatedData,
+  RetentionMessagesVersionsGetToManyRelatedErrors,
+  RetentionMessagesVersionsGetToManyRelatedResponses,
+  RetentionMessagesVersionsGetToManyRelationshipData,
+  RetentionMessagesVersionsGetToManyRelationshipErrors,
+  RetentionMessagesVersionsGetToManyRelationshipResponses,
+  RetentionMessageVersionsCreateInstanceData,
+  RetentionMessageVersionsCreateInstanceErrors,
+  RetentionMessageVersionsCreateInstanceResponses,
+  RetentionMessageVersionsGetInstanceData,
+  RetentionMessageVersionsGetInstanceErrors,
+  RetentionMessageVersionsGetInstanceResponses,
+  RetentionMessageVersionsLocalizationsGetToManyRelatedData,
+  RetentionMessageVersionsLocalizationsGetToManyRelatedErrors,
+  RetentionMessageVersionsLocalizationsGetToManyRelatedResponses,
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipData,
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors,
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses,
+  RetentionMessageVersionsPlacementGetToOneRelatedData,
+  RetentionMessageVersionsPlacementGetToOneRelatedErrors,
+  RetentionMessageVersionsPlacementGetToOneRelatedResponses,
+  RetentionMessageVersionsPlacementGetToOneRelationshipData,
+  RetentionMessageVersionsPlacementGetToOneRelationshipErrors,
+  RetentionMessageVersionsPlacementGetToOneRelationshipResponses,
+  RetentionOffersCreateInstanceData,
+  RetentionOffersCreateInstanceErrors,
+  RetentionOffersCreateInstanceResponses,
+  RetentionOffersDeleteInstanceData,
+  RetentionOffersDeleteInstanceErrors,
+  RetentionOffersDeleteInstanceResponses,
+  RetentionOffersGetInstanceData,
+  RetentionOffersGetInstanceErrors,
+  RetentionOffersGetInstanceResponses,
+  RetentionOffersPricesGetToManyRelatedData,
+  RetentionOffersPricesGetToManyRelatedErrors,
+  RetentionOffersPricesGetToManyRelatedResponses,
+  RetentionOffersPricesGetToManyRelationshipData,
+  RetentionOffersPricesGetToManyRelationshipErrors,
+  RetentionOffersPricesGetToManyRelationshipResponses,
+  RetentionOffersUpdateInstanceData,
+  RetentionOffersUpdateInstanceErrors,
+  RetentionOffersUpdateInstanceResponses,
   ReviewSubmissionItemsCreateInstanceData,
   ReviewSubmissionItemsCreateInstanceErrors,
   ReviewSubmissionItemsCreateInstanceResponses,
@@ -3597,6 +3676,33 @@ import type {
   SubscriptionsPromotionalOffersGetToManyRelationshipData,
   SubscriptionsPromotionalOffersGetToManyRelationshipErrors,
   SubscriptionsPromotionalOffersGetToManyRelationshipResponses,
+  SubscriptionsRetentionMessageGetToOneRelatedData,
+  SubscriptionsRetentionMessageGetToOneRelatedErrors,
+  SubscriptionsRetentionMessageGetToOneRelatedResponses,
+  SubscriptionsRetentionMessageGetToOneRelationshipData,
+  SubscriptionsRetentionMessageGetToOneRelationshipErrors,
+  SubscriptionsRetentionMessageGetToOneRelationshipResponses,
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipData,
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors,
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses,
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipData,
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors,
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses,
+  SubscriptionsRetentionMessageOffersGetToManyRelatedData,
+  SubscriptionsRetentionMessageOffersGetToManyRelatedErrors,
+  SubscriptionsRetentionMessageOffersGetToManyRelatedResponses,
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipData,
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors,
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses,
+  SubscriptionsRetentionMessageUpdateToOneRelationshipData,
+  SubscriptionsRetentionMessageUpdateToOneRelationshipErrors,
+  SubscriptionsRetentionMessageUpdateToOneRelationshipResponses,
+  SubscriptionsRetentionOffersGetToManyRelatedData,
+  SubscriptionsRetentionOffersGetToManyRelatedErrors,
+  SubscriptionsRetentionOffersGetToManyRelatedResponses,
+  SubscriptionsRetentionOffersGetToManyRelationshipData,
+  SubscriptionsRetentionOffersGetToManyRelationshipErrors,
+  SubscriptionsRetentionOffersGetToManyRelationshipResponses,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedData,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedErrors,
   SubscriptionsSubscriptionLocalizationsGetToManyRelatedResponses,
@@ -4776,6 +4882,7 @@ export const appAssetLibraryPlacementsGetInstance = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -7956,6 +8063,7 @@ export const appsGetCollection = <ThrowOnError extends boolean = false>(
         "fields[endUserLicenseAgreements]": { array: { explode: false } },
         "fields[inAppPurchases]": { array: { explode: false } },
         "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
         "fields[gameCenterEnabledVersions]": { array: { explode: false } },
         "fields[appCustomProductPages]": { array: { explode: false } },
         "fields[promotedPurchases]": { array: { explode: false } },
@@ -8004,6 +8112,7 @@ export const appsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[endUserLicenseAgreements]": { array: { explode: false } },
         "fields[inAppPurchases]": { array: { explode: false } },
         "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
         "fields[gameCenterEnabledVersions]": { array: { explode: false } },
         "fields[appCustomProductPages]": { array: { explode: false } },
         "fields[promotedPurchases]": { array: { explode: false } },
@@ -15594,6 +15703,334 @@ export const promotedPurchasesUpdateInstance = <
     },
   });
 
+/** Create retention message localizations. `POST /v1/retentionMessageLocalizations` */
+export const retentionMessageLocalizationsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageLocalizationsCreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageLocalizationsCreateInstanceResponses,
+  RetentionMessageLocalizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    RetentionMessageLocalizationsCreateInstanceResponses,
+    RetentionMessageLocalizationsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageLocalizations",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete retention message localizations. `DELETE /v1/retentionMessageLocalizations/{id}` */
+export const retentionMessageLocalizationsDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageLocalizationsDeleteInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageLocalizationsDeleteInstanceResponses,
+  RetentionMessageLocalizationsDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    RetentionMessageLocalizationsDeleteInstanceResponses,
+    RetentionMessageLocalizationsDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageLocalizations/{id}",
+    ...options,
+  });
+
+/** Read retention message localizations. `GET /v1/retentionMessageLocalizations/{id}` */
+export const retentionMessageLocalizationsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessageLocalizationsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessageLocalizationsGetInstanceResponses,
+  RetentionMessageLocalizationsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageLocalizationsGetInstanceResponses,
+    RetentionMessageLocalizationsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessageLocalizations]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageLocalizations/{id}",
+    ...options,
+  });
+
+/** Update retention message localizations. `PATCH /v1/retentionMessageLocalizations/{id}` */
+export const retentionMessageLocalizationsUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageLocalizationsUpdateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageLocalizationsUpdateInstanceResponses,
+  RetentionMessageLocalizationsUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    RetentionMessageLocalizationsUpdateInstanceResponses,
+    RetentionMessageLocalizationsUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageLocalizations/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Create retention message versions. `POST /v1/retentionMessageVersions` */
+export const retentionMessageVersionsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessageVersionsCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessageVersionsCreateInstanceResponses,
+  RetentionMessageVersionsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    RetentionMessageVersionsCreateInstanceResponses,
+    RetentionMessageVersionsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    responseTransformer:
+      retentionMessageVersionsCreateInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read retention message versions. `GET /v1/retentionMessageVersions/{id}` */
+export const retentionMessageVersionsGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessageVersionsGetInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessageVersionsGetInstanceResponses,
+  RetentionMessageVersionsGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageVersionsGetInstanceResponses,
+    RetentionMessageVersionsGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
+        "fields[retentionMessageLocalizations]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer: retentionMessageVersionsGetInstanceResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions/{id}",
+    ...options,
+  });
+
+/** Create retention messages. `POST /v1/retentionMessages` */
+export const retentionMessagesCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessagesCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessagesCreateInstanceResponses,
+  RetentionMessagesCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    RetentionMessagesCreateInstanceResponses,
+    RetentionMessagesCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete retention messages. `DELETE /v1/retentionMessages/{id}` */
+export const retentionMessagesDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessagesDeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessagesDeleteInstanceResponses,
+  RetentionMessagesDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    RetentionMessagesDeleteInstanceResponses,
+    RetentionMessagesDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}",
+    ...options,
+  });
+
+/** Read retention messages. `GET /v1/retentionMessages/{id}` */
+export const retentionMessagesGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessagesGetInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionMessagesGetInstanceResponses,
+  RetentionMessagesGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessagesGetInstanceResponses,
+    RetentionMessagesGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessages]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}",
+    ...options,
+  });
+
+/** Create retention offers. `POST /v1/retentionOffers` */
+export const retentionOffersCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionOffersCreateInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionOffersCreateInstanceResponses,
+  RetentionOffersCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    RetentionOffersCreateInstanceResponses,
+    RetentionOffersCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Delete retention offers. `DELETE /v1/retentionOffers/{id}` */
+export const retentionOffersDeleteInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionOffersDeleteInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionOffersDeleteInstanceResponses,
+  RetentionOffersDeleteInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    RetentionOffersDeleteInstanceResponses,
+    RetentionOffersDeleteInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers/{id}",
+    ...options,
+  });
+
+/** Read retention offers. `GET /v1/retentionOffers/{id}` */
+export const retentionOffersGetInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionOffersGetInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionOffersGetInstanceResponses,
+  RetentionOffersGetInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionOffersGetInstanceResponses,
+    RetentionOffersGetInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[retentionOfferPrices]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers/{id}",
+    ...options,
+  });
+
+/** Update retention offers. `PATCH /v1/retentionOffers/{id}` */
+export const retentionOffersUpdateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionOffersUpdateInstanceData, ThrowOnError>,
+): RequestResult<
+  RetentionOffersUpdateInstanceResponses,
+  RetentionOffersUpdateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    RetentionOffersUpdateInstanceResponses,
+    RetentionOffersUpdateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers/{id}",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Create review submission items. `POST /v1/reviewSubmissionItems` */
 export const reviewSubmissionItemsCreateInstance = <
   ThrowOnError extends boolean = false,
@@ -17821,6 +18258,8 @@ export const subscriptionsGetInstance = <ThrowOnError extends boolean = false>(
         "fields[subscriptionImages]": { array: { explode: false } },
         "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
         "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -18845,6 +19284,7 @@ export const appAssetLibraryImagesPlacementsGetToManyRelated = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -18923,6 +19363,7 @@ export const appAssetLibraryVideosPlacementsGetToManyRelated = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -19644,6 +20085,7 @@ export const appCustomProductPageLocalizationsPlacementsGetToManyRelated = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -20098,6 +20540,7 @@ export const appEventLocalizationsPlacementsGetToManyRelated = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -21248,6 +21691,7 @@ export const appStoreVersionExperimentTreatmentLocalizationsPlacementsGetToManyR
           "fields[appStoreVersionExperimentTreatmentLocalizations]": {
             array: { explode: false },
           },
+          "fields[retentionMessageVersions]": { array: { explode: false } },
           include: { array: { explode: false } },
         },
       },
@@ -21578,6 +22022,7 @@ export const appStoreVersionLocalizationsPlacementsGetToManyRelated = <
         "fields[appStoreVersionExperimentTreatmentLocalizations]": {
           array: { explode: false },
         },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -24220,6 +24665,57 @@ export const appsPromotedPurchasesGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/apps/{id}/promotedPurchases",
+    ...options,
+  });
+
+/** Get retention messages relationship IDs for apps. `GET /v1/apps/{id}/relationships/retentionMessages` */
+export const appsRetentionMessagesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    AppsRetentionMessagesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  AppsRetentionMessagesGetToManyRelationshipResponses,
+  AppsRetentionMessagesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppsRetentionMessagesGetToManyRelationshipResponses,
+    AppsRetentionMessagesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/apps/{id}/relationships/retentionMessages",
+    ...options,
+  });
+
+/** List related retention messages for apps. `GET /v1/apps/{id}/retentionMessages` */
+export const appsRetentionMessagesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<AppsRetentionMessagesGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  AppsRetentionMessagesGetToManyRelatedResponses,
+  AppsRetentionMessagesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    AppsRetentionMessagesGetToManyRelatedResponses,
+    AppsRetentionMessagesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessages]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/apps/{id}/retentionMessages",
     ...options,
   });
 
@@ -27133,6 +27629,7 @@ export const ciProductsAppGetToOneRelated = <
         "fields[endUserLicenseAgreements]": { array: { explode: false } },
         "fields[inAppPurchases]": { array: { explode: false } },
         "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
         "fields[gameCenterEnabledVersions]": { array: { explode: false } },
         "fields[appCustomProductPages]": { array: { explode: false } },
         "fields[promotedPurchases]": { array: { explode: false } },
@@ -31774,6 +32271,303 @@ export const profilesDevicesGetToManyRelated = <
     ...options,
   });
 
+/** Get localizations relationship IDs for retention message versions. `GET /v1/retentionMessageVersions/{id}/relationships/localizations` */
+export const retentionMessageVersionsLocalizationsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageVersionsLocalizationsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses,
+  RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageVersionsLocalizationsGetToManyRelationshipResponses,
+    RetentionMessageVersionsLocalizationsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions/{id}/relationships/localizations",
+    ...options,
+  });
+
+/** List related localizations for retention message versions. `GET /v1/retentionMessageVersions/{id}/localizations` */
+export const retentionMessageVersionsLocalizationsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageVersionsLocalizationsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageVersionsLocalizationsGetToManyRelatedResponses,
+  RetentionMessageVersionsLocalizationsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageVersionsLocalizationsGetToManyRelatedResponses,
+    RetentionMessageVersionsLocalizationsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessageLocalizations]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions/{id}/localizations",
+    ...options,
+  });
+
+/** Get placement relationship ID for retention message versions. `GET /v1/retentionMessageVersions/{id}/relationships/placement` */
+export const retentionMessageVersionsPlacementGetToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageVersionsPlacementGetToOneRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageVersionsPlacementGetToOneRelationshipResponses,
+  RetentionMessageVersionsPlacementGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageVersionsPlacementGetToOneRelationshipResponses,
+    RetentionMessageVersionsPlacementGetToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions/{id}/relationships/placement",
+    ...options,
+  });
+
+/** Read related placement for retention message versions. `GET /v1/retentionMessageVersions/{id}/placement` */
+export const retentionMessageVersionsPlacementGetToOneRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessageVersionsPlacementGetToOneRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessageVersionsPlacementGetToOneRelatedResponses,
+  RetentionMessageVersionsPlacementGetToOneRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessageVersionsPlacementGetToOneRelatedResponses,
+    RetentionMessageVersionsPlacementGetToOneRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        "fields[appAssetLibraryImages]": { array: { explode: false } },
+        "fields[appAssetLibraryVideos]": { array: { explode: false } },
+        "fields[appEventLocalizations]": { array: { explode: false } },
+        "fields[appStoreVersionLocalizations]": { array: { explode: false } },
+        "fields[appCustomProductPageLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[appStoreVersionExperimentTreatmentLocalizations]": {
+          array: { explode: false },
+        },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      retentionMessageVersionsPlacementGetToOneRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessageVersions/{id}/placement",
+    ...options,
+  });
+
+/** Get subscriptions relationship IDs for retention messages. `GET /v1/retentionMessages/{id}/relationships/subscriptions` */
+export const retentionMessagesSubscriptionsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessagesSubscriptionsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessagesSubscriptionsGetToManyRelationshipResponses,
+  RetentionMessagesSubscriptionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessagesSubscriptionsGetToManyRelationshipResponses,
+    RetentionMessagesSubscriptionsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}/relationships/subscriptions",
+    ...options,
+  });
+
+/** List related subscriptions for retention messages. `GET /v1/retentionMessages/{id}/subscriptions` */
+export const retentionMessagesSubscriptionsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessagesSubscriptionsGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessagesSubscriptionsGetToManyRelatedResponses,
+  RetentionMessagesSubscriptionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessagesSubscriptionsGetToManyRelatedResponses,
+    RetentionMessagesSubscriptionsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[productId]": { array: { explode: false } },
+        "filter[name]": { array: { explode: false } },
+        "filter[state]": { array: { explode: false } },
+        sort: { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[subscriptionLocalizations]": { array: { explode: false } },
+        "fields[subscriptionAppStoreReviewScreenshots]": {
+          array: { explode: false },
+        },
+        "fields[subscriptionGroups]": { array: { explode: false } },
+        "fields[subscriptionIntroductoryOffers]": { array: { explode: false } },
+        "fields[subscriptionPromotionalOffers]": { array: { explode: false } },
+        "fields[subscriptionOfferCodes]": { array: { explode: false } },
+        "fields[subscriptionPrices]": { array: { explode: false } },
+        "fields[promotedPurchases]": { array: { explode: false } },
+        "fields[subscriptionAvailabilities]": { array: { explode: false } },
+        "fields[winBackOffers]": { array: { explode: false } },
+        "fields[subscriptionImages]": { array: { explode: false } },
+        "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
+        "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}/subscriptions",
+    ...options,
+  });
+
+/** Get versions relationship IDs for retention messages. `GET /v1/retentionMessages/{id}/relationships/versions` */
+export const retentionMessagesVersionsGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionMessagesVersionsGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionMessagesVersionsGetToManyRelationshipResponses,
+  RetentionMessagesVersionsGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessagesVersionsGetToManyRelationshipResponses,
+    RetentionMessagesVersionsGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}/relationships/versions",
+    ...options,
+  });
+
+/** List related versions for retention messages. `GET /v1/retentionMessages/{id}/versions` */
+export const retentionMessagesVersionsGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionMessagesVersionsGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  RetentionMessagesVersionsGetToManyRelatedResponses,
+  RetentionMessagesVersionsGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionMessagesVersionsGetToManyRelatedResponses,
+    RetentionMessagesVersionsGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
+        "fields[retentionMessageLocalizations]": { array: { explode: false } },
+        "fields[appAssetLibraryPlacements]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    responseTransformer:
+      retentionMessagesVersionsGetToManyRelatedResponseTransformer,
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionMessages/{id}/versions",
+    ...options,
+  });
+
+/** Get prices relationship IDs for retention offers. `GET /v1/retentionOffers/{id}/relationships/prices` */
+export const retentionOffersPricesGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    RetentionOffersPricesGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  RetentionOffersPricesGetToManyRelationshipResponses,
+  RetentionOffersPricesGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionOffersPricesGetToManyRelationshipResponses,
+    RetentionOffersPricesGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers/{id}/relationships/prices",
+    ...options,
+  });
+
+/** List related prices for retention offers. `GET /v1/retentionOffers/{id}/prices` */
+export const retentionOffersPricesGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<RetentionOffersPricesGetToManyRelatedData, ThrowOnError>,
+): RequestResult<
+  RetentionOffersPricesGetToManyRelatedResponses,
+  RetentionOffersPricesGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    RetentionOffersPricesGetToManyRelatedResponses,
+    RetentionOffersPricesGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[territory]": { array: { explode: false } },
+        "fields[retentionOfferPrices]": { array: { explode: false } },
+        "fields[territories]": { array: { explode: false } },
+        "fields[subscriptionPricePoints]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/retentionOffers/{id}/prices",
+    ...options,
+  });
+
 /** Get items relationship IDs for review submissions. `GET /v1/reviewSubmissions/{id}/relationships/items` */
 export const reviewSubmissionsItemsGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -31832,6 +32626,7 @@ export const reviewSubmissionsItemsGetToManyRelated = <
         "fields[inAppPurchaseVersions]": { array: { explode: false } },
         "fields[subscriptionVersions]": { array: { explode: false } },
         "fields[subscriptionGroupVersions]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -32173,6 +32968,8 @@ export const subscriptionGroupsSubscriptionsGetToManyRelated = <
         "fields[subscriptionImages]": { array: { explode: false } },
         "fields[subscriptionPlanAvailabilities]": { array: { explode: false } },
         "fields[subscriptionVersions]": { array: { explode: false } },
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[retentionMessages]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
@@ -33341,6 +34138,249 @@ export const subscriptionsPromotionalOffersGetToManyRelated = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptions/{id}/promotionalOffers",
+    ...options,
+  });
+
+/** Get retention message relationship ID for subscriptions. `GET /v1/subscriptions/{id}/relationships/retentionMessage` */
+export const subscriptionsRetentionMessageGetToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageGetToOneRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageGetToOneRelationshipResponses,
+  SubscriptionsRetentionMessageGetToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionMessageGetToOneRelationshipResponses,
+    SubscriptionsRetentionMessageGetToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionMessage",
+    ...options,
+  });
+
+/** Update retention message relationship for subscriptions. `PATCH /v1/subscriptions/{id}/relationships/retentionMessage` */
+export const subscriptionsRetentionMessageUpdateToOneRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageUpdateToOneRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageUpdateToOneRelationshipResponses,
+  SubscriptionsRetentionMessageUpdateToOneRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).patch<
+    SubscriptionsRetentionMessageUpdateToOneRelationshipResponses,
+    SubscriptionsRetentionMessageUpdateToOneRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionMessage",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Read related retention message for subscriptions. `GET /v1/subscriptions/{id}/retentionMessage` */
+export const subscriptionsRetentionMessageGetToOneRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageGetToOneRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageGetToOneRelatedResponses,
+  SubscriptionsRetentionMessageGetToOneRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionMessageGetToOneRelatedResponses,
+    SubscriptionsRetentionMessageGetToOneRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionMessages]": { array: { explode: false } },
+        "fields[retentionMessageVersions]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/retentionMessage",
+    ...options,
+  });
+
+/** Remove retention message offers relationship for subscriptions. `DELETE /v1/subscriptions/{id}/relationships/retentionMessageOffers` */
+export const subscriptionsRetentionMessageOffersDeleteToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageOffersDeleteToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses,
+  SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).delete<
+    SubscriptionsRetentionMessageOffersDeleteToManyRelationshipResponses,
+    SubscriptionsRetentionMessageOffersDeleteToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** Get retention message offers relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/retentionMessageOffers` */
+export const subscriptionsRetentionMessageOffersGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageOffersGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses,
+  SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionMessageOffersGetToManyRelationshipResponses,
+    SubscriptionsRetentionMessageOffersGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers",
+    ...options,
+  });
+
+/** Add retention message offers relationship for subscriptions. `POST /v1/subscriptions/{id}/relationships/retentionMessageOffers` */
+export const subscriptionsRetentionMessageOffersCreateToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageOffersCreateToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses,
+  SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionsRetentionMessageOffersCreateToManyRelationshipResponses,
+    SubscriptionsRetentionMessageOffersCreateToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionMessageOffers",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** List related retention message offers for subscriptions. `GET /v1/subscriptions/{id}/retentionMessageOffers` */
+export const subscriptionsRetentionMessageOffersGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionMessageOffersGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionMessageOffersGetToManyRelatedResponses,
+  SubscriptionsRetentionMessageOffersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionMessageOffersGetToManyRelatedResponses,
+    SubscriptionsRetentionMessageOffersGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[retentionOfferPrices]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/retentionMessageOffers",
+    ...options,
+  });
+
+/** Get retention offers relationship IDs for subscriptions. `GET /v1/subscriptions/{id}/relationships/retentionOffers` */
+export const subscriptionsRetentionOffersGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionOffersGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionOffersGetToManyRelationshipResponses,
+  SubscriptionsRetentionOffersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionOffersGetToManyRelationshipResponses,
+    SubscriptionsRetentionOffersGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/relationships/retentionOffers",
+    ...options,
+  });
+
+/** List related retention offers for subscriptions. `GET /v1/subscriptions/{id}/retentionOffers` */
+export const subscriptionsRetentionOffersGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionsRetentionOffersGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionsRetentionOffersGetToManyRelatedResponses,
+  SubscriptionsRetentionOffersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionsRetentionOffersGetToManyRelatedResponses,
+    SubscriptionsRetentionOffersGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[retentionOffers]": { array: { explode: false } },
+        "fields[subscriptions]": { array: { explode: false } },
+        "fields[retentionOfferPrices]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptions/{id}/retentionOffers",
     ...options,
   });
 
