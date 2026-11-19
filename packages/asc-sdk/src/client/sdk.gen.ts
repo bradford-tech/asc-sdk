@@ -3571,6 +3571,9 @@ import type {
   SubscriptionPlanAvailabilitiesUpdateInstanceData,
   SubscriptionPlanAvailabilitiesUpdateInstanceErrors,
   SubscriptionPlanAvailabilitiesUpdateInstanceResponses,
+  SubscriptionPriceChangePreviewsCreateInstanceData,
+  SubscriptionPriceChangePreviewsCreateInstanceErrors,
+  SubscriptionPriceChangePreviewsCreateInstanceResponses,
   SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedData,
   SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedErrors,
   SubscriptionPricePointsAdjustedEqualizationsGetToManyRelatedResponses,
@@ -3583,12 +3586,24 @@ import type {
   SubscriptionPricePointsGetInstanceData,
   SubscriptionPricePointsGetInstanceErrors,
   SubscriptionPricePointsGetInstanceResponses,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedData,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipData,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses,
   SubscriptionPricesCreateInstanceData,
   SubscriptionPricesCreateInstanceErrors,
   SubscriptionPricesCreateInstanceResponses,
   SubscriptionPricesDeleteInstanceData,
   SubscriptionPricesDeleteInstanceErrors,
   SubscriptionPricesDeleteInstanceResponses,
+  SubscriptionPriceTierEqualizationsCreateInstanceData,
+  SubscriptionPriceTierEqualizationsCreateInstanceErrors,
+  SubscriptionPriceTierEqualizationsCreateInstanceResponses,
+  SubscriptionPriceTiersGetCollectionData,
+  SubscriptionPriceTiersGetCollectionErrors,
+  SubscriptionPriceTiersGetCollectionResponses,
   SubscriptionPromotionalOffersCreateInstanceData,
   SubscriptionPromotionalOffersCreateInstanceErrors,
   SubscriptionPromotionalOffersCreateInstanceResponses,
@@ -17927,6 +17942,33 @@ export const subscriptionPlanAvailabilitiesUpdateInstance = <
     },
   });
 
+/** Create subscription price change previews. `POST /v1/subscriptionPriceChangePreviews` */
+export const subscriptionPriceChangePreviewsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPriceChangePreviewsCreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPriceChangePreviewsCreateInstanceResponses,
+  SubscriptionPriceChangePreviewsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionPriceChangePreviewsCreateInstanceResponses,
+    SubscriptionPriceChangePreviewsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPriceChangePreviews",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
 /** Read subscription price points. `GET /v1/subscriptionPricePoints/{id}` */
 export const subscriptionPricePointsGetInstance = <
   ThrowOnError extends boolean = false,
@@ -17951,6 +17993,71 @@ export const subscriptionPricePointsGetInstance = <
     },
     security: [{ scheme: "bearer", type: "http" }],
     url: "/v1/subscriptionPricePoints/{id}",
+    ...options,
+  });
+
+/** Create subscription price tier equalizations. `POST /v1/subscriptionPriceTierEqualizations` */
+export const subscriptionPriceTierEqualizationsCreateInstance = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPriceTierEqualizationsCreateInstanceData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPriceTierEqualizationsCreateInstanceResponses,
+  SubscriptionPriceTierEqualizationsCreateInstanceErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).post<
+    SubscriptionPriceTierEqualizationsCreateInstanceResponses,
+    SubscriptionPriceTierEqualizationsCreateInstanceErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "fields[subscriptionPricePoints]": { array: { explode: false } },
+        include: { array: { explode: false } },
+        "fields[subscriptionPriceTierEqualizations]": {
+          array: { explode: false },
+        },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPriceTierEqualizations",
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...options.headers,
+    },
+  });
+
+/** List subscription price tiers. `GET /v1/subscriptionPriceTiers` */
+export const subscriptionPriceTiersGetCollection = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<SubscriptionPriceTiersGetCollectionData, ThrowOnError>,
+): RequestResult<
+  SubscriptionPriceTiersGetCollectionResponses,
+  SubscriptionPriceTiersGetCollectionErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionPriceTiersGetCollectionResponses,
+    SubscriptionPriceTiersGetCollectionErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[subscription]": { array: { explode: false } },
+        "filter[territory]": { array: { explode: false } },
+        "fields[subscriptionPriceTiers]": { array: { explode: false } },
+        "fields[subscriptionPricePoints]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPriceTiers",
     ...options,
   });
 
@@ -33389,6 +33496,61 @@ export const subscriptionPricePointsEqualizationsGetToManyRelated = <
     ...options,
   });
 
+/** Get additional price tiers relationship IDs for subscription prices. `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers` */
+export const subscriptionPricesAdditionalPriceTiersGetToManyRelationship = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses,
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors,
+    ThrowOnError
+  >({
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPrices/{id}/relationships/additionalPriceTiers",
+    ...options,
+  });
+
+/** List related additional price tiers for subscription prices. `GET /v1/subscriptionPrices/{id}/additionalPriceTiers` */
+export const subscriptionPricesAdditionalPriceTiersGetToManyRelated = <
+  ThrowOnError extends boolean = false,
+>(
+  options: Options<
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelatedData,
+    ThrowOnError
+  >,
+): RequestResult<
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses,
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors,
+  ThrowOnError
+> =>
+  (options.client ?? client).get<
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses,
+    SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors,
+    ThrowOnError
+  >({
+    querySerializer: {
+      parameters: {
+        "filter[subscription]": { array: { explode: false } },
+        "filter[territory]": { array: { explode: false } },
+        "fields[subscriptionPriceTiers]": { array: { explode: false } },
+        "fields[subscriptionPricePoints]": { array: { explode: false } },
+        include: { array: { explode: false } },
+      },
+    },
+    security: [{ scheme: "bearer", type: "http" }],
+    url: "/v1/subscriptionPrices/{id}/additionalPriceTiers",
+    ...options,
+  });
+
 /** Get prices relationship IDs for subscription promotional offers. `GET /v1/subscriptionPromotionalOffers/{id}/relationships/prices` */
 export const subscriptionPromotionalOffersPricesGetToManyRelationship = <
   ThrowOnError extends boolean = false,
@@ -34021,6 +34183,7 @@ export const subscriptionsPricesGetToManyRelated = <
         "fields[subscriptionPrices]": { array: { explode: false } },
         "fields[territories]": { array: { explode: false } },
         "fields[subscriptionPricePoints]": { array: { explode: false } },
+        "fields[subscriptionPriceTiers]": { array: { explode: false } },
         include: { array: { explode: false } },
       },
     },
