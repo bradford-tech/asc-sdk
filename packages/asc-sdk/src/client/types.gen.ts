@@ -131,6 +131,7 @@ export type AgeRatingDeclaration = {
       | "FREQUENT_OR_INTENSE"
       | "INFREQUENT"
       | "FREQUENT";
+    datingAndRelationships?: boolean;
     gambling?: boolean;
     gamblingSimulated?:
       | "NONE"
@@ -174,6 +175,7 @@ export type AgeRatingDeclaration = {
       | "FREQUENT_OR_INTENSE"
       | "INFREQUENT"
       | "FREQUENT";
+    sharedLocation?: boolean;
     socialMedia?: boolean;
     socialMediaAgeRestricted?: boolean;
     horrorOrFearThemes?:
@@ -260,6 +262,7 @@ export type AgeRatingDeclarationUpdateRequest = {
         | "FREQUENT_OR_INTENSE"
         | "INFREQUENT"
         | "FREQUENT";
+      datingAndRelationships?: boolean | null;
       gambling?: boolean | null;
       gamblingSimulated?:
         | "NONE"
@@ -303,6 +306,7 @@ export type AgeRatingDeclarationUpdateRequest = {
         | "FREQUENT_OR_INTENSE"
         | "INFREQUENT"
         | "FREQUENT";
+      sharedLocation?: boolean | null;
       socialMedia?: boolean | null;
       socialMediaAgeRestricted?: boolean | null;
       horrorOrFearThemes?:
@@ -5291,6 +5295,7 @@ export type App = {
     contentRightsDeclaration?:
       "DOES_NOT_USE_THIRD_PARTY_CONTENT" | "USES_THIRD_PARTY_CONTENT";
     streamlinedPurchasingEnabled?: boolean;
+    groupPurchaseInvitationMode?: "APPLE_HOSTED" | "DEVELOPER_HOSTED";
   };
   relationships?: {
     accessibilityDeclarations?: {
@@ -5645,6 +5650,7 @@ export type AppUpdateRequest = {
       contentRightsDeclaration?:
         "DOES_NOT_USE_THIRD_PARTY_CONTENT" | "USES_THIRD_PARTY_CONTENT";
       streamlinedPurchasingEnabled?: boolean | null;
+      groupPurchaseInvitationMode?: "APPLE_HOSTED" | "DEVELOPER_HOSTED";
     };
   };
 };
@@ -15942,6 +15948,52 @@ export type SubscriptionPlanAvailabilityUpdateRequest = {
   };
 };
 
+/** subscription price change preview. */
+export type SubscriptionPriceChangePreview = {
+  type: "subscriptionPriceChangePreviews";
+  id: string;
+  attributes?: {
+    changeResults?: Array<{
+      territoryId?: string;
+      changeType?:
+        | "INCREASE_PRESERVABLE"
+        | "DECREASE_NOT_PRESERVABLE"
+        | "MIXED_NOT_PRESERVABLE"
+        | "NO_CHANGE";
+    }>;
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription price change preview. */
+export type SubscriptionPriceChangePreviewResponse = {
+  data: SubscriptionPriceChangePreview;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription price change preview. */
+export type SubscriptionPriceChangePreviewCreateRequest = {
+  data: {
+    type: "subscriptionPriceChangePreviews";
+    attributes?: {
+      proposedChanges?: Array<{
+        territoryId?: string;
+        startDate?: Date;
+        basePricePointId?: string;
+        additionalPriceTiers?: Array<ProposedSubscriptionPriceTier>;
+      }> | null;
+    };
+    relationships: {
+      subscription: {
+        data: {
+          type: "subscriptions";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
 /** subscription price point. */
 export type SubscriptionPricePoint = {
   type: "subscriptionPricePoints";
@@ -15989,6 +16041,99 @@ export type SubscriptionPricePointResponse = {
   links: DocumentLinks;
 };
 
+/** subscription price tier equalization. */
+export type SubscriptionPriceTierEqualization = {
+  type: "subscriptionPriceTierEqualizations";
+  id: string;
+  attributes?: {
+    equalizedPrices?: Array<SubscriptionEqualizedPriceTiersForTerritory>;
+  };
+  relationships?: {
+    priceTierPricePoints?: {
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionPricePoints";
+        id: string;
+      }>;
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Response containing a subscription price tier equalization. */
+export type SubscriptionPriceTierEqualizationResponse = {
+  data: SubscriptionPriceTierEqualization;
+  included?: Array<SubscriptionPricePoint>;
+  links: DocumentLinks;
+};
+
+/** Request body for creating a subscription price tier equalization. */
+export type SubscriptionPriceTierEqualizationCreateRequest = {
+  data: {
+    type: "subscriptionPriceTierEqualizations";
+    attributes?: {
+      additionalPriceTiers?: Array<ProposedSubscriptionPriceTier> | null;
+    };
+    relationships: {
+      subscription: {
+        data: {
+          type: "subscriptions";
+          id: string;
+        };
+      };
+      basePricePoint: {
+        data: {
+          type: "subscriptionPricePoints";
+          id: string;
+        };
+      };
+    };
+  };
+};
+
+/** subscription price tier. */
+export type SubscriptionPriceTier = {
+  type: "subscriptionPriceTiers";
+  id: string;
+  attributes?: {
+    minQuantity?: number;
+  };
+  relationships?: {
+    subscriptionPricePoint?: {
+      data?: {
+        type: "subscriptionPricePoints";
+        id: string;
+      };
+    };
+  };
+  links?: ResourceLinks;
+};
+
+/** Inline create payload for a subscription price tier. */
+export type SubscriptionPriceTierInlineCreate = {
+  type: "subscriptionPriceTiers";
+  id?: string;
+  attributes?: {
+    minQuantity?: number | null;
+  };
+  relationships?: {
+    subscriptionPricePoint?: {
+      data?: {
+        type: "subscriptionPricePoints";
+        id: string;
+      };
+    };
+  };
+};
+
+/** Response containing a subscription price tiers. */
+export type SubscriptionPriceTiersResponse = {
+  data: Array<SubscriptionPriceTier>;
+  included?: Array<SubscriptionPricePoint>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** subscription price. */
 export type SubscriptionPrice = {
   type: "subscriptionPrices";
@@ -16010,6 +16155,14 @@ export type SubscriptionPrice = {
         type: "subscriptionPricePoints";
         id: string;
       };
+    };
+    additionalPriceTiers?: {
+      links?: RelationshipLinks;
+      meta?: PagingInformation;
+      data?: Array<{
+        type: "subscriptionPriceTiers";
+        id: string;
+      }>;
     };
   };
   links?: ResourceLinks;
@@ -16043,13 +16196,19 @@ export type SubscriptionPriceInlineCreate = {
         id: string;
       };
     };
+    additionalPriceTiers?: {
+      data?: Array<{
+        type: "subscriptionPriceTiers";
+        id: string;
+      }>;
+    };
   };
 };
 
 /** Response containing a subscription prices. */
 export type SubscriptionPricesResponse = {
   data: Array<SubscriptionPrice>;
-  included?: Array<SubscriptionPricePoint | Territory>;
+  included?: Array<SubscriptionPricePoint | SubscriptionPriceTier | Territory>;
   links: PagedDocumentLinks;
   meta?: PagingInformation;
 };
@@ -16057,7 +16216,7 @@ export type SubscriptionPricesResponse = {
 /** Response containing a subscription price. */
 export type SubscriptionPriceResponse = {
   data: SubscriptionPrice;
-  included?: Array<SubscriptionPricePoint | Territory>;
+  included?: Array<SubscriptionPricePoint | SubscriptionPriceTier | Territory>;
   links: DocumentLinks;
 };
 
@@ -16089,8 +16248,15 @@ export type SubscriptionPriceCreateRequest = {
           id: string;
         };
       };
+      additionalPriceTiers?: {
+        data?: Array<{
+          type: "subscriptionPriceTiers";
+          id: string;
+        }>;
+      };
     };
   };
+  included?: Array<SubscriptionPriceTierInlineCreate>;
 };
 
 /** subscription promotional offer price. */
@@ -16566,6 +16732,7 @@ export type SubscriptionsResponse = {
     | SubscriptionLocalization
     | SubscriptionOfferCode
     | SubscriptionPlanAvailability
+    | SubscriptionPriceTier
     | SubscriptionPrice
     | SubscriptionPromotionalOffer
     | SubscriptionVersion
@@ -16590,6 +16757,7 @@ export type SubscriptionResponse = {
     | SubscriptionLocalization
     | SubscriptionOfferCode
     | SubscriptionPlanAvailability
+    | SubscriptionPriceTier
     | SubscriptionPrice
     | SubscriptionPromotionalOffer
     | SubscriptionVersion
@@ -16683,6 +16851,7 @@ export type SubscriptionUpdateRequest = {
     };
   };
   included?: Array<
+    | SubscriptionPriceTierInlineCreate
     | SubscriptionPromotionalOfferInlineCreate
     | SubscriptionPriceInlineCreate
     | SubscriptionIntroductoryOfferInlineCreate
@@ -20087,6 +20256,16 @@ export type SubscriptionPricePointEqualizationsLinkagesResponse = {
   meta?: PagingInformation;
 };
 
+/** Linkage response for a subscription price additional price tiers. */
+export type SubscriptionPriceAdditionalPriceTiersLinkagesResponse = {
+  data: Array<{
+    type: "subscriptionPriceTiers";
+    id: string;
+  }>;
+  links: PagedDocumentLinks;
+  meta?: PagingInformation;
+};
+
 /** Linkage response for a subscription promotional offer prices. */
 export type SubscriptionPromotionalOfferPricesLinkagesResponse = {
   data: Array<{
@@ -21536,6 +21715,12 @@ export type Property = {
   value?: string;
 };
 
+/** proposed subscription price tier. */
+export type ProposedSubscriptionPriceTier = {
+  minQuantity: number;
+  subscriptionPricePointId: string;
+};
+
 /** scm provider type. */
 export type ScmProviderType = {
   kind?:
@@ -21598,6 +21783,13 @@ export type StringToStringMap = {
 
 /** subscription customer eligibility. */
 export type SubscriptionCustomerEligibility = "NEW" | "EXISTING" | "EXPIRED";
+
+/** subscription equalized price tiers for territory. */
+export type SubscriptionEqualizedPriceTiersForTerritory = {
+  territoryId?: string;
+  basePricePointId?: string;
+  additionalPriceTiers?: Array<ProposedSubscriptionPriceTier>;
+};
 
 /** subscription grace period duration. */
 export type SubscriptionGracePeriodDuration =
@@ -26692,6 +26884,7 @@ export type AppClipsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -27465,6 +27658,7 @@ export type AppCustomProductPagesGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -27882,6 +28076,7 @@ export type AppEncryptionDeclarationsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -28131,6 +28326,7 @@ export type AppEncryptionDeclarationsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -29688,6 +29884,7 @@ export type AppInfosGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -29742,6 +29939,7 @@ export type AppInfosGetInstanceData = {
       | "advertising"
       | "alcoholTobaccoOrDrugUseOrReferences"
       | "contests"
+      | "datingAndRelationships"
       | "gambling"
       | "gamblingSimulated"
       | "gunsOrOtherWeapons"
@@ -29755,6 +29953,7 @@ export type AppInfosGetInstanceData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "sharedLocation"
       | "socialMedia"
       | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
@@ -30442,6 +30641,7 @@ export type AppPricePointsV3GetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -30628,6 +30828,7 @@ export type AppPriceSchedulesGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -32405,6 +32606,7 @@ export type AppStoreVersionExperimentsV2GetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -33400,6 +33602,7 @@ export type AppStoreVersionsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -33900,6 +34103,7 @@ export type AppsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -34473,6 +34677,7 @@ export type AppsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -35794,6 +35999,7 @@ export type BackgroundAssetsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -36430,6 +36636,7 @@ export type BetaAppLocalizationsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -36671,6 +36878,7 @@ export type BetaAppLocalizationsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -36869,6 +37077,7 @@ export type BetaAppReviewDetailsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -37004,6 +37213,7 @@ export type BetaAppReviewDetailsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -38288,6 +38498,7 @@ export type BetaGroupsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -38600,6 +38811,7 @@ export type BetaGroupsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -38849,6 +39061,7 @@ export type BetaLicenseAgreementsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -38974,6 +39187,7 @@ export type BetaLicenseAgreementsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -39495,6 +39709,7 @@ export type BetaTestersGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -39807,6 +40022,7 @@ export type BetaTestersGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -40898,6 +41114,7 @@ export type BuildsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -41244,6 +41461,7 @@ export type BuildsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -41783,6 +42001,7 @@ export type BundleIdsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -42052,6 +42271,7 @@ export type BundleIdsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -43228,6 +43448,7 @@ export type CiProductsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -43446,6 +43667,7 @@ export type CiProductsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -44810,6 +45032,7 @@ export type EndUserLicenseAgreementsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -48534,6 +48757,7 @@ export type GameCenterDetailsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -56654,6 +56878,7 @@ export type NominationsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -56955,6 +57180,7 @@ export type NominationsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -57602,6 +57828,7 @@ export type PreReleaseVersionsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -57764,6 +57991,7 @@ export type PreReleaseVersionsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -59668,6 +59896,7 @@ export type ReviewSubmissionsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -59925,6 +60154,7 @@ export type ReviewSubmissionsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -64584,6 +64814,61 @@ export type SubscriptionPlanAvailabilitiesUpdateInstanceResponses = {
 export type SubscriptionPlanAvailabilitiesUpdateInstanceResponse =
   SubscriptionPlanAvailabilitiesUpdateInstanceResponses[keyof SubscriptionPlanAvailabilitiesUpdateInstanceResponses];
 
+/** Request options for `POST /v1/subscriptionPriceChangePreviews`. */
+export type SubscriptionPriceChangePreviewsCreateInstanceData = {
+  /**
+   * SubscriptionPriceChangePreview representation
+   */
+  body: SubscriptionPriceChangePreviewCreateRequest;
+  path?: never;
+  query?: never;
+  url: "/v1/subscriptionPriceChangePreviews";
+};
+
+/** Error status map for `POST /v1/subscriptionPriceChangePreviews`. */
+export type SubscriptionPriceChangePreviewsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/subscriptionPriceChangePreviews`. */
+export type SubscriptionPriceChangePreviewsCreateInstanceError =
+  SubscriptionPriceChangePreviewsCreateInstanceErrors[keyof SubscriptionPriceChangePreviewsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/subscriptionPriceChangePreviews`. */
+export type SubscriptionPriceChangePreviewsCreateInstanceResponses = {
+  /**
+   * Single SubscriptionPriceChangePreview
+   */
+  201: SubscriptionPriceChangePreviewResponse;
+};
+
+/** Successful response from `POST /v1/subscriptionPriceChangePreviews`. */
+export type SubscriptionPriceChangePreviewsCreateInstanceResponse =
+  SubscriptionPriceChangePreviewsCreateInstanceResponses[keyof SubscriptionPriceChangePreviewsCreateInstanceResponses];
+
 /** Request options for `GET /v1/subscriptionPricePoints/{id}`. */
 export type SubscriptionPricePointsGetInstanceData = {
   body?: never;
@@ -64656,6 +64941,165 @@ export type SubscriptionPricePointsGetInstanceResponses = {
 /** Successful response from `GET /v1/subscriptionPricePoints/{id}`. */
 export type SubscriptionPricePointsGetInstanceResponse =
   SubscriptionPricePointsGetInstanceResponses[keyof SubscriptionPricePointsGetInstanceResponses];
+
+/** Request options for `POST /v1/subscriptionPriceTierEqualizations`. */
+export type SubscriptionPriceTierEqualizationsCreateInstanceData = {
+  /**
+   * SubscriptionPriceTierEqualization representation
+   */
+  body: SubscriptionPriceTierEqualizationCreateRequest;
+  path?: never;
+  query?: {
+    /**
+     * the fields to include for returned resources of type subscriptionPricePoints
+     */
+    "fields[subscriptionPricePoints]"?: Array<
+      | "customerPrice"
+      | "proceeds"
+      | "proceedsYear2"
+      | "territory"
+      | "equalizations"
+      | "adjustedEqualizations"
+    >;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"priceTierPricePoints">;
+    /**
+     * maximum number of related priceTierPricePoints returned (when they are included)
+     */
+    "limit[priceTierPricePoints]"?: number;
+    /**
+     * the fields to include for returned resources of type subscriptionPriceTierEqualizations
+     */
+    "fields[subscriptionPriceTierEqualizations]"?: Array<
+      "equalizedPrices" | "priceTierPricePoints"
+    >;
+  };
+  url: "/v1/subscriptionPriceTierEqualizations";
+};
+
+/** Error status map for `POST /v1/subscriptionPriceTierEqualizations`. */
+export type SubscriptionPriceTierEqualizationsCreateInstanceErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Request entity error(s)
+   */
+  409: ErrorResponse;
+  /**
+   * Unprocessable request entity error(s)
+   */
+  422: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `POST /v1/subscriptionPriceTierEqualizations`. */
+export type SubscriptionPriceTierEqualizationsCreateInstanceError =
+  SubscriptionPriceTierEqualizationsCreateInstanceErrors[keyof SubscriptionPriceTierEqualizationsCreateInstanceErrors];
+
+/** Response status map for `POST /v1/subscriptionPriceTierEqualizations`. */
+export type SubscriptionPriceTierEqualizationsCreateInstanceResponses = {
+  /**
+   * Single SubscriptionPriceTierEqualization
+   */
+  201: SubscriptionPriceTierEqualizationResponse;
+};
+
+/** Successful response from `POST /v1/subscriptionPriceTierEqualizations`. */
+export type SubscriptionPriceTierEqualizationsCreateInstanceResponse =
+  SubscriptionPriceTierEqualizationsCreateInstanceResponses[keyof SubscriptionPriceTierEqualizationsCreateInstanceResponses];
+
+/** Request options for `GET /v1/subscriptionPriceTiers`. */
+export type SubscriptionPriceTiersGetCollectionData = {
+  body?: never;
+  path?: never;
+  query: {
+    /**
+     * filter by subscription
+     */
+    "filter[subscription]": Array<string>;
+    /**
+     * filter by territory
+     */
+    "filter[territory]"?: Array<string>;
+    /**
+     * the fields to include for returned resources of type subscriptionPriceTiers
+     */
+    "fields[subscriptionPriceTiers]"?: Array<
+      "minQuantity" | "subscriptionPricePoint"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPricePoints
+     */
+    "fields[subscriptionPricePoints]"?: Array<
+      | "customerPrice"
+      | "proceeds"
+      | "proceedsYear2"
+      | "territory"
+      | "equalizations"
+      | "adjustedEqualizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscriptionPricePoint">;
+  };
+  url: "/v1/subscriptionPriceTiers";
+};
+
+/** Error status map for `GET /v1/subscriptionPriceTiers`. */
+export type SubscriptionPriceTiersGetCollectionErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionPriceTiers`. */
+export type SubscriptionPriceTiersGetCollectionError =
+  SubscriptionPriceTiersGetCollectionErrors[keyof SubscriptionPriceTiersGetCollectionErrors];
+
+/** Response status map for `GET /v1/subscriptionPriceTiers`. */
+export type SubscriptionPriceTiersGetCollectionResponses = {
+  /**
+   * List of SubscriptionPriceTiers
+   */
+  200: SubscriptionPriceTiersResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionPriceTiers`. */
+export type SubscriptionPriceTiersGetCollectionResponse =
+  SubscriptionPriceTiersGetCollectionResponses[keyof SubscriptionPriceTiersGetCollectionResponses];
 
 /** Request options for `POST /v1/subscriptionPrices`. */
 export type SubscriptionPricesCreateInstanceData = {
@@ -65519,6 +65963,7 @@ export type SubscriptionsGetInstanceData = {
       | "planType"
       | "territory"
       | "subscriptionPricePoint"
+      | "additionalPriceTiers"
     >;
     /**
      * the fields to include for returned resources of type promotedPurchases
@@ -65962,6 +66407,7 @@ export type UserInvitationsGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -66208,6 +66654,7 @@ export type UserInvitationsGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -66370,6 +66817,7 @@ export type UsersGetCollectionData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -66560,6 +67008,7 @@ export type UsersGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -66973,6 +67422,7 @@ export type WebhooksGetInstanceData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -70218,6 +70668,7 @@ export type AppClipDefaultExperiencesReleaseWithAppStoreVersionGetToOneRelatedDa
         | "subscriptionStatusUrlVersionForSandbox"
         | "contentRightsDeclaration"
         | "streamlinedPurchasingEnabled"
+        | "groupPurchaseInvitationMode"
         | "accessibilityDeclarations"
         | "appEncryptionDeclarations"
         | "appStoreIcon"
@@ -73300,6 +73751,7 @@ export type AppInfosAgeRatingDeclarationGetToOneRelatedData = {
       | "advertising"
       | "alcoholTobaccoOrDrugUseOrReferences"
       | "contests"
+      | "datingAndRelationships"
       | "gambling"
       | "gamblingSimulated"
       | "gunsOrOtherWeapons"
@@ -73313,6 +73765,7 @@ export type AppInfosAgeRatingDeclarationGetToOneRelatedData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "sharedLocation"
       | "socialMedia"
       | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
@@ -74678,6 +75131,7 @@ export type AppPricePointsV3EqualizationsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -78441,6 +78895,7 @@ export type AppStoreVersionsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -80720,6 +81175,7 @@ export type AppsAppClipsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -80927,6 +81383,7 @@ export type AppsAppCustomProductPagesGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -81156,6 +81613,7 @@ export type AppsAppEncryptionDeclarationsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -81581,6 +82039,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -81635,6 +82094,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "advertising"
       | "alcoholTobaccoOrDrugUseOrReferences"
       | "contests"
+      | "datingAndRelationships"
       | "gambling"
       | "gamblingSimulated"
       | "gunsOrOtherWeapons"
@@ -81648,6 +82108,7 @@ export type AppsAppInfosGetToManyRelatedData = {
       | "ageAssurance"
       | "sexualContentGraphicAndNudity"
       | "sexualContentOrNudity"
+      | "sharedLocation"
       | "socialMedia"
       | "socialMediaAgeRestricted"
       | "horrorOrFearThemes"
@@ -81839,6 +82300,7 @@ export type AppsAppPricePointsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -82027,6 +82489,7 @@ export type AppsAppPriceScheduleGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -82256,6 +82719,7 @@ export type AppsAppStoreVersionExperimentsV2GetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -82581,6 +83045,7 @@ export type AppsAppStoreVersionsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -83209,6 +83674,7 @@ export type AppsBackgroundAssetsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -84789,6 +85255,7 @@ export type AppsCiProductGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -85612,6 +86079,7 @@ export type AppsGameCenterDetailGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -87162,6 +87630,7 @@ export type AppsReviewSubmissionsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -87869,6 +88338,7 @@ export type AppsWebhooksGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -88426,6 +88896,7 @@ export type BetaAppLocalizationsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -88596,6 +89067,7 @@ export type BetaAppReviewDetailsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -89154,6 +89626,7 @@ export type BetaGroupsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -90087,6 +90560,7 @@ export type BetaLicenseAgreementsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -90330,6 +90804,7 @@ export type BetaTestersAppsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -91150,6 +91625,7 @@ export type BuildBetaDetailsBuildGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -92053,6 +92529,7 @@ export type BuildsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -92445,6 +92922,7 @@ export type BuildsAppStoreVersionGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -93976,6 +94454,7 @@ export type BundleIdsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -95485,6 +95964,7 @@ export type CiBuildRunsBuildsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -96065,6 +96545,7 @@ export type CiProductsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -99479,6 +99960,7 @@ export type GameCenterAppVersionsAppStoreVersionGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -103695,6 +104177,7 @@ export type GameCenterGroupsGameCenterDetailsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -110255,6 +110738,7 @@ export type PreReleaseVersionsAppGetToOneRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -111447,6 +111931,7 @@ export type RetentionMessagesSubscriptionsGetToManyRelatedData = {
       | "planType"
       | "territory"
       | "subscriptionPricePoint"
+      | "additionalPriceTiers"
     >;
     /**
      * the fields to include for returned resources of type promotedPurchases
@@ -113241,6 +113726,7 @@ export type SubscriptionGroupsSubscriptionsGetToManyRelatedData = {
       | "planType"
       | "territory"
       | "subscriptionPricePoint"
+      | "additionalPriceTiers"
     >;
     /**
      * the fields to include for returned resources of type promotedPurchases
@@ -114544,6 +115030,153 @@ export type SubscriptionPricePointsEqualizationsGetToManyRelatedResponses = {
 /** Successful response from `GET /v1/subscriptionPricePoints/{id}/equalizations`. */
 export type SubscriptionPricePointsEqualizationsGetToManyRelatedResponse =
   SubscriptionPricePointsEqualizationsGetToManyRelatedResponses[keyof SubscriptionPricePointsEqualizationsGetToManyRelatedResponses];
+
+/** Request options for `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+  };
+  url: "/v1/subscriptionPrices/{id}/relationships/additionalPriceTiers";
+};
+
+/** Error status map for `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors =
+  {
+    /**
+     * Parameter error(s)
+     */
+    400: ErrorResponse;
+    /**
+     * Unauthorized error(s)
+     */
+    401: ErrorResponse;
+    /**
+     * Forbidden error
+     */
+    403: ErrorResponse;
+    /**
+     * Not found error
+     */
+    404: ErrorResponse;
+    /**
+     * Rate limit exceeded error
+     */
+    429: ErrorResponse;
+  };
+
+/** Error response from `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipError =
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors[keyof SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipErrors];
+
+/** Response status map for `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses =
+  {
+    /**
+     * List of related linkages
+     */
+    200: SubscriptionPriceAdditionalPriceTiersLinkagesResponse;
+  };
+
+/** Successful response from `GET /v1/subscriptionPrices/{id}/relationships/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponse =
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses[keyof SubscriptionPricesAdditionalPriceTiersGetToManyRelationshipResponses];
+
+/** Request options for `GET /v1/subscriptionPrices/{id}/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelatedData = {
+  body?: never;
+  path: {
+    /**
+     * the id of the requested resource
+     */
+    id: string;
+  };
+  query?: {
+    /**
+     * filter by subscription
+     */
+    "filter[subscription]"?: Array<string>;
+    /**
+     * filter by territory
+     */
+    "filter[territory]"?: Array<string>;
+    /**
+     * the fields to include for returned resources of type subscriptionPriceTiers
+     */
+    "fields[subscriptionPriceTiers]"?: Array<
+      "minQuantity" | "subscriptionPricePoint"
+    >;
+    /**
+     * the fields to include for returned resources of type subscriptionPricePoints
+     */
+    "fields[subscriptionPricePoints]"?: Array<
+      | "customerPrice"
+      | "proceeds"
+      | "proceedsYear2"
+      | "territory"
+      | "equalizations"
+      | "adjustedEqualizations"
+    >;
+    /**
+     * maximum resources per page
+     */
+    limit?: number;
+    /**
+     * comma-separated list of relationships to include
+     */
+    include?: Array<"subscriptionPricePoint">;
+  };
+  url: "/v1/subscriptionPrices/{id}/additionalPriceTiers";
+};
+
+/** Error status map for `GET /v1/subscriptionPrices/{id}/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors = {
+  /**
+   * Parameter error(s)
+   */
+  400: ErrorResponse;
+  /**
+   * Unauthorized error(s)
+   */
+  401: ErrorResponse;
+  /**
+   * Forbidden error
+   */
+  403: ErrorResponse;
+  /**
+   * Not found error
+   */
+  404: ErrorResponse;
+  /**
+   * Rate limit exceeded error
+   */
+  429: ErrorResponse;
+};
+
+/** Error response from `GET /v1/subscriptionPrices/{id}/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelatedError =
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors[keyof SubscriptionPricesAdditionalPriceTiersGetToManyRelatedErrors];
+
+/** Response status map for `GET /v1/subscriptionPrices/{id}/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses = {
+  /**
+   * List of SubscriptionPriceTiers
+   */
+  200: SubscriptionPriceTiersResponse;
+};
+
+/** Successful response from `GET /v1/subscriptionPrices/{id}/additionalPriceTiers`. */
+export type SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponse =
+  SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses[keyof SubscriptionPricesAdditionalPriceTiersGetToManyRelatedResponses];
 
 /** Request options for `GET /v1/subscriptionPromotionalOffers/{id}/relationships/prices`. */
 export type SubscriptionPromotionalOffersPricesGetToManyRelationshipData = {
@@ -116295,6 +116928,7 @@ export type SubscriptionsPricesGetToManyRelatedData = {
       | "planType"
       | "territory"
       | "subscriptionPricePoint"
+      | "additionalPriceTiers"
     >;
     /**
      * the fields to include for returned resources of type territories
@@ -116312,13 +116946,25 @@ export type SubscriptionsPricesGetToManyRelatedData = {
       | "adjustedEqualizations"
     >;
     /**
+     * the fields to include for returned resources of type subscriptionPriceTiers
+     */
+    "fields[subscriptionPriceTiers]"?: Array<
+      "minQuantity" | "subscriptionPricePoint"
+    >;
+    /**
      * maximum resources per page
      */
     limit?: number;
     /**
      * comma-separated list of relationships to include
      */
-    include?: Array<"territory" | "subscriptionPricePoint">;
+    include?: Array<
+      "territory" | "subscriptionPricePoint" | "additionalPriceTiers"
+    >;
+    /**
+     * maximum number of related additionalPriceTiers returned (when they are included)
+     */
+    "limit[additionalPriceTiers]"?: number;
   };
   url: "/v1/subscriptions/{id}/prices";
 };
@@ -118019,6 +118665,7 @@ export type UserInvitationsVisibleAppsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
@@ -118390,6 +119037,7 @@ export type UsersVisibleAppsGetToManyRelatedData = {
       | "subscriptionStatusUrlVersionForSandbox"
       | "contentRightsDeclaration"
       | "streamlinedPurchasingEnabled"
+      | "groupPurchaseInvitationMode"
       | "accessibilityDeclarations"
       | "appEncryptionDeclarations"
       | "appStoreIcon"
