@@ -23,9 +23,22 @@ jobs:
       sdk_released: ${{ steps.release.outputs['packages/asc-sdk--release_created'] }}
       auth_released: ${{ steps.release.outputs['packages/asc-auth--release_created'] }}
     steps:
+      # Same reason as update-spec.yml: release PRs opened by
+      # github-actions[bot] have their `ci` runs held for manual approval.
+      # Minting a bradfordbot[bot] token lets them run unattended.
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        id: app-token
+        with:
+          client-id: ${{ secrets.BRADFORDBOT_CLIENT_ID }}
+          private-key: ${{ secrets.BRADFORDBOT_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+          permission-metadata: read
+
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release
         with:
+          token: ${{ steps.app-token.outputs.token }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
