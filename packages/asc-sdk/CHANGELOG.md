@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.4.2...asc-sdk-v0.4.3) (2026-11-20)
+
+
+### Features
+
+* **sdk:** add subscription price tiers and new age rating fields ([#64](https://github.com/bradford-tech/asc-sdk/issues/64)) ([5e352f3](https://github.com/bradford-tech/asc-sdk/commit/5e352f3b30a134c6d9ec598d04306f9d1a654061))
+
 ## [0.4.2](https://github.com/bradford-tech/asc-sdk/compare/asc-sdk-v0.4.1...asc-sdk-v0.4.2) (2026-11-05)
 
 
